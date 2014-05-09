@@ -1,0 +1,25 @@
+﻿#region Using
+
+using System;
+
+#endregion
+
+namespace PortableExtensions
+{
+    /// <summary>
+    ///     Class containing some extension methods for <see cref="string" />.
+    /// </summary>
+    public static partial class StringEx
+    {
+        /// <summary>
+        ///     Returns the input value if it's not empty, otherwise the alternative value.
+        /// </summary>
+        /// <param name="value">The input string.</param>
+        /// <param name="alternativeValue">The alternative value.</param>
+        /// <returns>The input or the alternative value.</returns>
+        public static String IfNotEmpty( this String value, String alternativeValue )
+        {
+            return !value.IsEmpty() ? value : alternativeValue;
+        }
+    }
+}

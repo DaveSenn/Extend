@@ -1,0 +1,23 @@
+﻿#region Using
+
+using System;
+using NUnit.Framework;
+
+#endregion
+
+namespace PortableExtensions.Testing
+{
+    [TestFixture]
+    public partial class DateTimeExTest
+    {
+        [TestCase]
+        public void FirstDayOfWeekTestCase()
+        {
+            var dateTime = RandomValueEx.GetRandomDateTime();
+            var expected =
+                new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( -(Int32) dateTime.DayOfWeek );
+            var actual = dateTime.FirstDayOfWeek();
+            Assert.AreEqual( expected, actual );
+        }
+    }
+}

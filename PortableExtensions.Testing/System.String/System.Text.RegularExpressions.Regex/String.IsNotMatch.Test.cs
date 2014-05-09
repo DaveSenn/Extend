@@ -1,0 +1,109 @@
+﻿#region Using
+
+using System;
+using System.Text.RegularExpressions;
+using NUnit.Framework;
+
+#endregion
+
+namespace PortableExtensions.Testing
+{
+    [TestFixture]
+    public partial class StringExTest
+    {
+        [TestCase]
+        public void IsNotMatchTestCase()
+        {
+            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            var validEmail = "dave.senn@myDomain.com";
+            var invalidEmail = "dave.senn-myDomain.com";
+
+            var actual = validEmail.IsNotMatch( emaiLpattern );
+            Assert.IsFalse( actual );
+
+            actual = invalidEmail.IsNotMatch( emaiLpattern );
+            Assert.IsTrue( actual );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCaseNullCheck()
+        {
+            StringEx.IsNotMatch( null, "" );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCaseNullCheck1()
+        {
+            "".IsNotMatch( null );
+        }
+
+        [TestCase]
+        public void IsNotMatchTestCase1()
+        {
+            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            var validEmail = "dave.senn@myDomain.com";
+            var invalidEmail = "dave.senn-myDomain.com";
+
+            var actual = validEmail.IsNotMatch( emaiLpattern, RegexOptions.Compiled );
+            Assert.IsFalse( actual );
+
+            actual = invalidEmail.IsNotMatch( emaiLpattern, RegexOptions.None );
+            Assert.IsTrue( actual );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCase1NullCheck()
+        {
+            StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCase1NullCheck1()
+        {
+            "".IsNotMatch( null, RegexOptions.Multiline );
+        }
+
+        [TestCase]
+        public void IsNotMatchTestCase2()
+        {
+            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            var validEmail = "dave.senn@myDomain.com";
+            var invalidEmail = "dave.senn-myDomain.com";
+
+            var actual = validEmail.IsNotMatch( emaiLpattern, RegexOptions.Compiled, 10.ToSeconds() );
+            Assert.IsFalse( actual );
+
+            actual = invalidEmail.IsNotMatch( emaiLpattern, RegexOptions.None, 10.ToSeconds() );
+            Assert.IsTrue( actual );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( RegexMatchTimeoutException ) )]
+        public void IsNotMatchTestCase2TimeoutCheck()
+        {
+            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            var validEmail = RandomValueEx.GetRandomStrings( 10000 ).StringJoin( Environment.NewLine );
+
+            var actual = validEmail.IsNotMatch( emaiLpattern, RegexOptions.Multiline, 3.ToMilliseconds() );
+            Assert.IsTrue( actual );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCase2NullCheck()
+        {
+            StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void IsNotMatchTestCase2NullCheck1()
+        {
+            "".IsNotMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+        }
+    }
+}

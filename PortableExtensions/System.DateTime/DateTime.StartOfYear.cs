@@ -1,0 +1,24 @@
+﻿#region Using
+
+using System;
+
+#endregion
+
+namespace PortableExtensions
+{
+    /// <summary>
+    ///     Class containing some extension methods for <see cref="DateTime" />.
+    /// </summary>
+    public static partial class DateTimeEx
+    {
+        /// <summary>
+        ///     Returns the start of the given year with time set to "00:00:00:000".
+        /// </summary>
+        /// <param name="year">The year to get the start of.</param>
+        /// <returns>Returns the start of the given year with time set to "00:00:00:000".</returns>
+        public static DateTime StartOfYear( this DateTime year )
+        {
+            return new DateTime( year.Year, 1, 1 );
+        }
+    }
+}

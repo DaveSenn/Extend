@@ -1,0 +1,37 @@
+﻿#region Using
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+#endregion
+
+namespace PortableExtensions
+{
+    /// <summary>
+    ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.
+    /// </summary>
+    // ReSharper disable once InconsistentNaming
+    public static partial class IEnumerableTEx
+    {
+        /// <summary>
+        ///     Executes the given action for each item in the IEnumerable in a reversed order.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
+        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
+        /// <remarks>It's save to remove items from the IEnumerable within the loop.</remarks>
+        /// <param name="enumerable">The IEnumerable to act on.</param>
+        /// <param name="action">The action to execute for each item in the IEnumerable.</param>
+        public static IEnumerable<T> ForEachReverse<T>( this IEnumerable<T> enumerable, Action<T> action )
+        {
+            enumerable.ThrowIfNull( () => enumerable );
+            action.ThrowIfNull( () => action );
+
+            var list = enumerable.ToList();
+            for ( var i = list.Count - 1; i >= 0; i-- )
+                action( list[i] );
+
+            return enumerable;
+        }
+    }
+}
