@@ -75,6 +75,7 @@
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIfNotContains.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].ContainsAll.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].ContainsAny.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].StringJoin.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNotNullOrEmpty.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNullOrEmpty.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveIf.cs" />

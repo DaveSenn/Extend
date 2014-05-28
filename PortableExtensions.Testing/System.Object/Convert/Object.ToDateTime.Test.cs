@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
         public void ToDateTimeTestCase1()
         {
             var expected = DateTime.Now;
-            var value = expected.ToString();
+            var value = expected.ToString(CultureInfo.InvariantCulture);
             var actual = ObjectEx.ToDateTime( value, CultureInfo.InvariantCulture );
 
 

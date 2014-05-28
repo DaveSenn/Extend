@@ -89,6 +89,7 @@
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIf.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].ContainsAll.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].ContainsAny.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].StringJoin.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNotNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\ICollection[T].IsNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveIf.Test.cs" />
