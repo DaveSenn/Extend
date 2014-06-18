@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">
         ///     A string that contains a number to convert. The string is interpreted using
-        ///     the System.Globalization.NumberStyles.Integer style.
+        ///     the System.Globalization.NumberStyles.Integer numberStyle.
         ///     The string to pars.
         /// </param>
         /// <param name="outValue">
@@ -37,21 +37,21 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Converts the string representation of a number in a specified style and culture-specific
+        ///     Converts the string representation of a number in a specified numberStyle and culture-specific
         ///     format to its System.Byte equivalent. A return value indicates whether the
         ///     conversion succeeded or failed.
         /// </summary>
         /// <param name="value">
         ///     A string containing a number to convert. The string is interpreted using
-        ///     the style specified by style.
+        ///     the numberStyle specified by numberStyle.
         /// </param>
-        /// <param name="style">
-        ///     A bitwise combination of enumeration values that indicates the style elements
+        /// <param name="numberStyle">
+        ///     A bitwise combination of enumeration values that indicates the numberStyle elements
         ///     that can be present in s. A typical value to specify is System.Globalization.NumberStyles.Integer.
         /// </param>
-        /// <param name="provider">
+        /// <param name="formatProvider">
         ///     An object that supplies culture-specific formatting information about s.
-        ///     If provider is null, the thread current culture is used.
+        ///     If formatProvider is null, the thread current culture is used.
         /// </param>
         /// <param name="outValue">
         ///     When this method returns, contains the 8-bit unsigned integer value equivalent
@@ -61,13 +61,13 @@ namespace PortableExtensions
         ///     or greater than System.Byte.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsByte( this String value, NumberStyles style, IFormatProvider provider,
+        public static Boolean TryParsByte( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
                                            out Byte outValue )
         {
             value.ThrowIfNull( () => value );
-            provider.ThrowIfNull( () => provider );
+            formatProvider.ThrowIfNull( () => formatProvider );
 
-            return Byte.TryParse( value, style, provider, out outValue );
+            return Byte.TryParse( value, numberStyle, formatProvider, out outValue );
         }
     }
 }

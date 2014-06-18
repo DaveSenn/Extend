@@ -35,23 +35,23 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Converts the string representation of a number in a specified style and culture-specific
+        ///     Converts the string representation of a number in a specified numberStyle and culture-specific
         ///     format to its double-precision floating-point number equivalent. A return
         ///     value indicates whether the conversion succeeded or failed.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentException">
         ///     The value can not be null.
-        ///     style is not a System.Globalization.NumberStyles value. -or-style includes
+        ///     numberStyle is not a System.Globalization.NumberStyles value. -or-numberStyle includes
         ///     the System.Globalization.NumberStyles.AllowHexSpecifier value.
         /// </exception>
         /// <param name="value">A string containing a number to convert.</param>
-        /// <param name="style">
+        /// <param name="numberStyle">
         ///     A bitwise combination of System.Globalization.NumberStyles values that indicates
         ///     the permitted format of s. A typical value to specify is System.Globalization.NumberStyles.Float
         ///     combined with System.Globalization.NumberStyles.AllowThousands.
         /// </param>
-        /// <param name="provider">
+        /// <param name="formatProvider">
         ///     An System.IFormatProvider that supplies culture-specific formatting information
         ///     about s.
         /// </param>
@@ -60,18 +60,18 @@ namespace PortableExtensions
         ///     equivalent of the numeric value or symbol contained in s, if the conversion
         ///     succeeded, or zero if the conversion failed. The conversion fails if the
         ///     s parameter is null or System.String.Empty, is not in a format compliant
-        ///     with style, represents a number less than System.SByte.MinValue or greater
-        ///     than System.SByte.MaxValue, or if style is not a valid combination of System.Globalization.NumberStyles
+        ///     with numberStyle, represents a number less than System.SByte.MinValue or greater
+        ///     than System.SByte.MaxValue, or if numberStyle is not a valid combination of System.Globalization.NumberStyles
         ///     enumerated constants. This parameter is passed uninitialized.
         /// </param>
         /// <returns></returns>
-        public static Boolean TryParsDouble( this String value, NumberStyles style, IFormatProvider provider,
+        public static Boolean TryParsDouble( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
                                              out Double outValue )
         {
             value.ThrowIfNull( () => value );
-            provider.ThrowIfNull( () => provider );
+            formatProvider.ThrowIfNull( () => formatProvider );
 
-            return Double.TryParse( value, style, provider, out outValue );
+            return Double.TryParse( value, numberStyle, formatProvider, out outValue );
         }
     }
 }

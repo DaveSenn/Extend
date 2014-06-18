@@ -265,6 +265,15 @@
     <Compile Include="System.Object\Object.ReferenceEquals.Test.cs" />
     <Compile Include="System.Random\Random.CoinToss.Test.cs" />
     <Compile Include="System.Random\Random.OneOf.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToBoolean.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToByte.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToChar.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDateTime.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDecimal.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDouble.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt16.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt32.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt64.Test.cs" />
     <Compile Include="System.String\Convert\String.ToBoolean.Test.cs" />
     <Compile Include="System.String\Convert\String.ToByte.Test.cs" />
     <Compile Include="System.String\Convert\String.ToChar.Test.cs" />

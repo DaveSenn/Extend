@@ -192,6 +192,15 @@
     <Compile Include="System.Int32\Int32.IsMultipleOf.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToChar.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDateTime.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDecimal.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDouble.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt64.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt32.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt16.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
     <Compile Include="System.String\String.IsEmpty.cs" />

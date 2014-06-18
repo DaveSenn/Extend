@@ -14,7 +14,7 @@ namespace PortableExtensions.Testing
         [TestCase]
         public void ToByteTestCase()
         {
-            var value = (Byte) 1;
+            const Byte value = (Byte) 1;
             var actual = value.ToString().ToByte();
 
             Assert.AreEqual( value, actual );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
         [TestCase]
         public void ToByteTestCase1()
         {
-            var value = (Byte) 1;
+            const Byte value = (Byte)1;
             var actual = value.ToString( CultureInfo.InvariantCulture ).ToByte( CultureInfo.InvariantCulture );
 
             Assert.AreEqual( value, actual );
