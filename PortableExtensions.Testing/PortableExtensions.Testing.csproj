@@ -168,6 +168,7 @@
     <Compile Include="System.Double\Double.IsPositiveInfinit.yTest.cs" />
     <Compile Include="System.Double\Double.PercentageOf.Test.cs" />
     <Compile Include="System.Double\Double.PercentOf.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetValues.Test.cs" />
     <Compile Include="System.EventHandler\EventHandler.Raise.Test.cs" />
     <Compile Include="System.IComparable[T]\IComparable[T].Between.Test.cs" />
     <Compile Include="System.IComparable[T]\IComparable[T].BetweenInclusive.Test.cs" />
@@ -356,6 +357,7 @@
     <None Include="packages.config" />
     <Compile Include="System.String\String.SubstringLeftSave.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
