@@ -168,6 +168,7 @@
     <Compile Include="System.Double\Double.IsPositiveInfinit.yTest.cs" />
     <Compile Include="System.Double\Double.PercentageOf.Test.cs" />
     <Compile Include="System.Double\Double.PercentOf.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetValueAndStringValue.Test.cs" />
     <Compile Include="System.Enum\Enum.GetValues.Test.cs" />
     <Compile Include="System.EventHandler\EventHandler.Raise.Test.cs" />
     <Compile Include="System.IComparable[T]\IComparable[T].Between.Test.cs" />

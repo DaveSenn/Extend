@@ -131,6 +131,7 @@
     <Compile Include="System.Double\Double.IsNaN.cs" />
     <Compile Include="System.Double\Double.IsNegativeInfinity.cs" />
     <Compile Include="System.Double\Double.IsPositiveInfinity.cs" />
+    <Compile Include="System.Enum\Enum.GetValueAndStringValue.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.cs" />
     <Compile Include="System.Enum\Enum.GetValues.cs" />
     <Compile Include="System.Int16\System.DateTime\FromMonth\Int16.February.cs" />

@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 
 #endregion
 
@@ -15,17 +14,15 @@ namespace PortableExtensions
     public static partial class EnumEx
     {
         /// <summary>
-        ///     Gets the values of the specified enumeration.
+        /// Gets a dictionary containing the string value for each value of the enumeration of the given type.
         /// </summary>
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
-        /// <returns>All values of the specified enumeration.</returns>
-        public static IEnumerable<T> GetValues<T>() where T : struct
+        /// <returns>Returns a key value pair for each value of the specified enumeration type.</returns>
+        public static IDictionary<T, String> GetValueAndStringValue<T>() where T : struct
         {
-            if ( !typeof ( T ).GetTypeInfo().IsEnum )
-                throw new ArgumentException( "T must be an enumerated type." );
-
-            return Enum.GetValues( typeof ( T ) ).OfType<T>();
+            var values = GetValues<T>();
+            return values.ToDictionary( x => x, x => x.ToString() );
         }
     }
 }
