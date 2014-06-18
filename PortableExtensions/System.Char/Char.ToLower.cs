@@ -1,7 +1,6 @@
 ﻿#region Using
 
 using System;
-using System.Globalization;
 
 #endregion
 
@@ -18,18 +17,13 @@ namespace PortableExtensions
         ///     specific formatting information.
         /// </summary>
         /// <param name="c">The Unicode character to convert.</param>
-        /// <param name="culture">An object that supplies culture-specific casing rules.</param>
         /// <returns>
         ///     The lowercase equivalent of , modified according to , or the unchanged value of , if  is already lowercase or
         ///     not alphabetic.
         /// </returns>
-        public static Char ToLower( this Char c, CultureInfo culture = null )
+        public static Char ToLower( this Char c )
         {
-#if mono
             return Char.ToLower( c );
-#elif DotNet
-			return Char.ToLower(c, culture ?? CultureInfo.InvariantCulture);
-			#endif
         }
     }
 }
