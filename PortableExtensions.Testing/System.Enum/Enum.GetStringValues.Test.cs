@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class EnumExTest
     {
         [TestCase]
-        public void GetStringValuesCaseTestCase()
+        public void GetStringValuesTestCase()
         {
             var actual = EnumEx.GetStringValues<DayOfWeek>().ToList();
             Assert.AreEqual( 7, actual.Count );
@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
 
         [TestCase]
         [ExpectedException( typeof ( ArgumentException ) )]
-        public void GetStringValuesCaseTestCaseArgumentExceptionCheck()
+        public void GetStringValuesTestCaseArgumentExceptionCheck()
         {
             EnumEx.GetValues<Int32>().ToList();
         }
