@@ -183,3 +183,10 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# OS X  Desktop Services Store
+*.DS_Store
+*._.DS_Store
+
+# Temp Files
+*._*
