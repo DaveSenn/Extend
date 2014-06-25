@@ -16,23 +16,23 @@ namespace PortableExtensions
             const Char expected = 'c';
             var actual = expected.ToString().SaveToChar();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToCharTestCase1()
         {
             const Char expected = 'a';
-            var actual = "InvalidValue".SaveToChar(expected);
+            var actual = "InvalidValue".SaveToChar( expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToCharTestCaseNullCheck()
         {
-            StringEx.SaveToChar(null);
+            StringEx.SaveToChar( null );
         }
     }
 }

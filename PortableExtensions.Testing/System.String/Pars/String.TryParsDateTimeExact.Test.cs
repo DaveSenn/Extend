@@ -16,7 +16,7 @@ namespace PortableExtensions.Testing
         {
             var dateString = "5/01/2009 09:00";
             var actual = DateTime.ParseExact( dateString, "M/dd/yyyy hh:mm", new CultureInfo( "en-US" ),
-                DateTimeStyles.None );
+                                              DateTimeStyles.None );
 
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
             Assert.AreEqual( expected, actual );
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
         {
             var outValue = DateTime.Now;
             StringEx.TryParsDateTimeExact( null, "", CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite,
-                out outValue );
+                                           out outValue );
         }
 
         [TestCase]

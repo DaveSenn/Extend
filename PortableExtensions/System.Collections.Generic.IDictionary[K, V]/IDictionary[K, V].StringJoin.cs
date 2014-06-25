@@ -15,7 +15,7 @@ namespace PortableExtensions
     public static partial class IDictionaryEx
     {
         /// <summary>
-        /// Concatenates all the elements of a dictionary  using the specified separator between each element.
+        ///     Concatenates all the elements of a dictionary  using the specified separator between each element.
         /// </summary>
         /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
         /// <typeparam name="TValue">The type of the values in the dictionary.</typeparam>
@@ -30,7 +30,8 @@ namespace PortableExtensions
         ///     A string that consists of the elements in the dictionary delimited by the separator string.
         ///     If the given dictionary is empty, the method returns String.Empty.
         /// </returns>
-        public static String StringJoin<TValue, TKey>( this IDictionary<TValue, TKey> dictionary, String keyValueSeparator = "=", String separator = "" )
+        public static String StringJoin<TValue, TKey>( this IDictionary<TValue, TKey> dictionary,
+                                                       String keyValueSeparator = "=", String separator = "" )
         {
             dictionary.ThrowIfNull( () => dictionary );
 

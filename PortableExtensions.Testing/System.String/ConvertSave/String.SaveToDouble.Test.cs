@@ -15,44 +15,44 @@ namespace PortableExtensions
         public void SaveToDoubleTestCase()
         {
             const Double expected = 100.1d;
-            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToDouble();
+            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToDouble();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToDoubleTestCase1()
         {
             const Double expected = 123.12334d;
-            var actual = "InvalidValue".SaveToDouble(expected);
+            var actual = "InvalidValue".SaveToDouble( expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToDoubleTestCase2()
         {
             const Double expected = 12345234.1321d;
-            var actual = expected.ToString(CultureInfo.InvariantCulture)
-                .SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                .SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToDoubleTestCase3()
         {
             const Double expected = 12345234.1321d;
-            var actual = "InvalidValue".SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture, expected);
+            var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDoubleTestCaseNullCheck()
         {
-            StringEx.SaveToDouble(null);
+            StringEx.SaveToDouble( null );
         }
 
         [TestCase]

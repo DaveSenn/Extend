@@ -14,7 +14,7 @@ namespace PortableExtensions
     public static partial class EnumEx
     {
         /// <summary>
-        /// Gets a dictionary containing the string value for each value of the enumeration of the given type.
+        ///     Gets a dictionary containing the string value for each value of the enumeration of the given type.
         /// </summary>
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>

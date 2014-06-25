@@ -17,12 +17,12 @@ namespace PortableExtensions
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToDateTime();
 
-            Assert.AreEqual(expected.Year, actual.Year);
-            Assert.AreEqual(expected.Month, actual.Month);
-            Assert.AreEqual(expected.Day, actual.Day);
-            Assert.AreEqual(expected.Hour, actual.Hour);
-            Assert.AreEqual(expected.Minute, actual.Minute);
-            Assert.AreEqual(expected.Second, actual.Second);
+            Assert.AreEqual( expected.Year, actual.Year );
+            Assert.AreEqual( expected.Month, actual.Month );
+            Assert.AreEqual( expected.Day, actual.Day );
+            Assert.AreEqual( expected.Hour, actual.Hour );
+            Assert.AreEqual( expected.Minute, actual.Minute );
+            Assert.AreEqual( expected.Second, actual.Second );
         }
 
         [TestCase]
@@ -31,12 +31,12 @@ namespace PortableExtensions
             var expected = DateTime.Now;
             var actual = "InvalidValue".SaveToDateTime( expected );
 
-            Assert.AreEqual(expected.Year, actual.Year);
-            Assert.AreEqual(expected.Month, actual.Month);
-            Assert.AreEqual(expected.Day, actual.Day);
-            Assert.AreEqual(expected.Hour, actual.Hour);
-            Assert.AreEqual(expected.Minute, actual.Minute);
-            Assert.AreEqual(expected.Second, actual.Second);
+            Assert.AreEqual( expected.Year, actual.Year );
+            Assert.AreEqual( expected.Month, actual.Month );
+            Assert.AreEqual( expected.Day, actual.Day );
+            Assert.AreEqual( expected.Hour, actual.Hour );
+            Assert.AreEqual( expected.Minute, actual.Minute );
+            Assert.AreEqual( expected.Second, actual.Second );
         }
 
         [TestCase]
@@ -46,12 +46,12 @@ namespace PortableExtensions
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                 .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
-            Assert.AreEqual(expected.Year, actual.Year);
-            Assert.AreEqual(expected.Month, actual.Month);
-            Assert.AreEqual(expected.Day, actual.Day);
-            Assert.AreEqual(expected.Hour, actual.Hour);
-            Assert.AreEqual(expected.Minute, actual.Minute);
-            Assert.AreEqual(expected.Second, actual.Second);
+            Assert.AreEqual( expected.Year, actual.Year );
+            Assert.AreEqual( expected.Month, actual.Month );
+            Assert.AreEqual( expected.Day, actual.Day );
+            Assert.AreEqual( expected.Hour, actual.Hour );
+            Assert.AreEqual( expected.Minute, actual.Minute );
+            Assert.AreEqual( expected.Second, actual.Second );
         }
 
         [TestCase]
