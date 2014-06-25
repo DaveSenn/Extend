@@ -56,10 +56,10 @@ namespace PortableExtensions
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDecimalTestCaseNullCheck1()
         {
-            "".SaveToDouble(NumberStyles.AllowExponent, null);
+            "".SaveToDouble( NumberStyles.AllowExponent, null );
         }
     }
 }

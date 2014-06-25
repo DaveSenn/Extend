@@ -49,7 +49,7 @@ namespace PortableExtensions.Testing
         {
             var dictionary = new Dictionary<String, String>();
             var keyValuePair = new KeyValuePair<String, String>( RandomValueEx.GetRandomString(),
-                RandomValueEx.GetRandomString() );
+                                                                 RandomValueEx.GetRandomString() );
 
             var actual = dictionary.GetOrAdd( keyValuePair );
             Assert.AreEqual( keyValuePair.Value, actual );

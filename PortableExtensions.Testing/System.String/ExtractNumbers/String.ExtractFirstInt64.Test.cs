@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
 
             var actual =
                 stringValue.ExtractFirstInt64( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),
-                    StringComparison.Ordinal ) );
+                                                                    StringComparison.Ordinal ) );
             Assert.AreEqual( value1, actual );
 
             actual = stringValue.ExtractFirstInt64();

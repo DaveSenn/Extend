@@ -14,52 +14,52 @@ namespace PortableExtensions
         [TestCase]
         public void SaveToInt64TestCase()
         {
-            var expected = (Int64)RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToInt64();
+            var expected = (Int64) RandomValueEx.GetRandomInt32();
+            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToInt64();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToInt64TestCase1()
         {
-            var expected = (Int64)RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt64(expected);
+            var expected = (Int64) RandomValueEx.GetRandomInt32();
+            var actual = "InvalidValue".SaveToInt64( expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToInt64TestCase2()
         {
-            var expected = (Int64)RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString(CultureInfo.InvariantCulture)
-                .SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture);
+            var expected = (Int64) RandomValueEx.GetRandomInt32();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                .SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToInt64TestCase3()
         {
-            var expected = (Int64)RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture, expected);
+            var expected = (Int64) RandomValueEx.GetRandomInt32();
+            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToInt64TestCaseNullCheck()
         {
-            StringEx.SaveToInt64(null);
+            StringEx.SaveToInt64( null );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToInt64TestCaseNullCheck1()
         {
-            "".SaveToInt64(NumberStyles.AllowExponent, null);
+            "".SaveToInt64( NumberStyles.AllowExponent, null );
         }
     }
 }

@@ -23,13 +23,13 @@ namespace PortableExtensions.Testing
 
             var actual = dictionary.StringJoin();
             var expected = "{0}={1}{2}={3}".F( dictionary.First().Key, dictionary.First().Value, dictionary.Last().Key,
-                                             dictionary.Last().Value );
+                                               dictionary.Last().Value );
             Assert.AreEqual( expected, actual );
 
-            actual = dictionary.StringJoin(",", ";");
-            expected = "{0},{1};{2},{3}".F(dictionary.First().Key, dictionary.First().Value, dictionary.Last().Key,
-                                             dictionary.Last().Value);
-            Assert.AreEqual(expected, actual);
+            actual = dictionary.StringJoin( ",", ";" );
+            expected = "{0},{1};{2},{3}".F( dictionary.First().Key, dictionary.First().Value, dictionary.Last().Key,
+                                            dictionary.Last().Value );
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]

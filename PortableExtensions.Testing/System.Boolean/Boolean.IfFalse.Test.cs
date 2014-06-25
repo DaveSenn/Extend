@@ -73,11 +73,11 @@ namespace PortableExtensions.Testing
             var actual = String.Empty;
 
             false.IfFalse( "test", "P2", "P3", ( x, y, z ) => actual = x + y + z + "0",
-                ( x, y, z ) => actual = x + y + z + "1" );
+                           ( x, y, z ) => actual = x + y + z + "1" );
             Assert.AreEqual( "testP2P30", actual );
 
             true.IfFalse( "test", "P2", "P3", ( x, y, z ) => actual = x + y + z + "0",
-                ( x, y, z ) => actual = x + y + z + "1" );
+                          ( x, y, z ) => actual = x + y + z + "1" );
             Assert.AreEqual( "testP2P31", actual );
         }
 
@@ -94,11 +94,11 @@ namespace PortableExtensions.Testing
             var actual = String.Empty;
 
             false.IfFalse( "test", "P2", "P3", "P4", ( x, y, z, a ) => actual = x + y + z + a + "0",
-                ( x, y, z, a ) => actual = x + y + z + a + "1" );
+                           ( x, y, z, a ) => actual = x + y + z + a + "1" );
             Assert.AreEqual( "testP2P3P40", actual );
 
             true.IfFalse( "test", "P2", "P3", "P4", ( x, y, z, a ) => actual = x + y + z + a + "0",
-                ( x, y, z, a ) => actual = x + y + z + a + "1" );
+                          ( x, y, z, a ) => actual = x + y + z + a + "1" );
             Assert.AreEqual( "testP2P3P41", actual );
         }
 

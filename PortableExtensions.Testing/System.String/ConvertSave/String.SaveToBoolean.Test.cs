@@ -16,23 +16,23 @@ namespace PortableExtensions
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = expected.ToString().SaveToBoolean();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
         public void SaveToBooleanTestCase1()
         {
             var expected = RandomValueEx.GetRandomBoolean();
-            var actual = "InvalidValue".SaveToBoolean(expected);
+            var actual = "InvalidValue".SaveToBoolean( expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToBooleanTestCaseNullCheck()
         {
-            StringEx.SaveToBoolean(null);
+            StringEx.SaveToBoolean( null );
         }
     }
 }

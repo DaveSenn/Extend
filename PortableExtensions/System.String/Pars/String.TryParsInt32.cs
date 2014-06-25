@@ -44,7 +44,7 @@ namespace PortableExtensions
         /// </param>
         /// <param name="numberStyles">
         ///     A bitwise combination of enumeration values that indicates the numberStyles elements
-        ///     that can be present in value. A typical value to specify is <see cref="NumberStyles.Integer"/>.
+        ///     that can be present in value. A typical value to specify is <see cref="NumberStyles.Integer" />.
         /// </param>
         /// <param name="formatProvider">An object that supplies culture-specific formatting information about value.</param>
         /// <param name="outValue">

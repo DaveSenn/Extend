@@ -55,7 +55,8 @@ namespace PortableExtensions
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDecimal( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Boolean TryParsDecimal( this String value, NumberStyles numberStyle,
+                                              IFormatProvider formatProvider,
                                               out Decimal outValue )
         {
             value.ThrowIfNull( () => value );
