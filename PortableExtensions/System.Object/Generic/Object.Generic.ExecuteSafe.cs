@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="action">The action.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
-        public static ExecutionResult<T> ExecuteSafe<T>( this T value, Action<T> action )
+        public static IExecutionResult<T> ExecuteSafe<T>( this T value, Action<T> action )
         {
             action.ThrowIfNull( () => action );
 
@@ -45,7 +45,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
-        public static ExecutionResult<TResult> ExecuteSafe<T, TResult>( this T value, Func<T, TResult> func )
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( this T value, Func<T, TResult> func )
         {
             func.ThrowIfNull( () => func );
 

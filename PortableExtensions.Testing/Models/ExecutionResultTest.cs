@@ -10,7 +10,15 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class ExecutionResultTest
     {
-        [TestCase]
+        [Test]
+        public void CtorTestCase()
+        {
+            var target = new ExecutionResult<String>();
+            Assert.IsNull( target.Exception );
+            Assert.IsNull( target.Result );
+        }
+
+        [Test]
         public void ExceptionTestCase()
         {
             var target = new ExecutionResult<String>();
@@ -20,7 +28,7 @@ namespace PortableExtensions.Testing
             Assert.AreSame( expected, target.Exception );
         }
 
-        [TestCase]
+        [Test]
         public void ResultTestCase()
         {
             var target = new ExecutionResult<String>();
