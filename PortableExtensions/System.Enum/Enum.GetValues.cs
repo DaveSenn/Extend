@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -22,10 +23,30 @@ namespace PortableExtensions
         /// <returns>All values of the specified enumeration.</returns>
         public static IEnumerable<T> GetValues<T>() where T : struct
         {
-            if ( !typeof ( T ).GetTypeInfo().IsEnum )
+            var type = typeof ( T );
+            if ( !type.GetTypeInfo().IsEnum )
                 throw new ArgumentException( "T must be an enumerated type." );
 
-            return Enum.GetValues( typeof ( T ) ).OfType<T>();
+            return Enum.GetValues( type ).OfType<T>();
+        }
+
+        /// <summary>
+        ///     Gets the values of the specified enumeration.
+        /// </summary>
+        /// <remarks>
+        /// How to cast returned values:
+        /// values.Cast{Object}();
+        /// values.Select( x => Convert.ChangeType( x, type ) );
+        /// </remarks>
+        /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
+        /// <param name="type">The type of the enumeration.</param>
+        /// <returns>All values of the specified enumeration.</returns>
+        public static IEnumerable GetValues(Type type)
+        {
+            if (!type.GetTypeInfo().IsEnum)
+                throw new ArgumentException("T must be an enumerated type.");
+
+            return Enum.GetValues( type );
         }
     }
 }

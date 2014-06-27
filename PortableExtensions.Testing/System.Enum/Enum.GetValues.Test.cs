@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class EnumExTest
     {
         [TestCase]
-        public void GetValuesCaseTestCase()
+        public void GetValuesTestCase()
         {
             var actual = EnumEx.GetValues<DayOfWeek>().ToList();
             Assert.AreEqual( 7, actual.Count );
@@ -27,9 +27,35 @@ namespace PortableExtensions.Testing
 
         [TestCase]
         [ExpectedException( typeof ( ArgumentException ) )]
-        public void GetValuesCaseTestCaseArgumentExceptionCheck()
+        public void GetValuesTestCaseArgumentExceptionCheck()
         {
             EnumEx.GetValues<Int32>().ToList();
+        }
+
+        [TestCase]
+        public void GetValuesTestCase1()
+        {
+            var type = typeof ( DayOfWeek );
+            var actual = EnumEx.GetValues( type );
+
+            var casted = actual.Cast<Object>();
+            var list = casted.Select( x => Convert.ChangeType( x, type ) ).ToList();
+
+            Assert.AreEqual( 7, list.Count );
+            Assert.AreEqual( DayOfWeek.Sunday, list[0] );
+            Assert.AreEqual( DayOfWeek.Monday, list[1] );
+            Assert.AreEqual( DayOfWeek.Tuesday, list[2] );
+            Assert.AreEqual( DayOfWeek.Wednesday, list[3] );
+            Assert.AreEqual( DayOfWeek.Thursday, list[4] );
+            Assert.AreEqual( DayOfWeek.Friday, list[5] );
+            Assert.AreEqual( DayOfWeek.Saturday, list[6] );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentException ) )]
+        public void GetValuesTestCaseArgumentExceptionCheck1()
+        {
+            EnumEx.GetValues( typeof ( Int32 ) );
         }
     }
 }
