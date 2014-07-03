@@ -262,6 +262,8 @@
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IsIn.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IsNotIn.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Maximum.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Minimum.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ThrowIfNull.Test.cs" />
     <Compile Include="System.Object\Object.As.Test.cs" />
     <Compile Include="System.Object\Object.IsNotNull.Test.cs" />
