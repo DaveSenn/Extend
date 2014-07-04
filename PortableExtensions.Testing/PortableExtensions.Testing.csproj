@@ -159,6 +159,8 @@
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToYearMonthString.Test.cs" />
     <Compile Include="System.Decimal\Decimal.PercentageOf.Test.cs" />
     <Compile Include="System.Decimal\Decimal.PercentOf.Test.cs" />
+    <Compile Include="System.Decimal\Decimal.Sum.Test.cs" />
+    <Compile Include="System.Double\Double.Sum.Test.cs" />
     <Compile Include="System.Double\System.TimeSpan\Double.ToDays.Test.cs" />
     <Compile Include="System.Double\System.TimeSpan\Double.ToHours.Test.cs" />
     <Compile Include="System.Double\System.TimeSpan\Double.ToMilliseconds.Test.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="System.Int16\Int16.PercentOf.Test.cs" />
     <Compile Include="System.Int16\Int16.RangeTo.Test.cs" />
     <Compile Include="System.Int16\Int16.IsMultipleOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.Sum.Test.cs" />
     <Compile Include="System.Int32\System.DateTime\Int32.IsLeapYear.Test.cs" />
     <Compile Include="System.Int32\System.DateTime\Int32.DaysInMonth.Test.cs" />
     <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.April.Test.cs" />
@@ -231,6 +234,7 @@
     <Compile Include="System.Int32\Int32.IsOdd.Test.cs" />
     <Compile Include="System.Int32\Int32.IsMultipleOf.Test.cs" />
     <Compile Include="System.Int32\Int32.IsEven.Test.cs" />
+    <Compile Include="System.Int64\Int64.Sum.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64ToDays.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToSeconds.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToMinutes.Test.cs" />
