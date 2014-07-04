@@ -129,10 +129,12 @@
     <Compile Include="System.DateTime\DateTime.StartOfYear.cs" />
     <Compile Include="System.DateTime\DateTime.Tomorrow.cs" />
     <Compile Include="System.DateTime\DateTime.Yesterday.cs" />
+    <Compile Include="System.Decimal\Decimal.Sum.cs" />
     <Compile Include="System.Double\Double.IsInfinity.cs" />
     <Compile Include="System.Double\Double.IsNaN.cs" />
     <Compile Include="System.Double\Double.IsNegativeInfinity.cs" />
     <Compile Include="System.Double\Double.IsPositiveInfinity.cs" />
+    <Compile Include="System.Double\Double.Sum.cs" />
     <Compile Include="System.Enum\Enum.GetValueAndStringValue.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.cs" />
     <Compile Include="System.Enum\Enum.GetValues.cs" />
@@ -148,6 +150,7 @@
     <Compile Include="System.Int16\System.DateTime\FromMonth\Int16.May.cs" />
     <Compile Include="System.Int16\System.DateTime\FromMonth\Int16.March.cs" />
     <Compile Include="System.Int16\System.DateTime\FromMonth\Int16.January.cs" />
+    <Compile Include="System.Int32\Int32.Sum.cs" />
     <Compile Include="System.Int32\System.DateTime\FromMonth\Int32.April.cs" />
     <Compile Include="System.Int32\System.DateTime\FromMonth\Int32.August.cs" />
     <Compile Include="System.Int32\System.DateTime\FromMonth\Int32.December.cs" />
@@ -185,6 +188,7 @@
     <Compile Include="System.Int32\System.DateTime\Int32.DaysInMonth.cs" />
     <Compile Include="System.Int32\System.DateTime\Int32.IsLeapYear.cs" />
     <Compile Include="System.Int16\System.DateTime\Int16.DaysInMonth.cs" />
+    <Compile Include="System.Int64\Int64.Sum.cs" />
     <Compile Include="System.Int64\Int64.FactorOf.cs" />
     <Compile Include="System.Int64\Int64.IsOdd.cs" />
     <Compile Include="System.Int64\Int64.IsEven.cs" />
