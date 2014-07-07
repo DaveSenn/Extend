@@ -42,14 +42,39 @@ Add to collection:
 ```csharp
 var list = new List<String>();
 list.AddIf(x => new Random().Next(0, 10) % 2 == 0, "Value");
-
 list.AddIfNotContains( "Value #1");
-
 list.AddRange("Value #1", "Value #2", "Value #3");
-
 list.AddRangeIfNotContains("Value #1", "Value #2", "Value #3");
-
 list.AddRangeIf(x => new Random().Next(0, 10) % 2 == 0, "Value", "Value #2", "Value #3");
+```
+
+Working with dictionaries
+```csharp
+var dictionary = new Dictionary<String, String>();
+dictionary.AddOrUpdate("Key", "Value");
+dictionary.AddRange(new Dictionary<String, String>
+{
+	{ "Key1", "Value1" },
+	{ "Key2", "Value2" }
+});
+dictionary.GetOrAdd("Key", () => "Value");
+var keyValueCsv = dictionary.StringJoin("=", ", ");
+```
+Working with IEnumerable<T>:
+```csharp
+var list = new List<String>();
+var containsNotNullValues = list.AnyAndNotNull();
+var distinctValues = list.Distinct(x => x.Substring(0, 2));
+list.ForEach(x => { });
+list.ForEachReverse(x => list.Remove(x));
+```
+Working with DateTime:
+```csharp
+var dateTime = DateTime.Now;
+var stringValue = dateTime.ToLongDateShortTimeString();
+var elapsed = dateTime.Elapsed();
+var isFuture = dateTime.IsFuture();
+var weekend = dateTime.IsWeekendDay();
 ```
 
 ### License
