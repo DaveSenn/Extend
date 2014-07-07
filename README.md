@@ -17,4 +17,19 @@ You can use it in every .Net Application or Library targeting one of the followi
 1. Install ["PortableExtensions"](http://www.nuget.org/packages/PortableExtensions/) via [NuGet](http://nuget.org)
 __Install-Package PortableExtensions__
 2. Add using for PortableExtensions ```using PortableExtensions; ```
-3. Done
+3. Done!
+
+### Testing
+To guarantee its stability PortableExtensions contains nearly 1000 unit tests.
+Each method has test with different input parameters, including invalid values to test the exception handling.
+
+### Example
+
+Array to list using a selector:
+```csharp
+var myArray = new[] {"1", "2", "3"};
+var intValues = myArray.ToList(x => x.ToInt32());
+```
+
+### License
+Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt).
