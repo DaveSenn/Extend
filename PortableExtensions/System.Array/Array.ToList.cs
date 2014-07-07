@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 #endregion
 
@@ -24,11 +25,7 @@ namespace PortableExtensions
             items.ThrowIfNull( () => items );
             selector.ThrowIfNull( () => selector );
 
-            var list = new List<T>();
-            foreach ( var item in items )
-                list.Add( selector( item ) );
-
-            return list;
+            return (from object item in items select selector(item)).ToList();
         }
     }
 }
