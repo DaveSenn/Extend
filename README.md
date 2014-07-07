@@ -31,5 +31,26 @@ var myArray = new[] {"1", "2", "3"};
 var intValues = myArray.ToList(x => x.ToInt32());
 ```
 
+Action executing based on boolean values:
+```csharp
+var successful = SaveData();
+successful.IfTrue(() => DisplaySuccess(), () => DisplayFailure());
+successful.IfFalse(() => DisplayFailure(), () => DisplaySuccess());
+```
+
+Add to collection:
+```csharp
+var list = new List<String>();
+list.AddIf(x => new Random().Next(0, 10) % 2 == 0, "Value");
+
+list.AddIfNotContains( "Value #1");
+
+list.AddRange("Value #1", "Value #2", "Value #3");
+
+list.AddRangeIfNotContains("Value #1", "Value #2", "Value #3");
+
+list.AddRangeIf(x => new Random().Next(0, 10) % 2 == 0, "Value", "Value #2", "Value #3");
+```
+
 ### License
 Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt).
