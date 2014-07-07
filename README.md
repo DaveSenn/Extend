@@ -7,7 +7,7 @@ PortableExtensions enhance the .Net framework by adding a bunch of methods to in
 Currently it contains 309 unique extension methods (490 overloads included).
 
 ### Where can I use it?
-You can use it in every .Net Application or Library targeting one of the following profiles:
+You can use it in every .Net application or library targeting one of the following profiles:
 * .Net 4.5
 * Windows 8
 * Windows Phone 8
