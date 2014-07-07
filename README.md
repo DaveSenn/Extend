@@ -15,5 +15,6 @@ You can use it in every .Net Application or Library targeting one of the followi
 
 ### How do I use it?
 1. Install ["PortableExtensions"](http://www.nuget.org/packages/PortableExtensions/) via [NuGet](http://nuget.org)
+__Install-Package PortableExtensions__
 2. Add using for PortableExtensions ```using PortableExtensions; ```
 3. Done
