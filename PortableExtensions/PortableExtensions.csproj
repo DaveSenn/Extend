@@ -50,6 +50,10 @@
   <ItemGroup>
     <Compile Include="Models\Definitions\IExecutionResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfAnyFalse.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfAnyTrue.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfFalse.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfTrue.cs" />
     <Compile Include="System.Array\Array.Clear.cs" />
     <Compile Include="System.Array\Array.Copy.cs" />
     <Compile Include="System.Array\Array.IndexOf.cs" />
