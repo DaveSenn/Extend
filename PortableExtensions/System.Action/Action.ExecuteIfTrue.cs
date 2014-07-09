@@ -132,16 +132,11 @@ namespace PortableExtensions
                 falseAction(parameter1, parameter2, parameter3, parameter4);
         }
 
-
-
-
         /// <summary>
-        ///     Executes the specified action if the given Boolean values are true,
-        ///     otherwise it executes the specified false action, if one is specified.
+        ///     Executes the specified action if the given Boolean values are true.
         /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <param name="trueAction">The action to execute if the given values are true.</param>
-        /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfTrue(this Action trueAction, params Boolean[] values)
         {
@@ -153,14 +148,12 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Executes the specified action if the given Boolean values are true,
-        ///     otherwise it executes the specified false action, if one is specified.
+        ///     Executes the specified action if the given Boolean values are true.
         /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
-        /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfTrue<T>(this Action<T> trueAction, T parameter,
             params Boolean[] values)
@@ -173,8 +166,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Executes the specified action if the given Boolean values are true,
-        ///     otherwise it executes the specified false action, if one is specified.
+        ///     Executes the specified action if the given Boolean values are true.
         /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -182,7 +174,6 @@ namespace PortableExtensions
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
-        /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfTrue<T1, T2>(this Action<T1, T2> trueAction, T1 parameter1, T2 parameter2,
             params Boolean[] values)
@@ -195,8 +186,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Executes the specified action if the given Boolean values are true,
-        ///     otherwise it executes the specified false action, if one is specified.
+        ///     Executes the specified action if the given Boolean values are true.
         /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -206,7 +196,6 @@ namespace PortableExtensions
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
-        /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfTrue<T1, T2, T3>(this Action<T1, T2, T3> trueAction, T1 parameter1, T2 parameter2,
             T3 parameter3, params Boolean[] values)
@@ -219,8 +208,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Executes the specified action if the given Boolean values are true,
-        ///     otherwise it executes the specified false action, if one is specified.
+        ///     Executes the specified action if the given Boolean values are true.
         /// </summary>
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
@@ -232,7 +220,6 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
-        /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfTrue<T1, T2, T3, T4>(this Action<T1, T2, T3, T4> trueAction, T1 parameter1,
             T2 parameter2, T3 parameter3, T4 parameter4, params Boolean[] values)
