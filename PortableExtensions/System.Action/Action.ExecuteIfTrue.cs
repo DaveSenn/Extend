@@ -135,9 +135,6 @@ namespace PortableExtensions
 
 
 
-
-
-
         /// <summary>
         ///     Executes the specified action if the given Boolean values are true,
         ///     otherwise it executes the specified false action, if one is specified.
