@@ -56,6 +56,7 @@
     <Compile Include="Models\AttributeDefinitionTest.cs" />
     <Compile Include="Models\ExecutionResultTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfTrue.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Clear.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ClearAll.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.IndexOf.Test.cs" />
