@@ -111,6 +111,7 @@
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToSortableDateTimeString.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToUniversalSortableDateTimeString.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToUniversalSortableLongDateTimeString.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToMonthString.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToYearMonthString.cs" />
     <Compile Include="System.DateTime\DateTime.Age.cs" />
     <Compile Include="System.DateTime\DateTime.Elapsed.cs" />

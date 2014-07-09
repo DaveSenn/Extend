@@ -150,6 +150,7 @@
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateString.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongTimeString.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToMonthDayString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToMonthString.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateLongTimeString.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateString.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateTimeString.Test.cs" />
