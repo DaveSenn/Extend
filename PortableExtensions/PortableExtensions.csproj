@@ -362,7 +362,7 @@
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
-    <Compile Include="Utils\Util.RandomValueEx.cs" />
+    <Compile Include="Utilities\Utilities.RandomValueEx.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeys.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeysAsList.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[String]\IEnumerable[String].PathCombine.cs" />
