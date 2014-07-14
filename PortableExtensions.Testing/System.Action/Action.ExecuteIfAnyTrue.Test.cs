@@ -70,13 +70,6 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
-        public void ExecuteIfAnyTrueTestCaseNullCheck()
-        {
-            ActionEx.ExecuteIfAnyTrue(null, null, false, true);
-        }
-
-        [Test]
         public void ExecuteIfAnyTrueTestCase1()
         {
             var parameter = RandomValueEx.GetRandomString();
@@ -85,7 +78,7 @@ namespace PortableExtensions.Testing
             var trueActionExecuted = false;
             var falseActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 null,
                 false, true);
@@ -97,9 +90,9 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
-                (p1) => falseActionExecuted = p1 == parameter,
+                p1 => falseActionExecuted = p1 == parameter,
                 false, true);
 
             Assert.IsTrue(trueActionExecuted);
@@ -109,9 +102,9 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
-                (p1) => falseActionExecuted = p1 == parameter,
+                p1 => falseActionExecuted = p1 == parameter,
                 false, false);
 
             Assert.IsFalse(trueActionExecuted);
@@ -121,7 +114,7 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 null,
                 false, false);
@@ -429,7 +422,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfAnyTrueTestCase5NullCheck()
         {
             Action action = null;
@@ -444,7 +437,7 @@ namespace PortableExtensions.Testing
             //Case 1
             var trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false, true);
 
@@ -453,7 +446,7 @@ namespace PortableExtensions.Testing
             //Case 2
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false, true);
 
@@ -462,7 +455,7 @@ namespace PortableExtensions.Testing
             //Case 3
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false, false);
 
@@ -471,7 +464,7 @@ namespace PortableExtensions.Testing
             //Case 4
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyTrue(
-                (p1) => trueActionExecuted = p1 == parameter,
+                p1 => trueActionExecuted = p1 == parameter,
                 parameter,
                 false, false);
 
@@ -486,7 +479,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfAnyTrueTestCase6NullCheck()
         {
             Action<String> action = null;
@@ -544,7 +537,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfAnyTrueTestCase7NullCheck()
         {
             Action<String, String> action = null;
@@ -603,11 +596,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfAnyTrueTestCase8NullCheck()
         {
             Action<String, String, String> action = null;
-            action.ExecuteIfAnyTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), false, true);
+            action.ExecuteIfAnyTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), false, true);
         }
 
         [Test]
@@ -667,11 +661,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfAnyTrueTestCase9NullCheck()
         {
             Action<String, String, String, String> action = null;
-            action.ExecuteIfAnyTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), false, true);
+            action.ExecuteIfAnyTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), false, true);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void ExecuteIfAnyTrueTestCaseNullCheck()
+        {
+            ActionEx.ExecuteIfAnyTrue(null, null, false, true);
         }
     }
 }
