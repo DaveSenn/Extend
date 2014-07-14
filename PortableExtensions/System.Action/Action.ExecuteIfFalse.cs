@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="trueAction">The action to execute if any of the given values is true.</param>
         /// <param name="falseAction">The action to execute if the given values are false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfFalse(this Action falseAction, Action trueAction , params Boolean[] values)
+        public static void ExecuteIfFalse(this Action falseAction, Action trueAction, params Boolean[] values)
         {
             if (values.NotAny(x => x))
             {
@@ -139,7 +139,7 @@ namespace PortableExtensions
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfFalse(this Action falseAction, params Boolean[] values)
         {
-            if (!values.NotAny(x => x)) 
+            if (!values.NotAny(x => x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 
@@ -157,7 +157,7 @@ namespace PortableExtensions
         public static void ExecuteIfFalse<T>(this Action<T> falseAction, T parameter,
             params Boolean[] values)
         {
-            if (!values.NotAny(x => x)) 
+            if (!values.NotAny(x => x))
                 return;
 
             falseAction.ThrowIfNull(() => falseAction);
@@ -175,9 +175,9 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfFalse<T1, T2>(this Action<T1, T2> falseAction, T1 parameter1, T2 parameter2,
-             params Boolean[] values)
+            params Boolean[] values)
         {
-            if (!values.NotAny(x => x)) 
+            if (!values.NotAny(x => x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 

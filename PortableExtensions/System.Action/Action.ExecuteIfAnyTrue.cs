@@ -140,7 +140,7 @@ namespace PortableExtensions
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfAnyTrue(this Action trueAction, params Boolean[] values)
         {
-            if (!values.Any(x => x)) 
+            if (!values.Any(x => x))
                 return;
             trueAction.ThrowIfNull(() => trueAction);
 
@@ -158,7 +158,7 @@ namespace PortableExtensions
         public static void ExecuteIfAnyTrue<T>(this Action<T> trueAction, T parameter,
             params Boolean[] values)
         {
-            if (!values.Any(x => x)) 
+            if (!values.Any(x => x))
                 return;
             trueAction.ThrowIfNull(() => trueAction);
 
@@ -200,7 +200,7 @@ namespace PortableExtensions
         public static void ExecuteIfAnyTrue<T1, T2, T3>(this Action<T1, T2, T3> trueAction, T1 parameter1, T2 parameter2,
             T3 parameter3, params Boolean[] values)
         {
-            if (!values.Any(x => x)) 
+            if (!values.Any(x => x))
                 return;
             trueAction.ThrowIfNull(() => trueAction);
 
@@ -225,11 +225,11 @@ namespace PortableExtensions
             T2 parameter2, T3 parameter3, T4 parameter4,
             params Boolean[] values)
         {
-            if (!values.Any(x => x)) 
+            if (!values.Any(x => x))
                 return;
             trueAction.ThrowIfNull(() => trueAction);
 
             trueAction(parameter1, parameter2, parameter3, parameter4);
-        } 
+        }
     }
 }

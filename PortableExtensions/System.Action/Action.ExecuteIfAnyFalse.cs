@@ -141,7 +141,7 @@ namespace PortableExtensions
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfAnyFalse(this Action falseAction, params Boolean[] values)
         {
-            if (!values.Any(x => !x)) 
+            if (!values.Any(x => !x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 
@@ -159,7 +159,7 @@ namespace PortableExtensions
         public static void ExecuteIfAnyFalse<T>(this Action<T> falseAction, T parameter,
             params Boolean[] values)
         {
-            if (!values.Any(x => !x)) 
+            if (!values.Any(x => !x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 
@@ -179,7 +179,7 @@ namespace PortableExtensions
         public static void ExecuteIfAnyFalse<T1, T2>(this Action<T1, T2> falseAction, T1 parameter1, T2 parameter2,
             params Boolean[] values)
         {
-            if (!values.Any(x => !x)) 
+            if (!values.Any(x => !x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 
@@ -201,7 +201,7 @@ namespace PortableExtensions
         public static void ExecuteIfAnyFalse<T1, T2, T3>(this Action<T1, T2, T3> falseAction, T1 parameter1,
             T2 parameter2, T3 parameter3, params Boolean[] values)
         {
-            if (!values.Any(x => !x)) 
+            if (!values.Any(x => !x))
                 return;
             falseAction.ThrowIfNull(() => falseAction);
 
