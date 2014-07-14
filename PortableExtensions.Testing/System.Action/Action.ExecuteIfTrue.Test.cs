@@ -55,13 +55,6 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ExecuteIfTrueTestCaseNullCheck()
-        {
-            ActionEx.ExecuteIfTrue(null, null, true, true);
-        }
-
-        [Test]
         public void ExecuteIfTrueTestCase1()
         {
             var parameter = RandomValueEx.GetRandomString();
@@ -77,7 +70,8 @@ namespace PortableExtensions.Testing
             //Case 2
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue(x => trueActionExecuted = x == parameter, parameter, x => falseActionExecuted = x == parameter, true, true);
+            ActionEx.ExecuteIfTrue(x => trueActionExecuted = x == parameter, parameter,
+                x => falseActionExecuted = x == parameter, true, true);
 
             Assert.IsTrue(trueActionExecuted);
             Assert.IsFalse(falseActionExecuted);
@@ -85,7 +79,8 @@ namespace PortableExtensions.Testing
             //Case 3
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue(x => trueActionExecuted = x == parameter, parameter, x => falseActionExecuted = x == parameter, true, false);
+            ActionEx.ExecuteIfTrue(x => trueActionExecuted = x == parameter, parameter,
+                x => falseActionExecuted = x == parameter, true, false);
 
             Assert.IsFalse(trueActionExecuted);
             Assert.IsTrue(falseActionExecuted);
@@ -108,7 +103,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase1NullCheck()
         {
             ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), null, true, true);
@@ -125,7 +120,7 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2, 
+                parameter1, parameter2,
                 null,
                 true, true);
 
@@ -137,8 +132,8 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2, 
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2, 
+                parameter1, parameter2,
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 true, true);
 
             Assert.IsTrue(trueActionExecuted);
@@ -150,7 +145,7 @@ namespace PortableExtensions.Testing
             ActionEx.ExecuteIfTrue(
                 (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1, parameter2,
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2, 
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
                 true, false);
 
             Assert.IsFalse(trueActionExecuted);
@@ -178,10 +173,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase2NullCheck()
         {
-            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, true, true);
+            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, true,
+                true);
         }
 
         [Test]
@@ -208,7 +204,7 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3, 
+                parameter1, parameter2, parameter3,
                 (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 true, true);
 
@@ -249,10 +245,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase3NullCheck()
         {
-            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, true, true);
+            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), null, true, true);
         }
 
         [Test]
@@ -267,7 +264,8 @@ namespace PortableExtensions.Testing
             var trueActionExecuted = false;
             var falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 null,
                 true, true);
@@ -279,9 +277,11 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
-                (p1, p2, p3, p4) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true, true);
 
             Assert.IsTrue(trueActionExecuted);
@@ -291,9 +291,11 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
-                (p1, p2, p3, p4) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true, false);
 
             Assert.IsFalse(trueActionExecuted);
@@ -303,7 +305,8 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 null,
                 true, false);
@@ -321,12 +324,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase4NullCheck()
         {
-            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, true, true);
+            ActionEx.ExecuteIfTrue(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, true, true);
         }
-        
+
         [Test]
         public void ExecuteIfTrueTestCase5()
         {
@@ -363,7 +367,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase5NullCheck()
         {
             Action trueAction = null;
@@ -408,7 +412,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase6NullCheck()
         {
             Action<String> trueAction = null;
@@ -466,7 +470,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase7NullCheck()
         {
             Action<String, String> trueAction = null;
@@ -525,11 +529,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase8NullCheck()
         {
             Action<String, String, String> trueAction = null;
-            trueAction.ExecuteIfTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true);
+            trueAction.ExecuteIfTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), true, true);
         }
 
         [Test]
@@ -543,7 +548,8 @@ namespace PortableExtensions.Testing
             //Case 1
             var trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 true, true);
 
@@ -552,7 +558,8 @@ namespace PortableExtensions.Testing
             //Case 2
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 true, true);
 
@@ -561,7 +568,8 @@ namespace PortableExtensions.Testing
             //Case 3
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 true, false);
 
@@ -570,7 +578,8 @@ namespace PortableExtensions.Testing
             //Case 4
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
-                (p1, p2, p3, p4) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                (p1, p2, p3, p4) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1, parameter2, parameter3, parameter4,
                 true, false);
 
@@ -585,11 +594,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void ExecuteIfTrueTestCase9NullCheck()
         {
             Action<String, String, String, String> trueAction = null;
-            trueAction.ExecuteIfTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true);
+            trueAction.ExecuteIfTrue(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
+                RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true);
+        }
+
+        [Test]
+        [ExpectedException(typeof (ArgumentNullException))]
+        public void ExecuteIfTrueTestCaseNullCheck()
+        {
+            ActionEx.ExecuteIfTrue(null, null, true, true);
         }
     }
 }
