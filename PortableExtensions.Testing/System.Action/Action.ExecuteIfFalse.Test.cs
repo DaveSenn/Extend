@@ -129,5 +129,151 @@ namespace PortableExtensions.Testing
         {
             ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), null, false, false);
         }
+
+        [Test]
+        public void ExecuteIfFalseTestCase2()
+        {
+            var parameter1 = RandomValueEx.GetRandomString();
+            var parameter2 = RandomValueEx.GetRandomString();
+
+            //Case 1
+            var falseActionExecuted = false;
+            var trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1,p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1, parameter2,
+                null,
+                false, false);
+
+            Assert.IsTrue(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 2
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1, parameter2,
+                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                false, false);
+
+            Assert.IsTrue(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 3
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1, parameter2,
+                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsTrue(trueActionExecuted);
+
+            //Case 4
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1, parameter2,
+                null,
+                true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 5
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(null, 
+                parameter1, parameter2, 
+                null, true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ExecuteIfFalseTestCase2NullCheck()
+        {
+            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false);
+        }
+
+
+        [Test]
+        public void ExecuteIfFalseTestCase3()
+        {
+            var parameter1 = RandomValueEx.GetRandomString();
+            var parameter2 = RandomValueEx.GetRandomString();
+            var parameter3 = RandomValueEx.GetRandomString();
+
+            //Case 1
+            var falseActionExecuted = false;
+            var trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1, parameter2, parameter3,
+                null,
+                false, false);
+
+            Assert.IsTrue(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 2
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1, parameter2, parameter3,
+                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                false, false);
+
+            Assert.IsTrue(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 3
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1, parameter2, parameter3,
+                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsTrue(trueActionExecuted);
+
+            //Case 4
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(
+                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1, parameter2, parameter3,
+                null,
+                true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+
+            //Case 5
+            falseActionExecuted = false;
+            trueActionExecuted = false;
+            ActionEx.ExecuteIfFalse(null,
+                parameter1, parameter2, parameter3,
+                null, true, false);
+
+            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse(trueActionExecuted);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ExecuteIfFalseTestCase3NullCheck()
+        {
+            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false);
+        }
     }
 }
