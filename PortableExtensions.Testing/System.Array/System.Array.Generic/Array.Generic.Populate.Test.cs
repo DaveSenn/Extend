@@ -24,5 +24,13 @@ namespace PortableExtensions.Testing
                 Assert.AreEqual(100, actual[i]);
             }
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void PopulateTestCaseNullCheck()
+        {
+            String[] array = null;
+            array.Populate(RandomValueEx.GetRandomString());
+        }
     }
 }
