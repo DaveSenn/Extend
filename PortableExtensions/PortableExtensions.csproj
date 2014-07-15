@@ -63,6 +63,7 @@
     <Compile Include="System.Array\Array.WithinIndex.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.cs" />
     <Compile Include="System.Boolean\Boolean.IfTrue.cs" />
