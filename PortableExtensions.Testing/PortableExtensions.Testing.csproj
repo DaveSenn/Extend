@@ -67,6 +67,7 @@
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Resize.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Reverse.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToList.Test.cs" />
     <Compile Include="System.Array\Array.Clear.Test.cs" />
     <Compile Include="System.Array\Array.ClearAll.Test.cs" />
@@ -76,7 +77,7 @@
     <Compile Include="System.Array\Array.Reverse.Test.cs" />
     <Compile Include="System.Array\Array.ToList.Test.cs" />
     <Compile Include="System.Array\Array.WithinIndex.Test.cs" />
-    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToSingleItemArray.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfTrue.Test.cs" />
     <Compile Include="System.Boolean\Boolean.Select.Test.cs" />
