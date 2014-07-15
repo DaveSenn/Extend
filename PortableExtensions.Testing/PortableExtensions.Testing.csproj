@@ -64,6 +64,7 @@
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ClearAll.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.IndexOf.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.LastIndexOf.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Resize.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Reverse.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToList.Test.cs" />
