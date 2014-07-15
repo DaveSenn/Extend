@@ -17,6 +17,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The array.</param>
         /// <param name="value">The value.</param>
+        /// <returns>Returns the given array.</returns>
         public static T[] Populate<T>(this T[] array, T value)
         {
             array.ThrowIfNull(() => array);
