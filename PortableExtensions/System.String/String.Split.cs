@@ -26,8 +26,7 @@ namespace PortableExtensions
         ///     array elements in the array returned.
         /// </param>
         /// <returns>
-        ///     An array whose elements contain the substrings in this string that are delimited by the separator. For more
-        ///     information, see the Remarks section.
+        ///     Returns an array whose elements contain the substrings in this string that are delimited by the separator.
         /// </returns>
         public static String[] Split( this String str,
                                       String separator,
@@ -61,9 +60,8 @@ namespace PortableExtensions
         ///     array elements in the array returned.
         /// </param>
         /// <returns>
-        ///     An array whose elements contain the substrings in this string that are delimited
-        ///     by one or more strings in separator. For more information, see the Remarks
-        ///     section.
+        ///     Returns an array whose elements contain the substrings in this string that are delimited
+        ///     by one or more strings in separator.
         /// </returns>
         public static String[] Split( this String str, StringSplitOptions stringSplitOption, params String[] separators )
         {
