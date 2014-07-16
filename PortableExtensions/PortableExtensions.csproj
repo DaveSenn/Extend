@@ -226,6 +226,7 @@
     <Compile Include="System.String\String.IsEmpty.cs" />
     <Compile Include="System.String\String.IsNotEmpty.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereIf.cs" />
+    <Compile Include="System.String\String.TakeAndRemove.cs" />
     <Compile Include="System.String\String.ToEnum.cs" />
     <Compile Include="System.String\String.TryToEnum.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ToDictionary.cs" />
