@@ -31,7 +31,7 @@ namespace PortableExtensions
 
             return
                 new DateTime( endOfWeek.Year, endOfWeek.Month, endOfWeek.Day ).AddDays( 1 )
-                    .Subtract( 1.ToMilliseconds() );
+                                                                              .Subtract( 1.ToMilliseconds() );
         }
     }
 }

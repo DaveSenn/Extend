@@ -15,7 +15,7 @@ namespace PortableExtensions.Testing
         {
             var dateTime = DateTime.Now;
             var expected = new DateTime( dateTime.Year, dateTime.Month, 1 ).AddMonths( 1 )
-                .Subtract( 1.ToMilliseconds() );
+                                                                           .Subtract( 1.ToMilliseconds() );
             var actual = dateTime.EndOfMonth();
             Assert.AreEqual( expected, actual );
         }

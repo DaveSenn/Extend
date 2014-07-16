@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using NUnit.Framework;
@@ -16,42 +16,42 @@ namespace PortableExtensions.Testing
             //Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, null, false, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, null, false, false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, () => trueActionExecuted = true, false, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, () => trueActionExecuted = true, false, false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, () => trueActionExecuted = true, true, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, () => trueActionExecuted = true, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsTrue(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsTrue( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, null, true, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, null, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(null, null, true, false);
+            ActionEx.ExecuteIfFalse( null, null, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
@@ -66,10 +66,11 @@ namespace PortableExtensions.Testing
                 x => falseActionExecuted = x == parameter,
                 parameter,
                 null,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -78,10 +79,11 @@ namespace PortableExtensions.Testing
                 x => falseActionExecuted = x == parameter,
                 parameter,
                 x => trueActionExecuted = x == parameter,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -90,10 +92,11 @@ namespace PortableExtensions.Testing
                 x => falseActionExecuted = x == parameter,
                 parameter,
                 x => trueActionExecuted = x == parameter,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsTrue(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsTrue( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -102,25 +105,26 @@ namespace PortableExtensions.Testing
                 x => falseActionExecuted = x == parameter,
                 parameter,
                 null,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(null, parameter, null, true, false);
+            ActionEx.ExecuteIfFalse( null, parameter, null, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase1NullCheck()
         {
-            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), null, false, false);
+            ActionEx.ExecuteIfFalse( null, RandomValueEx.GetRandomString(), null, false, false );
         }
 
         [Test]
@@ -133,67 +137,82 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
                 null,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
-                false, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                (p1, p2) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
-                true, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsTrue(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsTrue( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
                 null,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(null,
-                parameter1, parameter2,
-                null, true, false);
+            ActionEx.ExecuteIfFalse( null,
+                                     parameter1,
+                                     parameter2,
+                                     null,
+                                     true,
+                                     false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase2NullCheck()
         {
-            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false,
-                false);
+            ActionEx.ExecuteIfFalse( null,
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     null,
+                                     false,
+                                     false );
         }
 
         [Test]
@@ -207,67 +226,88 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
                 null,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                false, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                (p1, p2, p3) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                true, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsTrue(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsTrue( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
                 null,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(null,
-                parameter1, parameter2, parameter3,
-                null, true, false);
+            ActionEx.ExecuteIfFalse( null,
+                                     parameter1,
+                                     parameter2,
+                                     parameter3,
+                                     null,
+                                     true,
+                                     false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase3NullCheck()
         {
-            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
-                RandomValueEx.GetRandomString(), null, false, false);
+            ActionEx.ExecuteIfFalse( null,
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     null,
+                                     false,
+                                     false );
         }
 
         [Test]
@@ -282,73 +322,100 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
                 null,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                (p1, p2, p3, p4) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                false, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                ( p1, p2, p3, p4 ) =>
+                trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                (p1, p2, p3, p4) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                true, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                ( p1, p2, p3, p4 ) =>
+                trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsTrue(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsTrue( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
                 null,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
-            ActionEx.ExecuteIfFalse(null,
-                parameter1, parameter2, parameter3, parameter4,
-                null, true, false);
+            ActionEx.ExecuteIfFalse( null,
+                                     parameter1,
+                                     parameter2,
+                                     parameter3,
+                                     parameter4,
+                                     null,
+                                     true,
+                                     false );
 
-            Assert.IsFalse(falseActionExecuted);
-            Assert.IsFalse(trueActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
+            Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase4NullCheck()
         {
-            ActionEx.ExecuteIfFalse(null, RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
-                RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false);
+            ActionEx.ExecuteIfFalse( null,
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     RandomValueEx.GetRandomString(),
+                                     null,
+                                     false,
+                                     false );
         }
 
         [Test]
@@ -356,42 +423,42 @@ namespace PortableExtensions.Testing
         {
             //Case 1
             var falseActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, false, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, false, false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, false, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, false, false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, true, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
-            ActionEx.ExecuteIfFalse(() => falseActionExecuted = true, true, false);
+            ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action action = null;
-            action.ExecuteIfFalse(true, false);
+            action.ExecuteIfFalse( true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase5NullCheck()
         {
             Action action = null;
-            action.ExecuteIfFalse(false, false);
+            action.ExecuteIfFalse( false, false );
         }
 
         [Test]
@@ -404,51 +471,55 @@ namespace PortableExtensions.Testing
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
                 parameter,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
                 parameter,
-                false, false);
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
                 parameter,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
                 parameter,
-                true, false);
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String> action = null;
-            action.ExecuteIfFalse(parameter, true, false);
+            action.ExecuteIfFalse( parameter, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase6NullCheck()
         {
             Action<String> action = null;
-            action.ExecuteIfFalse(RandomValueEx.GetRandomString(), false, false);
+            action.ExecuteIfFalse( RandomValueEx.GetRandomString(), false, false );
         }
 
         [Test]
@@ -460,53 +531,61 @@ namespace PortableExtensions.Testing
             //Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                false, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                false, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                true, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
-                parameter1, parameter2,
-                true, false);
+                ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
+                parameter1,
+                parameter2,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String> action = null;
-            action.ExecuteIfFalse(parameter1, parameter2, true, false);
+            action.ExecuteIfFalse( parameter1, parameter2, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase7NullCheck()
         {
             Action<String, String> action = null;
-            action.ExecuteIfFalse(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false);
+            action.ExecuteIfFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false );
         }
 
         [Test]
@@ -519,54 +598,70 @@ namespace PortableExtensions.Testing
             //Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                false, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                false, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                true, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
-                parameter1, parameter2, parameter3,
-                true, false);
+                ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                parameter1,
+                parameter2,
+                parameter3,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String, String> action = null;
-            action.ExecuteIfFalse(parameter1, parameter2, parameter3, true, false);
+            action.ExecuteIfFalse( parameter1, parameter2, parameter3, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase8NullCheck()
         {
             Action<String, String, String> action = null;
-            action.ExecuteIfFalse(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
-                RandomValueEx.GetRandomString(), null, false, false);
+            action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
+                                   RandomValueEx.GetRandomString(),
+                                   RandomValueEx.GetRandomString(),
+                                   null,
+                                   false,
+                                   false );
         }
 
         [Test]
@@ -580,65 +675,86 @@ namespace PortableExtensions.Testing
             //Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                false, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                false, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                false,
+                false );
 
-            Assert.IsTrue(falseActionExecuted);
+            Assert.IsTrue( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                true, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
-                (p1, p2, p3, p4) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
-                parameter1, parameter2, parameter3, parameter4,
-                true, false);
+                ( p1, p2, p3, p4 ) =>
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                parameter1,
+                parameter2,
+                parameter3,
+                parameter4,
+                true,
+                false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String, String, String> action = null;
-            action.ExecuteIfFalse(parameter1, parameter2, parameter3, parameter4, true, false);
+            action.ExecuteIfFalse( parameter1, parameter2, parameter3, parameter4, true, false );
 
-            Assert.IsFalse(falseActionExecuted);
+            Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCase9NullCheck()
         {
             Action<String, String, String, String> action = null;
-            action.ExecuteIfFalse(RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(),
-                RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false);
+            action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
+                                   RandomValueEx.GetRandomString(),
+                                   RandomValueEx.GetRandomString(),
+                                   RandomValueEx.GetRandomString(),
+                                   null,
+                                   false,
+                                   false );
         }
 
         [Test]
-        [ExpectedException(typeof (ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteIfFalseTestCaseNullCheck()
         {
-            ActionEx.ExecuteIfFalse(null, null, false, false);
+            ActionEx.ExecuteIfFalse( null, null, false, false );
         }
     }
 }

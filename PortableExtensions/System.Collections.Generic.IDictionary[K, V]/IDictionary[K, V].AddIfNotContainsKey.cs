@@ -24,7 +24,8 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                                 TKey key,
                                                                  TValue value )
         {
             dictionary.ThrowIfNull( () => dictionary );
@@ -72,7 +73,8 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                                 TKey key,
                                                                  Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
@@ -98,7 +100,8 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                                 TKey key,
                                                                  Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );

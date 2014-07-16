@@ -56,7 +56,9 @@ namespace PortableExtensions
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt32( this String value, NumberStyles numberStyles, IFormatProvider formatProvider,
+        public static Boolean TryParsInt32( this String value,
+                                            NumberStyles numberStyles,
+                                            IFormatProvider formatProvider,
                                             out Int32 outValue )
         {
             value.ThrowIfNull( () => value );

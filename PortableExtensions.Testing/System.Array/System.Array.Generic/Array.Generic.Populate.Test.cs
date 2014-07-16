@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using NUnit.Framework;
@@ -14,23 +14,23 @@ namespace PortableExtensions.Testing
         public void PopulateTestCase()
         {
             var array = new Int32[10];
-            var actual = array.Populate(100);
+            var actual = array.Populate( 100 );
 
-            Assert.AreSame(array, actual);
-            Assert.AreEqual(10, array.Length);
-            for (var i = 0; i < array.Length; i++)
+            Assert.AreSame( array, actual );
+            Assert.AreEqual( 10, array.Length );
+            for ( var i = 0; i < array.Length; i++ )
             {
-                Assert.AreEqual(100, array[i]);
-                Assert.AreEqual(100, actual[i]);
+                Assert.AreEqual( 100, array[i] );
+                Assert.AreEqual( 100, actual[i] );
             }
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void PopulateTestCaseNullCheck()
         {
             String[] array = null;
-            array.Populate(RandomValueEx.GetRandomString());
+            array.Populate( RandomValueEx.GetRandomString() );
         }
     }
 }

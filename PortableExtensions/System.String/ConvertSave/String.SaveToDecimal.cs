@@ -40,7 +40,9 @@ namespace PortableExtensions
         /// <param name="formatProvider">An object that supplies culture-specific parsing information about value.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal SaveToDecimal( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Decimal SaveToDecimal( this String value,
+                                             NumberStyles numberStyle,
+                                             IFormatProvider formatProvider,
                                              Decimal? defaultValue = null )
         {
             value.ThrowIfNull( () => value );

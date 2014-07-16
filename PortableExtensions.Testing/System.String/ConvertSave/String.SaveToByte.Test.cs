@@ -41,7 +41,7 @@ namespace PortableExtensions
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                .SaveToByte( NumberStyles.Any, CultureInfo.InvariantCulture );
+                                 .SaveToByte( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             Assert.AreEqual( expected, actual );
         }
@@ -50,7 +50,8 @@ namespace PortableExtensions
         public void SaveToByteTestCase3()
         {
             const Byte expected = (Byte) 10;
-            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture,
+            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
+                                                    CultureInfo.InvariantCulture,
                                                     expected );
 
             Assert.AreEqual( expected, actual );

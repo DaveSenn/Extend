@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using System.Collections.Generic;
@@ -25,13 +25,14 @@ namespace PortableExtensions
         /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
         /// <param name="predicate">The where predicate.</param>
         /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        public static IEnumerable<T> WhereIf<T>(this IEnumerable<T> source, Boolean condition,
-            Func<T, Boolean> predicate)
+        public static IEnumerable<T> WhereIf<T>( this IEnumerable<T> source,
+                                                 Boolean condition,
+                                                 Func<T, Boolean> predicate )
         {
-            source.ThrowIfNull(() => source);
-            predicate.ThrowIfNull(() => predicate);
+            source.ThrowIfNull( () => source );
+            predicate.ThrowIfNull( () => predicate );
 
-            return condition ? source.Where(predicate) : source;
+            return condition ? source.Where( predicate ) : source;
         }
 
         /// <summary>
@@ -45,13 +46,14 @@ namespace PortableExtensions
         /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
         /// <param name="predicate">The where predicate.</param>
         /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        public static IEnumerable<T> WhereIf<T>(this IEnumerable<T> source, Boolean condition,
-            Func<T, Int32, Boolean> predicate)
+        public static IEnumerable<T> WhereIf<T>( this IEnumerable<T> source,
+                                                 Boolean condition,
+                                                 Func<T, Int32, Boolean> predicate )
         {
-            source.ThrowIfNull(() => source);
-            predicate.ThrowIfNull(() => predicate);
+            source.ThrowIfNull( () => source );
+            predicate.ThrowIfNull( () => predicate );
 
-            return condition ? source.Where(predicate) : source;
+            return condition ? source.Where( predicate ) : source;
         }
     }
 }

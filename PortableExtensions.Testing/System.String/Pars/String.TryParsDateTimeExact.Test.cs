@@ -15,7 +15,9 @@ namespace PortableExtensions.Testing
         public void TryParsDateTimeExactTestCase()
         {
             var dateString = "5/01/2009 09:00";
-            var actual = DateTime.ParseExact( dateString, "M/dd/yyyy hh:mm", new CultureInfo( "en-US" ),
+            var actual = DateTime.ParseExact( dateString,
+                                              "M/dd/yyyy hh:mm",
+                                              new CultureInfo( "en-US" ),
                                               DateTimeStyles.None );
 
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
@@ -27,7 +29,10 @@ namespace PortableExtensions.Testing
         public void TryParsDateTimeExactTestCaseNullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTimeExact( null, "", CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite,
+            StringEx.TryParsDateTimeExact( null,
+                                           "",
+                                           CultureInfo.InvariantCulture,
+                                           DateTimeStyles.AllowTrailingWhite,
                                            out outValue );
         }
 
@@ -77,10 +82,14 @@ namespace PortableExtensions.Testing
         public void TryParsDateTimeExactTestCase1NullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTimeExact( null, new[]
-            {
-                "test"
-            }, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
+            StringEx.TryParsDateTimeExact( null,
+                                           new[]
+                                           {
+                                               "test"
+                                           },
+                                           CultureInfo.InvariantCulture,
+                                           DateTimeStyles.AllowTrailingWhite,
+                                           out outValue );
         }
 
         [TestCase]
@@ -100,7 +109,10 @@ namespace PortableExtensions.Testing
             "".TryParsDateTimeExact( new[]
             {
                 "test"
-            }, null, DateTimeStyles.AllowTrailingWhite, out outValue );
+            },
+                                     null,
+                                     DateTimeStyles.AllowTrailingWhite,
+                                     out outValue );
         }
     }
 }

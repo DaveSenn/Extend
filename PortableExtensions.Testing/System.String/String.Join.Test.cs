@@ -26,9 +26,10 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCaseNullCheck()
         {
-            StringEx.Join( null, new String[]
-            {
-            } );
+            StringEx.Join( null,
+                           new String[]
+                           {
+                           } );
         }
 
         [TestCase]
@@ -54,9 +55,10 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase1NullCheck()
         {
-            StringEx.Join( null, new Object[]
-            {
-            } );
+            StringEx.Join( null,
+                           new Object[]
+                           {
+                           } );
         }
 
         [TestCase]
@@ -78,9 +80,10 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase2NullCheck()
         {
-            StringEx.Join( null, new Object[]
-            {
-            } );
+            StringEx.Join( null,
+                           new Object[]
+                           {
+                           } );
         }
 
         [TestCase]
@@ -102,9 +105,10 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase3NullCheck()
         {
-            StringEx.Join( null, new Object[]
-            {
-            } );
+            StringEx.Join( null,
+                           new Object[]
+                           {
+                           } );
         }
 
         [TestCase]

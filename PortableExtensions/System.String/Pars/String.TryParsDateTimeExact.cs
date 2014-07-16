@@ -24,8 +24,11 @@ namespace PortableExtensions
         /// <param name="formatProvider">The format provider.</param>
         /// <param name="dateTimeStyle">The date time style.</param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact( this String value, String format, IFormatProvider formatProvider,
-                                                    DateTimeStyles dateTimeStyle, out DateTime outValue )
+        public static Boolean TryParsDateTimeExact( this String value,
+                                                    String format,
+                                                    IFormatProvider formatProvider,
+                                                    DateTimeStyles dateTimeStyle,
+                                                    out DateTime outValue )
         {
             value.ThrowIfNull( () => value );
             format.ThrowIfNull( () => format );
@@ -46,8 +49,11 @@ namespace PortableExtensions
         /// <param name="formatProvider">The format provider.</param>
         /// <param name="dateTimeStyle">The date time style.</param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact( this String value, String[] formats, IFormatProvider formatProvider,
-                                                    DateTimeStyles dateTimeStyle, out DateTime outValue )
+        public static Boolean TryParsDateTimeExact( this String value,
+                                                    String[] formats,
+                                                    IFormatProvider formatProvider,
+                                                    DateTimeStyles dateTimeStyle,
+                                                    out DateTime outValue )
         {
             value.ThrowIfNull( () => value );
             formats.ThrowIfNull( () => formats );

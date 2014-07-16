@@ -24,7 +24,8 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">The values to add.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection, Func<T, Boolean> predicate,
+        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection,
+                                                    Func<T, Boolean> predicate,
                                                     params T[] values )
         {
             collection.ThrowIfNull( () => collection );
@@ -46,7 +47,8 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <param name="enumerable">The IEnumerable containing the items.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection, Func<T, Boolean> predicate,
+        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection,
+                                                    Func<T, Boolean> predicate,
                                                     IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( () => collection );

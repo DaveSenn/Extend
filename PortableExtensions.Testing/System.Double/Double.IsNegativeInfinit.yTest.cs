@@ -25,7 +25,6 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual( expected, actual );
 
-
             number = Double.PositiveInfinity;
             expected = false;
             actual = number.IsNegativeInfinity();

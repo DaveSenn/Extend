@@ -36,8 +36,10 @@ namespace PortableExtensions
         /// <param name="formatProvider">The format provider.</param>
         /// <param name="dateTimeStyle">The date time style.</param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTime( this String value, IFormatProvider formatProvider,
-                                               DateTimeStyles dateTimeStyle, out DateTime outValue )
+        public static Boolean TryParsDateTime( this String value,
+                                               IFormatProvider formatProvider,
+                                               DateTimeStyles dateTimeStyle,
+                                               out DateTime outValue )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
             var expected = DateTime.Now;
             var result = expected.Add( 1.ToDays() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                .TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
+                                 .TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
 
             Assert.AreEqual( expected.Year, result.Year );
             Assert.AreEqual( expected.Month, result.Month );

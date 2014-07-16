@@ -19,11 +19,12 @@ namespace PortableExtensions.Testing
 
             var sb = new StringBuilder();
             sb.AppendLine( "Line 1" );
-            sb.AppendLineFormat( "Test: {0} {1}", new Object[]
-            {
-                value0,
-                value1
-            } );
+            sb.AppendLineFormat( "Test: {0} {1}",
+                                 new Object[]
+                                 {
+                                     value0,
+                                     value1
+                                 } );
             sb.AppendLine( "Line 3" );
 
             var expected = "Line 1\r\nTest: {0} {1}\r\nLine 3\r\n".F( value0, value1 );
@@ -35,20 +36,23 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AppendLineFormatTestCaseNullCheck()
         {
-            StringBuilderEx.AppendLineFormat( null, "", new Object[]
-            {
-                ""
-            } );
+            StringBuilderEx.AppendLineFormat( null,
+                                              "",
+                                              new Object[]
+                                              {
+                                                  ""
+                                              } );
         }
 
         [TestCase]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AppendLineFormatTestCaseNullCheck1()
         {
-            new StringBuilder().AppendLineFormat( null, new Object[]
-            {
-                ""
-            } );
+            new StringBuilder().AppendLineFormat( null,
+                                                  new Object[]
+                                                  {
+                                                      ""
+                                                  } );
         }
 
         [TestCase]

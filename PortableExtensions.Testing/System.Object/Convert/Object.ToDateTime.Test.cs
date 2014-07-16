@@ -18,7 +18,6 @@ namespace PortableExtensions.Testing
             var value = expected.ToString();
             var actual = ObjectEx.ToDateTime( value );
 
-
             Assert.AreEqual( expected.Year, actual.Year );
             Assert.AreEqual( expected.Month, actual.Month );
             Assert.AreEqual( expected.Day, actual.Day );
@@ -40,7 +39,6 @@ namespace PortableExtensions.Testing
             var expected = DateTime.Now;
             var value = expected.ToString( CultureInfo.InvariantCulture );
             var actual = ObjectEx.ToDateTime( value, CultureInfo.InvariantCulture );
-
 
             Assert.AreEqual( expected.Year, actual.Year );
             Assert.AreEqual( expected.Month, actual.Month );

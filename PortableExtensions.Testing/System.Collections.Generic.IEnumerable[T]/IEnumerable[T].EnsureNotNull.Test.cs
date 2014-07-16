@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using System.Collections.Generic;
@@ -18,9 +18,9 @@ namespace PortableExtensions.Testing
             List<String> list = null;
             var actual = list.EnsureNotNull();
 
-            Assert.IsNotNull(actual);
-            Assert.AreEqual(0, actual.Count());
-            Assert.IsNull(list);
+            Assert.IsNotNull( actual );
+            Assert.AreEqual( 0, actual.Count() );
+            Assert.IsNull( list );
         }
 
         [TestCase]
@@ -34,11 +34,11 @@ namespace PortableExtensions.Testing
             };
             var actual = list.EnsureNotNull();
 
-            Assert.AreEqual(3, actual.Count());
-            Assert.AreEqual("1", actual.ElementAt(0));
-            Assert.AreEqual("2", actual.ElementAt(1));
-            Assert.AreEqual("3", actual.ElementAt(2));
-            Assert.AreSame(list, actual);
+            Assert.AreEqual( 3, actual.Count() );
+            Assert.AreEqual( "1", actual.ElementAt( 0 ) );
+            Assert.AreEqual( "2", actual.ElementAt( 1 ) );
+            Assert.AreEqual( "3", actual.ElementAt( 2 ) );
+            Assert.AreSame( list, actual );
         }
     }
 }
