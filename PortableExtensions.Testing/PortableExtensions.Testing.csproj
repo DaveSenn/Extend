@@ -357,6 +357,7 @@
     <Compile Include="System.String\String.SubstringLeft.Test.cs" />
     <Compile Include="System.String\String.SubstringRight.Test.cs" />
     <Compile Include="System.String\String.SubstringRightSafe.Test.cs" />
+    <Compile Include="System.String\String.TakeAndRemove.Test.cs" />
     <Compile Include="System.String\String.Truncate.Test.cs" />
     <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.IsNotMatch.Test.cs" />
     <Compile Include="System.String\String.ToEnum.Test.cs" />
