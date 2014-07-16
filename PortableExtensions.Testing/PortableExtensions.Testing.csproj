@@ -354,6 +354,7 @@
     <Compile Include="System.String\String.Reverse.Test.cs" />
     <Compile Include="System.String\String.SafeToInt.Test.cs" />
     <Compile Include="System.String\String.Split.Test.cs" />
+    <Compile Include="System.String\String.SplitLines.Test.cs" />
     <Compile Include="System.String\String.SubstringLeft.Test.cs" />
     <Compile Include="System.String\String.SubstringRight.Test.cs" />
     <Compile Include="System.String\String.SubstringRightSafe.Test.cs" />
