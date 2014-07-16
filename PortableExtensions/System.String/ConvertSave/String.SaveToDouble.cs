@@ -44,7 +44,9 @@ namespace PortableExtensions
         /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The double.</returns>
-        public static Double SaveToDouble( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Double SaveToDouble( this String value,
+                                           NumberStyles numberStyle,
+                                           IFormatProvider formatProvider,
                                            Double? defaultValue = null )
         {
             value.ThrowIfNull( () => value );

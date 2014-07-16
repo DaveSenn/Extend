@@ -17,9 +17,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a year month string.</returns>
-        public static String ToMonthString(this DateTime dateTime)
+        public static String ToMonthString( this DateTime dateTime )
         {
-            return dateTime.ToString("MMMM", DateTimeFormatInfo.CurrentInfo);
+            return dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
         }
 
         /// <summary>
@@ -29,11 +29,11 @@ namespace PortableExtensions
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="formatInfo">The date time format info.</param>
         /// <returns>The given value converted to year month string.</returns>
-        public static String ToMonthString(this DateTime dateTime, DateTimeFormatInfo formatInfo)
+        public static String ToMonthString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull(() => formatInfo);
+            formatInfo.ThrowIfNull( () => formatInfo );
 
-            return dateTime.ToString("MMMM", formatInfo);
+            return dateTime.ToString( "MMMM", formatInfo );
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace PortableExtensions
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="culture">The culture.</param>
         /// <returns>The given value converted to a year month string.</returns>
-        public static String ToMonthString(this DateTime dateTime, CultureInfo culture)
+        public static String ToMonthString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull(() => culture);
+            culture.ThrowIfNull( () => culture );
 
-            return dateTime.ToString("MMMM", culture);
+            return dateTime.ToString( "MMMM", culture );
         }
     }
 }

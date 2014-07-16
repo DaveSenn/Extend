@@ -44,7 +44,7 @@ namespace PortableExtensions
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+                                 .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
             Assert.AreEqual( expected.Year, actual.Year );
             Assert.AreEqual( expected.Month, actual.Month );

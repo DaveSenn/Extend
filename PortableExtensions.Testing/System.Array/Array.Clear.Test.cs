@@ -21,7 +21,6 @@ namespace PortableExtensions.Testing
             };
             array.Clear( 0, 2 );
 
-
             Assert.AreEqual( null, array.GetValue( 0 ) );
             Assert.AreEqual( null, array.GetValue( 1 ) );
             Assert.AreEqual( "2", array.GetValue( 2 ) );

@@ -31,7 +31,8 @@ namespace PortableExtensions
         ///     If the given dictionary is empty, the method returns String.Empty.
         /// </returns>
         public static String StringJoin<TValue, TKey>( this IDictionary<TValue, TKey> dictionary,
-                                                       String keyValueSeparator = "=", String separator = "" )
+                                                       String keyValueSeparator = "=",
+                                                       String separator = "" )
         {
             dictionary.ThrowIfNull( () => dictionary );
 

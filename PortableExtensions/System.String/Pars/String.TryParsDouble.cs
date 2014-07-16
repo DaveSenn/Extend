@@ -65,7 +65,9 @@ namespace PortableExtensions
         ///     enumerated constants. This parameter is passed uninitialized.
         /// </param>
         /// <returns></returns>
-        public static Boolean TryParsDouble( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Boolean TryParsDouble( this String value,
+                                             NumberStyles numberStyle,
+                                             IFormatProvider formatProvider,
                                              out Double outValue )
         {
             value.ThrowIfNull( () => value );

@@ -42,7 +42,10 @@ namespace PortableExtensions
         /// <param name="arg1">The second argument.</param>
         /// <param name="arg2">The third argument.</param>
         /// <returns>Returns the string builder.</returns>
-        public static StringBuilder AppendLineFormat( this StringBuilder sb, String format, Object arg0, Object arg1,
+        public static StringBuilder AppendLineFormat( this StringBuilder sb,
+                                                      String format,
+                                                      Object arg0,
+                                                      Object arg1,
                                                       Object arg2 )
         {
             sb.ThrowIfNull( () => sb );

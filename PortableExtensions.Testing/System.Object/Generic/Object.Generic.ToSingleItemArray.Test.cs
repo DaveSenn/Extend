@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using NUnit.Framework;
 
@@ -16,8 +16,8 @@ namespace PortableExtensions.Testing
 
             var actual = item.ToSingleItemArray();
 
-            Assert.AreEqual(1, actual.Length);
-            Assert.AreEqual(item, actual[0]);
+            Assert.AreEqual( 1, actual.Length );
+            Assert.AreEqual( item, actual[0] );
         }
     }
 }

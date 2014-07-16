@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 
@@ -19,11 +19,11 @@ namespace PortableExtensions
         /// <param name="array">The array.</param>
         /// <param name="value">The value.</param>
         /// <returns>Returns the given array.</returns>
-        public static T[] Populate<T>(this T[] array, T value)
+        public static T[] Populate<T>( this T[] array, T value )
         {
-            array.ThrowIfNull(() => array);
+            array.ThrowIfNull( () => array );
 
-            for (var i = 0; i < array.Length; i++)
+            for ( var i = 0; i < array.Length; i++ )
                 array[i] = value;
 
             return array;

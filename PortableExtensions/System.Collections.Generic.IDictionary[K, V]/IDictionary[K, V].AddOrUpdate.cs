@@ -23,7 +23,8 @@ namespace PortableExtensions
         /// <param name="key">The key to be added or whose value should be updated.</param>
         /// <param name="value">The value to be added or updated.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
                                                         TValue value )
         {
             dictionary.ThrowIfNull( () => dictionary );
@@ -70,7 +71,8 @@ namespace PortableExtensions
         /// <param name="key">The Key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
                                                         Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
@@ -95,7 +97,8 @@ namespace PortableExtensions
         /// <param name="key">The Key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
                                                         Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );

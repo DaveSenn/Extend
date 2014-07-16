@@ -24,26 +24,26 @@ namespace PortableExtensions.Testing
         public void TakeAndRemoveTestCase1()
         {
             var value = "Test";
-            var actual = 4.TakeAndRemove(ref value);
+            var actual = 4.TakeAndRemove( ref value );
 
-            Assert.AreEqual("Test", actual);
-            Assert.AreEqual(String.Empty, value);
+            Assert.AreEqual( "Test", actual );
+            Assert.AreEqual( String.Empty, value );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TakeAndRemoveTestCaseNullCheck()
         {
             String value = null;
-            var actual = 2.TakeAndRemove(ref value);
+            var actual = 2.TakeAndRemove( ref value );
         }
 
         [TestCase]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void TakeAndRemoveTestCaseArgumentOutOfRangeException()
         {
             var value = "Test";
-            var actual = 5.TakeAndRemove(ref value);
+            var actual = 5.TakeAndRemove( ref value );
         }
     }
 }

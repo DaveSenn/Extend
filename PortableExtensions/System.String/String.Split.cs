@@ -39,7 +39,7 @@ namespace PortableExtensions
             {
                 separator
             },
-                              stringSplitOption );
+                                stringSplitOption );
         }
 
         /// <summary>
@@ -63,7 +63,9 @@ namespace PortableExtensions
         ///     Returns an array whose elements contain the substrings in this string that are delimited
         ///     by one or more strings in separator.
         /// </returns>
-        public static String[] Split( this String value, StringSplitOptions stringSplitOption, params String[] separators )
+        public static String[] Split( this String value,
+                                      StringSplitOptions stringSplitOption,
+                                      params String[] separators )
         {
             value.ThrowIfNull( () => value );
             separators.ThrowIfNull( () => separators );

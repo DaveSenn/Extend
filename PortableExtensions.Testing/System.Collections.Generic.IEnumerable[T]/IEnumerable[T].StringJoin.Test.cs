@@ -26,7 +26,6 @@ namespace PortableExtensions.Testing
             var expected = String.Join( ",", list );
             Assert.AreEqual( expected, actual );
 
-
             actual = list.StringJoin();
             expected = String.Join( "", list );
             Assert.AreEqual( expected, actual );

@@ -40,7 +40,9 @@ namespace PortableExtensions
         /// <param name="formatProvider">An object that supplies culture-specific formatting information about value.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>Returns the converted Int16.</returns>
-        public static Int16 SaveToInt16( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Int16 SaveToInt16( this String value,
+                                         NumberStyles numberStyle,
+                                         IFormatProvider formatProvider,
                                          Int16? defaultValue = null )
         {
             value.ThrowIfNull( () => value );

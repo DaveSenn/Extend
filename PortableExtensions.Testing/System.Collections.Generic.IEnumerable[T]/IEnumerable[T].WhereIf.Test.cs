@@ -26,7 +26,6 @@ namespace PortableExtensions.Testing
             actual = list.WhereIf( false, x => true );
             Assert.AreEqual( 0, actual.Count() );
 
-
             list = RandomValueEx.GetRandomStrings();
 
             actual = list.WhereIf( true, x => true );
@@ -68,7 +67,6 @@ namespace PortableExtensions.Testing
 
             actual = list.WhereIf( false, ( x, i ) => true );
             Assert.AreEqual( 0, actual.Count() );
-
 
             list = RandomValueEx.GetRandomStrings();
 

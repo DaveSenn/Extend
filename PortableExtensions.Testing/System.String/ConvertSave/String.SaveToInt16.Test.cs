@@ -34,7 +34,7 @@ namespace PortableExtensions
         {
             var expected = RandomValueEx.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                .SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
+                                 .SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             Assert.AreEqual( expected, actual );
         }

@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
         [TestCase]
         public void SumTestCase2()
         {
-            var actual = "test".Sum( x => (Double)x.Length, "a", "b", "c", "d" );
+            var actual = "test".Sum( x => (Double) x.Length, "a", "b", "c", "d" );
             Assert.AreEqual( 8d, actual );
 
             actual = "".Sum( x => x.Length, "a", "b", "c", "d" );
@@ -70,7 +70,7 @@ namespace PortableExtensions.Testing
         public void SumTestCase2NullCheck()
         {
             String[] values = null;
-            var actual = "Test".Sum( x => (Double)x.Length, values );
+            var actual = "Test".Sum( x => (Double) x.Length, values );
         }
 
         [TestCase]

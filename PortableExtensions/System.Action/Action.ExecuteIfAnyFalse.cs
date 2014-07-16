@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using System.Linq;
@@ -20,14 +20,14 @@ namespace PortableExtensions
         /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse(this Action falseAction, Action trueAction, params Boolean[] values)
+        public static void ExecuteIfAnyFalse( this Action falseAction, Action trueAction, params Boolean[] values )
         {
-            if (values.Any(x => !x))
+            if ( values.Any( x => !x ) )
             {
-                falseAction.ThrowIfNull(() => falseAction);
+                falseAction.ThrowIfNull( () => falseAction );
                 falseAction();
             }
-            else if (trueAction != null)
+            else if ( trueAction != null )
                 trueAction();
         }
 
@@ -41,16 +41,18 @@ namespace PortableExtensions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T>(this Action<T> falseAction, T parameter, Action<T> trueAction,
-            params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T>( this Action<T> falseAction,
+                                                 T parameter,
+                                                 Action<T> trueAction,
+                                                 params Boolean[] values )
         {
-            if (values.Any(x => !x))
+            if ( values.Any( x => !x ) )
             {
-                falseAction.ThrowIfNull(() => falseAction);
-                falseAction(parameter);
+                falseAction.ThrowIfNull( () => falseAction );
+                falseAction( parameter );
             }
-            else if (trueAction != null)
-                trueAction(parameter);
+            else if ( trueAction != null )
+                trueAction( parameter );
         }
 
         /// <summary>
@@ -65,16 +67,19 @@ namespace PortableExtensions
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2>(this Action<T1, T2> falseAction, T1 parameter1, T2 parameter2,
-            Action<T1, T2> trueAction, params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2>( this Action<T1, T2> falseAction,
+                                                      T1 parameter1,
+                                                      T2 parameter2,
+                                                      Action<T1, T2> trueAction,
+                                                      params Boolean[] values )
         {
-            if (values.Any(x => !x))
+            if ( values.Any( x => !x ) )
             {
-                falseAction.ThrowIfNull(() => falseAction);
-                falseAction(parameter1, parameter2);
+                falseAction.ThrowIfNull( () => falseAction );
+                falseAction( parameter1, parameter2 );
             }
-            else if (trueAction != null)
-                trueAction(parameter1, parameter2);
+            else if ( trueAction != null )
+                trueAction( parameter1, parameter2 );
         }
 
         /// <summary>
@@ -91,17 +96,20 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2, T3>(this Action<T1, T2, T3> falseAction, T1 parameter1,
-            T2 parameter2,
-            T3 parameter3, Action<T1, T2, T3> trueAction, params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2, T3>( this Action<T1, T2, T3> falseAction,
+                                                          T1 parameter1,
+                                                          T2 parameter2,
+                                                          T3 parameter3,
+                                                          Action<T1, T2, T3> trueAction,
+                                                          params Boolean[] values )
         {
-            if (values.Any(x => !x))
+            if ( values.Any( x => !x ) )
             {
-                falseAction.ThrowIfNull(() => falseAction);
-                falseAction(parameter1, parameter2, parameter3);
+                falseAction.ThrowIfNull( () => falseAction );
+                falseAction( parameter1, parameter2, parameter3 );
             }
-            else if (trueAction != null)
-                trueAction(parameter1, parameter2, parameter3);
+            else if ( trueAction != null )
+                trueAction( parameter1, parameter2, parameter3 );
         }
 
         /// <summary>
@@ -120,17 +128,21 @@ namespace PortableExtensions
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(this Action<T1, T2, T3, T4> falseAction, T1 parameter1,
-            T2 parameter2, T3 parameter3, T4 parameter4, Action<T1, T2, T3, T4> trueAction,
-            params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> falseAction,
+                                                              T1 parameter1,
+                                                              T2 parameter2,
+                                                              T3 parameter3,
+                                                              T4 parameter4,
+                                                              Action<T1, T2, T3, T4> trueAction,
+                                                              params Boolean[] values )
         {
-            if (values.Any(x => !x))
+            if ( values.Any( x => !x ) )
             {
-                falseAction.ThrowIfNull(() => falseAction);
-                falseAction(parameter1, parameter2, parameter3, parameter4);
+                falseAction.ThrowIfNull( () => falseAction );
+                falseAction( parameter1, parameter2, parameter3, parameter4 );
             }
-            else if (trueAction != null)
-                trueAction(parameter1, parameter2, parameter3, parameter4);
+            else if ( trueAction != null )
+                trueAction( parameter1, parameter2, parameter3, parameter4 );
         }
 
         /// <summary>
@@ -139,11 +151,11 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">False action can not be null, if any of the values is false.</exception>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse(this Action falseAction, params Boolean[] values)
+        public static void ExecuteIfAnyFalse( this Action falseAction, params Boolean[] values )
         {
-            if (!values.Any(x => !x))
+            if ( !values.Any( x => !x ) )
                 return;
-            falseAction.ThrowIfNull(() => falseAction);
+            falseAction.ThrowIfNull( () => falseAction );
 
             falseAction();
         }
@@ -156,14 +168,15 @@ namespace PortableExtensions
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T>(this Action<T> falseAction, T parameter,
-            params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T>( this Action<T> falseAction,
+                                                 T parameter,
+                                                 params Boolean[] values )
         {
-            if (!values.Any(x => !x))
+            if ( !values.Any( x => !x ) )
                 return;
-            falseAction.ThrowIfNull(() => falseAction);
+            falseAction.ThrowIfNull( () => falseAction );
 
-            falseAction(parameter);
+            falseAction( parameter );
         }
 
         /// <summary>
@@ -176,14 +189,16 @@ namespace PortableExtensions
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2>(this Action<T1, T2> falseAction, T1 parameter1, T2 parameter2,
-            params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2>( this Action<T1, T2> falseAction,
+                                                      T1 parameter1,
+                                                      T2 parameter2,
+                                                      params Boolean[] values )
         {
-            if (!values.Any(x => !x))
+            if ( !values.Any( x => !x ) )
                 return;
-            falseAction.ThrowIfNull(() => falseAction);
+            falseAction.ThrowIfNull( () => falseAction );
 
-            falseAction(parameter1, parameter2);
+            falseAction( parameter1, parameter2 );
         }
 
         /// <summary>
@@ -198,14 +213,17 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2, T3>(this Action<T1, T2, T3> falseAction, T1 parameter1,
-            T2 parameter2, T3 parameter3, params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2, T3>( this Action<T1, T2, T3> falseAction,
+                                                          T1 parameter1,
+                                                          T2 parameter2,
+                                                          T3 parameter3,
+                                                          params Boolean[] values )
         {
-            if (!values.Any(x => !x))
+            if ( !values.Any( x => !x ) )
                 return;
-            falseAction.ThrowIfNull(() => falseAction);
+            falseAction.ThrowIfNull( () => falseAction );
 
-            falseAction(parameter1, parameter2, parameter3);
+            falseAction( parameter1, parameter2, parameter3 );
         }
 
         /// <summary>
@@ -222,15 +240,18 @@ namespace PortableExtensions
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T1, T2, T3, T4>(this Action<T1, T2, T3, T4> falseAction, T1 parameter1,
-            T2 parameter2, T3 parameter3, T4 parameter4,
-            params Boolean[] values)
+        public static void ExecuteIfAnyFalse<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> falseAction,
+                                                              T1 parameter1,
+                                                              T2 parameter2,
+                                                              T3 parameter3,
+                                                              T4 parameter4,
+                                                              params Boolean[] values )
         {
-            if (!values.Any(x => !x))
+            if ( !values.Any( x => !x ) )
                 return;
-            falseAction.ThrowIfNull(() => falseAction);
+            falseAction.ThrowIfNull( () => falseAction );
 
-            falseAction(parameter1, parameter2, parameter3, parameter4);
+            falseAction( parameter1, parameter2, parameter3, parameter4 );
         }
     }
 }

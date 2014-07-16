@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             var value3 = 12300;
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
-                .Replace( ",", "." );
+                                .Replace( ",", "." );
 
             var actual =
                 stringValue.ExtractFirstInt64( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),

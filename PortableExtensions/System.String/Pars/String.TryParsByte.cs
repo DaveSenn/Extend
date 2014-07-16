@@ -61,7 +61,9 @@ namespace PortableExtensions
         ///     or greater than System.Byte.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsByte( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Boolean TryParsByte( this String value,
+                                           NumberStyles numberStyle,
+                                           IFormatProvider formatProvider,
                                            out Byte outValue )
         {
             value.ThrowIfNull( () => value );

@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
             var value3 = new Decimal( 12300 );
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
-                .Replace( ",", "." );
+                                .Replace( ",", "." );
             var actual = stringValue.ExtractAllDecimal( 0 );
 
             Assert.AreEqual( 4, actual.Count );

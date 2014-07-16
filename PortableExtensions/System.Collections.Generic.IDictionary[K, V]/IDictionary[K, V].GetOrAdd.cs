@@ -80,7 +80,8 @@ namespace PortableExtensions
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                     TKey key,
                                                      Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
@@ -108,7 +109,8 @@ namespace PortableExtensions
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key,
+        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                     TKey key,
                                                      Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );

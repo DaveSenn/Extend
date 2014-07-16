@@ -34,7 +34,7 @@ namespace PortableExtensions
         {
             const Double expected = 12345234.1321d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                .SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
+                                 .SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             Assert.AreEqual( expected, actual );
         }

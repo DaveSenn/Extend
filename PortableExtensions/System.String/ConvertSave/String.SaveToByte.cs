@@ -37,7 +37,9 @@ namespace PortableExtensions
         /// <param name="formatProvider">The format formatProvider.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The byte.</returns>
-        public static Byte SaveToByte( this String value, NumberStyles numberStyle, IFormatProvider formatProvider,
+        public static Byte SaveToByte( this String value,
+                                       NumberStyles numberStyle,
+                                       IFormatProvider formatProvider,
                                        Byte? defaultValue = null )
         {
             value.ThrowIfNull( () => value );

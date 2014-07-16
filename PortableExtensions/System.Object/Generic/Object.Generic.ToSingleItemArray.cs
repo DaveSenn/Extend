@@ -1,13 +1,13 @@
 ﻿#region Usings
 
-using System;
+
 
 #endregion
 
 namespace PortableExtensions
 {
     /// <summary>
-    ///     Class containing some extension methods for <see cref="Object" />.
+    ///     Class containing some extension methods for <see cref="object" />.
     /// </summary>
     public static partial class ObjectEx
     {
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="value">The value to add to teh new created array.</param>
         /// <returns>Return sthe new created array.</returns>
-        public static T[] ToSingleItemArray<T>(this T value)
+        public static T[] ToSingleItemArray<T>( this T value )
         {
             return new[]
             {

@@ -24,12 +24,12 @@ namespace PortableExtensions
             where TAttribute : Attribute
         {
             return t.GetRuntimeProperties()
-                .Select( x => new AttributeDefinition<TAttribute>
-                {
-                    Property = x,
-                    Attributes = x.GetCustomAttributes( typeof ( TAttribute ), true ).Cast<TAttribute>()
-                } )
-                .Where( x => x.Attributes.Any() );
+                    .Select( x => new AttributeDefinition<TAttribute>
+                    {
+                        Property = x,
+                        Attributes = x.GetCustomAttributes( typeof ( TAttribute ), true ).Cast<TAttribute>()
+                    } )
+                    .Where( x => x.Attributes.Any() );
         }
     }
 }

@@ -40,8 +40,11 @@ namespace PortableExtensions
         /// <param name="destinationArray">The array that receives the data.</param>
         /// <param name="destinationIndex">A 32-bit integer that represents the index in the  at which storing begins.</param>
         /// <param name="length">A 32-bit integer that represents the number of elements to copy.</param>
-        public static void Copy( this Array sourceArray, Int32 sourceIndex, Array destinationArray,
-                                 Int32 destinationIndex, Int32 length )
+        public static void Copy( this Array sourceArray,
+                                 Int32 sourceIndex,
+                                 Array destinationArray,
+                                 Int32 destinationIndex,
+                                 Int32 length )
         {
             sourceArray.ThrowIfNull( () => sourceArray );
             destinationArray.ThrowIfNull( () => destinationArray );
