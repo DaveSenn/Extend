@@ -11,23 +11,26 @@ namespace PortableExtensions
     /// </summary>
     public static partial class StringEx
     {
-        //replace
         /// <summary>
-        ///     Returns a String array containing the substrings in this string that are delimited by elements of a specified
-        ///     String array. A parameter specifies whether to return empty array elements.
+        ///     Returns a string array that contains the substrings in this string that are
+        ///     delimited by the given seperator. A parameter specifies
+        ///     whether to return empty array elements.
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">The separator can not be null.</exception>
         /// <param name="str">The string to split.</param>
         /// <param name="separator">A string that delimit the substrings in this string.</param>
         /// <param name="stringSplitOption">
-        ///     Specify RemoveEmptyEntries to omit empty array elements from the array returned, or None to include
-        ///     empty array elements in the array returned.
+        ///     <see cref="System.StringSplitOptions.RemoveEmptyEntries" /> to omit empty array elements
+        ///     from the array returned; or System.StringSplitOptions.None to include empty
+        ///     array elements in the array returned.
         /// </param>
         /// <returns>
-        ///     An array whose elements contain the substrings in this string that are delimited by the separator.
+        ///     An array whose elements contain the substrings in this string that are delimited by the separator. For more
+        ///     information, see the Remarks section.
         /// </returns>
-        public static String[] Split( this String str, String separator,
+        public static String[] Split( this String str,
+                                      String separator,
                                       StringSplitOptions stringSplitOption = StringSplitOptions.None )
         {
             str.ThrowIfNull( () => str );
@@ -36,24 +39,31 @@ namespace PortableExtensions
             return str.Split( new[]
             {
                 separator
-            }, stringSplitOption );
+            },
+                              stringSplitOption );
         }
 
-        //replace
         /// <summary>
-        ///     Returns a String array containing the substrings in this string that are delimited by elements of a specified
-        ///     String array. A parameter specifies whether to return empty array elements.
+        ///     Returns a string array that contains the substrings in this string that are
+        ///     delimited by elements of a specified string array. A parameter specifies
+        ///     whether to return empty array elements.
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">The separator can not be null.</exception>
         /// <param name="str">The string to split.</param>
-        /// <param name="separators">A list of strings which delimit the substrings in this string.</param>
+        /// <param name="separators">
+        ///     An array of strings that delimit the substrings in this string, an empty
+        ///     array that contains no delimiters, or null.
+        /// </param>
         /// <param name="stringSplitOption">
-        ///     Specify RemoveEmptyEntries to omit empty array elements from the array returned, or None to include
-        ///     empty array elements in the array returned.
+        ///     <see cref="System.StringSplitOptions.RemoveEmptyEntries" /> to omit empty array elements
+        ///     from the array returned; or System.StringSplitOptions.None to include empty
+        ///     array elements in the array returned.
         /// </param>
         /// <returns>
-        ///     An array whose elements contain the substrings in this string that are delimited by the separator.
+        ///     An array whose elements contain the substrings in this string that are delimited
+        ///     by one or more strings in separator. For more information, see the Remarks
+        ///     section.
         /// </returns>
         public static String[] Split( this String str, StringSplitOptions stringSplitOption, params String[] separators )
         {
