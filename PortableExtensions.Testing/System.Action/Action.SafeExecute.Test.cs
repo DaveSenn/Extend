@@ -183,6 +183,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SafeExecuteTestCase5NullCheck1()
+        {
+            Action action = () => { };
+            Type[] types = null;
+            action.SafeExecute(types);
+        }
+
+        [Test]
         public void SafeExecuteTestCase5_1()
         {
             var actual =
