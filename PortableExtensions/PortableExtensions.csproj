@@ -55,6 +55,7 @@
     <Compile Include="System.Action\Action.ExecuteIfFalse.cs" />
     <Compile Include="System.Action\Action.ExecuteIfTrue.cs" />
     <Compile Include="System.Action\Action.SafeExecute.cs" />
+    <Compile Include="System.Action\Action.SafeExecuteExcept.cs" />
     <Compile Include="System.Array\Array.Clear.cs" />
     <Compile Include="System.Array\Array.Copy.cs" />
     <Compile Include="System.Array\Array.IndexOf.cs" />

@@ -13,6 +13,17 @@ namespace PortableExtensions
     public static partial class ActionEx
     {
         /// <summary>
+        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified type.
+        /// </summary>
+        /// <typeparam name="TException">The type of the exception to throw.</typeparam>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        public static Boolean SafeExecuteExcept<TException>(this Action action)
+        {
+            return action.SafeExecuteExcept(new[] { typeof(TException) });
+        }
+
+        /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the given ones.
         /// </summary>
         /// <param name="action">The action to execute.</param>
@@ -37,18 +48,6 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified type.
-        /// </summary>
-        /// <typeparam name="TException">The type of the exception to throw.</typeparam>
-        /// <param name="action">The action to execute.</param>
-        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException>(this Action action)
-        {
-            return action.SafeExecuteExcept(new[] {typeof (TException)});
-        }
-
-
-        /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
         /// </summary>
         /// <typeparam name="TException1">The first exception type to throw.</typeparam>
@@ -59,7 +58,6 @@ namespace PortableExtensions
         {
             return action.SafeExecuteExcept(new[] {typeof (TException1), typeof (TException2)});
         }
-
 
         /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
