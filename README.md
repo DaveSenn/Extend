@@ -19,7 +19,7 @@ __Install-Package PortableExtensions__
 3. Done!
 
 ### Testing
-To guarantee its stability PortableExtensions contains over 1000 unit tests.
+To guarantee its stability PortableExtensions contains over 1100 unit tests.
 Each method has test with different input parameters, including invalid values to test the exception handling.
 
 ### Example
