@@ -29,7 +29,7 @@ namespace PortableExtensions
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecute<TException>(this Action action) where TException : Exception
         {
-            return action.SafeExecute(new[] { typeof(TException) });
+            return action.SafeExecute(new[] {typeof (TException)});
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace PortableExtensions
             where TException1 : Exception
             where TException2 : Exception
         {
-            return action.SafeExecute(new[] { typeof(TException1), typeof(TException2) });
+            return action.SafeExecute(new[] {typeof (TException1), typeof (TException2)});
         }
 
         /// <summary>
@@ -57,8 +57,9 @@ namespace PortableExtensions
         public static Boolean SafeExecute<TException1, TException2, TException3>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
+            where TException3 : Exception
         {
-            return action.SafeExecute(new[] { typeof(TException1), typeof(TException2), typeof(TException3) });
+            return action.SafeExecute(new[] {typeof (TException1), typeof (TException2), typeof (TException3)});
         }
 
         /// <summary>
@@ -73,6 +74,8 @@ namespace PortableExtensions
         public static Boolean SafeExecute<TException1, TException2, TException3, TException4>(this Action action)
             where TException1 : Exception
             where TException2 : Exception
+            where TException3 : Exception
+            where TException4 : Exception
         {
             return
                 action.SafeExecute(new[]
