@@ -19,8 +19,59 @@ namespace PortableExtensions
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept<TException>(this Action action)
+            where TException : Exception
         {
             return action.SafeExecuteExcept(new[] { typeof(TException) });
+        }
+
+        /// <summary>
+        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        /// </summary>
+        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
+        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        public static Boolean SafeExecuteExcept<TException1, TException2>(this Action action)
+            where TException1 : Exception
+            where TException2 : Exception
+        {
+            return action.SafeExecuteExcept(new[] {typeof (TException1), typeof (TException2)});
+        }
+
+        /// <summary>
+        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        /// </summary>
+        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
+        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
+        /// <typeparam name="TException3">The third exception type to throw.</typeparam>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        public static Boolean SafeExecuteExcept<TException1, TException2, TException3>(this Action action)
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
+        {
+            return action.SafeExecuteExcept(new[] {typeof (TException1), typeof (TException2), typeof (TException3)});
+        }
+
+        /// <summary>
+        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        /// </summary>
+        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
+        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
+        /// <typeparam name="TException3">The third exception type to throw.</typeparam>
+        /// <typeparam name="TException4">The fourth exception type to throw.</typeparam>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        public static Boolean SafeExecuteExcept<TException1, TException2, TException3, TException4>(this Action action)
+            where TException1 : Exception
+            where TException2 : Exception
+            where TException3 : Exception
+            where TException4 : Exception
+        {
+            return
+                action.SafeExecuteExcept(new[]
+                {typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4)});
         }
 
         /// <summary>
@@ -45,47 +96,6 @@ namespace PortableExtensions
                     throw;
                 return false;
             }
-        }
-
-        /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
-        /// </summary>
-        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
-        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
-        /// <param name="action">The action to execute.</param>
-        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2>(this Action action)
-        {
-            return action.SafeExecuteExcept(new[] {typeof (TException1), typeof (TException2)});
-        }
-
-        /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
-        /// </summary>
-        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
-        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
-        /// <typeparam name="TException3">The third exception type to throw.</typeparam>
-        /// <param name="action">The action to execute.</param>
-        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3>(this Action action)
-        {
-            return action.SafeExecuteExcept(new[] {typeof (TException1), typeof (TException2), typeof (TException3)});
-        }
-
-        /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
-        /// </summary>
-        /// <typeparam name="TException1">The first exception type to throw.</typeparam>
-        /// <typeparam name="TException2">The second exception type to throw.</typeparam>
-        /// <typeparam name="TException3">The third exception type to throw.</typeparam>
-        /// <typeparam name="TException4">The fourth exception type to throw.</typeparam>
-        /// <param name="action">The action to execute.</param>
-        /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3, TException4>(this Action action)
-        {
-            return
-                action.SafeExecuteExcept(new[]
-                {typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4)});
         }
     }
 }
