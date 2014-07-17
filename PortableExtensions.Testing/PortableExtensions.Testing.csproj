@@ -60,6 +60,7 @@
     <Compile Include="System.Action\Action.ExecuteIfAnyTrue.Test.cs" />
     <Compile Include="System.Action\Action.ExecuteIfFalse.Test.cs" />
     <Compile Include="System.Action\Action.ExecuteIfTrue.Test.cs" />
+    <Compile Include="System.Action\Action.SafeExecute.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Clear.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ClearAll.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.IndexOf.Test.cs" />
