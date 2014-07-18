@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 
@@ -16,9 +16,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute(this Action action)
+        public static Boolean SafeExecute( this Action action )
         {
-            return action.SafeExecuteExcept(new Type[0]);
+            return action.SafeExecuteExcept( new Type[0] );
         }
 
         /// <summary>
@@ -27,9 +27,12 @@ namespace PortableExtensions
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute<TException>(this Action action) where TException : Exception
+        public static Boolean SafeExecute<TException>( this Action action ) where TException : Exception
         {
-            return action.SafeExecute(new[] {typeof (TException)});
+            return action.SafeExecute( new[]
+            {
+                typeof ( TException )
+            } );
         }
 
         /// <summary>
@@ -39,11 +42,15 @@ namespace PortableExtensions
         /// <typeparam name="TException2">The second exception type to catch.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute<TException1, TException2>(this Action action)
+        public static Boolean SafeExecute<TException1, TException2>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
         {
-            return action.SafeExecute(new[] {typeof (TException1), typeof (TException2)});
+            return action.SafeExecute( new[]
+            {
+                typeof ( TException1 ),
+                typeof ( TException2 )
+            } );
         }
 
         /// <summary>
@@ -54,12 +61,17 @@ namespace PortableExtensions
         /// <typeparam name="TException3">The third exception type to catch.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute<TException1, TException2, TException3>(this Action action)
+        public static Boolean SafeExecute<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
         {
-            return action.SafeExecute(new[] {typeof (TException1), typeof (TException2), typeof (TException3)});
+            return action.SafeExecute( new[]
+            {
+                typeof ( TException1 ),
+                typeof ( TException2 ),
+                typeof ( TException3 )
+            } );
         }
 
         /// <summary>
@@ -71,15 +83,20 @@ namespace PortableExtensions
         /// <typeparam name="TException4">The fourth exception type to catch.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute<TException1, TException2, TException3, TException4>(this Action action)
+        public static Boolean SafeExecute<TException1, TException2, TException3, TException4>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
             where TException4 : Exception
         {
             return
-                action.SafeExecute(new[]
-                {typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4)});
+                action.SafeExecute( new[]
+                {
+                    typeof ( TException1 ),
+                    typeof ( TException2 ),
+                    typeof ( TException3 ),
+                    typeof ( TException4 )
+                } );
         }
 
         /// <summary>
@@ -91,19 +108,19 @@ namespace PortableExtensions
         /// <param name="action">The action to execute.</param>
         /// <param name="exceptionsToCatch">A list of exception types to catch.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute(this Action action, params Type[] exceptionsToCatch)
+        public static Boolean SafeExecute( this Action action, params Type[] exceptionsToCatch )
         {
-            action.ThrowIfNull(() => action);
-            exceptionsToCatch.ThrowIfNull(() => exceptionsToCatch);
+            action.ThrowIfNull( () => action );
+            exceptionsToCatch.ThrowIfNull( () => exceptionsToCatch );
 
             try
             {
                 action();
                 return true;
             }
-            catch (Exception ex)
+            catch ( Exception ex )
             {
-                if (exceptionsToCatch.NotAny(x => x == ex.GetType()))
+                if ( exceptionsToCatch.NotAny( x => x == ex.GetType() ) )
                     throw;
                 return false;
             }
