@@ -44,7 +44,7 @@ namespace PortableExtensions
         /// </returns>
         public static String GetBefore( this String str, String value, Int32 startIndex, Int32 length )
         {
-// ReSharper disable once AccessToModifiedClosure
+            // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
             value.ThrowIfNull( () => value );
 

@@ -3,7 +3,7 @@
 using System;
 using System.Linq.Expressions;
 
-#endregion
+#endregion Using
 
 namespace PortableExtensions
 {
@@ -26,17 +26,17 @@ namespace PortableExtensions
         /// <param name="property">The parameter to check.</param>
         /// <param name="propertyName">An expression which has the property as body.</param>
         /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        public static void ThrowIfNull<TObject, TProperty>( this TObject obj,
+        public static void ThrowIfNull<TObject, TProperty>(this TObject obj,
                                                             TProperty property,
                                                             Expression<Func<TObject, TProperty>> propertyName,
-                                                            String errorMessage = null )
+                                                            String errorMessage = null)
         {
-            if ( property == null )
+            if (property == null)
             {
-                var parameterName = GetName( obj, propertyName );
+                var parameterName = GetName(obj, propertyName);
 
-                throw new ArgumentNullException( parameterName,
-                                                 errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+                throw new ArgumentNullException(parameterName,
+                                                 errorMessage ?? String.Format("{0} can not be null.", parameterName));
             }
         }
 
@@ -52,18 +52,18 @@ namespace PortableExtensions
         /// <param name="parameter">The parameter to check.</param>
         /// <param name="propertyName">An expression which has the parameter as body.</param>
         /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        public static void ThrowIfNull<TObject>( this TObject parameter,
+        public static void ThrowIfNull<TObject>(this TObject parameter,
                                                  Expression<Func<TObject>> propertyName,
-                                                 String errorMessage = null )
+                                                 String errorMessage = null)
         {
-            if ( parameter == null )
+            if (parameter == null)
             {
                 var parameterName =
-                    ( propertyName.Body as MemberExpression
-                      ?? ( (UnaryExpression) propertyName.Body ).Operand as MemberExpression ).Member.Name;
+                    (propertyName.Body as MemberExpression
+                      ?? ((UnaryExpression)propertyName.Body).Operand as MemberExpression).Member.Name;
 
-                throw new ArgumentNullException( parameterName,
-                                                 errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+                throw new ArgumentNullException(parameterName,
+                                                 errorMessage ?? String.Format("{0} can not be null.", parameterName));
             }
         }
     }
