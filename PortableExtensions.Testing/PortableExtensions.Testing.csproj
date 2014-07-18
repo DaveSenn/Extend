@@ -324,6 +324,7 @@
     <Compile Include="System.String\Pars\String.TryParsBoolean.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsInt32.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsInt64.Test.cs" />
+    <Compile Include="System.String\String.ChangeType.Test.cs" />
     <Compile Include="System.String\String.CompareOrdinal.Test.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.Test.cs" />
     <Compile Include="System.String\String.ConcatAll.Test.cs" />

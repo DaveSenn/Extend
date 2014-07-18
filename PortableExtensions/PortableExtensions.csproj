@@ -224,6 +224,7 @@
     <Compile Include="System.String\ConvertSave\String.SaveToInt64.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToInt32.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToInt16.cs" />
+    <Compile Include="System.String\String.ChangeType.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
     <Compile Include="System.String\String.IsEmpty.cs" />
