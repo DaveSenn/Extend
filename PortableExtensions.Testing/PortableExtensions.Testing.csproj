@@ -79,6 +79,7 @@
     <Compile Include="System.Array\Array.Reverse.Test.cs" />
     <Compile Include="System.Array\Array.ToList.Test.cs" />
     <Compile Include="System.Array\Array.WithinIndex.Test.cs" />
+    <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfTrue.Test.cs" />
