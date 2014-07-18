@@ -9,7 +9,7 @@ namespace PortableExtensions
     /// <summary>
     ///     Class containing some extension methods for <see cref="IComparable" />.
     /// </summary>
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable once InconsistentNaming
     public static partial class IComparableTEx
     {
         /// <summary>

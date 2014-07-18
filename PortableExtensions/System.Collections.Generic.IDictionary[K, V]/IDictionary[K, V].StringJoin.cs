@@ -11,7 +11,7 @@ namespace PortableExtensions
     /// <summary>
     ///     Class containing some extension methods for <see cref="IDictionary{TKey,TValue}" />.
     /// </summary>
-// ReSharper disable once InconsistentNaming
+    // ReSharper disable once InconsistentNaming
     public static partial class IDictionaryEx
     {
         /// <summary>

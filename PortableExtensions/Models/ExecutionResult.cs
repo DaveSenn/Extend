@@ -25,6 +25,6 @@ namespace PortableExtensions
         /// <value>The result.</value>
         public T Result { get; set; }
 
-        #endregion
+        #endregion Properties
     }
 }

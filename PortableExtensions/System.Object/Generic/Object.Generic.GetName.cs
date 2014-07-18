@@ -24,6 +24,7 @@ namespace PortableExtensions
         public static String GetName<TObject, TField>( this TObject obj, Expression<Func<TObject, TField>> fieldName )
         {
             fieldName.ThrowIfNull( () => fieldName );
+
             return
                 ( fieldName.Body as MemberExpression ?? ( (UnaryExpression) fieldName.Body ).Operand as MemberExpression )
                     .Member.Name;

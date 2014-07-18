@@ -39,6 +39,7 @@ namespace PortableExtensions.Testing
         private class HelperClass
         {
             public event EventHandler<SampleEventArgs> MyGenericEvent;
+
             public event EventHandler MyEvent;
 
             public void RaiseGenericEvent( SampleEventArgs args )

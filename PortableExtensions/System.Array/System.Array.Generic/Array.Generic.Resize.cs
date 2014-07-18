@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <returns>Returns the given array with the new size.</returns>
         public static T[] Resize<T>( this T[] array, Int32 newSize )
         {
-// ReSharper disable once AccessToModifiedClosure
+            // ReSharper disable once AccessToModifiedClosure
             array.ThrowIfNull( () => array );
 
             Array.Resize( ref array, newSize );

@@ -23,7 +23,7 @@ namespace PortableExtensions
         /// <returns>The correct formatted file extension.</returns>
         public static String FormatFileExtension( this String fileExtension )
         {
-// ReSharper disable once AccessToModifiedClosure
+            // ReSharper disable once AccessToModifiedClosure
             fileExtension.ThrowIfNull( () => fileExtension );
 
             if ( fileExtension.IsEmpty() )

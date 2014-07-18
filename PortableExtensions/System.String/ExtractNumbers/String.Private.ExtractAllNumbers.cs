@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted numbers as string.</returns>
-// ReSharper disable once ReturnTypeCanBeEnumerable.Local
+        // ReSharper disable once ReturnTypeCanBeEnumerable.Local
         private static List<String> ExtractAllNumbers( this String value, Int32 startIndex = 0 )
         {
             value.ThrowIfNull( () => value );

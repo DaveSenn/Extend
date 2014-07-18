@@ -28,7 +28,7 @@ namespace PortableExtensions
         /// <value>A collection of attributes of the specified type.</value>
         public IEnumerable<TAttribute> Attributes { get; set; }
 
-        #endregion
+        #endregion Implementation of IAttributeDefinition{T}
 
         #region Ctor
 
@@ -40,6 +40,6 @@ namespace PortableExtensions
             Attributes = new List<TAttribute>();
         }
 
-        #endregion
+        #endregion Ctor
     }
 }
