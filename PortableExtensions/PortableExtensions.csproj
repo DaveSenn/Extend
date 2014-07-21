@@ -290,7 +290,7 @@
     <Compile Include="System.String\String.IsNumeric.cs" />
     <Compile Include="System.String\String.SubstringLeft.cs" />
     <Compile Include="System.String\String.SubstringRight.cs" />
-    <Compile Include="System.String\String.SubstringLeftSave.cs" />
+    <Compile Include="System.String\String.SubstringLeftSafe.cs" />
     <Compile Include="System.String\String.SubstringRightSafe.cs" />
     <Compile Include="System.String\String.RemoveLetters.cs" />
     <Compile Include="System.String\String.RemoveNumbers.cs" />
