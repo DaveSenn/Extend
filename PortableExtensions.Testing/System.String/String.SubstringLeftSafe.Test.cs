@@ -18,13 +18,42 @@ namespace PortableExtensions.Testing
 
             actual = "testabc".SubstringLeftSafe( 400 );
             Assert.AreEqual( "testabc", actual );
+
+            actual = "".SubstringLeftSafe( 4 );
+            Assert.AreEqual( "", actual );
         }
 
         [TestCase]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SubstringLeftSafeTestCaseNullCheck()
         {
-            var actual = StringEx.SubstringLeftSafe( null, 5 );
+            StringEx.SubstringLeftSafe( null, 5 );
+        }
+
+        [TestCase]
+        public void SubstringLeftSafeTestCase1()
+        {
+            var actual = "123test123".SubstringLeftSafe( 3, 4 );
+            Assert.AreEqual( "test", actual );
+
+            actual = "testabc".SubstringLeftSafe( 0, 400 );
+            Assert.AreEqual( "testabc", actual );
+
+            actual = "123tes".SubstringLeftSafe( 3, 4 );
+            Assert.AreEqual( "tes", actual );
+
+            actual = "".SubstringLeftSafe( 0, 4 );
+            Assert.AreEqual( "", actual );
+
+            actual = "".SubstringLeftSafe( 2, 4 );
+            Assert.AreEqual( "", actual );
+        }
+
+        [TestCase]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void SubstringLeftSafeTestCase1NullCheck()
+        {
+            StringEx.SubstringLeftSafe( null, 1, 5 );
         }
     }
 }
