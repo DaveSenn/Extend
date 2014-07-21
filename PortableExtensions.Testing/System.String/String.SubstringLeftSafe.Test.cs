@@ -11,20 +11,20 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [TestCase]
-        public void SubstringLeftSaveTestCase()
+        public void SubstringLeftSafeTestCase()
         {
-            var actual = "testabc".SubstringLeftSave( 4 );
+            var actual = "testabc".SubstringLeftSafe( 4 );
             Assert.AreEqual( "test", actual );
 
-            actual = "testabc".SubstringLeftSave( 400 );
+            actual = "testabc".SubstringLeftSafe( 400 );
             Assert.AreEqual( "testabc", actual );
         }
 
         [TestCase]
         [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SubstringLeftSaveTestCaseNullCheck()
+        public void SubstringLeftSafeTestCaseNullCheck()
         {
-            var actual = StringEx.SubstringLeftSave( null, 5 );
+            var actual = StringEx.SubstringLeftSafe( null, 5 );
         }
     }
 }
