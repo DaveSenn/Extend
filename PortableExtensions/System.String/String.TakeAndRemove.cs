@@ -26,7 +26,7 @@ namespace PortableExtensions
         /// </returns>
         public static String TakeAndRemove( this Int32 count, ref String value )
         {
-            if ( value.IsEmpty() )
+            if ( value == null )
                 throw new ArgumentNullException( "value can not be null." );
 
             if ( count > value.Length )

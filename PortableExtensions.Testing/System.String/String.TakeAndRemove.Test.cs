@@ -31,6 +31,16 @@ namespace PortableExtensions.Testing
         }
 
         [TestCase]
+        public void TakeAndRemoveTestCase2()
+        {
+            var value = "    ";
+            var actual = 2.TakeAndRemove(ref value);
+
+            Assert.AreEqual("  ", actual);
+            Assert.AreEqual("  ", value);
+        }
+
+        [TestCase]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TakeAndRemoveTestCaseNullCheck()
         {
