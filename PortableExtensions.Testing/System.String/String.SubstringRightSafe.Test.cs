@@ -19,8 +19,8 @@ namespace PortableExtensions.Testing
             actual = "testabc".SubstringRightSafe( 300 );
             Assert.AreEqual( "testabc", actual );
 
-            actual = "".SubstringRightSafe(300);
-            Assert.AreEqual("", actual);
+            actual = "".SubstringRightSafe( 300 );
+            Assert.AreEqual( "", actual );
         }
 
         [TestCase]
