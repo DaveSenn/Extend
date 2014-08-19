@@ -57,8 +57,8 @@ namespace PortableExtensions
         /// </returns>
         public static Object ChangeType( this String value, Type type, IFormatProvider formatProvider )
         {
-            type.ThrowIfNull(() => type);
-            formatProvider.ThrowIfNull(() => formatProvider);
+            type.ThrowIfNull( () => type );
+            formatProvider.ThrowIfNull( () => formatProvider );
 
             return Convert.ChangeType( value, type, formatProvider );
         }
@@ -108,7 +108,7 @@ namespace PortableExtensions
         /// </returns>
         public static T ChangeType<T>( this String value, IFormatProvider formatProvider )
         {
-            formatProvider.ThrowIfNull(() => formatProvider);
+            formatProvider.ThrowIfNull( () => formatProvider );
 
             return (T) Convert.ChangeType( value, typeof ( T ), formatProvider );
         }

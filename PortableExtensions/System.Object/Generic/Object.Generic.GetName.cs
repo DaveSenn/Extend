@@ -29,8 +29,5 @@ namespace PortableExtensions
                 ( fieldName.Body as MemberExpression ?? ( (UnaryExpression) fieldName.Body ).Operand as MemberExpression )
                     .Member.Name;
         }
-
-
-
     }
 }
