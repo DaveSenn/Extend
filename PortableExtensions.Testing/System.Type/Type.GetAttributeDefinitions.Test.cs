@@ -19,11 +19,11 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "FirstName" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
+            Assert.AreEqual(1, actualItem.Attributes.CountOptimized());
             Assert.AreEqual( "FirstName-DisplayName", actualItem.Attributes.Single().Name );
 
             actualItem = actual.Single( x => x.Property.Name == "LastName" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
+            Assert.AreEqual(1, actualItem.Attributes.CountOptimized());
             Assert.AreEqual( "LastName-DisplayName", actualItem.Attributes.Single().Name );
         }
 
@@ -34,7 +34,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.AreEqual( 2, actualItem.Attributes.Count() );
+            Assert.AreEqual(2, actualItem.Attributes.CountOptimized());
             Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
             Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
         }
@@ -46,12 +46,12 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.AreEqual( 2, actualItem.Attributes.Count() );
+            Assert.AreEqual(2, actualItem.Attributes.CountOptimized());
             Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
             Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
 
             actualItem = actual.Single( x => x.Property.Name == "Weight" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
+            Assert.AreEqual(1, actualItem.Attributes.CountOptimized());
             Assert.AreEqual( "10000", actualItem.Attributes.Single().Value );
         }
 

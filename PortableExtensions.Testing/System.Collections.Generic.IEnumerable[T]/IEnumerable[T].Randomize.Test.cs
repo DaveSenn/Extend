@@ -17,11 +17,11 @@ namespace PortableExtensions.Testing
         {
             var list = new List<String>();
             var result = list.Randomize();
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.AreEqual(list.Count, result.CountOptimized());
 
             list = RandomValueEx.GetRandomStrings( 100 );
             result = list.Randomize();
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.AreEqual(list.Count, result.CountOptimized());
             Assert.IsTrue( list.All( x => result.Contains( x ) ) );
 
             var resultList = result.ToList();

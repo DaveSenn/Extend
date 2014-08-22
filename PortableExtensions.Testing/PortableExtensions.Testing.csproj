@@ -83,6 +83,7 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionary.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].CountOptimized.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />

@@ -18,21 +18,21 @@ namespace PortableExtensions.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, x => true );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( true, x => false );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( false, x => true );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             list = RandomValueEx.GetRandomStrings();
 
             actual = list.WhereIf( true, x => true );
-            Assert.AreEqual( list.Count, actual.Count() );
+            Assert.AreEqual(list.Count, actual.CountOptimized());
 
             actual = list.WhereIf( true, x => false );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( false, x => true );
             Assert.AreSame( list, actual );
@@ -60,21 +60,21 @@ namespace PortableExtensions.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( false, ( x, i ) => true );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             list = RandomValueEx.GetRandomStrings();
 
             actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.AreEqual( list.Count, actual.Count() );
+            Assert.AreEqual(list.Count, actual.CountOptimized());
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual(0, actual.CountOptimized());
 
             actual = list.WhereIf( false, ( x, i ) => true );
             Assert.AreSame( list, actual );

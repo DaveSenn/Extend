@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
         {
             var target = new AttributeDefinition<DisplayAttribute>();
             Assert.IsNotNull( target.Attributes );
-            Assert.AreEqual( 0, target.Attributes.Count() );
+            Assert.AreEqual(0, target.Attributes.CountOptimized());
         }
 
         [Test]

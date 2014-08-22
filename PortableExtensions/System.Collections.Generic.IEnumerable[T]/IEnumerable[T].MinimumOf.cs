@@ -36,7 +36,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Gets whether the the IEnumerable contains at least the specified number of items.
+        ///     Gets whether the IEnumerable contains at least the specified number of items.
         /// </summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
@@ -47,7 +47,7 @@ namespace PortableExtensions
         {
             enumerable.ThrowIfNull( () => enumerable );
 
-            return enumerable.Count() >= count;
+            return enumerable.CountOptimized() >= count;
         }
     }
 }

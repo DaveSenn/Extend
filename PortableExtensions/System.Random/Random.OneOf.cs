@@ -44,11 +44,7 @@ namespace PortableExtensions
             random.ThrowIfNull( () => random );
             values.ThrowIfNull( () => values );
 
-            /*
-            var array = values.ToArray ();
-            return array[random.Next(array.Length)];
-            */
-            return values.ElementAt( random.Next( values.Count() ) );
+            return values.ElementAt( random.Next( values.CountOptimized() ) );
         }
     }
 }
