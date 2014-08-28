@@ -15,6 +15,8 @@ namespace PortableExtensions
         ///     Gets the part of the string before the specified value, starting at the given start index.
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
+        /// <exception cref="ArgumentNullException">value can not be null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The specified start index is invalid.</exception>
         /// <param name="str">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
@@ -24,7 +26,7 @@ namespace PortableExtensions
         /// </returns>
         public static String GetBefore( this String str, String value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(() => str);
 
             return GetBefore( str, value, startIndex, str.Length - startIndex );
         }
@@ -34,6 +36,8 @@ namespace PortableExtensions
         ///     and ending after the specified number of characters.
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
+        /// <exception cref="ArgumentNullException">value can not be null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The specified range is invalid.</exception>
         /// <param name="str">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
@@ -49,13 +53,10 @@ namespace PortableExtensions
             value.ThrowIfNull( () => value );
 
             if ( startIndex < 0 || startIndex + length > str.Length )
-                throw new ArgumentOutOfRangeException( "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
-            if ( !str.Contains( value ) )
-                return String.Empty;
-
-            return str.Substring( 0, str.IndexOf( value, StringComparison.Ordinal ) );
+            return !str.Contains( value ) ? String.Empty : str.Substring( 0, str.IndexOf( value, StringComparison.Ordinal ) );
         }
     }
 }
