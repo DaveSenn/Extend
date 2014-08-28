@@ -55,7 +55,6 @@ namespace PortableExtensions
                        : str.Substring( str.IndexOf( value, StringComparison.Ordinal ) + value.Length );
         }
 
-
         /// <summary>
         ///     Gets the part of the string after the specified value, starting at the given start index.
         /// </summary>
