@@ -4,7 +4,7 @@
 
 PortableExtensions is a set of .Net extension methods build as portable class library. 
 PortableExtensions enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.
-Currently it contains 322 unique extension methods (554 overloads included).
+Currently it contains 333 unique extension methods (571 overloads included).
 ### Where can I use it?
 You can use it in every .Net application or library targeting one of the following profiles:
 * .Net 4.5
@@ -19,7 +19,7 @@ __Install-Package PortableExtensions__
 3. Done!
 
 ### Testing
-To guarantee its stability PortableExtensions contains over 1100 unit tests.
+To guarantee its stability PortableExtensions contains over 1200 unit tests.
 Each method has test with different input parameters, including invalid values to test the exception handling.
 
 ### Example
