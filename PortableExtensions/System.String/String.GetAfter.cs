@@ -23,7 +23,7 @@ namespace PortableExtensions
         /// <returns>The string after the specified value.</returns>
         public static String GetAfter( this String str, String value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
             return GetAfter( str, value, startIndex, str.Length - startIndex );
         }
@@ -64,11 +64,11 @@ namespace PortableExtensions
         /// <param name="value">The value to search.</param>
         /// <param name="startIndex">The start index of the substring.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter(this String str, Char value, Int32 startIndex = 0)
+        public static String GetAfter( this String str, Char value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
-            return GetAfter(str, value, startIndex, str.Length - startIndex);
+            return GetAfter( str, value, startIndex, str.Length - startIndex );
         }
 
         /// <summary>
@@ -82,19 +82,19 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter(this String str, Char value, Int32 startIndex, Int32 length)
+        public static String GetAfter( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
-            if (startIndex < 0 || startIndex + length > str.Length)
-                throw new ArgumentOutOfRangeException("length", "The specified range is invalid.");
+            if ( startIndex < 0 || startIndex + length > str.Length )
+                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
-            str = str.Substring(startIndex, length);
-            var valueIndex = str.IndexOf(value);
+            str = str.Substring( startIndex, length );
+            var valueIndex = str.IndexOf( value );
             return valueIndex < 0
-                ? String.Empty
-                : str.Substring(valueIndex + 1);
+                       ? String.Empty
+                       : str.Substring( valueIndex + 1 );
         }
     }
 }

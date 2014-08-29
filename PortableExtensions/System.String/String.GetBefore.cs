@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 
@@ -24,11 +24,11 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore(this String str, String value, Int32 startIndex = 0)
+        public static String GetBefore( this String str, String value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
-            return GetBefore(str, value, startIndex, str.Length - startIndex);
+            return GetBefore( str, value, startIndex, str.Length - startIndex );
         }
 
         /// <summary>
@@ -46,17 +46,19 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore(this String str, String value, Int32 startIndex, Int32 length)
+        public static String GetBefore( this String str, String value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull(() => str);
-            value.ThrowIfNull(() => value);
+            str.ThrowIfNull( () => str );
+            value.ThrowIfNull( () => value );
 
-            if (startIndex < 0 || startIndex + length > str.Length)
-                throw new ArgumentOutOfRangeException("length", "The specified range is invalid.");
+            if ( startIndex < 0 || startIndex + length > str.Length )
+                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
-            str = str.Substring(startIndex, length);
-            return !str.Contains(value) ? String.Empty : str.Substring(0, str.IndexOf(value, StringComparison.Ordinal));
+            str = str.Substring( startIndex, length );
+            return !str.Contains( value )
+                       ? String.Empty
+                       : str.Substring( 0, str.IndexOf( value, StringComparison.Ordinal ) );
         }
 
         /// <summary>
@@ -71,11 +73,11 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore(this String str, Char value, Int32 startIndex = 0)
+        public static String GetBefore( this String str, Char value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
-            return GetBefore(str, value, startIndex, str.Length - startIndex);
+            return GetBefore( str, value, startIndex, str.Length - startIndex );
         }
 
         /// <summary>
@@ -92,19 +94,19 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore(this String str, Char value, Int32 startIndex, Int32 length)
+        public static String GetBefore( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull(() => str);
+            str.ThrowIfNull( () => str );
 
-            if (startIndex < 0 || startIndex + length > str.Length)
-                throw new ArgumentOutOfRangeException("length", "The specified range is invalid.");
+            if ( startIndex < 0 || startIndex + length > str.Length )
+                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
-            str = str.Substring(startIndex, length);
-            var valueIndex = str.IndexOf(value);
+            str = str.Substring( startIndex, length );
+            var valueIndex = str.IndexOf( value );
             return valueIndex < 0
-                ? String.Empty
-                : str.Substring(0, valueIndex);
+                       ? String.Empty
+                       : str.Substring( 0, valueIndex );
         }
     }
 }
