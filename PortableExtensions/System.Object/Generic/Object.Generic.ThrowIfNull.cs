@@ -31,13 +31,14 @@ namespace PortableExtensions
                                                             Expression<Func<TObject, TProperty>> propertyName,
                                                             String errorMessage = null )
         {
-            if ( property == null )
-            {
-                var parameterName = GetName( obj, propertyName );
+            // ReSharper disable once CompareNonConstrainedGenericWithNull
+            if (property != null) 
+                return;
 
-                throw new ArgumentNullException( parameterName,
-                                                 errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
-            }
+            var parameterName = GetName( obj, propertyName );
+
+            throw new ArgumentNullException( parameterName,
+                errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
         }
 
         /// <summary>
@@ -56,15 +57,16 @@ namespace PortableExtensions
                                                  Expression<Func<TObject>> propertyName,
                                                  String errorMessage = null )
         {
-            if ( parameter == null )
-            {
-                var parameterName =
-                    ( propertyName.Body as MemberExpression
-                      ?? ( (UnaryExpression) propertyName.Body ).Operand as MemberExpression ).Member.Name;
+            // ReSharper disable once CompareNonConstrainedGenericWithNull
+            if (parameter != null) 
+                return;
 
-                throw new ArgumentNullException( parameterName,
-                                                 errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
-            }
+            var parameterName =
+                ( propertyName.Body as MemberExpression
+                  ?? ( (UnaryExpression) propertyName.Body ).Operand as MemberExpression ).Member.Name;
+
+            throw new ArgumentNullException( parameterName,
+                errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
         }
     }
 }
