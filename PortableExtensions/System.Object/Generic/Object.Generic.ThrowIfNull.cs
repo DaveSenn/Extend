@@ -32,13 +32,13 @@ namespace PortableExtensions
                                                             String errorMessage = null )
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if (property != null) 
+            if ( property != null )
                 return;
 
             var parameterName = GetName( obj, propertyName );
 
             throw new ArgumentNullException( parameterName,
-                errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+                                             errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace PortableExtensions
                                                  String errorMessage = null )
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if (parameter != null) 
+            if ( parameter != null )
                 return;
 
             var parameterName =
@@ -66,7 +66,7 @@ namespace PortableExtensions
                   ?? ( (UnaryExpression) propertyName.Body ).Operand as MemberExpression ).Member.Name;
 
             throw new ArgumentNullException( parameterName,
-                errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+                                             errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
         }
     }
 }
