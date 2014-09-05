@@ -27,7 +27,7 @@ namespace PortableExtensions
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );
-
+            
             return enumerable.TakeWhile( x => !predicate( x ) );
         }
     }
