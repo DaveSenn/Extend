@@ -113,7 +113,7 @@ namespace PortableExtensions
             formatProvider.ThrowIfNull( () => formatProvider );
             args.ThrowIfNull( () => args );
 
-            return string.Format( formatProvider, format, args );
+            return String.Format( formatProvider, format, args );
         }
     }
 }
