@@ -74,6 +74,7 @@
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
+    <Compile Include="System.DateTime\DateTime.NextMonthStart.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.cs" />
