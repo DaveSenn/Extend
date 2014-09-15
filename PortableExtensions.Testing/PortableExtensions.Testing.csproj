@@ -86,6 +86,7 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].CountOptimized.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.NextMonthStart.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
