@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CharExTest
     {
-        [TestCase]
+        [Test]
         public void ToUpperTestCase()
         {
             Assert.AreEqual( 'A', 'A'.ToUpper() );

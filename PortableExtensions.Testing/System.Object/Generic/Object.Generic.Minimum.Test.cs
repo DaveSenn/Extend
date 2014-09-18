@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void MinimumTestCase()
         {
             var actual = 1.Minimum( 2, 3, 4, 5, 6 );
@@ -21,14 +21,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumTestCaseNullCheck()
         {
             10.Minimum( null );
         }
 
-        [TestCase]
+        [Test]
         public void MinimumTestCase1()
         {
             var actual = 1.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
@@ -38,14 +38,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "100", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumTestCase1NullCheck()
         {
             10.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumTestCase1NullCheck1()
         {

@@ -10,14 +10,14 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class RandomExTest
     {
-        [TestCase]
+        [Test]
         public void CoinTossTestCase()
         {
             var random = new Random();
             var actual = random.CoinToss();
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CoinTossTestCaseNullCheck()
         {

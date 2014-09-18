@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void AddIfNotContainsTestCase()
         {
             var c = new List<String>();
@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddIfNotContainsTestCaseNullCheck()
         {

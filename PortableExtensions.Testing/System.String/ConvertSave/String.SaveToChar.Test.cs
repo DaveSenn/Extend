@@ -10,7 +10,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToCharTestCase()
         {
             const Char expected = 'c';
@@ -19,7 +19,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToCharTestCase1()
         {
             const Char expected = 'a';
@@ -28,7 +28,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToCharTestCaseNullCheck()
         {

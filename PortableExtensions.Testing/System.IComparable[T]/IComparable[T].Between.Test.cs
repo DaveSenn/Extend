@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ComparableTExTest
     {
-        [TestCase]
+        [Test]
         public void BetweenTestCase()
         {
             var value = 100;
@@ -28,21 +28,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenTestCaseNullCheck()
         {
             IComparableTEx.Between( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenTestCaseNullCheck1()
         {
             "".Between( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenTestCaseNullCheck2()
         {

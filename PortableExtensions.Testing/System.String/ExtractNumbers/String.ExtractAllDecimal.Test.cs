@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractAllDecimalTestCase()
         {
             var value0 = new Decimal( 100.2 );
@@ -29,14 +29,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value3, actual[3] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllDecimalTestCaseNullCheck()
         {
             StringEx.ExtractAllDecimal( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllDecimalTestCaseNullCheck1()
         {

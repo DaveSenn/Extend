@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void IntersectsTestCase()
         {
             var startDate = new DateTime( 1980, 1, 1 );

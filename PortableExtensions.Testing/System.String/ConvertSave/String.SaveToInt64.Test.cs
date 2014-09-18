@@ -11,7 +11,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToInt64TestCase()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -20,7 +20,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToInt64TestCase1()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -29,7 +29,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToInt64TestCase2()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -39,7 +39,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToInt64TestCase3()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -48,14 +48,14 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToInt64TestCaseNullCheck()
         {
             StringEx.SaveToInt64( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToInt64TestCaseNullCheck1()
         {

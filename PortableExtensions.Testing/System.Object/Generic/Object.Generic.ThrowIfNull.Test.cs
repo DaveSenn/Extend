@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ThrowIfNullTestCase()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( errorMessage.Contains( "varName" ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ThrowIfNullTestCaseNullCheck()
         {
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
             this.ThrowIfNull( value, x => value );
         }
 
-        [TestCase]
+        [Test]
         public void ThrowIfNullTestCase1()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -59,7 +59,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( errorMessage.Contains( expectedErrorMessage ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ThrowIfNullTestCase1NullCheck()
         {
@@ -67,7 +67,7 @@ namespace PortableExtensions.Testing
             this.ThrowIfNull( value, x => value, "" );
         }
 
-        [TestCase]
+        [Test]
         public void ThrowIfNullTestCase2()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -87,7 +87,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( errorMessage.Contains( "varName" ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ThrowIfNullTestCase2NullCheck()
         {
@@ -95,7 +95,7 @@ namespace PortableExtensions.Testing
             value.ThrowIfNull( () => value );
         }
 
-        [TestCase]
+        [Test]
         public void ThrowIfNullTestCase3()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -116,7 +116,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( errorMessage.Contains( expectedErrorMessage ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ThrowIfNullTestCase3NullCheck()
         {

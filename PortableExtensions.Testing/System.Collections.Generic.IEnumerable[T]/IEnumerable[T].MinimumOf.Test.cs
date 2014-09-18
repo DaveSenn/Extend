@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void MinimumOfTestCase()
         {
             var list = new List<String>();
@@ -26,7 +26,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( list.MinimumOf( 11, x => true ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumOfTestCaseNullCheck()
         {
@@ -34,7 +34,7 @@ namespace PortableExtensions.Testing
             list.MinimumOf( 10, x => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumOfTestCaseNullCheck1()
         {
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             list.MinimumOf( 10, null );
         }
 
-        [TestCase]
+        [Test]
         public void MinimumOfTestCase1()
         {
             var list = new List<String>();
@@ -55,7 +55,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( list.MinimumOf( 11 ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MinimumOfTestCase1NullCheck()
         {

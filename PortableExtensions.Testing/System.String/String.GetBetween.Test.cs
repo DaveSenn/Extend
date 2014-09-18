@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void GetBetweenTestCase()
         {
             var actual = "1test2".GetBetween( "1", "2" );
@@ -20,35 +20,35 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenArgumentOutOfRangeTestCase()
         {
             "121test2".GetBetween( "1", "2", 20 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCaseNullCheck()
         {
             var actual = StringEx.GetBetween( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCaseNullCheck1()
         {
             var actual = "".GetBetween( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCaseNullCheck2()
         {
             var actual = "".GetBetween( "", null );
         }
 
-        [TestCase]
+        [Test]
         public void GetBetweenTestCase1()
         {
             var actual = "1test2".GetBetween( "1", "2", 0, 6 );
@@ -58,42 +58,42 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenArgumentOutOfRangeTestCase1()
         {
             "1test2".GetBetween( "1", "2", 20, 2 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenArgumentOutOfRangeTestCase2()
         {
             "121test2".GetBetween( "1", "2", 2, 60 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCase1NullCheck()
         {
             var actual = StringEx.GetBetween( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCase1NullCheck1()
         {
             var actual = "".GetBetween( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenTestCase1NullCheck2()
         {
             var actual = "".GetBetween( "", null );
         }
 
-        [TestCase]
+        [Test]
         public void GetBetweenCharTestCase()
         {
             var actual = "1test2".GetBetween( '1', '2' );
@@ -103,21 +103,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase()
         {
             "121test2".GetBetween( '1', '2', 20 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenCharTestCaseNullCheck()
         {
             var actual = StringEx.GetBetween( null, 't', 't' );
         }
 
-        [TestCase]
+        [Test]
         public void GetBetweenCharTestCase1()
         {
             var actual = "1test2".GetBetween( '1', '2', 0, 6 );
@@ -127,21 +127,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase1()
         {
             "1test2".GetBetween( '1', '2', 20, 2 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase2()
         {
             "121test2".GetBetween( '1', '2', 2, 60 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetBetweenCharTestCase1NullCheck()
         {

@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int16ExTest
     {
-        [TestCase]
+        [Test]
         public void RangeToTestCase()
         {
             Int16 start = 0;

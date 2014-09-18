@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void ForEachReverseTestCase()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.All( x => otherList.Contains( x ) ) );
         }
 
-        [TestCase]
+        [Test]
         public void ForEachReverseTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachReverseTestCaseNullCheck()
         {
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             list.ForEachReverse( Console.WriteLine );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachReverseTestCaseNullCheck1()
         {

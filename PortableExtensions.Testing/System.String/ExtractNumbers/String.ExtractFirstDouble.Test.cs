@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractFirstDoubleTestCase()
         {
             var value0 = new Decimal( 100.2 );
@@ -31,14 +31,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value0, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstDoubleTestCaseNullCheck()
         {
             StringEx.ExtractFirstDouble( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstDoubleTestCaseNullCheck1()
         {

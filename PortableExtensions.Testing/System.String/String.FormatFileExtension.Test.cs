@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void FormatFileExtensionTestCase()
         {
             var actual = "xml".FormatFileExtension();
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( ".xml", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FormatFileExtensionTestCaseNullCheck()
         {

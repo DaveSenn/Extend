@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ToDoubleTestCase()
         {
             var expected = 100.12;
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDoubleTestCaseNullCheck()
         {
             ObjectEx.ToDouble( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToDoubleTestCase1()
         {
             var expected = 100.12;
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDoubleTestCase1NullCheck()
         {
             ObjectEx.ToDouble( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDoubleTestCase1NullCheck1()
         {

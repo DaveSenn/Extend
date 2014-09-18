@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void ToObservableCollectionTestCase()
         {
             var list = RandomValueEx.GetRandomStrings();
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
                 Assert.AreEqual( list[i], actual[i] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToObservableCollectionTestCaseNullCheck()
         {

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IDictionaryExTest
     {
-        [TestCase]
+        [Test]
         public void AddOrUpdateTestCase()
         {
             var key = RandomValueEx.GetRandomString();
@@ -28,21 +28,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( valueToAdd, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCaseNullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCaseNullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void AddOrUpdateTestCase1()
         {
             var key = RandomValueEx.GetRandomString();
@@ -59,21 +59,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( pair.Value, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase1NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase1NullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( new KeyValuePair<Object, Object>( null, new Object() ) );
         }
 
-        [TestCase]
+        [Test]
         public void AddOrUpdateTestCase2()
         {
             var key = RandomValueEx.GetRandomString();
@@ -90,21 +90,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( valueToAdd, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase2NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase2NullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase2NullCheck2()
         {
@@ -112,7 +112,7 @@ namespace PortableExtensions.Testing
             new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
         }
 
-        [TestCase]
+        [Test]
         public void AddOrUpdateTestCase3()
         {
             var key = RandomValueEx.GetRandomString();
@@ -129,14 +129,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( valueToAdd, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase3NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddOrUpdateTestCase3NullCheck1()
         {

@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void CompareOrdinalCaseTestCase()
         {
             var actual = "Test".CompareOrdinal( "Test" );

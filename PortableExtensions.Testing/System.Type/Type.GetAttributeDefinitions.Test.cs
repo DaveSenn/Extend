@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class TypeExTest
     {
-        [TestCase]
+        [Test]
         public void GetAttributeDefinitionsTestCase()
         {
             var actual = typeof ( TestPerson ).GetAttributeDefinitions<DisplayAttribute>().ToList();
@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "LastName-DisplayName", actualItem.Attributes.Single().Name );
         }
 
-        [TestCase]
+        [Test]
         public void GetAttributeDefinitionsTestCase1()
         {
             var actual = typeof ( TestPerson ).GetAttributeDefinitions<MyTestAttribute>().ToList();
@@ -39,7 +39,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
         }
 
-        [TestCase]
+        [Test]
         public void GetAttributeDefinitionsTestCase2()
         {
             var actual = typeof ( TestPersonInherit ).GetAttributeDefinitions<MyTestAttribute>().ToList();

@@ -11,7 +11,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToDateTimeTestCase()
         {
             var expected = DateTime.Now;
@@ -25,7 +25,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDateTimeTestCase1()
         {
             var expected = DateTime.Now;
@@ -39,7 +39,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDateTimeTestCase2()
         {
             var expected = DateTime.Now;
@@ -54,7 +54,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDateTimeTestCase3()
         {
             var expected = DateTime.Now;
@@ -63,14 +63,14 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDateTimeTestCaseNullCheck()
         {
             StringEx.SaveToDateTime( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDateTimeTestCaseNullCheck1()
         {

@@ -10,14 +10,14 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SubstringRightTestCase()
         {
             var actual = "testabc".SubstringRight( 3 );
             Assert.AreEqual( "abc", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SubstringRightTestCaseNullCheck()
         {

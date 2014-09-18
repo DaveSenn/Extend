@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class RandomExTest
     {
-        [TestCase]
+        [Test]
         public void RandomOneTestCase()
         {
             var random = new Random();
@@ -22,14 +22,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.Contains( actual ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RandomOneTestCaseNullCheck()
         {
             RandomEx.RandomOne( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RandomOneTestCaseNullCheck1()
         {
@@ -37,7 +37,7 @@ namespace PortableExtensions.Testing
             new Random().RandomOne( array );
         }
 
-        [TestCase]
+        [Test]
         public void RandomOneTestCase1()
         {
             var random = new Random();
@@ -47,14 +47,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.Contains( actual ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RandomOneTestCase1NullCheck()
         {
             RandomEx.RandomOne( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RandomOneTestCase1NullCheck1()
         {

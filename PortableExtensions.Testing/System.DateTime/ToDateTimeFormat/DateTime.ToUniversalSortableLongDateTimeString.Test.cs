@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void ToUniversalSortableLongDateTimeStringTestCase()
         {
             var dateTime = DateTime.Now;
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void ToUniversalSortableLongDateTimeStringTestCase1()
         {
             var dateTime = DateTime.Now;
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void ToUniversalSortableLongDateTimeStringTestCase2()
         {
             var dateTime = DateTime.Now;

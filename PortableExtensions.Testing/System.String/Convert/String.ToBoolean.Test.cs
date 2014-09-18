@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ToBooleanTestCase()
         {
             var value = RandomValueEx.GetRandomBoolean();
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCaseNullCheck()
         {
             StringEx.ToBoolean( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToBooleanTestCase1()
         {
             var value = RandomValueEx.GetRandomBoolean();
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCase1NullCheck()
         {
             StringEx.ToBoolean( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCase1NullCheck1()
         {

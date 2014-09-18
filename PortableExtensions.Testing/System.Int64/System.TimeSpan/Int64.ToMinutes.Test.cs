@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int64ExTest
     {
-        [TestCase]
+        [Test]
         public void ToMinutesTestCase()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );

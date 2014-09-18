@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void IsAlphaNumericTestCase()
         {
             var actual = "test".IsAlphaNumeric();
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsAlphaNumericTestCaseNullCheck()
         {

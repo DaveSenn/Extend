@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void FTestCase()
         {
             var format = "Test: {0}";
@@ -23,14 +23,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FTestCaseNullCheck()
         {
             StringEx.F( null, new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void FTestCase1()
         {
             var format = "Test: {0}, {1}";
@@ -43,14 +43,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FTestCase1NullCheck()
         {
             StringEx.F( null, new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void FTestCase2()
         {
             var format = "Test: {0}, {1}, {2}";
@@ -64,14 +64,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FTestCase2NullCheck()
         {
             StringEx.F( null, new Object(), new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void FTestCase3()
         {
             var format = "Test: {0}, {1}, {2}";
@@ -86,14 +86,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FTestCase3NullCheck()
         {
             StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void FTestCase4()
         {
             var format = "Test: {0}, {1}, {2}";
@@ -108,14 +108,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FTestCase4NullCheck()
         {
             StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
         }
         
-        [TestCase]
+        [Test]
         public void FManyArgumentsTestCase()
         {
             const String arg0 = "0";

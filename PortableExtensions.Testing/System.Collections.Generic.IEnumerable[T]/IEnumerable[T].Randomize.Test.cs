@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void RandomizeTestCase()
         {
             var list = new List<String>();
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( false, "The items are in the same order in both collections." );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RandomizeTestCaseNullCheck()
         {

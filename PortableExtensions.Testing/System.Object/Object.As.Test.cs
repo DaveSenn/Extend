@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void AsTestCase()
         {
             Object value = 10;
@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AsTestCaseNullCheck()
         {

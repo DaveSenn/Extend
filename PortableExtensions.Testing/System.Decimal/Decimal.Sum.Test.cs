@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DecimalExTest
     {
-        [TestCase]
+        [Test]
         public void SumTestCase()
         {
             var actual = new Decimal( 10 ).Sum( new Decimal( 20 ),
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( new Decimal( 150 ), actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCaseNullCheck()
         {
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
             var actual = new Decimal( 10 ).Sum( values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase1()
         {
             var actual = ( new Decimal( 10 ) as Decimal? ).Sum( new Decimal( 20 ), null, new Decimal( 40 ), null );
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( new Decimal( 0 ), actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase1NullCheck()
         {
@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
             var actual = ( new Decimal( 10 ) as Decimal? ).Sum( values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase2()
         {
             var actual = "test".Sum( x => new Decimal( x.Length ), "a", "b", "c", "d" );
@@ -60,7 +60,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( new Decimal( 4 ), actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase2NullCheck2()
         {
@@ -68,7 +68,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( func, "test", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase2NullCheck()
         {
@@ -76,7 +76,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( x => new Decimal( x.Length ), values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase3()
         {
             var actual = "test".Sum( x => new Decimal( x.Length ) > 1m ? (Decimal?) x.Length : null, "a", "b", "c", "d" );
@@ -86,7 +86,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 8, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase3NullCheck2()
         {
@@ -94,7 +94,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( func, "test", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase3NullCheck()
         {

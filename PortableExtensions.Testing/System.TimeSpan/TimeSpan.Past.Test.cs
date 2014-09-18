@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class TimeSpanExTest
     {
-        [TestCase]
+        [Test]
         public void FPastTestCase()
         {
             var expected = DateTime.Now.Subtract( TimeSpan.FromDays( 1 ) );

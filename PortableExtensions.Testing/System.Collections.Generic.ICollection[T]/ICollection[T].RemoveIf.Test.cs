@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void RemoveIfTestCase()
         {
             var list = new List<String>();
@@ -28,14 +28,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveIfTestCaseNullCheck()
         {
             CollectionTEx.RemoveIf( null, "", x => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveIfTestCaseNullCheck1()
         {

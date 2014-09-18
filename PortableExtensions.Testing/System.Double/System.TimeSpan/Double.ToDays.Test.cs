@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DoubleExTest
     {
-        [TestCase]
+        [Test]
         public void ToDaysTestCase()
         {
             var number = 10.5;

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ReferenceEqualsTestCase()
         {
             var list = new List<String>();
@@ -24,14 +24,14 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ReferenceEqualsTestCaseNullCheck()
         {
             ObjectEx.RefEquals( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ReferenceEqualsTestCaseNullCheck1()
         {

@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int32ExTest
     {
-        [TestCase]
+        [Test]
         public void RangeToTestCase()
         {
             var start = 0;

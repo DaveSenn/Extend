@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ChainTestCase()
         {
             var list = new List<String>();
@@ -23,14 +23,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ChainTestCaseNullCheck()
         {
             new List<String>().Chain( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ChainTestCaseNullCheck1()
         {

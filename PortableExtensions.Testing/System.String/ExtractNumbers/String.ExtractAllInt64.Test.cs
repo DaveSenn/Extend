@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractAllInt64TestCase()
         {
             var value0 = 100;
@@ -33,14 +33,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 10, actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllInt64TestCaseNullCheck()
         {
             StringEx.ExtractAllInt64( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllInt64TestCaseNullCheck1()
         {

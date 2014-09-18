@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void PathCombineTestCase()
         {
             List<String> list = null;
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.AnyAndNotNull() );
         }
 
-        [TestCase]
+        [Test]
         public void PathCombineTestCase1()
         {
             List<String> list = null;
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.AnyAndNotNull( x => true ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AnyAndNotNullNullCheck1()
         {

@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int16ExTest
     {
-        [TestCase]
+        [Test]
         public void IsOddTestCase()
         {
             var value = RandomValueEx.GetRandomInt16();

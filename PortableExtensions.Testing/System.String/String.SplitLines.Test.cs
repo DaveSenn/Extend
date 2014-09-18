@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SplitLinesTestCase()
         {
             var value = "test";
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual[0] );
         }
 
-        [TestCase]
+        [Test]
         public void SplitLinesTestCase1()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( String.Empty, actual[3] );
         }
 
-        [TestCase]
+        [Test]
         public void SplitLinesTestCase2()
         {
             var value = "test";
@@ -52,7 +52,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual[0] );
         }
 
-        [TestCase]
+        [Test]
         public void SplitLinesTestCase3()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
@@ -63,7 +63,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test", actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitLinesTestCase2NullCheck()
         {
@@ -71,7 +71,7 @@ namespace PortableExtensions.Testing
             value.SplitLines();
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitLinesTestCaseNullCheck()
         {
@@ -80,7 +80,7 @@ namespace PortableExtensions.Testing
             value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitLinesTestCaseNullCheck1()
         {

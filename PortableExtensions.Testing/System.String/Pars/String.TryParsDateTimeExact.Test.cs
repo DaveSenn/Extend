@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsDateTimeExactTestCase()
         {
             var dateString = "5/01/2009 09:00";
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCaseNullCheck()
         {
@@ -36,7 +36,7 @@ namespace PortableExtensions.Testing
                                            out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCaseNullCheck1()
         {
@@ -45,7 +45,7 @@ namespace PortableExtensions.Testing
             "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCaseNullCheck2()
         {
@@ -53,7 +53,7 @@ namespace PortableExtensions.Testing
             "".TryParsDateTimeExact( "", null, DateTimeStyles.AllowTrailingWhite, out outValue );
         }
 
-        [TestCase]
+        [Test]
         public void TryParsDateTimeExactTestCase1()
         {
             var formats = new[]
@@ -77,7 +77,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCase1NullCheck()
         {
@@ -92,7 +92,7 @@ namespace PortableExtensions.Testing
                                            out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCase1NullCheck1()
         {
@@ -101,7 +101,7 @@ namespace PortableExtensions.Testing
             "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeExactTestCase1NullCheck2()
         {

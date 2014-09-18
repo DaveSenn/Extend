@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ToCharTestCase()
         {
             var value = 'a';
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToCharTestCaseNullCheck()
         {
             StringEx.ToChar( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToCharTestCase1()
         {
             var value = 'a';
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToCharTestCase1NullCheck()
         {
             StringEx.ToChar( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToCharTestCase1NullCheck1()
         {

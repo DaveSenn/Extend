@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SubstringLeftSafeTestCase()
         {
             var actual = "testabc".SubstringLeftSafe( 4 );
@@ -23,14 +23,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SubstringLeftSafeTestCaseNullCheck()
         {
             StringEx.SubstringLeftSafe( null, 5 );
         }
 
-        [TestCase]
+        [Test]
         public void SubstringLeftSafeTestCase1()
         {
             var actual = "123test123".SubstringLeftSafe( 3, 4 );
@@ -49,7 +49,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SubstringLeftSafeTestCase1NullCheck()
         {

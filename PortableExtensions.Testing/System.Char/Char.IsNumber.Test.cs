@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CharExTest
     {
-        [TestCase]
+        [Test]
         public void IsNumberTestCase()
         {
             var range = 0.RangeTo( 9 );

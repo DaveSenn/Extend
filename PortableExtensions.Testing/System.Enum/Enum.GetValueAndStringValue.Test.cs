@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class EnumExTest
     {
-        [TestCase]
+        [Test]
         public void GetValueAndStringValueTestCase()
         {
             var actual = EnumEx.GetValueAndStringValue<DayOfWeek>().ToList();
@@ -39,7 +39,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( DayOfWeek.Saturday, actual[6].Key );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentException ) )]
         public void GetValueAndStringValueTestCaseArgumentExceptionCheck()
         {

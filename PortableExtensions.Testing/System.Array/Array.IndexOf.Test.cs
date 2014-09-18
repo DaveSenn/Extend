@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ArrayExTest
     {
-        [TestCase]
+        [Test]
         public void IndexOfTestCase()
         {
             Array array = new[]
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IndexOfTestCaseNullCheck()
         {
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
             array.IndexOf( "test" );
         }
 
-        [TestCase]
+        [Test]
         public void IndexOfTestCase1()
         {
             Array array = new[]
@@ -46,7 +46,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( -1, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IndexOfTestCase1NullCheck()
         {
@@ -54,7 +54,7 @@ namespace PortableExtensions.Testing
             array.IndexOf( "test", 10 );
         }
 
-        [TestCase]
+        [Test]
         public void IndexOfTestCase2()
         {
             Array array = new[]
@@ -71,7 +71,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( -1, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IndexOfTestCase2NullCheck()
         {

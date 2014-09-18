@@ -11,7 +11,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToByteTestCase()
         {
             const Byte expected = (Byte) 10;
@@ -20,7 +20,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToByteTestCase1()
         {
             const Byte expected = (Byte) 10;
@@ -29,14 +29,14 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToByteTestCaseNullCheck()
         {
             StringEx.SaveToByte( null );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToByteTestCase2()
         {
             const Byte expected = (Byte) 10;
@@ -46,7 +46,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToByteTestCase3()
         {
             const Byte expected = (Byte) 10;
@@ -57,7 +57,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToByteTestCaseNullCheck1()
         {

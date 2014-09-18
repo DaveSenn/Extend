@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void ForEachTestCase()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.All( x => otherList.Contains( x ) ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( InvalidOperationException ) )]
         public void ForEachTestCase1()
         {
@@ -33,7 +33,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachTestCaseNullCheck()
         {
@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
             IEnumerableTEx.ForEach( list, Console.WriteLine );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachTestCaseNullCheck1()
         {
@@ -49,7 +49,7 @@ namespace PortableExtensions.Testing
             IEnumerableTEx.ForEach( new List<Object>(), action );
         }
 
-        [TestCase]
+        [Test]
         public void ForEachTestCase2()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -60,7 +60,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.All( x => otherList.Contains( x ) ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( InvalidOperationException ) )]
         public void ForEachTestCase3()
         {
@@ -69,7 +69,7 @@ namespace PortableExtensions.Testing
             list.ForEach( ( x, i ) => list.Remove( x ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachTestCase1NullCheck()
         {
@@ -77,7 +77,7 @@ namespace PortableExtensions.Testing
             list.ForEach( ( x, i ) => { } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ForEachTestCase1NullCheck1()
         {

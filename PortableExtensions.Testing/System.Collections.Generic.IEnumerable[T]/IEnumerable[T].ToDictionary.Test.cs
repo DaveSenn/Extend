@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void ToDictionaryTestCase()
         {
             var list = new List<Tuple<Int32, String>>
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, actual[3].Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDictionaryTestCaseNullCheck()
         {

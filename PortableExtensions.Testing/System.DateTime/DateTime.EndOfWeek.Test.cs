@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void EndOfWeekTestCase()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void EndOfWeekTestCase1()
         {
             var dateTime = new DateTime( 2014, 3, 27 );

@@ -10,14 +10,14 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DoubleExTest
     {
-        [TestCase]
+        [Test]
         public void SumTestCase()
         {
             var actual = 10.1d.Sum( 20.1, 30.1, 40.1, 50.1 );
             Assert.AreEqual( 150.5, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCaseNullCheck()
         {
@@ -25,7 +25,7 @@ namespace PortableExtensions.Testing
             var actual = 10.1.Sum( values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase1()
         {
             var actual = ( 10.5 as Double? ).Sum( 20.5, null, 40.5, null );
@@ -39,7 +39,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0d, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase1NullCheck()
         {
@@ -47,7 +47,7 @@ namespace PortableExtensions.Testing
             var actual = ( 10d as Double? ).Sum( values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase2()
         {
             var actual = "test".Sum( x => (Double) x.Length, "a", "b", "c", "d" );
@@ -57,7 +57,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 4d, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase2NullCheck2()
         {
@@ -65,7 +65,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( func, "test", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase2NullCheck()
         {
@@ -73,7 +73,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( x => (Double) x.Length, values );
         }
 
-        [TestCase]
+        [Test]
         public void SumTestCase3()
         {
             var actual = "test".Sum( x => x.Length > 1d ? (Double?) x.Length : null, "a", "b", "c", "d" );
@@ -83,7 +83,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 8d, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase3NullCheck2()
         {
@@ -91,7 +91,7 @@ namespace PortableExtensions.Testing
             var actual = "Test".Sum( func, "test", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SumTestCase3NullCheck()
         {

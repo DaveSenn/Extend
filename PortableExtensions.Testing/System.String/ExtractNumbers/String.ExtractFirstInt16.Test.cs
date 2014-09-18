@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractFirstInt16TestCase()
         {
             var value0 = 100;
@@ -31,14 +31,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value0, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstInt16TestCaseNullCheck()
         {
             StringEx.ExtractFirstInt16( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstInt16TestCaseNullCheck1()
         {

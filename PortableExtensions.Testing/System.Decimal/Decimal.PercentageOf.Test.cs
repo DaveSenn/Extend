@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DecimalExTest
     {
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase()
         {
             var number = new decimal( 1000 );
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase1()
         {
             var number = new decimal( 1000 );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase2()
         {
             var number = new decimal( 1000 );

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsDoubleTestCase()
         {
             var expected = 100.123d;
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDoubleTestCaseNullCheck()
         {
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsDouble( null, out outValue );
         }
 
-        [TestCase]
+        [Test]
         public void TryParsDoubleTestCase1()
         {
             var culture = new CultureInfo( "en-US" );
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDoubleTestCase1NullCheck()
         {
@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDoubleTestCase1NullCheck1()
         {

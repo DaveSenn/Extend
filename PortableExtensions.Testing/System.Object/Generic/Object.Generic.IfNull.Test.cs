@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void IfNullTestCase()
         {
             var expected = RandomValueEx.GetRandomString();

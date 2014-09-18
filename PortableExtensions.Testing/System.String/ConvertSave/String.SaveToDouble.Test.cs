@@ -11,7 +11,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToDoubleTestCase()
         {
             const Double expected = 100.1d;
@@ -20,7 +20,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDoubleTestCase1()
         {
             const Double expected = 123.12334d;
@@ -29,7 +29,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDoubleTestCase2()
         {
             const Double expected = 12345234.1321d;
@@ -39,7 +39,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDoubleTestCase3()
         {
             const Double expected = 12345234.1321d;
@@ -48,14 +48,14 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDoubleTestCaseNullCheck()
         {
             StringEx.SaveToDouble( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDoubleTestCaseNullCheck1()
         {

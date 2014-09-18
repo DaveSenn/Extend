@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int64ExTest
     {
-        [TestCase]
+        [Test]
         public void PercentOfTestCase()
         {
             Int64 number = 1000;
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCaseDivideByZero()
         {
             Int64Ex.PercentOf( 0, (Int64) 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase1()
         {
             Int64 number = 1000;
@@ -37,14 +37,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase1DivideByZero()
         {
             Int64Ex.PercentOf( 0, (Double) 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase2()
         {
             Int64 number = 1000;
@@ -54,7 +54,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase2DivideByZero()
         {

@@ -10,14 +10,14 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ConcatAllTestCase()
         {
             var actual = "test".ConcatAll( "0", "1", "2" );
             Assert.AreEqual( "test012", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ConcatAllTestCaseNullCheck()
         {
@@ -25,7 +25,7 @@ namespace PortableExtensions.Testing
             var actual = "test".ConcatAll( values );
         }
 
-        [TestCase]
+        [Test]
         public void ConcatAllTestCase1()
         {
             var actual = new[]
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test012", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ConcatAllTestCase1NullCheck()
         {
@@ -46,7 +46,7 @@ namespace PortableExtensions.Testing
             var actual = values.ConcatAll();
         }
 
-        [TestCase]
+        [Test]
         public void ConcatAllTestCase2()
         {
             var actual = "test".ConcatAll( new Object[]
@@ -58,7 +58,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test012", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ConcatAllTestCase2NullCheck()
         {
@@ -66,7 +66,7 @@ namespace PortableExtensions.Testing
             var actual = "test".ConcatAll( values );
         }
 
-        [TestCase]
+        [Test]
         public void ConcatAllTestCase3()
         {
             var actual = new Object[]
@@ -79,7 +79,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test012", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ConcatAllTestCase3NullCheck()
         {

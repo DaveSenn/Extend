@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void GetNameTestCase()
         {
             var varName = "";
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "varName", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetNameTestCaseNullCheck()
         {

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractAllDoubleTestCase()
         {
             var value0 = 100.2d;
@@ -29,14 +29,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value3, actual[3] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllDoubleTestCaseNullCheck()
         {
             StringEx.ExtractAllDouble( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractAllDoubleTestCaseNullCheck1()
         {

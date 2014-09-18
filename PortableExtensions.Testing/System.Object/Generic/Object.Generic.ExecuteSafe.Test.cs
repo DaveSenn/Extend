@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ExecuteSafeTestCase()
         {
             var expectedValue = RandomValueEx.GetRandomString();
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( list[0], expectedValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteSafeTestCaseNullCheck()
         {
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
             "".ExecuteSafe( action );
         }
 
-        [TestCase]
+        [Test]
         public void ExecuteSafeTestCase1()
         {
             var expectedValue = RandomValueEx.GetRandomString();
@@ -59,7 +59,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( actual.Result, expectedValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExecuteSafeTestCase1NullCheck()
         {

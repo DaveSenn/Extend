@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SplitTestCase()
         {
             var actual = "1,2,3".Split( "," );
@@ -20,21 +20,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "3", actual[2] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitTestCaseNullCheck()
         {
             var actual = StringEx.Split( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitTestCaseNullCheck1()
         {
             var actual = StringEx.Split( "", null );
         }
 
-        [TestCase]
+        [Test]
         public void SplitTestCase1()
         {
             var actual = "1,2,,3.4".Split( StringSplitOptions.RemoveEmptyEntries, ",", "." );
@@ -45,14 +45,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "4", actual[3] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitTestCase1NullCheck()
         {
             var actual = StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SplitTestCase1NullCheck1()
         {

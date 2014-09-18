@@ -10,21 +10,21 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractTestCase()
         {
             var actual = "abcabc".Extract( x => x == 'a' );
             Assert.AreEqual( "aa", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractTestCaseNullCheck()
         {
             var actual = StringEx.Extract( null, y => false );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractTestCaseNullCheck1()
         {

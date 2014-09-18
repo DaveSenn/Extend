@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ComparableTExTest
     {
-        [TestCase]
+        [Test]
         public void BetweenInclusiveTestCase()
         {
             var value = 100;
@@ -35,21 +35,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenInclusiveTestCaseNullCheck()
         {
             IComparableTEx.BetweenInclusive( null, "", "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenInclusiveTestCaseNullCheck1()
         {
             "".BetweenInclusive( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void BetweenInclusiveTestCaseNullCheck2()
         {

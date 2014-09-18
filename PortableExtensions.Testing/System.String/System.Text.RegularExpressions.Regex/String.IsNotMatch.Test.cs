@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void IsNotMatchTestCase()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -25,21 +25,21 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCaseNullCheck()
         {
             StringEx.IsNotMatch( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCaseNullCheck1()
         {
             "".IsNotMatch( null );
         }
 
-        [TestCase]
+        [Test]
         public void IsNotMatchTestCase1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -53,21 +53,21 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCase1NullCheck()
         {
             StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCase1NullCheck1()
         {
             "".IsNotMatch( null, RegexOptions.Multiline );
         }
 
-        [TestCase]
+        [Test]
         public void IsNotMatchTestCase2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -81,7 +81,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( RegexMatchTimeoutException ) )]
         public void IsNotMatchTestCase2TimeoutCheck()
         {
@@ -92,14 +92,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCase2NullCheck()
         {
             StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsNotMatchTestCase2NullCheck1()
         {

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsInt32TestCase()
         {
             var expected = RandomValueEx.GetRandomInt32();
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsInt32TestCaseNullCheck()
         {
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsInt32( null, out outValue );
         }
 
-        [TestCase]
+        [Test]
         public void TryParsInt32TestCase1()
         {
             var culture = new CultureInfo( "en-US" );
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsInt32TestCase1NullCheck()
         {
@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsInt32( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsInt32TestCase1NullCheck1()
         {

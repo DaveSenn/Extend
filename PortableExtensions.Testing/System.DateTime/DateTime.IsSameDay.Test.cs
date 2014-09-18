@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void IsSameDayTestCase()
         {
             var dateTime = DateTime.Now;
@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( dateTime.IsSameDay( otherDateTime ) );
         }
 
-        [TestCase]
+        [Test]
         public void IsSameDayTestCase1()
         {
             var dateTime = DateTime.Now;
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( dateTime.IsSameDay( otherDateTime ) );
         }
 
-        [TestCase]
+        [Test]
         public void IsSameDayTestCase2()
         {
             var dateTime = DateTime.Now;

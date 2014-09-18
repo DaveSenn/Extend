@@ -10,14 +10,14 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ExtractLettersTestCase()
         {
             var actual = "1a2b3c4".ExtractLetters();
             Assert.AreEqual( "abc", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractLettersTestCaseNullCheck()
         {

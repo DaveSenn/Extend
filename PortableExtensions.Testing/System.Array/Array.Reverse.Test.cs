@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ArrayExTest
     {
-        [TestCase]
+        [Test]
         public void ReverseTestCase()
         {
             Array array = new[]
@@ -26,7 +26,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "0", array.GetValue( 2 ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ReverseTestCaseNullCheck()
         {
@@ -34,7 +34,7 @@ namespace PortableExtensions.Testing
             array.Reverse();
         }
 
-        [TestCase]
+        [Test]
         public void ReverseTestCase1()
         {
             Array array = new[]
@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1", array.GetValue( 2 ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ReverseTestCase1NullCheck()
         {

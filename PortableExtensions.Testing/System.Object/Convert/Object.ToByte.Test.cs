@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ToByteTestCase()
         {
             Byte expected = 1;
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToByteTestCaseNullCheck()
         {
             ObjectEx.ToByte( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToByteTestCase1()
         {
             Byte expected = 1;
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToByteTestCase1NullCheck()
         {
             ObjectEx.ToByte( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToByteTestCase1NullCheck1()
         {
