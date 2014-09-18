@@ -13,23 +13,73 @@ namespace PortableExtensions.Testing
         [Test]
         public void IntersectsTestCase()
         {
-            var startDate = new DateTime( 1980, 1, 1 );
-            var endDate = new DateTime( 1985, 1, 1 );
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
 
-            var startDate2 = new DateTime( 1982, 1, 1 );
-            var endDate2 = new DateTime( 1984, 1, 1 );
+            var intersectingStartDate = startDate.Add(1.ToMinutes());
+            var intersectingEndDate = startDate.Add(10.ToMinutes());
 
-            var actual = startDate.Intersects( endDate, startDate2, endDate2 );
-            Assert.IsTrue( actual );
+            Assert.IsTrue(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
+        }
 
-            startDate = new DateTime( 1980, 1, 1 );
-            endDate = new DateTime( 1985, 1, 1 );
+        [Test]
+        public void IntersectsTestCase1()
+        {
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
 
-            startDate2 = new DateTime( 1986, 1, 1 );
-            endDate2 = new DateTime( 1989, 1, 1 );
+            var intersectingStartDate = startDate.Add(1.ToMinutes());
+            var intersectingEndDate = end.Add(10.ToMinutes());
 
-            actual = startDate.Intersects( endDate, startDate2, endDate2 );
-            Assert.IsFalse( actual );
+            Assert.IsTrue(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
+        }
+
+        [Test]
+        public void IntersectsTestCase2()
+        {
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
+
+            var intersectingStartDate = startDate.Subtract(10.ToMinutes());
+            var intersectingEndDate = startDate.Add(10.ToMinutes());
+
+            Assert.IsTrue(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
+        }
+
+        [Test]
+        public void IntersectsTestCase3()
+        {
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
+
+            var intersectingStartDate = startDate.Subtract(10.ToMinutes());
+            var intersectingEndDate = end.Add(10.ToMinutes());
+
+            Assert.IsTrue(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
+        }
+
+        [Test]
+        public void IntersectsTestCase4()
+        {
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
+
+            var intersectingStartDate = startDate.Subtract(1.ToDays());
+            var intersectingEndDate = startDate.Subtract(5.ToHours());
+
+            Assert.IsFalse(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
+        }
+
+        [Test]
+        public void IntersectsTestCase5()
+        {
+            var startDate = DateTime.Now;
+            var end = startDate.Add(1.ToHours());
+
+            var intersectingStartDate = end.Add(1.ToHours());
+            var intersectingEndDate = end.Add(2.ToHours());
+
+            Assert.IsFalse(startDate.Intersects(end, intersectingStartDate, intersectingEndDate));
         }
     }
 }
