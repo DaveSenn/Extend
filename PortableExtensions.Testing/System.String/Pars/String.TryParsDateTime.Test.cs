@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsDateTimeTestCase()
         {
             var expected = DateTime.Now;
@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeTestCaseNullCheck()
         {
@@ -35,7 +35,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsDateTime( null, out outValue );
         }
 
-        [TestCase]
+        [Test]
         public void TryParsDateTimeTestCase1()
         {
             var expected = DateTime.Now;
@@ -52,7 +52,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeTestCase1NullCheck()
         {
@@ -60,7 +60,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsDateTime( null, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsDateTimeTestCase1NullCheck1()
         {

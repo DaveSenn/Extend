@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsByteTestCase()
         {
             var expected = (byte) 1;
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsByteTestCaseNullCheck()
         {
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsByte( null, out outValue );
         }
 
-        [TestCase]
+        [Test]
         public void TryParsByteTestCase1()
         {
             var culture = new CultureInfo( "en-US" );
@@ -42,7 +42,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsByteTestCase1NullCheck()
         {
@@ -50,7 +50,7 @@ namespace PortableExtensions.Testing
             StringEx.TryParsByte( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsByteTestCase1NullCheck1()
         {

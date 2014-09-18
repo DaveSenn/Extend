@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void NotAnyTestCase()
         {
             var list = new List<String>();
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( list.NotAny() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void NotAnyTestCaseNullCheck()
         {
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
             list.NotAny();
         }
 
-        [TestCase]
+        [Test]
         public void NotAnyTestCase1()
         {
             var list = new List<String>();
@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( list.NotAny( x => false ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void NotAnyTestCase1NullCheck()
         {
@@ -49,7 +49,7 @@ namespace PortableExtensions.Testing
             list.NotAny( x => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void NotAnyTestCase1NullCheck1()
         {

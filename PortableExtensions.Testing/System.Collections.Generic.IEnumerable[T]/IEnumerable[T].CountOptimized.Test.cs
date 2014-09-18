@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void CountOptimiseTestCase()
         {
             var list = new List<String> { "test", "test1" };
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual );
         }
 
-        [TestCase]
+        [Test]
         public void CountOptimiseTestCase1()
         {
             var list = new List<String>();
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, actual );
         }
 
-        [TestCase]
+        [Test]
         public void CountOptimiseTestCase2()
         {
             var array = new[]
@@ -43,7 +43,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, actual );
         }
 
-        [TestCase]
+        [Test]
         public void CountOptimiseTestCase3()
         {
             var array = new String[]
@@ -54,7 +54,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CountOptimiseTestCaseNullCheck()
         {
@@ -63,7 +63,7 @@ namespace PortableExtensions.Testing
             list.CountOptimized();
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CountOptimiseTestCaseNullCheck1()
         {

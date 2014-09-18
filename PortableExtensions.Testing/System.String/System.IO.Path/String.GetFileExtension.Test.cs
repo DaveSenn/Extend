@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void GetFileExtensionTestCase()
         {
             var fielName = "test.txt";
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetFileExtensionTestCaseNullCheck()
         {

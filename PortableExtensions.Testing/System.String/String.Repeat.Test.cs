@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void RepeatTestCase()
         {
             var actual = StringEx.Repeat( null, 10 );

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int32ExTest
     {
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase()
         {
             var number = 1000;
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase1()
         {
             var number = 1000;
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase2()
         {
             var number = 1000;
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void PercentageOfTestCase3()
         {
             var number = 1000;

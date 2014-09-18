@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ToDateTimeTestCase()
         {
             var expected = DateTime.Now;
@@ -26,14 +26,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCaseNullCheck()
         {
             ObjectEx.ToDateTime( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToDateTimeTestCase1()
         {
             var expected = DateTime.Now;
@@ -48,14 +48,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCase1NullCheck()
         {
             ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCase1NullCheck1()
         {

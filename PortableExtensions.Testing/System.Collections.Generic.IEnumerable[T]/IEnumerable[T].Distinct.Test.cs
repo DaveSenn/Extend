@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void DistinctTestCase()
         {
             var list = new List<KeyValuePair<String, String>>
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, actual.Count( x => x.Value == "Test2" ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void DistinctTestCaseNullCheck()
         {
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             list.Distinct( x => x.Value );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void DistinctTestCaseNullCheck1()
         {

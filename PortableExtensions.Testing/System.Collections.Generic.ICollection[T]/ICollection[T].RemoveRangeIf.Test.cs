@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void RemoveRangeIfTestCase()
         {
             var list = new List<String>();
@@ -27,28 +27,28 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeIfTestCaseNullCheck()
         {
             CollectionTEx.RemoveRangeIf( null, x => false, "test0", "test1", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeIfTestCaseNullCheck1()
         {
             new List<String>().RemoveRangeIf( x => false, null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeIfTestCaseNullCheck2()
         {
             new List<String>().RemoveRangeIf( null, "test0", "test1", "test2" );
         }
 
-        [TestCase]
+        [Test]
         public void RemoveRangeIfTestCase1()
         {
             var list = new List<String>();
@@ -64,21 +64,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, list.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeTestIfCase1NullCheck()
         {
             CollectionTEx.RemoveRangeIf( null, x => false, new List<String> { "test0", "test1", "test2" } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeIfTestCase1NullCheck1()
         {
             new List<String>().RemoveRangeIf( x => false, null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void RemoveRangeIfTestCase1NullCheck2()
         {

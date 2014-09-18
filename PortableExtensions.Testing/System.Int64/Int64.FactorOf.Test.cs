@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int64ExTest
     {
-        [TestCase]
+        [Test]
         public void FactorOfTestCase()
         {
             var value = RandomValueEx.GetRandomInt32();

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void GetAfterTestCase()
         {
             var actual = "test test1".GetAfter( "test" );
@@ -20,28 +20,28 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterArgumentOutOfRangeTestCase()
         {
             "test test1".GetAfter( "test", 20 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterTestCaseNullCheck()
         {
             StringEx.GetAfter( null, "test" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterTestCaseNullCheck1()
         {
             "".GetAfter( null );
         }
 
-        [TestCase]
+        [Test]
         public void GetAfterTestCase1()
         {
             var actual = "test test1".GetAfter( "test", 0, 10 );
@@ -51,35 +51,35 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterArgumentOutOfRangeTestCase1()
         {
             "test test1".GetAfter( "test", 4, 10 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterArgumentOutOfRangeTestCase2()
         {
             "test test1".GetAfter( "test", 20, 2 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterTestCase1NullCheck()
         {
             StringEx.GetAfter( null, "", 1, 1 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterTestCase1NullCheck1()
         {
             "".GetAfter( null, 1, 1 );
         }
 
-        [TestCase]
+        [Test]
         public void GetAfterOverloadTestCase()
         {
             var actual = "test test1".GetAfter( 's' );
@@ -89,21 +89,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "est1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterOverloadArgumentOutOfRangeTestCase()
         {
             "test test1".GetAfter( 't', 20 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterOverloadTestCaseNullCheck()
         {
             StringEx.GetAfter( null, 't' );
         }
 
-        [TestCase]
+        [Test]
         public void GetAfterOverloadTestCase1()
         {
             var actual = "test test1".GetAfter( 'e', 0, 6 );
@@ -113,21 +113,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( " test1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfteOverloadrArgumentOutOfRangeTestCase1()
         {
             "test test1".GetAfter( 't', 4, 10 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterOverloadArgumentOutOfRangeTestCase2()
         {
             "test test1".GetAfter( 't', 20, 2 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAfterOverloadTestCase1NullCheck()
         {

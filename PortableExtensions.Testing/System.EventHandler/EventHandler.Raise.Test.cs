@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class EventHandlerExTest
     {
-        [TestCase]
+        [Test]
         public void RaiseTestCase()
         {
             var helperClass = new HelperClass();
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.AreSame( eventArgs, actual );
         }
 
-        [TestCase]
+        [Test]
         public void RaiseTestCase1()
         {
             var helperClass = new HelperClass();

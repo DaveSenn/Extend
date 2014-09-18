@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void MatchTestCase()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -25,21 +25,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual.Success );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCaseNullCheck()
         {
             StringEx.Match( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCaseNullCheck1()
         {
             "".Match( null );
         }
 
-        [TestCase]
+        [Test]
         public void MatchTestCase1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -53,21 +53,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual.Success );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCase1NullCheck()
         {
             StringEx.Match( null, "", RegexOptions.Compiled );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCase1NullCheck1()
         {
             "".Match( null, RegexOptions.Compiled );
         }
 
-        [TestCase]
+        [Test]
         public void MatchTestCase2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -81,21 +81,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual.Success );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCase2NullCheck()
         {
             StringEx.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MatchTestCase2NullCheck1()
         {
             "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( RegexMatchTimeoutException ) )]
         public void MatchTimeoutTestCase()
         {

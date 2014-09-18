@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void EnsureNotNullTestCase()
         {
             List<String> list = null;
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.IsNull( list );
         }
 
-        [TestCase]
+        [Test]
         public void EnsureNotNullTestCase1()
         {
             var list = new List<String>

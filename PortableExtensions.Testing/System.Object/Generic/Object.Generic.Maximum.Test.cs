@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void MaximumTestCase()
         {
             var actual = 1.Maximum( 2, 3, 4, 5, 6 );
@@ -21,14 +21,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 100, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MaximumTestCaseNullCheck()
         {
             10.Maximum( null );
         }
 
-        [TestCase]
+        [Test]
         public void MaximumTestCase1()
         {
             var actual = 1.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
@@ -38,14 +38,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "6", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MaximumTestCase1NullCheck()
         {
             10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void MaximumTestCase1NullCheck1()
         {

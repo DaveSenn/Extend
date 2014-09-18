@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ToBooleanTestCase()
         {
             var value = "false";
@@ -21,14 +21,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( ObjectEx.ToBoolean( value ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCaseNullCheck()
         {
             ObjectEx.ToBoolean( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToBooleanTestCase1()
         {
             var value = "false";
@@ -38,14 +38,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCase1NullCheck()
         {
             ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToBooleanTestCase1NullCheck1()
         {

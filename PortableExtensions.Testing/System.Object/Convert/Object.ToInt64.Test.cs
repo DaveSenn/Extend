@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void ToInt64TestCase()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt64TestCaseNullCheck()
         {
             ObjectEx.ToInt64( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToInt64TestCase1()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt64TestCase1NullCheck()
         {
             ObjectEx.ToInt64( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt64TestCase1NullCheck1()
         {

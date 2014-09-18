@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IDictionaryExTest
     {
-        [TestCase]
+        [Test]
         public void GetOrAddTestCase()
         {
             var dictionary = new Dictionary<String, String>();
@@ -30,21 +30,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, dictionary.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCaseNullCheck()
         {
             IDictionaryEx.GetOrAdd( null, new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCaseNullCheck1()
         {
             new Dictionary<Object, Object>().GetOrAdd( null, new Object() );
         }
 
-        [TestCase]
+        [Test]
         public void GetOrAddTestCase1()
         {
             var dictionary = new Dictionary<String, String>();
@@ -62,21 +62,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, dictionary.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase1NullCheck()
         {
             IDictionaryEx.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase1NullCheck1()
         {
             new Dictionary<Object, Object>().GetOrAdd( new KeyValuePair<Object, Object>( null, new Object() ) );
         }
 
-        [TestCase]
+        [Test]
         public void GetOrAddTestCase2()
         {
             var dictionary = new Dictionary<String, String>();
@@ -94,21 +94,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, dictionary.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase2NullCheck()
         {
             IDictionaryEx.GetOrAdd( null, new Object(), () => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase2NullCheck1()
         {
             new Dictionary<Object, Object>().GetOrAdd( null, () => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase2NullCheck2()
         {
@@ -116,7 +116,7 @@ namespace PortableExtensions.Testing
             new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
         }
 
-        [TestCase]
+        [Test]
         public void GetOrAddTestCase3()
         {
             var dictionary = new Dictionary<String, String>();
@@ -134,21 +134,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, dictionary.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase3NullCheck()
         {
             IDictionaryEx.GetOrAdd( null, new Object(), x => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase3NullCheck1()
         {
             new Dictionary<Object, Object>().GetOrAdd( null, x => new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetOrAddCase3NullCheck2()
         {

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DoubleExTest
     {
-        [TestCase]
+        [Test]
         public void PercentOfTestCase()
         {
             Double number = 1000;
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCaseDivideByZero()
         {
             DoubleEx.PercentOf( 0, 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase1()
         {
             Double number = 1000;
@@ -37,14 +37,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase1DivideByZero()
         {
             DoubleEx.PercentOf( 0, (Double) 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase2()
         {
             Double number = 1000;
@@ -54,7 +54,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase2DivideByZero()
         {

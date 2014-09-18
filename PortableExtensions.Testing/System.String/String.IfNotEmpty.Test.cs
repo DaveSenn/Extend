@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void IfEmptyTestCase()
         {
             var actual = StringEx.IfNotEmpty( null, "test" );

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IDictionaryExTest
     {
-        [TestCase]
+        [Test]
         public void AddRangeTestCase()
         {
             var dictionary = new Dictionary<String, String>
@@ -33,14 +33,14 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( dictionary.ContainsAll( otherDictionary ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCaseNullCheck()
         {
             IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCaseNullCheck1()
         {

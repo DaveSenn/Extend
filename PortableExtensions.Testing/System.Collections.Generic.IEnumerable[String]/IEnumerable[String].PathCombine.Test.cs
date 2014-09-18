@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class IEnumerableStringExTest
     {
-        [TestCase]
+        [Test]
         public void PathCombineTestCase()
         {
             var list = new List<String> { @"C:\", "Temp", "Test", "test.xml" };
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void PathCombineTestCaseNullCheck()
         {

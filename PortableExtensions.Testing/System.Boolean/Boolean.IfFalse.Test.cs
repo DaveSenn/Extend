@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class BooleanExTest
     {
-        [TestCase]
+        [Test]
         public void IfFalseTestCase()
         {
             var actual = String.Empty;
@@ -22,14 +22,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IfFalseTestCaseNullCheck()
         {
             false.IfFalse( null, Assert.Fail );
         }
 
-        [TestCase]
+        [Test]
         public void IfFalseTestCase1()
         {
             var actual = String.Empty;
@@ -41,14 +41,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test1", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IfFalseTestCase1NullCheck()
         {
             false.IfFalse( "", null, x => Assert.Fail() );
         }
 
-        [TestCase]
+        [Test]
         public void IfFalseTestCase2()
         {
             var actual = String.Empty;
@@ -60,14 +60,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "testP21", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IfFalseTestCase2NullCheck()
         {
             false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
         }
 
-        [TestCase]
+        [Test]
         public void IfFalseTestCase3()
         {
             var actual = String.Empty;
@@ -87,14 +87,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "testP2P31", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IfFalseTestCase3NullCheck()
         {
             false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
         }
 
-        [TestCase]
+        [Test]
         public void IfFalseTestCase4()
         {
             var actual = String.Empty;
@@ -116,7 +116,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "testP2P3P41", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IfFalseTestCase4NullCheck()
         {

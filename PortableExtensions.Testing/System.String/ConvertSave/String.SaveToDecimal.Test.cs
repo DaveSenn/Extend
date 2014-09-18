@@ -11,7 +11,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToDecimalTestCase()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -20,7 +20,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDecimalTestCase1()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -29,7 +29,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDecimalTestCase2()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -39,7 +39,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToDecimalTestCase3()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -48,14 +48,14 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDecimalTestCaseNullCheck()
         {
             StringEx.SaveToDecimal( null );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToDecimalTestCaseNullCheck1()
         {

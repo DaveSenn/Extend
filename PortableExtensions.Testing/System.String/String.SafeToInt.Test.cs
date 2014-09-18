@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SafeToIntTestCase()
         {
             var actual = "1".SafeToInt();
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( null, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SafeToIntTestCaseNullCheck()
         {

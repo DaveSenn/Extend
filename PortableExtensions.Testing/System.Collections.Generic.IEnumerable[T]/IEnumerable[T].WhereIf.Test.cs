@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void WhereIfTestCase()
         {
             var list = new List<String>();
@@ -37,7 +37,7 @@ namespace PortableExtensions.Testing
             Assert.AreSame( list, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void WhereIfTestCaseNullCheck()
         {
@@ -45,7 +45,7 @@ namespace PortableExtensions.Testing
             list.WhereIf( true, x => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void WhereIfTestCaseNullCheck1()
         {
@@ -53,7 +53,7 @@ namespace PortableExtensions.Testing
             new List<Object>().WhereIf( true, func );
         }
 
-        [TestCase]
+        [Test]
         public void WhereIfTestCase1()
         {
             var list = new List<String>();
@@ -79,7 +79,7 @@ namespace PortableExtensions.Testing
             Assert.AreSame( list, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void WhereIfTestCase1NullCheck()
         {
@@ -87,7 +87,7 @@ namespace PortableExtensions.Testing
             list.WhereIf( true, ( x, i ) => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void WhereIfTestCase1NullCheck1()
         {

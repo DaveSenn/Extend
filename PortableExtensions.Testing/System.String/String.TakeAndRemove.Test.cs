@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TakeAndRemoveTestCase()
         {
             var value = "Test";
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "st", value );
         }
 
-        [TestCase]
+        [Test]
         public void TakeAndRemoveTestCase1()
         {
             var value = "Test";
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( String.Empty, value );
         }
 
-        [TestCase]
+        [Test]
         public void TakeAndRemoveTestCase2()
         {
             var value = "    ";
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "  ", value );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TakeAndRemoveTestCaseNullCheck()
         {
@@ -48,7 +48,7 @@ namespace PortableExtensions.Testing
             var actual = 2.TakeAndRemove( ref value );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void TakeAndRemoveTestCaseArgumentOutOfRangeException()
         {

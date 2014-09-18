@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ToDateTimeTestCase()
         {
             var value = DateTime.Now;
@@ -25,14 +25,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCaseNullCheck()
         {
             StringEx.ToDateTime( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToDateTimeTestCase1()
         {
             var value = DateTime.Now;
@@ -46,14 +46,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value.Second, actual.Second );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCase1NullCheck()
         {
             StringEx.ToDateTime( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDateTimeTestCase1NullCheck1()
         {

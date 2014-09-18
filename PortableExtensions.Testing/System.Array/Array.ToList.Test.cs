@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ArrayExTest
     {
-        [TestCase]
+        [Test]
         public void ToListTestCase()
         {
             Array array = new[]
@@ -26,7 +26,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "test2", list[2] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToListTestCaseNullCheck()
         {
@@ -34,7 +34,7 @@ namespace PortableExtensions.Testing
             array.ToList( x => "test" + x );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToListTestCaseNullCheck1()
         {

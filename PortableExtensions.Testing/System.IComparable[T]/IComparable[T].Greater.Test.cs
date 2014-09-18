@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ComparableTExTest
     {
-        [TestCase]
+        [Test]
         public void GreaterTestCase()
         {
             var value = 1000;
@@ -32,14 +32,14 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GreaterTestCaseNullCheck()
         {
             IComparableTEx.Greater( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GreaterTestCaseNullCheck1()
         {

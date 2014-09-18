@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void NextMonthStartTestCase()
         {
             var dateTime = DateTime.Now;
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void NextMonthStartTestCase1()
         {
             var dateTime = new DateTime( 2014, 08, 12, 12, 12, 5 );
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual(expected, actual);
         }
 
-        [TestCase]
+        [Test]
         public void NextMonthStartTestCase2()
         {
             var dateTime = new DateTime(2014, 12, 12, 12, 12, 5);

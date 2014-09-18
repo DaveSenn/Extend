@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int32ExTest
     {
-        [TestCase]
+        [Test]
         public void NovemberTestCase()
         {
             var expected = new DateTime( 2000, 11, 10 );

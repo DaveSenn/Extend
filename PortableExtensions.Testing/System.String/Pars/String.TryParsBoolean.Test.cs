@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryParsBooleanTestCase()
         {
             var expected = RandomValueEx.GetRandomBoolean();
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryParsBooleanTestCaseNullCheck()
         {

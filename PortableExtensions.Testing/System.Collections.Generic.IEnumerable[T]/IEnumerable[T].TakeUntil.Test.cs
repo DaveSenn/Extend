@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void TakeUntilTestCase()
         {
             var list = new List<String>();
@@ -35,7 +35,7 @@ namespace PortableExtensions.Testing
                 Assert.AreEqual( list[i], resultList[i] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TakeUntilTestCaseNullCheck()
         {
@@ -43,7 +43,7 @@ namespace PortableExtensions.Testing
             list.TakeUntil( x => true );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TakeUntilTestCaseNullCheck1()
         {

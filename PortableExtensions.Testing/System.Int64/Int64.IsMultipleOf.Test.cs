@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int64ExTest
     {
-        [TestCase]
+        [Test]
         public void IsMultipleOfTestCase()
         {
             Int64 value = RandomValueEx.GetRandomInt32();

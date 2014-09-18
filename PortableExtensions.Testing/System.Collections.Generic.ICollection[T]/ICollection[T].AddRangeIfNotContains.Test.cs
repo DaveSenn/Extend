@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void AddRangeIfNotContainsTestCase()
         {
             var c = new List<String>();
@@ -24,21 +24,21 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, c.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeIfNotContainsTestCaseNullCheck()
         {
             CollectionTEx.AddRangeIfNotContains( null, "test0", "test1", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeIfNotContainsTestCaseNullCheck1()
         {
             new List<String>().AddRangeIfNotContains( null );
         }
 
-        [TestCase]
+        [Test]
         public void AddRangeIfNotContainsTestCase1()
         {
             var c = new List<String>();
@@ -51,14 +51,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, c.Count );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeIfNotContains1TestCaseNullCheck()
         {
             CollectionTEx.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeIfNotContains1TestCaseNullCheck1()
         {

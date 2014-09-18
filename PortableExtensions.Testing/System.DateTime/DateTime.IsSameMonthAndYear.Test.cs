@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void IsSameMonthAndYearTestCase()
         {
             var dateTime = DateTime.Now;
@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [TestCase]
+        [Test]
         public void IsSameMonthAndYearTestCase1()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [TestCase]
+        [Test]
         public void IsSameMonthAndYearTestCase2()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
@@ -37,7 +37,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [TestCase]
+        [Test]
         public void IsSameMonthAndYearTestCase3()
         {
             var dateTime = new DateTime( 2014, 08, 10 );

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class Int16ExTest
     {
-        [TestCase]
+        [Test]
         public void PercentOfTestCase()
         {
             Int16 number = 1000;
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCaseDivideByZero()
         {
             Int16Ex.PercentOf( 0, 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase1()
         {
             Int16 number = 1000;
@@ -37,14 +37,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase1DivideByZero()
         {
             Int16Ex.PercentOf( 0, (Double) 100 );
         }
 
-        [TestCase]
+        [Test]
         public void PercentOfTestCase2()
         {
             Int16 number = 1000;
@@ -54,7 +54,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( DivideByZeroException ) )]
         public void PercentOfTestCase2DivideByZero()
         {

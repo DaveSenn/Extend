@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void IsPastTestCase()
         {
             var dateTime = DateTime.Now.Subtract( 1.ToMilliseconds() );

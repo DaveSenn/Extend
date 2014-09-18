@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ArrayExTest
     {
-        [TestCase]
+        [Test]
         public void GenericClearTestCase()
         {
             var array = new[]
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( null, array[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GenericClearTestCase1()
         {

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ArrayExTest
     {
-        [TestCase]
+        [Test]
         public void SliceTestCase()
         {
             var sourceArray = new[]
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCaseArgumentOutOfRangeExceptio()
         {
@@ -43,7 +43,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 10 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCaseNullCheck()
         {
@@ -52,7 +52,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2 );
         }
 
-        [TestCase]
+        [Test]
         public void SliceTestCase1()
         {
             var sourceArray = new[]
@@ -72,7 +72,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase1ArgumentOutOfRangeException()
         {
@@ -85,7 +85,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, targetArray );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase1ArgumentOutOfRangeException1()
         {
@@ -101,7 +101,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, targetArray );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCase1NullCheck()
         {
@@ -109,7 +109,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, new Int32[2] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCase1NullCheck1()
         {
@@ -121,7 +121,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, null );
         }
 
-        [TestCase]
+        [Test]
         public void SliceTestCase2()
         {
             var sourceArray = new[]
@@ -139,7 +139,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase2ArgumentOutOfRangeException()
         {
@@ -153,7 +153,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 10, 2 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase2ArgumentOutOfRangeException1()
         {
@@ -167,7 +167,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 0, 10 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase2ArgumentOutOfRangeException2()
         {
@@ -181,7 +181,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, 3 );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCase2NullCheck()
         {
@@ -190,7 +190,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, 2 );
         }
 
-        [TestCase]
+        [Test]
         public void SliceTestCase3()
         {
             var sourceArray = new[]
@@ -210,7 +210,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 3, actual[1] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase3ArgumentOutOfRangeException()
         {
@@ -225,7 +225,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 10, 2, targetArray );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase3ArgumentOutOfRangeException1()
         {
@@ -240,7 +240,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 0, 10, targetArray );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void SliceTestCase3ArgumentOutOfRangeException2()
         {
@@ -255,7 +255,37 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, 3, targetArray );
         }
 
-        [TestCase]
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void SliceTestCase3ArgumentOutOfRangeException3()
+        {
+            var sourceArray = new[]
+            {
+                1,
+                2,
+                3,
+                4
+            };
+            var targetArray = new Int32[4];
+            var actual = sourceArray.Slice(-1, 3, targetArray);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void SliceTestCase3ArgumentOutOfRangeException4()
+        {
+            var sourceArray = new[]
+            {
+                1,
+                2,
+                3,
+                4
+            };
+            var targetArray = new Int32[4];
+            var actual = sourceArray.Slice(1, -1, targetArray);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCase3NullCheck()
         {
@@ -263,7 +293,7 @@ namespace PortableExtensions.Testing
             var actual = sourceArray.Slice( 2, 2, new Int32[2] );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SliceTestCase3NullCheck1()
         {

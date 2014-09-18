@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void IsInTestCase()
         {
             var array = RandomValueEx.GetRandomStrings().ToArray();
@@ -25,7 +25,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsInTestCaseNullCheck()
         {
@@ -33,7 +33,7 @@ namespace PortableExtensions.Testing
             "".IsIn( array );
         }
 
-        [TestCase]
+        [Test]
         public void IsInTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings();
@@ -47,7 +47,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsInTestCase1NullCheck()
         {

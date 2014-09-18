@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IEnumerableTExTest
     {
-        [TestCase]
+        [Test]
         public void ContainsAllTestCase()
         {
             var list = new List<String> { "test", "test1" };
@@ -21,14 +21,14 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( IEnumerableTEx.ContainsAll( list, "test", "test1", "test2" ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAllTestCaseNullCheck()
         {
             IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAllTestCaseNullCheck1()
         {
@@ -36,7 +36,7 @@ namespace PortableExtensions.Testing
             IEnumerableTEx.ContainsAll( new List<Object>(), array );
         }
 
-        [TestCase]
+        [Test]
         public void ContainsAllTestCase1()
         {
             var list = new List<String> { "test", "test1" };
@@ -46,14 +46,14 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( list.ContainsAll( new List<String> { "test", "test1", "test2" } ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAllTestCase1NullCheck()
         {
             IEnumerableTEx.ContainsAll( null, new List<String>() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAllTestCase1NullCheck1()
         {

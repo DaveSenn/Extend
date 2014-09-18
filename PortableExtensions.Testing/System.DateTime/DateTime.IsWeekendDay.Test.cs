@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DateTimeExTest
     {
-        [TestCase]
+        [Test]
         public void IsWeekendDayTestCase()
         {
             var dateTime = new DateTime( 2014, 3, 27 );

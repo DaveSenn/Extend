@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ToDecimalTestCase()
         {
             var value = new Decimal( 100.120 );
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDecimalTestCaseNullCheck()
         {
             StringEx.ToDecimal( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToDecimalTestCase1()
         {
             var culture = new CultureInfo( "en-US" );
@@ -37,14 +37,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDecimalTestCase1NullCheck()
         {
             StringEx.ToDecimal( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToDecimalTestCase1NullCheck1()
         {

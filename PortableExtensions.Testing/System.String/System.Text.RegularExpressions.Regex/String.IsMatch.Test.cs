@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void IsMatchTestCase()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -25,21 +25,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCaseNullCheck()
         {
             StringEx.IsMatch( null, "" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCaseNullCheck1()
         {
             "".IsMatch( null );
         }
 
-        [TestCase]
+        [Test]
         public void IsMatchTestCase1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -53,21 +53,21 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCase1NullCheck()
         {
             StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCase1NullCheck1()
         {
             "".IsMatch( null, RegexOptions.Multiline );
         }
 
-        [TestCase]
+        [Test]
         public void IsMatchTestCase2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -81,7 +81,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        //[TestCase]
+        //[Test]
         //[ExpectedException(typeof(RegexMatchTimeoutException))]
         //public void IsMatchTestCase2TimeoutCheck()
         //{
@@ -91,14 +91,14 @@ namespace PortableExtensions.Testing
         //    StringEx.IsMatch(validEmail, pattern, RegexOptions.Singleline, 2.ToMilliseconds());
         //}
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCase2NullCheck()
         {
             StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCase2NullCheck1()
         {

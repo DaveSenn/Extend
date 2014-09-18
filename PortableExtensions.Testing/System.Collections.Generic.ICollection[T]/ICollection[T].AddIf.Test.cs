@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void AddIfTestCase()
         {
             var c = new List<String>();
@@ -25,7 +25,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddIfTestCaseNullCheck()
         {
@@ -33,7 +33,7 @@ namespace PortableExtensions.Testing
             c.AddIf( x => true, RandomValueEx.GetRandomString() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddIfTestCaseNullCheck1()
         {

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class CollectionTExTest
     {
-        [TestCase]
+        [Test]
         public void AddRangeTestCase()
         {
             var c = new List<String>();
@@ -21,21 +21,21 @@ namespace PortableExtensions.Testing
             Assert.AreSame( c, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCaseNullCheck()
         {
             CollectionTEx.AddRange( null, "test0", "test1", "test2" );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCaseNullCheck1()
         {
             CollectionTEx.AddRange( new List<String>(), null );
         }
 
-        [TestCase]
+        [Test]
         public void AddRangeTestCase1()
         {
             var c = new List<String>();
@@ -45,14 +45,14 @@ namespace PortableExtensions.Testing
             Assert.AreSame( c, result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCase1NullCheck()
         {
             CollectionTEx.AddRange( null, new List<String> { "test0", "test1", "test2" } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void AddRangeTestCase1NullCheck1()
         {

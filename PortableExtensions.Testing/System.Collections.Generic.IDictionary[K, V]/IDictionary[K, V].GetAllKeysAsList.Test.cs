@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IDictionaryExTest
     {
-        [TestCase]
+        [Test]
         public void GetAllKeysAsListTestCase()
         {
             var dictionary = new Dictionary<String, String>
@@ -25,7 +25,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( dictionary.All( x => allKeys.Contains( x.Key ) ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void GetAllKeysAsListCaseNullCheck()
         {

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void JoinTestCase()
         {
             var actual = ",".Join( new[]
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1,2", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCaseNullCheck()
         {
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
                            } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCaseNullCheck1()
         {
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
             "".Join( array );
         }
 
-        [TestCase]
+        [Test]
         public void JoinTestCase1()
         {
             var actual = ",".Join( new Object[]
@@ -51,7 +51,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "1,2", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase1NullCheck()
         {
@@ -61,7 +61,7 @@ namespace PortableExtensions.Testing
                            } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase1NullCheck1()
         {
@@ -69,14 +69,14 @@ namespace PortableExtensions.Testing
             "".Join( array );
         }
 
-        [TestCase]
+        [Test]
         public void JoinTestCase2()
         {
             var actual = ",".Join( new List<String> { "1", "2" } );
             Assert.AreEqual( "1,2", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase2NullCheck()
         {
@@ -86,7 +86,7 @@ namespace PortableExtensions.Testing
                            } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase2NullCheck1()
         {
@@ -94,14 +94,14 @@ namespace PortableExtensions.Testing
             "".Join( list );
         }
 
-        [TestCase]
+        [Test]
         public void JoinTestCase3()
         {
             var actual = ",".Join( new List<Object> { "1", "2" } );
             Assert.AreEqual( "1,2", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase3NullCheck()
         {
@@ -111,7 +111,7 @@ namespace PortableExtensions.Testing
                            } );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void JoinTestCase3NullCheck1()
         {

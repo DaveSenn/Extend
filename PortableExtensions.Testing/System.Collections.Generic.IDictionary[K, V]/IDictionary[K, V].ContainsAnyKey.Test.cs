@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class IDictionaryExTest
     {
-        [TestCase]
+        [Test]
         public void ContainsAnyKeyTestCase()
         {
             var dictionary = new Dictionary<String, String>
@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( dictionary.ContainsAnyKey( "test" ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAnyKeyTestCaseNullCheck()
         {
@@ -35,14 +35,14 @@ namespace PortableExtensions.Testing
             dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAnyKeyTestCaseNullCheck1()
         {
             new Dictionary<Object, Object>().ContainsAnyKey( null );
         }
 
-        [TestCase]
+        [Test]
         public void ContainsAnyKeyTestCase1()
         {
             var dictionary = new Dictionary<String, String>
@@ -61,7 +61,7 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( dictionary.ContainsAnyKey( new List<String> { "test", "test2" } ) );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAnyKeyTestCase1NullCheck()
         {
@@ -69,7 +69,7 @@ namespace PortableExtensions.Testing
             dictionary.ContainsAnyKey( new List<Object>() );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ContainsAnyKeyTestCase1NullCheck1()
         {

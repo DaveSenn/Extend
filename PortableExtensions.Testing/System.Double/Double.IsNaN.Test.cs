@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class DoubleExTest
     {
-        [TestCase]
+        [Test]
         public void IsNaNTestCase()
         {
             var number = 10.5;

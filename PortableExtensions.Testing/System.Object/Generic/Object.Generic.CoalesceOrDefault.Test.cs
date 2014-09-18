@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        [TestCase]
+        [Test]
         public void CoalesceOrDefaultTestCase()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CoalesceOrDefaultTestCaseNullCheck()
         {
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
             s.CoalesceOrDefault( s1, null, null );
         }
 
-        [TestCase]
+        [Test]
         public void CoalesceOrDefaultTestCase1()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -45,7 +45,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CoalesceOrDefaultTestCase1NullCheck()
         {

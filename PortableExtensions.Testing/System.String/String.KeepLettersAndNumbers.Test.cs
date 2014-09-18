@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void KeepLettersAndNumbersTestCase()
         {
             var actual = "a1b2c3".KeepLettersAndNumbers();
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( "a1b2c3", actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void KeepLettersAndNumbersTestCaseNullCheck()
         {

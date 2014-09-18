@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void TryToEnumTestCase()
         {
             var expected = DayOfWeek.Monday;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
             Assert.IsTrue( result );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void TryToEnumTestCaseNullCheck()
         {

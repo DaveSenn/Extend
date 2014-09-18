@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void ToInt16TestCase()
         {
             var value = RandomValueEx.GetRandomInt16();
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt16TestCaseNullCheck()
         {
             StringEx.ToInt16( null );
         }
 
-        [TestCase]
+        [Test]
         public void ToInt16TestCase1()
         {
             var value = RandomValueEx.GetRandomInt16();
@@ -36,14 +36,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt16TestCase1NullCheck()
         {
             StringEx.ToInt16( null, CultureInfo.InvariantCulture );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ToInt16TestCase1NullCheck1()
         {

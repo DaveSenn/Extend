@@ -9,7 +9,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class BooleanExTest
     {
-        [TestCase]
+        [Test]
         public void SelectValueTestCase()
         {
             var trueValue = "true";

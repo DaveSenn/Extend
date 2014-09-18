@@ -10,7 +10,7 @@ namespace PortableExtensions
     [TestFixture]
     public partial class StringExTest
     {
-        [TestCase]
+        [Test]
         public void SaveToBooleanTestCase()
         {
             var expected = RandomValueEx.GetRandomBoolean();
@@ -19,7 +19,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         public void SaveToBooleanTestCase1()
         {
             var expected = RandomValueEx.GetRandomBoolean();
@@ -28,7 +28,7 @@ namespace PortableExtensions
             Assert.AreEqual( expected, actual );
         }
 
-        [TestCase]
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToBooleanTestCaseNullCheck()
         {
