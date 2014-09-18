@@ -70,7 +70,7 @@
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Resize.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Reverse.Test.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.Test.cs" />
-    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToList.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToGenericList.Test.cs" />
     <Compile Include="System.Array\Array.Clear.Test.cs" />
     <Compile Include="System.Array\Array.ClearAll.Test.cs" />
     <Compile Include="System.Array\Array.Copy.cs" />

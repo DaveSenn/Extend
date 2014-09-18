@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.Collections.Generic;
 using NUnit.Framework;
 
 #endregion
@@ -15,36 +16,33 @@ namespace PortableExtensions.Testing
         {
             var array = new[]
             {
-                "0",
-                "1",
-                "2"
+                1, 2, 3
             };
-            var list = ( (Array) array ).ToList( x => "test" + x );
+            var list = array.ToGenericList(x => 10 + x);
 
-            Assert.AreEqual( "test0", list[0] );
-            Assert.AreEqual( "test1", list[1] );
-            Assert.AreEqual( "test2", list[2] );
+            Assert.AreEqual(11, list[0]);
+            Assert.AreEqual(12, list[1]);
+            Assert.AreEqual(13, list[2]);
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void GenericToListTestCaseNullCheck()
         {
             String[] array = null;
-            ( (Array) array ).ToList( x => "test" + x );
+            array.ToGenericList(x => x + "Test");
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
+        [ExpectedException(typeof (ArgumentNullException))]
         public void GenericToListTestCaseNullCheck1()
         {
             var array = new[]
             {
-                "0",
-                "1",
-                "2"
+                1, 2, 3
             };
-            array.ToList<string>( null );
+            Func<Int32, Int32> selector = null;
+            array.ToGenericList(selector);
         }
     }
 }
