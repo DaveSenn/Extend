@@ -15,20 +15,31 @@ namespace PortableExtensions.Testing
         [Test]
         public void RangeToTestCase()
         {
-            Int64 start = 0;
-            Int64 end = 200;
+            const Int64 start = 0;
+            const Int64 end = 200;
 
             var expected = new List<Int64>();
-            for ( var i = start; i <= end; i++ )
-                expected.Add( i );
+            for (var i = start; i <= end; i++)
+                expected.Add(i);
 
-            var actual = start.RangeTo( end );
-            Assert.AreEqual( actual.First(), 0 );
-            Assert.AreEqual( actual.Last(), 200 );
-            Assert.AreEqual( expected.Count, actual.Count );
+            var actual = start.RangeTo(end);
+            Assert.AreEqual(actual.First(), 0);
+            Assert.AreEqual(actual.Last(), 200);
+            Assert.AreEqual(expected.Count, actual.Count);
 
-            for ( var i = 0; i < expected.Count; i++ )
-                Assert.AreEqual( expected[i], actual[i] );
+            for (var i = 0; i < expected.Count; i++)
+                Assert.AreEqual(expected[i], actual[i]);
+        }
+
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void RangeToTestCaseArgumentException()
+        {
+            const Int64 start = 200;
+            const Int64 end = 100;
+
+            start.RangeTo(end);
         }
     }
 }

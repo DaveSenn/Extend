@@ -42,5 +42,19 @@ namespace PortableExtensions.Testing
         {
             StringEx.ExtractAllDouble( null, 0 );
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException()
+        {
+            var actual = "100.1".ExtractAllDouble(100);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException1()
+        {
+            var actual = "100.1".ExtractAllDouble(-1);
+        }
     }
 }

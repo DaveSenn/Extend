@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="fileExtension">The file extension to format.</param>
         /// <exception cref="ArgumentNullException">The file extension can not be null.</exception>
-        /// <exception cref="InvalidOperationException">Can not format a empty string to a file extension.</exception>
+        /// <exception cref="ArgumentException">Can not format a empty string to a file extension.</exception>
         /// <returns>The correct formatted file extension.</returns>
         public static String FormatFileExtension( this String fileExtension )
         {
@@ -27,7 +27,7 @@ namespace PortableExtensions
             fileExtension.ThrowIfNull( () => fileExtension );
 
             if ( fileExtension.IsEmpty() )
-                throw new InvalidOperationException( "Can not format a empty string to a file extension." );
+                throw new ArgumentException("Can not format a empty string to a file extension.", "fileExtension");
 
             if ( !fileExtension.StartsWith( ".", StringComparison.Ordinal ) )
                 fileExtension = fileExtension.Insert( 0, "." );
