@@ -24,7 +24,14 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void FormatFileExtensionTestCaseNullCheck()
         {
-            var actual = StringEx.FormatFileExtension( null );
+            StringEx.FormatFileExtension( null );
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentException))]
+        public void FormatFileExtensionTestCaseNullCheckArgumentException()
+        {
+            String.Empty.FormatFileExtension();
         }
     }
 }

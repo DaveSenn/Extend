@@ -21,7 +21,7 @@ namespace PortableExtensions
         public static List<Int64> RangeTo( this Int64 startValue, Int64 endValue )
         {
             if ( startValue > endValue )
-                throw new InvalidOperationException( "The start value can not be greater than the end value." );
+                throw new ArgumentException("The start value can not be greater than the end value.", "startValue");
 
             var list = new List<Int64>( (Int32) ( endValue - startValue ) );
             for ( var i = startValue; i <= endValue; i++ )

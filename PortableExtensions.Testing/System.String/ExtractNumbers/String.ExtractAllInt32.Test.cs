@@ -46,5 +46,19 @@ namespace PortableExtensions.Testing
         {
             StringEx.ExtractAllInt32( null, 0 );
         }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractAllInt32TestCaseArgumentOutOfRangeException()
+        {
+            var actual = "100".ExtractAllInt32(1000);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractAllInt32TestCaseArgumentOutOfRangeException1()
+        {
+            var actual = "100".ExtractAllInt32(-1);
+        }
     }
 }

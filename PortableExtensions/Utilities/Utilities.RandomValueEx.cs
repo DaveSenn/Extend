@@ -116,9 +116,9 @@ namespace PortableExtensions
         /// <returns>A random value of the enumeration of the specified type.</returns>
         public static T GetRandomEnum<T>() where T : struct
         {
-            var values = Enum.GetValues( typeof ( T ) ).Cast<T>();
-            var enumerable = values as T[] ?? values.ToArray();
-            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Count() ) );
+            var values = Enum.GetValues(typeof(T)).Cast<T>();
+            var enumerable = values as T[];
+            return enumerable.ElementAt(Rnd.Next(0, enumerable.Count()));
         }
 
         /// <summary>

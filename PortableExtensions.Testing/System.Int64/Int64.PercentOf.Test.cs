@@ -13,52 +13,69 @@ namespace PortableExtensions.Testing
         [Test]
         public void PercentOfTestCase()
         {
-            Int64 number = 1000;
-            var expected = 50;
-            var actual = number.PercentOf( (Int64) 500 );
+            const Int64 number = 1000;
+            const Int32 expected = 50;
+            var actual = number.PercentOf((Int64)500);
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
+        [ExpectedException(typeof(DivideByZeroException))]
         public void PercentOfTestCaseDivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Int64) 100 );
+            Int64Ex.PercentOf(0, (Int64)100);
         }
 
         [Test]
         public void PercentOfTestCase1()
         {
-            Int64 number = 1000;
-            var expected = 50;
-            var actual = number.PercentOf( (Double) 500 );
+            const Int64 number = 1000;
+            const Int32 expected = 50;
+            var actual = number.PercentOf((Double)500);
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
+        [ExpectedException(typeof(DivideByZeroException))]
         public void PercentOfTestCase1DivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Double) 100 );
+            Int64Ex.PercentOf(0, (Double)100);
         }
 
         [Test]
         public void PercentOfTestCase2()
         {
-            Int64 number = 1000;
-            var expected = 50;
-            var actual = number.PercentOf( (Int64) 500 );
+            const Int64 number = 1000;
+            const Int32 expected = 50;
+            var actual = number.PercentOf((Int64)500);
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
+        [ExpectedException(typeof(DivideByZeroException))]
         public void PercentOfTestCase2DivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Int64) 100 );
+            Int64Ex.PercentOf(0, (Int64)100);
+        }
+
+        [Test]
+        public void PercentOfTestCase3()
+        {
+            const Int64 number = 1000;
+            const Int32 expected = 50;
+            var actual = number.PercentOf(500);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void PercentOfTestCase3DivideByZero()
+        {
+            Int64Ex.PercentOf(0, 100);
         }
     }
 }

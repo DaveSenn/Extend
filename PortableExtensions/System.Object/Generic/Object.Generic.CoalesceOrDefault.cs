@@ -24,10 +24,10 @@ namespace PortableExtensions
         /// <returns>Returns the first not null value.</returns>
         public static T CoalesceOrDefault<T>( this T value, T defaultValue, params T[] values ) where T : class
         {
-            values.ThrowIfNull( () => values );
-
-            if ( value != null )
+            if (value != null)
                 return value;
+
+            values.ThrowIfNull( () => values );
 
             var notNullValues = values.Where( x => x != null );
             if ( notNullValues.Any() )
@@ -50,10 +50,10 @@ namespace PortableExtensions
         public static T CoalesceOrDefault<T>( this T value, Func<T> defaultValueFactory, params T[] values )
             where T : class
         {
-            values.ThrowIfNull( () => values );
-
-            if ( value != null )
+            if (value != null)
                 return value;
+
+            values.ThrowIfNull( () => values );
 
             var notNullValues = values.Where( x => x != null );
             if ( notNullValues.Any() )

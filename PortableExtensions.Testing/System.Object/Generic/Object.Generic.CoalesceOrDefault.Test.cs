@@ -24,6 +24,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void CoalesceOrDefault1TestCase()
+        {
+            var expected = RandomValueEx.GetRandomString();
+            String s = null;
+            var actual = expected.CoalesceOrDefault(s, null, null, "expected", "Test2");
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void CoalesceOrDefaultTestCaseNullCheck()
         {
@@ -33,7 +43,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase1()
+        public void CoalesceOrDefaultTestCase2()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -47,11 +57,21 @@ namespace PortableExtensions.Testing
 
         [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void CoalesceOrDefaultTestCase1NullCheck()
+        public void CoalesceOrDefaultTestCase2NullCheck()
         {
             String s = null;
             Func<String> func = null;
             s.CoalesceOrDefault( func, null, null );
+        }
+
+        [Test]
+        public void CoalesceOrDefaultTestCase3()
+        {
+            var expected = RandomValueEx.GetRandomString();
+            String s = null;
+            var actual = expected.CoalesceOrDefault(() => s, null, null, "Test2");
+
+            Assert.AreEqual(expected, actual);
         }
     }
 }

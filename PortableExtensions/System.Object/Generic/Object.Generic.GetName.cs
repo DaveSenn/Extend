@@ -23,10 +23,10 @@ namespace PortableExtensions
         /// <returns>The name of the the given member as <see cref="String" />.</returns>
         public static String GetName<TObject, TField>( this TObject obj, Expression<Func<TObject, TField>> fieldName )
         {
-            fieldName.ThrowIfNull( () => fieldName );
+            fieldName.ThrowIfNull(() => fieldName);
 
             return
-                ( fieldName.Body as MemberExpression ?? ( (UnaryExpression) fieldName.Body ).Operand as MemberExpression )
+                (fieldName.Body as MemberExpression ?? ((UnaryExpression)fieldName.Body).Operand as MemberExpression)
                     .Member.Name;
         }
     }
