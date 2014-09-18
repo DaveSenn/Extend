@@ -25,7 +25,7 @@ namespace PortableExtensions
             items.ThrowIfNull( () => items );
             selector.ThrowIfNull( () => selector );
 
-            return ( from object item in items select selector( item ) ).ToList();
+            return ( from Object item in items select selector( item ) ).ToList();
         }
     }
 }
