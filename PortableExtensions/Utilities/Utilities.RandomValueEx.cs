@@ -118,7 +118,7 @@ namespace PortableExtensions
         {
             var values = Enum.GetValues( typeof ( T ) ).Cast<T>();
             var enumerable = values as T[] ?? values.ToArray();
-            return enumerable.ElementAt( Rnd.Next( 0, enumerable.CountOptimized() ) );
+            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Count() ) );
         }
 
         /// <summary>
