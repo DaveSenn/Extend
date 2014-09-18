@@ -321,7 +321,7 @@
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.ClearAll.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Resize.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Reverse.cs" />
-    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToList.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToGenericList.cs" />
     <Compile Include="System.String\String.IsAlpha.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IfNull.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ThrowIfNull.cs" />

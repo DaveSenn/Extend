@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 #endregion
 
@@ -20,16 +21,12 @@ namespace PortableExtensions
         /// <typeparam name="TArray">The type of the items in the array.</typeparam>
         /// <typeparam name="TResult">The type of the items in the list.</typeparam>
         /// <returns>The items of the array as list.</returns>
-        public static List<TResult> ToList<TArray, TResult>( this TArray[] items, Func<TArray, TResult> selector )
+        public static List<TResult> ToGenericList<TArray, TResult>( this TArray[] items, Func<TArray, TResult> selector )
         {
             items.ThrowIfNull( () => items );
             selector.ThrowIfNull( () => selector );
 
-            var list = new List<TResult>();
-            foreach ( var item in items )
-                list.Add( selector( item ) );
-
-            return list;
+            return items.Select(selector).ToList();
         }
     }
 }
