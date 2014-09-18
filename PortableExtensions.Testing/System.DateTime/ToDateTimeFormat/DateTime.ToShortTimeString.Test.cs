@@ -15,9 +15,9 @@ namespace PortableExtensions.Testing
         public void ToShortTimeStringTestCase()
         {
             var dateTime = DateTime.Now;
-            var expected = dateTime.ToString( "t" );
-            var actual = dateTime.ToShortTimeString();
-            Assert.AreEqual( expected, actual );
+            var expected = dateTime.ToString("t");
+            var actual = DateTimeEx.ToShortTimeString(dateTime);
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]

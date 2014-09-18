@@ -42,7 +42,7 @@ namespace PortableExtensions
         {
             enumerable.ThrowIfNull( () => enumerable );
 
-            return enumerable.CountOptimized() > 1;
+            return enumerable.Count() > 1;
         }
     }
 }

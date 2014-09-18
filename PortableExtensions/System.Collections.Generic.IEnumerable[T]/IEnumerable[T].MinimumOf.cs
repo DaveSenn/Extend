@@ -47,7 +47,7 @@ namespace PortableExtensions
         {
             enumerable.ThrowIfNull( () => enumerable );
 
-            return enumerable.CountOptimized() >= count;
+            return enumerable.Count() >= count;
         }
     }
 }

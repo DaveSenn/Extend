@@ -41,5 +41,22 @@ namespace PortableExtensions.Testing
             Expression<Func<TestModel, Object>> memberExpression = null;
             memberExpression.GetMemberInfoFromExpression();
         }
+
+
     }
 }
+
+/*
+ public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
+            this Expression<Func<TDeclairingType, TMember>> memberExpression )
+        {
+            memberExpression.ThrowIfNull( () => memberExpression );
+
+            var memberSelectorExpression = memberExpression.Body.NodeType == ExpressionType.Convert
+                                               ? ( memberExpression.Body as UnaryExpression ).Operand as
+                                                 MemberExpression
+                                               : memberExpression.Body as MemberExpression;
+
+            return memberSelectorExpression == null ? null : memberSelectorExpression.Member;
+        }
+ */
