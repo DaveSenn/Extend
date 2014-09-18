@@ -45,12 +45,12 @@ namespace PortableExtensions
         /// </param>
         public static IEnumerable<T> ForEach<T>( this IEnumerable<T> enumerable, Action<T, Int32> action )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            action.ThrowIfNull( () => action );
+            enumerable.ThrowIfNull(() => enumerable);
+            action.ThrowIfNull(() => action);
 
             var counter = 0;
-            foreach ( var x in enumerable )
-                action( x, counter++ );
+            foreach (var x in enumerable)
+                action(x, counter++);
 
             return enumerable;
         }
