@@ -87,5 +87,16 @@ namespace PortableExtensions.Testing
             Action<Object, Int32> action = null;
             new List<Object>().ForEach(action);
         }
+        
+        [Test]
+        public void ForEachTestCase4()
+        {
+            var list = RandomValueEx.GetRandomStrings(10);
+            var total = 0;
+            var actual = list.ForEach((x, i) => total += i);
+            
+            Assert.AreSame(list, actual);
+            Assert.AreEqual(45, total);
+        }
     }
 }
