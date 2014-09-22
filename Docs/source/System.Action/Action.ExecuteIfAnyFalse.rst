@@ -6,9 +6,21 @@ Executes the specified action if one of the given Boolean values is false, other
 .. sourcecode:: csharp
  
     public static void ExecuteIfAnyFalse( 
-      this Action falseAction, 
-      Action trueAction, 
-      params Boolean[] values 
+        this Action falseAction, 
+        Action trueAction, 
+        params Boolean[] values 
     )
 
-Parameters
+**Parameters**
+
+| *falseAction*
+|     Type: `System.Action <http://msdn.microsoft.com/en-us/library/system.action/>`_
+|     The action to execute if any of the given values is false.
+
+| *trueAction*
+|     Type: `System.Action <http://msdn.microsoft.com/en-us/library/system.action/>`_
+|     The action to execute if all values are true.
+
+| *values*
+|     Type: `System.Object[] <http://msdn.microsoft.com/en-us/library/system.object/>`_
+|     The Boolean values to check.
