@@ -1,6 +1,7 @@
 ﻿#region Using
 
 using System;
+using System.Threading;
 using NUnit.Framework;
 
 #endregion
@@ -10,6 +11,7 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class RandomValueExTest
     {
+
         [Test]
         public void GetRandomStringTestCase()
         {
@@ -74,15 +76,51 @@ namespace PortableExtensions.Testing
         {
             RandomValueEx.GetRandomBoolean();
         }
-
+        
         [Test]
         public void GetRandomDateTimeTestCase()
         {
-            var actual = RandomValueEx.GetRandomDateTime( DateTime.Now, 10 );
-            var added = actual.Day == DateTime.Now.Add( 10.ToDays() ).Day;
-            var subtracted = actual.Day == DateTime.Now.Subtract( 10.ToDays() ).Day;
+            var min = DateTime.Now.Subtract(1.ToDays());
 
-            Assert.IsTrue( added || subtracted );
+            for (var i = 0; i < 10000; i++)
+            {
+                var max = DateTime.Now.AddDays(i);
+
+                var actual = RandomValueEx.GetRandomDateTime(min, max);
+                Assert.IsTrue(actual >= min && actual <= max);
+            }
+        }
+
+        [Test]
+        public void GetRandomDateTimeTestCase2()
+        {
+            for (var i = 0; i < 1000; i++)
+            {
+                var actual = RandomValueEx.GetRandomDateTime();
+                Assert.IsTrue(actual >= new DateTime(1753, 01, 01) && actual <= new DateTime(9999, 12, 31));
+            }
+        }
+
+        [Test]
+        public void GetRandomDateTimeTestCase3()
+        {
+            var min = DateTime.Now.Subtract(1.ToDays());
+            for (var i = 0; i < 10000; i++)
+            {
+                var actual = RandomValueEx.GetRandomDateTime(min:min);
+                Assert.IsTrue(actual >= min && actual <= new DateTime(9999, 12, 31));
+            }
+        }
+
+        [Test]
+        public void GetRandomDateTimeTestCase4()
+        {
+            var max = DateTime.Now.AddDays(100);
+            for (var i = 0; i < 10000; i++)
+            {
+                var actual = RandomValueEx.GetRandomDateTime(max: max);
+                Assert.IsTrue(actual >= new DateTime(1753, 01, 01) && actual <= max);
+            }
         }
 
         [Test]
