@@ -37,9 +37,9 @@ namespace PortableExtensions
         /// </summary>
         /// <exception cref="ArgumentNullException">False action can not be null, if any of the values is false.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
-        /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
+        /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
         public static void ExecuteIfAnyFalse<T>( this Action<T> falseAction,
                                                  T parameter,
