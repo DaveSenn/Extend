@@ -52,6 +52,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void GetAfterTestCase2()
+        {
+            var actual = "test123456789".GetAfter("a", 0, 10);
+            Assert.AreEqual(String.Empty, actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetAfterArgumentOutOfRangeTestCase1()
         {
@@ -63,6 +70,20 @@ namespace PortableExtensions.Testing
         public void GetAfterArgumentOutOfRangeTestCase2()
         {
             "test test1".GetAfter( "test", 20, 2 );
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetAfterArgumentOutOfRangeTestCase3()
+        {
+            "test test1".GetAfter("test", -1, 2);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetAfterArgumentOutOfRangeTestCase4()
+        {
+            "test test1".GetAfter("test", 20, -2);
         }
 
         [Test]
@@ -87,6 +108,13 @@ namespace PortableExtensions.Testing
 
             actual = "test test1".GetAfter( "t", 5 );
             Assert.AreEqual( "est1", actual );
+        }
+
+        [Test]
+        public void GetAfterOverloadTestCase2()
+        {
+            var actual = "test test1".GetAfter('a');
+            Assert.AreEqual(String.Empty, actual);
         }
 
         [Test]

@@ -85,8 +85,8 @@ namespace PortableExtensions
         ///     Is included in the returned string only if it has more than one element.
         /// </param>
         /// <param name="values">An array that contains the elements to concatenate.</param>
-        /// <param name="startIndex">The first element in  to use.</param>
-        /// <param name="count">The number of elements of  to use.</param>
+        /// <param name="startIndex">The first element in to use.</param>
+        /// <param name="count">The number of elements of to use.</param>
         /// <returns>
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.

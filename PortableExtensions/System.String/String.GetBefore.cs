@@ -52,7 +52,7 @@ namespace PortableExtensions
             str.ThrowIfNull( () => str );
             value.ThrowIfNull( () => value );
 
-            if ( startIndex < 0 || startIndex + length > str.Length )
+            if (startIndex < 0 || length < 0 || startIndex + length > str.Length)
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
@@ -99,7 +99,7 @@ namespace PortableExtensions
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
 
-            if ( startIndex < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );

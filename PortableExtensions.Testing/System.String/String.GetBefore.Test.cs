@@ -52,6 +52,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void GetBeforeTestCase2()
+        {
+            var actual = "test test1".GetBefore("a", 0, 10);
+            Assert.AreEqual(String.Empty, actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBeforeArgumentOutOfRangeTestCase1()
         {
@@ -63,6 +70,20 @@ namespace PortableExtensions.Testing
         public void GetBeforeArgumentOutOfRangeTestCase2()
         {
             "test test test".GetBefore( "test", 2, 20 );
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetBeforeArgumentOutOfRangeTestCase3()
+        {
+            "test test test".GetBefore("test", -2, 20);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetBeforeArgumentOutOfRangeTestCase4()
+        {
+            "test test test".GetBefore("test", 2, -20);
         }
 
         [Test]
@@ -114,6 +135,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void GetBeforeCharTestCase2()
+        {
+            var actual = "test test1".GetBefore('a');
+            Assert.AreEqual(String.Empty, actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
         public void GetBeforeCharArgumentOutOfRangeTestCase1()
         {
@@ -125,6 +153,20 @@ namespace PortableExtensions.Testing
         public void GetBeforeCharArgumentOutOfRangeTestCase2()
         {
             "test test test".GetBefore( 't', 2, 20 );
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetBeforeCharArgumentOutOfRangeTestCase3()
+        {
+            "test test test".GetBefore('t', -2, 20);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void GetBeforeCharArgumentOutOfRangeTestCase4()
+        {
+            "test test test".GetBefore('t', 2, -20);
         }
 
         [Test]

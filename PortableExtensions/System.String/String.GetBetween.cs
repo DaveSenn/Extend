@@ -101,7 +101,7 @@ namespace PortableExtensions
             before.ThrowIfNull( () => before );
             after.ThrowIfNull( () => after );
 
-            if ( startIndex < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
