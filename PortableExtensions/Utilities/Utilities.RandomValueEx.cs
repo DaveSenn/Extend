@@ -129,11 +129,11 @@ namespace PortableExtensions
             max = max ?? new DateTime(9999, 12, 31);
 
             var range = max.Value - min.Value;
-            var randomUpperBound = (Int32) range.TotalSeconds;
+            var randomUpperBound = (Int32)range.TotalSeconds;
             if (randomUpperBound <= 0)
                 randomUpperBound = Rnd.Next(1, Int32.MaxValue);
 
-            var randTimeSpan = TimeSpan.FromSeconds((Int64) (range.TotalSeconds - Rnd.Next(0, randomUpperBound)));
+            var randTimeSpan = TimeSpan.FromSeconds((Int64)(range.TotalSeconds - Rnd.Next(0, randomUpperBound)));
 
             return min.Value.Add(randTimeSpan);
         }

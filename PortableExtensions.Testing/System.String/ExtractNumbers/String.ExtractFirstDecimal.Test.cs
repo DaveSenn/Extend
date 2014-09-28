@@ -32,6 +32,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void ExtractFirstDecimalTestCase1()
+        {
+            var sValue = "asdf-100.1234asdf";
+            var actual = sValue.ExtractFirstDecimal();
+
+            Assert.AreEqual(-100.1234m, actual);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractFirstDecimalTestCase1ArgumentOutOfRangeException()
+        {
+            var sValue = RandomValueEx.GetRandomString();
+            sValue.ExtractFirstDecimal(sValue.Length);
+        }
+
+        [Test]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ExtractFirstDecimalTestCase2ArgumentOutOfRangeException()
+        {
+            var sValue = RandomValueEx.GetRandomString();
+            sValue.ExtractFirstDecimal(-1);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstDecimalTestCaseNullCheck()
         {
