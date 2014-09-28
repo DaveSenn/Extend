@@ -18,6 +18,20 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void ReverseTestCase1()
+        {
+            var actual = "a".Reverse();
+            Assert.AreEqual("a", actual);
+        }
+
+        [Test]
+        public void ReverseTestCase2()
+        {
+            var actual = "".Reverse();
+            Assert.AreEqual("", actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ReverseTestCaseNullCheck()
         {
