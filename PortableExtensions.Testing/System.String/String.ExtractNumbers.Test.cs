@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractNumbersTestCaseNullCheck()
         {
-            var actual = StringEx.ExtractNumbers( null );
+            StringEx.ExtractNumbers( null );
         }
     }
 }

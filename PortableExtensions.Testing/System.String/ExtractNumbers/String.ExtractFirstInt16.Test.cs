@@ -32,6 +32,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void ExtractFirstInt16TestCase1()
+        {
+            var sValue = "asdf-100asdf";
+            var actual = sValue.ExtractFirstInt16();
+
+            Assert.AreEqual(-100, actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void ExtractFirstInt16TestCaseNullCheck()
         {

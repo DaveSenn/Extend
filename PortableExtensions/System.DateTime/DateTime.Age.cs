@@ -23,15 +23,15 @@ namespace PortableExtensions
         public static Int32 Age(this DateTime dateTime, DateTime? now = null)
         {
             var currentDate = now ?? DateTime.Now;
-            
+
             if (dateTime.Year == currentDate.Year)
                 return 0;
-            
+
             var age = currentDate.Year - dateTime.Year;
 
             if (dateTime > currentDate && (currentDate.Month > dateTime.Month || currentDate.Day > dateTime.Day))
-                age ++;
-            else if (  (currentDate.Month < dateTime.Month || (currentDate.Month == dateTime.Month && currentDate.Day < dateTime.Day)))
+                age++;
+            else if ((currentDate.Month < dateTime.Month || (currentDate.Month == dateTime.Month && currentDate.Day < dateTime.Day)))
                 age--;
 
             return age;
