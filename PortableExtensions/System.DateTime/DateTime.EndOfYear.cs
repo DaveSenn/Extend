@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <returns>Returns the last moment ("23:59:59:999") of the year represented by the given date time.</returns>
         public static DateTime EndOfYear( this DateTime year )
         {
-            return new DateTime( year.Year, 1, 1 ).AddYears( 1 ).Subtract( 1.ToMilliseconds() );
+            return new DateTime(year.Year, 12, 31, 23, 59, 59, 999);
         }
     }
 }
