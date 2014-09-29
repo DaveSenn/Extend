@@ -47,6 +47,41 @@ namespace PortableExtensions
 
             Assert.AreEqual( expected, actual );
         }
+        
+        [Test]
+        public void SaveToDoubleTestCase4()
+        {
+            const Double expected = 100.1d;
+            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToDouble(Double.MinValue);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SaveToDoubleTestCase5()
+        {
+            var actual = "InvalidValue".SaveToDouble();
+
+            Assert.AreEqual(default(Double), actual);
+        }
+
+        [Test]
+        public void SaveToDoubleTestCase6()
+        {
+            const Double expected = 12345234.1321d;
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                                 .SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture, Double.MaxValue);
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SaveToDoubleTestCase7()
+        {
+            var actual = "InvalidValue".SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
+
+            Assert.AreEqual(default(Double), actual);
+        }
 
         [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]

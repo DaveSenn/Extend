@@ -49,6 +49,41 @@ namespace PortableExtensions
         }
 
         [Test]
+        public void SaveToInt64TestCase4()
+        {
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToInt64(RandomValueEx.GetRandomInt64());
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SaveToInt64TestCase5()
+        {
+            var actual = "InvalidValue".SaveToInt64();
+
+            Assert.AreEqual(default(Int64), actual);
+        }
+
+        [Test]
+        public void SaveToInt64TestCase6()
+        {
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = expected.ToString(CultureInfo.InvariantCulture)
+                                 .SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt64());
+
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
+        public void SaveToInt64TestCase7()
+        {
+            var actual = "InvalidValue".SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture);
+
+            Assert.AreEqual(default(Int64), actual);
+        }
+
+        [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void SaveToInt64TestCaseNullCheck()
         {
