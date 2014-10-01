@@ -26,19 +26,19 @@ namespace PortableExtensions
         /// <param name="property">The parameter to check.</param>
         /// <param name="propertyName">An expression which has the property as body.</param>
         /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        public static void ThrowIfNull<TObject, TProperty>( this TObject obj,
-                                                            TProperty property,
-                                                            Expression<Func<TObject, TProperty>> propertyName,
-                                                            String errorMessage = null )
+        [Obsolete("Use ThrowIfNull<TObject>(this TObject parameter, Expression<Func<TObject>> propertyName, String errorMessage = null)")]
+        public static void ThrowIfNull<TObject, TProperty>(this TObject obj,
+            TProperty property,
+            Expression<Func<TObject, TProperty>> propertyName,
+            String errorMessage = null)
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if ( property != null )
+            if (property != null)
                 return;
 
-            var parameterName = GetName( obj, propertyName );
-
-            throw new ArgumentNullException( parameterName,
-                                             errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+            var parameterName = obj.GetName(propertyName);
+            throw new ArgumentNullException(parameterName,
+                errorMessage ?? String.Format("{0} can not be null.", parameterName));
         }
 
         /// <summary>
@@ -53,20 +53,17 @@ namespace PortableExtensions
         /// <param name="parameter">The parameter to check.</param>
         /// <param name="propertyName">An expression which has the parameter as body.</param>
         /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        public static void ThrowIfNull<TObject>( this TObject parameter,
-                                                 Expression<Func<TObject>> propertyName,
-                                                 String errorMessage = null )
+        public static void ThrowIfNull<TObject>(this TObject parameter,
+            Expression<Func<TObject>> propertyName,
+            String errorMessage = null)
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if ( parameter != null )
+            if (parameter != null)
                 return;
 
-            var parameterName =
-                ( propertyName.Body as MemberExpression
-                  ?? ( (UnaryExpression) propertyName.Body ).Operand as MemberExpression ).Member.Name;
-
-            throw new ArgumentNullException( parameterName,
-                                             errorMessage ?? String.Format( "{0} can not be null.", parameterName ) );
+            var parameterName = parameter.GetName(propertyName);
+            throw new ArgumentNullException(parameterName,
+                errorMessage ?? String.Format("{0} can not be null.", parameterName));
         }
     }
 }
