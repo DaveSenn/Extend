@@ -11,17 +11,14 @@ namespace PortableExtensions
     /// </summary>
     public static partial class ArrayEx
     {
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the entire one-
-        ///     dimensional .
+        ///    Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array"/>.</param>
         /// <returns>
-        ///     The index of the first occurrence of  within the entire , if found; otherwise, the lower bound of the array
-        ///     minus 1.
+        ///     The index of the first occurrence of value in array, if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
         public static Int32 IndexOf( this Array array, Object value )
         {
@@ -30,18 +27,15 @@ namespace PortableExtensions
             return Array.IndexOf( array, value );
         }
 
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the range of elements
-        ///     in the one-dimensional  that extends from the specified index to the last element.
+        ///     Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its first occurrence. The range extends from a specified index to the end of the array.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array"/>.</param>
         /// <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
         /// <returns>
-        ///     The index of the first occurrence of  within the range of elements in  that extends from  to the last element,
-        ///     if found; otherwise, the lower bound of the array minus 1.
+        ///     The index of the first occurrence of value, if it’s found, within the range of elements in array that extends from startIndex to the last element; otherwise, the lower bound of the array minus 1.
         /// </returns>
         public static Int32 IndexOf( this Array array, Object value, Int32 startIndex )
         {
@@ -50,19 +44,16 @@ namespace PortableExtensions
             return Array.IndexOf( array, value, startIndex );
         }
 
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the range of elements
-        ///     in the one-dimensional  that starts at the specified index and contains the specified number of elements.
+        ///     Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of ifs first occurrence. The range extends from a specified index for a specified number of elements.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array"/>.</param>
         /// <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
-        /// <param name="count">The number of elements in the section to search.</param>
+        /// <param name="count">The number of elements to search.</param>
         /// <returns>
-        ///     The index of the first occurrence of  within the range of elements in  that starts at  and contains the
-        ///     number of elements specified in , if found; otherwise, the lower bound of the array minus 1.
+        ///     The index of the first occurrence of value, if it’s found, in the array from index startIndex to startIndex + count - 1; otherwise, the lower bound of the array minus 1.
         /// </returns>
         public static Int32 IndexOf( this Array array, Object value, Int32 startIndex, Int32 count )
         {

@@ -26,13 +26,11 @@ namespace PortableExtensions
         ///     TValue type.
         /// </returns>
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(
-            this IEnumerable<IGrouping<TKey, TValue>> groupings )
+            this IEnumerable<IGrouping<TKey, TValue>> groupings)
         {
-            groupings.ThrowIfNull( () => groupings );
+            groupings.ThrowIfNull(() => groupings);
 
-            return groupings.ToDictionary( x => x.Key, x => x.ToList() );
+            return groupings.ToDictionary(x => x.Key, x => x.ToList());
         }
-
-        //replace: add method which returns only the value and not the key and the value
     }
 }

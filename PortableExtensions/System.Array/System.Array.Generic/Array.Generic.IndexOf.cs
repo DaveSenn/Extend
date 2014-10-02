@@ -11,10 +11,8 @@ namespace PortableExtensions
     /// </summary>
     public static partial class ArrayEx
     {
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the entire one-
-        ///     dimensional .
+        ///     Searches for the specified object and returns the index of its first occurrence in a one-dimensional array.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
@@ -24,17 +22,16 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value )
+        public static Int32 IndexOf<T>(this T[] array, T value)
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull(() => array);
 
-            return Array.IndexOf( array, value );
+            return Array.IndexOf(array, value);
         }
 
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the range of elements
-        ///     in the one-dimensional  that extends from the specified index to the last element.
+        ///     Searches for the specified object in a range of elements of a one dimensional array, and returns the index of its
+        ///     first occurrence. The range extends from a specified index to the end of the array.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
@@ -45,17 +42,16 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the range of elements in  that extends from  to the last element,
         ///     if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex )
+        public static Int32 IndexOf<T>(this T[] array, T value, Int32 startIndex)
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull(() => array);
 
-            return Array.IndexOf( array, value, startIndex );
+            return Array.IndexOf(array, value, startIndex);
         }
 
-        //replace
         /// <summary>
-        ///     Searches for the specified object and returns the index of the first occurrence within the range of elements
-        ///     in the one-dimensional  that starts at the specified index and contains the specified number of elements.
+        ///     Searches for the specified object in a range of elements of a one-dimensional array, and returns the index of its
+        ///     first occurrence. The range extends from a specified index for a specified number of elements.
         /// </summary>
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
@@ -67,11 +63,11 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the range of elements in  that starts at  and contains the
         ///     number of elements specified in , if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex, Int32 count )
+        public static Int32 IndexOf<T>(this T[] array, T value, Int32 startIndex, Int32 count)
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull(() => array);
 
-            return Array.IndexOf( array, value, startIndex, count );
+            return Array.IndexOf(array, value, startIndex, count);
         }
     }
 }
