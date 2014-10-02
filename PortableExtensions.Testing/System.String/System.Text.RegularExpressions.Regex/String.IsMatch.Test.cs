@@ -81,16 +81,6 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( actual );
         }
 
-        //[Test]
-        //[ExpectedException(typeof(RegexMatchTimeoutException))]
-        //public void IsMatchTestCase2TimeoutCheck()
-        //{
-        //    var pattern = @"^[a-zA-Z0-9]*$";
-        //    var validEmail = RandomValueEx.GetRandomStrings( 10000 ).StringJoin("").Replace( "-","" );
-
-        //    StringEx.IsMatch(validEmail, pattern, RegexOptions.Singleline, 2.ToMilliseconds());
-        //}
-
         [Test]
         [ExpectedException( typeof ( ArgumentNullException ) )]
         public void IsMatchTestCase2NullCheck()

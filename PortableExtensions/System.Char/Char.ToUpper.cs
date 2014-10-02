@@ -11,19 +11,17 @@ namespace PortableExtensions
     /// </summary>
     public static partial class CharEx
     {
-        //replace
         /// <summary>
-        ///     Converts the value of a specified Unicode character to its uppercase equivalent using specified culture-
-        ///     specific formatting information.
+        ///     Converts the value of a Unicode character to its uppercase equivalent.
         /// </summary>
         /// <param name="c">The Unicode character to convert.</param>
         /// <returns>
-        ///     The uppercase equivalent of , modified according to , or the unchanged value of  if  is already uppercase,
-        ///     has no uppercase equivalent, or is not alphabetic.
+        ///     The uppercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" /> if
+        ///     <paramref name="c" /> is already uppercase, has no uppercase equivalent, or is not alphabetic.
         /// </returns>
-        public static Char ToUpper( this Char c )
+        public static Char ToUpper(this Char c)
         {
-            return Char.ToUpper( c );
+            return Char.ToUpper(c);
         }
     }
 }
