@@ -1,5 +1,5 @@
-ExecuteIfAnyFalse
-=================
+ExecuteIfAnyFalse 1
+===================
 
 Executes the specified action if one of the given Boolean values is false, otherwise it executes the specified true action, if one is specified.
 
