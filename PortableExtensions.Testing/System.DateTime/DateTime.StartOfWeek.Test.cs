@@ -39,8 +39,6 @@ namespace PortableExtensions.Testing
         [Test]
         public void StartOfWeekTestCase2()
         {
-            var day = DayOfWeek.Sunday - DayOfWeek.Saturday;
-
             var week = new DateTime(2014, 09, 21);
             var expected = new DateTime(2014, 09, 20);
             var actual = week.StartOfWeek(DayOfWeek.Saturday);
