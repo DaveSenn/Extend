@@ -13,55 +13,53 @@ namespace PortableExtensions
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Throws a <see cref="ArgumentNullException" /> exception if the given property is null.
+        ///     Throws a <see cref="ArgumentNullException" /> exception if <paramref name="member"/> is null.
         /// </summary>
         /// <remarks>
-        ///     If the
-        ///     <paramref name="errorMessage" />is null, this method will use the following default message: "{ParameterName} can
-        ///     not be null." (Use this overload for checking if a property of an object is null.)
+        ///     If <paramref name="errorMessage" /> is null, this method will use the following default message: 
+        ///     "{paramter name} can not be null." 
         /// </remarks>
-        /// <typeparam name="TObject">The type of the object which owns to property.</typeparam>
-        /// <typeparam name="TProperty">The type of the property.</typeparam>
-        /// <param name="obj">The object which contains the parameter or any object.</param>
-        /// <param name="property">The parameter to check.</param>
-        /// <param name="propertyName">An expression which has the property as body.</param>
-        /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        [Obsolete("Use ThrowIfNull<TObject>(this TObject parameter, Expression<Func<TObject>> propertyName, String errorMessage = null)")]
-        public static void ThrowIfNull<TObject, TProperty>(this TObject obj,
-            TProperty property,
-            Expression<Func<TObject, TProperty>> propertyName,
+        /// <typeparam name="TObject">The type <paramref name="obj"/>.</typeparam>
+        /// <typeparam name="TMember">The type of the member.</typeparam>
+        /// <param name="obj">The object owing the member to check.</param>
+        /// <param name="member">The member to check.</param>
+        /// <param name="expression">An expression pointing to <paramref name="member"/>.</param>
+        /// <param name="errorMessage">The text used as exception message if <paramref name="member"/> is null.</param>
+        [Obsolete("Use ThrowIfNull<TObject>(this TObject obj, Expression<Func<TObject>> expression, String errorMessage = null)")]
+        public static void ThrowIfNull<TObject, TMember>(this TObject obj,
+            TMember member,
+            Expression<Func<TObject, TMember>> expression,
             String errorMessage = null)
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if (property != null)
+            if (member != null)
                 return;
 
-            var parameterName = obj.GetName(propertyName);
-            throw new ArgumentNullException(parameterName,
-                errorMessage ?? String.Format("{0} can not be null.", parameterName));
+            var memberName = obj.GetName(expression);
+            throw new ArgumentNullException(memberName,
+                errorMessage ?? String.Format("{0} can not be null.", memberName));
         }
 
         /// <summary>
-        ///     Throws a <see cref="ArgumentNullException" /> exception if the given parameter is null.
+        ///     Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj"/> is null.
         /// </summary>
         /// <remarks>
-        ///     If the
-        ///     <paramref name="errorMessage" />is null, this method will use the following default message: "{ParameterName} can
-        ///     not be null." (Use this methods for checking if a parameter is null.)
+        ///     If <paramref name="errorMessage" /> is null, this method will use the following default message: 
+        ///     "{object name} can not be null." 
         /// </remarks>
-        /// <typeparam name="TObject">The type of the parameter.</typeparam>
-        /// <param name="parameter">The parameter to check.</param>
-        /// <param name="propertyName">An expression which has the parameter as body.</param>
-        /// <param name="errorMessage">The text used as exception message if the parameter is null.</param>
-        public static void ThrowIfNull<TObject>(this TObject parameter,
-            Expression<Func<TObject>> propertyName,
+        /// <typeparam name="TObject">The type <paramref name="obj"/>.</typeparam>
+        /// <param name="obj">The object to check.</param>
+        /// <param name="expression">An expression pointing to <paramref name="obj"/>.</param>
+        /// <param name="errorMessage">The text used as exception message if <paramref name="obj"/> is <value>null</value>.</param>
+        public static void ThrowIfNull<TObject>(this TObject obj,
+            Expression<Func<TObject>> expression,
             String errorMessage = null)
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
-            if (parameter != null)
+            if (obj != null)
                 return;
 
-            var parameterName = parameter.GetName(propertyName);
+            var parameterName = obj.GetName(expression);
             throw new ArgumentNullException(parameterName,
                 errorMessage ?? String.Format("{0} can not be null.", parameterName));
         }
