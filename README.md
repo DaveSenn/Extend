@@ -78,3 +78,8 @@ var weekend = dateTime.IsWeekendDay();
 
 ### License
 Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt).
+
+### Codebetter CI
+<a href="http://www.jetbrains.com/teamcity">
+    <img src="http://www.jetbrains.com/img/banners/Codebetter.png">
+</a>
