@@ -123,5 +123,24 @@ namespace PortableExtensions.Testing
             String value = null;
             value.ThrowIfNull( () => value, "" );
         }
+
+
+        [Test]
+        public void ThrowIfNullTestCase4()
+        {
+            var testClass = new TestClass
+            {
+                Name = RandomValueEx.GetRandomString()
+            };
+
+            testClass.ThrowIfNull<TestClass, String>(testClass, @class => @class.Name);
+        }
+
+        private class TestClass
+        {
+            public String Name { get; set; }
+            public Int32 Age { get; set; }
+        }
     }
+
 }
