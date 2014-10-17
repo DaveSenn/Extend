@@ -88,6 +88,8 @@
     <Compile Include="System.DateTime\DateTime.NextMonthStart.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
+    <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.GetNameChain.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Swap.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.Test.cs" />
