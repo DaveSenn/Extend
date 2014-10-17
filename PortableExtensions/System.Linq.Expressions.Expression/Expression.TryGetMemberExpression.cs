@@ -69,7 +69,6 @@ namespace PortableExtensions
                     default:
                         throw new NotSupportedException( "Expressions of type {0} are not supported".F( expression.NodeType ) );
                 }
-                break;
             }
         }
     }
