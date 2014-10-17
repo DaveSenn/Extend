@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <param name="value">The value to check.</param>
         /// <returns>Returns true if the value is the default value of it's type.</returns>
-        public static Boolean IsDefault<T>( this T value )
+        public static Boolean IsDefault<T> ( this T value )
         {
             return Equals( value, default( T ) );
         }

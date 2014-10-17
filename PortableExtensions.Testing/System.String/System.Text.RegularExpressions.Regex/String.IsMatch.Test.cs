@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Text.RegularExpressions;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsMatchTestCase()
+        public void IsMatchTestCase ()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -26,21 +26,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCaseNullCheck()
-        {
-            StringEx.IsMatch( null, "" );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCaseNullCheck1()
-        {
-            "".IsMatch( null );
-        }
-
-        [Test]
-        public void IsMatchTestCase1()
+        public void IsMatchTestCase1 ()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -54,21 +40,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCase1NullCheck ()
         {
             StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCase1NullCheck1 ()
         {
             "".IsMatch( null, RegexOptions.Multiline );
         }
 
         [Test]
-        public void IsMatchTestCase2()
+        public void IsMatchTestCase2 ()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -82,17 +68,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCase2NullCheck ()
         {
             StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsMatchTestCase2NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCase2NullCheck1 ()
         {
             "".IsMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCaseNullCheck ()
+        {
+            StringEx.IsMatch( null, "" );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsMatchTestCaseNullCheck1 ()
+        {
+            "".IsMatch( null );
         }
     }
 }

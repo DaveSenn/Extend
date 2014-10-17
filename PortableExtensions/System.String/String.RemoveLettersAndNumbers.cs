@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The input string.</param>
         /// <returns>The given string without any letters or numbers.</returns>
-        public static String RemoveLettersAndNumbers( this String str )
+        public static String RemoveLettersAndNumbers ( this String str )
         {
             str.ThrowIfNull( () => str );
 

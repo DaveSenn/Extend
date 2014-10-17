@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.IO;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The file name can not be null.</exception>
         /// <param name="fileName">The name of the file.</param>
         /// <returns>The file extension.</returns>
-        public static String GetFileExtension( this String fileName )
+        public static String GetFileExtension ( this String fileName )
         {
             fileName.ThrowIfNull( () => fileName );
 

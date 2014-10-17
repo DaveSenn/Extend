@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="action">The action to execute if the given value is false.</param>
         /// <param name="alternativeAction">The action to execute if the given value is true.></param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfFalse( this Boolean value, Action action, Action alternativeAction = null )
+        public static Boolean IfFalse ( this Boolean value, Action action, Action alternativeAction = null )
         {
             if ( !value )
             {
@@ -44,10 +44,10 @@ namespace PortableExtensions
         /// <param name="action">The action to execute if the given value is false.</param>
         /// <param name="alternativeAction">The action to execute if the given value is true.></param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfFalse<T>( this Boolean value,
-                                          T parameter,
-                                          Action<T> action,
-                                          Action<T> alternativeAction = null )
+        public static Boolean IfFalse<T> ( this Boolean value,
+                                           T parameter,
+                                           Action<T> action,
+                                           Action<T> alternativeAction = null )
         {
             if ( !value )
             {
@@ -73,11 +73,11 @@ namespace PortableExtensions
         /// <param name="action">The action to execute if the given value is false.</param>
         /// <param name="alternativeAction">The action to execute if the given value is true.></param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfFalse<T1, T2>( this Boolean value,
-                                               T1 parameter1,
-                                               T2 parameter2,
-                                               Action<T1, T2> action,
-                                               Action<T1, T2> alternativeAction = null )
+        public static Boolean IfFalse<T1, T2> ( this Boolean value,
+                                                T1 parameter1,
+                                                T2 parameter2,
+                                                Action<T1, T2> action,
+                                                Action<T1, T2> alternativeAction = null )
         {
             if ( !value )
             {
@@ -105,12 +105,12 @@ namespace PortableExtensions
         /// <param name="action">The action to execute if the given value is false.</param>
         /// <param name="alternativeAction">The action to execute if the given value is true.></param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfFalse<T1, T2, T3>( this Boolean value,
-                                                   T1 parameter1,
-                                                   T2 parameter2,
-                                                   T3 parameter3,
-                                                   Action<T1, T2, T3> action,
-                                                   Action<T1, T2, T3> alternativeAction = null )
+        public static Boolean IfFalse<T1, T2, T3> ( this Boolean value,
+                                                    T1 parameter1,
+                                                    T2 parameter2,
+                                                    T3 parameter3,
+                                                    Action<T1, T2, T3> action,
+                                                    Action<T1, T2, T3> alternativeAction = null )
         {
             if ( !value )
             {
@@ -140,13 +140,13 @@ namespace PortableExtensions
         /// <param name="action">The action to execute if the given value is false.</param>
         /// <param name="alternativeAction">The action to execute if the given value is true.></param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfFalse<T1, T2, T3, T4>( this Boolean value,
-                                                       T1 parameter1,
-                                                       T2 parameter2,
-                                                       T3 parameter3,
-                                                       T4 parameter4,
-                                                       Action<T1, T2, T3, T4> action,
-                                                       Action<T1, T2, T3, T4> alternativeAction = null )
+        public static Boolean IfFalse<T1, T2, T3, T4> ( this Boolean value,
+                                                        T1 parameter1,
+                                                        T2 parameter2,
+                                                        T3 parameter3,
+                                                        T4 parameter4,
+                                                        Action<T1, T2, T3, T4> action,
+                                                        Action<T1, T2, T3, T4> alternativeAction = null )
         {
             if ( !value )
             {

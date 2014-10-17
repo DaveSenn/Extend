@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,52 +12,52 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToDateTimeTestCase()
+        public void ToDateTimeTestCase ()
         {
             var value = DateTime.Now;
-            var actual = value.ToString(CultureInfo.InvariantCulture).ToDateTime();
+            var actual = value.ToString( CultureInfo.InvariantCulture ).ToDateTime();
 
-            Assert.AreEqual(value.Year, actual.Year);
-            Assert.AreEqual(value.Month, actual.Month);
-            Assert.AreEqual(value.Day, actual.Day);
-            Assert.AreEqual(value.Hour, actual.Hour);
-            Assert.AreEqual(value.Minute, actual.Minute);
-            Assert.AreEqual(value.Second, actual.Second);
+            Assert.AreEqual( value.Year, actual.Year );
+            Assert.AreEqual( value.Month, actual.Month );
+            Assert.AreEqual( value.Day, actual.Day );
+            Assert.AreEqual( value.Hour, actual.Hour );
+            Assert.AreEqual( value.Minute, actual.Minute );
+            Assert.AreEqual( value.Second, actual.Second );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ToDateTimeTestCaseNullCheck()
-        {
-            StringEx.ToDateTime(null);
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1()
+        public void ToDateTimeTestCase1 ()
         {
             var value = DateTime.Now;
-            var actual = value.ToString(CultureInfo.CurrentCulture).ToDateTime(CultureInfo.CurrentCulture);
+            var actual = value.ToString( CultureInfo.CurrentCulture ).ToDateTime( CultureInfo.CurrentCulture );
 
-            Assert.AreEqual(value.Year, actual.Year);
-            Assert.AreEqual(value.Month, actual.Month);
-            Assert.AreEqual(value.Day, actual.Day);
-            Assert.AreEqual(value.Hour, actual.Hour);
-            Assert.AreEqual(value.Minute, actual.Minute);
-            Assert.AreEqual(value.Second, actual.Second);
+            Assert.AreEqual( value.Year, actual.Year );
+            Assert.AreEqual( value.Month, actual.Month );
+            Assert.AreEqual( value.Day, actual.Day );
+            Assert.AreEqual( value.Hour, actual.Hour );
+            Assert.AreEqual( value.Minute, actual.Minute );
+            Assert.AreEqual( value.Second, actual.Second );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ToDateTimeTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck ()
         {
-            StringEx.ToDateTime(null, CultureInfo.InvariantCulture);
+            StringEx.ToDateTime( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void ToDateTimeTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck1 ()
         {
-            "".ToDateTime(null);
+            "".ToDateTime( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCaseNullCheck ()
+        {
+            StringEx.ToDateTime( null );
         }
     }
 }

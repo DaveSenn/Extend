@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void AprilTestCase()
+        public void AprilTestCase ()
         {
             var expected = new DateTime( 2000, 4, 10 );
             var actual = Int16Ex.April( 10, 2000 );

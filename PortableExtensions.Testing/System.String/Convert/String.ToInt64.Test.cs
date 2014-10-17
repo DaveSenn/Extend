@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToInt64TestCase()
+        public void ToInt64TestCase ()
         {
             var value = (Int64) RandomValueEx.GetRandomInt32();
             var actual = value.ToString().ToInt64();
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt64TestCaseNullCheck()
-        {
-            StringEx.ToInt64( null );
-        }
-
-        [Test]
-        public void ToInt64TestCase1()
+        public void ToInt64TestCase1 ()
         {
             var value = (Int64) RandomValueEx.GetRandomInt32();
             var actual = value.ToString( CultureInfo.InvariantCulture ).ToInt64( CultureInfo.InvariantCulture );
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt64TestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt64TestCase1NullCheck ()
         {
             StringEx.ToInt64( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt64TestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt64TestCase1NullCheck1 ()
         {
             "".ToInt64( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt64TestCaseNullCheck ()
+        {
+            StringEx.ToInt64( null );
         }
     }
 }

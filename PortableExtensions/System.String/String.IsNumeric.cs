@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to check.</param>
         /// <returns>Returns true if the string is numeric only, otherwise false.</returns>
-        public static Boolean IsNumeric( this String str )
+        public static Boolean IsNumeric ( this String str )
         {
             str.ThrowIfNull( () => str );
 

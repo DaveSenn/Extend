@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllDoubleTestCase()
+        public void ExtractAllDoubleTestCase ()
         {
             var value0 = 100.2d;
             var value1 = 100.212d;
@@ -23,38 +23,38 @@ namespace PortableExtensions.Testing
             var actual = stringValue.ExtractAllDouble( 0 );
 
             Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( value0, actual[0] );
-            Assert.AreEqual( value1, actual[1] );
-            Assert.AreEqual( value2, actual[2] );
-            Assert.AreEqual( value3, actual[3] );
+            Assert.AreEqual( value0, actual [0] );
+            Assert.AreEqual( value1, actual [1] );
+            Assert.AreEqual( value2, actual [2] );
+            Assert.AreEqual( value3, actual [3] );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractAllDoubleTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException ()
+        {
+            var actual = "100.1".ExtractAllDouble( 100 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException1 ()
+        {
+            var actual = "100.1".ExtractAllDouble( -1 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractAllDoubleTestCaseNullCheck ()
         {
             StringEx.ExtractAllDouble( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractAllDoubleTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractAllDoubleTestCaseNullCheck1 ()
         {
             StringEx.ExtractAllDouble( null, 0 );
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException()
-        {
-            var actual = "100.1".ExtractAllDouble(100);
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException1()
-        {
-            var actual = "100.1".ExtractAllDouble(-1);
         }
     }
 }

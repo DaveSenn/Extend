@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void PercentOfTestCase()
+        public void PercentOfTestCase ()
         {
             var number = 1000;
             var expected = 50;
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
-        public void PercentOfTestCaseDivideByZero()
-        {
-            0.PercentOf( 100 );
-        }
-
-        [Test]
-        public void PercentOfTestCase1()
+        public void PercentOfTestCase1 ()
         {
             var number = 1000;
             var expected = 50;
@@ -38,14 +31,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
-        public void PercentOfTestCase1DivideByZero()
+        [ExpectedException ( typeof (DivideByZeroException) )]
+        public void PercentOfTestCase1DivideByZero ()
         {
             0.PercentOf( (Double) 100 );
         }
 
         [Test]
-        public void PercentOfTestCase2()
+        public void PercentOfTestCase2 ()
         {
             var number = 1000;
             var expected = 50;
@@ -55,10 +48,17 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( DivideByZeroException ) )]
-        public void PercentOfTestCase2DivideByZero()
+        [ExpectedException ( typeof (DivideByZeroException) )]
+        public void PercentOfTestCase2DivideByZero ()
         {
             0.PercentOf( (Int64) 100 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (DivideByZeroException) )]
+        public void PercentOfTestCaseDivideByZero ()
+        {
+            0.PercentOf( 100 );
         }
     }
 }

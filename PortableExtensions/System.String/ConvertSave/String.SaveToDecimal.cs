@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal SaveToDecimal( this String value, Decimal? defaultValue = null )
+        public static Decimal SaveToDecimal ( this String value, Decimal? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 
@@ -37,18 +37,18 @@ namespace PortableExtensions
         /// <param name="formatProvider">An object that supplies culture-specific parsing information about value.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal SaveToDecimal( this String value,
-                                             NumberStyles numberStyle,
-                                             IFormatProvider formatProvider,
-                                             Decimal? defaultValue = null )
+        public static Decimal SaveToDecimal ( this String value,
+                                              NumberStyles numberStyle,
+                                              IFormatProvider formatProvider,
+                                              Decimal? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );
 
             Decimal outValue;
             return value.TryParsDecimal( numberStyle, formatProvider, out outValue )
-                       ? outValue
-                       : ( defaultValue ?? outValue );
+                ? outValue
+                : ( defaultValue ?? outValue );
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq.Expressions;
@@ -25,15 +25,15 @@ namespace PortableExtensions
         /// <typeparam name="TMember">The type of the member.</typeparam>
         /// <param name="memberExpression">The member expression.</param>
         /// <returns>Returns the member info from the given expression, or null if the expression is not valid.</returns>
-        public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
+        public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember> (
             this Expression<Func<TDeclairingType, TMember>> memberExpression )
         {
-            memberExpression.ThrowIfNull(() => memberExpression);
+            memberExpression.ThrowIfNull( () => memberExpression );
 
             var memberSelectorExpression = memberExpression.Body.NodeType == ExpressionType.Convert
-                                               ? (memberExpression.Body as UnaryExpression).Operand as
-                                                 MemberExpression
-                                               : memberExpression.Body as MemberExpression;
+                ? ( memberExpression.Body as UnaryExpression ).Operand as
+                    MemberExpression
+                : memberExpression.Body as MemberExpression;
 
             return memberSelectorExpression == null ? null : memberSelectorExpression.Member;
         }

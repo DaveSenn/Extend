@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>Return a date-time representing the specified day in July in the specified year.</returns>
-        public static DateTime July( this Int16 day, Int16 year )
+        public static DateTime July ( this Int16 day, Int16 year )
         {
             return new DateTime( year, 7, day );
         }

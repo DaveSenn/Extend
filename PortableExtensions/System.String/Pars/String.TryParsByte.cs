@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -26,7 +26,7 @@ namespace PortableExtensions
         ///     failed. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsByte( this String value, out Byte outValue )
+        public static Boolean TryParsByte ( this String value, out Byte outValue )
         {
             value.ThrowIfNull( () => value );
 
@@ -58,10 +58,10 @@ namespace PortableExtensions
         ///     or greater than System.Byte.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsByte( this String value,
-                                           NumberStyles numberStyle,
-                                           IFormatProvider formatProvider,
-                                           out Byte outValue )
+        public static Boolean TryParsByte ( this String value,
+                                            NumberStyles numberStyle,
+                                            IFormatProvider formatProvider,
+                                            out Byte outValue )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

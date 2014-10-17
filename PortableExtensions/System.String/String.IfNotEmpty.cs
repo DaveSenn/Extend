@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -14,7 +14,7 @@ namespace PortableExtensions
         /// <param name="value">The input string.</param>
         /// <param name="alternativeValue">The alternative value.</param>
         /// <returns>The input or the alternative value.</returns>
-        public static String IfNotEmpty( this String value, String alternativeValue )
+        public static String IfNotEmpty ( this String value, String alternativeValue )
         {
             return !value.IsEmpty() ? value : alternativeValue;
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Text;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public class StringBuilderExTest
     {
         [Test]
-        public void AppendLineFormatTestCase()
+        public void AppendLineFormatTestCase ()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -33,37 +33,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCaseNullCheck()
-        {
-            StringBuilderEx.AppendLineFormat( null,
-                                              "",
-                                              new Object[]
-                                              {
-                                                  ""
-                                              } );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCaseNullCheck1()
-        {
-            new StringBuilder().AppendLineFormat( null,
-                                                  new Object[]
-                                                  {
-                                                      ""
-                                                  } );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCaseNullCheck2()
-        {
-            new StringBuilder().AppendLineFormat( "", null );
-        }
-
-        [Test]
-        public void AppendLineFormatTestCase1()
+        public void AppendLineFormatTestCase1 ()
         {
             var value0 = RandomValueEx.GetRandomString();
 
@@ -78,21 +48,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase1NullCheck ()
         {
             StringBuilderEx.AppendLineFormat( null, "", "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase1NullCheck1 ()
         {
             new StringBuilder().AppendLineFormat( null, "" );
         }
 
         [Test]
-        public void AppendLineFormatTestCase2()
+        public void AppendLineFormatTestCase2 ()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -108,21 +78,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase2NullCheck ()
         {
             StringBuilderEx.AppendLineFormat( null, "", "", "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase2NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase2NullCheck1 ()
         {
             new StringBuilder().AppendLineFormat( null, "", "" );
         }
 
         [Test]
-        public void AppendLineFormatTestCase3()
+        public void AppendLineFormatTestCase3 ()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -139,17 +109,47 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase3NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase3NullCheck ()
         {
             StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AppendLineFormatTestCase3NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCase3NullCheck1 ()
         {
             new StringBuilder().AppendLineFormat( null, "", "", "" );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCaseNullCheck ()
+        {
+            StringBuilderEx.AppendLineFormat( null,
+                                              "",
+                                              new Object[]
+                                              {
+                                                  ""
+                                              } );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCaseNullCheck1 ()
+        {
+            new StringBuilder().AppendLineFormat( null,
+                                                  new Object[]
+                                                  {
+                                                      ""
+                                                  } );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AppendLineFormatTestCaseNullCheck2 ()
+        {
+            new StringBuilder().AppendLineFormat( "", null );
         }
     }
 }

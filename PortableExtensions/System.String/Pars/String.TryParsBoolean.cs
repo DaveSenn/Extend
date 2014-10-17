@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -24,7 +24,7 @@ namespace PortableExtensions
         ///     The parsed value.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsBoolean( this String value, out Boolean outValue )
+        public static Boolean TryParsBoolean ( this String value, out Boolean outValue )
         {
             value.ThrowIfNull( () => value );
 

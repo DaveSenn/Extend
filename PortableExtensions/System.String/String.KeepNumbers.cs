@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The input string.</param>
         /// <returns>A new string containing the numbers of the input string.</returns>
-        public static String KeepNumbers( this String str )
+        public static String KeepNumbers ( this String str )
         {
             str.ThrowIfNull( () => str );
 

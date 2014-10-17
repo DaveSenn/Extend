@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToInt16TestCase()
+        public void ToInt16TestCase ()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var value = expected.ToString();
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt16TestCaseNullCheck()
-        {
-            ObjectEx.ToInt16( null );
-        }
-
-        [Test]
-        public void ToInt16TestCase1()
+        public void ToInt16TestCase1 ()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var value = expected.ToString();
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt16TestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt16TestCase1NullCheck ()
         {
             ObjectEx.ToInt16( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToInt16TestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt16TestCase1NullCheck1 ()
         {
             ObjectEx.ToInt16( "false", null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToInt16TestCaseNullCheck ()
+        {
+            ObjectEx.ToInt16( null );
         }
     }
 }

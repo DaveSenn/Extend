@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,17 +11,17 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void KeepNumbersTestCase()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void KeepNumbersTEstCaseNullCheck ()
         {
-            var actual = "a1b2c3".KeepNumbers();
-            Assert.AreEqual( "123", actual );
+            StringEx.KeepNumbers( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void KeepNumbersTEstCaseNullCheck()
+        public void KeepNumbersTestCase ()
         {
-            StringEx.KeepNumbers( null );
+            var actual = "a1b2c3".KeepNumbers();
+            Assert.AreEqual( "123", actual );
         }
     }
 }

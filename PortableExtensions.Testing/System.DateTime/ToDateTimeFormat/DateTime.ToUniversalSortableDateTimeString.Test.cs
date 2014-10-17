@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase()
+        public void ToUniversalSortableDateTimeStringTestCase ()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u" );
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase1()
+        public void ToUniversalSortableDateTimeStringTestCase1 ()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u", DateTimeFormatInfo.CurrentInfo );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase2()
+        public void ToUniversalSortableDateTimeStringTestCase2 ()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u", CultureInfo.InvariantCulture );

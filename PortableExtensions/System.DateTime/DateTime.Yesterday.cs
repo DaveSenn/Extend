@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time to decrease.</param>
         /// <returns>Yesterday date at same time.</returns>
-        public static DateTime Yesterday( this DateTime dateTime )
+        public static DateTime Yesterday ( this DateTime dateTime )
         {
             return dateTime.AddDays( -1 );
         }

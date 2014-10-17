@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -23,11 +23,11 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns the items from the start of the IEnumerable until the first item matching the predicate.</returns>
-        public static IEnumerable<T> TakeUntil<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        public static IEnumerable<T> TakeUntil<T> ( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );
-            
+
             return enumerable.TakeWhile( x => !predicate( x ) );
         }
     }

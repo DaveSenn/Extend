@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -6,7 +6,7 @@ using System.Globalization;
 #endregion
 
 namespace PortableExtensions
-{ 
+{
     public static partial class StringEx
     {
         /// <summary>
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime ToDateTime( this String value )
+        public static DateTime ToDateTime ( this String value )
         {
             value.ThrowIfNull( () => value );
 
@@ -30,7 +30,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime ToDateTime( this String value, IFormatProvider formatProvider )
+        public static DateTime ToDateTime ( this String value, IFormatProvider formatProvider )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

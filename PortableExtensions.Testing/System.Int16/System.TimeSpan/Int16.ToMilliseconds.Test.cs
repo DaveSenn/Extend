@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void ToMillisecondsTestCase()
+        public void ToMillisecondsTestCase ()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
 

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void FormatFileExtensionTestCase()
+        public void FormatFileExtensionTestCase ()
         {
             var actual = "xml".FormatFileExtension();
             Assert.AreEqual( ".xml", actual );
@@ -21,15 +21,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void FormatFileExtensionTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void FormatFileExtensionTestCaseNullCheck ()
         {
             StringEx.FormatFileExtension( null );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentException))]
-        public void FormatFileExtensionTestCaseNullCheckArgumentException()
+        [ExpectedException ( typeof (ArgumentException) )]
+        public void FormatFileExtensionTestCaseNullCheckArgumentException ()
         {
             String.Empty.FormatFileExtension();
         }

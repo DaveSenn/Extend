@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="obj">The object to cast.</param>
         /// <returns>The object as the specified type.</returns>
-        public static T As<T>( this object obj )
+        public static T As<T> ( this object obj )
         {
             obj.ThrowIfNull( () => obj );
 

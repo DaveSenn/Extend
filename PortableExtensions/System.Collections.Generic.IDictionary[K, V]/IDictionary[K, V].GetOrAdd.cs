@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace PortableExtensions
         ///     This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key, TValue value )
+        public static TValue GetOrAdd<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary, TKey key, TValue value )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
@@ -36,7 +36,7 @@ namespace PortableExtensions
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, value );
 
-            return dictionary[key];
+            return dictionary [key];
         }
 
         /// <summary>
@@ -53,8 +53,8 @@ namespace PortableExtensions
         ///     This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                     KeyValuePair<TKey, TValue> keyValuePair )
+        public static TValue GetOrAdd<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                      KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( () => dictionary );
             keyValuePair.Key.ThrowIfNull( () => keyValuePair.Key );
@@ -80,9 +80,9 @@ namespace PortableExtensions
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                     TKey key,
-                                                     Func<TValue> valueFactory )
+        public static TValue GetOrAdd<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                      TKey key,
+                                                      Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
@@ -91,7 +91,7 @@ namespace PortableExtensions
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, valueFactory() );
 
-            return dictionary[key];
+            return dictionary [key];
         }
 
         /// <summary>
@@ -109,9 +109,9 @@ namespace PortableExtensions
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                     TKey key,
-                                                     Func<TKey, TValue> valueFactory )
+        public static TValue GetOrAdd<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                      TKey key,
+                                                      Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
@@ -120,7 +120,7 @@ namespace PortableExtensions
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, valueFactory( key ) );
 
-            return dictionary[key];
+            return dictionary [key];
         }
     }
 }

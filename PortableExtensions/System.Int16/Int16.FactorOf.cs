@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="value">The Int16 value to check.</param>
         /// <param name="factorNumer">The factor number.</param>
         /// <returns>Returns true if the value is a factor of the specified factor number, otherwise false.</returns>
-        public static Boolean FactorOf( this Int16 value, Int16 factorNumer )
+        public static Boolean FactorOf ( this Int16 value, Int16 factorNumer )
         {
             return factorNumer % value == 0;
         }

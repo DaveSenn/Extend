@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The random can not be null.</exception>
         /// <param name="random">The random to use.</param>
         /// <returns>Returns true or false (random value).</returns>
-        public static Boolean CoinToss( this Random random )
+        public static Boolean CoinToss ( this Random random )
         {
             random.ThrowIfNull( () => random );
 

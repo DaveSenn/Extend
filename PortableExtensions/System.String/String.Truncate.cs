@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <param name="maxLength">The maximum length of the truncated string.</param>
         /// <param name="suffix">The stuffix of the truncated string.</param>
         /// <returns>The truncated string.</returns>
-        public static String Truncate( this String str, Int32 maxLength, String suffix = "..." )
+        public static String Truncate ( this String str, Int32 maxLength, String suffix = "..." )
         {
             if ( str.IsEmpty() || str.Length <= maxLength )
                 return str;

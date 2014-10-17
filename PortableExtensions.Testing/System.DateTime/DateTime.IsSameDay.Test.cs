@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsSameDayTestCase()
+        public void IsSameDayTestCase ()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSameDayTestCase1()
+        public void IsSameDayTestCase1 ()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Tomorrow();
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSameDayTestCase2()
+        public void IsSameDayTestCase2 ()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Yesterday();

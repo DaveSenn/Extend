@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="str">The string to extract.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The extracted parts of the input string.</returns>
-        public static String Extract( this String str, Func<Char, Boolean> predicate )
+        public static String Extract ( this String str, Func<Char, Boolean> predicate )
         {
             str.ThrowIfNull( () => str );
             predicate.ThrowIfNull( () => predicate );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>Returns a key value pair for each value of the specified enumeration type.</returns>
-        public static IDictionary<T, String> GetValueAndStringValue<T>() where T : struct
+        public static IDictionary<T, String> GetValueAndStringValue<T> () where T : struct
         {
             var values = GetValues<T>();
             return values.ToDictionary( x => x, x => x.ToString() );

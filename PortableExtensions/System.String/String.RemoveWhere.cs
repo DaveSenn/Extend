@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="str">The input string.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The input string without any of the removed characters.</returns>
-        public static String RemoveWhere( this String str, Func<Char, Boolean> predicate )
+        public static String RemoveWhere ( this String str, Func<Char, Boolean> predicate )
         {
             str.ThrowIfNull( () => str );
             predicate.ThrowIfNull( () => predicate );

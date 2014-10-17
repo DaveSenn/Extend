@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The double.</returns>
-        public static Double SaveToDouble( this String value, Double? defaultValue = null )
+        public static Double SaveToDouble ( this String value, Double? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 
@@ -41,18 +41,18 @@ namespace PortableExtensions
         /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The double.</returns>
-        public static Double SaveToDouble( this String value,
-                                           NumberStyles numberStyle,
-                                           IFormatProvider formatProvider,
-                                           Double? defaultValue = null )
+        public static Double SaveToDouble ( this String value,
+                                            NumberStyles numberStyle,
+                                            IFormatProvider formatProvider,
+                                            Double? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );
 
             Double outValue;
             return value.TryParsDouble( numberStyle, formatProvider, out outValue )
-                       ? outValue
-                       : ( defaultValue ?? outValue );
+                ? outValue
+                : ( defaultValue ?? outValue );
         }
     }
 }

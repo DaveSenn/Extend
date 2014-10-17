@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void RandomizeTestCase()
+        public void RandomizeTestCase ()
         {
             var list = new List<String>();
             var result = list.Randomize();
@@ -26,14 +26,16 @@ namespace PortableExtensions.Testing
 
             var resultList = result.ToList();
             for ( var i = 0; i < list.Count; i++ )
-                if ( list[i] != resultList[i] )
+            {
+                if ( list [i] != resultList [i] )
                     return;
+            }
             Assert.IsTrue( false, "The items are in the same order in both collections." );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RandomizeTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RandomizeTestCaseNullCheck ()
         {
             List<Object> list = null;
             list.Randomize();

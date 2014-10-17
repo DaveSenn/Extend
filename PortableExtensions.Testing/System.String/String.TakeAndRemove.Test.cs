@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TakeAndRemoveTestCase()
+        public void TakeAndRemoveTestCase ()
         {
             var value = "Test";
             var actual = 2.TakeAndRemove( ref value );
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCase1()
+        public void TakeAndRemoveTestCase1 ()
         {
             var value = "Test";
             var actual = 4.TakeAndRemove( ref value );
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCase2()
+        public void TakeAndRemoveTestCase2 ()
         {
             var value = "    ";
             var actual = 2.TakeAndRemove( ref value );
@@ -41,19 +41,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TakeAndRemoveTestCaseNullCheck()
-        {
-            String value = null;
-            var actual = 2.TakeAndRemove( ref value );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void TakeAndRemoveTestCaseArgumentOutOfRangeException()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void TakeAndRemoveTestCaseArgumentOutOfRangeException ()
         {
             var value = "Test";
             var actual = 5.TakeAndRemove( ref value );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TakeAndRemoveTestCaseNullCheck ()
+        {
+            String value = null;
+            var actual = 2.TakeAndRemove( ref value );
         }
     }
 }

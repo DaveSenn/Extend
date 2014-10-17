@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void YesterdayTestCase()
+        public void YesterdayTestCase ()
         {
             var dateTime = DateTime.Today;
             var expected = dateTime.AddDays( -1 );

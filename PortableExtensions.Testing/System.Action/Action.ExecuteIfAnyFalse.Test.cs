@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void ExecuteIfAnyFalseTestCase()
+        public void ExecuteIfAnyFalseTestCase ()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -75,7 +75,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase1()
+        public void ExecuteIfAnyFalseTestCase1 ()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -146,14 +146,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase1NullCheck ()
         {
             ActionEx.ExecuteIfAnyFalse( null, RandomValueEx.GetRandomString(), null, false, true );
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase2()
+        public void ExecuteIfAnyFalseTestCase2 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -230,8 +230,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase2NullCheck ()
         {
             ActionEx.ExecuteIfAnyFalse( null,
                                         RandomValueEx.GetRandomString(),
@@ -242,7 +242,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase3()
+        public void ExecuteIfAnyFalseTestCase3 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -325,8 +325,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase3NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase3NullCheck ()
         {
             ActionEx.ExecuteIfAnyFalse( null,
                                         RandomValueEx.GetRandomString(),
@@ -338,7 +338,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase4()
+        public void ExecuteIfAnyFalseTestCase4 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -350,7 +350,7 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -367,13 +367,13 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 false,
                 true );
 
@@ -385,13 +385,13 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
                 true );
 
@@ -403,7 +403,7 @@ namespace PortableExtensions.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -433,8 +433,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase4NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase4NullCheck ()
         {
             ActionEx.ExecuteIfAnyFalse( null,
                                         RandomValueEx.GetRandomString(),
@@ -447,7 +447,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase5()
+        public void ExecuteIfAnyFalseTestCase5 ()
         {
             //Case 1
             var falseActionExecuted = false;
@@ -495,15 +495,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase5NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase5NullCheck ()
         {
             Action action = null;
             action.ExecuteIfAnyFalse( false, true );
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase6()
+        public void ExecuteIfAnyFalseTestCase6 ()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -556,15 +556,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase6NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase6NullCheck ()
         {
             Action<String> action = null;
             action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(), false, true );
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase7()
+        public void ExecuteIfAnyFalseTestCase7 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -622,15 +622,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase7NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase7NullCheck ()
         {
             Action<String, String> action = null;
             action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), false, true );
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase8()
+        public void ExecuteIfAnyFalseTestCase8 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -693,8 +693,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase8NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase8NullCheck ()
         {
             Action<String, String, String> action = null;
             action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(),
@@ -705,7 +705,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase9()
+        public void ExecuteIfAnyFalseTestCase9 ()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -716,7 +716,7 @@ namespace PortableExtensions.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -730,7 +730,7 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -744,7 +744,7 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -758,7 +758,7 @@ namespace PortableExtensions.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -777,8 +777,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCase9NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCase9NullCheck ()
         {
             Action<String, String, String, String> action = null;
             action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(),
@@ -790,8 +790,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteIfAnyFalseTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteIfAnyFalseTestCaseNullCheck ()
         {
             ActionEx.ExecuteIfAnyFalse( null, null, false, true );
         }

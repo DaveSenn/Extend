@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void FirstDayOfWeekTestCase()
+        public void FirstDayOfWeekTestCase ()
         {
             var dateTime = RandomValueEx.GetRandomDateTime();
             var expected =

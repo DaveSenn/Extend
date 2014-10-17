@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -38,17 +38,17 @@ namespace PortableExtensions
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact(this String value,
-            String format,
-            IFormatProvider formatProvider,
-            DateTimeStyles dateTimeStyle,
-            out DateTime outValue)
+        public static Boolean TryParsDateTimeExact ( this String value,
+                                                     String format,
+                                                     IFormatProvider formatProvider,
+                                                     DateTimeStyles dateTimeStyle,
+                                                     out DateTime outValue )
         {
-            value.ThrowIfNull(() => value);
-            format.ThrowIfNull(() => format);
-            formatProvider.ThrowIfNull(() => formatProvider);
+            value.ThrowIfNull( () => value );
+            format.ThrowIfNull( () => format );
+            formatProvider.ThrowIfNull( () => formatProvider );
 
-            return DateTime.TryParseExact(value, format, formatProvider, dateTimeStyle, out outValue);
+            return DateTime.TryParseExact( value, format, formatProvider, dateTimeStyle, out outValue );
         }
 
         /// <summary>
@@ -87,17 +87,17 @@ namespace PortableExtensions
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact(this String value,
-            String[] formats,
-            IFormatProvider formatProvider,
-            DateTimeStyles dateTimeStyle,
-            out DateTime outValue)
+        public static Boolean TryParsDateTimeExact ( this String value,
+                                                     String[] formats,
+                                                     IFormatProvider formatProvider,
+                                                     DateTimeStyles dateTimeStyle,
+                                                     out DateTime outValue )
         {
-            value.ThrowIfNull(() => value);
-            formats.ThrowIfNull(() => formats);
-            formatProvider.ThrowIfNull(() => formatProvider);
+            value.ThrowIfNull( () => value );
+            formats.ThrowIfNull( () => formats );
+            formatProvider.ThrowIfNull( () => formatProvider );
 
-            return DateTime.TryParseExact(value, formats, formatProvider, dateTimeStyle, out outValue);
+            return DateTime.TryParseExact( value, formats, formatProvider, dateTimeStyle, out outValue );
         }
     }
 }

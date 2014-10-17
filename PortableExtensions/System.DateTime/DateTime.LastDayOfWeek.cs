@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="week">The week to get the last day of.</param>
         /// <returns>Returns the last day of the given week.</returns>
-        public static DateTime LastDayOfWeek( this DateTime week )
+        public static DateTime LastDayOfWeek ( this DateTime week )
         {
             if ( week.DayOfWeek == DayOfWeek.Sunday )
                 return new DateTime( week.Year, week.Month, week.Day );

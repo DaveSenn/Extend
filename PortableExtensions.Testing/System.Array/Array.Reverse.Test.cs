@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ReverseTestCase()
+        public void ReverseTestCase ()
         {
             Array array = new[]
             {
@@ -27,15 +27,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReverseTestCaseNullCheck()
-        {
-            Array array = null;
-            array.Reverse();
-        }
-
-        [Test]
-        public void ReverseTestCase1()
+        public void ReverseTestCase1 ()
         {
             Array array = new[]
             {
@@ -51,11 +43,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReverseTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReverseTestCase1NullCheck ()
         {
             Array array = null;
             array.Reverse( 1, 2 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReverseTestCaseNullCheck ()
+        {
+            Array array = null;
+            array.Reverse();
         }
     }
 }

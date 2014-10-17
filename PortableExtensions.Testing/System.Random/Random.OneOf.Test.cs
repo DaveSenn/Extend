@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void RandomOneTestCase()
+        public void RandomOneTestCase ()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings().ToArray();
@@ -23,22 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RandomOneTestCaseNullCheck()
-        {
-            RandomEx.RandomOne( null, "", "" );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RandomOneTestCaseNullCheck1()
-        {
-            String[] array = null;
-            new Random().RandomOne( array );
-        }
-
-        [Test]
-        public void RandomOneTestCase1()
+        public void RandomOneTestCase1 ()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings();
@@ -48,18 +33,33 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RandomOneTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RandomOneTestCase1NullCheck ()
         {
             RandomEx.RandomOne( null, "", "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RandomOneTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RandomOneTestCase1NullCheck1 ()
         {
             List<String> list = null;
             new Random().RandomOne<string>( list );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RandomOneTestCaseNullCheck ()
+        {
+            RandomEx.RandomOne( null, "", "" );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RandomOneTestCaseNullCheck1 ()
+        {
+            String[] array = null;
+            new Random().RandomOne( array );
         }
     }
 }

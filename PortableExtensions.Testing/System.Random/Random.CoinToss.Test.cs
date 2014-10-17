@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,15 +11,15 @@ namespace PortableExtensions.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void CoinTossTestCase()
+        public void CoinTossTestCase ()
         {
             var random = new Random();
             var actual = random.CoinToss();
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void CoinTossTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void CoinTossTestCaseNullCheck ()
         {
             RandomEx.CoinToss( null );
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -22,9 +22,9 @@ namespace PortableExtensions
         /// <param name="defaultValue">The default value.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T CoalesceOrDefault<T>( this T value, T defaultValue, params T[] values ) where T : class
+        public static T CoalesceOrDefault<T> ( this T value, T defaultValue, params T[] values ) where T : class
         {
-            if (value != null)
+            if ( value != null )
                 return value;
 
             values.ThrowIfNull( () => values );
@@ -47,10 +47,10 @@ namespace PortableExtensions
         /// <param name="defaultValueFactory">The default value factory.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T CoalesceOrDefault<T>( this T value, Func<T> defaultValueFactory, params T[] values )
+        public static T CoalesceOrDefault<T> ( this T value, Func<T> defaultValueFactory, params T[] values )
             where T : class
         {
-            if (value != null)
+            if ( value != null )
                 return value;
 
             values.ThrowIfNull( () => values );

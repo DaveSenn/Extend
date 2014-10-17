@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsAlphaTestCase()
+        public void IsAlphaTestCase ()
         {
             var actual = "test".IsAlpha();
             Assert.IsTrue( actual );
@@ -21,8 +21,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IsAlphaTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IsAlphaTestCaseNullCheck ()
         {
             StringEx.IsAlpha( null );
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -19,10 +19,10 @@ namespace PortableExtensions
         /// <param name="startValue">The start of the range.</param>
         /// <param name="endValue">The end of the range.</param>
         /// <returns>Returns a list containing the specified range.</returns>
-        public static List<Int32> RangeTo( this Int32 startValue, Int32 endValue )
+        public static List<Int32> RangeTo ( this Int32 startValue, Int32 endValue )
         {
             if ( startValue > endValue )
-                throw new ArgumentException("The start value can not be greater than the end value.", "startValue");
+                throw new ArgumentException( "The start value can not be greater than the end value.", "startValue" );
 
             var list = new List<Int32>( endValue - startValue );
             for ( var i = startValue; i <= endValue; i++ )

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -23,7 +23,7 @@ namespace PortableExtensions
         /// <param name="minValue">The minimum value.</param>
         /// <param name="maxValue">The maximum value.</param>
         /// <returns>Returns true if the given value is between the minValue and maxValue, otherwise false.</returns>
-        public static Boolean BetweenInclusive<T>( this T value, T minValue, T maxValue ) where T : IComparable<T>
+        public static Boolean BetweenInclusive<T> ( this T value, T minValue, T maxValue ) where T : IComparable<T>
         {
             value.ThrowIfNull( () => value );
             minValue.ThrowIfNull( () => minValue );

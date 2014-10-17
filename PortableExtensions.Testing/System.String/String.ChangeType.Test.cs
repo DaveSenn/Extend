@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,57 +12,57 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ChangeTypeTestCase()
+        public void ChangeTypeTestCase ()
         {
-            var actual = "100".ChangeType( typeof ( Int32 ) );
+            var actual = "100".ChangeType( typeof (Int32) );
             Assert.AreEqual( 100, actual );
         }
 
         [Test]
-        public void ChangeTypeTestCase1()
+        public void ChangeTypeTestCase1 ()
         {
-            var actual = "100".ChangeType( typeof ( Int32 ), CultureInfo.InvariantCulture );
+            var actual = "100".ChangeType( typeof (Int32), CultureInfo.InvariantCulture );
             Assert.AreEqual( 100, actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ChangeTypeTestCase1NullCkeck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ChangeTypeTestCase1NullCkeck ()
         {
             var actual = "100".ChangeType( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ChangeTypeTestCase1NullCkeck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ChangeTypeTestCase1NullCkeck1 ()
         {
-            var actual = "100".ChangeType( typeof ( Int32 ), null );
+            var actual = "100".ChangeType( typeof (Int32), null );
         }
 
         [Test]
-        public void ChangeTypeTestCase2()
+        public void ChangeTypeTestCase2 ()
         {
             var actual = "100".ChangeType<Int32>();
             Assert.AreEqual( 100, actual );
         }
 
         [Test]
-        public void ChangeTypeTestCase3()
+        public void ChangeTypeTestCase3 ()
         {
             var actual = "100".ChangeType<Int32>( CultureInfo.InvariantCulture );
             Assert.AreEqual( 100, actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ChangeTypeTestCase3NullCkeck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ChangeTypeTestCase3NullCkeck ()
         {
             var actual = "100".ChangeType<Int32>( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ChangeTypeTestCaseNullCkeck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ChangeTypeTestCaseNullCkeck ()
         {
             var actual = "100".ChangeType( null );
         }

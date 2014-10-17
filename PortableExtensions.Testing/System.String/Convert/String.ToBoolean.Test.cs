@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToBooleanTestCase()
+        public void ToBooleanTestCase ()
         {
             var value = RandomValueEx.GetRandomBoolean();
             var actual = value.ToString().ToBoolean();
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCaseNullCheck()
-        {
-            StringEx.ToBoolean( null );
-        }
-
-        [Test]
-        public void ToBooleanTestCase1()
+        public void ToBooleanTestCase1 ()
         {
             var value = RandomValueEx.GetRandomBoolean();
             var actual = value.ToString().ToBoolean( CultureInfo.InvariantCulture );
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCase1NullCheck ()
         {
             StringEx.ToBoolean( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCase1NullCheck1 ()
         {
             "".ToBoolean( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCaseNullCheck ()
+        {
+            StringEx.ToBoolean( null );
         }
     }
 }

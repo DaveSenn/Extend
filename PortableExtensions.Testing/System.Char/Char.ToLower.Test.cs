@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using NUnit.Framework;
 
@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class CharExTest
     {
         [Test]
-        public void ToLowerTestCase()
+        public void ToLowerTestCase ()
         {
             Assert.AreEqual( 'a', 'A'.ToLower() );
             Assert.AreEqual( 'a', 'a'.ToLower() );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         ///     If the conversion is successfully the content of the given <see cref="String" /> as <see cref="Int32" />,
         ///     otherwise null.
         /// </returns>
-        public static Int32? SafeToInt( this String input )
+        public static Int32? SafeToInt ( this String input )
         {
             input.ThrowIfNull( () => input );
 

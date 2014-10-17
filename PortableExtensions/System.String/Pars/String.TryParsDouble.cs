@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -24,7 +24,7 @@ namespace PortableExtensions
         ///     or greater than System.Double.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDouble( this String value, out Double outValue )
+        public static Boolean TryParsDouble ( this String value, out Double outValue )
         {
             value.ThrowIfNull( () => value );
 
@@ -62,10 +62,10 @@ namespace PortableExtensions
         ///     enumerated constants. This parameter is passed uninitialized.
         /// </param>
         /// <returns></returns>
-        public static Boolean TryParsDouble( this String value,
-                                             NumberStyles numberStyle,
-                                             IFormatProvider formatProvider,
-                                             out Double outValue )
+        public static Boolean TryParsDouble ( this String value,
+                                              NumberStyles numberStyle,
+                                              IFormatProvider formatProvider,
+                                              out Double outValue )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

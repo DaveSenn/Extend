@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,12 +18,12 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf(this Int64 number, Int32 total)
+        public static Double PercentOf ( this Int64 number, Int32 total )
         {
-            if (number <= 0)
-                throw new DivideByZeroException("The number must be greater than zero.");
+            if ( number <= 0 )
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
-            return total / (Double)number * 100;
+            return total / (Double) number * 100;
         }
 
         /// <summary>
@@ -33,10 +33,10 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf(this Int64 number, Double total)
+        public static Double PercentOf ( this Int64 number, Double total )
         {
-            if (number <= 0)
-                throw new DivideByZeroException("The number must be greater than zero.");
+            if ( number <= 0 )
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
             return total / number * 100;
         }
@@ -48,12 +48,12 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf(this Int64 number, Int64 total)
+        public static Double PercentOf ( this Int64 number, Int64 total )
         {
-            if (number <= 0)
-                throw new DivideByZeroException("The number must be greater than zero.");
+            if ( number <= 0 )
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
-            return total / (Double)number * 100;
+            return total / (Double) number * 100;
         }
     }
 }

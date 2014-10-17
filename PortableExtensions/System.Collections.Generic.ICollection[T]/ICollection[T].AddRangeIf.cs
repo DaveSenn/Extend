@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -24,9 +24,9 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <param name="values">The values to add.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection,
-                                                    Func<T, Boolean> predicate,
-                                                    params T[] values )
+        public static ICollection<T> AddRangeIf<T> ( this ICollection<T> collection,
+                                                     Func<T, Boolean> predicate,
+                                                     params T[] values )
         {
             collection.ThrowIfNull( () => collection );
             predicate.ThrowIfNull( () => predicate );
@@ -47,9 +47,9 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <param name="enumerable">The IEnumerable containing the items.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRangeIf<T>( this ICollection<T> collection,
-                                                    Func<T, Boolean> predicate,
-                                                    IEnumerable<T> enumerable )
+        public static ICollection<T> AddRangeIf<T> ( this ICollection<T> collection,
+                                                     Func<T, Boolean> predicate,
+                                                     IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( () => collection );
             predicate.ThrowIfNull( () => predicate );

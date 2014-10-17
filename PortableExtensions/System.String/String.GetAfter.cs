@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="value">The value to search.</param>
         /// <param name="startIndex">The start index of the substring.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter( this String str, String value, Int32 startIndex = 0 )
+        public static String GetAfter ( this String str, String value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter( this String str, String value, Int32 startIndex, Int32 length )
+        public static String GetAfter ( this String str, String value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
@@ -48,8 +48,8 @@ namespace PortableExtensions
 
             str = str.Substring( startIndex, length );
             return !str.Contains( value )
-                       ? String.Empty
-                       : str.Substring( str.IndexOf( value, StringComparison.Ordinal ) + value.Length );
+                ? String.Empty
+                : str.Substring( str.IndexOf( value, StringComparison.Ordinal ) + value.Length );
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace PortableExtensions
         /// <param name="value">The value to search.</param>
         /// <param name="startIndex">The start index of the substring.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter( this String str, Char value, Int32 startIndex = 0 )
+        public static String GetAfter ( this String str, Char value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -79,19 +79,19 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter( this String str, Char value, Int32 startIndex, Int32 length )
+        public static String GetAfter ( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
 
-            if (startIndex < 0 || length < 0 || startIndex + length > str.Length)
+            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
             var valueIndex = str.IndexOf( value );
             return valueIndex < 0
-                       ? String.Empty
-                       : str.Substring( valueIndex + 1 );
+                ? String.Empty
+                : str.Substring( valueIndex + 1 );
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int64 to check.</param>
         /// <returns>Returns true if the Int64 is even, otherwise false.</returns>
-        public static Boolean IsEven( this Int64 value )
+        public static Boolean IsEven ( this Int64 value )
         {
             return value % 2 == 0;
         }

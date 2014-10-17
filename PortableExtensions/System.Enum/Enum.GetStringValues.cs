@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>All values of the specified enumeration as strings.</returns>
-        public static IEnumerable<String> GetStringValues<T>() where T : struct
+        public static IEnumerable<String> GetStringValues<T> () where T : struct
         {
             return GetValues<T>().Select( x => x.ToString() );
         }

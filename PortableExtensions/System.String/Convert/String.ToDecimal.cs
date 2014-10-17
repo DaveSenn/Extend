@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this String value )
+        public static Decimal ToDecimal ( this String value )
         {
             value.ThrowIfNull( () => value );
 
@@ -30,7 +30,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this String value, IFormatProvider formatProvider )
+        public static Decimal ToDecimal ( this String value, IFormatProvider formatProvider )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

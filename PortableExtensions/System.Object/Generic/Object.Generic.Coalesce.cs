@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="value">The first value..</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T Coalesce<T>( this T value, params T[] values ) where T : class
+        public static T Coalesce<T> ( this T value, params T[] values ) where T : class
         {
             if ( value != null )
                 return value;
@@ -38,7 +38,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="value0">The second value.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T Coalesce<T>( this T value, T value0 ) where T : class
+        public static T Coalesce<T> ( this T value, T value0 ) where T : class
         {
             return value ?? value0;
         }

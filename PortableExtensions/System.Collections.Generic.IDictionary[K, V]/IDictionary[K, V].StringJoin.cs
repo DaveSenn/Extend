@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -30,9 +30,9 @@ namespace PortableExtensions
         ///     A string that consists of the elements in the first delimited by the separator string.
         ///     If the given first is empty, the method returns String.Empty.
         /// </returns>
-        public static String StringJoin<TValue, TKey>( this IDictionary<TValue, TKey> dictionary,
-                                                       String keyValueSeparator = "=",
-                                                       String separator = "" )
+        public static String StringJoin<TValue, TKey> ( this IDictionary<TValue, TKey> dictionary,
+                                                        String keyValueSeparator = "=",
+                                                        String separator = "" )
         {
             dictionary.ThrowIfNull( () => dictionary );
 

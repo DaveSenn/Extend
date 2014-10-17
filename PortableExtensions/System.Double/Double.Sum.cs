@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Double Sum( this Double value, params Double[] values )
+        public static Double Sum ( this Double value, params Double[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Double? Sum( this Double? value, params Double?[] values )
+        public static Double? Sum ( this Double? value, params Double?[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -57,7 +57,7 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Double Sum<TSource>( this TSource value, Func<TSource, Double> selector, params TSource[] values )
+        public static Double Sum<TSource> ( this TSource value, Func<TSource, Double> selector, params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );
@@ -78,7 +78,7 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Double? Sum<TSource>( this TSource value, Func<TSource, Double?> selector, params TSource[] values )
+        public static Double? Sum<TSource> ( this TSource value, Func<TSource, Double?> selector, params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void ToDaysTestCase()
+        public void ToDaysTestCase ()
         {
             var number = 10.5;
             var expected = TimeSpan.FromDays( number );

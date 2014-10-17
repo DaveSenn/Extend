@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -24,7 +24,7 @@ namespace PortableExtensions
         /// <param name="obj">The object to act on.</param>
         /// <param name="action">The action.</param>
         /// <returns>Returns the given object.</returns>
-        public static T Chain<T>( this T obj, Action<T> action )
+        public static T Chain<T> ( this T obj, Action<T> action )
         {
             obj.ThrowIfNull( () => obj );
             action.ThrowIfNull( () => action );

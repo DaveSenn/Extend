@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable to check.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        public static Boolean NotAny<T>( this IEnumerable<T> enumerable )
+        public static Boolean NotAny<T> ( this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( () => enumerable );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        public static Boolean NotAny<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        public static Boolean NotAny<T> ( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -13,7 +13,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="input">The <see cref="String" /> to check.</param>
         /// <returns>A value of true if the given <see cref="String" /> is not empty, otherwise false.</returns>
-        public static Boolean IsNotEmpty( this String input )
+        public static Boolean IsNotEmpty ( this String input )
         {
             return !IsEmpty( input );
         }

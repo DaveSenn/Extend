@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public class ExecutionResultTest
     {
         [Test]
-        public void CtorTestCase()
+        public void CtorTestCase ()
         {
             var target = new ExecutionResult<String>();
             Assert.IsNull( target.Exception );
@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExceptionTestCase()
+        public void ExceptionTestCase ()
         {
             var target = new ExecutionResult<String>();
             var expected = new NotImplementedException();
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ResultTestCase()
+        public void ResultTestCase ()
         {
             var target = new ExecutionResult<String>();
             var expected = RandomValueEx.GetRandomString();

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class BooleanExTest
     {
         [Test]
-        public void IfFalseTestCase()
+        public void IfFalseTestCase ()
         {
             var actual = String.Empty;
 
@@ -23,14 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IfFalseTestCaseNullCheck()
-        {
-            false.IfFalse( null, Assert.Fail );
-        }
-
-        [Test]
-        public void IfFalseTestCase1()
+        public void IfFalseTestCase1 ()
         {
             var actual = String.Empty;
 
@@ -42,14 +35,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IfFalseTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IfFalseTestCase1NullCheck ()
         {
             false.IfFalse( "", null, x => Assert.Fail() );
         }
 
         [Test]
-        public void IfFalseTestCase2()
+        public void IfFalseTestCase2 ()
         {
             var actual = String.Empty;
 
@@ -61,14 +54,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IfFalseTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IfFalseTestCase2NullCheck ()
         {
             false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
         }
 
         [Test]
-        public void IfFalseTestCase3()
+        public void IfFalseTestCase3 ()
         {
             var actual = String.Empty;
 
@@ -88,14 +81,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IfFalseTestCase3NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IfFalseTestCase3NullCheck ()
         {
             false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
         }
 
         [Test]
-        public void IfFalseTestCase4()
+        public void IfFalseTestCase4 ()
         {
             var actual = String.Empty;
 
@@ -117,10 +110,17 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IfFalseTestCase4NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IfFalseTestCase4NullCheck ()
         {
             false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.Fail() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IfFalseTestCaseNullCheck ()
+        {
+            false.IfFalse( null, Assert.Fail );
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,17 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceOrDefaultTestCase()
+        public void CoalesceOrDefault1TestCase ()
+        {
+            var expected = RandomValueEx.GetRandomString();
+            String s = null;
+            var actual = expected.CoalesceOrDefault( s, null, null, "expected", "Test2" );
+
+            Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        public void CoalesceOrDefaultTestCase ()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -24,26 +34,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefault1TestCase()
-        {
-            var expected = RandomValueEx.GetRandomString();
-            String s = null;
-            var actual = expected.CoalesceOrDefault(s, null, null, "expected", "Test2");
-
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void CoalesceOrDefaultTestCaseNullCheck()
-        {
-            String s = null;
-            String s1 = null;
-            s.CoalesceOrDefault( s1, null, null );
-        }
-
-        [Test]
-        public void CoalesceOrDefaultTestCase2()
+        public void CoalesceOrDefaultTestCase2 ()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -56,8 +47,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void CoalesceOrDefaultTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void CoalesceOrDefaultTestCase2NullCheck ()
         {
             String s = null;
             Func<String> func = null;
@@ -65,13 +56,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase3()
+        public void CoalesceOrDefaultTestCase3 ()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
-            var actual = expected.CoalesceOrDefault(() => s, null, null, "Test2");
+            var actual = expected.CoalesceOrDefault( () => s, null, null, "Test2" );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void CoalesceOrDefaultTestCaseNullCheck ()
+        {
+            String s = null;
+            String s1 = null;
+            s.CoalesceOrDefault( s1, null, null );
         }
     }
 }

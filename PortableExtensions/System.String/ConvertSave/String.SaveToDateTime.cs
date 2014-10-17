@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value, DateTime? defaultValue = null )
+        public static DateTime SaveToDateTime ( this String value, DateTime? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 
@@ -34,18 +34,18 @@ namespace PortableExtensions
         /// <param name="dateTimeStyle">The date time style.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value,
-                                               IFormatProvider formatProvider,
-                                               DateTimeStyles dateTimeStyle,
-                                               DateTime? defaultValue = null )
+        public static DateTime SaveToDateTime ( this String value,
+                                                IFormatProvider formatProvider,
+                                                DateTimeStyles dateTimeStyle,
+                                                DateTime? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );
 
             DateTime outValue;
             return value.TryParsDateTime( formatProvider, dateTimeStyle, out outValue )
-                       ? outValue
-                       : ( defaultValue ?? outValue );
+                ? outValue
+                : ( defaultValue ?? outValue );
         }
     }
 }

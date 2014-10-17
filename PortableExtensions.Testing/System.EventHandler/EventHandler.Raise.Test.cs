@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -10,8 +10,35 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class EventHandlerExTest
     {
+        private class HelperClass
+        {
+            public event EventHandler<SampleEventArgs> MyGenericEvent;
+
+            public event EventHandler MyEvent;
+
+            public void RaiseGenericEvent ( SampleEventArgs args )
+            {
+                MyGenericEvent.Raise( this, args );
+            }
+
+            public void RaiseEvent ( EventArgs args )
+            {
+                MyEvent.Raise( this, args );
+            }
+        }
+
+        private class SampleEventArgs : EventArgs
+        {
+            public SampleEventArgs ( String message )
+            {
+                Message = message;
+            }
+
+            public String Message { get; private set; }
+        }
+
         [Test]
-        public void RaiseTestCase()
+        public void RaiseTestCase ()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
@@ -24,7 +51,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void RaiseTestCase1()
+        public void RaiseTestCase1 ()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
@@ -34,33 +61,6 @@ namespace PortableExtensions.Testing
             helperClass.MyGenericEvent += ( sender, e ) => actual = e;
             helperClass.RaiseGenericEvent( eventArgs );
             Assert.AreSame( eventArgs, actual );
-        }
-
-        private class HelperClass
-        {
-            public event EventHandler<SampleEventArgs> MyGenericEvent;
-
-            public event EventHandler MyEvent;
-
-            public void RaiseGenericEvent( SampleEventArgs args )
-            {
-                MyGenericEvent.Raise( this, args );
-            }
-
-            public void RaiseEvent( EventArgs args )
-            {
-                MyEvent.Raise( this, args );
-            }
-        }
-
-        private class SampleEventArgs : EventArgs
-        {
-            public SampleEventArgs( String message )
-            {
-                Message = message;
-            }
-
-            public String Message { get; private set; }
         }
     }
 }

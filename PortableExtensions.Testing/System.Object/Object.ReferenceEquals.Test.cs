@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ReferenceEqualsTestCase()
+        public void ReferenceEqualsTestCase ()
         {
             var list = new List<String>();
             var list1 = new List<String>();
@@ -25,15 +25,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReferenceEqualsTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReferenceEqualsTestCaseNullCheck ()
         {
             ObjectEx.RefEquals( null, "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReferenceEqualsTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReferenceEqualsTestCaseNullCheck1 ()
         {
             "".RefEquals( null );
         }

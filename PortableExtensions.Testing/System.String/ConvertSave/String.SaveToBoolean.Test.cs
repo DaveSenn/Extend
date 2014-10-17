@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,44 +11,44 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToBooleanTestCase()
+        public void SaveToBooleanTestCase ()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = expected.ToString().SaveToBoolean();
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToBooleanTestCase1()
+        public void SaveToBooleanTestCase1 ()
         {
             var expected = RandomValueEx.GetRandomBoolean();
-            var actual = "InvalidValue".SaveToBoolean(expected);
+            var actual = "InvalidValue".SaveToBoolean( expected );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToBooleanTestCase3()
+        public void SaveToBooleanTestCase2 ()
+        {
+            var actual = true.ToString().SaveToBoolean( false );
+
+            Assert.AreEqual( true, actual );
+        }
+
+        [Test]
+        public void SaveToBooleanTestCase3 ()
         {
             var actual = "InvalidValue".SaveToBoolean();
 
-            Assert.AreEqual(default(Boolean), actual);
+            Assert.AreEqual( default( Boolean ), actual );
         }
 
         [Test]
-        public void SaveToBooleanTestCase2()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SaveToBooleanTestCaseNullCheck ()
         {
-            var actual = true.ToString().SaveToBoolean(false);
-
-            Assert.AreEqual(true, actual);
-        }
-
-        [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void SaveToBooleanTestCaseNullCheck()
-        {
-            StringEx.SaveToBoolean(null);
+            StringEx.SaveToBoolean( null );
         }
     }
 }

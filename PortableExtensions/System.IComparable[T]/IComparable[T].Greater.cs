@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -23,7 +23,7 @@ namespace PortableExtensions
         ///     Returns true if the value is greater than the given compare value,
         ///     otherwise false.
         /// </returns>
-        public static Boolean Greater<T>( this T value, T compareValue ) where T : IComparable<T>
+        public static Boolean Greater<T> ( this T value, T compareValue ) where T : IComparable<T>
         {
             value.ThrowIfNull( () => value );
             compareValue.ThrowIfNull( () => compareValue );

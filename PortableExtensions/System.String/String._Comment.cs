@@ -1,5 +1,4 @@
-﻿
-namespace PortableExtensions
+﻿namespace PortableExtensions
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="string" />.

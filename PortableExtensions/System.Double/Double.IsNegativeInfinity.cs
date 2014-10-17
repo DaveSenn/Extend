@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The double to check.</param>
         /// <returns>Returns true if the given double is negative infinity, otherwise false.</returns>
-        public static Boolean IsNegativeInfinity( this Double value )
+        public static Boolean IsNegativeInfinity ( this Double value )
         {
             return Double.IsNegativeInfinity( value );
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveRangeTestCase()
+        public void RemoveRangeTestCase ()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -25,21 +25,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveRangeTestCaseNullCheck()
-        {
-            CollectionTEx.RemoveRange( null, "test0", "test1", "test2" );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveRangeTestCaseNullCheck1()
-        {
-            new List<String>().RemoveRange( null );
-        }
-
-        [Test]
-        public void RemoveRangeTestCase1()
+        public void RemoveRangeTestCase1 ()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -52,15 +38,29 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveRangeTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveRangeTestCase1NullCheck ()
         {
-            CollectionTEx.RemoveRange( null, new List<String> { "test0", "test1", "test2" } );
+            CollectionTEx.RemoveRange( null, new List<String> {"test0", "test1", "test2"} );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveRangeTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveRangeTestCase1NullCheck1 ()
+        {
+            new List<String>().RemoveRange( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveRangeTestCaseNullCheck ()
+        {
+            CollectionTEx.RemoveRange( null, "test0", "test1", "test2" );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveRangeTestCaseNullCheck1 ()
         {
             new List<String>().RemoveRange( null );
         }

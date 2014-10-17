@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -27,7 +27,7 @@ namespace PortableExtensions
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static Object ChangeType( this String value, Type type )
+        public static Object ChangeType ( this String value, Type type )
         {
             return value.ChangeType( type, CultureInfo.InvariantCulture );
         }
@@ -52,7 +52,7 @@ namespace PortableExtensions
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static Object ChangeType( this String value, Type type, IFormatProvider formatProvider )
+        public static Object ChangeType ( this String value, Type type, IFormatProvider formatProvider )
         {
             type.ThrowIfNull( () => type );
             formatProvider.ThrowIfNull( () => formatProvider );
@@ -78,9 +78,9 @@ namespace PortableExtensions
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static T ChangeType<T>( this String value )
+        public static T ChangeType<T> ( this String value )
         {
-            return (T) Convert.ChangeType( value, typeof ( T ) );
+            return (T) Convert.ChangeType( value, typeof (T) );
         }
 
         /// <summary>
@@ -103,11 +103,11 @@ namespace PortableExtensions
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static T ChangeType<T>( this String value, IFormatProvider formatProvider )
+        public static T ChangeType<T> ( this String value, IFormatProvider formatProvider )
         {
             formatProvider.ThrowIfNull( () => formatProvider );
 
-            return (T) Convert.ChangeType( value, typeof ( T ), formatProvider );
+            return (T) Convert.ChangeType( value, typeof (T), formatProvider );
         }
     }
 }

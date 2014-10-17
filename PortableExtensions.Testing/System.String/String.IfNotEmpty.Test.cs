@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using NUnit.Framework;
 
@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IfEmptyTestCase()
+        public void IfEmptyTestCase ()
         {
             var actual = StringEx.IfNotEmpty( null, "test" );
             Assert.AreEqual( "test", actual );

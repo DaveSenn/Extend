@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted Int16.</returns>
-        public static Int16 ExtractFirstInt16( this String value, Int32 startIndex = 0 )
+        public static Int16 ExtractFirstInt16 ( this String value, Int32 startIndex = 0 )
         {
             return ExtractNumber( value, startIndex ).ToInt16();
         }

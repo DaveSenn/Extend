@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time to check.</param>
         /// <returns>Returns true if the date time is morning, otherwise false.</returns>
-        public static Boolean IsMorning( this DateTime dateTime )
+        public static Boolean IsMorning ( this DateTime dateTime )
         {
             return dateTime.TimeOfDay < new DateTime( 2000, 1, 1, 12, 0, 0 ).TimeOfDay;
         }

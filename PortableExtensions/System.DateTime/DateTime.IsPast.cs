@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time to check.</param>
         /// <returns>Returns true if the value is in the past, otherwise false.</returns>
-        public static Boolean IsPast( this DateTime dateTime )
+        public static Boolean IsPast ( this DateTime dateTime )
         {
             return dateTime < DateTime.Now;
         }

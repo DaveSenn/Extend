@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void EnsureNotNullTestCase()
+        public void EnsureNotNullTestCase ()
         {
             List<String> list = null;
             var actual = list.EnsureNotNull();
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void EnsureNotNullTestCase1()
+        public void EnsureNotNullTestCase1 ()
         {
             var list = new List<String>
             {

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ClearAllTestCase()
+        public void ClearAllTestCase ()
         {
             Array array = new[]
             {
@@ -27,8 +27,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ClearAllTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ClearAllTestCaseNullCheck ()
         {
             Array array = null;
             array.ClearAll();

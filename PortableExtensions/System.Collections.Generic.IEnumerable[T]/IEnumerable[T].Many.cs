@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns true if the IEnumerable contains more than one item matching the given predicate, otherwise false.</returns>
-        public static Boolean Many<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        public static Boolean Many<T> ( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );
@@ -38,7 +38,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable.</param>
         /// <returns>Returns true if the IEnumerable contains more than one item, otherwise false.</returns>
-        public static Boolean Many<T>( this IEnumerable<T> enumerable )
+        public static Boolean Many<T> ( this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

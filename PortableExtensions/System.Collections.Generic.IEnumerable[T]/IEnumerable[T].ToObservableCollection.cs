@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>The given IEnumerable as ObservableCollection.</returns>
-        public static ObservableCollection<T> ToObservableCollection<T>( this IEnumerable<T> enumerable )
+        public static ObservableCollection<T> ToObservableCollection<T> ( this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

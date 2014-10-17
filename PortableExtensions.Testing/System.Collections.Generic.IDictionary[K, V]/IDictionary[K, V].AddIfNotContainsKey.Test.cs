@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,22 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddIfNotContainsKeyTestCase()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKey1TestCaseNullCheck ()
+        {
+            var keyValuePair = new KeyValuePair<Object, Object>();
+            new Dictionary<Object, Object>().AddIfNotContainsKey( keyValuePair );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKey1TestCaseNullCheck1 ()
+        {
+            IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
+        }
+
+        [Test]
+        public void AddIfNotContainsKeyTestCase ()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -27,21 +42,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCaseNullCheck()
-        {
-            IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCaseNullCheck1()
-        {
-            new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
-        }
-
-        [Test]
-        public void AddIfNotContainsKeyTestCase1()
+        public void AddIfNotContainsKeyTestCase1 ()
         {
             var dic = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -57,22 +58,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKey1TestCaseNullCheck()
-        {
-            var keyValuePair = new KeyValuePair<Object, Object>();
-            new Dictionary<Object, Object>().AddIfNotContainsKey( keyValuePair );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKey1TestCaseNullCheck1()
-        {
-            IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
-        }
-
-        [Test]
-        public void AddIfNotContainsKeyTestCase2()
+        public void AddIfNotContainsKeyTestCase2 ()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -87,29 +73,29 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase2NullCheck ()
         {
             IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase2NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase2NullCheck1 ()
         {
             new Dictionary<Object, Object>().AddIfNotContainsKey( null, () => new Object() );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase2NullCheck2()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase2NullCheck2 ()
         {
             Func<Object> func = null;
             new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase3()
+        public void AddIfNotContainsKeyTestCase3 ()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -124,25 +110,39 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase3NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase3NullCheck ()
         {
             IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase3NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase3NullCheck1 ()
         {
             new Dictionary<Object, Object>().AddIfNotContainsKey( null, x => new Object() );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AddIfNotContainsKeyTestCase3NullCheck2()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCase3NullCheck2 ()
         {
             Func<Object, Object> func = null;
             new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCaseNullCheck ()
+        {
+            IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsKeyTestCaseNullCheck1 ()
+        {
+            new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
         }
     }
 }

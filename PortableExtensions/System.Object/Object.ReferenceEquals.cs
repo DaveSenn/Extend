@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="obj0">The first object to compare.</param>
         /// <param name="obj1">The second object  to compare.</param>
         /// <returns>Returns true if if the objects are the same instance.</returns>
-        public static Boolean RefEquals( this Object obj0, Object obj1 )
+        public static Boolean RefEquals ( this Object obj0, Object obj1 )
         {
             obj0.ThrowIfNull( () => obj0 );
             obj1.ThrowIfNull( () => obj1 );

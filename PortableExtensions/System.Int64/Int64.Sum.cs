@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Int64 Sum( this Int64 value, params Int64[] values )
+        public static Int64 Sum ( this Int64 value, params Int64[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Int64? Sum( this Int64? value, params Int64?[] values )
+        public static Int64? Sum ( this Int64? value, params Int64?[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -57,7 +57,7 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Int64 Sum<TSource>( this TSource value, Func<TSource, Int64> selector, params TSource[] values )
+        public static Int64 Sum<TSource> ( this TSource value, Func<TSource, Int64> selector, params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );
@@ -78,7 +78,7 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Int64? Sum<TSource>( this TSource value, Func<TSource, Int64?> selector, params TSource[] values )
+        public static Int64? Sum<TSource> ( this TSource value, Func<TSource, Int64?> selector, params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );

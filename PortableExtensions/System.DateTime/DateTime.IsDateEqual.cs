@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="date">The date.</param>
         /// <param name="dateToCompare">Date to compare.</param>
         /// <returns>Returns true if the date is equals to the given date, otherwise false.</returns>
-        public static Boolean IsDateEqual( this DateTime date, DateTime dateToCompare )
+        public static Boolean IsDateEqual ( this DateTime date, DateTime dateToCompare )
         {
             return date.Date == dateToCompare.Date;
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,12 +13,12 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void StringJoinTestCase()
+        public void StringJoinTestCase ()
         {
             var dictionary = new Dictionary<String, String>
             {
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() },
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
+                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()},
+                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()}
             };
 
             var actual = dictionary.StringJoin();
@@ -37,8 +37,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void StringJoinTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void StringJoinTestCaseNullCheck ()
         {
             Dictionary<String, String> dictionary = null;
             dictionary.StringJoin( "", "" );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -25,9 +25,9 @@ namespace PortableExtensions
         /// <returns>
         ///     Returns an array whose elements contain the substrings in this string that are delimited by the separator.
         /// </returns>
-        public static String[] Split( this String value,
-                                      String separator,
-                                      StringSplitOptions stringSplitOption = StringSplitOptions.None )
+        public static String[] Split ( this String value,
+                                       String separator,
+                                       StringSplitOptions stringSplitOption = StringSplitOptions.None )
         {
             value.ThrowIfNull( () => value );
             separator.ThrowIfNull( () => separator );
@@ -60,9 +60,9 @@ namespace PortableExtensions
         ///     Returns an array whose elements contain the substrings in this string that are delimited
         ///     by one or more strings in separator.
         /// </returns>
-        public static String[] Split( this String value,
-                                      StringSplitOptions stringSplitOption,
-                                      params String[] separators )
+        public static String[] Split ( this String value,
+                                       StringSplitOptions stringSplitOption,
+                                       params String[] separators )
         {
             value.ThrowIfNull( () => value );
             separators.ThrowIfNull( () => separators );

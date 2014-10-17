@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
         /// <param name="enumerable">The enumerable to check.</param>
         /// <returns>Returns true if the enumerable is empty or null, otherwise false.</returns>
-        public static Boolean IsNullOrEmpty<T>( this IEnumerable<T> enumerable )
+        public static Boolean IsNullOrEmpty<T> ( this IEnumerable<T> enumerable )
         {
             return enumerable.IsNull() || enumerable.NotAny();
         }

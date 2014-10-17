@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDateTimeTestCase()
+        public void ToDateTimeTestCase ()
         {
             var expected = DateTime.Now;
             var value = expected.ToString();
@@ -27,18 +27,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDateTimeTestCaseNullCheck()
-        {
-            ObjectEx.ToDateTime( null );
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1()
+        public void ToDateTimeTestCase1 ()
         {
             var expected = DateTime.Now;
             var value = expected.ToString( CultureInfo.InvariantCulture );
-            var actual = ObjectEx.ToDateTime( value, CultureInfo.InvariantCulture );
+            var actual = value.ToDateTime( CultureInfo.InvariantCulture );
 
             Assert.AreEqual( expected.Year, actual.Year );
             Assert.AreEqual( expected.Month, actual.Month );
@@ -49,17 +42,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDateTimeTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck ()
         {
             ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDateTimeTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck1 ()
         {
-            ObjectEx.ToDateTime( DateTime.Now.ToString(), null );
+            DateTime.Now.ToString().ToDateTime( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCaseNullCheck ()
+        {
+            ObjectEx.ToDateTime( null );
         }
     }
 }

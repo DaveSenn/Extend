@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="day">The day to get the end of.</param>
         /// <returns>Returns the last moment of the day ("23:59:59:999") represented by the given date time value.</returns>
-        public static DateTime EndOfDay( this DateTime day )
+        public static DateTime EndOfDay ( this DateTime day )
         {
             return new DateTime( day.Year, day.Month, day.Day ).AddDays( 1 ).Subtract( 1.ToMilliseconds() );
         }

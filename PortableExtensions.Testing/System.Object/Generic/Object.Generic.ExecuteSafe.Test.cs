@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ExecuteSafeTestCase()
+        public void ExecuteSafeTestCase ()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x => { throw new InvalidOperationException( expectedValue ); } );
@@ -27,19 +27,11 @@ namespace PortableExtensions.Testing
 
             Assert.IsNull( actual.Exception );
             Assert.AreEqual( expectedValue, actual.Result );
-            Assert.AreEqual( list[0], expectedValue );
+            Assert.AreEqual( list [0], expectedValue );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteSafeTestCaseNullCheck()
-        {
-            Action<String> action = null;
-            "".ExecuteSafe( action );
-        }
-
-        [Test]
-        public void ExecuteSafeTestCase1()
+        public void ExecuteSafeTestCase1 ()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
@@ -60,11 +52,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExecuteSafeTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteSafeTestCase1NullCheck ()
         {
             Func<String, String> func = null;
             "".ExecuteSafe( func );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExecuteSafeTestCaseNullCheck ()
+        {
+            Action<String> action = null;
+            "".ExecuteSafe( action );
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimals from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted decimals.</returns>
-        public static List<Decimal> ExtractAllDecimal( this String value, Int32 startIndex = 0 )
+        public static List<Decimal> ExtractAllDecimal ( this String value, Int32 startIndex = 0 )
         {
             return new List<Decimal>( ExtractAllFloatingNumbers( value, startIndex ).Select( x => x.ToDecimal() ) );
         }

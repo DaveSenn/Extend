@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,17 +13,17 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatToDictionarySafeTestCase()
+        public void ConcatToDictionarySafeTestCase ()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 }
+                {0, 1},
+                {1, 2}
             };
             var second = new Dictionary<Int32, Int32>
             {
-                { 2, 3 },
-                { 3, 4 }
+                {2, 3},
+                {3, 4}
             };
 
             var actual = first.ConcatToDictionarySafe( second );
@@ -35,12 +35,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase1()
+        public void ConcatToDictionarySafeTestCase1 ()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 }
+                {0, 1},
+                {1, 2}
             };
             var second = new Dictionary<Int32, Int32>();
 
@@ -51,7 +51,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase2()
+        public void ConcatToDictionarySafeTestCase2 ()
         {
             var first = new Dictionary<Int32, Int32>();
             var second = new Dictionary<Int32, Int32>();
@@ -61,19 +61,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase3()
+        public void ConcatToDictionarySafeTestCase3 ()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 }
+                {0, 1},
+                {1, 2}
             };
             var second = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 },
-                { 2, 3 },
-                { 3, 4 }
+                {0, 1},
+                {1, 2},
+                {2, 3},
+                {3, 4}
             };
 
             var actual = first.ConcatToDictionarySafe( second );
@@ -85,13 +85,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ConcatToDictionarySafeTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ConcatToDictionarySafeTestCaseNullCheck ()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 }
+                {0, 1},
+                {1, 2}
             };
             Dictionary<Int32, Int32> second = null;
 
@@ -99,14 +99,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ConcatToDictionarySafeTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ConcatToDictionarySafeTestCaseNullCheck1 ()
         {
             Dictionary<Int32, Int32> first = null;
             var second = new Dictionary<Int32, Int32>
             {
-                { 0, 1 },
-                { 1, 2 }
+                {0, 1},
+                {1, 2}
             };
 
             first.ConcatToDictionarySafe( second );

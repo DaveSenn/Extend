@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,81 +11,79 @@ namespace PortableExtensions.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void BetweenInclusiveTestCase()
+        public void BetweenInclusiveTestCase ()
         {
             const Int32 value = 100;
             const Int32 min = 50;
             const Int32 max = 300;
 
-            var actual = value.BetweenInclusive(min, max);
-            Assert.IsTrue(actual);
+            var actual = value.BetweenInclusive( min, max );
+            Assert.IsTrue( actual );
         }
 
-
         [Test]
-        public void BetweenInclusiveTestCase1()
+        public void BetweenInclusiveTestCase1 ()
         {
             const Int32 value = 100;
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive(min, max);
-            Assert.IsTrue(actual);
+            var actual = value.BetweenInclusive( min, max );
+            Assert.IsTrue( actual );
         }
 
         [Test]
-        public void BetweenInclusiveTestCase2()
+        public void BetweenInclusiveTestCase2 ()
         {
             const Int32 value = 100;
             const Int32 min = 50;
             const Int32 max = 99;
 
-            var actual = value.BetweenInclusive(min, max);
-            Assert.IsFalse(actual);
+            var actual = value.BetweenInclusive( min, max );
+            Assert.IsFalse( actual );
         }
 
-
         [Test]
-        public void BetweenInclusiveTestCase3()
+        public void BetweenInclusiveTestCase3 ()
         {
             const Int32 value = 200;
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive(min, max);
-            Assert.IsFalse(actual);
+            var actual = value.BetweenInclusive( min, max );
+            Assert.IsFalse( actual );
         }
 
         [Test]
-        public void BetweenInclusiveTestCase4()
+        public void BetweenInclusiveTestCase4 ()
         {
             const Int32 value = 2;
             const Int32 min = 50;
             const Int32 max = 100;
 
-            var actual = value.BetweenInclusive(min, max);
-            Assert.IsFalse(actual);
+            var actual = value.BetweenInclusive( min, max );
+            Assert.IsFalse( actual );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void BetweenInclusiveTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck ()
         {
-            IComparableTEx.BetweenInclusive(null, "", "");
+            IComparableTEx.BetweenInclusive( null, "", "" );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void BetweenInclusiveTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck1 ()
         {
-            "".BetweenInclusive(null, "");
+            "".BetweenInclusive( null, "" );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void BetweenInclusiveTestCaseNullCheck2()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck2 ()
         {
-            "".BetweenInclusive("", null);
+            "".BetweenInclusive( "", null );
         }
     }
 }

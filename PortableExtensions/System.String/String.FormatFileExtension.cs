@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,13 +18,13 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The file extension can not be null.</exception>
         /// <exception cref="ArgumentException">Can not format a empty string to a file extension.</exception>
         /// <returns>The correct formatted file extension.</returns>
-        public static String FormatFileExtension( this String fileExtension )
+        public static String FormatFileExtension ( this String fileExtension )
         {
             // ReSharper disable once AccessToModifiedClosure
             fileExtension.ThrowIfNull( () => fileExtension );
 
             if ( fileExtension.IsEmpty() )
-                throw new ArgumentException("Can not format a empty string to a file extension.", "fileExtension");
+                throw new ArgumentException( "Can not format a empty string to a file extension.", "fileExtension" );
 
             if ( !fileExtension.StartsWith( ".", StringComparison.Ordinal ) )
                 fileExtension = fileExtension.Insert( 0, "." );

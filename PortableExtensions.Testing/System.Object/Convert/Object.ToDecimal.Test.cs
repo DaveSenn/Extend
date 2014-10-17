@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDecimalTestCase()
+        public void ToDecimalTestCase ()
         {
             var expected = new Decimal( 100.12 );
             var value = expected.ToString( CultureInfo.InvariantCulture ).Replace( ".", "," );
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDecimalTestCaseNullCheck()
-        {
-            ObjectEx.ToDecimal( null );
-        }
-
-        [Test]
-        public void ToDecimalTestCase1()
+        public void ToDecimalTestCase1 ()
         {
             var expected = new Decimal( 100.12 );
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDecimalTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCase1NullCheck ()
         {
             ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToDecimalTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCase1NullCheck1 ()
         {
             ObjectEx.ToDecimal( "false", null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCaseNullCheck ()
+        {
+            ObjectEx.ToDecimal( null );
         }
     }
 }
