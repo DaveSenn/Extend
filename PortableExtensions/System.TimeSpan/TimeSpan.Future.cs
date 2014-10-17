@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="timeSpan">The time span to add.</param>
         /// <returns>Returns the current date time with the specified time span added to it.</returns>
-        public static DateTime Future( this TimeSpan timeSpan )
+        public static DateTime Future ( this TimeSpan timeSpan )
         {
             return DateTime.Now.Add( timeSpan );
         }

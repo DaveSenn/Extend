@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace PortableExtensions
         ///     A string that consists of the elements in the IEnumerable delimited by the separator string.
         ///     If the given IEnumerable is empty, the method returns String.Empty.
         /// </returns>
-        public static String StringJoin<T>( this IEnumerable<T> enumerable, String separator = "" )
+        public static String StringJoin<T> ( this IEnumerable<T> enumerable, String separator = "" )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

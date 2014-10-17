@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace PortableExtensions
         ///     Returns an <see cref="IDictionary{TKey,TValue}" /> that contains the concatenated elements of the two input
         ///     sequences.
         /// </returns>
-        public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey>(
+        public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey> (
             this IEnumerable<KeyValuePair<TValue, TKey>> first,
             IEnumerable<KeyValuePair<TValue, TKey>> second )
         {

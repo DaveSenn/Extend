@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToByteTestCase()
+        public void ToByteTestCase ()
         {
             const Byte value = (Byte) 1;
             var actual = value.ToString().ToByte();
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCaseNullCheck()
-        {
-            StringEx.ToByte( null );
-        }
-
-        [Test]
-        public void ToByteTestCase1()
+        public void ToByteTestCase1 ()
         {
             const Byte value = (Byte) 1;
             var actual = value.ToString( CultureInfo.InvariantCulture ).ToByte( CultureInfo.InvariantCulture );
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck ()
         {
             StringEx.ToByte( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck1 ()
         {
             "".ToByte( null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCaseNullCheck ()
+        {
+            StringEx.ToByte( null );
         }
     }
 }

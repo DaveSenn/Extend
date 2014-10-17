@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, String before, String after, Int32 startIndex = 0 )
+        public static String GetBetween ( this String str, String before, String after, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, String before, String after, Int32 startIndex, Int32 length )
+        public static String GetBetween ( this String str, String before, String after, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
@@ -71,7 +71,7 @@ namespace PortableExtensions
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, Char before, Char after, Int32 startIndex = 0 )
+        public static String GetBetween ( this String str, Char before, Char after, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -91,7 +91,7 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, Char before, Char after, Int32 startIndex, Int32 length )
+        public static String GetBetween ( this String str, Char before, Char after, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
@@ -110,8 +110,8 @@ namespace PortableExtensions
             var actualStartIndex = beforeIndex + 1;
             var afterIndex = str.IndexOf( after, actualStartIndex );
             return afterIndex < 0
-                       ? String.Empty
-                       : str.Substring( actualStartIndex, afterIndex - actualStartIndex );
+                ? String.Empty
+                : str.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
     }
 }

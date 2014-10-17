@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt64TestCase()
+        public void SaveToInt64TestCase ()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToInt64();
@@ -21,7 +21,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt64TestCase1()
+        public void SaveToInt64TestCase1 ()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt64( expected );
@@ -30,7 +30,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt64TestCase2()
+        public void SaveToInt64TestCase2 ()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -40,7 +40,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt64TestCase3()
+        public void SaveToInt64TestCase3 ()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -49,50 +49,50 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt64TestCase4()
+        public void SaveToInt64TestCase4 ()
         {
             var expected = RandomValueEx.GetRandomInt64();
-            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToInt64(RandomValueEx.GetRandomInt64());
+            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToInt64( RandomValueEx.GetRandomInt64() );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToInt64TestCase5()
+        public void SaveToInt64TestCase5 ()
         {
             var actual = "InvalidValue".SaveToInt64();
 
-            Assert.AreEqual(default(Int64), actual);
+            Assert.AreEqual( default( Int64 ), actual );
         }
 
         [Test]
-        public void SaveToInt64TestCase6()
+        public void SaveToInt64TestCase6 ()
         {
             var expected = RandomValueEx.GetRandomInt64();
-            var actual = expected.ToString(CultureInfo.InvariantCulture)
-                                 .SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt64());
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt64() );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToInt64TestCase7()
+        public void SaveToInt64TestCase7 ()
         {
-            var actual = "InvalidValue".SaveToInt64(NumberStyles.Any, CultureInfo.InvariantCulture);
+            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual(default(Int64), actual);
+            Assert.AreEqual( default( Int64 ), actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SaveToInt64TestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SaveToInt64TestCaseNullCheck ()
         {
             StringEx.SaveToInt64( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SaveToInt64TestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SaveToInt64TestCaseNullCheck1 ()
         {
             "".SaveToInt64( NumberStyles.AllowExponent, null );
         }

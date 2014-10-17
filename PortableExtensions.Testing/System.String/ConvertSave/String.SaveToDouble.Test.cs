@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDoubleTestCase()
+        public void SaveToDoubleTestCase ()
         {
             const Double expected = 100.1d;
             var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToDouble();
@@ -21,7 +21,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToDoubleTestCase1()
+        public void SaveToDoubleTestCase1 ()
         {
             const Double expected = 123.12334d;
             var actual = "InvalidValue".SaveToDouble( expected );
@@ -30,7 +30,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToDoubleTestCase2()
+        public void SaveToDoubleTestCase2 ()
         {
             const Double expected = 12345234.1321d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -40,59 +40,59 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToDoubleTestCase3()
+        public void SaveToDoubleTestCase3 ()
         {
             const Double expected = 12345234.1321d;
             var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             Assert.AreEqual( expected, actual );
         }
-        
+
         [Test]
-        public void SaveToDoubleTestCase4()
+        public void SaveToDoubleTestCase4 ()
         {
             const Double expected = 100.1d;
-            var actual = expected.ToString(CultureInfo.InvariantCulture).SaveToDouble(Double.MinValue);
+            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToDouble( Double.MinValue );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToDoubleTestCase5()
+        public void SaveToDoubleTestCase5 ()
         {
             var actual = "InvalidValue".SaveToDouble();
 
-            Assert.AreEqual(default(Double), actual);
+            Assert.AreEqual( default( Double ), actual );
         }
 
         [Test]
-        public void SaveToDoubleTestCase6()
+        public void SaveToDoubleTestCase6 ()
         {
             const Double expected = 12345234.1321d;
-            var actual = expected.ToString(CultureInfo.InvariantCulture)
-                                 .SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture, Double.MaxValue);
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture, Double.MaxValue );
 
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToDoubleTestCase7()
+        public void SaveToDoubleTestCase7 ()
         {
-            var actual = "InvalidValue".SaveToDouble(NumberStyles.Any, CultureInfo.InvariantCulture);
+            var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual(default(Double), actual);
+            Assert.AreEqual( default( Double ), actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SaveToDoubleTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SaveToDoubleTestCaseNullCheck ()
         {
             StringEx.SaveToDouble( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SaveToDoubleTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SaveToDoubleTestCaseNullCheck1 ()
         {
             "".SaveToDouble( NumberStyles.AllowExponent, null );
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Text;
@@ -15,13 +15,13 @@ namespace PortableExtensions
         /// <param name="str">The input string.</param>
         /// <param name="repeatCount">The number of repeats.</param>
         /// <returns>The repeated string.</returns>
-        public static String Repeat( this String str, Int32 repeatCount )
+        public static String Repeat ( this String str, Int32 repeatCount )
         {
             if ( str.IsEmpty() )
                 return String.Empty;
 
             if ( str.Length == 1 )
-                return new String( str[0], repeatCount );
+                return new String( str [0], repeatCount );
 
             var sb = new StringBuilder( repeatCount * str.Length );
             while ( repeatCount-- > 0 )

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the maximum value.</returns>
-        public static TSource Maximum<TSource>( this TSource value, params TSource[] values )
+        public static TSource Maximum<TSource> ( this TSource value, params TSource[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -40,9 +40,9 @@ namespace PortableExtensions
         /// <param name="values">The other values.</param>
         /// <param name="selector"> A transform function to apply to each element.</param>
         /// <returns>Returns the maximum value.</returns>
-        public static TResult Maximum<TSource, TResult>( this TSource value,
-                                                         Func<TSource, TResult> selector,
-                                                         params TSource[] values )
+        public static TResult Maximum<TSource, TResult> ( this TSource value,
+                                                          Func<TSource, TResult> selector,
+                                                          params TSource[] values )
         {
             values.ThrowIfNull( () => values );
             selector.ThrowIfNull( () => selector );

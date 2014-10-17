@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to check.</param>
         /// <returns>Returns true if the string is alpha numeric, otherwise false.</returns>
-        public static Boolean IsAlphaNumeric( this string str )
+        public static Boolean IsAlphaNumeric ( this string str )
         {
             str.ThrowIfNull( () => str );
 

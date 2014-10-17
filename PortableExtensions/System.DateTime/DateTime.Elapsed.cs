@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time value.</param>
         /// <returns>Returns the elapsed time between the given date time value and DateTime.Now.</returns>
-        public static TimeSpan Elapsed( this DateTime dateTime )
+        public static TimeSpan Elapsed ( this DateTime dateTime )
         {
             return DateTime.Now - dateTime;
         }

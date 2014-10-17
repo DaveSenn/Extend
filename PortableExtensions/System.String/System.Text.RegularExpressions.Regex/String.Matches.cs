@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Text.RegularExpressions;
@@ -18,7 +18,7 @@ namespace PortableExtensions
         ///     A collection of the  objects found by the search. If no matches are found, the method returns an empty
         ///     collection object.
         /// </returns>
-        public static MatchCollection Matches( this String input, String pattern )
+        public static MatchCollection Matches ( this String input, String pattern )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );
@@ -37,7 +37,7 @@ namespace PortableExtensions
         ///     A collection of the  objects found by the search. If no matches are found, the method returns an empty
         ///     collection object.
         /// </returns>
-        public static MatchCollection Matches( this String input, String pattern, RegexOptions options )
+        public static MatchCollection Matches ( this String input, String pattern, RegexOptions options )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );
@@ -57,7 +57,7 @@ namespace PortableExtensions
         ///     A collection of the  objects found by the search. If no matches are found, the method returns an empty
         ///     collection object.
         /// </returns>
-        public static MatchCollection Matches( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
+        public static MatchCollection Matches ( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );

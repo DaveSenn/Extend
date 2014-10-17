@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace PortableExtensions
         /// <typeparam name="TValue">Type of the value.</typeparam>
         /// <param name="dictionary">The Dictionary to act on.</param>
         /// <returns>Returns all keys of the given dictionary.</returns>
-        public static IEnumerable<TKey> GetAllKeys<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
+        public static IEnumerable<TKey> GetAllKeys<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary )
         {
             dictionary.ThrowIfNull( () => dictionary );
 

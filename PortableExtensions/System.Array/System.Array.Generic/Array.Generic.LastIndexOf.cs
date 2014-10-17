@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -23,11 +23,11 @@ namespace PortableExtensions
         ///     The index of the last occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
         /// </returns>
-        public static Int32 LastIndexOf<T>(this T[] array, T value)
+        public static Int32 LastIndexOf<T> ( this T[] array, T value )
         {
-            array.ThrowIfNull(() => array);
+            array.ThrowIfNull( () => array );
 
-            return Array.LastIndexOf(array, value);
+            return Array.LastIndexOf( array, value );
         }
 
         /// <summary>
@@ -43,11 +43,11 @@ namespace PortableExtensions
         ///     The index of the last occurrence of  within the range of elements in  that extends from the first element to ,
         ///     if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 LastIndexOf<T>(this T[] array, T value, Int32 startIndex)
+        public static Int32 LastIndexOf<T> ( this T[] array, T value, Int32 startIndex )
         {
-            array.ThrowIfNull(() => array);
+            array.ThrowIfNull( () => array );
 
-            return Array.LastIndexOf(array, value, startIndex);
+            return Array.LastIndexOf( array, value, startIndex );
         }
 
         /// <summary>
@@ -64,11 +64,11 @@ namespace PortableExtensions
         ///     The index of the last occurrence of  within the range of elements in  that contains the number of elements
         ///     specified in  and ends at , if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 LastIndexOf<T>(this T[] array, T value, Int32 startIndex, Int32 count)
+        public static Int32 LastIndexOf<T> ( this T[] array, T value, Int32 startIndex, Int32 count )
         {
-            array.ThrowIfNull(() => array);
+            array.ThrowIfNull( () => array );
 
-            return Array.LastIndexOf(array, value, startIndex, count);
+            return Array.LastIndexOf( array, value, startIndex, count );
         }
     }
 }

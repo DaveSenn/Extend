@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using NUnit.Framework;
 
@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void FactorOfTestCase()
+        public void FactorOfTestCase ()
         {
             var value = RandomValueEx.GetRandomInt16();
             var factorNumer = RandomValueEx.GetRandomInt16();

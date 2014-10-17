@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace PortableExtensions
         /// <param name="predicate">The predicate.</param>
         /// <param name="value">The value to add.</param>
         /// <returns>True if the value was added to the collection, otherwise false.</returns>
-        public static Boolean AddIf<T>( this ICollection<T> collection, Func<T, Boolean> predicate, T value )
+        public static Boolean AddIf<T> ( this ICollection<T> collection, Func<T, Boolean> predicate, T value )
         {
             collection.ThrowIfNull( () => collection );
             predicate.ThrowIfNull( () => predicate );

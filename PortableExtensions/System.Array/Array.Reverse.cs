@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <exception cref="ArgumentNullException">The array can not be null.</exception>
         /// <param name="array">The one-dimensional array to reverse.</param>
-        public static void Reverse( this Array array )
+        public static void Reverse ( this Array array )
         {
             array.ThrowIfNull( () => array );
 
@@ -30,7 +30,7 @@ namespace PortableExtensions
         /// <param name="array">The one-dimensional array to reverse.</param>
         /// <param name="index">The starting index of the section to reverse.</param>
         /// <param name="length">The number of elements in the section to reverse.</param>
-        public static void Reverse( this Array array, Int32 index, Int32 length )
+        public static void Reverse ( this Array array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( () => array );
 

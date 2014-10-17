@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsInt16TestCase()
+        public void TryParsInt16TestCase ()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var result = RandomValueEx.GetRandomInt16();
@@ -23,15 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsInt16TestCaseNullCheck()
-        {
-            var outValue = RandomValueEx.GetRandomInt16();
-            StringEx.TryParsInt16( null, out outValue );
-        }
-
-        [Test]
-        public void TryParsInt16TestCase1()
+        public void TryParsInt16TestCase1 ()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = RandomValueEx.GetRandomInt16();
@@ -43,19 +35,27 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsInt16TestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsInt16TestCase1NullCheck ()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             StringEx.TryParsInt16( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsInt16TestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsInt16TestCase1NullCheck1 ()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             "".TryParsInt16( NumberStyles.Any, null, out outValue );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsInt16TestCaseNullCheck ()
+        {
+            var outValue = RandomValueEx.GetRandomInt16();
+            StringEx.TryParsInt16( null, out outValue );
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void LastIndexOfTestCase()
+        public void LastIndexOfTestCase ()
         {
             Array array = new[]
             {
@@ -24,16 +24,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void LastIndexOfTestCaseNullCheck()
-        {
-            Array array = null;
-            var actual = array.LastIndexOf( "test2" );
-            Assert.AreEqual( 2, actual );
-        }
-
-        [Test]
-        public void LastIndexOfTestCase1()
+        public void LastIndexOfTestCase1 ()
         {
             Array array = new[]
             {
@@ -46,8 +37,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void LastIndexOfTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void LastIndexOfTestCase1NullCheck ()
         {
             Array array = null;
             var actual = array.LastIndexOf( "test2", 1 );
@@ -55,7 +46,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase2()
+        public void LastIndexOfTestCase2 ()
         {
             Array array = new[]
             {
@@ -68,11 +59,20 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void LastIndexOfTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void LastIndexOfTestCase2NullCheck ()
         {
             Array array = null;
             var actual = array.LastIndexOf( "test2", 0, 2 );
+            Assert.AreEqual( 2, actual );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void LastIndexOfTestCaseNullCheck ()
+        {
+            Array array = null;
+            var actual = array.LastIndexOf( "test2" );
             Assert.AreEqual( 2, actual );
         }
     }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfWeekTestCase()
+        public void EndOfWeekTestCase ()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 30 ).AddDays( 1 ).Subtract( 1.ToMilliseconds() );
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void EndOfWeekTestCase1()
+        public void EndOfWeekTestCase1 ()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 31 ).AddDays( 1 ).Subtract( 1.ToMilliseconds() );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The char.</returns>
-        public static Char SaveToChar( this String value, Char? defaultValue = null )
+        public static Char SaveToChar ( this String value, Char? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 

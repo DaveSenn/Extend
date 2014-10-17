@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void MaximumTestCase()
+        public void MaximumTestCase ()
         {
             var actual = 1.Maximum( 2, 3, 4, 5, 6 );
             Assert.AreEqual( 6, actual );
@@ -22,14 +22,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void MaximumTestCaseNullCheck()
-        {
-            10.Maximum( null );
-        }
-
-        [Test]
-        public void MaximumTestCase1()
+        public void MaximumTestCase1 ()
         {
             var actual = 1.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
             Assert.AreEqual( "6", actual );
@@ -39,18 +32,25 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void MaximumTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void MaximumTestCase1NullCheck ()
         {
             10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void MaximumTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void MaximumTestCase1NullCheck1 ()
         {
             Func<Int32, Object> func = null;
             10.Maximum( func, 1, 2, 3, 4, 5 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void MaximumTestCaseNullCheck ()
+        {
+            10.Maximum( null );
         }
     }
 }

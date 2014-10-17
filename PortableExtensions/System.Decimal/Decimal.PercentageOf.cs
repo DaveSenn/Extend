@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Decimal PercentageOf( this Decimal number, Int32 percent )
+        public static Decimal PercentageOf ( this Decimal number, Int32 percent )
         {
             return number * percent / 100;
         }
@@ -28,7 +28,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Decimal PercentageOf( this Decimal number, Decimal percent )
+        public static Decimal PercentageOf ( this Decimal number, Decimal percent )
         {
             return number * percent / 100;
         }
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Decimal PercentageOf( this Decimal number, Int64 percent )
+        public static Decimal PercentageOf ( this Decimal number, Int64 percent )
         {
             return number * percent / 100;
         }

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -19,9 +19,9 @@ namespace PortableExtensions
         ///     The uppercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" /> if
         ///     <paramref name="c" /> is already uppercase, has no uppercase equivalent, or is not alphabetic.
         /// </returns>
-        public static Char ToUpper(this Char c)
+        public static Char ToUpper ( this Char c )
         {
-            return Char.ToUpper(c);
+            return Char.ToUpper( c );
         }
     }
 }

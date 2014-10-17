@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToByteTestCase()
+        public void ToByteTestCase ()
         {
             Byte expected = 1;
             var value = expected.ToString();
@@ -21,14 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCaseNullCheck()
-        {
-            ObjectEx.ToByte( null );
-        }
-
-        [Test]
-        public void ToByteTestCase1()
+        public void ToByteTestCase1 ()
         {
             Byte expected = 1;
             var value = expected.ToString();
@@ -37,17 +30,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck ()
         {
             ObjectEx.ToByte( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToByteTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck1 ()
         {
             ObjectEx.ToByte( "false", null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToByteTestCaseNullCheck ()
+        {
+            ObjectEx.ToByte( null );
         }
     }
 }

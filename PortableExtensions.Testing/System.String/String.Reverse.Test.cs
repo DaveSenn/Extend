@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,29 +11,29 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ReverseTestCase()
+        public void ReverseTestCase ()
         {
             var actual = "abc".Reverse();
             Assert.AreEqual( "cba", actual );
         }
 
         [Test]
-        public void ReverseTestCase1()
+        public void ReverseTestCase1 ()
         {
             var actual = "a".Reverse();
-            Assert.AreEqual("a", actual);
+            Assert.AreEqual( "a", actual );
         }
 
         [Test]
-        public void ReverseTestCase2()
+        public void ReverseTestCase2 ()
         {
             var actual = "".Reverse();
-            Assert.AreEqual("", actual);
+            Assert.AreEqual( "", actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReverseTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReverseTestCaseNullCheck ()
         {
             var actual = StringEx.Reverse( null );
         }

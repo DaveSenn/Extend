@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,22 +11,22 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ReplaceByEmptyTestCase()
+        public void ReplaceByEmptyTestCase ()
         {
             var actual = "abcd".ReplaceByEmpty( "a", "c" );
             Assert.AreEqual( "bd", actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReplaceByEmptyTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReplaceByEmptyTestCaseNullCheck ()
         {
             var actual = StringEx.ReplaceByEmpty( null, "a", "c" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ReplaceByEmptyTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ReplaceByEmptyTestCaseNullCheck1 ()
         {
             var actual = "".ReplaceByEmpty( null );
         }

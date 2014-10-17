@@ -1,7 +1,6 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
-using System.Threading;
 using NUnit.Framework;
 
 #endregion
@@ -11,46 +10,66 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class RandomValueExTest
     {
-
         [Test]
-        public void GetRandomStringTestCase()
+        public void GetRandomBooleanTestCase ()
         {
-            var actual = RandomValueEx.GetRandomString();
-            Assert.IsTrue( actual.Length > 0 );
+            RandomValueEx.GetRandomBoolean();
         }
 
         [Test]
-        public void GetRandomStringsTestCase()
+        public void GetRandomDateTimeTestCase ()
         {
-            var actual = RandomValueEx.GetRandomStrings( 100 );
-            Assert.AreEqual( 100, actual.Count );
-            actual.ForEach( x => Assert.IsTrue( x.Length > 0 ) );
+            var min = DateTime.Now.Subtract( 1.ToDays() );
+
+            for ( var i = 0; i < 10000; i++ )
+            {
+                var max = DateTime.Now.AddDays( i );
+
+                var actual = RandomValueEx.GetRandomDateTime( min, max );
+                Assert.IsTrue( actual >= min && actual <= max );
+            }
         }
 
         [Test]
-        public void GetRandomInt32TestCase()
+        public void GetRandomDateTimeTestCase2 ()
         {
-            var actual = RandomValueEx.GetRandomInt32( 10, 20 );
-            Assert.IsTrue( actual >= 10, "To small" );
-            Assert.IsTrue( actual < 20, "To big" );
+            for ( var i = 0; i < 1000; i++ )
+            {
+                var actual = RandomValueEx.GetRandomDateTime();
+                Assert.IsTrue( actual >= new DateTime( 1753, 01, 01 ) && actual <= new DateTime( 9999, 12, 31 ) );
+            }
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt32TestCaseArgumentOutOfRangeException()
+        public void GetRandomDateTimeTestCase3 ()
         {
-            RandomValueEx.GetRandomInt32( 20, 20 );
+            var min = DateTime.Now.Subtract( 1.ToDays() );
+            for ( var i = 0; i < 10000; i++ )
+            {
+                var actual = RandomValueEx.GetRandomDateTime( min );
+                Assert.IsTrue( actual >= min && actual <= new DateTime( 9999, 12, 31 ) );
+            }
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt32TestCaseArgumentOutOfRangeException1()
+        public void GetRandomDateTimeTestCase4 ()
         {
-            RandomValueEx.GetRandomInt32( 20, 10 );
+            var max = DateTime.Now.AddDays( 100 );
+            for ( var i = 0; i < 10000; i++ )
+            {
+                var actual = RandomValueEx.GetRandomDateTime( max: max );
+                Assert.IsTrue( actual >= new DateTime( 1753, 01, 01 ) && actual <= max );
+            }
         }
 
         [Test]
-        public void GetRandomInt16TestCase()
+        public void GetRandomEnumTestCase ()
+        {
+            RandomValueEx.GetRandomEnum<DayOfWeek>();
+        }
+
+        [Test]
+        public void GetRandomInt16TestCase ()
         {
             var actual = RandomValueEx.GetRandomInt16( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -58,79 +77,43 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt16TestCaseArgumentOutOfRangeException()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt16TestCaseArgumentOutOfRangeException ()
         {
             RandomValueEx.GetRandomInt16( 20, 20 );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt16TestCaseArgumentOutOfRangeException1()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt16TestCaseArgumentOutOfRangeException1 ()
         {
             RandomValueEx.GetRandomInt16( 20, 10 );
         }
 
         [Test]
-        public void GetRandomBooleanTestCase()
+        public void GetRandomInt32TestCase ()
         {
-            RandomValueEx.GetRandomBoolean();
-        }
-        
-        [Test]
-        public void GetRandomDateTimeTestCase()
-        {
-            var min = DateTime.Now.Subtract(1.ToDays());
-
-            for (var i = 0; i < 10000; i++)
-            {
-                var max = DateTime.Now.AddDays(i);
-
-                var actual = RandomValueEx.GetRandomDateTime(min, max);
-                Assert.IsTrue(actual >= min && actual <= max);
-            }
+            var actual = RandomValueEx.GetRandomInt32( 10, 20 );
+            Assert.IsTrue( actual >= 10, "To small" );
+            Assert.IsTrue( actual < 20, "To big" );
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase2()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt32TestCaseArgumentOutOfRangeException ()
         {
-            for (var i = 0; i < 1000; i++)
-            {
-                var actual = RandomValueEx.GetRandomDateTime();
-                Assert.IsTrue(actual >= new DateTime(1753, 01, 01) && actual <= new DateTime(9999, 12, 31));
-            }
+            RandomValueEx.GetRandomInt32( 20, 20 );
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase3()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt32TestCaseArgumentOutOfRangeException1 ()
         {
-            var min = DateTime.Now.Subtract(1.ToDays());
-            for (var i = 0; i < 10000; i++)
-            {
-                var actual = RandomValueEx.GetRandomDateTime(min:min);
-                Assert.IsTrue(actual >= min && actual <= new DateTime(9999, 12, 31));
-            }
+            RandomValueEx.GetRandomInt32( 20, 10 );
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase4()
-        {
-            var max = DateTime.Now.AddDays(100);
-            for (var i = 0; i < 10000; i++)
-            {
-                var actual = RandomValueEx.GetRandomDateTime(max: max);
-                Assert.IsTrue(actual >= new DateTime(1753, 01, 01) && actual <= max);
-            }
-        }
-
-        [Test]
-        public void GetRandomEnumTestCase()
-        {
-            RandomValueEx.GetRandomEnum<DayOfWeek>();
-        }
-
-        [Test]
-        public void GetRandomInt64TestCase()
+        public void GetRandomInt64TestCase ()
         {
             var actual = RandomValueEx.GetRandomInt64( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -138,17 +121,32 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt64TestCaseArgumentOutOfRangeException()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt64TestCaseArgumentOutOfRangeException ()
         {
             RandomValueEx.GetRandomInt64( 20, 20 );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentOutOfRangeException ) )]
-        public void GetRandomInt64TestCaseArgumentOutOfRangeException1()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt64TestCaseArgumentOutOfRangeException1 ()
         {
             RandomValueEx.GetRandomInt64( 20, 10 );
+        }
+
+        [Test]
+        public void GetRandomStringTestCase ()
+        {
+            var actual = RandomValueEx.GetRandomString();
+            Assert.IsTrue( actual.Length > 0 );
+        }
+
+        [Test]
+        public void GetRandomStringsTestCase ()
+        {
+            var actual = RandomValueEx.GetRandomStrings( 100 );
+            Assert.AreEqual( 100, actual.Count );
+            actual.ForEach( x => Assert.IsTrue( x.Length > 0 ) );
         }
     }
 }

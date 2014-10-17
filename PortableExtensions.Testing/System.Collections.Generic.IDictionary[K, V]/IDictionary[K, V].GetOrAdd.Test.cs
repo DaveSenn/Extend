@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,79 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void GetOrAddTestCase()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase1NullCheck ()
+        {
+            IDictionaryEx.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase1NullCheck1 ()
+        {
+            new Dictionary<Object, Object>().GetOrAdd( new KeyValuePair<Object, Object>( null, new Object() ) );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase2NullCheck ()
+        {
+            IDictionaryEx.GetOrAdd( null, new Object(), () => new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase2NullCheck1 ()
+        {
+            new Dictionary<Object, Object>().GetOrAdd( null, () => new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase2NullCheck2 ()
+        {
+            Func<Object> func = null;
+            new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase3NullCheck ()
+        {
+            IDictionaryEx.GetOrAdd( null, new Object(), x => new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase3NullCheck1 ()
+        {
+            new Dictionary<Object, Object>().GetOrAdd( null, x => new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCase3NullCheck2 ()
+        {
+            Func<Object, Object> func = null;
+            new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCaseNullCheck ()
+        {
+            IDictionaryEx.GetOrAdd( null, new Object(), new Object() );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetOrAddCaseNullCheck1 ()
+        {
+            new Dictionary<Object, Object>().GetOrAdd( null, new Object() );
+        }
+
+        [Test]
+        public void GetOrAddTestCase ()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -31,21 +103,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCaseNullCheck()
-        {
-            IDictionaryEx.GetOrAdd( null, new Object(), new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCaseNullCheck1()
-        {
-            new Dictionary<Object, Object>().GetOrAdd( null, new Object() );
-        }
-
-        [Test]
-        public void GetOrAddTestCase1()
+        public void GetOrAddTestCase1 ()
         {
             var dictionary = new Dictionary<String, String>();
             var keyValuePair = new KeyValuePair<String, String>( RandomValueEx.GetRandomString(),
@@ -63,21 +121,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase1NullCheck()
-        {
-            IDictionaryEx.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase1NullCheck1()
-        {
-            new Dictionary<Object, Object>().GetOrAdd( new KeyValuePair<Object, Object>( null, new Object() ) );
-        }
-
-        [Test]
-        public void GetOrAddTestCase2()
+        public void GetOrAddTestCase2 ()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -95,29 +139,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase2NullCheck()
-        {
-            IDictionaryEx.GetOrAdd( null, new Object(), () => new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase2NullCheck1()
-        {
-            new Dictionary<Object, Object>().GetOrAdd( null, () => new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase2NullCheck2()
-        {
-            Func<Object> func = null;
-            new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
-        }
-
-        [Test]
-        public void GetOrAddTestCase3()
+        public void GetOrAddTestCase3 ()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -132,28 +154,6 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( value, actual );
             Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
             Assert.AreEqual( 1, dictionary.Count );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase3NullCheck()
-        {
-            IDictionaryEx.GetOrAdd( null, new Object(), x => new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase3NullCheck1()
-        {
-            new Dictionary<Object, Object>().GetOrAdd( null, x => new Object() );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetOrAddCase3NullCheck2()
-        {
-            Func<Object, Object> func = null;
-            new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
         }
     }
 }

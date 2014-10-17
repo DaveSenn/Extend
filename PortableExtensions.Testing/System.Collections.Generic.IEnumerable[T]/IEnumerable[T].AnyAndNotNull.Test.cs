@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,14 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void PathCombineTestCase()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AnyAndNotNullNullCheck1 ()
+        {
+            new List<String>().AnyAndNotNull( null );
+        }
+
+        [Test]
+        public void PathCombineTestCase ()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull() );
@@ -25,7 +32,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PathCombineTestCase1()
+        public void PathCombineTestCase1 ()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull( x => true ) );
@@ -38,13 +45,6 @@ namespace PortableExtensions.Testing
 
             list.Add( RandomValueEx.GetRandomString() );
             Assert.IsTrue( list.AnyAndNotNull( x => true ) );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void AnyAndNotNullNullCheck1()
-        {
-            new List<String>().AnyAndNotNull( null );
         }
     }
 }

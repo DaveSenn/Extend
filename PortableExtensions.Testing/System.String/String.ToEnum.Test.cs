@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToEnumTestCase()
+        public void ToEnumTestCase ()
         {
             var expected = DayOfWeek.Monday;
             var actual = expected.ToString().ToEnum<DayOfWeek>();
@@ -20,8 +20,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToEnumTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToEnumTestCaseNullCheck ()
         {
             StringEx.ToEnum<DayOfWeek>( null );
         }

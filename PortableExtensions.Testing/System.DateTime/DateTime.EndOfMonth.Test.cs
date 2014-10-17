@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfMonthTestCase()
+        public void EndOfMonthTestCase ()
         {
             var dateTime = DateTime.Now;
             var expected = new DateTime( dateTime.Year, dateTime.Month, 1 ).AddMonths( 1 )

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to extract the numbers from.</param>
         /// <returns>The extracted numbers.</returns>
-        public static String ExtractNumbers( this String str )
+        public static String ExtractNumbers ( this String str )
         {
             str.ThrowIfNull( () => str );
 

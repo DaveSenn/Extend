@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -24,9 +24,9 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
-                                                                 TValue value )
+        public static Boolean AddIfNotContainsKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                                  TKey key,
+                                                                  TValue value )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
@@ -48,8 +48,8 @@ namespace PortableExtensions
         /// <param name="dictionary">The dictionary to which the item should get added.</param>
         /// <param name="keyValuePair">The KeyValuePair to add.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 KeyValuePair<TKey, TValue> keyValuePair )
+        public static Boolean AddIfNotContainsKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                                  KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( () => dictionary );
             keyValuePair.Key.ThrowIfNull( () => keyValuePair.Key );
@@ -73,9 +73,9 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
-                                                                 Func<TValue> valueFactory )
+        public static Boolean AddIfNotContainsKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                                  TKey key,
+                                                                  Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
@@ -100,9 +100,9 @@ namespace PortableExtensions
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
-                                                                 Func<TKey, TValue> valueFactory )
+        public static Boolean AddIfNotContainsKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
+                                                                  TKey key,
+                                                                  Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class TimeSpanExTest
     {
         [Test]
-        public void FPastTestCase()
+        public void FPastTestCase ()
         {
             var expected = DateTime.Now.Subtract( TimeSpan.FromDays( 1 ) );
             var actual = TimeSpan.FromDays( 1 ).Past();

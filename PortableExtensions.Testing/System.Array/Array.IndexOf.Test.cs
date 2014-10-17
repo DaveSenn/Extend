@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void IndexOfTestCase()
+        public void IndexOfTestCase ()
         {
             Array array = new[]
             {
@@ -25,15 +25,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IndexOfTestCaseNullCheck()
-        {
-            Array array = null;
-            array.IndexOf( "test" );
-        }
-
-        [Test]
-        public void IndexOfTestCase1()
+        public void IndexOfTestCase1 ()
         {
             Array array = new[]
             {
@@ -47,15 +39,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IndexOfTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IndexOfTestCase1NullCheck ()
         {
             Array array = null;
             array.IndexOf( "test", 10 );
         }
 
         [Test]
-        public void IndexOfTestCase2()
+        public void IndexOfTestCase2 ()
         {
             Array array = new[]
             {
@@ -72,11 +64,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void IndexOfTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IndexOfTestCase2NullCheck ()
         {
             Array array = null;
             array.IndexOf( "test", 10, 12 );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void IndexOfTestCaseNullCheck ()
+        {
+            Array array = null;
+            array.IndexOf( "test" );
         }
     }
 }

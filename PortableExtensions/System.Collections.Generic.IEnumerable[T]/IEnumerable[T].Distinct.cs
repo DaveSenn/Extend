@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -23,7 +23,7 @@ namespace PortableExtensions
         /// <param name="predicate">The Predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <typeparam name="TKey">The input type of the predicate.</typeparam>
-        public static IEnumerable<T> Distinct<T, TKey>( this IEnumerable<T> enumerable, Func<T, TKey> predicate )
+        public static IEnumerable<T> Distinct<T, TKey> ( this IEnumerable<T> enumerable, Func<T, TKey> predicate )
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );

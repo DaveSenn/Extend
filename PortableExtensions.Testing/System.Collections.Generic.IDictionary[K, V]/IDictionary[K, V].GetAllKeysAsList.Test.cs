@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,24 +13,24 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void GetAllKeysAsListTestCase()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetAllKeysAsListCaseNullCheck ()
+        {
+            Dictionary<Object, Object> dictionary = null;
+            dictionary.GetAllKeysAsList();
+        }
+
+        [Test]
+        public void GetAllKeysAsListTestCase ()
         {
             var dictionary = new Dictionary<String, String>
             {
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() },
-                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
+                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()},
+                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()}
             };
 
             var allKeys = dictionary.GetAllKeysAsList();
             Assert.IsTrue( dictionary.All( x => allKeys.Contains( x.Key ) ) );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetAllKeysAsListCaseNullCheck()
-        {
-            Dictionary<Object, Object> dictionary = null;
-            dictionary.GetAllKeysAsList();
         }
     }
 }

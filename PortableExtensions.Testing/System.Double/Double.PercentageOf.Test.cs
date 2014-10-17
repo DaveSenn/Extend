@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void PercentageOfTestCase()
+        public void PercentageOfTestCase ()
         {
             Double number = 1000;
             var expected = 500;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1()
+        public void PercentageOfTestCase1 ()
         {
             Double number = 1000;
             var expected = 500;
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2()
+        public void PercentageOfTestCase2 ()
         {
             Double number = 1000;
             var expected = 500;

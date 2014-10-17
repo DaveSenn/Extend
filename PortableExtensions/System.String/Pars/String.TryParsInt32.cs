@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -24,7 +24,7 @@ namespace PortableExtensions
         ///     or greater than System.Int32.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt32( this String value, out Int32 outValue )
+        public static Boolean TryParsInt32 ( this String value, out Int32 outValue )
         {
             value.ThrowIfNull( () => value );
 
@@ -53,10 +53,10 @@ namespace PortableExtensions
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt32( this String value,
-                                            NumberStyles numberStyles,
-                                            IFormatProvider formatProvider,
-                                            out Int32 outValue )
+        public static Boolean TryParsInt32 ( this String value,
+                                             NumberStyles numberStyles,
+                                             IFormatProvider formatProvider,
+                                             out Int32 outValue )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstInt64TestCase()
+        public void ExtractFirstInt64TestCase ()
         {
             var value0 = 100;
             var value1 = 102;
@@ -32,24 +32,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExtractFirstInt64TestCase1()
+        public void ExtractFirstInt64TestCase1 ()
         {
             var sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt64();
 
-            Assert.AreEqual(-100, actual);
+            Assert.AreEqual( -100, actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractFirstInt64TestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractFirstInt64TestCaseNullCheck ()
         {
             StringEx.ExtractFirstInt64( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractFirstInt64TestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractFirstInt64TestCaseNullCheck1 ()
         {
             StringEx.ExtractFirstInt64( null, 0 );
         }

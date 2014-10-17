@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace PortableExtensions
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, String[] values )
+        public static String Join ( this String separator, String[] values )
         {
             separator.ThrowIfNull( () => separator );
             values.ThrowIfNull( () => values );
@@ -43,7 +43,7 @@ namespace PortableExtensions
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, Object[] values )
+        public static String Join ( this String separator, Object[] values )
         {
             separator.ThrowIfNull( () => separator );
             values.ThrowIfNull( () => values );
@@ -65,7 +65,7 @@ namespace PortableExtensions
         ///     A string that consists of the elements in  delimited by the string.
         ///     If is an empty IEnumerable, the method returns String.Empty.
         /// </returns>
-        public static String Join<T>( this String separator, IEnumerable<T> values )
+        public static String Join<T> ( this String separator, IEnumerable<T> values )
         {
             separator.ThrowIfNull( () => separator );
             values.ThrowIfNull( () => values );
@@ -88,7 +88,7 @@ namespace PortableExtensions
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, String[] values, Int32 startIndex, Int32 count )
+        public static String Join ( this String separator, String[] values, Int32 startIndex, Int32 count )
         {
             separator.ThrowIfNull( () => separator );
             values.ThrowIfNull( () => values );

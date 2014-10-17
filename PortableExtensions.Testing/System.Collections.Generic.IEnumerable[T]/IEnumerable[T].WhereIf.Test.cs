@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void WhereIfTestCase()
+        public void WhereIfTestCase ()
         {
             var list = new List<String>();
 
@@ -39,23 +39,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void WhereIfTestCaseNullCheck()
-        {
-            List<Object> list = null;
-            list.WhereIf( true, x => true );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void WhereIfTestCaseNullCheck1()
-        {
-            Func<Object, Boolean> func = null;
-            new List<Object>().WhereIf( true, func );
-        }
-
-        [Test]
-        public void WhereIfTestCase1()
+        public void WhereIfTestCase1 ()
         {
             var list = new List<String>();
 
@@ -81,18 +65,34 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void WhereIfTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void WhereIfTestCase1NullCheck ()
         {
             List<Object> list = null;
             list.WhereIf( true, ( x, i ) => true );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void WhereIfTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void WhereIfTestCase1NullCheck1 ()
         {
             Func<Object, Int32, Boolean> func = null;
+            new List<Object>().WhereIf( true, func );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void WhereIfTestCaseNullCheck ()
+        {
+            List<Object> list = null;
+            list.WhereIf( true, x => true );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void WhereIfTestCaseNullCheck1 ()
+        {
+            Func<Object, Boolean> func = null;
             new List<Object>().WhereIf( true, func );
         }
     }

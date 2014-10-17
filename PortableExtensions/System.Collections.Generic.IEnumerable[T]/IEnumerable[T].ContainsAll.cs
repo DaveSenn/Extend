@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -24,7 +24,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="values">The values to search for.</param>
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
-        public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, params T[] values )
+        public static Boolean ContainsAll<T> ( this IEnumerable<T> enumerable, params T[] values )
         {
             enumerable.ThrowIfNull( () => enumerable );
             values.ThrowIfNull( () => values );
@@ -42,7 +42,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="values">The IEnumerable containing the values to search for.</param>
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
-        public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, IEnumerable<T> values )
+        public static Boolean ContainsAll<T> ( this IEnumerable<T> enumerable, IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( () => enumerable );
             values.ThrowIfNull( () => values );

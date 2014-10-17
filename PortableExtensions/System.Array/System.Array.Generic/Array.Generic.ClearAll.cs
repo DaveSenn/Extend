@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The array to clear.</param>
         /// <returns>Returns the cleard array.</returns>
-        public static T[] ClearAll<T>( this T[] array )
+        public static T[] ClearAll<T> ( this T[] array )
         {
             array.ThrowIfNull( () => array );
 

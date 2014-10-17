@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsBooleanTestCase()
+        public void TryParsBooleanTestCase ()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var result = !expected;
@@ -23,8 +23,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsBooleanTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsBooleanTestCaseNullCheck ()
         {
             var outValue = false;
             StringEx.TryParsBoolean( null, out outValue );

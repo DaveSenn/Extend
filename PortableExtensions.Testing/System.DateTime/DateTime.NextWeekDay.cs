@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void NextWeekDayTestCase()
+        public void NextWeekDayTestCase ()
         {
             var friday = new DateTime( 2014, 8, 8 );
             var saturday = new DateTime( 2014, 8, 9 );

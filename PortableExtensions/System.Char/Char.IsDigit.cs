@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a decimal digit, otherwise false.</returns>
-        public static Boolean IsDigit( this Char c )
+        public static Boolean IsDigit ( this Char c )
         {
             return Char.IsDigit( c );
         }

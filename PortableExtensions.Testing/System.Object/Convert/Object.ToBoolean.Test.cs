@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToBooleanTestCase()
+        public void ToBooleanTestCase ()
         {
             var value = "false";
             Assert.IsFalse( ObjectEx.ToBoolean( value ) );
@@ -22,14 +22,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCaseNullCheck()
-        {
-            ObjectEx.ToBoolean( null );
-        }
-
-        [Test]
-        public void ToBooleanTestCase1()
+        public void ToBooleanTestCase1 ()
         {
             var value = "false";
             Assert.IsFalse( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
@@ -39,17 +32,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCase1NullCheck ()
         {
             ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ToBooleanTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCase1NullCheck1 ()
         {
             ObjectEx.ToBoolean( "false", null );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ToBooleanTestCaseNullCheck ()
+        {
+            ObjectEx.ToBoolean( null );
         }
     }
 }

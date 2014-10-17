@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void WithinIndexTestCase()
+        public void WithinIndexTestCase ()
         {
             Array array = new[]
             {
@@ -31,8 +31,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void WithinIndexTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void WithinIndexTestCaseNullCheck ()
         {
             Array array = null;
             array.WithinIndex( 10 );

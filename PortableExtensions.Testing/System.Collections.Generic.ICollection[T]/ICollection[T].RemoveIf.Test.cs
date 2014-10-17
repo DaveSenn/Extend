@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveIfTestCase()
+        public void RemoveIfTestCase ()
         {
             var list = new List<String>();
             var valueToRemove = RandomValueEx.GetRandomString();
@@ -29,15 +29,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveIfTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveIfTestCaseNullCheck ()
         {
             CollectionTEx.RemoveIf( null, "", x => true );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void RemoveIfTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void RemoveIfTestCaseNullCheck1 ()
         {
             new List<String>().RemoveIf( "", null );
         }

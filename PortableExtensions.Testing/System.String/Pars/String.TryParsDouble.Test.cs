@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDoubleTestCase()
+        public void TryParsDoubleTestCase ()
         {
             var expected = 100.123d;
             var result = 100d;
@@ -23,15 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsDoubleTestCaseNullCheck()
-        {
-            var outValue = 100d;
-            StringEx.TryParsDouble( null, out outValue );
-        }
-
-        [Test]
-        public void TryParsDoubleTestCase1()
+        public void TryParsDoubleTestCase1 ()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = 100.123d;
@@ -43,19 +35,27 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsDoubleTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsDoubleTestCase1NullCheck ()
         {
             var outValue = 100d;
             StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void TryParsDoubleTestCase1NullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsDoubleTestCase1NullCheck1 ()
         {
             var outValue = 100d;
             "100".TryParsDouble( NumberStyles.Any, null, out outValue );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void TryParsDoubleTestCaseNullCheck ()
+        {
+            var outValue = 100d;
+            StringEx.TryParsDouble( null, out outValue );
         }
     }
 }

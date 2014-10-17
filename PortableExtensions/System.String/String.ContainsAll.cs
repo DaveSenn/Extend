@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="str">The string to check.</param>
         /// <param name="values">A list of string values.</param>
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        public static Boolean ContainsAll( this String str, params String[] values )
+        public static Boolean ContainsAll ( this String str, params String[] values )
         {
             str.ThrowIfNull( () => str );
             values.ThrowIfNull( () => values );
@@ -33,7 +33,7 @@ namespace PortableExtensions
         /// <param name="comparisonType">Type of the comparison.</param>
         /// <param name="values">A list of string values.</param>
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        public static Boolean ContainsAll( this String str, StringComparison comparisonType, params String[] values )
+        public static Boolean ContainsAll ( this String str, StringComparison comparisonType, params String[] values )
         {
             str.ThrowIfNull( () => str );
             values.ThrowIfNull( () => values );

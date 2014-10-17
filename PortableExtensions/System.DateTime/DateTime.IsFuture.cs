@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The @date time to check.</param>
         /// <returns>Returns true if the value is in the future, otherwise false.</returns>
-        public static Boolean IsFuture( this DateTime dateTime )
+        public static Boolean IsFuture ( this DateTime dateTime )
         {
             return dateTime > DateTime.Now;
         }

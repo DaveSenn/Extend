@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="array">The array to check.</param>
         /// <param name="index">a Zero-based index.</param>
         /// <returns>Ture if the index is within the array, otherwise false.</returns>
-        public static Boolean WithinIndex( this Array array, Int32 index )
+        public static Boolean WithinIndex ( this Array array, Int32 index )
         {
             array.ThrowIfNull( () => array );
 

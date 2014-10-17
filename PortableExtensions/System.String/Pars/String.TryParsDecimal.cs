@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -25,7 +25,7 @@ namespace PortableExtensions
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDecimal( this String value, out Decimal outValue )
+        public static Boolean TryParsDecimal ( this String value, out Decimal outValue )
         {
             value.ThrowIfNull( () => value );
 
@@ -52,10 +52,10 @@ namespace PortableExtensions
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDecimal( this String value,
-                                              NumberStyles numberStyle,
-                                              IFormatProvider formatProvider,
-                                              out Decimal outValue )
+        public static Boolean TryParsDecimal ( this String value,
+                                               NumberStyles numberStyle,
+                                               IFormatProvider formatProvider,
+                                               out Decimal outValue )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

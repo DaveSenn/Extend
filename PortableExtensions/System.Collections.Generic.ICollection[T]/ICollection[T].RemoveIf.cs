@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace PortableExtensions
         /// <param name="value">The value to remove.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> RemoveIf<T>( this ICollection<T> collection, T value, Func<T, Boolean> predicate )
+        public static ICollection<T> RemoveIf<T> ( this ICollection<T> collection, T value, Func<T, Boolean> predicate )
         {
             collection.ThrowIfNull( () => collection );
             predicate.ThrowIfNull( () => predicate );

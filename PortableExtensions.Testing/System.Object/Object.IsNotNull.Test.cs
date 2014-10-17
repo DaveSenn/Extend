@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using NUnit.Framework;
 
@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void IsNotNullTestCase()
+        public void IsNotNullTestCase ()
         {
             var value = RandomValueEx.GetRandomString();
             var actual = value.IsNotNull();

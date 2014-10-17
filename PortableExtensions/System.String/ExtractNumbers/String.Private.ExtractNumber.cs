@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Text;
@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the number from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted number as string.</returns>
-        private static String ExtractNumber( this String value, Int32 startIndex = 0 )
+        private static String ExtractNumber ( this String value, Int32 startIndex = 0 )
         {
             value.ThrowIfNull( () => value );
 
@@ -28,14 +28,16 @@ namespace PortableExtensions
             var sb = new StringBuilder();
 
             for ( var i = 0; i < chars.Length; i++ )
-                if ( chars[i].IsDigit() )
+            {
+                if ( chars [i].IsDigit() )
                 {
-                    if ( sb.Length == 0 && i > 0 && chars[i - 1] == '-' )
+                    if ( sb.Length == 0 && i > 0 && chars [i - 1] == '-' )
                         sb.Append( '-' );
-                    sb.Append( chars[i] );
+                    sb.Append( chars [i] );
                 }
                 else if ( sb.Length > 0 )
                     break;
+            }
 
             return sb.ToString();
         }

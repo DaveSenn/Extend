@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void SmallerTestCase()
+        public void SmallerTestCase ()
         {
             var value = 1000;
             var value1 = 900;
@@ -33,15 +33,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SmallerTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SmallerTestCaseNullCheck ()
         {
             IComparableTEx.Smaller( null, "" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SmallerTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SmallerTestCaseNullCheck1 ()
         {
             "".Smaller( null );
         }

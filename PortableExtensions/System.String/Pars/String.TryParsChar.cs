@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 
@@ -21,7 +21,7 @@ namespace PortableExtensions
         ///     the length of s is not 1. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsChar( this String value, out Char outValue )
+        public static Boolean TryParsChar ( this String value, out Char outValue )
         {
             value.ThrowIfNull( () => value );
 

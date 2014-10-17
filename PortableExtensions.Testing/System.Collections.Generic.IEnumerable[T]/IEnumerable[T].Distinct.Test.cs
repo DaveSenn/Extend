@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void DistinctTestCase()
+        public void DistinctTestCase ()
         {
             var list = new List<KeyValuePair<String, String>>
             {
@@ -33,16 +33,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void DistinctTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void DistinctTestCaseNullCheck ()
         {
             List<KeyValuePair<Object, Object>> list = null;
             list.Distinct( x => x.Value );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void DistinctTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void DistinctTestCaseNullCheck1 ()
         {
             Func<Object, Boolean> func = null;
             new List<Object>().Distinct( func );

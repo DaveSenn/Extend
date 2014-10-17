@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Globalization;
@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstDecimalTestCase()
+        public void ExtractFirstDecimalTestCase ()
         {
             var value0 = new Decimal( 100.2 );
             var value1 = new Decimal( 100.212 );
@@ -32,40 +32,40 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCase1()
+        public void ExtractFirstDecimalTestCase1 ()
         {
             var sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDecimal();
 
-            Assert.AreEqual(-100.1234m, actual);
+            Assert.AreEqual( -100.1234m, actual );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ExtractFirstDecimalTestCase1ArgumentOutOfRangeException()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstDecimalTestCase1ArgumentOutOfRangeException ()
         {
             var sValue = RandomValueEx.GetRandomString();
-            sValue.ExtractFirstDecimal(sValue.Length);
+            sValue.ExtractFirstDecimal( sValue.Length );
         }
 
         [Test]
-        [ExpectedException(typeof(ArgumentOutOfRangeException))]
-        public void ExtractFirstDecimalTestCase2ArgumentOutOfRangeException()
+        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstDecimalTestCase2ArgumentOutOfRangeException ()
         {
             var sValue = RandomValueEx.GetRandomString();
-            sValue.ExtractFirstDecimal(-1);
+            sValue.ExtractFirstDecimal( -1 );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractFirstDecimalTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractFirstDecimalTestCaseNullCheck ()
         {
             StringEx.ExtractFirstDecimal( null );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void ExtractFirstDecimalTestCaseNullCheck1()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void ExtractFirstDecimalTestCaseNullCheck1 ()
         {
             StringEx.ExtractFirstDecimal( null, 0 );
         }

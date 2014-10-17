@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,22 +11,14 @@ namespace PortableExtensions.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void SumTestCase()
+        public void SumTestCase ()
         {
             var actual = 10.Sum( 20, 30, 40, 50 );
             Assert.AreEqual( 150, actual );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCaseNullCheck()
-        {
-            Int32[] values = null;
-            var actual = 10.Sum( values );
-        }
-
-        [Test]
-        public void SumTestCase1()
+        public void SumTestCase1 ()
         {
             var actual = ( 10 as Int32? ).Sum( 20, null, 40, null );
             Assert.AreEqual( 70, actual );
@@ -40,15 +32,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCase1NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCase1NullCheck ()
         {
             Int32?[] values = null;
             var actual = ( 10 as Int32? ).Sum( values );
         }
 
         [Test]
-        public void SumTestCase2()
+        public void SumTestCase2 ()
         {
             var actual = "test".Sum( x => x.Length, "a", "b", "c", "d" );
             Assert.AreEqual( 8, actual );
@@ -58,23 +50,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCase2NullCheck2()
-        {
-            Func<String, Int32> func = null;
-            var actual = "Test".Sum( func, "test", "test2" );
-        }
-
-        [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCase2NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCase2NullCheck ()
         {
             String[] values = null;
             var actual = "Test".Sum( x => x.Length, values );
         }
 
         [Test]
-        public void SumTestCase3()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCase2NullCheck2 ()
+        {
+            Func<String, Int32> func = null;
+            var actual = "Test".Sum( func, "test", "test2" );
+        }
+
+        [Test]
+        public void SumTestCase3 ()
         {
             var actual = "test".Sum( x => x.Length > 1 ? (Int32?) x.Length : null, "a", "b", "c", "d" );
             Assert.AreEqual( 4, actual );
@@ -84,19 +76,27 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCase3NullCheck2()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCase3NullCheck ()
+        {
+            String[] values = null;
+            var actual = "Test".Sum( x => (Int32?) x.Length, values );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCase3NullCheck2 ()
         {
             Func<String, Int32?> func = null;
             var actual = "Test".Sum( func, "test", "test2" );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void SumTestCase3NullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void SumTestCaseNullCheck ()
         {
-            String[] values = null;
-            var actual = "Test".Sum( x => (Int32?) x.Length, values );
+            Int32[] values = null;
+            var actual = 10.Sum( values );
         }
     }
 }

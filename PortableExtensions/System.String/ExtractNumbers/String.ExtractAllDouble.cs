@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections.Generic;
@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the doubles from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted doubles.</returns>
-        public static List<Double> ExtractAllDouble( this String value, Int32 startIndex = 0 )
+        public static List<Double> ExtractAllDouble ( this String value, Int32 startIndex = 0 )
         {
             return new List<Double>( ExtractAllFloatingNumbers( value, startIndex ).Select( x => x.ToDouble() ) );
         }

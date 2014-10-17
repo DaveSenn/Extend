@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void PopulateTestCase()
+        public void PopulateTestCase ()
         {
             var array = new Int32[10];
             var actual = array.Populate( 100 );
@@ -20,14 +20,14 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 10, array.Length );
             for ( var i = 0; i < array.Length; i++ )
             {
-                Assert.AreEqual( 100, array[i] );
-                Assert.AreEqual( 100, actual[i] );
+                Assert.AreEqual( 100, array [i] );
+                Assert.AreEqual( 100, actual [i] );
             }
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void PopulateTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void PopulateTestCaseNullCheck ()
         {
             String[] array = null;
             array.Populate( RandomValueEx.GetRandomString() );

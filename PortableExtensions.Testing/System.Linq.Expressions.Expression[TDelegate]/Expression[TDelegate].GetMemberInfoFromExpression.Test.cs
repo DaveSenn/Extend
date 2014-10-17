@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq.Expressions;
@@ -19,30 +19,28 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetMemberInfoFromExpressionTestCase()
+        public void GetMemberInfoFromExpressionTestCase ()
         {
             Expression<Func<TestModel, String>> memberExpression = x => x.Name;
             var actual = memberExpression.GetMemberInfoFromExpression();
-            Assert.AreEqual( typeof ( String ), ( actual as PropertyInfo ).PropertyType );
+            Assert.AreEqual( typeof (String), ( actual as PropertyInfo ).PropertyType );
 
             Expression<Func<TestModel, Object>> memberExpression1 = x => x.Age;
             actual = memberExpression1.GetMemberInfoFromExpression();
-            Assert.AreEqual( typeof ( Int32 ), ( actual as PropertyInfo ).PropertyType );
+            Assert.AreEqual( typeof (Int32), ( actual as PropertyInfo ).PropertyType );
 
             Expression<Func<TestModel, Int32>> memberExpression2 = x => x.Age;
             actual = memberExpression1.GetMemberInfoFromExpression();
-            Assert.AreEqual( typeof ( Int32 ), ( actual as PropertyInfo ).PropertyType );
+            Assert.AreEqual( typeof (Int32), ( actual as PropertyInfo ).PropertyType );
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
-        public void GetMemberInfoFromExpressionTestCaseNullCheck()
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void GetMemberInfoFromExpressionTestCaseNullCheck ()
         {
             Expression<Func<TestModel, Object>> memberExpression = null;
             memberExpression.GetMemberInfoFromExpression();
         }
-
-
     }
 }
 
