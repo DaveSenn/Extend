@@ -12,85 +12,18 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        //[Test]
-        //public void GetNameTestCase()
-        //{
-        //    var varName = "";
-        //    var actual = varName.GetName( x => varName );
-
-        //    Assert.AreEqual( "varName", actual );
-        //}
-
-        //[Test]
-        //public void GetNameTestCase1()
-        //{
-        //    const String varName = "value";
-        //    var actual = varName.GetName(() => varName);
-
-        //    Assert.AreEqual("varName", actual);
-        //}
-
-        //[Test]
-        //public void GetNameTestCase2()
-        //{
-        //    var intValue = 10;
-        //    var actual = intValue.GetName(() => intValue);
-
-        //    Assert.AreEqual("intValue", actual);
-        //}
-
-        //private Int32 _globalIntValue = 10;
-        //[Test]
-        //public void GetNameTestCase3()
-        //{
-        //    var actual = _globalIntValue.GetName(() => _globalIntValue);
-
-        //    Assert.AreEqual("_globalIntValue", actual);
-        //}
-
-        //private event PropertyChangedEventHandler propertyChanged;
-        //[Test]
-        //public void GetNameTestCase4()
-        //{
-        //    var actual = propertyChanged.GetName(() => propertyChanged);
-
-        //    Assert.AreEqual("propertyChanged", actual);
-        //}
-
-        //[Test]
-        //public void GetNameTestCase5()
-        //{
-        //    var model = new TestModel();
-        //    var actual = model.Age.GetName(() => model.Age);
-
-        //    Assert.AreEqual("Age", actual);
-        //}
-
-        //[Test]
-        //public void GetNameTestCase6()
-        //{
-        //    var model = new TestModel();
-        //    Expression<Func<TestModel, object>> expression1 = x => x.Age;
-
-        //    var actual = model.GetName(expression1);
-
-        //    Assert.AreEqual("Age", actual);
-        //}
-
-        //[Test]
-        //[ExpectedException(typeof(ArgumentNullException))]
-        //public void GetNameTestCase1NullCheck()
-        //{
-        //    Expression<Func<Object>> fieldName = null;
-        //    "".GetName(fieldName);
-        //}
-
         private event PropertyChangedEventHandler PropertyChanged;
 
         private class TestModel
         {
             public Int32 Age { get; set; }
             public String Name { get; set; }
+            public SubModel SubModel { get; set; }
+        }
+
+        private class SubModel
+        {
+            public String Foo { get; set; }
         }
 
         [Test]
@@ -126,6 +59,18 @@ namespace PortableExtensions.Testing
         {
             const String myString = "";
             myString.GetName( () => myString );
+        }
+
+        [Test]
+        public void GetNameOverloadTestCase4 ()
+        {
+            var model = new TestModel
+            {
+                SubModel = new SubModel()
+            };
+            var actual = model.SubModel.Foo.GetName( () => model.SubModel.Foo );
+
+            Assert.AreEqual( "Foo", actual );
         }
 
         [Test]
@@ -167,10 +112,20 @@ namespace PortableExtensions.Testing
         public void GetNameTestCase3 ()
         {
             var model = new TestModel();
-            Expression<Func<TestModel, object>> expression1 = x => x.Age;
+            Expression<Func<TestModel, Object>> expression1 = x => x.Age;
             var actual = model.GetName( expression1 );
 
             Assert.AreEqual( "Age", actual );
+        }
+
+        [Test]
+        public void GetNameTestCase4 ()
+        {
+            var model = new TestModel();
+            var actual = model.GetName( x => x.SubModel.Foo );
+
+            Assert.AreEqual( "Foo", actual );
+            ;
         }
 
         [Test]
