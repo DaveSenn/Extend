@@ -20,14 +20,14 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public abstract Boolean Validate ( T obj );
+        public abstract Boolean IsSatisfiedBy ( T obj );
 
         /// <summary>
         ///     Validates the given object against the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public abstract IEnumerable<String> ValidateWithMessages ( T obj );
+        public abstract IEnumerable<String> IsSatisfiedByWithMessages ( T obj );
 
         /// <summary>
         ///     Combines the current specification with the given specification using an AND link.
@@ -54,7 +54,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> Xor ( ISpecification<T> specification )
+        public ISpecification<T> XOr ( ISpecification<T> specification )
         {
             return new XOrSpecification<T>( this, specification );
         }

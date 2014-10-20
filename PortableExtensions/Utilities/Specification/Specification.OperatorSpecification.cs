@@ -1,3 +1,5 @@
+using System;
+
 namespace PortableExtensions
 {
     /// <summary>
@@ -11,12 +13,12 @@ namespace PortableExtensions
         /// <summary>
         ///     The left specification.
         /// </summary>
-        protected ISpecification<T> Left;
+        protected readonly ISpecification<T> Left;
 
         /// <summary>
         ///     The right specification.
         /// </summary>
-        protected ISpecification<T> Right;
+        protected readonly ISpecification<T> Right;
 
         #endregion
 
@@ -25,10 +27,15 @@ namespace PortableExtensions
         /// <summary>
         ///     Initialize a new instance of the <see cref="OperatorSpecification{T}" /> class.
         /// </summary>
+        /// <exception cref="ArgumentNullException">left can not be null.</exception>
+        /// <exception cref="ArgumentNullException">right can not be null.</exception>
         /// <param name="left">The left specification.</param>
         /// <param name="right">The right specification.</param>
         protected OperatorSpecification ( ISpecification<T> left, ISpecification<T> right )
         {
+            left.ThrowIfNull( () => left );
+            right.ThrowIfNull( () => right );
+
             Left = left;
             Right = right;
         }
