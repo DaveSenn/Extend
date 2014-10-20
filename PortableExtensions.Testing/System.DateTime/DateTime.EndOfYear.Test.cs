@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
         [Test]
         public void EndOfYearTestCase ()
         {
-            var dateTime = RandomValueEx.GetRandomDateTime();
+            var dateTime = RandomValueEx.GetRandomDateTime( DateTime.Now, new DateTime( 3000, 1, 1 ) );
             var expected = new DateTime( dateTime.Year, 1, 1 ).AddYears( 1 ).Subtract( 1.ToMilliseconds() );
             var actual = dateTime.EndOfYear();
             Assert.AreEqual( expected, actual );

@@ -46,6 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <Compile Include="Utilities\Specification\Specification.SpecificationEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Definitions\IExecutionResult.cs" />
@@ -382,13 +383,13 @@
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
-    <Compile Include="Utilities\Specification\AndSpecification.cs" />
-    <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
-    <Compile Include="Utilities\Specification\ISpecification.cs" />
-    <Compile Include="Utilities\Specification\OperatorSpecification.cs" />
-    <Compile Include="Utilities\Specification\OrSpecification.cs" />
-    <Compile Include="Utilities\Specification\Specification.cs" />
-    <Compile Include="Utilities\Specification\XOrSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.AndSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.ExpressionSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.ISpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.OperatorSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.OrSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.Specification.cs" />
+    <Compile Include="Utilities\Specification\Specification.XOrSpecification.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeys.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeysAsList.cs" />
