@@ -382,6 +382,13 @@
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
+    <Compile Include="Utilities\Specification\AndSpecification.cs" />
+    <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
+    <Compile Include="Utilities\Specification\ISpecification.cs" />
+    <Compile Include="Utilities\Specification\OperatorSpecification.cs" />
+    <Compile Include="Utilities\Specification\OrSpecification.cs" />
+    <Compile Include="Utilities\Specification\Specification.cs" />
+    <Compile Include="Utilities\Specification\XOrSpecification.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeys.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeysAsList.cs" />
