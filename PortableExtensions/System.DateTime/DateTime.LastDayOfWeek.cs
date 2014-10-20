@@ -18,10 +18,9 @@ namespace PortableExtensions
         /// <returns>Returns the last day of the given week.</returns>
         public static DateTime LastDayOfWeek ( this DateTime week )
         {
-            if ( week.DayOfWeek == DayOfWeek.Sunday )
-                return new DateTime( week.Year, week.Month, week.Day );
-
-            return new DateTime( week.Year, week.Month, week.Day ).AddDays( 7 - (Int32) week.DayOfWeek );
+            return week.DayOfWeek == DayOfWeek.Sunday
+                ? new DateTime( week.Year, week.Month, week.Day )
+                : new DateTime( week.Year, week.Month, week.Day ).AddDays( 7 - (Int32) week.DayOfWeek );
         }
     }
 }
