@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using System.Threading;
 using NUnit.Framework;
 
 #endregion
@@ -14,8 +15,10 @@ namespace PortableExtensions.Testing
         [Test]
         public void ToDecimalTestCase ()
         {
+            Thread.CurrentThread.CurrentCulture = new CultureInfo( "en-US" );
+
             var expected = new Decimal( 100.12 );
-            var value = expected.ToString( CultureInfo.InvariantCulture ).Replace( ".", "," );
+            var value = expected.ToString( Thread.CurrentThread.CurrentCulture );
             var actual = ObjectEx.ToDecimal( value );
             Assert.AreEqual( expected, actual );
         }
