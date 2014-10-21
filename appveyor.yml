@@ -1,8 +1,8 @@
 configuration: Release
 
-# restore Nuget packages
-before build:
+# restore NuGet packages
+before_build:
   - nuget restore
- 
+
 build:
   verbosity: minimal
