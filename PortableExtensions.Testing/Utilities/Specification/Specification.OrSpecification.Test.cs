@@ -12,6 +12,78 @@ namespace PortableExtensions.Testing
     public class OrSpecificationTest
     {
         [Test]
+        public void AndTestCase ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.And( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void AndTestCase1 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.And( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        public void AndTestCase2 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.And( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void AndTestCase3 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.And( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        public void AndTestCase4 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.And( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void AndTestCaseNullCheck ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            ExpressionSpecification<String> other = null;
+            target.And( other );
+        }
+
+        [Test]
         [ExpectedException ( typeof (ArgumentNullException) )]
         public void CtorTestCaseNulLCheck ()
         {
@@ -159,6 +231,150 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
             Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
+        }
+
+        [Test]
+        public void OrTestCase ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.Or( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void OrTestCase1 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.Or( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void OrTestCase2 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.Or( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void OrTestCase3 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.Or( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void OrTestCase4 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            var actual = target.Or( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void OrTestCaseNullCheck ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new OrSpecification<String>( left, right );
+
+            ExpressionSpecification<String> other = null;
+            target.Or( other );
+        }
+
+        [Test]
+        public void XOrTestCase ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new XOrSpecification<String>( left, right );
+
+            var actual = target.XOr( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void XOrTestCase1 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+            var target = new XOrSpecification<String>( left, right );
+
+            var actual = target.XOr( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        public void XOrTestCase2 ()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new XOrSpecification<String>( left, right );
+
+            var actual = target.XOr( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        public void XOrTestCase3 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new XOrSpecification<String>( left, right );
+
+            var actual = target.XOr( new ExpressionSpecification<String>( x => true ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsTrue( result );
+        }
+
+        [Test]
+        public void XOrTestCase4 ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new XOrSpecification<String>( left, right );
+
+            var actual = target.XOr( new ExpressionSpecification<String>( x => false ) );
+            var result = actual.IsSatisfiedBy( String.Empty );
+            Assert.IsFalse( result );
+        }
+
+        [Test]
+        [ExpectedException ( typeof (ArgumentNullException) )]
+        public void XOrTestCaseNullCheck ()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+            var target = new XOrSpecification<String>( left, right );
+
+            ExpressionSpecification<String> other = null;
+            target.XOr( other );
         }
     }
 }
