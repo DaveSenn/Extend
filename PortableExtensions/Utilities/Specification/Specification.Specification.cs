@@ -16,27 +16,27 @@ namespace PortableExtensions
         #region Implementation of ISpecification<T>
 
         /// <summary>
-        ///     Validates the given object against the specification.
+        ///     Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public abstract Boolean IsSatisfiedBy ( T obj );
+        public abstract Boolean IsSatisfiedBy(T obj);
 
         /// <summary>
-        ///     Validates the given object against the specification.
+        ///     Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public abstract IEnumerable<String> IsSatisfiedByWithMessages ( T obj );
+        public abstract IEnumerable<String> IsSatisfiedByWithMessages(T obj);
 
         /// <summary>
         ///     Combines the current specification with the given specification using an AND link.
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> And ( ISpecification<T> specification )
+        public ISpecification<T> And(ISpecification<T> specification)
         {
-            return new AndSpecification<T>( this, specification );
+            return new AndSpecification<T>(this, specification);
         }
 
         /// <summary>
@@ -44,9 +44,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> Or ( ISpecification<T> specification )
+        public ISpecification<T> Or(ISpecification<T> specification)
         {
-            return new OrSpecification<T>( this, specification );
+            return new OrSpecification<T>(this, specification);
         }
 
         /// <summary>
@@ -54,9 +54,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> XOr ( ISpecification<T> specification )
+        public ISpecification<T> XOr(ISpecification<T> specification)
         {
-            return new XOrSpecification<T>( this, specification );
+            return new XOrSpecification<T>(this, specification);
         }
 
         #endregion

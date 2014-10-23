@@ -33,7 +33,7 @@ namespace PortableExtensions
         #region Overrides of Specification<T>
 
         /// <summary>
-        ///     Validates the given object against the specification.
+        /// Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
@@ -43,7 +43,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        ///     Validates the given object against the specification.
+        /// Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
