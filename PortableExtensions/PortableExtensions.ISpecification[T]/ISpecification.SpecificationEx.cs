@@ -9,9 +9,9 @@ using System.Linq;
 namespace PortableExtensions
 {
     /// <summary>
-    ///     Class containing some extension methods for working with specifications.
+    ///     Class containing some extension methods for <see cref="ISpecification{T}"/>.
     /// </summary>
-    public static class SpecificationEx
+    public static partial class SpecificationEx
     {
         /// <summary>
         ///     Creates a specification with the given condition and message.
@@ -54,46 +54,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        /// Combines the current specification with the given expression using an AND link.
-        /// </summary>
-        /// <typeparam name="T">The target type of the specification.</typeparam>
-        /// <param name="specification">The current specification.</param>
-        /// <param name="expression">The expression to add.</param>
-        /// <returns>Returns the combined specifications.</returns>
-        public static ISpecification<T> And<T> ( this ISpecification<T> specification, Func<T, Boolean> expression )
-        {
-            var newSpecification = new ExpressionSpecification<T>( expression );
-            return specification.And( newSpecification );
-        }
-
-        /// <summary>
-        /// Combines the current specification with the given expression using a OR link.
-        /// </summary>
-        /// <typeparam name="T">The target type of the specification.</typeparam>
-        /// <param name="specification">The current specification.</param>
-        /// <param name="expression">The expression to add.</param>
-        /// <returns>Returns the combined specifications.</returns>
-        public static ISpecification<T> Or<T> ( this ISpecification<T> specification, Func<T, Boolean> expression )
-        {
-            var newSpecification = new ExpressionSpecification<T>( expression );
-            return specification.Or( newSpecification );
-        }
-
-        /// <summary>
-        /// Combines the current specification with the given expression using a XOr link.
-        /// </summary>
-        /// <typeparam name="T">The target type of the specification.</typeparam>
-        /// <param name="specification">The current specification.</param>
-        /// <param name="expression">The expression to add.</param>
-        /// <returns>Returns the combined specifications.</returns>
-        public static ISpecification<T> XOr<T> ( this ISpecification<T> specification, Func<T, Boolean> expression )
-        {
-            var newSpecification = new ExpressionSpecification<T>( expression );
-            return specification.XOr( newSpecification );
-        }
-
-        /// <summary>
-        /// Checks if the objects objects satisfies the given specification.
+        /// Checks if the objects satisfies the given specification.
         /// </summary>
         /// <typeparam name="T">The type of the object.</typeparam>
         /// <param name="obj">The object to check.</param>
@@ -105,7 +66,7 @@ namespace PortableExtensions
         }
 
         /// <summary>
-        /// Checks if the objects objects satisfies the given specification.
+        /// Checks if the objects satisfies the given specification.
         /// </summary>
         /// <typeparam name="T">The type of the object.</typeparam>
         /// <param name="obj">The object to check.</param>
@@ -116,13 +77,25 @@ namespace PortableExtensions
             return specification.IsSatisfiedByWithMessages( obj );
         }
 
-        
-
+        /// <summary>
+        /// Returns all items of the given enumerable which satisfy the given specification.
+        /// </summary>
+        /// <typeparam name="T">The type of the item in the enumerable.</typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="specification">The specification.</param>
+        /// <returns>Returns the items which satisfy the given specification.</returns>
         public static IEnumerable<T> WhereSatisfies<T> ( this IEnumerable<T> enumerable, ISpecification<T> specification )
         {
             return enumerable.Where( specification.IsSatisfiedBy );
         }
 
+        /// <summary>
+        /// Returns all items of the given enumerable which doesn't satisfy the given specification.
+        /// </summary>
+        /// <typeparam name="T">The type of the item in the enumerable.</typeparam>
+        /// <param name="enumerable">The enumerable.</param>
+        /// <param name="specification">The specification.</param>
+        /// <returns>Returns the items which doesn't satisfy the given specification.</returns>
         public static IEnumerable<T> WhereNotSatisfies<T> ( this IEnumerable<T> enumerable, ISpecification<T> specification )
         {
             return enumerable.Where( x => !specification.IsSatisfiedBy( x ) );

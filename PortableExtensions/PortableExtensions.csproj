@@ -46,7 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
-    <Compile Include="Utilities\Specification\Specification.SpecificationEx.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.SpecificationEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Definitions\IExecutionResult.cs" />
