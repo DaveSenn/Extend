@@ -111,10 +111,6 @@ namespace PortableExtensions.Testing
             Assert.IsNull(actual[1]);
         }
 
-
-
-
-
         [Test]
         public void AndTestCase8()
         {
