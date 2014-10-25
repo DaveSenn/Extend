@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionTest.cs" />
     <Compile Include="Models\ExecutionResultTest.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.Test.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System.Action\Action.ExecuteIfAnyFalse.Test.cs" />
     <Compile Include="System.Action\Action.ExecuteIfAnyTrue.Test.cs" />
