@@ -49,7 +49,6 @@
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />
-    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.SpecificationEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Definitions\IExecutionResult.cs" />
@@ -73,6 +72,9 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.cs" />
@@ -80,6 +82,8 @@
     <Compile Include="System.DateTime\DateTime.NextMonthStart.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.cs" />
     <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.SatisfiesWithMessages.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Specification.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.GetNameChain.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Swap.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.cs" />
@@ -226,6 +230,7 @@
     <Compile Include="System.Int32\Int32.IsMultipleOf.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Maximum.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Minimum.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Satisfies.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
