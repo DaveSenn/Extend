@@ -17,7 +17,6 @@ namespace PortableExtensions.Testing
         private class TestModel
         {
             public Int32 Age { get; set; }
-            public String Name { get; set; }
             public SubModel SubModel { get; set; }
         }
 
@@ -27,145 +26,147 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameChainOverload1TestCaseNullCheck ()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void GetNameChainOverload1TestCaseNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object>> expression = null;
-            expression.TryGetMemberExpression( out outResult );
+            expression.TryGetMemberExpression(out outResult);
         }
 
         [Test]
-        public void TryGetMemberExpression5 ()
+        public void TryGetMemberExpression5()
         {
             MemberExpression outResult;
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( outResult.Member.Name, "myInt" );
+            Assert.IsTrue(actual);
+            Assert.AreEqual(outResult.Member.Name, "myInt");
         }
 
         [Test]
-        public void TryGetMemberExpression6 ()
+        public void TryGetMemberExpression6()
         {
             MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<Int32>> expression = () => model.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Age", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Age", outResult.Member.Name);
         }
 
         [Test]
-        public void TryGetMemberExpression7 ()
+        public void TryGetMemberExpression7()
         {
             MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<String>> expression = () => model.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Foo", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Foo", outResult.Member.Name);
         }
 
         [Test]
-        public void TryGetMemberExpression8 ()
+        public void TryGetMemberExpression8()
         {
             MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<Object>> expression = () => model.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Foo", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Foo", outResult.Member.Name);
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase ()
+        public void TryGetMemberExpressionTestCase()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
             MemberExpression outResult;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( outResult.Member.Name, "myInt" );
+            Assert.IsTrue(actual);
+            Assert.AreEqual(outResult.Member.Name, "myInt");
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase1 ()
+        public void TryGetMemberExpressionTestCase1()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Int32>> expression = x => x.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( outResult.Member.Name, "Age" );
+            Assert.IsTrue(actual);
+            Assert.AreEqual(outResult.Member.Name, "Age");
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase2 ()
+        public void TryGetMemberExpressionTestCase2()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, String>> expression = x => x.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Foo", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Foo", outResult.Member.Name);
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase3 ()
+        public void TryGetMemberExpressionTestCase3()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Age", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Age", outResult.Member.Name);
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase4 ()
+        public void TryGetMemberExpressionTestCase4()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out outResult);
 
-            Assert.IsTrue( actual );
-            Assert.AreEqual( "Foo", outResult.Member.Name );
+            Assert.IsTrue(actual);
+            Assert.AreEqual("Foo", outResult.Member.Name);
         }
 
+
+
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void TryGetMemberExpressionTestCaseNotSupportedException ()
+        [ExpectedException(typeof(NotSupportedException))]
+        public void TryGetMemberExpressionTestCaseNotSupportedException()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object, Object>> expression = x => myInt;
-            expression.TryGetMemberExpression( out outResult );
+            expression.TryGetMemberExpression(out outResult);
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void TryGetMemberExpressionTestCaseNotSupportedException1 ()
+        [ExpectedException(typeof(NotSupportedException))]
+        public void TryGetMemberExpressionTestCaseNotSupportedException1()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object>> expression = () => myInt;
-            expression.TryGetMemberExpression( out outResult );
+            expression.TryGetMemberExpression(out outResult);
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryGetMemberExpressionTestCaseNullCheck ()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void TryGetMemberExpressionTestCaseNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;
-            expression.TryGetMemberExpression( out outResult );
+            expression.TryGetMemberExpression(out outResult);
         }
     }
 }
