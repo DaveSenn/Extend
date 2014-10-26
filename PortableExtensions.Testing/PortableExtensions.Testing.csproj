@@ -86,6 +86,9 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionary.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextMonthStart.Test.cs" />
@@ -93,6 +96,9 @@
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.GetNameChain.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Satisfies.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.SatisfiesWithMessages.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Specification.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Swap.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
     <Compile Include="System.Boolean\Boolean.IfFalse.Test.cs" />
