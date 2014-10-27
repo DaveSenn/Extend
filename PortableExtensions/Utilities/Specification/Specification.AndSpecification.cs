@@ -23,8 +23,8 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">right can not be null.</exception>
         /// <param name="left">The left specification.</param>
         /// <param name="right">The right specification.</param>
-        public AndSpecification(ISpecification<T> left, ISpecification<T> right)
-            : base(left, right)
+        public AndSpecification ( ISpecification<T> left, ISpecification<T> right )
+            : base( left, right )
         {
         }
 
@@ -37,9 +37,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy(T obj)
+        public override Boolean IsSatisfiedBy ( T obj )
         {
-            return Left.IsSatisfiedBy(obj) && Right.IsSatisfiedBy(obj);
+            return Left.IsSatisfiedBy( obj ) && Right.IsSatisfiedBy( obj );
         }
 
         /// <summary>
@@ -47,15 +47,15 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public override IEnumerable<String> IsSatisfiedByWithMessages(T obj)
+        public override IEnumerable<String> IsSatisfiedByWithMessages ( T obj )
         {
-            var leftResult = Left.IsSatisfiedByWithMessages(obj).ToList();
-            var rightResult = Right.IsSatisfiedByWithMessages(obj).ToList();
+            var leftResult = Left.IsSatisfiedByWithMessages( obj ).ToList();
+            var rightResult = Right.IsSatisfiedByWithMessages( obj ).ToList();
 
-            if (leftResult.NotAny() && rightResult.NotAny())
+            if ( leftResult.NotAny() && rightResult.NotAny() )
                 return new String[0];
 
-            return leftResult.Concat(rightResult);
+            return leftResult.Concat( rightResult );
         }
 
         #endregion

@@ -35,9 +35,9 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">expression can not be null.</exception>
         /// <param name="expression">The validation expression.</param>
         /// <param name="message">The validation error message.</param>
-        public ExpressionSpecification(Func<T, Boolean> expression, String message = null)
+        public ExpressionSpecification ( Func<T, Boolean> expression, String message = null )
         {
-            expression.ThrowIfNull(() => expression);
+            expression.ThrowIfNull( () => expression );
 
             _expression = expression;
             _message = message;
@@ -52,9 +52,9 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy(T obj)
+        public override Boolean IsSatisfiedBy ( T obj )
         {
-            return _expression(obj);
+            return _expression( obj );
         }
 
         /// <summary>
@@ -62,10 +62,10 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
-        public override IEnumerable<String> IsSatisfiedByWithMessages(T obj)
+        public override IEnumerable<String> IsSatisfiedByWithMessages ( T obj )
         {
-            bool result = _expression(obj);
-            if (result)
+            var result = _expression( obj );
+            if ( result )
                 return new String[0];
 
             return new List<String> {_message};

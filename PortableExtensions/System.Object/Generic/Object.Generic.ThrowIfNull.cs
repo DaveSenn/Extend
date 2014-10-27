@@ -22,7 +22,8 @@ namespace PortableExtensions
         /// <typeparam name="TObject">The type <paramref name="obj" />.</typeparam>
         /// <param name="obj">The object to check.</param>
         /// <param name="expression">An expression pointing to <paramref name="obj" />.</param>
-        /// <param name="errorMessage">The text used as exception message if <paramref name="obj" /> is
+        /// <param name="errorMessage">
+        ///     The text used as exception message if <paramref name="obj" /> is
         ///     <value>null</value>
         ///     .
         /// </param>
