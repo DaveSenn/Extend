@@ -28,10 +28,10 @@ namespace PortableExtensions
         public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember> (
             this Expression<Func<TDeclairingType, TMember>> expression )
         {
-            expression.ThrowIfNull(() => expression);
+            expression.ThrowIfNull( () => expression );
 
             MemberExpression memberExpression;
-            expression.TryGetMemberExpression(out memberExpression);
+            expression.TryGetMemberExpression( out memberExpression );
             return memberExpression.Member;
         }
     }

@@ -19,11 +19,11 @@ namespace PortableExtensions
         /// <param name="obj">The object to check.</param>
         /// <param name="specification">The specification to use.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public static Boolean Satisfies<T>(this T obj, ISpecification<T> specification)
+        public static Boolean Satisfies<T> ( this T obj, ISpecification<T> specification )
         {
-            specification.ThrowIfNull(() => specification);
+            specification.ThrowIfNull( () => specification );
 
-            return specification.IsSatisfiedBy(obj);
+            return specification.IsSatisfiedBy( obj );
         }
     }
 }

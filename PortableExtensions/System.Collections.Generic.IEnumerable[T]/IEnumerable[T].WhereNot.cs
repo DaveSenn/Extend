@@ -22,11 +22,11 @@ namespace PortableExtensions
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="specification">The specification.</param>
         /// <returns>Returns the items which doesn't satisfy the given specification.</returns>
-        public static IEnumerable<T> WhereNot<T>(this IEnumerable<T> enumerable, ISpecification<T> specification)
+        public static IEnumerable<T> WhereNot<T> ( this IEnumerable<T> enumerable, ISpecification<T> specification )
         {
-            specification.ThrowIfNull(() => specification);
+            specification.ThrowIfNull( () => specification );
 
-            return enumerable.Where(x => !specification.IsSatisfiedBy(x));
+            return enumerable.Where( x => !specification.IsSatisfiedBy( x ) );
         }
     }
 }

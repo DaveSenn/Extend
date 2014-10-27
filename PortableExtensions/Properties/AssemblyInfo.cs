@@ -14,7 +14,7 @@ using System.Resources;
 [assembly: AssemblyConfiguration ( "Debug" )]
 #else
 
-[assembly: AssemblyConfiguration( "Release" )]
+[assembly: AssemblyConfiguration ( "Release" )]
 #endif
 
 [assembly: AssemblyCompany ( "Dave Senn" )]
@@ -30,5 +30,5 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Build and Revision Numbers by using the '*' as shown below: [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion("1.0.18.0")]
-[assembly: AssemblyFileVersion("1.0.18.0")]
+[assembly: AssemblyVersion ( "1.0.18.0" )]
+[assembly: AssemblyFileVersion ( "1.0.18.0" )]
