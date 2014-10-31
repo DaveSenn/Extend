@@ -91,6 +91,26 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void AgeTestCase15 ()
+        {
+            var dateTime = new DateTime( DateTime.Now.Year, 10, 31 ).AddYears( 1 ).AddMonths( 1 );
+            const Int32 expected = -1;
+
+            var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
+            Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        public void AgeTestCase16 ()
+        {
+            var dateTime = new DateTime( DateTime.Now.Year, 10, 31 ).AddYears( 1 ).AddDays( 1 );
+            const Int32 expected = -1;
+
+            var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
+            Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
         public void AgeTestCase2 ()
         {
             var dateTime = DateTime.Now.AddYears( -1 ).AddMonths( -3 );
@@ -144,7 +164,7 @@ namespace PortableExtensions.Testing
         public void AgeTestCase7 ()
         {
             var dateTime = DateTime.Now.AddYears( 1 ).AddMonths( 1 );
-            const Int32 expected = -2;
+            const Int32 expected = -1;
 
             var actual = dateTime.Age();
             Assert.AreEqual( expected, actual );
@@ -154,7 +174,7 @@ namespace PortableExtensions.Testing
         public void AgeTestCase8 ()
         {
             var dateTime = DateTime.Now.AddYears( 1 ).AddDays( 1 );
-            const Int32 expected = -2;
+            const Int32 expected = -1;
 
             var actual = dateTime.Age();
             Assert.AreEqual( expected, actual );

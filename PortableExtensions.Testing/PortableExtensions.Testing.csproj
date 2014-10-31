@@ -397,6 +397,7 @@
     <Compile Include="Utilities\Specification\Specification.ExpressionSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\Specification.OrSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\Specification.XOrSpecification.Test.cs" />
+    <Compile Include="Utilities\Tree\TreeNodeCollectionTest.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.Test.cs" />
   </ItemGroup>
   <ItemGroup>
