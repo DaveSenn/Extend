@@ -15,27 +15,22 @@ namespace PortableExtensions
         ///     Calculates the difference between the year of the current and the given date time.
         /// </summary>
         /// <remarks>
-        ///     <paramref name="now" /> can be samller than <paramref name="dateTime" />, which results in negative results.
+        ///     <paramref name="now" /> can be smaller than <paramref name="dateTime" />, which results in negative results.
+        ///     Source from: http://stackoverflow.com/questions/9/how-do-i-calculate-someones-age-in-c
         /// </remarks>
         /// <param name="dateTime">The date time value.</param>
-        /// <param name="now">The 'current' date used to caluculate the age, or null tu use <see cref="DateTime.Now" />.</param>
+        /// <param name="now">The 'current' date used to calculate the age, or null tu use <see cref="DateTime.Now" />.</param>
         /// <returns>The difference between the year of the current and the given date time.</returns>
         public static Int32 Age ( this DateTime dateTime, DateTime? now = null )
         {
             var currentDate = now ?? DateTime.Now;
-
             if ( dateTime.Year == currentDate.Year )
                 return 0;
 
-            var age = currentDate.Year - dateTime.Year;
+            var a = ( currentDate.Year * 100 + currentDate.Month ) * 100 + currentDate.Day;
+            var b = ( dateTime.Year * 100 + dateTime.Month ) * 100 + dateTime.Day;
 
-            if ( dateTime > currentDate && ( currentDate.Month > dateTime.Month || currentDate.Day > dateTime.Day ) )
-                age++;
-            else if ( ( currentDate.Month < dateTime.Month
-                        || ( currentDate.Month == dateTime.Month && currentDate.Day < dateTime.Day ) ) )
-                age--;
-
-            return age;
+            return ( a - b ) / 10000;
         }
     }
 }

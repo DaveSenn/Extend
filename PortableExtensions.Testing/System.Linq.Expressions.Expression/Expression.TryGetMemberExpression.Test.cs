@@ -83,6 +83,18 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void TryGetMemberExpression9 ()
+        {
+            MemberExpression outResult;
+            var model = new TestModel();
+            Expression<Func<Object>> expression = () => PropertyChanged;
+            var actual = expression.TryGetMemberExpression( out outResult );
+
+            Assert.IsTrue( actual );
+            Assert.AreEqual( "PropertyChanged", outResult.Member.Name );
+        }
+
+        [Test]
         public void TryGetMemberExpressionTestCase ()
         {
             var myInt = RandomValueEx.GetRandomInt32();
