@@ -47,7 +47,7 @@ namespace PortableExtensions
         public ITreeNode<T> Parent
         {
             get { return _parent; }
-            internal set
+            set
             {
                 if ( _parent == value )
                     return;
@@ -60,7 +60,7 @@ namespace PortableExtensions
                     _parent.Children.DetachFromParent();
                     _parent.Children = this;
                 }
-                this.ForEach( x => x.Parent = value );
+                this.ForEach( x => x.SetParent( _parent, false ) );
             }
         }
 

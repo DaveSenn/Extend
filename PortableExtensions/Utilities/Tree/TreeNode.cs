@@ -174,10 +174,6 @@ namespace PortableExtensions
                 //Remove node from old parent
                 if ( oldParent != null )
                     oldParent.Children.Remove( this );
-
-                //Add node to new parent
-                if ( _parent != null )
-                    _parent.Children.Add( this );
             }
         }
 
@@ -334,6 +330,21 @@ namespace PortableExtensions
             return node;
         }
 
+        /// <summary>
+        ///     Sets the parent of the tree node.
+        /// </summary>
+        /// <param name="parent">The new parent.</param>
+        /// <param name="attacheToParent">
+        ///     A value determining whether the node should add it self to the children of the new parent
+        ///     or not.
+        /// </param>
+        public void SetParent ( ITreeNode<T> parent, Boolean attacheToParent = true )
+        {
+            Parent = parent;
+            if ( attacheToParent && Parent != null )
+                Parent.Children.Add( this );
+        }
+
         #endregion
 
         #endregion
@@ -381,8 +392,8 @@ namespace PortableExtensions
         public override String ToString ()
         {
             return "{0} - Value: {1}, Parent: {{{2}}}".F( Depth,
-                                                      Value == null ? "[NULL]" : Value.ToString(),
-                                                      Parent == null ? "[NULL]" : Parent.ToString() );
+                                                          Value == null ? "[NULL]" : Value.ToString(),
+                                                          Parent == null ? "[NULL]" : Parent.ToString() );
         }
 
         #endregion

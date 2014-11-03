@@ -32,7 +32,7 @@ namespace PortableExtensions
         /// </summary>
         /// <value>The search traversal direction.</value>
         TreeTraversalDirection SearchTraversalDirection { get; set; }
-        
+
         /// <summary>
         ///     Gets or sets the parent of the node.
         /// </summary>
@@ -99,7 +99,17 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="node">The node to add.</param>
         /// <returns>Returns the added node.</returns>
-        ITreeNode<T> AddChild(ITreeNode<T> node);
+        ITreeNode<T> AddChild ( ITreeNode<T> node );
+
+        /// <summary>
+        ///     Sets the parent of the tree node.
+        /// </summary>
+        /// <param name="parent">The new parent.</param>
+        /// <param name="attacheToParent">
+        ///     A value determining whether the node should add it self to the children of the new parent
+        ///     or not.
+        /// </param>
+        void SetParent ( ITreeNode<T> parent, Boolean attacheToParent = true );
 
         #endregion
     }

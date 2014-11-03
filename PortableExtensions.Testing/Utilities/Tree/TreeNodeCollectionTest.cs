@@ -105,6 +105,93 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void ParentTestCase ()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent );
+
+            Assert.AreEqual( parent, target.Parent );
+        }
+
+        [Test]
+        public void ParentTestCase1 ()
+        {
+            var target = new TreeNodeCollection<String>( null );
+
+            Assert.IsNull( target.Parent );
+        }
+
+        [Test]
+        public void ParentTestCase2 ()
+        {
+            var target = new TreeNodeCollection<String>( null );
+            Assert.IsNull( target.Parent );
+
+            var parent = new TreeNode<String>();
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+        }
+
+        [Test]
+        public void ParentTestCase3 ()
+        {
+            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            Assert.IsNull( target.Parent );
+            target.ForEach( x => Assert.IsNull( x.Parent ) );
+
+            var parent = new TreeNode<String>();
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+        }
+
+        [Test]
+        public void ParentTestCase4 ()
+        {
+            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            Assert.IsNull( target.Parent );
+            target.ForEach( x => Assert.IsNull( x.Parent ) );
+
+            var parent = new TreeNode<String>();
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+
+            target.Add( "3" );
+            target.Add( "4" );
+            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+
+            var newParent = new TreeNode<String>();
+            target.Parent = newParent;
+
+            Assert.AreSame( newParent, target.Parent );
+            target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
+        }
+
+        [Test]
+        public void ParentTestCase5 ()
+        {
+            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            Assert.IsNull( target.Parent );
+            target.ForEach( x => Assert.IsNull( x.Parent ) );
+
+            var parent = new TreeNode<String>();
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+
+            target.Add( "3" );
+            target.Add( "4" );
+            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+
+            ITreeNode<String> newParent = null;
+            target.Parent = newParent;
+
+            Assert.AreSame( newParent, target.Parent );
+            target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
+        }
+
+        [Test]
         public void RemoveNodeTestCase ()
         {
             var parent = new TreeNode<String>();
