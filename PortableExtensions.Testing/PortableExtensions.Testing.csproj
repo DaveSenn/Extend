@@ -393,10 +393,10 @@
     <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
-    <Compile Include="Utilities\Specification\Specification.AndSpecification.Test.cs" />
-    <Compile Include="Utilities\Specification\Specification.ExpressionSpecification.Test.cs" />
-    <Compile Include="Utilities\Specification\Specification.OrSpecification.Test.cs" />
-    <Compile Include="Utilities\Specification\Specification.XOrSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\XOrSpecification.Test.cs" />
     <Compile Include="Utilities\Tree\TreeNodeCollectionTest.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.Test.cs" />
   </ItemGroup>

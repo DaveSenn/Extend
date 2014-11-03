@@ -4,7 +4,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using PortableExtensions;
 
 #endregion
 
@@ -168,10 +167,17 @@ namespace PortableExtensions
                 if ( value == _parent )
                     return;
 
-                if ( _parent != null )
-                    _parent.Children.Remove( this );
-
+                //Switch parent
+                var oldParent = _parent;
                 _parent = value;
+
+                //Remove node from old parent
+                if ( oldParent != null )
+                    oldParent.Children.Remove( this );
+
+                //Add node to new parent
+                if ( _parent != null )
+                    _parent.Children.Add( this );
             }
         }
 
@@ -188,7 +194,7 @@ namespace PortableExtensions
         ///     Gets or sets the children of the node.
         /// </summary>
         /// <value>The children of the node.</value>
-        public ITreeNodeCollection<T> Children { get; protected set; }
+        public ITreeNodeCollection<T> Children { get; set; }
 
         /// <summary>
         ///     Gets or sets the search traversal direction.
@@ -342,11 +348,12 @@ namespace PortableExtensions
         /// </returns>
         public IEnumerator<ITreeNode<T>> GetEnumerator ()
         {
-            //Return current node.
-            yield return this;
-            foreach ( var childLevel2 in Children.SelectMany( child => child.Children ) )
+            foreach ( var node in Children )
             {
-                yield return childLevel2;
+                yield return node;
+
+                foreach ( var childLevel2 in node.Children )
+                    yield return childLevel2;
             }
         }
 
@@ -373,7 +380,9 @@ namespace PortableExtensions
         /// </returns>
         public override String ToString ()
         {
-            return "{0} - Value: {1}, Parent: {2}".F( Depth, Value, Parent );
+            return "{0} - Value: {1}, Parent: {{{2}}}".F( Depth,
+                                                      Value == null ? "[NULL]" : Value.ToString(),
+                                                      Parent == null ? "[NULL]" : Parent.ToString() );
         }
 
         #endregion
@@ -388,7 +397,7 @@ namespace PortableExtensions
             Dispose( true );
             GC.SuppressFinalize( this );
         }
-        
+
         /// <summary>
         ///     Destructs the tree node..
         /// </summary>

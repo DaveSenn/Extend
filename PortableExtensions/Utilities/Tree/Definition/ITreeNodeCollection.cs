@@ -31,6 +31,11 @@ namespace PortableExtensions
         /// <returns>Returns the new added node.</returns>
         ITreeNode<T> Add ( T value );
 
+        /// <summary>
+        ///     Detaches the collection and all it's items form it's current parent.
+        /// </summary>
+        void DetachFromParent ();
+
         #endregion
     }
 }
