@@ -67,7 +67,7 @@ namespace PortableExtensions
         ///     Gets the children of the node.
         /// </summary>
         /// <value>The children of the node.</value>
-        ITreeNodeCollection<T> Children { get; }
+        ITreeNodeCollection<T> Children { get; set; }
 
         #endregion
 

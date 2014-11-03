@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.ObjectModel;
-using PortableExtensions;
 
 #endregion
 
@@ -14,6 +13,15 @@ namespace PortableExtensions
     /// <typeparam name="T">The type of the value of the tree nodes.</typeparam>
     public class TreeNodeCollection<T> : Collection<ITreeNode<T>>, ITreeNodeCollection<T>
     {
+        #region Fields
+
+        /// <summary>
+        ///     The parent of the tree node collection.
+        /// </summary>
+        private ITreeNode<T> _parent;
+
+        #endregion
+
         #region Ctor
 
         /// <summary>
@@ -22,7 +30,7 @@ namespace PortableExtensions
         /// <param name="parent">The parent of the node.</param>
         public TreeNodeCollection ( ITreeNode<T> parent )
         {
-            Parent = parent;
+            _parent = parent;
         }
 
         #endregion
@@ -34,8 +42,27 @@ namespace PortableExtensions
         /// <summary>
         ///     Gets the parent of the collection.
         /// </summary>
+        /// <exception cref="ArgumentNullException">Parent can not be null.</exception>
         /// <value>The parent of the collection.</value>
-        public ITreeNode<T> Parent { get; private set; }
+        public ITreeNode<T> Parent
+        {
+            get { return _parent; }
+            internal set
+            {
+                if ( _parent == value )
+                    return;
+
+                if ( _parent != null )
+                    _parent.Children = new TreeNodeCollection<T>( _parent );
+                _parent = value;
+                if ( _parent != null )
+                {
+                    _parent.Children.DetachFromParent();
+                    _parent.Children = this;
+                }
+                this.ForEach( x => x.Parent = value );
+            }
+        }
 
         #endregion
 
@@ -54,6 +81,15 @@ namespace PortableExtensions
             return node;
         }
 
+        /// <summary>
+        ///     Detaches the collection and all it's items form it's current parent.
+        /// </summary>
+        public void DetachFromParent ()
+        {
+            _parent = null;
+            this.ForEach( x => x.Parent = null );
+        }
+
         #endregion
 
         #endregion
@@ -63,9 +99,12 @@ namespace PortableExtensions
         /// <summary>
         ///     Adds the given item to the list and sets it's parent to the parent of the list.
         /// </summary>
+        /// <exception cref="ArgumentNullException">item can not be null.</exception>
         /// <param name="item">The item to add.</param>
         public new void Add ( ITreeNode<T> item )
         {
+            item.ThrowIfNull( () => item );
+
             base.Add( item );
             item.Parent = Parent;
         }
@@ -73,6 +112,7 @@ namespace PortableExtensions
         /// <summary>
         ///     Removes the given item form the list and sets it's parent to null.
         /// </summary>
+        /// <exception cref="ArgumentNullException">item can not be null.</exception>
         /// <param name="item">The item to remove.</param>
         /// <returns>
         ///     true if item is successfully removed; otherwise, false. This method also
@@ -80,10 +120,13 @@ namespace PortableExtensions
         /// </returns>
         public new Boolean Remove ( ITreeNode<T> item )
         {
-            if ( item != null )
+            item.ThrowIfNull( () => item );
+
+            var result = base.Remove( item );
+            if ( result )
                 item.Parent = null;
 
-            return base.Remove( item );
+            return result;
         }
 
         #endregion
@@ -98,7 +141,7 @@ namespace PortableExtensions
         /// </returns>
         public override String ToString ()
         {
-            return "Count: {0}".F( Count );
+            return "Count: {0}, Parent: {{{1}}}".F( Count, Parent == null ? "[NULL]" : Parent.ToString() );
         }
 
         #endregion
