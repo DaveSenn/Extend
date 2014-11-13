@@ -37,22 +37,30 @@ namespace PortableExtensions
         #region Overrides of TreeNode<T>
 
         /// <summary>
-        ///     Gets the items which matches the given predicate.
+        ///     Gets the values which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Searches the whole tree (Direction based on <see cref="TreeNode{T}.SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
-        /// <returns>Returns the items which matches the given predicate.</returns>
-        public override IEnumerable<T> FindItem( Func<T, Boolean> predicate )
+        /// <returns>Returns the values which matches the given predicate.</returns>
+        public override IEnumerable<T> FindValue( Func<T, Boolean> predicate )
         {
-            return Children.SelectMany( x => x.FindItem( predicate ) );
+            throw new NotImplementedException("Add tree root value?");
+            return Children.SelectMany( x => x.FindValue( predicate ) );
         }
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Searches the whole tree (Direction based on <see cref="TreeNode{T}.SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
         public override IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate )
         {
+            throw new NotImplementedException("Add tree root value?");
             return Children.SelectMany( x => x.FindNode( predicate ) );
         }
 

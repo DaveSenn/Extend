@@ -34,10 +34,31 @@ namespace PortableExtensions
         TreeTraversalDirection SearchTraversalDirection { get; set; }
 
         /// <summary>
+        ///     Gets or sets the ancestors traversal direction.
+        /// </summary>
+        /// <value>The ancestors traversal direction.</value>
+        TreeTraversalDirection AncestorsTraversalDirection { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the descendants traversal direction.
+        /// </summary>
+        /// <remarks>
+        ///     Also used for the implementation of <see cref="IEnumerable{ITreeNode}" />.
+        /// </remarks>
+        /// <value>The descendants traversal direction.</value>
+        TreeTraversalDirection DescendantsTraversalDirection { get; set; }
+
+        /// <summary>
         ///     Gets or sets the parent of the node.
         /// </summary>
         /// <value>The parent of the node.</value>
         ITreeNode<T> Parent { get; set; }
+
+        /// <summary>
+        ///     Gets the children of the node.
+        /// </summary>
+        /// <value>The children of the node.</value>
+        ITreeNodeCollection<T> Children { get; set; }
 
         /// <summary>
         ///     Gets the root of the tree.
@@ -64,42 +85,56 @@ namespace PortableExtensions
         Boolean HasParent { get; }
 
         /// <summary>
-        ///     Gets the children of the node.
+        ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
         /// </summary>
-        /// <value>The children of the node.</value>
-        ITreeNodeCollection<T> Children { get; set; }
+        /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
+        IEnumerable<ITreeNode<T>> Ancestors { get; }
+
+        /// <summary>
+        ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
+        /// </summary>
+        /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
+        IEnumerable<ITreeNode<T>> Descendants { get; }
 
         #endregion
 
         #region Methods
 
         /// <summary>
-        ///     Gets the items which matches the given predicate.
+        ///     Gets the values which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+        ///     <see cref="SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
-        /// <returns>Returns the items which matches the given predicate.</returns>
-        IEnumerable<T> FindItem ( Func<T, Boolean> predicate );
+        /// <returns>Returns the values which matches the given predicate.</returns>
+        IEnumerable<T> FindValue( Func<T, Boolean> predicate );
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+        ///     <see cref="SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        IEnumerable<ITreeNode<T>> FindNode ( Func<T, Boolean> predicate );
+        IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate );
 
         /// <summary>
         ///     Adds the given value as child to the node.
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the added node.</returns>
-        ITreeNode<T> AddChild ( T value );
+        ITreeNode<T> Add( T value );
 
         /// <summary>
         ///     Adds the given node as child to the node, if it is not already a child of the node.
         /// </summary>
         /// <param name="node">The node to add.</param>
         /// <returns>Returns the added node.</returns>
-        ITreeNode<T> AddChild ( ITreeNode<T> node );
+        ITreeNode<T> Add( ITreeNode<T> node );
 
         /// <summary>
         ///     Sets the parent of the tree node.
@@ -109,7 +144,7 @@ namespace PortableExtensions
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        void SetParent ( ITreeNode<T> parent, Boolean attacheToParent = true );
+        void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true );
 
         #endregion
     }

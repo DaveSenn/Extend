@@ -44,7 +44,7 @@ namespace PortableExtensions
         /// <summary>
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
-        public TreeNode ()
+        public TreeNode()
         {
             Initialize( default( T ) );
         }
@@ -53,7 +53,7 @@ namespace PortableExtensions
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         /// <param name="value">The value of the node.</param>
-        public TreeNode ( T value )
+        public TreeNode( T value )
         {
             Initialize( value );
         }
@@ -62,7 +62,7 @@ namespace PortableExtensions
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNode ( ITreeNode<T> parent )
+        public TreeNode( ITreeNode<T> parent )
         {
             Initialize( default( T ), parent );
         }
@@ -71,7 +71,7 @@ namespace PortableExtensions
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         /// <param name="children">The children of the node.</param>
-        public TreeNode ( ITreeNodeCollection<T> children )
+        public TreeNode( ITreeNodeCollection<T> children )
         {
             Initialize( default( T ), children: children );
         }
@@ -81,7 +81,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The value of the node.</param>
         /// <param name="children">The children of the node.</param>
-        public TreeNode ( T value, ITreeNodeCollection<T> children )
+        public TreeNode( T value, ITreeNodeCollection<T> children )
         {
             Initialize( value, children: children );
         }
@@ -91,7 +91,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNode ( T value, ITreeNode<T> parent )
+        public TreeNode( T value, ITreeNode<T> parent )
         {
             Initialize( value, parent );
         }
@@ -102,7 +102,7 @@ namespace PortableExtensions
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
         /// <param name="children">The children of the node.</param>
-        public TreeNode ( T value, ITreeNode<T> parent, ITreeNodeCollection<T> children )
+        public TreeNode( T value, ITreeNode<T> parent, ITreeNodeCollection<T> children )
         {
             Initialize( value, parent, children );
         }
@@ -117,16 +117,30 @@ namespace PortableExtensions
         /// <param name="value">The value of the tree node.</param>
         /// <param name="parent">The parent of the tree node.</param>
         /// <param name="children">The children of the node.</param>
-        private void Initialize ( T value,
-                                  ITreeNode<T> parent = null,
-                                  ITreeNodeCollection<T> children = null )
+        private void Initialize( T value,
+                                 ITreeNode<T> parent = null,
+                                 ITreeNodeCollection<T> children = null )
         {
+            Children = children ?? new TreeNodeCollection<T>(this);
             Value = value;
             Parent = parent;
-            if ( Parent != null && !Parent.Children.Contains( this ) )
-                Parent.Children.Add( this );
-            Children = children ?? new TreeNodeCollection<T>( this );
-            DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+            if ( Parent != null )
+            {
+                if ( !Parent.Children.Contains( this ) )
+                    Parent.Children.Add( this );
+
+                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
+                SearchTraversalDirection = Parent.SearchTraversalDirection;
+                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
+                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
+            }
+            else
+            {
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
+                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
+            }
         }
 
         #endregion
@@ -202,7 +216,7 @@ namespace PortableExtensions
             set
             {
                 _searchTraversalDirection = value;
-                foreach ( var treeNode in Children.Where( x => x.SearchTraversalDirection != value ) )
+                foreach ( var treeNode in Children)
                     treeNode.SearchTraversalDirection = value;
             }
         }
@@ -217,10 +231,22 @@ namespace PortableExtensions
             set
             {
                 _disposeTraversalDirection = value;
-                foreach ( var treeNode in Children.Where( x => x.DisposeTraversalDirection != value ) )
+                foreach ( var treeNode in Children)
                     treeNode.DisposeTraversalDirection = value;
             }
         }
+
+        /// <summary>
+        /// Gets or sets the ancestors traversal direction.
+        /// </summary>
+        /// <value>The ancestors traversal direction.</value>
+        public TreeTraversalDirection AncestorsTraversalDirection { get; set; }
+
+        /// <summary>
+        /// Gets or sets the descendants traversal direction.
+        /// </summary>
+        /// <value>The descendants traversal direction.</value>
+        public TreeTraversalDirection DescendantsTraversalDirection { get; set; }
 
         /// <summary>
         ///     Gets the depth of the node.
@@ -249,16 +275,32 @@ namespace PortableExtensions
             get { return Parent != null; }
         }
 
+        /// <summary>
+        ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
+        /// </summary>
+        /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
+        public IEnumerable<ITreeNode<T>> Ancestors { get; private set; }
+
+        /// <summary>
+        ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
+        /// </summary>
+        /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
+        public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
+
         #endregion
 
         #region Methods
 
         /// <summary>
-        ///     Gets the items which matches the given predicate.
+        ///     Gets the values which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+        ///     <see cref="SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
-        /// <returns>Returns the items which matches the given predicate.</returns>
-        public virtual IEnumerable<T> FindItem ( Func<T, Boolean> predicate )
+        /// <returns>Returns the values which matches the given predicate.</returns>
+        public virtual IEnumerable<T> FindValue( Func<T, Boolean> predicate )
         {
             var result = new List<T>();
 
@@ -268,7 +310,10 @@ namespace PortableExtensions
 
             //Add matching children
             foreach ( var treeNode in Children )
-                result.AddRange( treeNode.FindItem( predicate ).ToList() );
+            {
+                result.AddRange( treeNode.FindValue( predicate )
+                                         .ToList() );
+            }
 
             //Search from bottom to top
             if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
@@ -280,9 +325,13 @@ namespace PortableExtensions
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
         /// </summary>
+        /// <remarks>
+        ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+        ///     <see cref="SearchTraversalDirection" />).
+        /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        public virtual IEnumerable<ITreeNode<T>> FindNode ( Func<T, Boolean> predicate )
+        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate )
         {
             var result = new List<ITreeNode<T>>();
 
@@ -292,7 +341,10 @@ namespace PortableExtensions
 
             //Add matching children
             foreach ( var treeNode in Children )
-                result.AddRange( treeNode.FindNode( predicate ).ToList() );
+            {
+                result.AddRange( treeNode.FindNode( predicate )
+                                         .ToList() );
+            }
 
             //Search from bottom to top
             if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
@@ -306,7 +358,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the added node.</returns>
-        public ITreeNode<T> AddChild ( T value )
+        public ITreeNode<T> Add( T value )
         {
             var node = new TreeNode<T>( value, this )
             {
@@ -322,7 +374,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="node">The node to add.</param>
         /// <returns>Returns the added node.</returns>
-        public ITreeNode<T> AddChild ( ITreeNode<T> node )
+        public ITreeNode<T> Add( ITreeNode<T> node )
         {
             if ( !Children.Contains( node ) )
                 Children.Add( node );
@@ -338,7 +390,7 @@ namespace PortableExtensions
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        public void SetParent ( ITreeNode<T> parent, Boolean attacheToParent = true )
+        public void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true )
         {
             Parent = parent;
             if ( attacheToParent && Parent != null )
@@ -357,7 +409,7 @@ namespace PortableExtensions
         /// <returns>
         ///     A <see cref="System.Collections.Generic.IEnumerator{T}" /> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<ITreeNode<T>> GetEnumerator ()
+        public IEnumerator<ITreeNode<T>> GetEnumerator()
         {
             foreach ( var node in Children )
             {
@@ -374,7 +426,7 @@ namespace PortableExtensions
         /// <returns>
         ///     A <see cref="System.Collections.IEnumerator" /> that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator ()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
@@ -389,7 +441,7 @@ namespace PortableExtensions
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString ()
+        public override String ToString()
         {
             return "{0} - Value: {1}, Parent: {{{2}}}".F( Depth,
                                                           Value == null ? "[NULL]" : Value.ToString(),
@@ -403,7 +455,7 @@ namespace PortableExtensions
         /// <summary>
         ///     Release all resources hold by the node.
         /// </summary>
-        public void Dispose ()
+        public void Dispose()
         {
             Dispose( true );
             GC.SuppressFinalize( this );
@@ -412,7 +464,7 @@ namespace PortableExtensions
         /// <summary>
         ///     Destructs the tree node..
         /// </summary>
-        ~TreeNode ()
+        ~TreeNode()
         {
             Dispose( false );
         }
@@ -421,7 +473,7 @@ namespace PortableExtensions
         ///     Releases the managed and unmanaged resource hold by the node.
         /// </summary>
         /// <param name="disposing">A value of true to release managed resources, false to release unmanaged resources.</param>
-        protected virtual void Dispose ( Boolean disposing )
+        protected virtual void Dispose( Boolean disposing )
         {
             if ( !disposing )
                 return;
