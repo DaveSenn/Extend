@@ -61,7 +61,7 @@ namespace PortableExtensions
         ///     Gets a value indicating whether the node has a parent or not.
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
-        Boolean Hasparent { get; }
+        Boolean HasParent { get; }
 
         /// <summary>
         ///     Gets the children of the node.
