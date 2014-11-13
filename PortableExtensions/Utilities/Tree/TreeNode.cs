@@ -37,6 +37,11 @@ namespace PortableExtensions
         /// </summary>
         private T _value;
 
+        /// <summary>
+        /// The children of the node. 
+        /// </summary>
+        private ITreeNodeCollection<T> _children;
+
         #endregion
 
         #region Ctor
@@ -204,7 +209,27 @@ namespace PortableExtensions
         ///     Gets or sets the children of the node.
         /// </summary>
         /// <value>The children of the node.</value>
-        public ITreeNodeCollection<T> Children { get; set; }
+        public ITreeNodeCollection<T> Children
+        {
+            get { return _children; }
+            set
+            {
+                if (value == _children)
+                    return;
+
+                //Switch children
+                var oldChildren = _children;
+                _children = value;
+
+                //Set parent of old children to null
+                if ( oldChildren != null )
+                    oldChildren.ForEach( x => x.SetParent( null, false ) );
+
+                //Set parent of new children to current node
+                if (_children != null)
+                    _children.ForEach(x => x.SetParent(this, false));
+            }
+        }
 
         /// <summary>
         ///     Gets or sets the search traversal direction.
