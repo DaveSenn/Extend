@@ -81,6 +81,45 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void CollectionInitTestCase()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>(parent)
+            {
+                "test1",
+                new TreeNode<String>("test2"),
+                "test3",
+                new TreeNode<String>("test4"),
+            };
+
+            Assert.AreSame(parent, target.Parent);
+            Assert.AreSame(parent, target[0].Parent);
+            Assert.AreSame(parent, target[1].Parent);
+            Assert.AreSame(parent, target[2].Parent);
+            Assert.AreSame(parent, target[3].Parent);
+
+            Assert.AreSame("test1", target[0].Value);
+            Assert.AreSame("test2", target[1].Value);
+            Assert.AreSame("test3", target[2].Value);
+            Assert.AreSame("test4", target[3].Value);
+        }
+
+        [Test]
+        public void IterationTestCase()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>(parent)
+            {
+                "test1",
+                new TreeNode<String>("test2"),
+                "test3",
+                new TreeNode<String>("test4"),
+            };
+
+            target.ForEach( (x,i) => Assert.AreEqual( "test" + (i + 1), x.Value ) );
+        }
+
+        [Test]
         public void DetachFromParentTestCase ()
         {
             var parent = new TreeNode<String>();
