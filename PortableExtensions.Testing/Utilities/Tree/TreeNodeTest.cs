@@ -11,6 +11,22 @@ namespace PortableExtensions.Testing
     public class TreeNodeTest
     {
         /// <summary>
+        ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
+        /// </summary>
+        private class TestTreeNodeItem : ITreeNodeAware<TestTreeNodeItem>
+        {
+            #region Implementation of ITreeNodeAware<TestTreeNodeItem>
+
+            /// <summary>
+            ///     Gets or sets the node of the object.
+            /// </summary>
+            /// <value>The node of the object.</value>
+            public ITreeNode<TestTreeNodeItem> Node { get; set; }
+
+            #endregion
+        }
+
+        /// <summary>
         ///     Constructor with no parameters
         /// </summary>
         [Test]
@@ -196,6 +212,55 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Normal value
+        /// </summary>
+        [Test]
+        public void ValueTestCase()
+        {
+            var target = new TreeNode<String>();
+            var expected = RandomValueEx.GetRandomString();
+            target.Value = expected;
+            Assert.AreEqual( expected, target.Value );
+        }
+
+        /// <summary>
+        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
+        /// </summary>
+        [Test]
+        public void ValueTestCase1()
+        {
+            var target = new TreeNode<TestTreeNodeItem>();
+            var expected = new TestTreeNodeItem();
+            Assert.IsNull( expected.Node );
+            target.Value = expected;
+            Assert.AreSame( expected, target.Value );
+            Assert.AreSame( target, expected.Node );
+        }
+
+        /// <summary>
+        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
+        ///     Reset value to check if node gets set to null.
+        /// </summary>
+        [Test]
+        public void ValueTestCase2()
+        {
+            var target = new TreeNode<TestTreeNodeItem>();
+            var expected = new TestTreeNodeItem();
+            Assert.IsNull(expected.Node);
+            target.Value = expected;
+            Assert.AreSame(expected, target.Value);
+            Assert.AreSame(target, expected.Node);
+
+            var newValue = new TestTreeNodeItem();
+            target.Value = newValue;
+            Assert.AreSame(newValue, target.Value);
+            Assert.AreSame(target, newValue.Node);
+            
+            //Check if node is null.
+            Assert.IsNull( expected.Node );
         }
     }
 }

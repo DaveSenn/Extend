@@ -137,11 +137,18 @@ namespace PortableExtensions
             get { return _value; }
             set
             {
+                var oldValue = _value;
                 _value = value;
 
+                //Notify the value about it's node, if the value implements ITreeNodeAware
                 var treeNodeAware = _value as ITreeNodeAware<T>;
                 if ( treeNodeAware != null )
-                    ( _value as ITreeNodeAware<T> ).Node = this;
+                    treeNodeAware.Node = this;
+
+                //Notify the old value about the change of it's node (new node is null)
+                treeNodeAware = oldValue as ITreeNodeAware<T>;
+                if ( treeNodeAware != null )
+                    treeNodeAware.Node = null;
             }
         }
 
