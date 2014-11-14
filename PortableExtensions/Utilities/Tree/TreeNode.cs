@@ -18,6 +18,21 @@ namespace PortableExtensions
         #region Fields
 
         /// <summary>
+        ///     The ancestors traversal direction.
+        /// </summary>
+        private TreeTraversalDirection _ancestorsTraversalDirection;
+
+        /// <summary>
+        ///     The children of the node.
+        /// </summary>
+        private ITreeNodeCollection<T> _children;
+
+        /// <summary>
+        ///     The descendants traversal direction.
+        /// </summary>
+        private TreeTraversalDirection _descendantsTraversalDirection;
+
+        /// <summary>
         ///     The disposable traversal direction.
         /// </summary>
         private TreeTraversalDirection _disposeTraversalDirection;
@@ -36,11 +51,6 @@ namespace PortableExtensions
         ///     The value of the node.
         /// </summary>
         private T _value;
-
-        /// <summary>
-        /// The children of the node. 
-        /// </summary>
-        private ITreeNodeCollection<T> _children;
 
         #endregion
 
@@ -114,42 +124,6 @@ namespace PortableExtensions
 
         #endregion
 
-        #region Private Members
-
-        /// <summary>
-        ///     Initialize the tree node.
-        /// </summary>
-        /// <param name="value">The value of the tree node.</param>
-        /// <param name="parent">The parent of the tree node.</param>
-        /// <param name="children">The children of the node.</param>
-        private void Initialize( T value,
-                                 ITreeNode<T> parent = null,
-                                 ITreeNodeCollection<T> children = null )
-        {
-            Children = children ?? new TreeNodeCollection<T>(this);
-            Value = value;
-            Parent = parent;
-            if ( Parent != null )
-            {
-                if ( !Parent.Children.Contains( this ) )
-                    Parent.Children.Add( this );
-
-                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
-                SearchTraversalDirection = Parent.SearchTraversalDirection;
-                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
-                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
-            }
-            else
-            {
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
-                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
-            }
-        }
-
-        #endregion
-
         #region Implementation of ITreeNode
 
         #region Properties
@@ -214,7 +188,7 @@ namespace PortableExtensions
             get { return _children; }
             set
             {
-                if (value == _children)
+                if ( value == _children )
                     return;
 
                 //Switch children
@@ -226,8 +200,8 @@ namespace PortableExtensions
                     oldChildren.ForEach( x => x.SetParent( null, false ) );
 
                 //Set parent of new children to current node
-                if (_children != null)
-                    _children.ForEach(x => x.SetParent(this, false));
+                if ( _children != null )
+                    _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -241,7 +215,7 @@ namespace PortableExtensions
             set
             {
                 _searchTraversalDirection = value;
-                foreach ( var treeNode in Children)
+                foreach ( var treeNode in Children )
                     treeNode.SearchTraversalDirection = value;
             }
         }
@@ -256,22 +230,40 @@ namespace PortableExtensions
             set
             {
                 _disposeTraversalDirection = value;
-                foreach ( var treeNode in Children)
+                foreach ( var treeNode in Children )
                     treeNode.DisposeTraversalDirection = value;
             }
         }
 
         /// <summary>
-        /// Gets or sets the ancestors traversal direction.
+        ///     Gets or sets the ancestors traversal direction.
         /// </summary>
         /// <value>The ancestors traversal direction.</value>
-        public TreeTraversalDirection AncestorsTraversalDirection { get; set; }
+        public TreeTraversalDirection AncestorsTraversalDirection
+        {
+            get { return _ancestorsTraversalDirection; }
+            set
+            {
+                _ancestorsTraversalDirection = value;
+                foreach ( var treeNode in Children )
+                    treeNode.AncestorsTraversalDirection = value;
+            }
+        }
 
         /// <summary>
-        /// Gets or sets the descendants traversal direction.
+        ///     Gets or sets the descendants traversal direction.
         /// </summary>
         /// <value>The descendants traversal direction.</value>
-        public TreeTraversalDirection DescendantsTraversalDirection { get; set; }
+        public TreeTraversalDirection DescendantsTraversalDirection
+        {
+            get { return _descendantsTraversalDirection; }
+            set
+            {
+                _descendantsTraversalDirection = value;
+                foreach ( var treeNode in Children )
+                    treeNode.DescendantsTraversalDirection = value;
+            }
+        }
 
         /// <summary>
         ///     Gets the depth of the node.
@@ -422,6 +414,19 @@ namespace PortableExtensions
                 Parent.Children.Add( this );
         }
 
+        /// <summary>
+        ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
+        ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
+        /// </summary>
+        /// <param name="direction">The new direction.</param>
+        public void SetAllDirections( TreeTraversalDirection direction )
+        {
+            SearchTraversalDirection = direction;
+            DisposeTraversalDirection = direction;
+            AncestorsTraversalDirection = direction;
+            DescendantsTraversalDirection = direction;
+        }
+
         #endregion
 
         #endregion
@@ -471,6 +476,42 @@ namespace PortableExtensions
             return "{0} - Value: {1}, Parent: {{{2}}}".F( Depth,
                                                           Value == null ? "[NULL]" : Value.ToString(),
                                                           Parent == null ? "[NULL]" : Parent.ToString() );
+        }
+
+        #endregion
+
+        #region Private Members
+
+        /// <summary>
+        ///     Initialize the tree node.
+        /// </summary>
+        /// <param name="value">The value of the tree node.</param>
+        /// <param name="parent">The parent of the tree node.</param>
+        /// <param name="children">The children of the node.</param>
+        private void Initialize( T value,
+                                 ITreeNode<T> parent = null,
+                                 ITreeNodeCollection<T> children = null )
+        {
+            Children = children ?? new TreeNodeCollection<T>( this );
+            Value = value;
+            Parent = parent;
+            if ( Parent != null )
+            {
+                if ( !Parent.Children.Contains( this ) )
+                    Parent.Children.Add( this );
+
+                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
+                SearchTraversalDirection = Parent.SearchTraversalDirection;
+                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
+                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
+            }
+            else
+            {
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
+                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
+            }
         }
 
         #endregion

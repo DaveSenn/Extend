@@ -146,6 +146,13 @@ namespace PortableExtensions
         /// </param>
         void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true );
 
+        /// <summary>
+        ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
+        ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
+        /// </summary>
+        /// <param name="direction">The new direction.</param>
+        void SetAllDirections( TreeTraversalDirection direction );
+
         #endregion
     }
 }
