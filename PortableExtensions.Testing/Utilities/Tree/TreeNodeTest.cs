@@ -262,5 +262,30 @@ namespace PortableExtensions.Testing
             //Check if node is null.
             Assert.IsNull( expected.Node );
         }
+
+        [Test]
+        public void ParentTestCase()
+        {
+        }
     }
 }
+
+/*
+ public ITreeNode<T> Parent
+        {
+            get { return _parent; }
+            set
+            {
+                if ( value == _parent )
+                    return;
+
+                //Switch parent
+                var oldParent = _parent;
+                _parent = value;
+
+                //Remove node from old parent
+                if ( oldParent != null )
+                    oldParent.Children.Remove( this );
+            }
+        }
+ */
