@@ -402,7 +402,7 @@ namespace PortableExtensions
             if ( oldParent != null )
                 oldParent.Children.Remove( this, false );
 
-            if ( attacheToParent && Parent != null )
+            if ( attacheToParent && Parent != null && !parent.Contains( this ) )
                 Parent.Children.Add( this, false );
         }
 
