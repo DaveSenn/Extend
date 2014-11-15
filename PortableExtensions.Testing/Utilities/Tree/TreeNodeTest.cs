@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Linq;
 using NUnit.Framework;
 
 #endregion
@@ -212,6 +213,25 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+        }
+
+
+        /// <summary>
+        ///     Test for switching parent
+        /// </summary>
+        [Test]
+        public void CtorTestCase7()
+        {
+            var exParent = new TreeNode<String>("Ex");
+            var children = new TreeNodeCollection<String>( exParent )
+            {
+                "Item0",
+            };
+
+            var target = new TreeNode<String>( "Target", children );
+            Assert.AreEqual(1, target.Children.Count, "Target should have 1 child");
+            Assert.AreSame(target, target.Children.First().Parent, "Parent should have been updated to target");
+            Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
         }
 
         /// <summary>
