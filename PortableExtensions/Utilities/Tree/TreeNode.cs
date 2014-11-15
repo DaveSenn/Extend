@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using System.Collections;
@@ -162,19 +162,7 @@ namespace PortableExtensions
         public ITreeNode<T> Parent
         {
             get { return _parent; }
-            set
-            {
-                if ( value == _parent )
-                    return;
-
-                //Switch parent
-                var oldParent = _parent;
-                _parent = value;
-
-                //Remove node from old parent
-                if ( oldParent != null )
-                    oldParent.Children.Remove( this );
-            }
+            set { SetParent( value ); }
         }
 
         /// <summary>
@@ -334,10 +322,8 @@ namespace PortableExtensions
 
             //Add matching children
             foreach ( var treeNode in Children )
-            {
                 result.AddRange( treeNode.FindValue( predicate )
                                          .ToList() );
-            }
 
             //Search from bottom to top
             if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
@@ -365,10 +351,8 @@ namespace PortableExtensions
 
             //Add matching children
             foreach ( var treeNode in Children )
-            {
                 result.AddRange( treeNode.FindNode( predicate )
                                          .ToList() );
-            }
 
             //Search from bottom to top
             if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
@@ -416,7 +400,17 @@ namespace PortableExtensions
         /// </param>
         public void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true )
         {
-            Parent = parent;
+            if ( _parent == parent )
+                return;
+
+            //Switch parent
+            var oldParent = _parent;
+            _parent = parent;
+
+            //Remove node from old parent
+            if (oldParent != null && oldParent.Children != Children)
+                oldParent.Children.Remove( this );
+
             if ( attacheToParent && Parent != null )
                 Parent.Children.Add( this );
         }
@@ -553,10 +547,8 @@ namespace PortableExtensions
 
             //Release from bottom up (start with children).
             if ( DisposeTraversalDirection == TreeTraversalDirection.BottomUp )
-            {
                 foreach ( var node in Children )
                     node.Dispose();
-            }
 
             //Release the current node.
             var dispose = Value as IDisposable;
