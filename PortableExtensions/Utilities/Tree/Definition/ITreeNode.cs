@@ -140,11 +140,15 @@ namespace PortableExtensions
         ///     Sets the parent of the tree node.
         /// </summary>
         /// <param name="parent">The new parent.</param>
-        /// <param name="attacheToParent">
+        /// <param name="attacheToNewParent">
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true );
+        /// <remarks>
+        /// TODO: add test for detachFromOldParent
+        /// </remarks>
+        /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
+        void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true );
 
         /// <summary>
         ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,

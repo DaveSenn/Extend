@@ -147,11 +147,11 @@ namespace PortableExtensions
         /// </remarks>
         /// <exception cref="InvalidOperationException">You can not set the parent of a tree root.</exception>
         /// <param name="parent">The new parent.</param>
-        /// <param name="attacheToParent">
+        /// <param name="attacheToNewParent">
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        public new void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true )
+        public new void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true )
         {
             throw new InvalidOperationException( "You can not set the parent of a tree root." );
         }

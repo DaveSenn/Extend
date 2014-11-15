@@ -186,7 +186,13 @@ namespace PortableExtensions
                 if ( value == _children )
                     return;
 
+                if(_children != null)
+                    _children.ForEach( x => x.SetParent( null, false, false ) );
+
                 _children = value;
+                /*_children = new TreeNodeCollection<T>( this );
+                value.ForEach( x => _children.Add( x ) );
+                */
                 _children.ForEach(x => x.SetParent(this, false));
             }
         }
@@ -385,11 +391,12 @@ namespace PortableExtensions
         ///     Sets the parent of the tree node.
         /// </summary>
         /// <param name="parent">The new parent.</param>
-        /// <param name="attacheToParent">
+        /// <param name="attacheToNewParent">
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        public void SetParent( ITreeNode<T> parent, Boolean attacheToParent = true )
+        /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
+        public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
         {
             if ( _parent == parent )
                 return;
@@ -399,10 +406,10 @@ namespace PortableExtensions
             _parent = parent;
 
             //Remove node from old parent
-            if ( oldParent != null )
+            if (oldParent != null && detachFromOldParent)
                 oldParent.Children.Remove( this, false );
 
-            if ( attacheToParent && Parent != null )
+            if ( attacheToNewParent && Parent != null )
                 Parent.Children.Add( this, false );
         }
 

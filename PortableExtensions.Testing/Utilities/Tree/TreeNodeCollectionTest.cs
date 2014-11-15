@@ -75,17 +75,17 @@ namespace PortableExtensions.Testing
         public void AddNodeTestCase3()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent);
+            var target = new TreeNodeCollection<String>( parent );
 
             var item = new TreeNode<String>();
-            target.Add(item);
-            target.Add(item);
+            target.Add( item );
+            target.Add( item );
 
-            Assert.IsTrue(target.Contains(item));
-            Assert.AreEqual(1, target.Count);
+            Assert.IsTrue( target.Contains( item ) );
+            Assert.AreEqual( 1, target.Count );
 
-            Assert.AreSame(parent, item.Parent);
-            Assert.AreEqual(1, item.Depth);
+            Assert.AreSame( parent, item.Parent );
+            Assert.AreEqual( 1, item.Depth );
         }
 
         [Test]
@@ -134,29 +134,29 @@ namespace PortableExtensions.Testing
         }
 
         /// <summary>
-        /// Add same value twice
+        ///     Add same value twice
         /// </summary>
         [Test]
         public void AddValueTestCase2()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent);
+            var target = new TreeNodeCollection<String>( parent );
 
             var expected = RandomValueEx.GetRandomString();
-            var actual = target.Add(expected);
-            var actual1 = target.Add(expected);
+            var actual = target.Add( expected );
+            var actual1 = target.Add( expected );
 
-            Assert.AreEqual(2, target.Count);
-            Assert.IsTrue(target.Contains(actual));
-            Assert.IsTrue(target.Contains(actual1));
+            Assert.AreEqual( 2, target.Count );
+            Assert.IsTrue( target.Contains( actual ) );
+            Assert.IsTrue( target.Contains( actual1 ) );
 
-            Assert.AreSame(parent, actual.Parent);
-            Assert.AreEqual(actual.Value, expected);
-            Assert.AreEqual(1, actual.Depth);
-            
-            Assert.AreSame(parent, actual1.Parent);
-            Assert.AreEqual(actual1.Value, expected);
-            Assert.AreEqual(1, actual1.Depth);
+            Assert.AreSame( parent, actual.Parent );
+            Assert.AreEqual( actual.Value, expected );
+            Assert.AreEqual( 1, actual.Depth );
+
+            Assert.AreSame( parent, actual1.Parent );
+            Assert.AreEqual( actual1.Value, expected );
+            Assert.AreEqual( 1, actual1.Depth );
         }
 
         [Test]
