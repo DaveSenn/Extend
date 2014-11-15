@@ -414,6 +414,25 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual(2, node2.Children.Count);
             node2.Children.ForEach(x => Assert.AreSame(node2, x.Parent));
+
+            /*
+            var node1Children = new TreeNodeCollection<String>( node1 );
+            node1.Children.ForEach( node1Children.Add );
+            */
+            var node1Children = node1.Children;
+            var node2Children = node2.Children;
+            //var node2Children = new TreeNodeCollection<String>(node2);
+            //node2.Children.ForEach(node2Children.Add);
+
+            //Add children from 2 to 1
+            node1.Children = node2Children;
+            Assert.AreEqual(2, node1.Children.Count);
+            node1.Children.ForEach(x => Assert.AreSame(node1, x.Parent));
+            
+            //Add children from 1 to 2
+            node2.Children = node1Children;
+            Assert.AreEqual(2, node2.Children.Count);
+            node2.Children.ForEach(x => Assert.AreSame(node2, x.Parent));
         }
     }
 }
