@@ -103,6 +103,9 @@ namespace PortableExtensions
         {
             item.ThrowIfNull( () => item );
 
+            if ( Contains( item ) )
+                return;
+
             base.Add( item );
             if ( setParent )
                 item.Parent = Parent;
