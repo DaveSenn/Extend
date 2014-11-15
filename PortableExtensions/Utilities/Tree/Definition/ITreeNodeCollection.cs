@@ -1,5 +1,6 @@
-﻿#region Usings
+﻿#region Using
 
+using System;
 using System.Collections.Generic;
 
 #endregion
@@ -29,12 +30,35 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the new added node.</returns>
-        ITreeNode<T> Add ( T value );
+        ITreeNode<T> Add( T value );
+
+        /// <summary>
+        ///     Adds the given item to the list and sets it's parent to the parent of the list.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">item can not be null.</exception>
+        /// <param name="item">The item to add.</param>
+        /// <param name="setParent">
+        ///     A value indicating weather the parent of the given item should be set to the parent of the
+        ///     collection or not.
+        /// </param>
+        void Add( ITreeNode<T> item, Boolean setParent );
+
+        /// <summary>
+        ///     Removes the given item form the list and sets it's parent to null.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">item can not be null.</exception>
+        /// <param name="item">The item to remove.</param>
+        /// <param name="setParent">A value indicating whether the parent of the item should get set to null or not.</param>
+        /// <returns>
+        ///     true if item is successfully removed; otherwise, false. This method also
+        ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
+        /// </returns>
+        Boolean Remove( ITreeNode<T> item, Boolean setParent );
 
         /// <summary>
         ///     Detaches the collection and all it's items form it's current parent.
         /// </summary>
-        void DetachFromParent ();
+        void DetachFromParent();
 
         #endregion
     }

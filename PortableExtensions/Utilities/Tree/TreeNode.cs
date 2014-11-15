@@ -186,17 +186,11 @@ namespace PortableExtensions
                 if ( value == _children )
                     return;
 
-                //Switch children
                 var oldChildren = _children;
-                _children = value;
+                _children = new TreeNodeCollection<T>( this );
+                value.ForEach( x => _children.Add( x, false ) );
 
-                //Set parent of old children to null
-                if ( oldChildren != null )
-                    oldChildren.ForEach( x => x.SetParent( null, false ) );
-
-                //Set parent of new children to current node
-                if ( _children != null )
-                    _children.ForEach( x => x.SetParent( this, false ) );
+                _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -408,11 +402,11 @@ namespace PortableExtensions
             _parent = parent;
 
             //Remove node from old parent
-            if (oldParent != null && oldParent.Children != Children)
-                oldParent.Children.Remove( this );
+            if ( oldParent != null )
+                oldParent.Children.Remove( this, false );
 
             if ( attacheToParent && Parent != null )
-                Parent.Children.Add( this );
+                Parent.Children.Add( this, false );
         }
 
         /// <summary>
@@ -474,9 +468,14 @@ namespace PortableExtensions
         /// </returns>
         public override String ToString()
         {
-            return "{0} - Value: {1}, Parent: {{{2}}}".F( Depth,
-                                                          Value == null ? "[NULL]" : Value.ToString(),
-                                                          Parent == null ? "[NULL]" : Parent.ToString() );
+            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}".F( Depth,
+                                                                                Value == null
+                                                                                    ? "[NULL]"
+                                                                                    : Value.ToString(),
+                                                                                Children.Count,
+                                                                                Parent == null
+                                                                                    ? "[NULL]"
+                                                                                    : Parent.ToString() );
         }
 
         #endregion

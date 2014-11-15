@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using NUnit.Framework;
@@ -10,8 +10,11 @@ namespace PortableExtensions.Testing
     [TestFixture]
     public class TreeNodeCollectionTest
     {
+        /// <summary>
+        ///     Update parent
+        /// </summary>
         [Test]
-        public void AddNodeTestCase ()
+        public void AddNodeTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -26,9 +29,48 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 1, item.Depth );
         }
 
+        /// <summary>
+        ///     Don't update parent
+        /// </summary>
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddTestCaseNullCheck ()
+        public void AddNodeTestCase1()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent );
+
+            var item = new TreeNode<String>();
+            target.Add( item, false );
+
+            Assert.IsTrue( target.Contains( item ) );
+            Assert.AreEqual( 1, target.Count );
+
+            Assert.IsNull( item.Parent );
+            Assert.AreEqual( 0, item.Depth );
+        }
+
+        /// <summary>
+        ///     Don't update parent, item has already a parent
+        /// </summary>
+        [Test]
+        public void AddNodeTestCase2()
+        {
+            var itemParent = new TreeNode<String>();
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent );
+
+            var item = new TreeNode<String>( itemParent );
+            target.Add( item, false );
+
+            Assert.IsTrue( target.Contains( item ) );
+            Assert.AreEqual( 1, target.Count );
+
+            Assert.AreSame( itemParent, item.Parent );
+            Assert.AreEqual( 1, item.Depth );
+        }
+
+        [Test]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void AddTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -38,7 +80,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AddValueTestCase ()
+        public void AddValueTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -55,7 +97,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AddValueTestCase1 ()
+        public void AddValueTestCase1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -72,7 +114,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CtorTestCase ()
+        public void CollectionInitTestCase()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent )
+            {
+                "test1",
+                new TreeNode<String>( "test2" ),
+                "test3",
+                new TreeNode<String>( "test4" ),
+            };
+
+            Assert.AreSame( parent, target.Parent );
+            Assert.AreSame( parent, target[0].Parent );
+            Assert.AreSame( parent, target[1].Parent );
+            Assert.AreSame( parent, target[2].Parent );
+            Assert.AreSame( parent, target[3].Parent );
+
+            Assert.AreSame( "test1", target[0].Value );
+            Assert.AreSame( "test2", target[1].Value );
+            Assert.AreSame( "test3", target[2].Value );
+            Assert.AreSame( "test4", target[3].Value );
+        }
+
+        [Test]
+        public void CtorTestCase()
         {
             var parent = new TreeNode<String>();
 
@@ -81,46 +147,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CollectionInitTestCase()
-        {
-            var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent)
-            {
-                "test1",
-                new TreeNode<String>("test2"),
-                "test3",
-                new TreeNode<String>("test4"),
-            };
-
-            Assert.AreSame(parent, target.Parent);
-            Assert.AreSame(parent, target[0].Parent);
-            Assert.AreSame(parent, target[1].Parent);
-            Assert.AreSame(parent, target[2].Parent);
-            Assert.AreSame(parent, target[3].Parent);
-
-            Assert.AreSame("test1", target[0].Value);
-            Assert.AreSame("test2", target[1].Value);
-            Assert.AreSame("test3", target[2].Value);
-            Assert.AreSame("test4", target[3].Value);
-        }
-
-        [Test]
-        public void IterationTestCase()
-        {
-            var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent)
-            {
-                "test1",
-                new TreeNode<String>("test2"),
-                "test3",
-                new TreeNode<String>("test4"),
-            };
-
-            target.ForEach( (x,i) => Assert.AreEqual( "test" + (i + 1), x.Value ) );
-        }
-
-        [Test]
-        public void DetachFromParentTestCase ()
+        public void DetachFromParentTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -130,11 +157,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void DetachFromParentTestCase1 ()
+        public void DetachFromParentTestCase1()
         {
             var parent = new TreeNode<String>();
 
-            var target = new TreeNodeCollection<String>( parent ) {"1", "2", "3"};
+            var target = new TreeNodeCollection<String>( parent ) { "1", "2", "3" };
             Assert.AreEqual( 3, target.Count );
             target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
 
@@ -144,7 +171,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase ()
+        public void IterationTestCase()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent )
+            {
+                "test1",
+                new TreeNode<String>( "test2" ),
+                "test3",
+                new TreeNode<String>( "test4" ),
+            };
+
+            target.ForEach( ( x, i ) => Assert.AreEqual( "test" + ( i + 1 ), x.Value ) );
+        }
+
+        [Test]
+        public void ParentTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -153,7 +195,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase1 ()
+        public void ParentTestCase1()
         {
             var target = new TreeNodeCollection<String>( null );
 
@@ -161,7 +203,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase2 ()
+        public void ParentTestCase2()
         {
             var target = new TreeNodeCollection<String>( null );
             Assert.IsNull( target.Parent );
@@ -172,9 +214,9 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase3 ()
+        public void ParentTestCase3()
         {
-            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
             target.ForEach( x => Assert.IsNull( x.Parent ) );
 
@@ -185,9 +227,9 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase4 ()
+        public void ParentTestCase4()
         {
-            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
             target.ForEach( x => Assert.IsNull( x.Parent ) );
 
@@ -208,9 +250,9 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase5 ()
+        public void ParentTestCase5()
         {
-            var target = new TreeNodeCollection<String>( null ) {"1", "2"};
+            var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
             target.ForEach( x => Assert.IsNull( x.Parent ) );
 
@@ -230,8 +272,11 @@ namespace PortableExtensions.Testing
             target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
         }
 
+        /// <summary>
+        ///     Set parent.
+        /// </summary>
         [Test]
-        public void RemoveNodeTestCase ()
+        public void RemoveNodeTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -255,13 +300,16 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, target.Count );
         }
 
+        /// <summary>
+        ///     Item is not in collection
+        /// </summary>
         [Test]
-        public void RemoveNodeTestCase1 ()
+        public void RemoveNodeTestCase1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
-            var item = new TreeNode<String> {Parent = parent};
+            var item = new TreeNode<String> { Parent = parent };
 
             var result = target.Remove( item );
             Assert.IsFalse( result );
@@ -269,9 +317,37 @@ namespace PortableExtensions.Testing
             Assert.IsFalse( target.Contains( item ) );
         }
 
+        /// <summary>
+        ///     Don't set parent.
+        /// </summary>
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void RemoveNodeTestCaseNullCheck ()
+        public void RemoveNodeTestCase2()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent );
+
+            var item = new TreeNode<String>();
+            target.Add( item );
+
+            var item1 = new TreeNode<String>();
+            target.Add( item1 );
+
+            var result = target.Remove( item, false );
+            Assert.IsTrue( result );
+            Assert.AreSame( parent, item.Parent );
+            Assert.IsFalse( target.Contains( item ) );
+
+            result = target.Remove( item1, false );
+            Assert.IsTrue( result );
+            Assert.AreSame( parent, item1.Parent );
+            Assert.IsFalse( target.Contains( item1 ) );
+
+            Assert.AreEqual( 0, target.Count );
+        }
+
+        [Test]
+        [ExpectedException( typeof ( ArgumentNullException ) )]
+        public void RemoveNodeTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -281,17 +357,17 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToStringTestCase ()
+        public void ToStringTestCase()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 0, Parent: {0 - Value: [NULL], Parent: {[NULL]}}", actual );
+            Assert.AreEqual( "Count: 0, Parent: {Depth: 0 - Value: [NULL], Children: 0, Parent: {[NULL]}}", actual );
         }
 
         [Test]
-        public void ToStringTestCase1 ()
+        public void ToStringTestCase1()
         {
             var target = new TreeNodeCollection<String>( null );
 
@@ -300,19 +376,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToStringTestCase2 ()
+        public void ToStringTestCase2()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>( parent ) {"1", "2"};
+            var target = new TreeNodeCollection<String>( parent ) { "1", "2" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 2, Parent: {0 - Value: [NULL], Parent: {[NULL]}}", actual );
+            Assert.AreEqual( "Count: 2, Parent: {Depth: 0 - Value: [NULL], Children: 2, Parent: {[NULL]}}", actual );
         }
 
         [Test]
-        public void ToStringTestCase3 ()
+        public void ToStringTestCase3()
         {
-            var target = new TreeNodeCollection<String>( null ) {"1", "2", "3"};
+            var target = new TreeNodeCollection<String>( null ) { "1", "2", "3" };
 
             var actual = target.ToString();
             Assert.AreEqual( "Count: 3, Parent: {[NULL]}", actual );
