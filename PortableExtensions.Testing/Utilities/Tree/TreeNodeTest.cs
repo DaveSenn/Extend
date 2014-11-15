@@ -1,4 +1,4 @@
-﻿#region Usings
+﻿#region Using
 
 using System;
 using System.Linq;
@@ -106,10 +106,13 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -139,10 +142,13 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -204,10 +210,13 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -215,23 +224,87 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
         }
 
-
         /// <summary>
         ///     Test for switching parent
         /// </summary>
         [Test]
         public void CtorTestCase7()
         {
-            var exParent = new TreeNode<String>("Ex");
+            var exParent = new TreeNode<String>( "Ex" );
             var children = new TreeNodeCollection<String>( exParent )
             {
                 "Item0",
             };
 
             var target = new TreeNode<String>( "Target", children );
-            Assert.AreEqual(1, target.Children.Count, "Target should have 1 child");
-            Assert.AreSame(target, target.Children.First().Parent, "Parent should have been updated to target");
+            Assert.AreEqual( 1, target.Children.Count, "Target should have 1 child" );
+            Assert.AreSame( target, target.Children.First().Parent, "Parent should have been updated to target" );
             Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
+        }
+
+        /// <summary>
+        ///     Check if added as child to parent.
+        /// </summary>
+        [Test]
+        public void ParentTestCase()
+        {
+            var parent = new TreeNode<String>();
+
+            var target = new TreeNode<String> { Parent = parent };
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+        }
+
+        /// <summary>
+        ///     Check if added as child to new parent and removed from old parent.
+        /// </summary>
+        [Test]
+        public void ParentTestCase1()
+        {
+            var parent = new TreeNode<String>();
+            var exParent = new TreeNode<String>();
+
+            var target = new TreeNode<String>( exParent );
+            Assert.AreSame( exParent, target.Parent );
+
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+            Assert.IsFalse( exParent.Children.Contains( target ) );
+        }
+
+        /// <summary>
+        ///     Check if added as child to parent and if children are getting updated.
+        /// </summary>
+        [Test]
+        public void ParentTestCase2()
+        {
+            var parent = new TreeNode<String>();
+
+            var target = new TreeNode<String> { "Item1" };
+            Assert.AreSame( target, target.Children.First().Parent );
+            Assert.AreEqual( 1, target.Children.First().Depth );
+
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+            Assert.AreSame( target, target.Children.First().Parent );
+            Assert.AreEqual( 2, target.Children.First().Depth );
+        }
+
+        [Test]
+        public void RootTestCase()
+        {
+            var target = new TreeNode<String>();
+            Assert.AreSame( target, target.Root );
+        }
+
+        [Test]
+        public void RootTestCase1()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNode<String>( parent );
+            Assert.AreSame( parent, target.Root );
         }
 
         /// <summary>
@@ -269,51 +342,18 @@ namespace PortableExtensions.Testing
         {
             var target = new TreeNode<TestTreeNodeItem>();
             var expected = new TestTreeNodeItem();
-            Assert.IsNull(expected.Node);
+            Assert.IsNull( expected.Node );
             target.Value = expected;
-            Assert.AreSame(expected, target.Value);
-            Assert.AreSame(target, expected.Node);
+            Assert.AreSame( expected, target.Value );
+            Assert.AreSame( target, expected.Node );
 
             var newValue = new TestTreeNodeItem();
             target.Value = newValue;
-            Assert.AreSame(newValue, target.Value);
-            Assert.AreSame(target, newValue.Node);
-            
+            Assert.AreSame( newValue, target.Value );
+            Assert.AreSame( target, newValue.Node );
+
             //Check if node is null.
             Assert.IsNull( expected.Node );
         }
-
-        /// <summary>
-        ///     Check if added as child to parent.
-        /// </summary>
-        [Test]
-        public void ParentTestCase()
-        {
-            var parent = new TreeNode<String>();
-
-            var target = new TreeNode<String> { Parent = parent };
-            Assert.AreSame(parent, target.Parent);
-            Assert.IsTrue( parent.Children.Contains( target ) );
-        }
     }
 }
-
-/*
- public ITreeNode<T> Parent
-        {
-            get { return _parent; }
-            set
-            {
-                if ( value == _parent )
-                    return;
-
-                //Switch parent
-                var oldParent = _parent;
-                _parent = value;
-
-                //Remove node from old parent
-                if ( oldParent != null )
-                    oldParent.Children.Remove( this );
-            }
-        }
- */
