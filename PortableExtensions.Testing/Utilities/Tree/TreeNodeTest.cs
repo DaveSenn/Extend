@@ -263,9 +263,17 @@ namespace PortableExtensions.Testing
             Assert.IsNull( expected.Node );
         }
 
+        /// <summary>
+        ///     Check if added as child to parent.
+        /// </summary>
         [Test]
         public void ParentTestCase()
         {
+            var parent = new TreeNode<String>();
+
+            var target = new TreeNode<String> { Parent = parent };
+            Assert.AreSame(parent, target.Parent);
+            Assert.IsTrue( parent.Children.Contains( target ) );
         }
     }
 }
