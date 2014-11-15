@@ -186,11 +186,8 @@ namespace PortableExtensions
                 if ( value == _children )
                     return;
 
-                var oldChildren = _children;
-                _children = new TreeNodeCollection<T>( this );
-                value.ForEach( x => _children.Add( x, false ) );
-
-                _children.ForEach( x => x.SetParent( this, false ) );
+                _children = value;
+                _children.ForEach(x => x.SetParent(this, false));
             }
         }
 
@@ -492,9 +489,9 @@ namespace PortableExtensions
                                  ITreeNode<T> parent = null,
                                  ITreeNodeCollection<T> children = null )
         {
-            Children = children ?? new TreeNodeCollection<T>( this );
             Value = value;
             Parent = parent;
+            Children = children ?? new TreeNodeCollection<T>( this );
             if ( Parent != null )
             {
                 if ( !Parent.Children.Contains( this ) )
