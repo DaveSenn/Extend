@@ -355,5 +355,23 @@ namespace PortableExtensions.Testing
             //Check if node is null.
             Assert.IsNull( expected.Node );
         }
+
+        [Test]
+        public void ChildrenTestCase()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target );
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+
+            children.Add( "Item1" );
+            children.Add("Item2");
+
+            Assert.AreEqual( 2, target.Children.Count );
+            Assert.AreSame( children, target.Children );
+
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
     }
 }
