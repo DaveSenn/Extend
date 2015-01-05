@@ -183,16 +183,13 @@ namespace PortableExtensions
             get { return _children; }
             set
             {
-                if ( value == _children )
+                if (value == _children)
                     return;
 
-                if(_children != null)
-                    _children.ForEach( x => x.SetParent( null, false, false ) );
+                if (_children != null)
+                    _children.ForEach(x => x.SetParent(null, false, false));
 
                 _children = value;
-                /*_children = new TreeNodeCollection<T>( this );
-                value.ForEach( x => _children.Add( x ) );
-                */
                 _children.ForEach(x => x.SetParent(this, false));
             }
         }

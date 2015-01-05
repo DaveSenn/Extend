@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Linq;
@@ -25,6 +25,80 @@ namespace PortableExtensions.Testing
             public ITreeNode<TestTreeNodeItem> Node { get; set; }
 
             #endregion
+        }
+
+        /// <summary>
+        ///     Set children of node and add then children
+        /// </summary>
+        [Test]
+        public void ChildrenTestCase()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target );
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+
+            children.Add( "Item1" );
+            children.Add( "Item2" );
+
+            Assert.AreEqual( 2, target.Children.Count );
+            Assert.AreSame( children, target.Children );
+
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
+
+        /// <summary>
+        ///     Set children (Collection with some items)
+        /// </summary>
+        [Test]
+        public void ChildrenTestCase1()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+            Assert.AreEqual( 2, target.Children.Count );
+
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
+
+        /// <summary>
+        ///     Switch children of two nodes
+        /// </summary>
+        /// <remarks>
+        ///     Feel free to improve the implementation.
+        /// </remarks>
+        [Test]
+        [ExpectedException( typeof (InvalidOperationException) )]
+        public void ChildrenTestCase2()
+        {
+            var node1 = new TreeNode<String>( "node1" )
+            {
+                "Item1",
+                "Item2"
+            };
+
+            var node2 = new TreeNode<String>( "node2" )
+            {
+                "ItemA",
+                "ItemB"
+            };
+
+            Assert.AreEqual( 2, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 2, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
+
+            var node1Children = node1.Children;
+            var node2Children = node2.Children;
+
+            //Add children from 2 to 1
+            node1.Children = node2Children;
+            //Add children from 1 to 2
+            node2.Children = node1Children;
         }
 
         /// <summary>
@@ -238,7 +312,10 @@ namespace PortableExtensions.Testing
 
             var target = new TreeNode<String>( "Target", children );
             Assert.AreEqual( 1, target.Children.Count, "Target should have 1 child" );
-            Assert.AreSame( target, target.Children.First().Parent, "Parent should have been updated to target" );
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent,
+                            "Parent should have been updated to target" );
             Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
         }
 
@@ -282,14 +359,58 @@ namespace PortableExtensions.Testing
             var parent = new TreeNode<String>();
 
             var target = new TreeNode<String> { "Item1" };
-            Assert.AreSame( target, target.Children.First().Parent );
-            Assert.AreEqual( 1, target.Children.First().Depth );
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent );
+            Assert.AreEqual( 1,
+                             target.Children.First()
+                                   .Depth );
 
             target.Parent = parent;
             Assert.AreSame( parent, target.Parent );
             Assert.IsTrue( parent.Children.Contains( target ) );
-            Assert.AreSame( target, target.Children.First().Parent );
-            Assert.AreEqual( 2, target.Children.First().Depth );
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent );
+            Assert.AreEqual( 2,
+                             target.Children.First()
+                                   .Depth );
+        }
+
+        /// <summary>
+        ///     Remove item from node1 and add it to node2
+        /// </summary>
+        [Test]
+        public void RemoveAndAddChild()
+        {
+            var node1 = new TreeNode<String>( "node1" )
+            {
+                "Item1",
+                "Item2"
+            };
+
+            var node2 = new TreeNode<String>( "node2" )
+            {
+                "ItemA",
+                "ItemB"
+            };
+
+            Assert.AreEqual( 2, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 2, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
+
+            var child = node1.Children.First();
+            node2.Add( child );
+
+            node1.Children.Remove( child );
+
+            Assert.AreEqual( 1, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 3, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
         }
 
         [Test]
@@ -354,85 +475,6 @@ namespace PortableExtensions.Testing
 
             //Check if node is null.
             Assert.IsNull( expected.Node );
-        }
-
-        /// <summary>
-        /// Set children of node and add then children
-        /// </summary>
-        [Test]
-        public void ChildrenTestCase()
-        {
-            var target = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( target );
-
-            target.Children = children;
-            Assert.AreSame( children, target.Children );
-
-            children.Add( "Item1" );
-            children.Add( "Item2" );
-
-            Assert.AreEqual( 2, target.Children.Count );
-            Assert.AreSame( children, target.Children );
-
-            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-        }
-
-        /// <summary>
-        /// Set children (Collection with some items)
-        /// </summary>
-        [Test]
-        public void ChildrenTestCase1()
-        {
-            var target = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>(target) { "Item1", "Item2" };
-
-            target.Children = children;
-            Assert.AreSame(children, target.Children);
-            Assert.AreEqual(2, target.Children.Count);
-
-            children.ForEach(x => Assert.AreSame(target, x.Parent));
-        }
-
-        /// <summary>
-        /// Switch children of two nodes
-        /// </summary>
-        [Test]
-        public void ChildrenTestCase2()
-        {
-            var node1 = new TreeNode<String>("node1")
-            {
-                "Item1", "Item2"
-            };
-
-            var node2 = new TreeNode<String>("node2")
-            {
-                "ItemA", "ItemB"
-            };
-
-            Assert.AreEqual( 2, node1.Children.Count );
-            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
-
-            Assert.AreEqual(2, node2.Children.Count);
-            node2.Children.ForEach(x => Assert.AreSame(node2, x.Parent));
-
-            /*
-            var node1Children = new TreeNodeCollection<String>( node1 );
-            node1.Children.ForEach( node1Children.Add );
-            */
-            var node1Children = node1.Children;
-            var node2Children = node2.Children;
-            //var node2Children = new TreeNodeCollection<String>(node2);
-            //node2.Children.ForEach(node2Children.Add);
-
-            //Add children from 2 to 1
-            node1.Children = node2Children;
-            Assert.AreEqual(2, node1.Children.Count);
-            node1.Children.ForEach(x => Assert.AreSame(node1, x.Parent));
-            
-            //Add children from 1 to 2
-            node2.Children = node1Children;
-            Assert.AreEqual(2, node2.Children.Count);
-            node2.Children.ForEach(x => Assert.AreSame(node2, x.Parent));
         }
     }
 }

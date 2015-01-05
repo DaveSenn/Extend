@@ -1,7 +1,9 @@
 #region Using
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 
 #endregion
 
@@ -32,7 +34,7 @@ namespace PortableExtensions
         {
             _parent = parent;
         }
-
+        
         #endregion
 
         #region Implementation of ITreeNodeCollection<T>
