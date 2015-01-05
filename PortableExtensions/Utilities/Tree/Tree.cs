@@ -151,7 +151,7 @@ namespace PortableExtensions
         ///     A value determining whether the node should add it self to the children of the new parent
         ///     or not.
         /// </param>
-        public new void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true )
+        public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true )
         {
             throw new InvalidOperationException( "You can not set the parent of a tree root." );
         }
