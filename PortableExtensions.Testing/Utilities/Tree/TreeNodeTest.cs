@@ -27,6 +27,49 @@ namespace PortableExtensions.Testing
             #endregion
         }
 
+        private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.AncestorsTraversalDirection );
+            node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
+        }
+
+        private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.SearchTraversalDirection );
+            node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
+        }
+
+        private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.DisposeTraversalDirection );
+            node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
+        }
+
+        private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.DescendantsTraversalDirection );
+            node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
+        }
+
+        [Test]
+        public void AncestorsTraversalDirectionTestCase()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.AncestorsTraversalDirection = expected;
+            AssertAncestorsTraversalDirection( expected, target );
+        }
+
         /// <summary>
         ///     Set children of node and add then children
         /// </summary>
@@ -319,6 +362,44 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
         }
 
+        [Test]
+        public void DescendantsTraversalDirectionTestCase()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.DescendantsTraversalDirection = expected;
+            AssertDescendantsTraversalDirection( expected, target );
+        }
+
+        [Test]
+        public void DisposeTraversalDirectionTestCase()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.DisposeTraversalDirection = expected;
+            AssertDisposeTraversalDirection( expected, target );
+        }
+
         /// <summary>
         ///     Check if added as child to parent.
         /// </summary>
@@ -428,6 +509,25 @@ namespace PortableExtensions.Testing
             Assert.AreSame( parent, target.Root );
         }
 
+        [Test]
+        public void SearchTraversalDirectionTestCase()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.SearchTraversalDirection = expected;
+            AssertSearchTraversalDirection( expected, target );
+        }
+
         /// <summary>
         ///     Normal value
         /// </summary>
@@ -475,6 +575,45 @@ namespace PortableExtensions.Testing
 
             //Check if node is null.
             Assert.IsNull( expected.Node );
+        }
+
+        [Test]
+        public void DepthTestCase()
+        {
+            var target = new TreeNode<String>("root");
+            Assert.AreEqual(0, target.Depth);
+
+            var item1 = new TreeNode<String>("1");
+            Assert.AreEqual(0, item1.Depth);
+            target.Add( item1 );
+            Assert.AreEqual(1, item1.Depth);
+
+            var item2 = new TreeNode<String>("1");
+            Assert.AreEqual(0, item2.Depth);
+            item1.Add(item2);
+            Assert.AreEqual(2, item2.Depth);
+        }
+
+        [Test]
+        public void HasChildrenTestCase()
+        {
+            var target = new TreeNode<String>("root");
+            Assert.IsFalse(target.HasChildren);
+
+            var item1 = new TreeNode<String>("1");
+            Assert.IsFalse(item1.HasChildren);
+            target.Add(item1);
+            Assert.IsFalse(item1.HasChildren);
+            Assert.IsTrue(target.HasChildren);
+
+            var item2 = new TreeNode<String>("1");
+            Assert.IsFalse(item2.HasChildren);
+            Assert.AreEqual(0, item2.Depth);
+            item1.Add(item2);
+            Assert.AreEqual(2, item2.Depth);
+            Assert.IsFalse(item2.HasChildren);
+            Assert.IsTrue(item1.HasChildren);
+            Assert.IsTrue(target.HasChildren);
         }
     }
 }
