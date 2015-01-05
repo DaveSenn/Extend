@@ -424,7 +424,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <None Include="Utilities\Tree\ClassDiagram1.cd" />
-  </ItemGroup>
 </Project>

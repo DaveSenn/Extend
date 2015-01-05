@@ -204,8 +204,7 @@ namespace PortableExtensions
             set
             {
                 _searchTraversalDirection = value;
-                foreach ( var treeNode in Children )
-                    treeNode.SearchTraversalDirection = value;
+                Children.ForEach( x => x.SearchTraversalDirection = value );
             }
         }
 
@@ -219,8 +218,7 @@ namespace PortableExtensions
             set
             {
                 _disposeTraversalDirection = value;
-                foreach ( var treeNode in Children )
-                    treeNode.DisposeTraversalDirection = value;
+                Children.ForEach(x => x.DisposeTraversalDirection = value);
             }
         }
 
@@ -234,8 +232,7 @@ namespace PortableExtensions
             set
             {
                 _ancestorsTraversalDirection = value;
-                foreach ( var treeNode in Children )
-                    treeNode.AncestorsTraversalDirection = value;
+                Children.ForEach(x => x.AncestorsTraversalDirection = value);
             }
         }
 
@@ -249,8 +246,7 @@ namespace PortableExtensions
             set
             {
                 _descendantsTraversalDirection = value;
-                foreach ( var treeNode in Children )
-                    treeNode.DescendantsTraversalDirection = value;
+                Children.ForEach(x => x.DescendantsTraversalDirection = value);
             }
         }
 
