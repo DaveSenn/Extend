@@ -93,7 +93,7 @@ namespace PortableExtensions.Testing
         [Test]
         public void AgeTestCase15 ()
         {
-            var dateTime = new DateTime( DateTime.Now.Year, 10, 31 ).AddYears( 1 ).AddMonths( 1 );
+            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 ).AddMonths( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
@@ -101,13 +101,33 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void AgeTestCase17()
+        {
+            var dateTime = new DateTime(2015, 10, 31).AddYears(1).AddMonths(1);
+            const Int32 expected = -2;
+
+            var actual = dateTime.Age(new DateTime(2014, 10, 31));
+            Assert.AreEqual(expected, actual);
+        }
+
+        [Test]
         public void AgeTestCase16 ()
         {
-            var dateTime = new DateTime( DateTime.Now.Year, 10, 31 ).AddYears( 1 ).AddDays( 1 );
+            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 ).AddDays( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
             Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        public void AgeTestCase18()
+        {
+            var dateTime = new DateTime(2015, 10, 31).AddYears(1).AddDays(1);
+            const Int32 expected = -2;
+
+            var actual = dateTime.Age(new DateTime(2014, 10, 31));
+            Assert.AreEqual(expected, actual);
         }
 
         [Test]
