@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="PortableExtensions.Tree&lt;T&gt;" Collapsed="true">
+    <Position X="3" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAEAAACQAAAAAAAAAAgQEAAAAAAQAA=</HashCode>
+      <FileName>Utilities\Tree\Tree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PortableExtensions.TreeNode&lt;T&gt;" Collapsed="true">
+    <Position X="3" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABIQABAAACgACTAEAAEuQAIQAAoAAAAkYEAgAAEQQAA=</HashCode>
+      <FileName>Utilities\Tree\TreeNode.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PortableExtensions.TreeNodeCollection&lt;T&gt;" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="9" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAEAAAARAAQAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Utilities\Tree\TreeNodeCollection.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="3" Y="7.25" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Class Name="System.Collections.ObjectModel.Collection&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier />
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="PortableExtensions.ITree&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Tree\Definition\ITree.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PortableExtensions.ITreeNode&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAgAACAAAAAOQAIAAAoAAAAgYEAgAAEQQAA=</HashCode>
+      <FileName>Utilities\Tree\Definition\ITreeNode.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PortableExtensions.ITreeNodeAware&lt;T&gt;">
+    <Position X="10" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>Utilities\Tree\Definition\ITreeNodeAware.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PortableExtensions.ITreeNodeCollection&lt;T&gt;" Collapsed="true">
+    <Position X="7.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAARAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>Utilities\Tree\Definition\ITreeNodeCollection.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="System.Collections.Generic.ICollection&lt;T&gt;" Collapsed="true">
+    <Position X="8" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.IDisposable" Collapsed="true">
+    <Position X="6.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Interface Name="System.Collections.Generic.IEnumerable&lt;T&gt;" Collapsed="true">
+    <Position X="4.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier />
+  </Interface>
+  <Enum Name="PortableExtensions.TreeTraversalDirection">
+    <Position X="10" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utilities\Tree\Definition\TreeTraversalDirection.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
