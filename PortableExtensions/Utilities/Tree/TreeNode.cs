@@ -183,14 +183,14 @@ namespace PortableExtensions
             get { return _children; }
             set
             {
-                if (value == _children)
+                if ( value == _children )
                     return;
 
-                if (_children != null)
-                    _children.ForEach(x => x.SetParent(null, false, false));
+                if ( _children != null )
+                    _children.ForEach( x => x.SetParent( null, false, false ) );
 
                 _children = value;
-                _children.ForEach(x => x.SetParent(this, false));
+                _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -218,7 +218,7 @@ namespace PortableExtensions
             set
             {
                 _disposeTraversalDirection = value;
-                Children.ForEach(x => x.DisposeTraversalDirection = value);
+                Children.ForEach( x => x.DisposeTraversalDirection = value );
             }
         }
 
@@ -232,7 +232,7 @@ namespace PortableExtensions
             set
             {
                 _ancestorsTraversalDirection = value;
-                Children.ForEach(x => x.AncestorsTraversalDirection = value);
+                Children.ForEach( x => x.AncestorsTraversalDirection = value );
             }
         }
 
@@ -246,7 +246,7 @@ namespace PortableExtensions
             set
             {
                 _descendantsTraversalDirection = value;
-                Children.ForEach(x => x.DescendantsTraversalDirection = value);
+                Children.ForEach( x => x.DescendantsTraversalDirection = value );
             }
         }
 
@@ -281,13 +281,19 @@ namespace PortableExtensions
         ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
         /// </summary>
         /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
-        public IEnumerable<ITreeNode<T>> Ancestors { get; private set; }
+        public IEnumerable<ITreeNode<T>> Ancestors
+        {
+            get { return GetAncestors(); }
+        }
 
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
         /// </summary>
         /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
-        public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
+        public IEnumerable<ITreeNode<T>> Descendants
+        {
+            get { return GetDescendants(); }
+        }
 
         #endregion
 
@@ -389,7 +395,9 @@ namespace PortableExtensions
         ///     or not.
         /// </param>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-        public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
+        public void SetParent( ITreeNode<T> parent,
+                               Boolean attacheToNewParent = true,
+                               Boolean detachFromOldParent = true )
         {
             if ( _parent == parent )
                 return;
@@ -399,7 +407,7 @@ namespace PortableExtensions
             _parent = parent;
 
             //Remove node from old parent
-            if (oldParent != null && detachFromOldParent)
+            if ( oldParent != null && detachFromOldParent )
                 oldParent.Children.Remove( this, false );
 
             if ( attacheToNewParent && Parent != null )
@@ -465,19 +473,62 @@ namespace PortableExtensions
         /// </returns>
         public override String ToString()
         {
-            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}".F( Depth,
-                                                                                Value == null
-                                                                                    ? "[NULL]"
-                                                                                    : Value.ToString(),
-                                                                                Children.Count,
-                                                                                Parent == null
-                                                                                    ? "[NULL]"
-                                                                                    : Parent.ToString() );
+            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}"
+                .F( Depth,
+                    Value == null
+                        ? "[NULL]"
+                        : Value.ToString(),
+                    Children.Count,
+                    Parent == null
+                        ? "[NULL]"
+                        : Parent.ToString() );
         }
 
         #endregion
 
         #region Private Members
+
+        /// <summary>
+        ///     Gets the descendants of the node.
+        /// </summary>
+        /// <param name="descendants">A collection of descendants of the parent(s) of the current node.</param>
+        /// <returns>Returns the given descendants, including the children of the current node if it has any.</returns>
+        private IEnumerable<ITreeNode<T>> GetDescendants(List<ITreeNode<T>> descendants = null)
+        {
+            descendants = descendants ?? new List<ITreeNode<T>>();
+            if (Children == null || Children.NotAny())
+                return descendants;
+
+            Children.ForEach( x =>
+            {
+                if (x is TreeNode<T> == false)
+                    throw new NotSupportedException("Child '{0}' is not of type TreeNode{T}.".F( x ));
+
+                descendants.Add(x);
+                (x as TreeNode<T>).GetDescendants(descendants);
+            } );
+
+            return descendants;
+        }
+
+        /// <summary>
+        ///     Gets the ancestors of the node.
+        /// </summary>
+        /// <exception cref="NotSupportedException">Parent is not of type TreeNode{T}.</exception>
+        /// <param name="ancestors">A collection of ancestors of the children of the current node.</param>
+        /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
+        private IEnumerable<ITreeNode<T>> GetAncestors( List<ITreeNode<T>> ancestors = null )
+        {
+            ancestors = ancestors ?? new List<ITreeNode<T>>();
+            if ( Parent == null )
+                return ancestors;
+
+            if (Parent is TreeNode<T> == false)
+                throw new NotSupportedException("Parent is not of type TreeNode{T}.");
+            
+            ancestors.Add( Parent );
+            return ( Parent as TreeNode<T> ).GetAncestors( ancestors );
+        }
 
         /// <summary>
         ///     Initialize the tree node.

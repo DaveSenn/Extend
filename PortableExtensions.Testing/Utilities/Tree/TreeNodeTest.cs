@@ -615,5 +615,109 @@ namespace PortableExtensions.Testing
             Assert.IsTrue(item1.HasChildren);
             Assert.IsTrue(target.HasChildren);
         }
+
+        [Test]
+        public void HasParentTestCase()
+        {
+            var target = new TreeNode<String>("root");
+            Assert.IsFalse(target.HasParent);
+
+            var item1 = new TreeNode<String>("1");
+            Assert.IsFalse(item1.HasParent);
+            target.Add(item1);
+            Assert.IsTrue(item1.HasParent);
+
+            var item2 = new TreeNode<String>("1");
+            Assert.IsFalse(item2.HasParent);
+            item1.Add(item2);
+            Assert.IsTrue(item2.HasParent);
+        }
+        
+        [Test]
+        public void AncestorsTestCase()
+        {
+            var target = new TreeNode<String>("root");
+            var actual = target.Ancestors.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var node1 = new TreeNode<String>( "1", target );
+            actual = node1.Ancestors.ToList();
+            Assert.AreEqual( 1, actual.Count );
+            Assert.AreSame( target, actual[0] );
+
+            var node2 = new TreeNode<String>("1", node1);
+            actual = node2.Ancestors.ToList();
+            Assert.AreEqual(2, actual.Count);
+            Assert.AreSame(node1, actual[0]);
+            Assert.AreSame(target, actual[1]);
+        }
+
+        /// <summary>
+        /// Creates the following tree.
+        ///  root
+        ///  | 1 
+        ///  | | A
+        ///  | | B
+        ///  | 2
+        /// </summary>
+        [Test]
+        public void DescendantsTestCase()
+        {
+            var target = new TreeNode<String>("root");
+            var actual = target.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var node1 = new TreeNode<String>( "1", target );
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual(1, actual.Count);
+            Assert.AreSame( actual[0], node1 );
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
+
+            var nodeA = new TreeNode<String>("A", node1);
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual(2, actual.Count);
+            Assert.AreSame(actual[0], node1);
+            Assert.AreSame(actual[1], nodeA);
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual(1, actual.Count);
+            Assert.AreSame(actual[0], nodeA);
+            //Descendants of nodeA
+            actual = nodeA.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
+
+            var nodeB = new TreeNode<String>("B", node1);
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual(3, actual.Count);
+            Assert.AreSame(actual[0], node1);
+            Assert.AreSame(actual[1], nodeA);
+            Assert.AreSame(actual[2], nodeB);
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual(2, actual.Count);
+            Assert.AreSame(actual[0], nodeA);
+            Assert.AreSame(actual[1], nodeB);
+            //Descendants of nodeB
+            actual = nodeB.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
+
+            var node2 = new TreeNode<String>("2", target);
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual(4, actual.Count);
+            Assert.AreSame(actual[0], node1);
+            Assert.AreSame(actual[1], nodeA);
+            Assert.AreSame(actual[2], nodeB);
+            Assert.AreSame(actual[3], node2);
+            //Descendants of node2
+            actual = node2.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
+        }
+
     }
 }

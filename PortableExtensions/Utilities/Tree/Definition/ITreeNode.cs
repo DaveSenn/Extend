@@ -83,13 +83,7 @@ namespace PortableExtensions
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
         Boolean HasParent { get; }
-
-        /// <summary>
-        ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
-        /// </summary>
-        /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
-        IEnumerable<ITreeNode<T>> Ancestors { get; }
-
+        
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
         /// </summary>
