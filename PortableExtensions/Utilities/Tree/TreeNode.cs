@@ -308,22 +308,26 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        public virtual IEnumerable<T> FindValue( Func<T, Boolean> predicate )
+        public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
         {
             var result = new List<T>();
 
             //Search from top to bottom
-            if ( SearchTraversalDirection == TreeTraversalDirection.TopDown && predicate( Value ) )
-                result.Add( Value );
-
-            //Add matching children
-            foreach ( var treeNode in Children )
-                result.AddRange( treeNode.FindValue( predicate )
-                                         .ToList() );
-
-            //Search from bottom to top
-            if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
-                result.Add( Value );
+            switch ( SearchTraversalDirection )
+            {
+                case TreeTraversalDirection.TopDown:
+                    //From top to bottom
+                    if (predicate(this))
+                        result.Add(Value);
+                    Children.ForEach(x => result.AddRange(x.FindValue(predicate)));
+                    break;
+                case TreeTraversalDirection.BottomUp:
+                    //From bottom to top
+                    Children.ForEachReverse( x => result.AddRange( x.FindValue( predicate ) ) );
+                    if (predicate(this))
+                        result.Add( Value );
+                    break;
+            }
 
             return result;
         }
@@ -337,22 +341,55 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate )
+        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
         {
             var result = new List<ITreeNode<T>>();
 
             //Search from top to bottom
-            if ( SearchTraversalDirection == TreeTraversalDirection.TopDown && predicate( Value ) )
-                result.Add( this );
+            switch ( SearchTraversalDirection )
+            {
+                case TreeTraversalDirection.TopDown:
+                    //From top to bottom
+                    if ( predicate( this ) )
+                        result.Add( this );
+                    Children.ForEach( x => result.AddRange( x.FindNode( predicate ) ) );
+                    break;
+                case TreeTraversalDirection.BottomUp:
+                    //From bottom to top
+                    Children.ForEachReverse( x => result.AddRange( x.FindNode( predicate ) ) );
+                    if ( predicate( this ) )
+                        result.Add( this );
+                    break;
+            }
 
-            //Add matching children
-            foreach ( var treeNode in Children )
-                result.AddRange( treeNode.FindNode( predicate )
-                                         .ToList() );
+            return result;
+        }
 
-            //Search from bottom to top
-            if ( SearchTraversalDirection == TreeTraversalDirection.BottomUp && predicate( Value ) )
-                result.Add( this );
+        /// <summary>
+        ///     Gets the nodes with the given value.
+        /// </summary>
+        /// <param name="value">The value to search.</param>
+        /// <returns>Returns the nodes with the given value.</returns>
+        public IEnumerable<ITreeNode<T>> FindNode( T value )
+        {
+            var result = new List<ITreeNode<T>>();
+
+            //Search from top to bottom
+            switch (SearchTraversalDirection)
+            {
+                case TreeTraversalDirection.TopDown:
+                    //From top to bottom
+                    if (Value .Equals( value))
+                        result.Add(this);
+                    Children.ForEach(x => result.AddRange(x.FindNode(value)));
+                    break;
+                case TreeTraversalDirection.BottomUp:
+                    //From bottom to top
+                    Children.ForEachReverse(x => result.AddRange(x.FindNode(value)));
+                    if (Value.Equals(value))
+                        result.Add(this);
+                    break;
+            }
 
             return result;
         }
