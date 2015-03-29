@@ -318,6 +318,26 @@ namespace PortableExtensions.Testing
             target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
         }
 
+        [Test]
+        public void ParentTestCase7()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>(parent);
+            target.Parent = parent;
+
+            Assert.AreEqual(parent, target.Parent);
+        }
+
+        [Test]
+        public void ParentTestCase6()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>(parent);
+            target.Parent = null;
+
+            Assert.AreEqual(null, target.Parent);
+        }
+
         /// <summary>
         ///     Set parent.
         /// </summary>

@@ -398,12 +398,10 @@
     <Compile Include="Utilities\Specification\OrSpecification.cs" />
     <Compile Include="Utilities\Specification\Specification.cs" />
     <Compile Include="Utilities\Specification\XOrSpecification.cs" />
-    <Compile Include="Utilities\Tree\Definition\ITree.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNode.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeAware.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeCollection.cs" />
     <Compile Include="Utilities\Tree\Definition\TreeTraversalDirection.cs" />
-    <Compile Include="Utilities\Tree\Tree.cs" />
     <Compile Include="Utilities\Tree\TreeNode.cs" />
     <Compile Include="Utilities\Tree\TreeNodeCollection.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.cs" />
