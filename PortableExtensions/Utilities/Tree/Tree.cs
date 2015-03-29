@@ -40,14 +40,14 @@ namespace PortableExtensions
         ///     Gets the values which matches the given predicate.
         /// </summary>
         /// <remarks>
-        ///     Searches the whole tree (Direction based on <see cref="TreeNode{T}.SearchTraversalDirection" />).
+        ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+        ///     <see cref="SearchTraversalDirection" />).
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        public override IEnumerable<T> FindValue( Func<T, Boolean> predicate )
+        public override IEnumerable<T> FindValue(Func<ITreeNode<T>, Boolean> predicate)
         {
-            throw new NotImplementedException("Add tree root value?");
-            return Children.SelectMany( x => x.FindValue( predicate ) );
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        public override IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate )
+        public override IEnumerable<ITreeNode<T>> FindNode(Func<ITreeNode<T>, Boolean> predicate)
         {
             throw new NotImplementedException("Add tree root value?");
             return Children.SelectMany( x => x.FindNode( predicate ) );

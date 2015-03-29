@@ -83,7 +83,7 @@ namespace PortableExtensions
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
         Boolean HasParent { get; }
-        
+
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
         /// </summary>
@@ -103,7 +103,7 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        IEnumerable<T> FindValue( Func<T, Boolean> predicate );
+        IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate );
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
@@ -114,7 +114,14 @@ namespace PortableExtensions
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        IEnumerable<ITreeNode<T>> FindNode( Func<T, Boolean> predicate );
+        IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate );
+
+        /// <summary>
+        ///     Gets the nodes with the given value.
+        /// </summary>
+        /// <param name="value">The value to search.</param>
+        /// <returns>Returns the nodes with the given value.</returns>
+        IEnumerable<ITreeNode<T>> FindNode( T value );
 
         /// <summary>
         ///     Adds the given value as child to the node.
@@ -139,7 +146,7 @@ namespace PortableExtensions
         ///     or not.
         /// </param>
         /// <remarks>
-        /// TODO: add test for detachFromOldParent
+        ///     TODO: add test for detachFromOldParent
         /// </remarks>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
         void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true );
