@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using NUnit.Framework;
@@ -24,6 +25,218 @@ namespace PortableExtensions.Testing
             /// </summary>
             /// <value>The node of the object.</value>
             public ITreeNode<TestTreeNodeItem> Node { get; set; }
+
+            #endregion
+        }
+
+        private class AlternativeTreeNode<T> : ITreeNode<T>
+        {
+            #region Implementation of IDisposable
+
+            /// <summary>
+            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            public void Dispose()
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+
+            #region Implementation of IEnumerable
+
+            /// <summary>
+            ///     Returns an enumerator that iterates through a collection.
+            /// </summary>
+            /// <returns>
+            ///     An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            /// </returns>
+            IEnumerator IEnumerable.GetEnumerator()
+            {
+                return GetEnumerator();
+            }
+
+            #endregion
+
+            #region Implementation of IEnumerable<out ITreeNode<T>>
+
+            /// <summary>
+            ///     Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>
+            ///     A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            /// </returns>
+            public IEnumerator<ITreeNode<T>> GetEnumerator()
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+
+            #region Implementation of ITreeNode<T>
+
+            /// <summary>
+            ///     Gets or sets the value of the node.
+            /// </summary>
+            /// <value>The value of the node.</value>
+            public T Value { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the dispose traversal direction.
+            /// </summary>
+            /// <value>The dispose traversal direction.</value>
+            public TreeTraversalDirection DisposeTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the search traversal direction.
+            /// </summary>
+            /// <value>The search traversal direction.</value>
+            public TreeTraversalDirection SearchTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the ancestors traversal direction.
+            /// </summary>
+            /// <value>The ancestors traversal direction.</value>
+            public TreeTraversalDirection AncestorsTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the descendants traversal direction.
+            /// </summary>
+            /// <value>The descendants traversal direction.</value>
+            public TreeTraversalDirection DescendantsTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the traversal direction used to enumerate the nodes.
+            /// </summary>
+            /// <value>The traversal direction used to enumerate the nodes.</value>
+            public TreeTraversalDirection TraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the parent of the node.
+            /// </summary>
+            /// <value>The parent of the node.</value>
+            public ITreeNode<T> Parent { get; set; }
+
+            /// <summary>
+            ///     Gets the children of the node.
+            /// </summary>
+            /// <value>The children of the node.</value>
+            public ITreeNodeCollection<T> Children { get; set; }
+
+            /// <summary>
+            ///     Gets the root of the tree.
+            /// </summary>
+            /// <value>The root of the tree.</value>
+            public ITreeNode<T> Root { get; private set; }
+
+            /// <summary>
+            ///     Gets the depth of the node.
+            /// </summary>
+            /// <value>The depth of the node.</value>
+            public int Depth { get; private set; }
+
+            /// <summary>
+            ///     Gets a value indicating whether the node has any children or not.
+            /// </summary>
+            /// <value>A value indicating whether the node has any children or not.</value>
+            public bool HasChildren { get; private set; }
+
+            /// <summary>
+            ///     Gets a value indicating whether the node has a parent or not.
+            /// </summary>
+            /// <value>A value indicating whether the node has a parent or not.</value>
+            public bool HasParent { get; private set; }
+
+            /// <summary>
+            ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
+            /// </summary>
+            /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
+            public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
+
+            /// <summary>
+            ///     Gets the values which matches the given predicate.
+            /// </summary>
+            /// <remarks>
+            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+            ///     <see cref="SearchTraversalDirection" />).
+            /// </remarks>
+            /// <param name="predicate">The predicate.</param>
+            /// <returns>Returns the values which matches the given predicate.</returns>
+            public IEnumerable<T> FindValue( Func<ITreeNode<T>, bool> predicate )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Gets the nodes which matches the given predicate.
+            /// </summary>
+            /// <remarks>
+            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+            ///     <see cref="SearchTraversalDirection" />).
+            /// </remarks>
+            /// <param name="predicate">The predicate.</param>
+            /// <returns>Returns the nodes which matches the given predicate.</returns>
+            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, bool> predicate )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Gets the nodes with the given value.
+            /// </summary>
+            /// <param name="value">The value to search.</param>
+            /// <returns>Returns the nodes with the given value.</returns>
+            public IEnumerable<ITreeNode<T>> FindNode( T value )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Adds the given value as child to the node.
+            /// </summary>
+            /// <param name="value">The value to add.</param>
+            /// <returns>Returns the added node.</returns>
+            public ITreeNode<T> Add( T value )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Adds the given node as child to the node, if it is not already a child of the node.
+            /// </summary>
+            /// <param name="node">The node to add.</param>
+            /// <returns>Returns the added node.</returns>
+            public ITreeNode<T> Add( ITreeNode<T> node )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Sets the parent of the tree node.
+            /// </summary>
+            /// <param name="parent">The new parent.</param>
+            /// <param name="attacheToNewParent">
+            ///     A value determining whether the node should add it self to the children of the new parent
+            ///     or not.
+            /// </param>
+            /// <remarks>
+            ///     TODO: add test for detachFromOldParent
+            /// </remarks>
+            /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
+            public void SetParent( ITreeNode<T> parent, bool attacheToNewParent = true, bool detachFromOldParent = true )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
+            ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
+            /// </summary>
+            /// <param name="direction">The new direction.</param>
+            public void SetAllDirections( TreeTraversalDirection direction )
+            {
+                throw new NotImplementedException();
+            }
 
             #endregion
         }
@@ -56,6 +269,26 @@ namespace PortableExtensions.Testing
         {
             Assert.AreEqual( expected, node.TraversalDirection );
             node.Children.ForEach( x => AssertTraversalDirection( expected, x ) );
+        }
+
+        private class DisposeTestHelper : IDisposable
+
+        {
+            public String Value { get; set; }
+            public Action<String> DisposeAction { get; set; }
+
+            #region Implementation of IDisposable
+
+            /// <summary>
+            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            public void Dispose()
+            {
+                if ( DisposeAction != null )
+                    DisposeAction( Value );
+            }
+
+            #endregion
         }
 
         [Test]
@@ -507,6 +740,20 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void DescendantsTestCaseNotSupportedException()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                "2",
+                new AlternativeTreeNode<String>()
+            };
+
+            var actual = target.Descendants;
+        }
+
+        [Test]
         public void DescendantsTraversalDirectionTestCase()
         {
             var target = new TreeNode<String>
@@ -523,6 +770,55 @@ namespace PortableExtensions.Testing
             var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
             target.DescendantsTraversalDirection = expected;
             AssertDescendantsTraversalDirection( expected, target );
+        }
+
+        [Test]
+        public void DisposeTestCase()
+        {
+            var target = new TreeNode<String>
+            {
+                "1",
+                "2"
+            };
+            target.Dispose();
+        }
+
+        [Test]
+        public void DisposeTestCase1()
+        {
+            var values = new List<String>();
+            var target = new TreeNode<DisposeTestHelper>
+            {
+                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
+            };
+            target.DisposeTraversalDirection = TreeTraversalDirection.TopDown;
+            target.Dispose();
+
+            Assert.AreEqual( 3, values.Count );
+            Assert.AreEqual( "1", values[0] );
+            Assert.AreEqual( "2", values[1] );
+            Assert.AreEqual( "3", values[2] );
+        }
+
+        [Test]
+        public void DisposeTestCase2()
+        {
+            var values = new List<String>();
+            var target = new TreeNode<DisposeTestHelper>
+            {
+                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
+            };
+            target.DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+            target.Dispose();
+
+            Assert.AreEqual( 3, values.Count );
+            Assert.AreEqual( "3", values[0] );
+            Assert.AreEqual( "2", values[1] );
+            Assert.AreEqual( "1", values[2] );
         }
 
         [Test]
@@ -1064,6 +1360,25 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        public void GetEnumeratorTestCase6()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    new TreeNode<String>( "4" )
+                    {
+                        "5"
+                    }
+                },
+                "6"
+            };
+            var actual = target.GetEnumerator();
+        }
+
+        [Test]
         public void HasChildrenTestCase()
         {
             var target = new TreeNode<String>( "root" );
@@ -1303,6 +1618,25 @@ namespace PortableExtensions.Testing
             node1.SetParent( targetB );
             Assert.AreSame( node1.Parent, targetB );
             Assert.AreEqual( 0, targetA.Children.Count );
+        }
+
+        [Test]
+        public void ToStringTestCase()
+        {
+            var target = new TreeNode<String>( "1" );
+            var actual = target.ToString();
+            Assert.AreEqual( "Depth: 0 - Value: 1, Children: 0, Parent: {[NULL]}", actual );
+        }
+
+        [Test]
+        public void ToStringTestCase1()
+        {
+            var target = new TreeNode<String>( "1" ) { "1", "2" };
+            var node = new TreeNode<String>( "a" );
+            target.Add( node );
+            var actual = node.ToString();
+            Assert.AreEqual( "Depth: 1 - Value: a, Children: 0, Parent: {Depth: 0 - Value: 1, Children: 3, Parent: {[NULL]}}",
+                             actual );
         }
 
         [Test]

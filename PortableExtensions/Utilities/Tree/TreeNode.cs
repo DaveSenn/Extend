@@ -596,7 +596,7 @@ namespace PortableExtensions
             Children.ForEach( x =>
             {
                 if ( x is TreeNode<T> == false )
-                    throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( x ) );
+                    throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( x ) );
 
                 descendants.Add( x );
                 ( x as TreeNode<T> ).GetDescendants( descendants );
@@ -688,7 +688,7 @@ namespace PortableExtensions
 
             //Release from bottom up (start with children).
             if ( DisposeTraversalDirection == TreeTraversalDirection.BottomUp )
-                foreach ( var node in Children )
+                foreach ( var node in Children.Reverse() )
                     node.Dispose();
 
             //Release the current node.
