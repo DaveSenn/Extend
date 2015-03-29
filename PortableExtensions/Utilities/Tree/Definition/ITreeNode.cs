@@ -42,11 +42,14 @@ namespace PortableExtensions
         /// <summary>
         ///     Gets or sets the descendants traversal direction.
         /// </summary>
-        /// <remarks>
-        ///     Also used for the implementation of <see cref="IEnumerable{ITreeNode}" />.
-        /// </remarks>
         /// <value>The descendants traversal direction.</value>
         TreeTraversalDirection DescendantsTraversalDirection { get; set; }
+
+        /// <summary>
+        ///     Gets or sets the traversal direction used to enumerate the nodes.
+        /// </summary>
+        /// <value>The traversal direction used to enumerate the nodes.</value>
+        TreeTraversalDirection TraversalDirection { get; set; }
 
         /// <summary>
         ///     Gets or sets the parent of the node.

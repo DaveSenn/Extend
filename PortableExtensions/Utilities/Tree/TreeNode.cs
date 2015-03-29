@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using System.Collections;
@@ -46,6 +46,11 @@ namespace PortableExtensions
         ///     The search traversal direction.
         /// </summary>
         private TreeTraversalDirection _searchTraversalDirection;
+
+        /// <summary>
+        ///     The traversal direction.
+        /// </summary>
+        private TreeTraversalDirection _traversalDirection;
 
         /// <summary>
         ///     The value of the node.
@@ -127,6 +132,15 @@ namespace PortableExtensions
         #region Implementation of ITreeNode
 
         #region Properties
+
+        /// <summary>
+        ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
+        /// </summary>
+        /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
+        public IEnumerable<ITreeNode<T>> Ancestors
+        {
+            get { return GetAncestors(); }
+        }
 
         /// <summary>
         ///     Gets or sets the value of the node.
@@ -251,6 +265,20 @@ namespace PortableExtensions
         }
 
         /// <summary>
+        ///     Gets or sets the traversal direction used to enumerate the nodes.
+        /// </summary>
+        /// <value>The traversal direction used to enumerate the nodes.</value>
+        public TreeTraversalDirection TraversalDirection
+        {
+            get { return _traversalDirection; }
+            set
+            {
+                _traversalDirection = value;
+                Children.ForEach( x => x.TraversalDirection = value );
+            }
+        }
+
+        /// <summary>
         ///     Gets the depth of the node.
         /// </summary>
         /// <value>The depth of the node.</value>
@@ -275,15 +303,6 @@ namespace PortableExtensions
         public Boolean HasParent
         {
             get { return Parent != null; }
-        }
-
-        /// <summary>
-        ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
-        /// </summary>
-        /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
-        public IEnumerable<ITreeNode<T>> Ancestors
-        {
-            get { return GetAncestors(); }
         }
 
         /// <summary>
@@ -317,14 +336,14 @@ namespace PortableExtensions
             {
                 case TreeTraversalDirection.TopDown:
                     //From top to bottom
-                    if (predicate(this))
-                        result.Add(Value);
-                    Children.ForEach(x => result.AddRange(x.FindValue(predicate)));
+                    if ( predicate( this ) )
+                        result.Add( Value );
+                    Children.ForEach( x => result.AddRange( x.FindValue( predicate ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
                     //From bottom to top
                     Children.ForEachReverse( x => result.AddRange( x.FindValue( predicate ) ) );
-                    if (predicate(this))
+                    if ( predicate( this ) )
                         result.Add( Value );
                     break;
             }
@@ -375,19 +394,19 @@ namespace PortableExtensions
             var result = new List<ITreeNode<T>>();
 
             //Search from top to bottom
-            switch (SearchTraversalDirection)
+            switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
                     //From top to bottom
-                    if (Value .Equals( value))
-                        result.Add(this);
-                    Children.ForEach(x => result.AddRange(x.FindNode(value)));
+                    if ( Value.Equals( value ) )
+                        result.Add( this );
+                    Children.ForEach( x => result.AddRange( x.FindNode( value ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
                     //From bottom to top
-                    Children.ForEachReverse(x => result.AddRange(x.FindNode(value)));
-                    if (Value.Equals(value))
-                        result.Add(this);
+                    Children.ForEachReverse( x => result.AddRange( x.FindNode( value ) ) );
+                    if ( Value.Equals( value ) )
+                        result.Add( this );
                     break;
             }
 
@@ -462,6 +481,7 @@ namespace PortableExtensions
             DisposeTraversalDirection = direction;
             AncestorsTraversalDirection = direction;
             DescendantsTraversalDirection = direction;
+            TraversalDirection = direction;
         }
 
         #endregion
@@ -478,13 +498,8 @@ namespace PortableExtensions
         /// </returns>
         public IEnumerator<ITreeNode<T>> GetEnumerator()
         {
-            foreach ( var node in Children )
-            {
-                yield return node;
-
-                foreach ( var childLevel2 in node.Children )
-                    yield return childLevel2;
-            }
+            return GetEnumeratorInternal()
+                .GetEnumerator();
         }
 
         /// <summary>
@@ -526,23 +541,65 @@ namespace PortableExtensions
         #region Private Members
 
         /// <summary>
+        ///     Internal implementation to get a enumeration in the specified order.
+        /// </summary>
+        /// <returns>Returns a  enumeration of all nodes.</returns>
+        private IEnumerable<ITreeNode<T>> GetEnumeratorInternal()
+        {
+            switch ( TraversalDirection )
+            {
+                case TreeTraversalDirection.TopDown:
+                    yield return this;
+                    foreach ( var child in Children )
+                    {
+                        if ( child is TreeNode<T> == false )
+                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
+
+                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                        foreach ( var e in enumeration )
+                            yield return e;
+                    }
+
+                    break;
+                case TreeTraversalDirection.BottomUp:
+
+                    foreach ( var child in Children.Reverse() )
+                    {
+                        if ( child is TreeNode<T> == false )
+                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
+
+                        var enumeration = (child as TreeNode<T>).GetEnumeratorInternal();
+                        foreach ( var e in enumeration )
+                            yield return e;
+                    }
+                    yield return this;
+
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException( this.GetName( () => TraversalDirection ),
+                                                           "The value '{0}' is a unknown tree traversal direction".F(
+                                                               TraversalDirection ) );
+            }
+        }
+
+        /// <summary>
         ///     Gets the descendants of the node.
         /// </summary>
         /// <param name="descendants">A collection of descendants of the parent(s) of the current node.</param>
         /// <returns>Returns the given descendants, including the children of the current node if it has any.</returns>
-        private IEnumerable<ITreeNode<T>> GetDescendants(List<ITreeNode<T>> descendants = null)
+        private IEnumerable<ITreeNode<T>> GetDescendants( List<ITreeNode<T>> descendants = null )
         {
             descendants = descendants ?? new List<ITreeNode<T>>();
-            if (Children == null || Children.NotAny())
+            if ( Children == null || Children.NotAny() )
                 return descendants;
 
             Children.ForEach( x =>
             {
-                if (x is TreeNode<T> == false)
-                    throw new NotSupportedException("Child '{0}' is not of type TreeNode{T}.".F( x ));
+                if ( x is TreeNode<T> == false )
+                    throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( x ) );
 
-                descendants.Add(x);
-                (x as TreeNode<T>).GetDescendants(descendants);
+                descendants.Add( x );
+                ( x as TreeNode<T> ).GetDescendants( descendants );
             } );
 
             return descendants;
@@ -560,9 +617,9 @@ namespace PortableExtensions
             if ( Parent == null )
                 return ancestors;
 
-            if (Parent is TreeNode<T> == false)
-                throw new NotSupportedException("Parent is not of type TreeNode{T}.");
-            
+            if ( Parent is TreeNode<T> == false )
+                throw new NotSupportedException( "Parent is not of type TreeNode{T}." );
+
             ancestors.Add( Parent );
             return ( Parent as TreeNode<T> ).GetAncestors( ancestors );
         }
