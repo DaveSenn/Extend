@@ -65,8 +65,8 @@ namespace PortableExtensions
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         public TreeNode()
+            : this( default( T ), null, null )
         {
-            Initialize( default( T ) );
         }
 
         /// <summary>
@@ -74,6 +74,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The value of the node.</param>
         public TreeNode( T value )
+            : this( value, null, null )
         {
             Initialize( value );
         }
@@ -83,8 +84,8 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
         public TreeNode( ITreeNode<T> parent )
+            : this( default( T ), parent, null )
         {
-            Initialize( default( T ), parent );
         }
 
         /// <summary>
@@ -92,8 +93,8 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="children">The children of the node.</param>
         public TreeNode( ITreeNodeCollection<T> children )
+            : this( default( T ), null, children )
         {
-            Initialize( default( T ), children: children );
         }
 
         /// <summary>
@@ -102,8 +103,8 @@ namespace PortableExtensions
         /// <param name="value">The value of the node.</param>
         /// <param name="children">The children of the node.</param>
         public TreeNode( T value, ITreeNodeCollection<T> children )
+            : this( value, null, children )
         {
-            Initialize( value, children: children );
         }
 
         /// <summary>
@@ -112,8 +113,8 @@ namespace PortableExtensions
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
         public TreeNode( T value, ITreeNode<T> parent )
+            : this( value, parent, null )
         {
-            Initialize( value, parent );
         }
 
         /// <summary>
@@ -124,7 +125,26 @@ namespace PortableExtensions
         /// <param name="children">The children of the node.</param>
         public TreeNode( T value, ITreeNode<T> parent, ITreeNodeCollection<T> children )
         {
-            Initialize( value, parent, children );
+            Value = value;
+            Parent = parent;
+            Children = children ?? new TreeNodeCollection<T>( this );
+            if ( Parent != null )
+            {
+                if ( !Parent.Children.Contains( this ) )
+                    Parent.Children.Add( this );
+
+                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
+                SearchTraversalDirection = Parent.SearchTraversalDirection;
+                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
+                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
+            }
+            else
+            {
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
+                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
+            }
         }
 
         #endregion
@@ -185,7 +205,7 @@ namespace PortableExtensions
         /// <value>The root of the tree.</value>
         public ITreeNode<T> Root
         {
-            get { return ( Parent == null ) ? this : Parent.Root; }
+            get { return Parent == null ? this : Parent.Root; }
         }
 
         /// <summary>
@@ -199,9 +219,6 @@ namespace PortableExtensions
             {
                 if ( value == _children )
                     return;
-
-                if ( _children != null )
-                    _children.ForEach( x => x.SetParent( null, false, false ) );
 
                 _children = value;
                 _children.ForEach( x => x.SetParent( this, false ) );
@@ -568,7 +585,7 @@ namespace PortableExtensions
                         if ( child is TreeNode<T> == false )
                             throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
 
-                        var enumeration = (child as TreeNode<T>).GetEnumeratorInternal();
+                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
                         foreach ( var e in enumeration )
                             yield return e;
                     }
