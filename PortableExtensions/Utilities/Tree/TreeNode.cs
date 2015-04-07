@@ -630,15 +630,8 @@ namespace PortableExtensions
         /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
         private IEnumerable<ITreeNode<T>> GetAncestors( List<ITreeNode<T>> ancestors = null )
         {
-            ancestors = ancestors ?? new List<ITreeNode<T>>();
-            if ( Parent == null )
-                return ancestors;
-
-            if ( Parent is TreeNode<T> == false )
-                throw new NotSupportedException( "Parent is not of type TreeNode{T}." );
-
-            ancestors.Add( Parent );
-            return ( Parent as TreeNode<T> ).GetAncestors( ancestors );
+            for (var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent)
+                yield return ancestor;
         }
 
         /// <summary>
