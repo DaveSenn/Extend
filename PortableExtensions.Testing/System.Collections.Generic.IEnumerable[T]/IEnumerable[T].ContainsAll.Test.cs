@@ -12,9 +12,9 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ContainsAllTestCase ()
+        public void ContainsAllTestCase()
         {
-            var list = new List<String> {"test", "test1"};
+            var list = new List<String> { "test", "test1" };
 
             Assert.IsTrue( list.ContainsAll( "test" ) );
             Assert.IsTrue( list.ContainsAll( "test", "test1" ) );
@@ -22,40 +22,40 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ContainsAllTestCase1 ()
+        public void ContainsAllTestCase1()
         {
-            var list = new List<String> {"test", "test1"};
+            var list = new List<String> { "test", "test1" };
 
-            Assert.IsTrue( list.ContainsAll( new List<String> {"test"} ) );
+            Assert.IsTrue( list.ContainsAll( new List<String> { "test" } ) );
             Assert.IsTrue( list.ContainsAll( list ) );
-            Assert.IsFalse( list.ContainsAll( new List<String> {"test", "test1", "test2"} ) );
+            Assert.IsFalse( list.ContainsAll( new List<String> { "test", "test1", "test2" } ) );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ContainsAllTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ContainsAllTestCase1NullCheck()
         {
             IEnumerableTEx.ContainsAll( null, new List<String>() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ContainsAllTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ContainsAllTestCase1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
             new List<Object>().ContainsAll( enumerable );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ContainsAllTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ContainsAllTestCaseNullCheck()
         {
             IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ContainsAllTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ContainsAllTestCaseNullCheck1()
         {
             Object[] array = null;
             new List<Object>().ContainsAll( array );

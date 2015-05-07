@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsNumericTestCase ()
+        public void IsNumericTestCase()
         {
             var actual = "test".IsNumeric();
             Assert.IsFalse( actual );
@@ -24,8 +24,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void IsNumericTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsNumericTestCaseNullCheck()
         {
             StringEx.IsNumeric( null );
         }

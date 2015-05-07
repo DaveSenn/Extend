@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Double value.</param>
         /// <returns>Returns the given Double value as days.</returns>
-        public static TimeSpan ToDays ( this Double value )
+        public static TimeSpan ToDays( this Double value )
         {
             return TimeSpan.FromDays( value );
         }

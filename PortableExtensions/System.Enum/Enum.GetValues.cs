@@ -21,13 +21,15 @@ namespace PortableExtensions
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>All values of the specified enumeration.</returns>
-        public static IEnumerable<T> GetValues<T> () where T : struct
+        public static IEnumerable<T> GetValues<T>() where T : struct
         {
             var type = typeof (T);
-            if ( !type.GetTypeInfo().IsEnum )
+            if ( !type.GetTypeInfo()
+                      .IsEnum )
                 throw new ArgumentException( "T must be an enumerated type." );
 
-            return Enum.GetValues( type ).OfType<T>();
+            return Enum.GetValues( type )
+                       .OfType<T>();
         }
 
         /// <summary>
@@ -41,9 +43,10 @@ namespace PortableExtensions
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <param name="type">The type of the enumeration.</param>
         /// <returns>All values of the specified enumeration.</returns>
-        public static IEnumerable GetValues ( Type type )
+        public static IEnumerable GetValues( Type type )
         {
-            if ( !type.GetTypeInfo().IsEnum )
+            if ( !type.GetTypeInfo()
+                      .IsEnum )
                 throw new ArgumentException( "T must be an enumerated type." );
 
             return Enum.GetValues( type );

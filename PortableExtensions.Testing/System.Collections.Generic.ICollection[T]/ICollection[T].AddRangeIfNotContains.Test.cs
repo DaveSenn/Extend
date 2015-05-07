@@ -12,22 +12,22 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddRangeIfNotContains1TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddRangeIfNotContains1TestCaseNullCheck()
         {
-            CollectionTEx.AddRangeIfNotContains( null, new List<String> {"test0", "test1", "test2"} );
+            CollectionTEx.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddRangeIfNotContains1TestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddRangeIfNotContains1TestCaseNullCheck1()
         {
             List<String> list = null;
             new List<String>().AddRangeIfNotContains( list );
         }
 
         [Test]
-        public void AddRangeIfNotContainsTestCase ()
+        public void AddRangeIfNotContainsTestCase()
         {
             var c = new List<String>();
 
@@ -40,28 +40,28 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AddRangeIfNotContainsTestCase1 ()
+        public void AddRangeIfNotContainsTestCase1()
         {
             var c = new List<String>();
 
-            var result = c.AddRangeIfNotContains( new List<String> {"test0", "test1", "test2"} );
+            var result = c.AddRangeIfNotContains( new List<String> { "test0", "test1", "test2" } );
             Assert.AreEqual( 3, c.Count );
             Assert.AreSame( c, result );
 
-            c.AddRangeIfNotContains( new List<String> {"test0", "test1", "test2"} );
+            c.AddRangeIfNotContains( new List<String> { "test0", "test1", "test2" } );
             Assert.AreEqual( 3, c.Count );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddRangeIfNotContainsTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddRangeIfNotContainsTestCaseNullCheck()
         {
             CollectionTEx.AddRangeIfNotContains( null, "test0", "test1", "test2" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddRangeIfNotContainsTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddRangeIfNotContainsTestCaseNullCheck1()
         {
             new List<String>().AddRangeIfNotContains( null );
         }

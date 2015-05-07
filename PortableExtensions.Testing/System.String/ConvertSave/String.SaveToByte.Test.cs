@@ -12,25 +12,27 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToByteTestCase ()
+        public void SaveToByteTestCase()
         {
             const Byte expected = (Byte) 10;
-            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToByte();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToByte();
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToByteTestCase1 ()
+        public void SaveToByteTestCase1()
         {
             const Byte expected = (Byte) 10;
-            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToByte( default( Byte ) );
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToByte( default( Byte ) );
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToByteTestCase2 ()
+        public void SaveToByteTestCase2()
         {
             const Byte expected = (Byte) 10;
             var actual = "InvalidValue".SaveToByte( expected );
@@ -39,7 +41,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToByteTestCase3 ()
+        public void SaveToByteTestCase3()
         {
             var actual = "InvalidValue".SaveToByte();
 
@@ -47,7 +49,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToByteTestCase4 ()
+        public void SaveToByteTestCase4()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -57,7 +59,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToByteTestCase5 ()
+        public void SaveToByteTestCase5()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -67,7 +69,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToByteTestCase6 ()
+        public void SaveToByteTestCase6()
         {
             const Byte expected = (Byte) 10;
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
@@ -78,7 +80,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToByteTestCase7 ()
+        public void SaveToByteTestCase7()
         {
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
                                                     CultureInfo.InvariantCulture );
@@ -87,15 +89,15 @@ namespace PortableExtensions
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SaveToByteTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SaveToByteTestCaseNullCheck()
         {
             StringEx.SaveToByte( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SaveToByteTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SaveToByteTestCaseNullCheck1()
         {
             "".SaveToByte( NumberStyles.AllowDecimalPoint, null );
         }

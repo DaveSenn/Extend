@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="obj">The object to check.</param>
         /// <param name="specification">The specification to use.</param>
         /// <returns></returns>
-        public static IEnumerable<String> SatisfiesWithMessages<T> ( this T obj, ISpecification<T> specification )
+        public static IEnumerable<String> SatisfiesWithMessages<T>( this T obj, ISpecification<T> specification )
         {
             specification.ThrowIfNull( () => specification );
 

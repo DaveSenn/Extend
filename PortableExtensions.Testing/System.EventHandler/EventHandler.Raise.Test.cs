@@ -16,12 +16,12 @@ namespace PortableExtensions.Testing
 
             public event EventHandler MyEvent;
 
-            public void RaiseGenericEvent ( SampleEventArgs args )
+            public void RaiseGenericEvent( SampleEventArgs args )
             {
                 MyGenericEvent.Raise( this, args );
             }
 
-            public void RaiseEvent ( EventArgs args )
+            public void RaiseEvent( EventArgs args )
             {
                 MyEvent.Raise( this, args );
             }
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
 
         private class SampleEventArgs : EventArgs
         {
-            public SampleEventArgs ( String message )
+            public SampleEventArgs( String message )
             {
                 Message = message;
             }
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void RaiseTestCase ()
+        public void RaiseTestCase()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
@@ -51,7 +51,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void RaiseTestCase1 ()
+        public void RaiseTestCase1()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );

@@ -16,9 +16,10 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted decimal.</returns>
-        public static Decimal ExtractFirstDecimal ( this String value, Int32 startIndex = 0 )
+        public static Decimal ExtractFirstDecimal( this String value, Int32 startIndex = 0 )
         {
-            return ExtractFloatingNumber( value, startIndex ).ToDecimal();
+            return ExtractFloatingNumber( value, startIndex )
+                .ToDecimal();
         }
     }
 }

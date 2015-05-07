@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>Return a date-time representing the specified day in November in the specified year.</returns>
-        public static DateTime November ( this Int32 day, Int32 year )
+        public static DateTime November( this Int32 day, Int32 year )
         {
             return new DateTime( year, 11, day );
         }

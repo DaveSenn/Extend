@@ -22,11 +22,12 @@ namespace PortableExtensions
         /// <typeparam name="TValue">Type of the value.</typeparam>
         /// <param name="dictionary">The Dictionary to act on.</param>
         /// <returns>Returns all keys of the given dictionary as list.</returns>
-        public static List<TKey> GetAllKeysAsList<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary )
+        public static List<TKey> GetAllKeysAsList<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
         {
             dictionary.ThrowIfNull( () => dictionary );
 
-            return dictionary.Select( x => x.Key ).ToList();
+            return dictionary.Select( x => x.Key )
+                             .ToList();
         }
     }
 }

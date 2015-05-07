@@ -1,4 +1,4 @@
-﻿#region Using
+﻿#region Usings
 
 using System;
 using NUnit.Framework;
@@ -89,7 +89,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
+        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();
@@ -319,23 +319,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ParentTestCase7()
-        {
-            var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent);
-            target.Parent = parent;
-
-            Assert.AreEqual(parent, target.Parent);
-        }
-
-        [Test]
         public void ParentTestCase6()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>(parent);
+            var target = new TreeNodeCollection<String>( parent );
             target.Parent = null;
 
-            Assert.AreEqual(null, target.Parent);
+            Assert.AreEqual( null, target.Parent );
+        }
+
+        [Test]
+        public void ParentTestCase7()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNodeCollection<String>( parent );
+            target.Parent = parent;
+
+            Assert.AreEqual( parent, target.Parent );
         }
 
         /// <summary>
@@ -412,7 +412,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException( typeof ( ArgumentNullException ) )]
+        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveNodeTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();

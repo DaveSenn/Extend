@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="input">The <see cref="String" /> to search for a match.</param>
         /// <param name="pattern">The regular expression pattern used by the <see cref="Regex" />.</param>
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
-        public static Boolean IsMatch ( this String input, String pattern )
+        public static Boolean IsMatch( this String input, String pattern )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );
@@ -36,7 +36,7 @@ namespace PortableExtensions
         /// <param name="pattern">The regular expression pattern used by the <see cref="Regex" />.</param>
         /// <param name="options">The regular expression options used by the <see cref="Regex" />.</param>
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
-        public static Boolean IsMatch ( this String input, String pattern, RegexOptions options )
+        public static Boolean IsMatch( this String input, String pattern, RegexOptions options )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );
@@ -56,7 +56,7 @@ namespace PortableExtensions
         /// <param name="options">The regular expression options used by the <see cref="Regex" />.</param>
         /// <param name="timeOut">The timeout for the match operation.</param>
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
-        public static Boolean IsMatch ( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
+        public static Boolean IsMatch( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
         {
             input.ThrowIfNull( () => input );
             pattern.ThrowIfNull( () => pattern );

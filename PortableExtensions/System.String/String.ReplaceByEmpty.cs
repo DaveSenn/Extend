@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="str">The input string.</param>
         /// <param name="values">A list of all values to replace.</param>
         /// <returns>A string with all specified values replaced by an empty string.</returns>
-        public static String ReplaceByEmpty ( this String str, params String[] values )
+        public static String ReplaceByEmpty( this String str, params String[] values )
         {
             str.ThrowIfNull( () => str );
             values.ThrowIfNull( () => values );

@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="week">The week to return the end of.</param>
         /// <param name="lastDayOfWeek">The last day of the week. Default is Sunday.</param>
         /// <returns>Returns the last day of the current week.</returns>
-        public static DateTime EndOfWeek ( this DateTime week, DayOfWeek lastDayOfWeek = DayOfWeek.Sunday )
+        public static DateTime EndOfWeek( this DateTime week, DayOfWeek lastDayOfWeek = DayOfWeek.Sunday )
         {
             var currentDay = week.DayOfWeek;
             var daysLeft = lastDayOfWeek - currentDay;

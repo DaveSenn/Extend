@@ -22,7 +22,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="specification">The specification.</param>
         /// <returns>Returns the items which satisfy the given specification.</returns>
-        public static IEnumerable<T> Where<T> ( this IEnumerable<T> enumerable, ISpecification<T> specification )
+        public static IEnumerable<T> Where<T>( this IEnumerable<T> enumerable, ISpecification<T> specification )
         {
             specification.ThrowIfNull( () => specification );
 

@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>Returns true if the year is a leap year, otherwise false.</returns>
-        public static Boolean IsLeapYear ( this Int16 year )
+        public static Boolean IsLeapYear( this Int16 year )
         {
             return DateTime.IsLeapYear( year );
         }

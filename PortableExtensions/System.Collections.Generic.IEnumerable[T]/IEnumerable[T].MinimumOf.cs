@@ -27,7 +27,7 @@ namespace PortableExtensions
         ///     Returns true if the IEnumerable contains at least the specified number of items matching the specified
         ///     predicate, otherwise false.
         /// </returns>
-        public static Boolean MinimumOf<T> ( this IEnumerable<T> enumerable, Int32 count, Func<T, Boolean> predicate )
+        public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count, Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( () => enumerable );
             predicate.ThrowIfNull( () => predicate );
@@ -43,7 +43,7 @@ namespace PortableExtensions
         /// <param name="enumerable">The IEnumerable.</param>
         /// <param name="count">The minimum number of items.</param>
         /// <returns>Returns true if the IEnumerable contains at least the specified number of items, otherwise false.</returns>
-        public static Boolean MinimumOf<T> ( this IEnumerable<T> enumerable, Int32 count )
+        public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

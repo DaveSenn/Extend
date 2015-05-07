@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void RangeToTestCase ()
+        public void RangeToTestCase()
         {
             const Int16 start = 0;
             const Int16 end = 200;
@@ -28,12 +28,12 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( expected.Count, actual.Count );
 
             for ( var i = 0; i < expected.Count; i++ )
-                Assert.AreEqual( expected [i], actual [i] );
+                Assert.AreEqual( expected[i], actual[i] );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentException) )]
-        public void RangeToTestCaseArgumentException ()
+        [ExpectedException( typeof (ArgumentException) )]
+        public void RangeToTestCaseArgumentException()
         {
             const Int16 start = 100;
 

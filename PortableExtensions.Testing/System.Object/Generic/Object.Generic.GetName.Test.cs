@@ -27,7 +27,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase ()
+        public void GetNameOverloadTestCase()
         {
             var model = new TestModel();
             var actual = model.Age.GetName( () => model.Age );
@@ -36,7 +36,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase1 ()
+        public void GetNameOverloadTestCase1()
         {
             var model = new TestModel();
             var actual = model.Name.GetName( () => model.Name );
@@ -45,7 +45,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase2 ()
+        public void GetNameOverloadTestCase2()
         {
             var model = new TestModel();
             var actual = PropertyChanged.GetName( () => PropertyChanged );
@@ -54,15 +54,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void GetNameOverloadTestCase3 ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetNameOverloadTestCase3()
         {
             const String myString = "";
             myString.GetName( () => myString );
         }
 
         [Test]
-        public void GetNameOverloadTestCase4 ()
+        public void GetNameOverloadTestCase4()
         {
             var model = new TestModel
             {
@@ -74,15 +74,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameOverloadTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetNameOverloadTestCaseNullCheck()
         {
             Expression<Func<Object>> fieldName = null;
             "".GetName( fieldName );
         }
 
         [Test]
-        public void GetNameTestCase ()
+        public void GetNameTestCase()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Age );
@@ -91,7 +91,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameTestCase1 ()
+        public void GetNameTestCase1()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Name );
@@ -100,7 +100,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameTestCase2 ()
+        public void GetNameTestCase2()
         {
             var model = new TestModel();
             var actual = this.GetName( x => x.PropertyChanged );
@@ -109,7 +109,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameTestCase3 ()
+        public void GetNameTestCase3()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
@@ -119,7 +119,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameTestCase4 ()
+        public void GetNameTestCase4()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.SubModel.Foo );
@@ -129,16 +129,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void GetNameTestCaseNotSupportedException ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetNameTestCaseNotSupportedException()
         {
             const String myString = "";
             myString.GetName( x => myString );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetNameTestCaseNullCheck()
         {
             Expression<Func<Object, Object>> fieldName = null;
             "".GetName( fieldName );

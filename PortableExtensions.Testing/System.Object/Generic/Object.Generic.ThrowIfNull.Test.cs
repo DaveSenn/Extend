@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ThrowIfNullTestCase2 ()
+        public void ThrowIfNullTestCase2()
         {
             var varName = RandomValueEx.GetRandomString();
             varName.ThrowIfNull( () => varName );
@@ -31,15 +31,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ThrowIfNullTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ThrowIfNullTestCase2NullCheck()
         {
             String value = null;
             value.ThrowIfNull( () => value );
         }
 
         [Test]
-        public void ThrowIfNullTestCase3 ()
+        public void ThrowIfNullTestCase3()
         {
             var varName = RandomValueEx.GetRandomString();
             varName.ThrowIfNull( () => varName );
@@ -60,8 +60,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ThrowIfNullTestCase3NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ThrowIfNullTestCase3NullCheck()
         {
             String value = null;
             value.ThrowIfNull( () => value, "" );

@@ -21,18 +21,18 @@ namespace PortableExtensions
         /// <returns>
         ///     A <see cref="String" /> that contains the specified number of chars.
         /// </returns>
-        public static String TakeAndRemove ( this Int32 count, ref String value )
+        public static String TakeAndRemove( this Int32 count, ref String value )
         {
             if ( value == null )
                 throw new ArgumentNullException( "value can not be null." );
 
             if ( count > value.Length )
-            {
                 throw new ArgumentOutOfRangeException( "count",
                                                        "Count must be smaller than the length of the given value." );
-            }
 
-            var returnValue = new String( value.ToCharArray().Take( count ).ToArray() );
+            var returnValue = new String( value.ToCharArray()
+                                               .Take( count )
+                                               .ToArray() );
             value = value.Remove( 0, count );
             return returnValue;
         }

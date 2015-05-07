@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void IsNullOrEmptyTestCase ()
+        public void IsNullOrEmptyTestCase()
         {
             List<String> list = null;
             Assert.IsTrue( list.IsNullOrEmpty() );

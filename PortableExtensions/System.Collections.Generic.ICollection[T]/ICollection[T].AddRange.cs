@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="collection">The collection to which the values should get added.</param>
         /// <param name="values">The values to add.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRange<T> ( this ICollection<T> collection, params T[] values )
+        public static ICollection<T> AddRange<T>( this ICollection<T> collection, params T[] values )
         {
             collection.ThrowIfNull( () => collection );
             values.ThrowIfNull( () => values );
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="collection">The collection to which the values should get added.</param>
         /// <param name="enumerable">The IEnumerable containing the items.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRange<T> ( this ICollection<T> collection, IEnumerable<T> enumerable )
+        public static ICollection<T> AddRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( () => collection );
             enumerable.ThrowIfNull( () => enumerable );

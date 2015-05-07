@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToMonthStringTestCase ()
+        public void ToMonthStringTestCase()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM" );
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToMonthStringTestCase1 ()
+        public void ToMonthStringTestCase1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToMonthStringTestCase2 ()
+        public void ToMonthStringTestCase2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM", new CultureInfo( "de-CH" ) );

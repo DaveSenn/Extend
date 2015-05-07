@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int32 value.</param>
         /// <returns>Returns the given Int32 value as milliseconds.</returns>
-        public static TimeSpan ToMilliseconds ( this Int32 value )
+        public static TimeSpan ToMilliseconds( this Int32 value )
         {
             return TimeSpan.FromMilliseconds( value );
         }

@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ForEachReverseTestCase ()
+        public void ForEachReverseTestCase()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ForEachReverseTestCase1 ()
+        public void ForEachReverseTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
@@ -33,16 +33,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachReverseTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachReverseTestCaseNullCheck()
         {
             List<Object> list = null;
             list.ForEachReverse( Console.WriteLine );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachReverseTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachReverseTestCaseNullCheck1()
         {
             new List<Object>().ForEachReverse( null );
         }

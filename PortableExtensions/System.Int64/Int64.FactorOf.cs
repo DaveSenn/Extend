@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="value">The Int64 value to check.</param>
         /// <param name="factorNumer">The factor number.</param>
         /// <returns>Returns true if the value is a factor of the specified factor number, otherwise false.</returns>
-        public static Boolean FactorOf ( this Int64 value, Int64 factorNumer )
+        public static Boolean FactorOf( this Int64 value, Int64 factorNumer )
         {
             return factorNumer % value == 0;
         }

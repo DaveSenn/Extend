@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToCharTestCase ()
+        public void ToCharTestCase()
         {
             const Char expected = 'a';
             var value = expected.ToString();
@@ -20,8 +20,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (InvalidCastException) )]
-        public void ToCharTestCaseInvalidCastException ()
+        [ExpectedException( typeof (InvalidCastException) )]
+        public void ToCharTestCaseInvalidCastException()
         {
             const String expected = "ab";
             var value = expected;
@@ -30,8 +30,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToCharTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToCharTestCaseNullCheck()
         {
             ObjectEx.ToChar( null );
         }

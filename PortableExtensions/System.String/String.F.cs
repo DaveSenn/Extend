@@ -19,7 +19,7 @@ namespace PortableExtensions
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding argument.
         /// </returns>
-        public static String F ( this String format, Object arg0 )
+        public static String F( this String format, Object arg0 )
         {
             format.ThrowIfNull( () => format );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding argument.
         /// </returns>
-        public static String F ( this String format, Object arg0, Object arg1 )
+        public static String F( this String format, Object arg0, Object arg1 )
         {
             format.ThrowIfNull( () => format );
 
@@ -56,7 +56,7 @@ namespace PortableExtensions
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding argument.
         /// </returns>
-        public static String F ( this String format, Object arg0, Object arg1, Object arg2 )
+        public static String F( this String format, Object arg0, Object arg1, Object arg2 )
         {
             format.ThrowIfNull( () => format );
 
@@ -79,7 +79,7 @@ namespace PortableExtensions
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        public static String F ( this String format, params Object[] args )
+        public static String F( this String format, params Object[] args )
         {
             format.ThrowIfNull( () => format );
             args.ThrowIfNull( () => args );
@@ -104,7 +104,7 @@ namespace PortableExtensions
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        public static String F ( this String format, IFormatProvider formatProvider, params Object[] args )
+        public static String F( this String format, IFormatProvider formatProvider, params Object[] args )
         {
             format.ThrowIfNull( () => format );
             formatProvider.ThrowIfNull( () => formatProvider );

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DecimalExTest
     {
         [Test]
-        public void PercentageOfTestCase ()
+        public void PercentageOfTestCase()
         {
             var number = new decimal( 1000 );
             var expected = 500;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1 ()
+        public void PercentageOfTestCase1()
         {
             var number = new decimal( 1000 );
             var expected = 500;
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2 ()
+        public void PercentageOfTestCase2()
         {
             var number = new decimal( 1000 );
             var expected = 500;

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ClearTestCase ()
+        public void ClearTestCase()
         {
             Array array = new[]
             {
@@ -27,8 +27,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ClearTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ClearTestCaseNullCheck()
         {
             Array array = null;
             array.Clear( 0, 0 );

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void SpecificationTestCase ()
+        public void SpecificationTestCase()
         {
             var target = 11;
             var actual = target.Specification( x => x > 10 && x < 200 );
@@ -25,8 +25,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SpecificationTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SpecificationTestCaseNullCheck()
         {
             const Int32 target = 11;
             Func<Int32, Boolean> expression = null;

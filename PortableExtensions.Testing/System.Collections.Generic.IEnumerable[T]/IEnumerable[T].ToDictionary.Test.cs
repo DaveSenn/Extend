@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ToDictionaryTestCase ()
+        public void ToDictionaryTestCase()
         {
             var list = new List<Tuple<Int32, String>>
             {
@@ -33,14 +33,14 @@ namespace PortableExtensions.Testing
 
             Assert.AreEqual( 3, actual.Count );
 
-            Assert.AreEqual( 3, actual [1].Count );
-            Assert.AreEqual( 3, actual [2].Count );
-            Assert.AreEqual( 3, actual [3].Count );
+            Assert.AreEqual( 3, actual[1].Count );
+            Assert.AreEqual( 3, actual[2].Count );
+            Assert.AreEqual( 3, actual[3].Count );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDictionaryTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDictionaryTestCaseNullCheck()
         {
             IEnumerable<IGrouping<Object, Object>> groupings = null;
             groupings.ToDictionary();

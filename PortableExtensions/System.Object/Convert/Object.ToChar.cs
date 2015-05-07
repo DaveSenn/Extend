@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The object can not be null.</exception>
         /// <param name="obj">The object to convert.</param>
         /// <returns>The char.</returns>
-        public static Char ToChar ( this Object obj )
+        public static Char ToChar( this Object obj )
         {
             obj.ThrowIfNull( () => obj );
 
@@ -25,7 +25,7 @@ namespace PortableExtensions
             if ( str.Length != 1 )
                 throw new InvalidCastException( "Cannot convert the given object to a char." );
 
-            return str [0];
+            return str[0];
         }
     }
 }

@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="value">The value to search.</param>
         /// <param name="startIndex">The start index of the substring.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter ( this String str, String value, Int32 startIndex = 0 )
+        public static String GetAfter( this String str, String value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter ( this String str, String value, Int32 startIndex, Int32 length )
+        public static String GetAfter( this String str, String value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
@@ -61,7 +61,7 @@ namespace PortableExtensions
         /// <param name="value">The value to search.</param>
         /// <param name="startIndex">The start index of the substring.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter ( this String str, Char value, Int32 startIndex = 0 )
+        public static String GetAfter( this String str, Char value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -79,7 +79,7 @@ namespace PortableExtensions
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The string after the specified value.</returns>
-        public static String GetAfter ( this String str, Char value, Int32 startIndex, Int32 length )
+        public static String GetAfter( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );

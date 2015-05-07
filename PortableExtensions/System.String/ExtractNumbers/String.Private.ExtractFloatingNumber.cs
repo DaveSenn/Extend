@@ -17,29 +17,29 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the number from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted floating point number as string.</returns>
-        private static String ExtractFloatingNumber ( this String value, Int32 startIndex = 0 )
+        private static String ExtractFloatingNumber( this String value, Int32 startIndex = 0 )
         {
             value.ThrowIfNull( () => value );
 
             if ( startIndex >= value.Length || startIndex < 0 )
                 throw new ArgumentOutOfRangeException( "Invalid start index." );
 
-            var chars = value.Substring( startIndex ).ToCharArray();
+            var chars = value.Substring( startIndex )
+                             .ToCharArray();
             var sb = new StringBuilder();
 
             for ( var i = 0; i < chars.Length; i++ )
-            {
-                if ( chars [i].IsDigit() )
+                if ( chars[i].IsDigit() )
                 {
-                    if ( sb.Length == 0 && i > 0 && chars [i - 1] == '-' )
+                    if ( sb.Length == 0 && i > 0 && chars[i - 1] == '-' )
                         sb.Append( '-' );
-                    sb.Append( chars [i] );
+                    sb.Append( chars[i] );
                 }
-                else if ( chars [i] == '.' && !sb.ToString().Contains( "." ) && sb.Length > 0 )
+                else if ( chars[i] == '.' && !sb.ToString()
+                                                .Contains( "." ) && sb.Length > 0 )
                     sb.Append( '.' );
                 else if ( sb.Length > 0 )
                     break;
-            }
 
             return sb.ToString();
         }

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void ToSecondsTestCase ()
+        public void ToSecondsTestCase()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
 

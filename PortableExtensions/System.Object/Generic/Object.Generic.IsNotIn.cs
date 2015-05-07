@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>>Returns true if the value is not present in the array.</returns>
-        public static Boolean IsNotIn<T> ( this T value, params T[] values )
+        public static Boolean IsNotIn<T>( this T value, params T[] values )
         {
             return !IsIn( value, values );
         }
@@ -31,7 +31,7 @@ namespace PortableExtensions
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>>Returns true if the value is not present in the IEnumerable.</returns>
-        public static Boolean IsNotIn<T> ( this T value, IEnumerable<T> values )
+        public static Boolean IsNotIn<T>( this T value, IEnumerable<T> values )
         {
             return !IsIn( value, values );
         }
