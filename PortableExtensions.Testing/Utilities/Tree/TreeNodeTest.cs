@@ -655,6 +655,25 @@ namespace PortableExtensions.Testing
             Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
         }
 
+        /// <summary>
+        ///     Test for full constructor
+        /// </summary>
+        [Test]
+        public void CtorTestCase8()
+        {
+            var value = RandomValueEx.GetRandomString();
+            var parent = new TreeNode<String>("parent");
+            var children = new TreeNodeCollection<String>(parent)
+            {
+                new TreeNode<String>("1")
+            };
+
+            var actual = new TreeNode<String>(value, parent, children);
+            Assert.AreEqual(value, actual.Value);
+            Assert.AreSame(parent, actual.Parent);
+            Assert.AreSame(children, actual.Children);
+        }
+
         [Test]
         public void DepthTestCase()
         {
@@ -737,6 +756,18 @@ namespace PortableExtensions.Testing
             //Descendants of node2
             actual = node2.Descendants.ToList();
             Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void DescendantsTestCase1()
+        {
+            var target = new TreeNode<String>("root");
+            var actual = target.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
+
+            target.Children = null;
+            actual = target.Descendants.ToList();
+            Assert.AreEqual(0, actual.Count);
         }
 
         [Test]
