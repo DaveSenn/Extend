@@ -130,9 +130,6 @@ namespace PortableExtensions
             Children = children ?? new TreeNodeCollection<T>( this );
             if ( Parent != null )
             {
-                if ( !Parent.Children.Contains( this ) )
-                    Parent.Children.Add( this );
-
                 DisposeTraversalDirection = Parent.DisposeTraversalDirection;
                 SearchTraversalDirection = Parent.SearchTraversalDirection;
                 AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
@@ -221,7 +218,8 @@ namespace PortableExtensions
                     return;
 
                 _children = value;
-                _children.ForEach( x => x.SetParent( this, false ) );
+                if(_children != null)
+                    _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -483,8 +481,14 @@ namespace PortableExtensions
             if ( oldParent != null && detachFromOldParent )
                 oldParent.Children.Remove( this, false );
 
-            if ( attacheToNewParent && Parent != null )
-                Parent.Children.Add( this, false );
+            if (parent == null)
+                return;
+
+            if (parent.Children == null)
+                parent.Children = new TreeNodeCollection<T>(Parent);
+
+            if (attacheToNewParent && !parent.Children.Contains(this))
+                Parent.Children.Add(this, false);
         }
 
         /// <summary>
@@ -626,9 +630,8 @@ namespace PortableExtensions
         ///     Gets the ancestors of the node.
         /// </summary>
         /// <exception cref="NotSupportedException">Parent is not of type TreeNode{T}.</exception>
-        /// <param name="ancestors">A collection of ancestors of the children of the current node.</param>
         /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
-        private IEnumerable<ITreeNode<T>> GetAncestors( List<ITreeNode<T>> ancestors = null )
+        private IEnumerable<ITreeNode<T>> GetAncestors()
         {
             for (var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent)
                 yield return ancestor;
