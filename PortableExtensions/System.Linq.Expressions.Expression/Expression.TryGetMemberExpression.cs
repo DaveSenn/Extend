@@ -27,7 +27,7 @@ namespace PortableExtensions
         /// <param name="expression">The expression.</param>
         /// <param name="memberExpression">The extracted <see cref="MemberExpression" />.</param>
         /// <returns>Returns true if a <see cref="MemberExpression" /> could be extracted; otherwise, false.</returns>
-        public static Boolean TryGetMemberExpression ( this Expression expression, out MemberExpression memberExpression )
+        public static Boolean TryGetMemberExpression( this Expression expression, out MemberExpression memberExpression )
         {
             while ( true )
             {

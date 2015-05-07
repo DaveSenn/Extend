@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void DistinctTestCase ()
+        public void DistinctTestCase()
         {
             var list = new List<KeyValuePair<String, String>>
             {
@@ -25,7 +25,8 @@ namespace PortableExtensions.Testing
                 new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test2" ),
             };
 
-            var actual = list.Distinct( x => x.Value ).ToList();
+            var actual = list.Distinct( x => x.Value )
+                             .ToList();
             Assert.AreEqual( 3, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x.Value == "Test" ) );
             Assert.AreEqual( 1, actual.Count( x => x.Value == "Test1" ) );
@@ -33,16 +34,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void DistinctTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void DistinctTestCaseNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
             list.Distinct( x => x.Value );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void DistinctTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void DistinctTestCaseNullCheck1()
         {
             Func<Object, Boolean> func = null;
             new List<Object>().Distinct( func );

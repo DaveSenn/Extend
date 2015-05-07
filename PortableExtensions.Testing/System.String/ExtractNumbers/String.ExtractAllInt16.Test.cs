@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllInt16TestCase ()
+        public void ExtractAllInt16TestCase()
         {
             var value0 = 100;
             var value1 = 102;
@@ -22,27 +22,27 @@ namespace PortableExtensions.Testing
             var actual = stringValue.ExtractAllInt16( 0 );
 
             Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( value0, actual [0] );
-            Assert.AreEqual( value1, actual [1] );
-            Assert.AreEqual( value2, actual [2] );
-            Assert.AreEqual( value3, actual [3] );
+            Assert.AreEqual( value0, actual[0] );
+            Assert.AreEqual( value1, actual[1] );
+            Assert.AreEqual( value2, actual[2] );
+            Assert.AreEqual( value3, actual[3] );
 
             actual = "10.10".ExtractAllInt16( 0 );
             Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 10, actual [0] );
-            Assert.AreEqual( 10, actual [1] );
+            Assert.AreEqual( 10, actual[0] );
+            Assert.AreEqual( 10, actual[1] );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractAllInt16TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractAllInt16TestCaseNullCheck()
         {
             StringEx.ExtractAllInt16( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractAllInt16TestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractAllInt16TestCaseNullCheck1()
         {
             StringEx.ExtractAllInt16( null, 0 );
         }

@@ -11,14 +11,15 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void AgeTestCase ()
+        public void AgeTestCase()
         {
             var dateTime = new DateTime( 1980, 1, 1 );
             var expected = DateTime.Now.Year - 1980;
             var actual = dateTime.Age();
             Assert.AreEqual( expected, actual );
 
-            dateTime = DateTime.Now.AddYears( -2 ).Add( 1.ToDays() );
+            dateTime = DateTime.Now.AddYears( -2 )
+                               .Add( 1.ToDays() );
 
             expected = 1;
             actual = dateTime.Age();
@@ -26,9 +27,10 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase1 ()
+        public void AgeTestCase1()
         {
-            var dateTime = DateTime.Now.AddYears( -2 ).Add( 1.ToDays() );
+            var dateTime = DateTime.Now.AddYears( -2 )
+                                   .Add( 1.ToDays() );
             const Int32 expected = 1;
 
             var actual = dateTime.Age();
@@ -36,10 +38,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase10 ()
+        public void AgeTestCase10()
         {
             var dateTime = DateTime.Now;
-            var currentDate = DateTime.Now.AddYears( 2 ).AddDays( 1 );
+            var currentDate = DateTime.Now.AddYears( 2 )
+                                      .AddDays( 1 );
             const Int32 expected = 2;
 
             var actual = dateTime.Age( currentDate );
@@ -47,10 +50,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase11 ()
+        public void AgeTestCase11()
         {
             var dateTime = DateTime.Now;
-            var currentDate = DateTime.Now.AddYears( 2 ).AddDays( -1 );
+            var currentDate = DateTime.Now.AddYears( 2 )
+                                      .AddDays( -1 );
             const Int32 expected = 1;
 
             var actual = dateTime.Age( currentDate );
@@ -58,7 +62,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase12 ()
+        public void AgeTestCase12()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( -2 );
@@ -69,10 +73,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase13 ()
+        public void AgeTestCase13()
         {
             var dateTime = DateTime.Now;
-            var currentDate = DateTime.Now.AddYears( -2 ).AddDays( 1 );
+            var currentDate = DateTime.Now.AddYears( -2 )
+                                      .AddDays( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age( currentDate );
@@ -80,10 +85,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase14 ()
+        public void AgeTestCase14()
         {
             var dateTime = DateTime.Now;
-            var currentDate = DateTime.Now.AddYears( -2 ).AddMonths( 1 );
+            var currentDate = DateTime.Now.AddYears( -2 )
+                                      .AddMonths( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age( currentDate );
@@ -91,9 +97,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase15 ()
+        public void AgeTestCase15()
         {
-            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 ).AddMonths( 1 );
+            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 )
+                                                       .AddMonths( 1 );
+            const Int32 expected = -1;
+
+            var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
+            Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        public void AgeTestCase16()
+        {
+            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 )
+                                                       .AddDays( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
@@ -103,18 +121,9 @@ namespace PortableExtensions.Testing
         [Test]
         public void AgeTestCase17()
         {
-            var dateTime = new DateTime(2015, 10, 31).AddYears(1).AddMonths(1);
+            var dateTime = new DateTime( 2015, 10, 31 ).AddYears( 1 )
+                                                       .AddMonths( 1 );
             const Int32 expected = -2;
-
-            var actual = dateTime.Age(new DateTime(2014, 10, 31));
-            Assert.AreEqual(expected, actual);
-        }
-
-        [Test]
-        public void AgeTestCase16 ()
-        {
-            var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 ).AddDays( 1 );
-            const Int32 expected = -1;
 
             var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
             Assert.AreEqual( expected, actual );
@@ -123,17 +132,19 @@ namespace PortableExtensions.Testing
         [Test]
         public void AgeTestCase18()
         {
-            var dateTime = new DateTime(2015, 10, 31).AddYears(1).AddDays(1);
+            var dateTime = new DateTime( 2015, 10, 31 ).AddYears( 1 )
+                                                       .AddDays( 1 );
             const Int32 expected = -2;
 
-            var actual = dateTime.Age(new DateTime(2014, 10, 31));
-            Assert.AreEqual(expected, actual);
+            var actual = dateTime.Age( new DateTime( 2014, 10, 31 ) );
+            Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void AgeTestCase2 ()
+        public void AgeTestCase2()
         {
-            var dateTime = DateTime.Now.AddYears( -1 ).AddMonths( -3 );
+            var dateTime = DateTime.Now.AddYears( -1 )
+                                   .AddMonths( -3 );
             const Int32 expected = 1;
 
             var actual = dateTime.Age();
@@ -141,7 +152,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase3 ()
+        public void AgeTestCase3()
         {
             var dateTime = DateTime.Now.AddDays( 1 );
             const Int32 expected = 0;
@@ -151,7 +162,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase4 ()
+        public void AgeTestCase4()
         {
             var dateTime = DateTime.Now.AddYears( 3 );
             const Int32 expected = -3;
@@ -161,7 +172,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase5 ()
+        public void AgeTestCase5()
         {
             var dateTime = DateTime.Now.AddMonths( 1 );
             const Int32 expected = 0;
@@ -171,7 +182,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase6 ()
+        public void AgeTestCase6()
         {
             var dateTime = DateTime.Now;
             const Int32 expected = 0;
@@ -181,9 +192,10 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase7 ()
+        public void AgeTestCase7()
         {
-            var dateTime = DateTime.Now.AddYears( 1 ).AddMonths( 1 );
+            var dateTime = DateTime.Now.AddYears( 1 )
+                                   .AddMonths( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age();
@@ -191,9 +203,10 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase8 ()
+        public void AgeTestCase8()
         {
-            var dateTime = DateTime.Now.AddYears( 1 ).AddDays( 1 );
+            var dateTime = DateTime.Now.AddYears( 1 )
+                                   .AddDays( 1 );
             const Int32 expected = -1;
 
             var actual = dateTime.Age();
@@ -201,7 +214,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AgeTestCase9 ()
+        public void AgeTestCase9()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( 2 );

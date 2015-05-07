@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericResizeTestCase ()
+        public void GenericResizeTestCase()
         {
             var array = new[]
             {
@@ -23,8 +23,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GenericResizeTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GenericResizeTestCaseNullCheck()
         {
             String[] array = null;
             array = array.Resize( 10 );

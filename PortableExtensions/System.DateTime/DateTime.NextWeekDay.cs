@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="day">The day.</param>
         /// <returns>Returns the next week day (can be <paramref name="day" /> if the given day is a week day).</returns>
-        public static DateTime NextWeekDay ( this DateTime day )
+        public static DateTime NextWeekDay( this DateTime day )
         {
             while ( day.IsWeekendDay() )
                 day = day.Add( 1.ToDays() );

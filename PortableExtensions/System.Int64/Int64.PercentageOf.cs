@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf ( this Int64 number, Int32 percent )
+        public static Double PercentageOf( this Int64 number, Int32 percent )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException( "The number must be greater than zero." );
@@ -31,7 +31,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Decimal PercentageOf ( this Int64 number, Decimal percent )
+        public static Decimal PercentageOf( this Int64 number, Decimal percent )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException( "The number must be greater than zero." );
@@ -45,7 +45,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf ( this Int64 number, Double percent )
+        public static Double PercentageOf( this Int64 number, Double percent )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException( "The number must be greater than zero." );
@@ -59,7 +59,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf ( this Int64 number, Int64 percent )
+        public static Double PercentageOf( this Int64 number, Int64 percent )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException( "The number must be greater than zero." );

@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void FManyArgumentsTestCase ()
+        public void FManyArgumentsTestCase()
         {
             const String arg0 = "0";
             const String arg1 = "1";
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void FTestCase ()
+        public void FTestCase()
         {
             var format = "Test: {0}";
             var value = RandomValueEx.GetRandomString();
@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void FTestCase1 ()
+        public void FTestCase1()
         {
             var format = "Test: {0}, {1}";
             var value = RandomValueEx.GetRandomString();
@@ -54,14 +54,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void FTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void FTestCase1NullCheck()
         {
             StringEx.F( null, new Object(), new Object() );
         }
 
         [Test]
-        public void FTestCase2 ()
+        public void FTestCase2()
         {
             var format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
@@ -75,14 +75,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void FTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void FTestCase2NullCheck()
         {
             StringEx.F( null, new Object(), new Object(), new Object() );
         }
 
         [Test]
-        public void FTestCase3 ()
+        public void FTestCase3()
         {
             var format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
@@ -97,20 +97,24 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void FTestCase3NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void FTestCase3NullCheck()
         {
             StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
         }
 
         [Test]
-        public void FTestCase4 ()
+        public void FTestCase4()
         {
             var format = "Test: {0}, {1}, {2}";
-            var value = RandomValueEx.GetRandomString().Substring( 0, 2 );
-            var value1 = RandomValueEx.GetRandomString().Substring( 0, 2 );
-            var value2 = RandomValueEx.GetRandomString().Substring( 0, 2 );
-            var value3 = RandomValueEx.GetRandomString().Substring( 0, 2 );
+            var value = RandomValueEx.GetRandomString()
+                                     .Substring( 0, 2 );
+            var value1 = RandomValueEx.GetRandomString()
+                                      .Substring( 0, 2 );
+            var value2 = RandomValueEx.GetRandomString()
+                                      .Substring( 0, 2 );
+            var value3 = RandomValueEx.GetRandomString()
+                                      .Substring( 0, 2 );
 
             var expected = String.Format( CultureInfo.InvariantCulture, format, value, value1, value2, value3 );
             var actual = format.F( CultureInfo.InvariantCulture, value, value1, value2, value3 );
@@ -119,15 +123,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void FTestCase4NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void FTestCase4NullCheck()
         {
             StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void FTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void FTestCaseNullCheck()
         {
             StringEx.F( null, new Object() );
         }

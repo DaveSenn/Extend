@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void IsEvenTestCase ()
+        public void IsEvenTestCase()
         {
             var value = RandomValueEx.GetRandomInt32();
 

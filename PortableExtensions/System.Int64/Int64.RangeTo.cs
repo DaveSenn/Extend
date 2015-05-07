@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="startValue">The start of the range.</param>
         /// <param name="endValue">The end of the range.</param>
         /// <returns>Returns a list containing the specified range.</returns>
-        public static List<Int64> RangeTo ( this Int64 startValue, Int64 endValue )
+        public static List<Int64> RangeTo( this Int64 startValue, Int64 endValue )
         {
             if ( startValue > endValue )
                 throw new ArgumentException( "The start value can not be greater than the end value.", "startValue" );

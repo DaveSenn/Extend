@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void PercentageOfTestCase ()
+        public void PercentageOfTestCase()
         {
             Int16 number = 1000;
             var expected = 500;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1 ()
+        public void PercentageOfTestCase1()
         {
             Int16 number = 1000;
             var expected = 500;
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2 ()
+        public void PercentageOfTestCase2()
         {
             Int16 number = 1000;
             var expected = 500;
@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase3 ()
+        public void PercentageOfTestCase3()
         {
             Int16 number = 1000;
             var expected = 500;

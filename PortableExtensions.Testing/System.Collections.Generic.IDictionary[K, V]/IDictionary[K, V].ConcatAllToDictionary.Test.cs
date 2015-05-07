@@ -13,22 +13,22 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatAllToDictionaryTestCase ()
+        public void ConcatAllToDictionaryTestCase()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                {0, 1},
-                {1, 2}
+                { 0, 1 },
+                { 1, 2 }
             };
             var other1 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
             var other2 = new Dictionary<Int32, Int32>
             {
-                {4, 5},
-                {5, 6}
+                { 4, 5 },
+                { 5, 6 }
             };
 
             var actual = first.ConcatAllToDictionary( other1, other2 );
@@ -42,12 +42,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase1 ()
+        public void ConcatAllToDictionaryTestCase1()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                {0, 1},
-                {1, 2}
+                { 0, 1 },
+                { 1, 2 }
             };
             var other1 = new Dictionary<Int32, Int32>();
             var other2 = new Dictionary<Int32, Int32>();
@@ -59,13 +59,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase2 ()
+        public void ConcatAllToDictionaryTestCase2()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
             var other2 = new Dictionary<Int32, Int32>();
 
@@ -76,13 +76,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase3 ()
+        public void ConcatAllToDictionaryTestCase3()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
             Dictionary<Int32, Int32> other2 = null;
 
@@ -93,36 +93,36 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentException) )]
-        public void ConcatAllToDictionaryTestCaseDuplicatedKeys ()
+        [ExpectedException( typeof (ArgumentException) )]
+        public void ConcatAllToDictionaryTestCaseDuplicatedKeys()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                {0, 1},
-                {1, 2}
+                { 0, 1 },
+                { 1, 2 }
             };
             var other1 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
             var other2 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
 
             first.ConcatAllToDictionary( other1, other2 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllToDictionaryTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllToDictionaryTestCaseNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
             {
-                {0, 1},
-                {1, 2}
+                { 0, 1 },
+                { 1, 2 }
             };
             Dictionary<Int32, Int32>[] others = null;
 
@@ -130,19 +130,19 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllToDictionaryTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllToDictionaryTestCaseNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
             var other1 = new Dictionary<Int32, Int32>
             {
-                {2, 3},
-                {3, 4}
+                { 2, 3 },
+                { 3, 4 }
             };
             var other2 = new Dictionary<Int32, Int32>
             {
-                {4, 5},
-                {5, 6}
+                { 4, 5 },
+                { 5, 6 }
             };
 
             first.ConcatAllToDictionary( other1, other2 );

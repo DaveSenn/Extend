@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToInt64TestCase ()
+        public void ToInt64TestCase()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var value = expected.ToString();
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToInt64TestCase1 ()
+        public void ToInt64TestCase1()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var value = expected.ToString();
@@ -30,22 +30,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToInt64TestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToInt64TestCase1NullCheck()
         {
             ObjectEx.ToInt64( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToInt64TestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToInt64TestCase1NullCheck1()
         {
             ObjectEx.ToInt64( "false", null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToInt64TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToInt64TestCaseNullCheck()
         {
             ObjectEx.ToInt64( null );
         }

@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int16 value.</param>
         /// <returns>Returns the given Int16 value as milliseconds.</returns>
-        public static TimeSpan ToMilliseconds ( this Int16 value )
+        public static TimeSpan ToMilliseconds( this Int16 value )
         {
             return TimeSpan.FromMilliseconds( value );
         }

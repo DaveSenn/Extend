@@ -218,7 +218,7 @@ namespace PortableExtensions
                     return;
 
                 _children = value;
-                if(_children != null)
+                if ( _children != null )
                     _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
@@ -481,14 +481,14 @@ namespace PortableExtensions
             if ( oldParent != null && detachFromOldParent )
                 oldParent.Children.Remove( this, false );
 
-            if (parent == null)
+            if ( parent == null )
                 return;
 
-            if (parent.Children == null)
-                parent.Children = new TreeNodeCollection<T>(Parent);
+            if ( parent.Children == null )
+                parent.Children = new TreeNodeCollection<T>( Parent );
 
-            if (attacheToNewParent && !parent.Children.Contains(this))
-                Parent.Children.Add(this, false);
+            if ( attacheToNewParent && !parent.Children.Contains( this ) )
+                Parent.Children.Add( this, false );
         }
 
         /// <summary>
@@ -633,7 +633,7 @@ namespace PortableExtensions
         /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
         private IEnumerable<ITreeNode<T>> GetAncestors()
         {
-            for (var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent)
+            for ( var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent )
                 yield return ancestor;
         }
 

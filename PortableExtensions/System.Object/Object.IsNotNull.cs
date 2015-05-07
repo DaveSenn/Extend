@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="obj">The <see cref="Object" /> to check.</param>
         /// <returns>A value of true if the <see cref="Object" /> is NOT null, otherwise false.</returns>
-        public static Boolean IsNotNull ( this Object obj )
+        public static Boolean IsNotNull( this Object obj )
         {
             return obj != null;
         }

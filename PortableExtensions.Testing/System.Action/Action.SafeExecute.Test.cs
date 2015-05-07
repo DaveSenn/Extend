@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void SafeExecuteTestCase ()
+        public void SafeExecuteTestCase()
         {
             var actual = ActionEx.SafeExecute( () => { } );
             Assert.IsTrue( actual );
@@ -21,15 +21,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase1NullCheck()
         {
             Action action = null;
-            action.SafeExecute<Exception>();
+            action.SafeExecute();
         }
 
         [Test]
-        public void SafeExecuteTestCase1_1 ()
+        public void SafeExecuteTestCase1_1()
         {
             var actual = ActionEx.SafeExecute<ArgumentNullException>( () => { } );
             Assert.IsTrue( actual );
@@ -39,22 +39,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (OutOfMemoryException) )]
-        public void SafeExecuteTestCase1_2 ()
+        [ExpectedException( typeof (OutOfMemoryException) )]
+        public void SafeExecuteTestCase1_2()
         {
             ActionEx.SafeExecute<ArgumentNullException>( () => { throw new OutOfMemoryException(); } );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase2NullCheck()
         {
             Action action = null;
-            action.SafeExecute<Exception, ArgumentOutOfRangeException>();
+            action.SafeExecute();
         }
 
         [Test]
-        public void SafeExecuteTestCase2_1 ()
+        public void SafeExecuteTestCase2_1()
         {
             var actual = ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>( () => { } );
             Assert.IsTrue( actual );
@@ -71,23 +71,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (OutOfMemoryException) )]
-        public void SafeExecuteTestCase2_2 ()
+        [ExpectedException( typeof (OutOfMemoryException) )]
+        public void SafeExecuteTestCase2_2()
         {
             ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
                 () => { throw new OutOfMemoryException(); } );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase3NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase3NullCheck()
         {
             Action action = null;
-            action.SafeExecute<Exception, ArgumentOutOfRangeException, InvalidCastException>();
+            action.SafeExecute();
         }
 
         [Test]
-        public void SafeExecuteTestCase3_1 ()
+        public void SafeExecuteTestCase3_1()
         {
             var actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
@@ -111,23 +111,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (OutOfMemoryException) )]
-        public void SafeExecuteTestCase3_2 ()
+        [ExpectedException( typeof (OutOfMemoryException) )]
+        public void SafeExecuteTestCase3_2()
         {
             ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
                 () => { throw new OutOfMemoryException(); } );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase4NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase4NullCheck()
         {
             Action action = null;
-            action.SafeExecute<Exception, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException>();
+            action.SafeExecute();
         }
 
         [Test]
-        public void SafeExecuteTestCase4_1 ()
+        public void SafeExecuteTestCase4_1()
         {
             var actual =
                 ActionEx
@@ -166,8 +166,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (OutOfMemoryException) )]
-        public void SafeExecuteTestCase4_2 ()
+        [ExpectedException( typeof (OutOfMemoryException) )]
+        public void SafeExecuteTestCase4_2()
         {
             ActionEx
                 .SafeExecute
@@ -176,16 +176,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase5NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase5NullCheck()
         {
             Action action = null;
             action.SafeExecute( typeof (Exception), typeof (ArgumentException) );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase5NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase5NullCheck1()
         {
             Action action = () => { };
             Type[] types = null;
@@ -193,7 +193,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase5_1 ()
+        public void SafeExecuteTestCase5_1()
         {
             var actual =
                 ActionEx
@@ -253,8 +253,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (OutOfMemoryException) )]
-        public void SafeExecuteTestCase5_2 ()
+        [ExpectedException( typeof (OutOfMemoryException) )]
+        public void SafeExecuteTestCase5_2()
         {
             ActionEx.SafeExecute( () => { throw new OutOfMemoryException(); },
                                   typeof (ArgumentNullException),
@@ -265,8 +265,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCaseNullCheck()
         {
             Action action = null;
             action.SafeExecute();

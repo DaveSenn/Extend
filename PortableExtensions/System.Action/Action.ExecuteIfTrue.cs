@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue ( this Action trueAction, Action falseAction, params Boolean[] values )
+        public static void ExecuteIfTrue( this Action trueAction, Action falseAction, params Boolean[] values )
         {
             if ( values.All( x => x ) )
             {
@@ -41,10 +41,10 @@ namespace PortableExtensions
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T> ( this Action<T> trueAction,
-                                              T parameter,
-                                              Action<T> falseAction,
-                                              params Boolean[] values )
+        public static void ExecuteIfTrue<T>( this Action<T> trueAction,
+                                             T parameter,
+                                             Action<T> falseAction,
+                                             params Boolean[] values )
         {
             if ( values.All( x => x ) )
             {
@@ -67,11 +67,11 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2> ( this Action<T1, T2> trueAction,
-                                                   T1 parameter1,
-                                                   T2 parameter2,
-                                                   Action<T1, T2> falseAction,
-                                                   params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2>( this Action<T1, T2> trueAction,
+                                                  T1 parameter1,
+                                                  T2 parameter2,
+                                                  Action<T1, T2> falseAction,
+                                                  params Boolean[] values )
         {
             if ( values.All( x => x ) )
             {
@@ -96,12 +96,12 @@ namespace PortableExtensions
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2, T3> ( this Action<T1, T2, T3> trueAction,
-                                                       T1 parameter1,
-                                                       T2 parameter2,
-                                                       T3 parameter3,
-                                                       Action<T1, T2, T3> falseAction,
-                                                       params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2, T3>( this Action<T1, T2, T3> trueAction,
+                                                      T1 parameter1,
+                                                      T2 parameter2,
+                                                      T3 parameter3,
+                                                      Action<T1, T2, T3> falseAction,
+                                                      params Boolean[] values )
         {
             if ( values.All( x => x ) )
             {
@@ -128,13 +128,13 @@ namespace PortableExtensions
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2, T3, T4> ( this Action<T1, T2, T3, T4> trueAction,
-                                                           T1 parameter1,
-                                                           T2 parameter2,
-                                                           T3 parameter3,
-                                                           T4 parameter4,
-                                                           Action<T1, T2, T3, T4> falseAction,
-                                                           params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> trueAction,
+                                                          T1 parameter1,
+                                                          T2 parameter2,
+                                                          T3 parameter3,
+                                                          T4 parameter4,
+                                                          Action<T1, T2, T3, T4> falseAction,
+                                                          params Boolean[] values )
         {
             if ( values.All( x => x ) )
             {
@@ -151,7 +151,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">True action can not be null, if all values are true.</exception>
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue ( this Action trueAction, params Boolean[] values )
+        public static void ExecuteIfTrue( this Action trueAction, params Boolean[] values )
         {
             if ( !values.All( x => x ) )
                 return;
@@ -168,9 +168,9 @@ namespace PortableExtensions
         /// <param name="trueAction">The action to execute if the given values are true.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T> ( this Action<T> trueAction,
-                                              T parameter,
-                                              params Boolean[] values )
+        public static void ExecuteIfTrue<T>( this Action<T> trueAction,
+                                             T parameter,
+                                             params Boolean[] values )
         {
             if ( !values.All( x => x ) )
                 return;
@@ -189,10 +189,10 @@ namespace PortableExtensions
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2> ( this Action<T1, T2> trueAction,
-                                                   T1 parameter1,
-                                                   T2 parameter2,
-                                                   params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2>( this Action<T1, T2> trueAction,
+                                                  T1 parameter1,
+                                                  T2 parameter2,
+                                                  params Boolean[] values )
         {
             if ( !values.All( x => x ) )
                 return;
@@ -213,11 +213,11 @@ namespace PortableExtensions
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2, T3> ( this Action<T1, T2, T3> trueAction,
-                                                       T1 parameter1,
-                                                       T2 parameter2,
-                                                       T3 parameter3,
-                                                       params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2, T3>( this Action<T1, T2, T3> trueAction,
+                                                      T1 parameter1,
+                                                      T2 parameter2,
+                                                      T3 parameter3,
+                                                      params Boolean[] values )
         {
             if ( !values.All( x => x ) )
                 return;
@@ -240,12 +240,12 @@ namespace PortableExtensions
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfTrue<T1, T2, T3, T4> ( this Action<T1, T2, T3, T4> trueAction,
-                                                           T1 parameter1,
-                                                           T2 parameter2,
-                                                           T3 parameter3,
-                                                           T4 parameter4,
-                                                           params Boolean[] values )
+        public static void ExecuteIfTrue<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> trueAction,
+                                                          T1 parameter1,
+                                                          T2 parameter2,
+                                                          T3 parameter3,
+                                                          T4 parameter4,
+                                                          params Boolean[] values )
         {
             if ( !values.All( x => x ) )
                 return;

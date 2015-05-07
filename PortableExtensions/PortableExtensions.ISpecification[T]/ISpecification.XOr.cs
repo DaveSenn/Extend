@@ -21,9 +21,9 @@ namespace PortableExtensions
         /// <param name="expression">The expression to add.</param>
         /// <param name="message">The validation error message.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public static ISpecification<T> XOr<T> ( this ISpecification<T> specification,
-                                                 Func<T, Boolean> expression,
-                                                 String message = null )
+        public static ISpecification<T> XOr<T>( this ISpecification<T> specification,
+                                                Func<T, Boolean> expression,
+                                                String message = null )
         {
             specification.ThrowIfNull( () => specification );
             expression.ThrowIfNull( () => expression );

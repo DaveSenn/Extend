@@ -174,7 +174,7 @@ namespace PortableExtensions
         /// </returns>
         public override String ToString()
         {
-            return "Count: {0}, Parent: {{{1}}}".F( Count, Parent == null ? "[NULL]" : Parent.ToString() );
+            return StringEx.F( "Count: {0}, Parent: {{{1}}}", Count, Parent == null ? "[NULL]" : Parent.ToString() );
         }
 
         #endregion

@@ -19,7 +19,7 @@ namespace PortableExtensions
         /// <param name="week">The week to return the start of.</param>
         /// <param name="firstDayOfWeek">The first day of the week. Default is Monday.</param>
         /// <returns>Returns the first day of the current week.</returns>
-        public static DateTime StartOfWeek ( this DateTime week, DayOfWeek firstDayOfWeek = DayOfWeek.Monday )
+        public static DateTime StartOfWeek( this DateTime week, DayOfWeek firstDayOfWeek = DayOfWeek.Monday )
         {
             var currentDay = week.DayOfWeek;
             var daysPassed = currentDay - firstDayOfWeek;

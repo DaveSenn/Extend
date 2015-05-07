@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf ( this Int32 number, Int32 total )
+        public static Double PercentOf( this Int32 number, Int32 total )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException();
@@ -33,7 +33,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf ( this Int32 number, Double total )
+        public static Double PercentOf( this Int32 number, Double total )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException();
@@ -48,7 +48,7 @@ namespace PortableExtensions
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
-        public static Double PercentOf ( this Int32 number, Int64 total )
+        public static Double PercentOf( this Int32 number, Int64 total )
         {
             if ( number <= 0 )
                 throw new DivideByZeroException();

@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The String value to convert.</param>
         /// <param name="ignoreCase">Determines whether or not to ignore the casing of the string.</param>
         /// <returns>Returns the converted enumeration value.</returns>
-        public static T ToEnum<T> ( this String value, Boolean ignoreCase = true ) where T : struct
+        public static T ToEnum<T>( this String value, Boolean ignoreCase = true ) where T : struct
         {
             value.ThrowIfNull( () => value );
 

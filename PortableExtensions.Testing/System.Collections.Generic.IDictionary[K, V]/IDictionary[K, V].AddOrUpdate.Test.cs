@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddOrUpdateTestCase ()
+        public void AddOrUpdateTestCase()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase1 ()
+        public void AddOrUpdateTestCase1()
         {
             var key = RandomValueEx.GetRandomString();
             var pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
@@ -46,21 +46,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase1NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase1NullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( new KeyValuePair<Object, Object>( null, new Object() ) );
         }
 
         [Test]
-        public void AddOrUpdateTestCase2 ()
+        public void AddOrUpdateTestCase2()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -77,29 +77,29 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase2NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase2NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase2NullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase2NullCheck2 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase2NullCheck2()
         {
             Func<String> func = null;
             new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
         }
 
         [Test]
-        public void AddOrUpdateTestCase3 ()
+        public void AddOrUpdateTestCase3()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -116,29 +116,29 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase3NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase3NullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCase3NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCase3NullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( null, x => new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCaseNullCheck()
         {
             IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddOrUpdateTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddOrUpdateTestCaseNullCheck1()
         {
             new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
         }

@@ -11,13 +11,13 @@ namespace PortableExtensions.Testing
     public class RandomValueExTest
     {
         [Test]
-        public void GetRandomBooleanTestCase ()
+        public void GetRandomBooleanTestCase()
         {
             RandomValueEx.GetRandomBoolean();
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase ()
+        public void GetRandomDateTimeTestCase()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
 
@@ -31,7 +31,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase2 ()
+        public void GetRandomDateTimeTestCase2()
         {
             for ( var i = 0; i < 1000; i++ )
             {
@@ -41,7 +41,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase3 ()
+        public void GetRandomDateTimeTestCase3()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
             for ( var i = 0; i < 10000; i++ )
@@ -52,7 +52,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase4 ()
+        public void GetRandomDateTimeTestCase4()
         {
             var max = DateTime.Now.AddDays( 100 );
             for ( var i = 0; i < 10000; i++ )
@@ -63,13 +63,13 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetRandomEnumTestCase ()
+        public void GetRandomEnumTestCase()
         {
             RandomValueEx.GetRandomEnum<DayOfWeek>();
         }
 
         [Test]
-        public void GetRandomInt16TestCase ()
+        public void GetRandomInt16TestCase()
         {
             var actual = RandomValueEx.GetRandomInt16( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -77,21 +77,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt16TestCaseArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt16TestCaseArgumentOutOfRangeException()
         {
             RandomValueEx.GetRandomInt16( 20, 20 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt16TestCaseArgumentOutOfRangeException1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt16TestCaseArgumentOutOfRangeException1()
         {
             RandomValueEx.GetRandomInt16( 20, 10 );
         }
 
         [Test]
-        public void GetRandomInt32TestCase ()
+        public void GetRandomInt32TestCase()
         {
             var actual = RandomValueEx.GetRandomInt32( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -99,21 +99,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt32TestCaseArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt32TestCaseArgumentOutOfRangeException()
         {
             RandomValueEx.GetRandomInt32( 20, 20 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt32TestCaseArgumentOutOfRangeException1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt32TestCaseArgumentOutOfRangeException1()
         {
             RandomValueEx.GetRandomInt32( 20, 10 );
         }
 
         [Test]
-        public void GetRandomInt64TestCase ()
+        public void GetRandomInt64TestCase()
         {
             var actual = RandomValueEx.GetRandomInt64( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -121,28 +121,28 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt64TestCaseArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt64TestCaseArgumentOutOfRangeException()
         {
             RandomValueEx.GetRandomInt64( 20, 20 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetRandomInt64TestCaseArgumentOutOfRangeException1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetRandomInt64TestCaseArgumentOutOfRangeException1()
         {
             RandomValueEx.GetRandomInt64( 20, 10 );
         }
 
         [Test]
-        public void GetRandomStringTestCase ()
+        public void GetRandomStringTestCase()
         {
             var actual = RandomValueEx.GetRandomString();
             Assert.IsTrue( actual.Length > 0 );
         }
 
         [Test]
-        public void GetRandomStringsTestCase ()
+        public void GetRandomStringsTestCase()
         {
             var actual = RandomValueEx.GetRandomStrings( 100 );
             Assert.AreEqual( 100, actual.Count );

@@ -31,7 +31,7 @@ namespace PortableExtensions
         ///     <value>false</value>
         ///     .
         /// </returns>
-        public static Boolean TryParsDateTime ( this String value, out DateTime result )
+        public static Boolean TryParsDateTime( this String value, out DateTime result )
         {
             value.ThrowIfNull( () => value );
 
@@ -70,10 +70,10 @@ namespace PortableExtensions
         ///     <value>false</value>
         ///     .
         /// </returns>
-        public static Boolean TryParsDateTime ( this String value,
-                                                IFormatProvider formatProvider,
-                                                DateTimeStyles dateTimeStyle,
-                                                out DateTime result )
+        public static Boolean TryParsDateTime( this String value,
+                                               IFormatProvider formatProvider,
+                                               DateTimeStyles dateTimeStyle,
+                                               out DateTime result )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

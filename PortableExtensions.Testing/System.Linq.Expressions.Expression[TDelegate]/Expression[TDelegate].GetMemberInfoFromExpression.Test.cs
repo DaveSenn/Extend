@@ -19,7 +19,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetMemberInfoFromExpressionTestCase ()
+        public void GetMemberInfoFromExpressionTestCase()
         {
             Expression<Func<TestModel, String>> memberExpression = x => x.Name;
             var actual = memberExpression.GetMemberInfoFromExpression();
@@ -35,8 +35,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetMemberInfoFromExpressionTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetMemberInfoFromExpressionTestCaseNullCheck()
         {
             Expression<Func<TestModel, Object>> memberExpression = null;
             memberExpression.GetMemberInfoFromExpression();

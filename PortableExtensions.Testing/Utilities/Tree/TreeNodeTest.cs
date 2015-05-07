@@ -662,16 +662,16 @@ namespace PortableExtensions.Testing
         public void CtorTestCase8()
         {
             var value = RandomValueEx.GetRandomString();
-            var parent = new TreeNode<String>("parent");
-            var children = new TreeNodeCollection<String>(parent)
+            var parent = new TreeNode<String>( "parent" );
+            var children = new TreeNodeCollection<String>( parent )
             {
-                new TreeNode<String>("1")
+                new TreeNode<String>( "1" )
             };
 
-            var actual = new TreeNode<String>(value, parent, children);
-            Assert.AreEqual(value, actual.Value);
-            Assert.AreSame(parent, actual.Parent);
-            Assert.AreSame(children, actual.Children);
+            var actual = new TreeNode<String>( value, parent, children );
+            Assert.AreEqual( value, actual.Value );
+            Assert.AreSame( parent, actual.Parent );
+            Assert.AreSame( children, actual.Children );
         }
 
         [Test]
@@ -761,13 +761,13 @@ namespace PortableExtensions.Testing
         [Test]
         public void DescendantsTestCase1()
         {
-            var target = new TreeNode<String>("root");
+            var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
-            Assert.AreEqual(0, actual.Count);
+            Assert.AreEqual( 0, actual.Count );
 
             target.Children = null;
             actual = target.Descendants.ToList();
-            Assert.AreEqual(0, actual.Count);
+            Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]

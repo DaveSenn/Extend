@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericClearAllTestCase ()
+        public void GenericClearAllTestCase()
         {
             var array = new[]
             {
@@ -20,13 +20,13 @@ namespace PortableExtensions.Testing
             };
             array.ClearAll();
 
-            Assert.AreEqual( null, array [0] );
-            Assert.AreEqual( null, array [1] );
+            Assert.AreEqual( null, array[0] );
+            Assert.AreEqual( null, array[1] );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GenericClearAllTestCase1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GenericClearAllTestCase1()
         {
             String[] array = null;
             array.ClearAll();

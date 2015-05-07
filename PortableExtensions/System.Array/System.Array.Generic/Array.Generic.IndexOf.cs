@@ -22,7 +22,7 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
         /// </returns>
-        public static Int32 IndexOf<T> ( this T[] array, T value )
+        public static Int32 IndexOf<T>( this T[] array, T value )
         {
             array.ThrowIfNull( () => array );
 
@@ -42,7 +42,7 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the range of elements in  that extends from  to the last element,
         ///     if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T> ( this T[] array, T value, Int32 startIndex )
+        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex )
         {
             array.ThrowIfNull( () => array );
 
@@ -63,7 +63,7 @@ namespace PortableExtensions
         ///     The index of the first occurrence of  within the range of elements in  that starts at  and contains the
         ///     number of elements specified in , if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T> ( this T[] array, T value, Int32 startIndex, Int32 count )
+        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex, Int32 count )
         {
             array.ThrowIfNull( () => array );
 

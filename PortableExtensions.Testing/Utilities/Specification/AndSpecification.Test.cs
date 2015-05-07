@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public class AndSpecificationTest
     {
         [Test]
-        public void AndTestCase ()
+        public void AndTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AndTestCase1 ()
+        public void AndTestCase1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -36,7 +36,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AndTestCase2 ()
+        public void AndTestCase2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -48,7 +48,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void AndTestCase3 ()
+        public void AndTestCase3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -60,8 +60,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AndTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AndTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -72,21 +72,21 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void CtorTestCaseNulLCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void CtorTestCaseNulLCheck()
         {
             var target = new AndSpecification<String>( new ExpressionSpecification<String>( x => true ), null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void CtorTestCaseNulLCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void CtorTestCaseNulLCheck1()
         {
             var target = new AndSpecification<String>( null, new ExpressionSpecification<String>( x => true ) );
         }
 
         [Test]
-        public void IsSatisfiedByTestCase ()
+        public void IsSatisfiedByTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -97,7 +97,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase1 ()
+        public void IsSatisfiedByTestCase1()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -108,7 +108,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase2 ()
+        public void IsSatisfiedByTestCase2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
@@ -119,7 +119,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase3 ()
+        public void IsSatisfiedByTestCase3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -130,103 +130,111 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas1 ()
+        public void IsSatisfiedByWithMessagesTestCas1()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.IsNull( actual [0] );
+            Assert.IsNull( actual[0] );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas2 ()
+        public void IsSatisfiedByWithMessagesTestCas2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.IsNull( actual [0] );
+            Assert.IsNull( actual[0] );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas3 ()
+        public void IsSatisfiedByWithMessagesTestCas3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 2, actual.Count );
-            Assert.IsNull( actual [0] );
-            Assert.IsNull( actual [1] );
+            Assert.IsNull( actual[0] );
+            Assert.IsNull( actual[1] );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas5 ()
+        public void IsSatisfiedByWithMessagesTestCas5()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var right = new ExpressionSpecification<String>( x => true, "msgRight" );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.AreEqual( "msgLeft", actual [0] );
+            Assert.AreEqual( "msgLeft", actual[0] );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas6 ()
+        public void IsSatisfiedByWithMessagesTestCas6()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var right = new ExpressionSpecification<String>( x => false, "msgRight" );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.AreEqual( "msgRight", actual [0] );
+            Assert.AreEqual( "msgRight", actual[0] );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCas7 ()
+        public void IsSatisfiedByWithMessagesTestCas7()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var right = new ExpressionSpecification<String>( x => false, "msgRight" );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
             Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCase ()
+        public void IsSatisfiedByWithMessagesTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCase4 ()
+        public void IsSatisfiedByWithMessagesTestCase4()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var right = new ExpressionSpecification<String>( x => true, "msgRight" );
 
             var target = new AndSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
-        public void OrTestCase ()
+        public void OrTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -238,7 +246,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void OrTestCase1 ()
+        public void OrTestCase1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -250,7 +258,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void OrTestCase2 ()
+        public void OrTestCase2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -262,7 +270,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void OrTestCase3 ()
+        public void OrTestCase3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -274,8 +282,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void OrTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void OrTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -286,7 +294,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase ()
+        public void XOrTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -298,7 +306,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase1 ()
+        public void XOrTestCase1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -310,7 +318,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase2 ()
+        public void XOrTestCase2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -322,7 +330,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase3 ()
+        public void XOrTestCase3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -334,8 +342,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void XOrTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void XOrTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );

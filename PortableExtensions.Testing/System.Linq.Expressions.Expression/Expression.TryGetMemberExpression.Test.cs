@@ -26,8 +26,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameChainOverload1TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetNameChainOverload1TestCaseNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object>> expression = null;
@@ -35,7 +35,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpression5 ()
+        public void TryGetMemberExpression5()
         {
             MemberExpression outResult;
             var myInt = RandomValueEx.GetRandomInt32();
@@ -47,7 +47,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpression6 ()
+        public void TryGetMemberExpression6()
         {
             MemberExpression outResult;
             var model = new TestModel();
@@ -59,7 +59,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpression7 ()
+        public void TryGetMemberExpression7()
         {
             MemberExpression outResult;
             var model = new TestModel();
@@ -71,7 +71,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpression8 ()
+        public void TryGetMemberExpression8()
         {
             MemberExpression outResult;
             var model = new TestModel();
@@ -83,7 +83,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpression9 ()
+        public void TryGetMemberExpression9()
         {
             MemberExpression outResult;
             var model = new TestModel();
@@ -95,7 +95,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase ()
+        public void TryGetMemberExpressionTestCase()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
@@ -107,7 +107,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase1 ()
+        public void TryGetMemberExpressionTestCase1()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Int32>> expression = x => x.Age;
@@ -118,7 +118,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase2 ()
+        public void TryGetMemberExpressionTestCase2()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, String>> expression = x => x.SubModel.Foo;
@@ -129,7 +129,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase3 ()
+        public void TryGetMemberExpressionTestCase3()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.Age;
@@ -140,7 +140,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase4 ()
+        public void TryGetMemberExpressionTestCase4()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.SubModel.Foo;
@@ -151,8 +151,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void TryGetMemberExpressionTestCaseNotSupportedException ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void TryGetMemberExpressionTestCaseNotSupportedException()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
@@ -161,8 +161,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void TryGetMemberExpressionTestCaseNotSupportedException1 ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void TryGetMemberExpressionTestCaseNotSupportedException1()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
@@ -171,8 +171,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryGetMemberExpressionTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryGetMemberExpressionTestCaseNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;

@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a white space, otherwise false.</returns>
-        public static Boolean IsWhiteSpace ( this Char c )
+        public static Boolean IsWhiteSpace( this Char c )
         {
             return Char.IsWhiteSpace( c );
         }

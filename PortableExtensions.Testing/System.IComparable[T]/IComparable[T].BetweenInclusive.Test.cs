@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void BetweenInclusiveTestCase ()
+        public void BetweenInclusiveTestCase()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase1 ()
+        public void BetweenInclusiveTestCase1()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -33,7 +33,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase2 ()
+        public void BetweenInclusiveTestCase2()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -44,7 +44,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase3 ()
+        public void BetweenInclusiveTestCase3()
         {
             const Int32 value = 200;
             const Int32 min = 50;
@@ -55,7 +55,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase4 ()
+        public void BetweenInclusiveTestCase4()
         {
             const Int32 value = 2;
             const Int32 min = 50;
@@ -66,22 +66,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenInclusiveTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck()
         {
             IComparableTEx.BetweenInclusive( null, "", "" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenInclusiveTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck1()
         {
             "".BetweenInclusive( null, "" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenInclusiveTestCaseNullCheck2 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenInclusiveTestCaseNullCheck2()
         {
             "".BetweenInclusive( "", null );
         }

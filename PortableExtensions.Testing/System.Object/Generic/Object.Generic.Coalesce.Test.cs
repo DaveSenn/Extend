@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceTestCase ()
+        public void CoalesceTestCase()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceTestCase1 ()
+        public void CoalesceTestCase1()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceTestCase2 ()
+        public void CoalesceTestCase2()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = expected.Coalesce( null, null, null, expected, "Test2" );
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceTestCase3 ()
+        public void CoalesceTestCase3()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = expected.Coalesce( "Test2" );
@@ -47,7 +47,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceTestCase4 ()
+        public void CoalesceTestCase4()
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
@@ -57,7 +57,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceTestCase5 ()
+        public void CoalesceTestCase5()
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
@@ -67,16 +67,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (InvalidOperationException) )]
-        public void CoalesceTestCaseInvalidOperationCheck ()
+        [ExpectedException( typeof (InvalidOperationException) )]
+        public void CoalesceTestCaseInvalidOperationCheck()
         {
             Object[] array = null;
             ObjectEx.Coalesce( null, array, null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void CoalesceTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void CoalesceTestCaseNullCheck()
         {
             String s = null;
             String[] array = null;

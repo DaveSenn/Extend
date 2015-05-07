@@ -11,10 +11,11 @@ namespace PortableExtensions.Testing
     public partial class TimeSpanExTest
     {
         [Test]
-        public void FutureTestCase ()
+        public void FutureTestCase()
         {
             var expected = DateTime.Now.Add( TimeSpan.FromDays( 1 ) );
-            var actual = TimeSpan.FromDays( 1 ).Future();
+            var actual = TimeSpan.FromDays( 1 )
+                                 .Future();
 
             Assert.AreEqual( expected.Day, actual.Day );
         }

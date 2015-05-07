@@ -12,16 +12,17 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt32TestCase ()
+        public void SaveToInt32TestCase()
         {
             var expected = RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToInt32();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt32();
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToInt32TestCase1 ()
+        public void SaveToInt32TestCase1()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt32( expected );
@@ -30,7 +31,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt32TestCase2 ()
+        public void SaveToInt32TestCase2()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -40,7 +41,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt32TestCase3 ()
+        public void SaveToInt32TestCase3()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -49,16 +50,17 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt32TestCase4 ()
+        public void SaveToInt32TestCase4()
         {
             var expected = RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString( CultureInfo.InvariantCulture ).SaveToInt32( RandomValueEx.GetRandomInt32() );
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt32( RandomValueEx.GetRandomInt32() );
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToInt32TestCase5 ()
+        public void SaveToInt32TestCase5()
         {
             var actual = "InvalidValue".SaveToInt32();
 
@@ -66,7 +68,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt32TestCase6 ()
+        public void SaveToInt32TestCase6()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -76,7 +78,7 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToInt32TestCase7 ()
+        public void SaveToInt32TestCase7()
         {
             var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -84,15 +86,15 @@ namespace PortableExtensions
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SaveToInt32TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SaveToInt32TestCaseNullCheck()
         {
             StringEx.SaveToInt32( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SaveToInt32TestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SaveToInt32TestCaseNullCheck1()
         {
             "".SaveToInt32( NumberStyles.AllowExponent, null );
         }

@@ -14,7 +14,7 @@ namespace PortableExtensions
         /// <param name="str">The first string to concatenate.</param>
         /// <param name="strings">All strings to concatenate.</param>
         /// <returns>The concatenation of all strings.</returns>
-        public static String ConcatAll ( this String str, params String[] strings )
+        public static String ConcatAll( this String str, params String[] strings )
         {
             strings.ThrowIfNull( () => strings );
 
@@ -26,7 +26,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="strings">All strings to concatenate.</param>
         /// <returns>The concatenation of all strings.</returns>
-        public static String ConcatAll ( this String[] strings )
+        public static String ConcatAll( this String[] strings )
         {
             strings.ThrowIfNull( () => strings );
 
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="str">The first string to concatenate.</param>
         /// <param name="values">All values to concatenate.</param>
         /// <returns>The concatenation of all values.</returns>
-        public static String ConcatAll ( this String str, params Object[] values )
+        public static String ConcatAll( this String str, params Object[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -51,7 +51,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="values">All values to concatenate.</param>
         /// <returns>The concatenation of all values.</returns>
-        public static String ConcatAll ( this Object[] values )
+        public static String ConcatAll( this Object[] values )
         {
             values.ThrowIfNull( () => values );
 
