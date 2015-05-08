@@ -1268,6 +1268,44 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void GetEnumeratorTestCase8()
+        {
+            var target = new TreeNode<String>("root") { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.TopDown;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var node in target)
+                actual.Add(node);
+
+            Assert.AreEqual(4, actual.Count);
+            Assert.AreEqual("root", actual[0].Value);
+            Assert.AreEqual("1", actual[1].Value);
+            Assert.AreEqual("2", actual[2].Value);
+            Assert.AreEqual("3", actual[3].Value);
+        }
+
+        [Test]
+        [ExpectedException(typeof(NotSupportedException))]
+        public void GetEnumeratorTestCase9()
+        {
+            var target = new TreeNode<String>("root") { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach (var node in target)
+                actual.Add(node);
+
+            Assert.AreEqual(4, actual.Count);
+            Assert.AreEqual("root", actual[0].Value);
+            Assert.AreEqual("1", actual[1].Value);
+            Assert.AreEqual("2", actual[2].Value);
+            Assert.AreEqual("3", actual[3].Value);
+        }
+
+        [Test]
         public void GetEnumeratorTestCase1()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
@@ -1424,6 +1462,25 @@ namespace PortableExtensions.Testing
                 "6"
             };
             var actual = target.GetEnumerator();
+        }
+
+        [Test]
+        public void GetEnumeratorTestCase7()
+        {
+            var target = new TreeNode<String>("root") { "1", "2", "3" };
+            var actual = new List<ITreeNode<String>>();
+
+            var enumerator = ( target as IEnumerable ).GetEnumerator();
+            while ( enumerator.MoveNext() )
+            {
+                actual.Add(enumerator.Current as ITreeNode<String>);
+            } 
+
+            Assert.AreEqual(4, actual.Count);
+            Assert.AreEqual("root", actual[0].Value);
+            Assert.AreEqual("1", actual[1].Value);
+            Assert.AreEqual("2", actual[2].Value);
+            Assert.AreEqual("3", actual[3].Value);
         }
 
         [Test]
