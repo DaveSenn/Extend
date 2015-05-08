@@ -75,7 +75,8 @@ namespace PortableExtensions
         /// <param name="value">The value of the node.</param>
         public TreeNode( T value )
             : this( value, null, null )
-        {}
+        {
+        }
 
         /// <summary>
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
@@ -565,39 +566,31 @@ namespace PortableExtensions
         /// <returns>Returns a  enumeration of all nodes.</returns>
         private IEnumerable<ITreeNode<T>> GetEnumeratorInternal()
         {
-            switch ( TraversalDirection )
+            if ( TraversalDirection == TreeTraversalDirection.BottomUp )
             {
-                case TreeTraversalDirection.TopDown:
-                    yield return this;
-                    foreach ( var child in Children )
-                    {
-                        if ( child is TreeNode<T> == false )
-                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
+                foreach ( var child in Children.Reverse() )
+                {
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
 
-                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
-                        foreach ( var e in enumeration )
-                            yield return e;
-                    }
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
+                        yield return e;
+                }
+                yield return this;
+            }
+            else
+            {
+                yield return this;
+                foreach ( var child in Children )
+                {
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
 
-                    break;
-                case TreeTraversalDirection.BottomUp:
-
-                    foreach ( var child in Children.Reverse() )
-                    {
-                        if ( child is TreeNode<T> == false )
-                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
-
-                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
-                        foreach ( var e in enumeration )
-                            yield return e;
-                    }
-                    yield return this;
-
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException( this.GetName( () => TraversalDirection ),
-                                                           "The value '{0}' is a unknown tree traversal direction".F(
-                                                               TraversalDirection ) );
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
+                        yield return e;
+                }
             }
         }
 
@@ -634,7 +627,7 @@ namespace PortableExtensions
             for ( var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent )
                 yield return ancestor;
         }
-        
+
         #endregion
 
         #region IDisposable
