@@ -19,7 +19,7 @@ using System.Resources;
 
 [assembly: AssemblyCompany( "Dave Senn" )]
 [assembly: AssemblyProduct( "PortableExtensions" )]
-[assembly: AssemblyCopyright( "Copyright © Dave Senn 2014" )]
+[assembly: AssemblyCopyright("Copyright © Dave Senn 2015")]
 [assembly: AssemblyTrademark( "PortableExtensions" )]
 [assembly: AssemblyCulture( "" )]
 [assembly: NeutralResourcesLanguage( "en" )]
@@ -30,5 +30,5 @@ using System.Resources;
 //
 // You can specify all the values or you can default the Build and Revision Numbers by using the '*' as shown below: [assembly: AssemblyVersion("1.0.*")]
 
-[assembly: AssemblyVersion( "1.0.19.0" )]
-[assembly: AssemblyFileVersion( "1.0.19.0" )]
+[assembly: AssemblyVersion("1.1.1.0")]
+[assembly: AssemblyFileVersion("1.1.1.0")]
