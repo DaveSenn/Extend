@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <returns>The combined path.</returns>
-        public static String PathCombine ( this IEnumerable<String> enumerable )
+        public static String PathCombine( this IEnumerable<String> enumerable )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsEmptyTestCase ()
+        public void IsEmptyTestCase()
         {
             var value = "";
             Assert.IsTrue( value.IsEmpty() );

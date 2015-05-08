@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void FactorOfTestCase ()
+        public void FactorOfTestCase()
         {
             var value = RandomValueEx.GetRandomInt32();
             var factorNumer = RandomValueEx.GetRandomInt32();

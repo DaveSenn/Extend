@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsTimeEqualTestCase ()
+        public void IsTimeEqualTestCase()
         {
             var dateTime = DateTime.Now;
             var dateTime1 = dateTime.AddDays( -2 );
@@ -19,7 +19,8 @@ namespace PortableExtensions.Testing
             var actual = dateTime.IsTimeEquals( dateTime1 );
             Assert.IsTrue( actual );
 
-            dateTime1 = dateTime.AddDays( -2 ).AddHours( 1 );
+            dateTime1 = dateTime.AddDays( -2 )
+                                .AddHours( 1 );
 
             actual = dateTime.IsTimeEquals( dateTime1 );
             Assert.IsFalse( actual );

@@ -24,8 +24,8 @@ namespace PortableExtensions
         /// <param name="dictionary">The Dictionary to act on.</param>
         /// <param name="keys">A list of keys.</param>
         /// <returns>Returns true if the dictionary contains all keys.</returns>
-        public static Boolean ContainsAllKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                             params TKey[] keys )
+        public static Boolean ContainsAllKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                            params TKey[] keys )
         {
             dictionary.ThrowIfNull( () => dictionary );
             keys.ThrowIfNull( () => keys );
@@ -43,8 +43,8 @@ namespace PortableExtensions
         /// <param name="dictionary">The Dictionary to act on.</param>
         /// <param name="keys">A list of keys.</param>
         /// <returns>Returns true if the dictionary contains all keys.</returns>
-        public static Boolean ContainsAllKey<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                             IEnumerable<TKey> keys )
+        public static Boolean ContainsAllKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                            IEnumerable<TKey> keys )
         {
             dictionary.ThrowIfNull( () => dictionary );
             keys.ThrowIfNull( () => keys );

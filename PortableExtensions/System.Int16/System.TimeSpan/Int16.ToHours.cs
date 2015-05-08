@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int16 value.</param>
         /// <returns>Returns the given Int16 value as hours.</returns>
-        public static TimeSpan ToHours ( this Int16 value )
+        public static TimeSpan ToHours( this Int16 value )
         {
             return TimeSpan.FromHours( value );
         }

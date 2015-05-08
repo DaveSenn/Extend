@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ElapsedTestCase ()
+        public void ElapsedTestCase()
         {
             var dateTime = new DateTime( 1980, 1, 1 );
             var expected = DateTime.Now - dateTime;

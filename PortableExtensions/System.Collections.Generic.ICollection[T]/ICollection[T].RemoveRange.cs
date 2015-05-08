@@ -21,7 +21,7 @@ namespace PortableExtensions
         /// <param name="collection">The collection, from which the values should get removed.</param>
         /// <param name="values">The values to remove.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> RemoveRange<T> ( this ICollection<T> collection, params T[] values )
+        public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, params T[] values )
         {
             collection.ThrowIfNull( () => collection );
             values.ThrowIfNull( () => values );
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="collection">The collection, from which the values should get removed.</param>
         /// <param name="enumerable">A IEnumerable containing the items to remove from the collection.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> RemoveRange<T> ( this ICollection<T> collection, IEnumerable<T> enumerable )
+        public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( () => collection );
             enumerable.ThrowIfNull( () => enumerable );

@@ -27,7 +27,7 @@ namespace PortableExtensions
         ///     Returns an <see cref="IDictionary{TKey,TValue}" /> that contains the concatenated elements of the given
         ///     sequences.
         /// </returns>
-        public static IDictionary<TValue, TKey> ConcatAllToDictionary<TValue, TKey> (
+        public static IDictionary<TValue, TKey> ConcatAllToDictionary<TValue, TKey>(
             this IDictionary<TValue, TKey> dictionary,
             params IDictionary<TValue, TKey>[] dictionaries )
         {

@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The boolean.</returns>
-        public static Boolean SaveToBoolean ( this String value, Boolean? defaultValue = null )
+        public static Boolean SaveToBoolean( this String value, Boolean? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 

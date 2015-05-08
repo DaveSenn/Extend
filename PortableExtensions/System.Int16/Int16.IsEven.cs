@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int16 to check.</param>
         /// <returns>Returns true if the Int16 is even, otherwise false.</returns>
-        public static Boolean IsEven ( this Int16 value )
+        public static Boolean IsEven( this Int16 value )
         {
             return value % 2 == 0;
         }

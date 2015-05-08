@@ -26,7 +26,7 @@ namespace PortableExtensions
         /// <typeparam name="TMember">The type of the member to which the expression points.</typeparam>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        public static String GetNameChain<TObject, TMember> ( this TObject obj, Expression<Func<TObject, TMember>> expression )
+        public static String GetNameChain<TObject, TMember>( this TObject obj, Expression<Func<TObject, TMember>> expression )
         {
             expression.ThrowIfNull( () => expression );
 
@@ -46,7 +46,7 @@ namespace PortableExtensions
         /// <typeparam name="TMember">The type of the member to which the expression points.</typeparam>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        public static String GetNameChain<TObject, TMember> ( this TObject obj, Expression<Func<TMember>> expression )
+        public static String GetNameChain<TObject, TMember>( this TObject obj, Expression<Func<TMember>> expression )
         {
             expression.ThrowIfNull( () => expression );
 
@@ -63,7 +63,7 @@ namespace PortableExtensions
         /// </exception>
         /// <param name="expression">The expression pointing to the member.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        private static String GetNameChain ( this Expression expression )
+        private static String GetNameChain( this Expression expression )
         {
             MemberExpression memberExpression;
             if ( !expression.TryGetMemberExpression( out memberExpression ) )

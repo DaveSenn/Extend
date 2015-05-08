@@ -11,11 +11,12 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfDayTestCase ()
+        public void EndOfDayTestCase()
         {
             var dateTime = DateTime.Now;
             var expected =
-                new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( 1 ).Subtract( 1.ToMilliseconds() );
+                new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( 1 )
+                                                                           .Subtract( 1.ToMilliseconds() );
             var actual = dateTime.EndOfDay();
             Assert.AreEqual( expected, actual );
         }

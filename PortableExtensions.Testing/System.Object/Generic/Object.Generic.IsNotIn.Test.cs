@@ -12,10 +12,11 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void IsNotInTestCase ()
+        public void IsNotInTestCase()
         {
-            var array = RandomValueEx.GetRandomStrings().ToArray();
-            var value = array [0];
+            var array = RandomValueEx.GetRandomStrings()
+                                     .ToArray();
+            var value = array[0];
 
             var actual = value.IsNotIn( array );
             Assert.IsFalse( actual );
@@ -26,10 +27,10 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsNotInTestCase1 ()
+        public void IsNotInTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings();
-            var value = list [0];
+            var value = list[0];
 
             var actual = value.IsNotIn( list );
             Assert.IsFalse( actual );
@@ -40,16 +41,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void IsNotInTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsNotInTestCase1NullCheck()
         {
             IEnumerable<String> enumerable = null;
             "".IsNotIn( enumerable );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void IsNotInTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsNotInTestCaseNullCheck()
         {
             String[] array = null;
             "".IsNotIn( array );

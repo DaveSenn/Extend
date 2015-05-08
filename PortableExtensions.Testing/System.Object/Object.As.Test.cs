@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void AsTestCase ()
+        public void AsTestCase()
         {
             Object value = 10;
             var actual = value.As<int>();
@@ -20,8 +20,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AsTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AsTestCaseNullCheck()
         {
             ObjectEx.As<String>( null );
         }

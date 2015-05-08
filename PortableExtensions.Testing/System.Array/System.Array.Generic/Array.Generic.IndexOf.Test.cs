@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericIndexOfTestCase ()
+        public void GenericIndexOfTestCase()
         {
             var array = new[]
             {
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase1 ()
+        public void GenericIndexOfTestCase1()
         {
             var array = new[]
             {
@@ -35,8 +35,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GenericIndexOfTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GenericIndexOfTestCase1NullCheck()
         {
             String[] array = null;
             var actual = array.IndexOf( "test2", 1 );
@@ -44,7 +44,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase2 ()
+        public void GenericIndexOfTestCase2()
         {
             var array = new[]
             {
@@ -58,8 +58,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GenericIndexOfTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GenericIndexOfTestCase2NullCheck()
         {
             String[] array = null;
             var actual = array.IndexOf( "test3", 1, 2 );
@@ -67,8 +67,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GenericIndexOfTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GenericIndexOfTestCaseNullCheck()
         {
             String[] array = null;
             var actual = array.IndexOf( "test2" );

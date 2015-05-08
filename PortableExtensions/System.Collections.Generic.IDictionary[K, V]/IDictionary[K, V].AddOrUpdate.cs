@@ -23,19 +23,19 @@ namespace PortableExtensions
         /// <param name="key">The key to be added or whose value should be updated.</param>
         /// <param name="value">The value to be added or updated.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                         TKey key,
-                                                         TValue value )
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
+                                                        TValue value )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
 
             if ( dictionary.ContainsKey( key ) )
-                dictionary [key] = value;
+                dictionary[key] = value;
             else
                 dictionary.Add( key, value );
 
-            return dictionary [key];
+            return dictionary[key];
         }
 
         /// <summary>
@@ -47,18 +47,18 @@ namespace PortableExtensions
         /// <param name="dictionary">The dictionary to work on.</param>
         /// <param name="keyValuePair">The KeyValuePair to be added or updated.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                         KeyValuePair<TKey, TValue> keyValuePair )
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( () => dictionary );
             keyValuePair.Key.ThrowIfNull( () => keyValuePair.Key );
 
             if ( dictionary.ContainsKey( keyValuePair.Key ) )
-                dictionary [keyValuePair.Key] = keyValuePair.Value;
+                dictionary[keyValuePair.Key] = keyValuePair.Value;
             else
                 dictionary.Add( keyValuePair );
 
-            return dictionary [keyValuePair.Key];
+            return dictionary[keyValuePair.Key];
         }
 
         /// <summary>
@@ -71,20 +71,20 @@ namespace PortableExtensions
         /// <param name="key">The Key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                         TKey key,
-                                                         Func<TValue> valueFactory )
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
+                                                        Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
             valueFactory.ThrowIfNull( () => valueFactory );
 
             if ( dictionary.ContainsKey( key ) )
-                dictionary [key] = valueFactory();
+                dictionary[key] = valueFactory();
             else
                 dictionary.Add( key, valueFactory() );
 
-            return dictionary [key];
+            return dictionary[key];
         }
 
         /// <summary>
@@ -97,20 +97,20 @@ namespace PortableExtensions
         /// <param name="key">The Key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>The new value for the key.</returns>
-        public static TValue AddOrUpdate<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                         TKey key,
-                                                         Func<TKey, TValue> valueFactory )
+        public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                        TKey key,
+                                                        Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( () => dictionary );
             key.ThrowIfNull( () => key );
             valueFactory.ThrowIfNull( () => valueFactory );
 
             if ( dictionary.ContainsKey( key ) )
-                dictionary [key] = valueFactory( key );
+                dictionary[key] = valueFactory( key );
             else
                 dictionary.Add( key, valueFactory( key ) );
 
-            return dictionary [key];
+            return dictionary[key];
         }
     }
 }

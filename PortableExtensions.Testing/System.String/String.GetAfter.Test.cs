@@ -11,63 +11,63 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfteOverloadrArgumentOutOfRangeTestCase1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfteOverloadrArgumentOutOfRangeTestCase1()
         {
             "test test1".GetAfter( 't', 4, 10 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterArgumentOutOfRangeTestCase ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterArgumentOutOfRangeTestCase()
         {
             "test test1".GetAfter( "test", 20 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterArgumentOutOfRangeTestCase1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterArgumentOutOfRangeTestCase1()
         {
             "test test1".GetAfter( "test", 4, 10 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterArgumentOutOfRangeTestCase2 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterArgumentOutOfRangeTestCase2()
         {
             "test test1".GetAfter( "test", 20, 2 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterArgumentOutOfRangeTestCase3 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterArgumentOutOfRangeTestCase3()
         {
             "test test1".GetAfter( "test", -1, 2 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterArgumentOutOfRangeTestCase4 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterArgumentOutOfRangeTestCase4()
         {
             "test test1".GetAfter( "test", 20, -2 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterOverloadArgumentOutOfRangeTestCase ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterOverloadArgumentOutOfRangeTestCase()
         {
             "test test1".GetAfter( 't', 20 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void GetAfterOverloadArgumentOutOfRangeTestCase2 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetAfterOverloadArgumentOutOfRangeTestCase2()
         {
             "test test1".GetAfter( 't', 20, 2 );
         }
 
         [Test]
-        public void GetAfterOverloadTestCase ()
+        public void GetAfterOverloadTestCase()
         {
             var actual = "test test1".GetAfter( 's' );
             Assert.AreEqual( "t test1", actual );
@@ -77,7 +77,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetAfterOverloadTestCase1 ()
+        public void GetAfterOverloadTestCase1()
         {
             var actual = "test test1".GetAfter( 'e', 0, 6 );
             Assert.AreEqual( "st t", actual );
@@ -87,28 +87,28 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterOverloadTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterOverloadTestCase1NullCheck()
         {
             StringEx.GetAfter( null, 't', 1, 1 );
         }
 
         [Test]
-        public void GetAfterOverloadTestCase2 ()
+        public void GetAfterOverloadTestCase2()
         {
             var actual = "test test1".GetAfter( 'a' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterOverloadTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterOverloadTestCaseNullCheck()
         {
             StringEx.GetAfter( null, 't' );
         }
 
         [Test]
-        public void GetAfterTestCase ()
+        public void GetAfterTestCase()
         {
             var actual = "test test1".GetAfter( "test" );
             Assert.AreEqual( " test1", actual );
@@ -118,7 +118,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetAfterTestCase1 ()
+        public void GetAfterTestCase1()
         {
             var actual = "test test1".GetAfter( "test", 0, 10 );
             Assert.AreEqual( " test1", actual );
@@ -128,36 +128,36 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterTestCase1NullCheck()
         {
             StringEx.GetAfter( null, "", 1, 1 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterTestCase1NullCheck1()
         {
             "".GetAfter( null, 1, 1 );
         }
 
         [Test]
-        public void GetAfterTestCase2 ()
+        public void GetAfterTestCase2()
         {
             var actual = "test123456789".GetAfter( "a", 0, 10 );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterTestCaseNullCheck()
         {
             StringEx.GetAfter( null, "test" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAfterTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAfterTestCaseNullCheck1()
         {
             "".GetAfter( null );
         }

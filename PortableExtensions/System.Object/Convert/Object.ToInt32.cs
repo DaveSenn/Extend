@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The object can not be null.</exception>
         /// <param name="obj">The object to convert.</param>
         /// <returns>The Int32.</returns>
-        public static Int32 ToInt32 ( this Object obj )
+        public static Int32 ToInt32( this Object obj )
         {
             obj.ThrowIfNull( () => obj );
 
@@ -33,7 +33,7 @@ namespace PortableExtensions
         /// <param name="obj">The object to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The Int32.</returns>
-        public static Int32 ToInt32 ( this Object obj, IFormatProvider formatProvider )
+        public static Int32 ToInt32( this Object obj, IFormatProvider formatProvider )
         {
             obj.ThrowIfNull( () => obj );
             formatProvider.ThrowIfNull( () => formatProvider );

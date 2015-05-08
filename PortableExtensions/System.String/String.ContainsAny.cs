@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="str">The string to check.</param>
         /// <param name="values">The values to search for.</param>
         /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
-        public static Boolean ContainsAny ( this String str, params String[] values )
+        public static Boolean ContainsAny( this String str, params String[] values )
         {
             str.ThrowIfNull( () => str );
             values.ThrowIfNull( () => values );
@@ -34,7 +34,7 @@ namespace PortableExtensions
         /// <param name="values">The values to search for.</param>
         /// <param name="comparisonType">The string comparison type.</param>
         /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
-        public static Boolean ContainsAny ( this String str, StringComparison comparisonType, params String[] values )
+        public static Boolean ContainsAny( this String str, StringComparison comparisonType, params String[] values )
         {
             str.ThrowIfNull( () => str );
             values.ThrowIfNull( () => values );

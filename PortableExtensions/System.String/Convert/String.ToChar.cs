@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The char.</returns>
-        public static Char ToChar ( this String value )
+        public static Char ToChar( this String value )
         {
             value.ThrowIfNull( () => value );
 
@@ -30,7 +30,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The char.</returns>
-        public static Char ToChar ( this String value, IFormatProvider formatProvider )
+        public static Char ToChar( this String value, IFormatProvider formatProvider )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

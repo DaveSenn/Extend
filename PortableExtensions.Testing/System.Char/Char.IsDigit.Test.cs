@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsDigitTestCase ()
+        public void IsDigitTestCase()
         {
             var range = 0.RangeTo( 9 );
             foreach ( var c in range.Select( x => x.ToChar() ) )

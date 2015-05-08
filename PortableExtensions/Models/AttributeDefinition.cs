@@ -35,7 +35,7 @@ namespace PortableExtensions
         /// <summary>
         ///     Initialize a new instance of the <see cref="AttributeDefinition{TAttribute}" /> class.
         /// </summary>
-        public AttributeDefinition ()
+        public AttributeDefinition()
         {
             Attributes = new List<TAttribute>();
         }

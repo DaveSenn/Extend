@@ -12,10 +12,11 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToDateTimeTestCase ()
+        public void ToDateTimeTestCase()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.InvariantCulture ).ToDateTime();
+            var actual = value.ToString( CultureInfo.InvariantCulture )
+                              .ToDateTime();
 
             Assert.AreEqual( value.Year, actual.Year );
             Assert.AreEqual( value.Month, actual.Month );
@@ -26,10 +27,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToDateTimeTestCase1 ()
+        public void ToDateTimeTestCase1()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.CurrentCulture ).ToDateTime( CultureInfo.CurrentCulture );
+            var actual = value.ToString( CultureInfo.CurrentCulture )
+                              .ToDateTime( CultureInfo.CurrentCulture );
 
             Assert.AreEqual( value.Year, actual.Year );
             Assert.AreEqual( value.Month, actual.Month );
@@ -40,22 +42,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDateTimeTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck()
         {
             StringEx.ToDateTime( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDateTimeTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCase1NullCheck1()
         {
             "".ToDateTime( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDateTimeTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDateTimeTestCaseNullCheck()
         {
             StringEx.ToDateTime( null );
         }

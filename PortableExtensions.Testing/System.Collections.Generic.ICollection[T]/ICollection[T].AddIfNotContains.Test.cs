@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddIfNotContainsTestCase ()
+        public void AddIfNotContainsTestCase()
         {
             var c = new List<String>();
 
@@ -28,8 +28,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddIfNotContainsTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddIfNotContainsTestCaseNullCheck()
         {
             CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
         }

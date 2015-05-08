@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsAlphaNumericTestCase ()
+        public void IsAlphaNumericTestCase()
         {
             var actual = "test".IsAlphaNumeric();
             Assert.IsTrue( actual );
@@ -24,8 +24,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void IsAlphaNumericTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsAlphaNumericTestCaseNullCheck()
         {
             StringEx.IsAlphaNumeric( null );
         }

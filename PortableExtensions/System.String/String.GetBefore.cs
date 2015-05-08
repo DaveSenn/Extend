@@ -21,7 +21,7 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore ( this String str, String value, Int32 startIndex = 0 )
+        public static String GetBefore( this String str, String value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -43,7 +43,7 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore ( this String str, String value, Int32 startIndex, Int32 length )
+        public static String GetBefore( this String str, String value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );
@@ -70,7 +70,7 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore ( this String str, Char value, Int32 startIndex = 0 )
+        public static String GetBefore( this String str, Char value, Int32 startIndex = 0 )
         {
             str.ThrowIfNull( () => str );
 
@@ -91,7 +91,7 @@ namespace PortableExtensions
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore ( this String str, Char value, Int32 startIndex, Int32 length )
+        public static String GetBefore( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
             str.ThrowIfNull( () => str );

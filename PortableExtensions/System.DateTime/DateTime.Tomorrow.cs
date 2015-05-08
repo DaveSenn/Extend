@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time to increase.</param>
         /// <returns>Tomorrow date at same time.</returns>
-        public static DateTime Tomorrow ( this DateTime dateTime )
+        public static DateTime Tomorrow( this DateTime dateTime )
         {
             return dateTime.AddDays( 1 );
         }

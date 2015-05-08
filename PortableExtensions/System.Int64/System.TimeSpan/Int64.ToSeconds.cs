@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="value">The Int64 value.</param>
         /// <returns>Returns the given Int64 value as seonds.</returns>
-        public static TimeSpan ToSeconds ( this Int64 value )
+        public static TimeSpan ToSeconds( this Int64 value )
         {
             return TimeSpan.FromSeconds( value );
         }

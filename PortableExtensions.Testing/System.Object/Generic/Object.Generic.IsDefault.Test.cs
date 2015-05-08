@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void IsDefaultTestCase ()
+        public void IsDefaultTestCase()
         {
             var value = default( String );
             var actual = value.IsDefault();

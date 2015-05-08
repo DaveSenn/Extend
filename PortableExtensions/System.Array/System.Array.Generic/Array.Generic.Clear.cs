@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="index">The starting index of the range of elements to clear.</param>
         /// <param name="length">The number of elements to clear.</param>
         /// <returns>Returns the cleard array.</returns>
-        public static T[] Clear<T> ( this T[] array, Int32 index, Int32 length )
+        public static T[] Clear<T>( this T[] array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( () => array );
 

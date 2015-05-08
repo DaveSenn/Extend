@@ -76,7 +76,6 @@ namespace PortableExtensions
         public TreeNode( T value )
             : this( value, null, null )
         {
-            Initialize( value );
         }
 
         /// <summary>
@@ -218,7 +217,7 @@ namespace PortableExtensions
                     return;
 
                 _children = value;
-                if(_children != null)
+                if ( _children != null )
                     _children.ForEach( x => x.SetParent( this, false ) );
             }
         }
@@ -481,14 +480,14 @@ namespace PortableExtensions
             if ( oldParent != null && detachFromOldParent )
                 oldParent.Children.Remove( this, false );
 
-            if (parent == null)
+            if ( parent == null )
                 return;
 
-            if (parent.Children == null)
-                parent.Children = new TreeNodeCollection<T>(Parent);
+            if ( parent.Children == null )
+                parent.Children = new TreeNodeCollection<T>( Parent );
 
-            if (attacheToNewParent && !parent.Children.Contains(this))
-                Parent.Children.Add(this, false);
+            if ( attacheToNewParent && !parent.Children.Contains( this ) )
+                Parent.Children.Add( this, false );
         }
 
         /// <summary>
@@ -567,39 +566,31 @@ namespace PortableExtensions
         /// <returns>Returns a  enumeration of all nodes.</returns>
         private IEnumerable<ITreeNode<T>> GetEnumeratorInternal()
         {
-            switch ( TraversalDirection )
+            if ( TraversalDirection == TreeTraversalDirection.BottomUp )
             {
-                case TreeTraversalDirection.TopDown:
-                    yield return this;
-                    foreach ( var child in Children )
-                    {
-                        if ( child is TreeNode<T> == false )
-                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
+                foreach ( var child in Children.Reverse() )
+                {
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
 
-                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
-                        foreach ( var e in enumeration )
-                            yield return e;
-                    }
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
+                        yield return e;
+                }
+                yield return this;
+            }
+            else
+            {
+                yield return this;
+                foreach ( var child in Children )
+                {
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
 
-                    break;
-                case TreeTraversalDirection.BottomUp:
-
-                    foreach ( var child in Children.Reverse() )
-                    {
-                        if ( child is TreeNode<T> == false )
-                            throw new NotSupportedException( "Child '{0}' is not of type TreeNode{T}.".F( child ) );
-
-                        var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
-                        foreach ( var e in enumeration )
-                            yield return e;
-                    }
-                    yield return this;
-
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException( this.GetName( () => TraversalDirection ),
-                                                           "The value '{0}' is a unknown tree traversal direction".F(
-                                                               TraversalDirection ) );
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
+                        yield return e;
+                }
             }
         }
 
@@ -633,40 +624,8 @@ namespace PortableExtensions
         /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
         private IEnumerable<ITreeNode<T>> GetAncestors()
         {
-            for (var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent)
+            for ( var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent )
                 yield return ancestor;
-        }
-
-        /// <summary>
-        ///     Initialize the tree node.
-        /// </summary>
-        /// <param name="value">The value of the tree node.</param>
-        /// <param name="parent">The parent of the tree node.</param>
-        /// <param name="children">The children of the node.</param>
-        private void Initialize( T value,
-                                 ITreeNode<T> parent = null,
-                                 ITreeNodeCollection<T> children = null )
-        {
-            Value = value;
-            Parent = parent;
-            Children = children ?? new TreeNodeCollection<T>( this );
-            if ( Parent != null )
-            {
-                if ( !Parent.Children.Contains( this ) )
-                    Parent.Children.Add( this );
-
-                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
-                SearchTraversalDirection = Parent.SearchTraversalDirection;
-                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
-                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
-            }
-            else
-            {
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
-                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
-            }
         }
 
         #endregion

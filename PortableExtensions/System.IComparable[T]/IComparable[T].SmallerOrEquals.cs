@@ -23,7 +23,7 @@ namespace PortableExtensions
         ///     Returns true if the value is smaller or equals to the given compare value,
         ///     otherwise false.
         /// </returns>
-        public static Boolean SmallerOrEquals<T> ( this T value, T compareValue ) where T : IComparable<T>
+        public static Boolean SmallerOrEquals<T>( this T value, T compareValue ) where T : IComparable<T>
         {
             value.ThrowIfNull( () => value );
             compareValue.ThrowIfNull( () => compareValue );

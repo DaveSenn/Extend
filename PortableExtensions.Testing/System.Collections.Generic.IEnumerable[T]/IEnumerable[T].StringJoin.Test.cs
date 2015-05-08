@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void StringJoinTestCase ()
+        public void StringJoinTestCase()
         {
             var list = new List<String>();
             var actual = list.StringJoin( "," );
@@ -32,8 +32,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void StringJoinTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void StringJoinTestCaseNullCheck()
         {
             List<Object> list = null;
             list.StringJoin( "" );

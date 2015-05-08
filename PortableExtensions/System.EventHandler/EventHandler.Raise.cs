@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">The event arguments.</param>
         /// <returns>Returns the given event handler.</returns>
-        public static EventHandler Raise ( this EventHandler eventHandler, Object sender, EventArgs e )
+        public static EventHandler Raise( this EventHandler eventHandler, Object sender, EventArgs e )
         {
             if ( eventHandler != null )
                 eventHandler( sender, e );
@@ -38,7 +38,7 @@ namespace PortableExtensions
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">The event arguments.</param>
         /// <returns>Returns the given event handler.</returns>
-        public static EventHandler<T> Raise<T> ( this EventHandler<T> eventHandler, Object sender, T e )
+        public static EventHandler<T> Raise<T>( this EventHandler<T> eventHandler, Object sender, T e )
             where T : EventArgs
         {
             if ( eventHandler != null )

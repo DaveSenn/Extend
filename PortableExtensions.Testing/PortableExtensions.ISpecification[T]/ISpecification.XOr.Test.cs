@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ISpecificationExTest
     {
         [Test]
-        public void XOrTestCase ()
+        public void XOrTestCase()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => true );
@@ -22,7 +22,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase1 ()
+        public void XOrTestCase1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => false );
@@ -32,29 +32,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase10 ()
+        public void XOrTestCase10()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.XOr( x => true, "msgRight" );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count() );
         }
 
         [Test]
-        public void XOrTestCase11 ()
+        public void XOrTestCase11()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.XOr( x => false, "msgRight" );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 2, actual.Count() );
             Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
             Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
         }
 
         [Test]
-        public void XOrTestCase2 ()
+        public void XOrTestCase2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => true );
@@ -64,7 +66,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase3 ()
+        public void XOrTestCase3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => false );
@@ -74,80 +76,86 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void XOrTestCase4 ()
+        public void XOrTestCase4()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => true );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.AreEqual( "The given object matches both specifications.", actual [0] );
+            Assert.AreEqual( "The given object matches both specifications.", actual[0] );
         }
 
         [Test]
-        public void XOrTestCase5 ()
+        public void XOrTestCase5()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => false );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count() );
         }
 
         [Test]
-        public void XOrTestCase6 ()
+        public void XOrTestCase6()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => true );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count() );
         }
 
         [Test]
-        public void XOrTestCase7 ()
+        public void XOrTestCase7()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => false );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 2, actual.Count() );
-            Assert.IsNull( actual [0] );
-            Assert.IsNull( actual [1] );
+            Assert.IsNull( actual[0] );
+            Assert.IsNull( actual[1] );
         }
 
         [Test]
-        public void XOrTestCase8 ()
+        public void XOrTestCase8()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.XOr( x => true, "msgRight" );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 1, actual.Count );
-            Assert.AreEqual( "The given object matches both specifications.", actual [0] );
+            Assert.AreEqual( "The given object matches both specifications.", actual[0] );
         }
 
         [Test]
-        public void XOrTestCase9 ()
+        public void XOrTestCase9()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.XOr( x => false, "msgRight" );
 
-            var actual = target.IsSatisfiedByWithMessages( String.Empty ).ToList();
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
             Assert.AreEqual( 0, actual.Count() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void XOrTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void XOrTestCaseNullCheck()
         {
             ISpecification<String> left = null;
             left.XOr( x => true );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void XOrTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void XOrTestCaseNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;

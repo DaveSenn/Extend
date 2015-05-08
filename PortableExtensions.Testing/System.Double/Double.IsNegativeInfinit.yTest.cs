@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void IsNegativeInfinityTestCase ()
+        public void IsNegativeInfinityTestCase()
         {
             var number = 10.5;
             var expected = false;

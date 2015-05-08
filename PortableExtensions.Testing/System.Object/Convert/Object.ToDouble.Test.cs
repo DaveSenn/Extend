@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDoubleTestCase ()
+        public void ToDoubleTestCase()
         {
             var expected = 100.12;
             var value = expected.ToString();
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToDoubleTestCase1 ()
+        public void ToDoubleTestCase1()
         {
             var expected = 100.12;
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -30,22 +30,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDoubleTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDoubleTestCase1NullCheck()
         {
             ObjectEx.ToDouble( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDoubleTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDoubleTestCase1NullCheck1()
         {
             ObjectEx.ToDouble( "false", null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDoubleTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDoubleTestCaseNullCheck()
         {
             ObjectEx.ToDouble( null );
         }

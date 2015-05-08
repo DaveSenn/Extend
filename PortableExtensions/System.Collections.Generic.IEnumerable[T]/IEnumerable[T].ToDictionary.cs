@@ -25,7 +25,7 @@ namespace PortableExtensions
         ///     Returns a dictionary of groupings such that the key of the dictionary is TKey type and the value is List of
         ///     TValue type.
         /// </returns>
-        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue> (
+        public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(
             this IEnumerable<IGrouping<TKey, TValue>> groupings )
         {
             groupings.ThrowIfNull( () => groupings );

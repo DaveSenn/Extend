@@ -12,14 +12,14 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AnyAndNotNullNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AnyAndNotNullNullCheck1()
         {
             new List<String>().AnyAndNotNull( null );
         }
 
         [Test]
-        public void PathCombineTestCase ()
+        public void PathCombineTestCase()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull() );
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PathCombineTestCase1 ()
+        public void PathCombineTestCase1()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull( x => true ) );

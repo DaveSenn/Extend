@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void PercentOfTestCase ()
+        public void PercentOfTestCase()
         {
             Double number = 1000;
             var expected = 50;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PercentOfTestCase1 ()
+        public void PercentOfTestCase1()
         {
             Double number = 1000;
             var expected = 50;
@@ -31,14 +31,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (DivideByZeroException) )]
-        public void PercentOfTestCase1DivideByZero ()
+        [ExpectedException( typeof (DivideByZeroException) )]
+        public void PercentOfTestCase1DivideByZero()
         {
             DoubleEx.PercentOf( 0, (Double) 100 );
         }
 
         [Test]
-        public void PercentOfTestCase2 ()
+        public void PercentOfTestCase2()
         {
             Double number = 1000;
             var expected = 50;
@@ -48,15 +48,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (DivideByZeroException) )]
-        public void PercentOfTestCase2DivideByZero ()
+        [ExpectedException( typeof (DivideByZeroException) )]
+        public void PercentOfTestCase2DivideByZero()
         {
             DoubleEx.PercentOf( 0, (Int64) 100 );
         }
 
         [Test]
-        [ExpectedException ( typeof (DivideByZeroException) )]
-        public void PercentOfTestCaseDivideByZero ()
+        [ExpectedException( typeof (DivideByZeroException) )]
+        public void PercentOfTestCaseDivideByZero()
         {
             DoubleEx.PercentOf( 0, 100 );
         }
