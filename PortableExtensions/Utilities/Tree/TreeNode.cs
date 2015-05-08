@@ -75,9 +75,7 @@ namespace PortableExtensions
         /// <param name="value">The value of the node.</param>
         public TreeNode( T value )
             : this( value, null, null )
-        {
-            Initialize( value );
-        }
+        {}
 
         /// <summary>
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
@@ -636,39 +634,7 @@ namespace PortableExtensions
             for ( var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent )
                 yield return ancestor;
         }
-
-        /// <summary>
-        ///     Initialize the tree node.
-        /// </summary>
-        /// <param name="value">The value of the tree node.</param>
-        /// <param name="parent">The parent of the tree node.</param>
-        /// <param name="children">The children of the node.</param>
-        private void Initialize( T value,
-                                 ITreeNode<T> parent = null,
-                                 ITreeNodeCollection<T> children = null )
-        {
-            Value = value;
-            Parent = parent;
-            Children = children ?? new TreeNodeCollection<T>( this );
-            if ( Parent != null )
-            {
-                if ( !Parent.Children.Contains( this ) )
-                    Parent.Children.Add( this );
-
-                DisposeTraversalDirection = Parent.DisposeTraversalDirection;
-                SearchTraversalDirection = Parent.SearchTraversalDirection;
-                AncestorsTraversalDirection = Parent.AncestorsTraversalDirection;
-                DescendantsTraversalDirection = Parent.DescendantsTraversalDirection;
-            }
-            else
-            {
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-                AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
-                DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
-            }
-        }
-
+        
         #endregion
 
         #region IDisposable
