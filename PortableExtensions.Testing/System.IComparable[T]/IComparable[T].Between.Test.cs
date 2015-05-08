@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void BetweenTestCase ()
+        public void BetweenTestCase()
         {
             var value = 100;
             var min = 50;
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenTestCase1 ()
+        public void BetweenTestCase1()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -40,7 +40,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenTestCase3 ()
+        public void BetweenTestCase3()
         {
             const Int32 value = 200;
             const Int32 min = 50;
@@ -51,7 +51,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void BetweenTestCase4 ()
+        public void BetweenTestCase4()
         {
             const Int32 value = 4;
             const Int32 min = 50;
@@ -62,22 +62,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenTestCaseNullCheck()
         {
             IComparableTEx.Between( null, "", "" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenTestCaseNullCheck1()
         {
             "".Between( null, "" );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void BetweenTestCaseNullCheck2 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void BetweenTestCaseNullCheck2()
         {
             "".Between( "", null );
         }

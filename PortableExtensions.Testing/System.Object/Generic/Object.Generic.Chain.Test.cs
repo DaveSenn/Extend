@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ChainTestCase ()
+        public void ChainTestCase()
         {
             var list = new List<String>();
             var actual = list.Chain( x => x.Add( "Test1" ) );
@@ -24,15 +24,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ChainTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ChainTestCaseNullCheck()
         {
             new List<String>().Chain( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ChainTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ChainTestCaseNullCheck1()
         {
             List<String> list = null;
             list.Chain( x => { } );

@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDecimalTestCase ()
+        public void ToDecimalTestCase()
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo( "en-US" );
 
@@ -24,7 +24,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToDecimalTestCase1 ()
+        public void ToDecimalTestCase1()
         {
             var expected = new Decimal( 100.12 );
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -33,22 +33,22 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDecimalTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCase1NullCheck()
         {
             ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDecimalTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCase1NullCheck1()
         {
             ObjectEx.ToDecimal( "false", null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToDecimalTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToDecimalTestCaseNullCheck()
         {
             ObjectEx.ToDecimal( null );
         }

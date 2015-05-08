@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstInt32TestCase ()
+        public void ExtractFirstInt32TestCase()
         {
             var value0 = 100;
             var value1 = 102;
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCase1 ()
+        public void ExtractFirstInt32TestCase1()
         {
             var sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt32();
@@ -41,29 +41,29 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException()
         {
             var actual = "100".ExtractFirstInt32( 100 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException1 ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException1()
         {
             var actual = "100".ExtractFirstInt32( -1 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractFirstInt32TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractFirstInt32TestCaseNullCheck()
         {
             StringEx.ExtractFirstInt32( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractFirstInt32TestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractFirstInt32TestCaseNullCheck1()
         {
             StringEx.ExtractFirstInt32( null, 0 );
         }

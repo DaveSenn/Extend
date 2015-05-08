@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void DaysInMonthTestCase ()
+        public void DaysInMonthTestCase()
         {
             var year = RandomValueEx.GetRandomInt32( 1990, 2015 );
             var month = RandomValueEx.GetRandomInt32( 1, 12 );

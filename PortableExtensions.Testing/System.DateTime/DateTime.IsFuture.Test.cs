@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsFutureTestCase ()
+        public void IsFutureTestCase()
         {
             var dateTime = DateTime.Now.Subtract( 1.ToMilliseconds() );
             var actual = dateTime.IsFuture();

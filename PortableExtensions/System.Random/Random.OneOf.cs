@@ -22,12 +22,12 @@ namespace PortableExtensions
         /// <param name="random">The random to use.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns randomly one of the given values.</returns>
-        public static T RandomOne<T> ( this Random random, params T[] values )
+        public static T RandomOne<T>( this Random random, params T[] values )
         {
             random.ThrowIfNull( () => random );
             values.ThrowIfNull( () => values );
 
-            return values [random.Next( values.Length )];
+            return values[random.Next( values.Length )];
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace PortableExtensions
         /// <param name="random">The random to use.</param>
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <returns>Returns randomly one of the given values.</returns>
-        public static T RandomOne<T> ( this Random random, IEnumerable<T> values )
+        public static T RandomOne<T>( this Random random, IEnumerable<T> values )
         {
             random.ThrowIfNull( () => random );
             values.ThrowIfNull( () => values );

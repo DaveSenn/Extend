@@ -19,10 +19,10 @@ namespace PortableExtensions
         /// <param name="intersectingStartDate">The intersecting start date.</param>
         /// <param name="intersectingEndDate">The intersecting end date.</param>
         /// <returns>Returns true if the two date ranges intersects, otherwise false.</returns>
-        public static Boolean Intersects ( this DateTime startDate,
-                                           DateTime endDate,
-                                           DateTime intersectingStartDate,
-                                           DateTime intersectingEndDate )
+        public static Boolean Intersects( this DateTime startDate,
+                                          DateTime endDate,
+                                          DateTime intersectingStartDate,
+                                          DateTime intersectingEndDate )
         {
             return intersectingEndDate >= startDate && intersectingStartDate <= endDate;
         }

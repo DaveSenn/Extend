@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The date time to check.</param>
         /// <returns>Returns true if the date time value is today, otherwise false.</returns>
-        public static Boolean IsToday ( this DateTime dateTime )
+        public static Boolean IsToday( this DateTime dateTime )
         {
             return dateTime.Date == DateTime.Today;
         }

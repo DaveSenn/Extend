@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <param name="array">The array whose elements need to be cleared.</param>
         /// <param name="index">The starting index of the range of elements to clear.</param>
         /// <param name="length">The number of elements to clear.</param>
-        public static void Clear ( this Array array, Int32 index, Int32 length )
+        public static void Clear( this Array array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( () => array );
 

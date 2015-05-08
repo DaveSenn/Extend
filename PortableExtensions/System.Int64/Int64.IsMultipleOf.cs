@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="value">The Int64 to check.</param>
         /// <param name="factor">The factor.</param>
         /// <returns>>Returns true if the Int64 value is a multiple of the given factor.</returns>
-        public static Boolean IsMultipleOf ( this Int64 value, Int64 factor )
+        public static Boolean IsMultipleOf( this Int64 value, Int64 factor )
         {
             return value % factor == 0;
         }

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void IsMultipleOfTestCase ()
+        public void IsMultipleOfTestCase()
         {
             Int64 value = RandomValueEx.GetRandomInt32();
             Int64 factor = RandomValueEx.GetRandomInt32();

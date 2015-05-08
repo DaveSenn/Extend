@@ -45,9 +45,10 @@ namespace PortableExtensions
         ///     Gets random string.
         /// </summary>
         /// <returns>A random string.</returns>
-        public static String GetRandomString ()
+        public static String GetRandomString()
         {
-            return Guid.NewGuid().ToString();
+            return Guid.NewGuid()
+                       .ToString();
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="numberOfItems">The number of items to generate.</param>
         /// <returns>A list of random strings.</returns>
-        public static List<String> GetRandomStrings ( Int32? numberOfItems = null )
+        public static List<String> GetRandomStrings( Int32? numberOfItems = null )
         {
             var list = new List<String>();
             numberOfItems = numberOfItems ?? GetRandomInt32( 1, 1000 );
@@ -76,7 +77,7 @@ namespace PortableExtensions
         ///     <value>Int32.MaxValue</value>
         /// </param>
         /// <returns>A random integer value.</returns>
-        public static Int32 GetRandomInt32 ( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
+        public static Int32 GetRandomInt32( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
         {
             if ( max <= min )
                 throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
@@ -96,7 +97,7 @@ namespace PortableExtensions
         ///     <value>Int16.MaxValue</value>
         /// </param>
         /// <returns>A random integer value.</returns>
-        public static Int16 GetRandomInt16 ( Int16 min = Int16.MinValue, Int16 max = Int16.MaxValue )
+        public static Int16 GetRandomInt16( Int16 min = Int16.MinValue, Int16 max = Int16.MaxValue )
         {
             if ( max <= min )
                 throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
@@ -108,7 +109,7 @@ namespace PortableExtensions
         ///     Gets a random Boolean value.
         /// </summary>
         /// <returns>A random Boolean value.</returns>
-        public static Boolean GetRandomBoolean ()
+        public static Boolean GetRandomBoolean()
         {
             return GetRandomInt32() % 2 == 0;
         }
@@ -123,7 +124,7 @@ namespace PortableExtensions
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
         /// <returns>Returns the generated random date-time value.</returns>
-        public static DateTime GetRandomDateTime ( DateTime? min = null, DateTime? max = null )
+        public static DateTime GetRandomDateTime( DateTime? min = null, DateTime? max = null )
         {
             min = min ?? new DateTime( 1753, 01, 01 );
             max = max ?? new DateTime( 9999, 12, 31 );
@@ -143,9 +144,10 @@ namespace PortableExtensions
         /// </summary>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>A random value of the enumeration of the specified type.</returns>
-        public static T GetRandomEnum<T> () where T : struct
+        public static T GetRandomEnum<T>() where T : struct
         {
-            var values = Enum.GetValues( typeof (T) ).Cast<T>();
+            var values = Enum.GetValues( typeof (T) )
+                             .Cast<T>();
             var enumerable = values as T[];
             return enumerable.ElementAt( Rnd.Next( 0, enumerable.Count() ) );
         }
@@ -162,7 +164,7 @@ namespace PortableExtensions
         ///     <value>Int64.MaxValue</value>
         /// </param>
         /// <returns>A random long value.</returns>
-        public static Int64 GetRandomInt64 ( Int64 min = Int64.MinValue, Int64 max = Int64.MaxValue )
+        public static Int64 GetRandomInt64( Int64 min = Int64.MinValue, Int64 max = Int64.MaxValue )
         {
             if ( max <= min )
                 throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );

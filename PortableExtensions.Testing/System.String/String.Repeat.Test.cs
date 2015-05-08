@@ -11,14 +11,14 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void RepeatTestCase ()
+        public void RepeatTestCase()
         {
             var actual = StringEx.Repeat( null, 10 );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void RepeatTestCase1 ()
+        public void RepeatTestCase1()
         {
             var actual = "".Repeat( 10 );
             Assert.AreEqual( String.Empty, actual );
@@ -28,14 +28,14 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void RepeatTestCase2 ()
+        public void RepeatTestCase2()
         {
             var actual = "a".Repeat( 10 );
             Assert.AreEqual( "aaaaaaaaaa", actual );
         }
 
         [Test]
-        public void RepeatTestCase3 ()
+        public void RepeatTestCase3()
         {
             var actual = "test".Repeat( 2 );
             Assert.AreEqual( "testtest", actual );

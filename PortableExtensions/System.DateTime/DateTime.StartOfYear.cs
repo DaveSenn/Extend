@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="year">The year to get the start of.</param>
         /// <returns>Returns the start of the given year with time set to "00:00:00:000".</returns>
-        public static DateTime StartOfYear ( this DateTime year )
+        public static DateTime StartOfYear( this DateTime year )
         {
             return new DateTime( year.Year, 1, 1 );
         }

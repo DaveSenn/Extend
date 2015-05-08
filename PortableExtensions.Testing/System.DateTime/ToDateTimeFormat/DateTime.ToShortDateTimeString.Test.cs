@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToShortDateTimeStringTestCase ()
+        public void ToShortDateTimeStringTestCase()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "g" );
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToShortDateTimeStringTestCase1 ()
+        public void ToShortDateTimeStringTestCase1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "g", DateTimeFormatInfo.CurrentInfo );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ToShortDateTimeStringTestCase2 ()
+        public void ToShortDateTimeStringTestCase2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "g", CultureInfo.InvariantCulture );

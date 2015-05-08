@@ -30,7 +30,7 @@ namespace PortableExtensions
         ///     Returns an <see cref="IDictionary{TKey,TValue}" /> that contains the concatenated elements of the two input
         ///     sequences.
         /// </returns>
-        public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey> (
+        public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey>(
             this IEnumerable<KeyValuePair<TValue, TKey>> first,
             IEnumerable<KeyValuePair<TValue, TKey>> second )
         {
@@ -39,7 +39,9 @@ namespace PortableExtensions
 
             return first.Concat( second )
                         .GroupBy( x => x.Key )
-                        .ToDictionary( x => x.Key, x => x.First().Value );
+                        .ToDictionary( x => x.Key,
+                                       x => x.First()
+                                             .Value );
         }
     }
 }

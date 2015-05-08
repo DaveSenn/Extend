@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <typeparam name="TException">The type of the exception to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException> ( this Action action )
+        public static Boolean SafeExecuteExcept<TException>( this Action action )
             where TException : Exception
         {
             return action.SafeExecuteExcept( new[]
@@ -34,7 +34,7 @@ namespace PortableExtensions
         /// <typeparam name="TException2">The second exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2> ( this Action action )
+        public static Boolean SafeExecuteExcept<TException1, TException2>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
         {
@@ -53,7 +53,7 @@ namespace PortableExtensions
         /// <typeparam name="TException3">The third exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3> ( this Action action )
+        public static Boolean SafeExecuteExcept<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -75,7 +75,7 @@ namespace PortableExtensions
         /// <typeparam name="TException4">The fourth exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept<TException1, TException2, TException3, TException4> ( this Action action )
+        public static Boolean SafeExecuteExcept<TException1, TException2, TException3, TException4>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
@@ -97,7 +97,7 @@ namespace PortableExtensions
         /// <param name="action">The action to execute.</param>
         /// <param name="exceptionsToThrow">The exceptions to throw.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecuteExcept ( this Action action, params Type[] exceptionsToThrow )
+        public static Boolean SafeExecuteExcept( this Action action, params Type[] exceptionsToThrow )
         {
             action.ThrowIfNull( () => action );
             exceptionsToThrow.ThrowIfNull( () => exceptionsToThrow );

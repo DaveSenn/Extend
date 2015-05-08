@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <param name="time">The time to check.</param>
         /// <param name="timeToCompare">The time to compare.</param>
         /// <returns>Returns true if the time is equals, otherwise false.</returns>
-        public static Boolean IsTimeEquals ( this DateTime time, DateTime timeToCompare )
+        public static Boolean IsTimeEquals( this DateTime time, DateTime timeToCompare )
         {
             return time.TimeOfDay == timeToCompare.TimeOfDay;
         }

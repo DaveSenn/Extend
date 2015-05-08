@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a letter or a decimal digit, otherwise false.</returns>
-        public static Boolean IsLetterOrDigit ( this Char c )
+        public static Boolean IsLetterOrDigit( this Char c )
         {
             return Char.IsLetterOrDigit( c );
         }

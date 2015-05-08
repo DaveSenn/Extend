@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void IsNotNullOrEmptyTestCase ()
+        public void IsNotNullOrEmptyTestCase()
         {
             List<String> list = null;
             Assert.IsFalse( list.IsNotNullOrEmpty() );

@@ -11,16 +11,17 @@ namespace PortableExtensions
     public partial class StringExTest
     {
         [Test]
-        public void SaveToBooleanTestCase ()
+        public void SaveToBooleanTestCase()
         {
             var expected = RandomValueEx.GetRandomBoolean();
-            var actual = expected.ToString().SaveToBoolean();
+            var actual = expected.ToString()
+                                 .SaveToBoolean();
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void SaveToBooleanTestCase1 ()
+        public void SaveToBooleanTestCase1()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = "InvalidValue".SaveToBoolean( expected );
@@ -29,15 +30,16 @@ namespace PortableExtensions
         }
 
         [Test]
-        public void SaveToBooleanTestCase2 ()
+        public void SaveToBooleanTestCase2()
         {
-            var actual = true.ToString().SaveToBoolean( false );
+            var actual = true.ToString()
+                             .SaveToBoolean( false );
 
             Assert.AreEqual( true, actual );
         }
 
         [Test]
-        public void SaveToBooleanTestCase3 ()
+        public void SaveToBooleanTestCase3()
         {
             var actual = "InvalidValue".SaveToBoolean();
 
@@ -45,8 +47,8 @@ namespace PortableExtensions
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SaveToBooleanTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SaveToBooleanTestCaseNullCheck()
         {
             StringEx.SaveToBoolean( null );
         }

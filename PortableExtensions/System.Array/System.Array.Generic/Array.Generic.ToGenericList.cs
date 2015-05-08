@@ -21,12 +21,13 @@ namespace PortableExtensions
         /// <typeparam name="TArray">The type of the items in the array.</typeparam>
         /// <typeparam name="TResult">The type of the items in the list.</typeparam>
         /// <returns>The items of the array as list.</returns>
-        public static List<TResult> ToGenericList<TArray, TResult> ( this TArray[] items, Func<TArray, TResult> selector )
+        public static List<TResult> ToGenericList<TArray, TResult>( this TArray[] items, Func<TArray, TResult> selector )
         {
             items.ThrowIfNull( () => items );
             selector.ThrowIfNull( () => selector );
 
-            return items.Select( selector ).ToList();
+            return items.Select( selector )
+                        .ToList();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void TakeUntilTestCase ()
+        public void TakeUntilTestCase()
         {
             var list = new List<String>();
             var result = list.TakeUntil( x => true );
@@ -28,24 +28,25 @@ namespace PortableExtensions.Testing
             {
                 counter++;
                 return counter > 5;
-            } ).ToList();
+            } )
+                                 .ToList();
             Assert.AreEqual( 5, resultList.Count );
 
             for ( var i = 0; i < resultList.Count; i++ )
-                Assert.AreEqual( list [i], resultList [i] );
+                Assert.AreEqual( list[i], resultList[i] );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TakeUntilTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TakeUntilTestCaseNullCheck()
         {
             List<Object> list = null;
             list.TakeUntil( x => true );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TakeUntilTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TakeUntilTestCaseNullCheck1()
         {
             new List<Object>().TakeUntil( null );
         }

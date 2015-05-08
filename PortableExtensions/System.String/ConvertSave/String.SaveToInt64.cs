@@ -16,7 +16,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>Returns the converted Int64.</returns>
-        public static Int64 SaveToInt64 ( this String value, Int64? defaultValue = null )
+        public static Int64 SaveToInt64( this String value, Int64? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
 
@@ -37,10 +37,10 @@ namespace PortableExtensions
         /// <param name="formatProvider">An object that supplies culture-specific formatting information about value.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>Returns the converted Int64.</returns>
-        public static Int64 SaveToInt64 ( this String value,
-                                          NumberStyles numberStyle,
-                                          IFormatProvider formatProvider,
-                                          Int64? defaultValue = null )
+        public static Int64 SaveToInt64( this String value,
+                                         NumberStyles numberStyle,
+                                         IFormatProvider formatProvider,
+                                         Int64? defaultValue = null )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

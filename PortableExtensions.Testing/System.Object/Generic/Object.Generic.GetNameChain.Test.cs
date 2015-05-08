@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void GetNameChainOverload1TestCase ()
+        public void GetNameChainOverload1TestCase()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             var actual = this.GetNameChain( () => myInt );
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase1 ()
+        public void GetNameChainOverload1TestCase1()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.Age );
@@ -30,7 +30,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase2 ()
+        public void GetNameChainOverload1TestCase2()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( () => model.SubModel.Foo );
@@ -39,7 +39,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase3 ()
+        public void GetNameChainOverload1TestCase3()
         {
             var model = new TestModel();
             Expression<Func<Object>> expression1 = () => model.Age;
@@ -49,7 +49,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase4 ()
+        public void GetNameChainOverload1TestCase4()
         {
             var model = new TestModel();
             Expression<Func<Object>> expression1 = () => model.SubModel.Foo;
@@ -59,23 +59,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void GetNameChainOverload1TestCaseNotSupportedException ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetNameChainOverload1TestCaseNotSupportedException()
         {
             const Int32 myInt = 100;
             this.GetNameChain( () => myInt );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameChainOverload1TestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetNameChainOverload1TestCaseNullCheck()
         {
             Expression<Func<Object>> expression = null;
             "".GetNameChain( expression );
         }
 
         [Test]
-        public void GetNameChainTestCase ()
+        public void GetNameChainTestCase()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             var actual = this.GetNameChain( x => myInt );
@@ -84,7 +84,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase1 ()
+        public void GetNameChainTestCase1()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.Age );
@@ -93,7 +93,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase2 ()
+        public void GetNameChainTestCase2()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.SubModel.Foo );
@@ -102,7 +102,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase3 ()
+        public void GetNameChainTestCase3()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
@@ -112,7 +112,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase4 ()
+        public void GetNameChainTestCase4()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.SubModel.Foo;
@@ -122,7 +122,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase5 ()
+        public void GetNameChainTestCase5()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => PropertyChanged );
@@ -131,16 +131,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (NotSupportedException) )]
-        public void GetNameChainTestCaseNotSupportedException ()
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetNameChainTestCaseNotSupportedException()
         {
             const Int32 myInt = 100;
             this.GetNameChain( x => myInt );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetNameChainTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetNameChainTestCaseNullCheck()
         {
             Expression<Func<Object, Object>> expression = null;
             "".GetNameChain( expression );

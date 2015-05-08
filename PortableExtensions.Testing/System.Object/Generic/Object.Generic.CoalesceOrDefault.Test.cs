@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceOrDefault1TestCase ()
+        public void CoalesceOrDefault1TestCase()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -21,7 +21,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase ()
+        public void CoalesceOrDefaultTestCase()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -34,7 +34,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase2 ()
+        public void CoalesceOrDefaultTestCase2()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -47,8 +47,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void CoalesceOrDefaultTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void CoalesceOrDefaultTestCase2NullCheck()
         {
             String s = null;
             Func<String> func = null;
@@ -56,7 +56,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase3 ()
+        public void CoalesceOrDefaultTestCase3()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -66,8 +66,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void CoalesceOrDefaultTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void CoalesceOrDefaultTestCaseNullCheck()
         {
             String s = null;
             String s1 = null;

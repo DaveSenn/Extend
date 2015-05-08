@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable.</param>
         /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
-        public static IEnumerable<T> Randomize<T> ( this IEnumerable<T> enumerable )
+        public static IEnumerable<T> Randomize<T>( this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( () => enumerable );
 

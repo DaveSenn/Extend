@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a long date short time string.</returns>
-        public static String ToLongDateShortTimeString ( this DateTime dateTime )
+        public static String ToLongDateShortTimeString( this DateTime dateTime )
         {
             return dateTime.ToString( "f", DateTimeFormatInfo.CurrentInfo );
         }
@@ -29,7 +29,7 @@ namespace PortableExtensions
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="formatInfo">The date time format info.</param>
         /// <returns>The given value converted to a long date short time string.</returns>
-        public static String ToLongDateShortTimeString ( this DateTime dateTime, DateTimeFormatInfo formatInfo )
+        public static String ToLongDateShortTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
             formatInfo.ThrowIfNull( () => formatInfo );
 
@@ -43,7 +43,7 @@ namespace PortableExtensions
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="culture">The culture.</param>
         /// <returns>The given value converted to a long date short time string.</returns>
-        public static String ToLongDateShortTimeString ( this DateTime dateTime, CultureInfo culture )
+        public static String ToLongDateShortTimeString( this DateTime dateTime, CultureInfo culture )
         {
             culture.ThrowIfNull( () => culture );
 

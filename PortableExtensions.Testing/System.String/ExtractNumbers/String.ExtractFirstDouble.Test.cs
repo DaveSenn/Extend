@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstDoubleTestCase ()
+        public void ExtractFirstDoubleTestCase()
         {
             var value0 = 100.2;
             var value1 = 100.212;
@@ -32,7 +32,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCase1 ()
+        public void ExtractFirstDoubleTestCase1()
         {
             var sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDouble();
@@ -41,31 +41,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void ExtractFirstDoubleTestCase1ArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstDoubleTestCase1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             sValue.ExtractFirstDouble( sValue.Length );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentOutOfRangeException) )]
-        public void ExtractFirstDoubleTestCase2ArgumentOutOfRangeException ()
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void ExtractFirstDoubleTestCase2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             sValue.ExtractFirstDouble( -1 );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractFirstDoubleTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractFirstDoubleTestCaseNullCheck()
         {
             StringEx.ExtractFirstDouble( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractFirstDoubleTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractFirstDoubleTestCaseNullCheck1()
         {
             StringEx.ExtractFirstDouble( null, 0 );
         }

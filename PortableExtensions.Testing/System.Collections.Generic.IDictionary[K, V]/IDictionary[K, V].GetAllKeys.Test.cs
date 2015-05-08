@@ -13,21 +13,22 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void GetAllKeysTestCase ()
+        public void GetAllKeysTestCase()
         {
             var dictionary = new Dictionary<String, String>
             {
-                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()},
-                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()}
+                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() },
+                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
             };
 
-            var allKeys = dictionary.GetAllKeys().ToList();
+            var allKeys = dictionary.GetAllKeys()
+                                    .ToList();
             Assert.IsTrue( dictionary.All( x => allKeys.Contains( x.Key ) ) );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAllKeysTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAllKeysTestCaseNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
             dictionary.GetAllKeys();

@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsSameMonthAndYearTestCase ()
+        public void IsSameMonthAndYearTestCase()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
@@ -20,7 +20,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSameMonthAndYearTestCase1 ()
+        public void IsSameMonthAndYearTestCase1()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2014, 08, 1 );
@@ -29,7 +29,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSameMonthAndYearTestCase2 ()
+        public void IsSameMonthAndYearTestCase2()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2014, 09, 1 );
@@ -38,7 +38,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void IsSameMonthAndYearTestCase3 ()
+        public void IsSameMonthAndYearTestCase3()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2013, 08, 1 );

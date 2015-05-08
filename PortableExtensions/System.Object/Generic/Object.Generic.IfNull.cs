@@ -12,7 +12,7 @@
         /// <param name="alternativeValue">The alternative value.</param>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <returns>Returns the value or the alternative value.</returns>
-        public static T IfNull<T> ( this T value, T alternativeValue ) where T : class
+        public static T IfNull<T>( this T value, T alternativeValue ) where T : class
         {
             return value ?? alternativeValue;
         }

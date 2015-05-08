@@ -10,7 +10,7 @@ namespace PortableExtensions.Testing
     public partial class BooleanExTest
     {
         [Test]
-        public void SelectValueTestCase ()
+        public void SelectValueTestCase()
         {
             var trueValue = "true";
             var falseValue = "false";

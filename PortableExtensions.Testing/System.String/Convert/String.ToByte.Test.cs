@@ -12,40 +12,42 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToByteTestCase ()
+        public void ToByteTestCase()
         {
             const Byte value = (Byte) 1;
-            var actual = value.ToString().ToByte();
+            var actual = value.ToString()
+                              .ToByte();
 
             Assert.AreEqual( value, actual );
         }
 
         [Test]
-        public void ToByteTestCase1 ()
+        public void ToByteTestCase1()
         {
             const Byte value = (Byte) 1;
-            var actual = value.ToString( CultureInfo.InvariantCulture ).ToByte( CultureInfo.InvariantCulture );
+            var actual = value.ToString( CultureInfo.InvariantCulture )
+                              .ToByte( CultureInfo.InvariantCulture );
 
             Assert.AreEqual( value, actual );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToByteTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck()
         {
             StringEx.ToByte( null, CultureInfo.InvariantCulture );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToByteTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToByteTestCase1NullCheck1()
         {
             "".ToByte( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ToByteTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ToByteTestCaseNullCheck()
         {
             StringEx.ToByte( null );
         }

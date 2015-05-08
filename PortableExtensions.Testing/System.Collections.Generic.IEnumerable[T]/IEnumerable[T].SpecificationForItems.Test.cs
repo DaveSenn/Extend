@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void SpecificationForItemsTestCase ()
+        public void SpecificationForItemsTestCase()
         {
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void SpecificationForItemsTestCase1 ()
+        public void SpecificationForItemsTestCase1()
         {
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
@@ -33,29 +33,31 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void SpecificationForItemsTestCase2 ()
+        public void SpecificationForItemsTestCase2()
         {
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3, "msg" );
 
-            var result = actual.IsSatisfiedByWithMessages( "1234" ).ToList();
+            var result = actual.IsSatisfiedByWithMessages( "1234" )
+                               .ToList();
             Assert.AreEqual( 0, result.Count );
         }
 
         [Test]
-        public void SpecificationForItemsTestCase3 ()
+        public void SpecificationForItemsTestCase3()
         {
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3, "msg" );
 
-            var result = actual.IsSatisfiedByWithMessages( "123" ).ToList();
+            var result = actual.IsSatisfiedByWithMessages( "123" )
+                               .ToList();
             Assert.AreEqual( 1, result.Count );
             Assert.AreEqual( 1, result.Count( x => x == "msg" ) );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void SpecificationForItemsTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SpecificationForItemsTestCaseNullCheck()
         {
             var targets = new List<String>();
             Func<String, Boolean> expression = null;

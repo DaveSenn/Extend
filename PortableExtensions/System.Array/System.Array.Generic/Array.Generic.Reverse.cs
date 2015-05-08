@@ -18,7 +18,7 @@ namespace PortableExtensions
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The one-dimensional array to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
-        public static T[] Reverse<T> ( this T[] array )
+        public static T[] Reverse<T>( this T[] array )
         {
             array.ThrowIfNull( () => array );
 
@@ -35,7 +35,7 @@ namespace PortableExtensions
         /// <param name="index">The starting index of the section to reverse.</param>
         /// <param name="length">The number of elements in the section to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
-        public static T[] Reverse<T> ( this T[] array, Int32 index, Int32 length )
+        public static T[] Reverse<T>( this T[] array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( () => array );
 

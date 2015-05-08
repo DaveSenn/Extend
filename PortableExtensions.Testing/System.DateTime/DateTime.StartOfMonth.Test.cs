@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void StartOfMonthTestCase ()
+        public void StartOfMonthTestCase()
         {
             var dateTime = DateTime.Today;
             var expected = new DateTime( dateTime.Year, dateTime.Month, 1 );

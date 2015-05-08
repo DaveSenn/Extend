@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public class AttributeDefinitionTest
     {
         [Test]
-        public void AttributesTestCase ()
+        public void AttributesTestCase()
         {
             var target = new AttributeDefinition<DisplayAttribute>();
             var expected = new List<DisplayAttribute>();
@@ -23,7 +23,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void CtorTestCase ()
+        public void CtorTestCase()
         {
             var target = new AttributeDefinition<DisplayAttribute>();
             Assert.IsNotNull( target.Attributes );
@@ -31,10 +31,11 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void PropertyTestCase ()
+        public void PropertyTestCase()
         {
             var target = new AttributeDefinition<DisplayAttribute>();
-            var expected = typeof (DisplayAttribute).GetProperties().First();
+            var expected = typeof (DisplayAttribute).GetProperties()
+                                                    .First();
             target.Property = expected;
 
             Assert.AreSame( expected, target.Property );

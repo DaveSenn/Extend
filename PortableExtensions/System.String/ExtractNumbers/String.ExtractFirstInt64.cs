@@ -16,9 +16,10 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted Int64.</returns>
-        public static Int64 ExtractFirstInt64 ( this String value, Int32 startIndex = 0 )
+        public static Int64 ExtractFirstInt64( this String value, Int32 startIndex = 0 )
         {
-            return ExtractNumber( value, startIndex ).ToInt64();
+            return ExtractNumber( value, startIndex )
+                .ToInt64();
         }
     }
 }

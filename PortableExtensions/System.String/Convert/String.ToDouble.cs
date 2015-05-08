@@ -15,7 +15,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The double.</returns>
-        public static Double ToDouble ( this String value )
+        public static Double ToDouble( this String value )
         {
             value.ThrowIfNull( () => value );
 
@@ -30,7 +30,7 @@ namespace PortableExtensions
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The double.</returns>
-        public static Double ToDouble ( this String value, IFormatProvider formatProvider )
+        public static Double ToDouble( this String value, IFormatProvider formatProvider )
         {
             value.ThrowIfNull( () => value );
             formatProvider.ThrowIfNull( () => formatProvider );

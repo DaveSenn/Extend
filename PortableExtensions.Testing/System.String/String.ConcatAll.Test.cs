@@ -11,14 +11,14 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ConcatAllTestCase ()
+        public void ConcatAllTestCase()
         {
             var actual = "test".ConcatAll( "0", "1", "2" );
             Assert.AreEqual( "test012", actual );
         }
 
         [Test]
-        public void ConcatAllTestCase1 ()
+        public void ConcatAllTestCase1()
         {
             var actual = new[]
             {
@@ -31,15 +31,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllTestCase1NullCheck()
         {
             String[] values = null;
             var actual = values.ConcatAll();
         }
 
         [Test]
-        public void ConcatAllTestCase2 ()
+        public void ConcatAllTestCase2()
         {
             var actual = "test".ConcatAll( new Object[]
             {
@@ -51,15 +51,15 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllTestCase2NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllTestCase2NullCheck()
         {
             Object[] values = null;
             var actual = "test".ConcatAll( values );
         }
 
         [Test]
-        public void ConcatAllTestCase3 ()
+        public void ConcatAllTestCase3()
         {
             var actual = new Object[]
             {
@@ -72,16 +72,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllTestCase3NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllTestCase3NullCheck()
         {
             Object[] values = null;
             var actual = values.ConcatAll();
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ConcatAllTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ConcatAllTestCaseNullCheck()
         {
             String[] values = null;
             var actual = "test".ConcatAll( values );

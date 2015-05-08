@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void ToHoursTestCase ()
+        public void ToHoursTestCase()
         {
             var number = 10.5;
             var expected = TimeSpan.FromHours( number );

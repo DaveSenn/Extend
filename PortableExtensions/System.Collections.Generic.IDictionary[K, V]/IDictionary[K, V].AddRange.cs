@@ -23,8 +23,8 @@ namespace PortableExtensions
         /// <typeparam name="TKey">The type of the keys.</typeparam>
         /// <typeparam name="TValue">The type of the values.</typeparam>
         /// <returns>Returns the dictionary containing all the items..</returns>
-        public static IDictionary<TKey, TValue> AddRange<TKey, TValue> ( this IDictionary<TKey, TValue> dictionary,
-                                                                         IDictionary<TKey, TValue> otherDictionary )
+        public static IDictionary<TKey, TValue> AddRange<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+                                                                        IDictionary<TKey, TValue> otherDictionary )
         {
             dictionary.ThrowIfNull( () => dictionary );
             otherDictionary.ThrowIfNull( () => otherDictionary );

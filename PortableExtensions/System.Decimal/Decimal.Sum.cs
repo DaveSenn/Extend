@@ -20,7 +20,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Decimal Sum ( this Decimal value, params Decimal[] values )
+        public static Decimal Sum( this Decimal value, params Decimal[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -37,7 +37,7 @@ namespace PortableExtensions
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Decimal? Sum ( this Decimal? value, params Decimal?[] values )
+        public static Decimal? Sum( this Decimal? value, params Decimal?[] values )
         {
             values.ThrowIfNull( () => values );
 
@@ -57,7 +57,7 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Decimal Sum<TSource> ( this TSource value, Func<TSource, Decimal> selector, params TSource[] values )
+        public static Decimal Sum<TSource>( this TSource value, Func<TSource, Decimal> selector, params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );
@@ -78,9 +78,9 @@ namespace PortableExtensions
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Decimal? Sum<TSource> ( this TSource value,
-                                              Func<TSource, Decimal?> selector,
-                                              params TSource[] values )
+        public static Decimal? Sum<TSource>( this TSource value,
+                                             Func<TSource, Decimal?> selector,
+                                             params TSource[] values )
         {
             selector.ThrowIfNull( () => selector );
             values.ThrowIfNull( () => values );

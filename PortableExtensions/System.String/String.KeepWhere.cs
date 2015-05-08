@@ -17,12 +17,14 @@ namespace PortableExtensions
         /// <param name="str">The input string.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns a string which only contains the characters matching the given predicate.</returns>
-        public static String KeepWhere ( this String str, Func<Char, Boolean> predicate )
+        public static String KeepWhere( this String str, Func<Char, Boolean> predicate )
         {
             str.ThrowIfNull( () => str );
             predicate.ThrowIfNull( () => predicate );
 
-            return new String( str.ToCharArray().Where( predicate ).ToArray() );
+            return new String( str.ToCharArray()
+                                  .Where( predicate )
+                                  .ToArray() );
         }
     }
 }

@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDateTimeExactTestCase ()
+        public void TryParsDateTimeExactTestCase()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -28,7 +28,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase1 ()
+        public void TryParsDateTimeExactTestCase1()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -43,8 +43,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCase1NullCheck()
         {
             var outValue = DateTime.Now;
             StringEx.TryParsDateTimeExact( null,
@@ -58,8 +58,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCase1NullCheck1()
         {
             var outValue = DateTime.Now;
             String[] s = null;
@@ -67,8 +67,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCase1NullCheck2 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCase1NullCheck2()
         {
             var outValue = DateTime.Now;
             "".TryParsDateTimeExact( new[]
@@ -81,12 +81,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase2 ()
+        public void TryParsDateTimeExactTestCase2()
         {
             const String dateString = "5/01/2009 09:00";
 
             DateTime actual;
-            var result = dateString.TryParsDateTimeExact( new[] {"MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm"},
+            var result = dateString.TryParsDateTimeExact( new[] { "MM/dd/yyyy hh:mm", "M/dd/yyyy hh:mm" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
                                                           out actual );
@@ -97,12 +97,12 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase3 ()
+        public void TryParsDateTimeExactTestCase3()
         {
             const String dateString = "5/01/2009 09:00";
 
             DateTime actual;
-            var result = dateString.TryParsDateTimeExact( new[] {"MM/dd/yyyy hh:mm", "MM/dd/yyyy hh:mm"},
+            var result = dateString.TryParsDateTimeExact( new[] { "MM/dd/yyyy hh:mm", "MM/dd/yyyy hh:mm" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
                                                           out actual );
@@ -112,8 +112,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCaseNullCheck()
         {
             var outValue = DateTime.Now;
             StringEx.TryParsDateTimeExact( null,
@@ -124,8 +124,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCaseNullCheck1()
         {
             var outValue = DateTime.Now;
             String s = null;
@@ -133,8 +133,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void TryParsDateTimeExactTestCaseNullCheck2 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void TryParsDateTimeExactTestCaseNullCheck2()
         {
             var outValue = DateTime.Now;
             "".TryParsDateTimeExact( "", null, DateTimeStyles.AllowTrailingWhite, out outValue );

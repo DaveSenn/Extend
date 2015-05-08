@@ -13,7 +13,7 @@ namespace PortableExtensions.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ForEachTestCase ()
+        public void ForEachTestCase()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -25,8 +25,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (InvalidOperationException) )]
-        public void ForEachTestCase1 ()
+        [ExpectedException( typeof (InvalidOperationException) )]
+        public void ForEachTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
@@ -36,23 +36,23 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachTestCase1NullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachTestCase1NullCheck()
         {
             List<Object> list = null;
             list.ForEach( ( x, i ) => { } );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachTestCase1NullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachTestCase1NullCheck1()
         {
             Action<Object, Int32> action = null;
             new List<Object>().ForEach( action );
         }
 
         [Test]
-        public void ForEachTestCase2 ()
+        public void ForEachTestCase2()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -64,8 +64,8 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (InvalidOperationException) )]
-        public void ForEachTestCase3 ()
+        [ExpectedException( typeof (InvalidOperationException) )]
+        public void ForEachTestCase3()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
@@ -73,7 +73,7 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        public void ForEachTestCase4 ()
+        public void ForEachTestCase4()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var total = 0;
@@ -84,16 +84,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachTestCaseNullCheck()
         {
             List<Object> list = null;
             IEnumerableTEx.ForEach( list, Console.WriteLine );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ForEachTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ForEachTestCaseNullCheck1()
         {
             Action<Object> action = null;
             IEnumerableTEx.ForEach( new List<Object>(), action );

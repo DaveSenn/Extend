@@ -13,20 +13,20 @@ namespace PortableExtensions.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void GetAllKeysAsListCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void GetAllKeysAsListCaseNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
             dictionary.GetAllKeysAsList();
         }
 
         [Test]
-        public void GetAllKeysAsListTestCase ()
+        public void GetAllKeysAsListTestCase()
         {
             var dictionary = new Dictionary<String, String>
             {
-                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()},
-                {RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString()}
+                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() },
+                { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
             };
 
             var allKeys = dictionary.GetAllKeysAsList();

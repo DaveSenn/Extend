@@ -11,7 +11,7 @@ namespace PortableExtensions.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllDecimalTestCase ()
+        public void ExtractAllDecimalTestCase()
         {
             var value0 = new Decimal( 100.2 );
             var value1 = new Decimal( 100.212 );
@@ -23,22 +23,22 @@ namespace PortableExtensions.Testing
             var actual = stringValue.ExtractAllDecimal( 0 );
 
             Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( value0, actual [0] );
-            Assert.AreEqual( value1, actual [1] );
-            Assert.AreEqual( value2, actual [2] );
-            Assert.AreEqual( value3, actual [3] );
+            Assert.AreEqual( value0, actual[0] );
+            Assert.AreEqual( value1, actual[1] );
+            Assert.AreEqual( value2, actual[2] );
+            Assert.AreEqual( value3, actual[3] );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractAllDecimalTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractAllDecimalTestCaseNullCheck()
         {
             StringEx.ExtractAllDecimal( null );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void ExtractAllDecimalTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ExtractAllDecimalTestCaseNullCheck1()
         {
             StringEx.ExtractAllDecimal( null, 0 );
         }

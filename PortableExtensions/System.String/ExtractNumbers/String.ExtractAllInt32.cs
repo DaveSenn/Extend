@@ -18,9 +18,10 @@ namespace PortableExtensions
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted Int32.</returns>
-        public static List<Int32> ExtractAllInt32 ( this String value, Int32 startIndex = 0 )
+        public static List<Int32> ExtractAllInt32( this String value, Int32 startIndex = 0 )
         {
-            return new List<Int32>( ExtractAllNumbers( value, startIndex ).Select( x => x.ToInt32() ) );
+            return new List<Int32>( ExtractAllNumbers( value, startIndex )
+                                        .Select( x => x.ToInt32() ) );
         }
     }
 }

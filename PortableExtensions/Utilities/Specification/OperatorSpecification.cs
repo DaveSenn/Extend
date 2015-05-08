@@ -35,7 +35,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">right can not be null.</exception>
         /// <param name="left">The left specification.</param>
         /// <param name="right">The right specification.</param>
-        protected OperatorSpecification ( ISpecification<T> left, ISpecification<T> right )
+        protected OperatorSpecification( ISpecification<T> left, ISpecification<T> right )
         {
             left.ThrowIfNull( () => left );
             right.ThrowIfNull( () => right );

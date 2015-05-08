@@ -12,7 +12,7 @@ namespace PortableExtensions.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddIfTestCase ()
+        public void AddIfTestCase()
         {
             var c = new List<String>();
 
@@ -26,16 +26,16 @@ namespace PortableExtensions.Testing
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddIfTestCaseNullCheck ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddIfTestCaseNullCheck()
         {
             List<String> c = null;
             c.AddIf( x => true, RandomValueEx.GetRandomString() );
         }
 
         [Test]
-        [ExpectedException ( typeof (ArgumentNullException) )]
-        public void AddIfTestCaseNullCheck1 ()
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void AddIfTestCaseNullCheck1()
         {
             var c = new List<String>();
             c.AddIf( null, RandomValueEx.GetRandomString() );
