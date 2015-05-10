@@ -414,6 +414,7 @@
     <Compile Include="System.Int16\System.DateTime\Int16.IsLeapYear.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
