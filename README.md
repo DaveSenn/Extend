@@ -1,5 +1,10 @@
 # Welcome to PortableExtensions
 
+<a href="https://scan.coverity.com/projects/5112">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/5112/badge.svg"/>
+</a>
+
 ### What is this?
 
 PortableExtensions is a set of .Net extension methods build as portable class library. 
