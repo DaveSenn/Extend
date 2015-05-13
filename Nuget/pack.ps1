@@ -11,3 +11,4 @@ Write-Host "Root: $root"
 
 #& $root\Nuget\Nuget.exe pack $root\Nuget\PortableExtensions.compiled.nuspec
 & $root\Nuget\Nuget.exe pack $root\Nuget\PortableExtensions.nuspec
+# -Properties version=1.2.3.4
