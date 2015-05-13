@@ -6,6 +6,8 @@
 [![NuGet](https://img.shields.io/nuget/v/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
 [![NuGet](https://img.shields.io/nuget/dt/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
 
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt)
+
 ### What is this?
 
 PortableExtensions is a set of .Net extension methods build as portable class library. 
