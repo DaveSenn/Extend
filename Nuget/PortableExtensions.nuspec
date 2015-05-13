@@ -4,7 +4,7 @@
     <id>$id$</id>
     <version>$version$</version>
     <authors>Dave Senn</authors>
-	<title>PortableExtensions</title>
+	<title>$id$</title>
     <licenseUrl>https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/DaveSenn/PortableExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
