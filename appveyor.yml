@@ -17,21 +17,31 @@ assembly_info:
 # restore NuGet packages
 before_build:
   - nuget restore
+  
+artifacts:
+  - path: PortableExtensions\bin\Release\PortableExtensions.dll
+    name: PortableExtensions.dll
+  - path: PortableExtensions\bin\Release\PortableExtensions.XML
+    name: PortableExtensions.XML
+  - path: '**\*.nupkg'
 
 #---------------------------------
 # Build Configuration
 #---------------------------------
 # Build Configuration
 configuration: Release
+
 # build platform
 platform: Any CPU
-
 
 build:
   project: PortableExtensions.sln
   verbosity: minimal
 #  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
 
+#---------------------------------
+# After Build
+#---------------------------------
 after_test:
   - ps: .\nuget\pack.ps1
 
