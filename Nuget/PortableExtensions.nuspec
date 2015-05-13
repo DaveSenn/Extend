@@ -1,15 +1,14 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>PortableExtensions</id>
+    <id>$id$</id>
     <version>$version$</version>
     <authors>Dave Senn</authors>
     <licenseUrl>https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/DaveSenn/PortableExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>PortableExtensions is a set of .Net extension methods build as portable class library.
-PortableExtensions enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</description>
-    <copyright>Copyright © Dave Senn 2015</copyright>
+    <description>$description$</description>
+    <copyright>$copyright$</copyright>
     <tags>C# Extensions Portable Extension Methods .Net Library PCL</tags>
   </metadata>
   <files>
