@@ -3,6 +3,9 @@
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/PortableExtensions?svg=true)](https://ci.appveyor.com/project/DaveSenn/portableextensions/branch/master)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5112/badge.svg)](https://scan.coverity.com/projects/5112)
 
+[![NuGet](https://img.shields.io/nuget/v/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
+[![NuGet](https://img.shields.io/nuget/dt/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
+
 ### What is this?
 
 PortableExtensions is a set of .Net extension methods build as portable class library. 
