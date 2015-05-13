@@ -14,15 +14,23 @@ assembly_info:
   assembly_file_version: "{version}"
   assembly_informational_version: "{version}"
 
-configuration: Release
-
 # restore NuGet packages
 before_build:
   - nuget restore
 
+#---------------------------------
+# Build Configuration
+#---------------------------------
+# Build Configuration
+configuration: Release
+# build platform
+platform: Any CPU
+
+
 build:
   project: PortableExtensions.sln
   verbosity: minimal
+#  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
 
 after_test:
   - ps: .\nuget\pack.ps1
@@ -31,5 +39,5 @@ after_test:
 deploy:
   provider: NuGet
   api_key:
-    secure: B42cxkyxdcQ6kys29SVRewHILXDAixPT6a/sU1wizYKr/quJ4nl1S7xRoRcwDwvT
+    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
   artifact: /.*\.nupkg/
