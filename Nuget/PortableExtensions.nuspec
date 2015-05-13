@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>PortableExtensions</id>
-    <version>1.1.1.0</version>
+    <version>$version$</version>
     <authors>Dave Senn</authors>
     <licenseUrl>https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/DaveSenn/PortableExtensions</projectUrl>
@@ -10,7 +10,7 @@
     <description>PortableExtensions is a set of .Net extension methods build as portable class library.
 PortableExtensions enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</description>
     <copyright>Copyright © Dave Senn 2015</copyright>
-    <tags> C# Extensions Portable Extension Methods .Net Library PCL</tags>
+    <tags>C# Extensions Portable Extension Methods .Net Library PCL</tags>
   </metadata>
   <files>
 	<file src="..\PortableExtensions\bin\Release\PortableExtensions.dll" target="lib\portable-net45+wp8+win8" />
