@@ -1,3 +1,9 @@
+#---------------------------------
+# Repository (github)
+#---------------------------------
+# Set clone depth to speed up clone
+clone_depth: 1
+
 # version format
 version: 1.1.1.{build}
 
