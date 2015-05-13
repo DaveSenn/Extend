@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">The array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The array to clear.</param>
-        /// <returns>Returns the cleard array.</returns>
+        /// <returns>Returns the cleared array.</returns>
         public static T[] ClearAll<T>( this T[] array )
         {
             array.ThrowIfNull( () => array );

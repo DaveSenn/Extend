@@ -17,7 +17,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array" />.</param>
         /// <returns>
         ///     The index of the first occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
@@ -36,7 +36,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array" />.</param>
         /// <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
         /// <returns>
         ///     The index of the first occurrence of  within the range of elements in  that extends from  to the last element,
@@ -56,7 +56,7 @@ namespace PortableExtensions
         /// <exception cref="ArgumentNullException">Array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The one-dimensional  to search.</param>
-        /// <param name="value">The object to locate in .</param>
+        /// <param name="value">The object to locate in <paramref name="array" />.</param>
         /// <param name="startIndex">The starting index of the search. 0 (zero) is valid in an empty array.</param>
         /// <param name="count">The number of elements in the section to search.</param>
         /// <returns>
