@@ -14,6 +14,11 @@ assembly_info:
   assembly_file_version: "{version}"
   assembly_informational_version: "{version}"
 
+# Cache configuration
+cache:
+  # Cache NuGet packages until packages.config changes
+  - packages -> **\packages.config
+
 # restore NuGet packages
 before_build:
   - nuget restore
@@ -23,7 +28,7 @@ artifacts:
     name: PortableExtensions.dll
   - path: PortableExtensions\bin\Release\PortableExtensions.XML
     name: PortableExtensions.XML
-  - path: '.\Nuget\**\*.nupkg'
+  - path: 'Nuget\*.nupkg'
 
 #---------------------------------
 # Build Configuration
@@ -31,9 +36,10 @@ artifacts:
 # Build Configuration
 configuration: Release
 
-# build platform
+# Build platform
 platform: Any CPU
 
+# Solution to build
 build:
   project: PortableExtensions.sln
   verbosity: minimal
