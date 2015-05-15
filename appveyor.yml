@@ -23,7 +23,7 @@ artifacts:
     name: PortableExtensions.dll
   - path: PortableExtensions\bin\Release\PortableExtensions.XML
     name: PortableExtensions.XML
-  - path: 'Nuget\**\*.nupkg'
+  - path: '.\Nuget\**\*.nupkg'
 
 #---------------------------------
 # Build Configuration
