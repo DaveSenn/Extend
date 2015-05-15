@@ -57,8 +57,8 @@ artifacts:
   - path: '**\*.nupkg'
   #- path: 'Nuget\*.nupkg'
 
-# After each successful build
-build_success:
+# Before deploy
+before_deploy:
   # Create new NuGet package
   - ps: .\nuget\pack.ps1
 
