@@ -1,12 +1,18 @@
 #---------------------------------
-# Repository (github)
+# Repository (GitHub)
 #---------------------------------
+
 # Set clone depth to speed up clone
 clone_depth: 1
 
-# version format
+#---------------------------------
+# Before build
+#---------------------------------
+
+# Version format
 version: 1.1.4.{build}
 
+# Patch assembly info
 assembly_info:
   patch: true
   file: AssemblyInfo.*
@@ -22,18 +28,12 @@ cache:
 # restore NuGet packages
 before_build:
   - nuget restore
-  
-artifacts:
-  - path: PortableExtensions\bin\Release\PortableExtensions.dll
-    name: PortableExtensions.dll
-  - path: PortableExtensions\bin\Release\PortableExtensions.XML
-    name: PortableExtensions.XML
-  - path: 'Nuget\*.nupkg'
 
 #---------------------------------
-# Build Configuration
+# Build configuration
 #---------------------------------
-# Build Configuration
+
+# Build configuration
 configuration: Release
 
 # Build platform
@@ -43,15 +43,26 @@ platform: Any CPU
 build:
   project: PortableExtensions.sln
   verbosity: minimal
-#  publish_nuget_symbols: true     # generate and publish NuGet symbol packages
 
 #---------------------------------
-# After Build
+# After build
 #---------------------------------
-after_test:
+
+# Define artifacts
+artifacts:
+  - path: PortableExtensions\bin\Release\PortableExtensions.dll
+    name: PortableExtensions.dll
+  - path: PortableExtensions\bin\Release\PortableExtensions.XML
+    name: PortableExtensions.XML
+  - path: '**\*.nupkg'
+  #- path: 'Nuget\*.nupkg'
+
+# After each successful build
+build_success:
+  # Create new NuGet package
   - ps: .\nuget\pack.ps1
 
-# publish to NuGet
+# Deploy to NuGet
 deploy:
   provider: NuGet
   api_key:
