@@ -1,0 +1,1 @@
+cov-build --dir cov-int "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" "PortableExtensions.sln"
