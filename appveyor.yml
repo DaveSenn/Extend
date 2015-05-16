@@ -58,13 +58,12 @@ artifacts:
   - path: PortableExtensions\bin\Release\PortableExtensions.XML
     name: PortableExtensions.XML
   #- path: '**\*.nupkg'
-  - path: 'Nuget\*.nupkg'
+  - path: 'NuGet\*.nupkg'
 
-# Before deploy
-#before_deploy:
+# After Build scripts
 after_build:
   # Create new NuGet package
-  - ps: .\nuget\pack.ps1
+  - ps: .\NuGet\pack.ps1
 
 # Deploy to NuGet
 deploy:
