@@ -16,9 +16,9 @@ version: 1.1.4.{build}
 assembly_info:
   patch: true
   file: AssemblyInfo.*
-  assembly_version: "{version}"
-  assembly_file_version: "{version}"
-  assembly_informational_version: "{version}"
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
 
 # Cache configuration
 cache:
@@ -54,11 +54,12 @@ artifacts:
     name: PortableExtensions.dll
   - path: PortableExtensions\bin\Release\PortableExtensions.XML
     name: PortableExtensions.XML
-  - path: '**\*.nupkg'
-  #- path: 'Nuget\*.nupkg'
+  #- path: '**\*.nupkg'
+  - path: 'Nuget\*.nupkg'
 
 # Before deploy
-before_deploy:
+#before_deploy:
+after_build:
   # Create new NuGet package
   - ps: .\nuget\pack.ps1
 
