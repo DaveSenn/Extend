@@ -17,6 +17,10 @@ bld/
 [Bb]in/
 [Oo]bj/
 
+#Coverity build results
+cov-int/
+cov-int.zip
+
 # Roslyn cache directories
 *.ide/
 
