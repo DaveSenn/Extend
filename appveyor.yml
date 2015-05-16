@@ -57,8 +57,8 @@ artifacts:
     name: PortableExtensions.dll
   - path: PortableExtensions\bin\Release\PortableExtensions.XML
     name: PortableExtensions.XML
-  #- path: '**\*.nupkg'
   - path: 'NuGet\*.nupkg'
+    name: NuGetPackage.nupkg
 
 # After Build scripts
 after_build:
@@ -66,8 +66,8 @@ after_build:
   - ps: .\NuGet\pack.ps1
 
 # Deploy to NuGet
-deploy:
-  provider: NuGet
-  api_key:
-    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
-  artifact: /.*\.nupkg/
+#deploy:
+#  provider: NuGet
+#  api_key:
+#    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
+#  artifact: /.*\.nupkg/
