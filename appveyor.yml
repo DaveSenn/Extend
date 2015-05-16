@@ -5,6 +5,9 @@
 # Set clone depth to speed up clone
 clone_depth: 1
 
+# Folder to clone the repository to
+clone_folder: C:\_git\PortableExtensions
+
 #---------------------------------
 # Before build
 #---------------------------------
