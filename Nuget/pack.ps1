@@ -28,4 +28,4 @@ Write-Host "Description: $description"
 Write-Host "Copyright: $copyright"
 
 # Build the package
-& $root\Nuget\Nuget.exe pack $root\Nuget\PortableExtensions.nuspec -Properties "id=$name;version=$version;description=$description;copyright=$copyright;"
+& $root\Nuget\Nuget.exe pack $root\Nuget\PortableExtensions.nuspec -Properties "id=$name;version=$version;description=$description;copyright=$copyright;" -OutputDirectory "NuGet"
