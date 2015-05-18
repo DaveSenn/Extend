@@ -118,8 +118,8 @@ namespace PortableExtensions
         ///     Gets a random date-time value between the given minimum and maximum.
         /// </summary>
         /// <remarks>
-        ///     Default value fro minimum is: 01.01.1753
-        ///     DEfault value fro maximum is: 31.12.9999
+        ///     Default value for minimum is: 01.01.1753.
+        ///     Default value for maximum is: 31.12.9999.
         /// </remarks>
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
