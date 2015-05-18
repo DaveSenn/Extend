@@ -93,6 +93,7 @@
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextMonthStart.Test.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
+    <Compile Include="System.Enum\Enum.GetValuesExpect.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.Test.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.GetNameChain.Test.cs" />
@@ -362,6 +363,8 @@
     <Compile Include="System.String\String.IsEmpty.Test.cs" />
     <Compile Include="System.String\String.IsNotEmpty.Test.cs" />
     <Compile Include="System.String\String.IsNumeric.Test.cs" />
+    <Compile Include="System.String\String.SafeToCultureInfo.Test - Copy.cs" />
+    <Compile Include="System.String\String.ToCultureInfo.Test.cs" />
     <Compile Include="System.String\String.Join.Test.cs" />
     <Compile Include="System.String\String.KeepLetters.Test.cs" />
     <Compile Include="System.String\String.KeepLettersAndNumbers.Test.cs" />
