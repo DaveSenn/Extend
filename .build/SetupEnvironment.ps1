@@ -4,17 +4,17 @@ $packages = [System.IO.Path]::Combine($root, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
 
 # Install FAKE (F# build tool) using NuGet
-& $nuget "Install" "FAKE" "-OutputDirectory" $packages "-ExcludeVersion"
+& $nuget "Install" "psake" "-OutputDirectory" $packages "-ExcludeVersion"
 
 # Check if installation was successfully
-$fake = [System.IO.Path]::Combine($packages, "FAKE\tools\Fake.exe")
-If (Test-Path $fake)
+$psake = [System.IO.Path]::Combine($packages, "psake\tools\psake.psm1")
+If (Test-Path $psake)
 {
-	Write-Host "FAKE successfully installed: '$fake'"
+	Write-Host "psake successfully installed: '$psake'"
 }
 Else
 {
-	Write-Host "Failed to install FAKE"
+	Write-Host "Failed to install psake"
 	Write-Host "Current directory: $currentDir"
 	Write-Host "Root directory: $root"
 	Write-Host "Package directory: $packages"
