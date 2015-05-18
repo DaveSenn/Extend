@@ -16,17 +16,17 @@ namespace PortableExtensions
         #region Fields
 
         /// <summary>
-        ///     The object used to genreate random values.
+        ///     The object used to generate random values.
         /// </summary>
         private static readonly Random Random = new Random();
 
         /// <summary>
-        ///     The object used to syncronize accesses to <see cref="Rnd" /> across diffrent threads.
+        ///     The object used to synchronize accesses to <see cref="Rnd" /> across different threads.
         /// </summary>
         private static readonly Object SyncLock = new Object();
 
         /// <summary>
-        ///     Gets the random object used to creat the random values.
+        ///     Gets the random object used to create the random values.
         /// </summary>
         private static Random Rnd
         {
