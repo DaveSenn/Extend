@@ -34,6 +34,9 @@ Task Clean {
 	Write-Host "Restoring NuGet packages"
 	Write-Host (Get-Location)
     
+	exec { 
+		Set-Location $root
+		git clean -xdf }
 	Start-Process git -Argumentlist "clean -xdf" -WorkingDirectory $root
 	
 	Write-Host (Get-Location)
