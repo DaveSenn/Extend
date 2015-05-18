@@ -32,7 +32,11 @@ Task default -Depends RestorePackages
 # Cleans the repository
 Task Clean {
 	Write-Host "Restoring NuGet packages"
-    exec { git clean -xdf }
+	Write-Host (Get-Location)
+    
+	Start-Process git -Argumentlist "clean -xdf" -WorkingDirectory $root
+	
+	Write-Host (Get-Location)
 }
 
 # Task restoring the NuGet packages of the solution
