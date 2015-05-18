@@ -69,8 +69,8 @@ after_build:
   - ps: .\NuGet\pack.ps1
 
 # Deploy to NuGet
-deploy:
-  provider: NuGet
-  api_key:
-    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
-  artifact: /.*\.nupkg/
+#deploy:
+#  provider: NuGet
+#  api_key:
+#    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
+#  artifact: /.*\.nupkg/
