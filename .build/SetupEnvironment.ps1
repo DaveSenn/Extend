@@ -3,18 +3,18 @@ $root = [System.IO.Path]::Combine($currentDir, "..\")
 $packages = [System.IO.Path]::Combine($root, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
 
-# Install FAKE (F# build tool) using NuGet
-& $nuget "Install" "psake" "-OutputDirectory" $packages "-ExcludeVersion"
+# Install Invoke-Build (PowerShell build tool) using NuGet
+& $nuget "Install" "Invoke-Build" "-OutputDirectory" $packages "-ExcludeVersion"
 
 # Check if installation was successfully
-$psake = [System.IO.Path]::Combine($packages, "psake\tools\psake.psm1")
-If (Test-Path $psake)
+$invokeBuild = [System.IO.Path]::Combine($packages, "Invoke-Build\tools\Invoke-Build.ps1")
+If (Test-Path $invokeBuild)
 {
-	Write-Host "psake successfully installed: '$psake'"
+	Write-Host "Invoke-Build successfully installed: '$invokeBuild'"
 }
 Else
 {
-	Write-Host "Failed to install psake"
+	Write-Host "Failed to install invokeBuild"
 	Write-Host "Current directory: $currentDir"
 	Write-Host "Root directory: $root"
 	Write-Host "Package directory: $packages"
