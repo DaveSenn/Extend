@@ -1,5 +1,6 @@
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $root = [System.IO.Path]::Combine($currentDir, "..\")
+$outputDirectory = [System.IO.Path]::Combine($root, "Output")
 $packages = [System.IO.Path]::Combine($env:Temp, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
 $nunit = [System.IO.Path]::Combine($root, ".tools\NUnit-2.6.4\bin\nunit-console.exe")
@@ -42,10 +43,11 @@ task Tests {
 task CreatePackage {
 	exec { 
 		$nuspecFile = [System.IO.Path]::Combine($currentDir, "Nuget\PortableExtensions.nuspec")
-		$assemblyPath = [System.Reflection.Assembly]::LoadFile([System.IO.Path]::Combine($root, "PortableExtensions\bin\Release\PortableExtensions.dll" ))
+		$assemblyPath = [System.IO.Path]::Combine($root, "PortableExtensions\bin\Release\PortableExtensions.dll" )
+		$nugetOutput = [System.IO.Path]::Combine($outputDirectory, "Nuget\")
 		
 		$nugetPack = [System.IO.Path]::Combine($currentDir, "Nuget\pack.ps1")	
-		&$nugetPack $assemblyPath $nuspecFile $nuget
+		&$nugetPack $assemblyPath $nuspecFile $nuget $nugetOutput
 	}
 }
 
