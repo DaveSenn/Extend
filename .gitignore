@@ -31,6 +31,7 @@ cov-int.zip
 #NUNIT
 *.VisualState.xml
 TestResult.xml
+!.tools/NUnit-2.6.4/bin
 
 # Build Results of an ATL Project
 [Dd]ebugPS/
