@@ -1,7 +1,8 @@
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $root = [System.IO.Path]::Combine($currentDir, "..\")
-$packages = [System.IO.Path]::Combine($root, "packages")
+$packages = [System.IO.Path]::Combine($env:Temp, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
+
 $solution = [System.IO.Path]::Combine($root, "PortableExtensions.sln")
 
 task Build {

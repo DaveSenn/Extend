@@ -1,10 +1,10 @@
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $root = [System.IO.Path]::Combine($currentDir, "..\")
-$packages = [System.IO.Path]::Combine($root, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
+$packages = [System.IO.Path]::Combine($env:Temp, "packages")
 
 # Install Invoke-Build (PowerShell build tool) using NuGet
-& $nuget "Install" "Invoke-Build" "-OutputDirectory" $packages "-ExcludeVersion"
+&$nuget "Install" "Invoke-Build" "-OutputDirectory" $packages "-ExcludeVersion"
 
 # Check if installation was successfully
 $invokeBuild = [System.IO.Path]::Combine($packages, "Invoke-Build\tools\Invoke-Build.ps1")
