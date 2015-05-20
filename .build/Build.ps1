@@ -12,7 +12,7 @@ task Build {
 task Clean {
 	ExecInDir {
 		Write-Host "Start git clean"
-		git clean -xdf 
+		#git clean -xdf 
 	} $root 0
 }
 
@@ -28,4 +28,4 @@ function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter
 
 task . Build, Clean
 
-#.\packages\Invoke-Build\tools\Invoke-Build -File .\.build\Build.ps1
+#&([System.IO.Path]::Combine($env:Temp, "packages\Invoke-Build\tools\Invoke-Build.ps1")) -File .\.build\Build.ps1
