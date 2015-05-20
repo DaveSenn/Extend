@@ -36,5 +36,10 @@ Write-Host "Version: $version"
 Write-Host "Description: $description"
 Write-Host "Copyright: $copyright"
 
+# Create output directory
+if(!(Test-Path -Path $outputPath )){
+	New-Item -ItemType directory -Path $outputPath
+}
+
 # Build the package
 &$nugetPath pack $nuspecPath -Properties "id=$name;version=$version;description=$description;copyright=$copyright;" -OutputDirectory $outputPath
