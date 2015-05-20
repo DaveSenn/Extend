@@ -9,9 +9,20 @@ task Build {
 }
 
 task Clean {
-	Write-Host "Clean..."
+	ExecInDir {
+		git clean -xdf 
+	} $root
+}
+
+function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path, [int[]]$ExitCode=0) {
+	$location = Get-Location
+	Set-Location $Path
+	
+	exec $Command $Path $ExitCode
+	
+	Set-Location $location
 }
 
 task . Build, Clean
 
-#.\packages\Invoke-Build\tools\Invoke-Build .\.build\Build.ps1
+#.\packages\Invoke-Build\tools\Invoke-Build -File .\.build\Build.ps1
