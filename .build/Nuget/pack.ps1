@@ -2,14 +2,14 @@
 param(
 	[Parameter(Mandatory=$true)][string]$dllPath,
 	[Parameter(Mandatory=$true)][string]$nuspecPath,
-	[Parameter(Mandatory=$true)][string]$nugetPath
+	[Parameter(Mandatory=$true)][string]$nugetPath,
+	[Parameter(Mandatory=$true)][string]$outputPath
 )
 
 Write-Host "dllPath: $dllPath"
 Write-Host "nuspecPath: $nuspecPath"
 Write-Host "nugetPath: $nugetPath"
-
-return 0;
+Write-Host "outputPath: $outputPath"
 
 # Load needed assemblies
 Add-Type -AssemblyName System
@@ -37,4 +37,4 @@ Write-Host "Description: $description"
 Write-Host "Copyright: $copyright"
 
 # Build the package
-&$nugetPath pack $nuspecPath -Properties "id=$name;version=$version;description=$description;copyright=$copyright;" -OutputDirectory "TEstTest"
+&$nugetPath pack $nuspecPath -Properties "id=$name;version=$version;description=$description;copyright=$copyright;" -OutputDirectory $outputPath
