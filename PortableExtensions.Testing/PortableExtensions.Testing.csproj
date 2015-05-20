@@ -53,6 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
+    <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.Test.cs" />
     <Compile Include="Models\AttributeDefinitionTest.cs" />
     <Compile Include="Models\ExecutionResultTest.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.Test.cs" />
@@ -404,21 +409,7 @@
     <Compile Include="Utilities\Tree\TreeNodeTest.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.Test.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
-    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
-    <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
-    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.Test.cs" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
