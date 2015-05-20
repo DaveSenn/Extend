@@ -9,11 +9,19 @@ task Build {
 	Write-Host "Build..."
 }
 
+# Removes all not tracked files
 task Clean {
 	ExecInDir {
 		Write-Host "Start git clean"
 		git clean -xdf 
 	} $root 0
+}
+
+# Removes all not tracked files
+task RestorePackages {
+	exec {
+		&$nuget restore $solution
+	}
 }
 
 function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path,  [int[]]$ExitCode=0) {
@@ -26,6 +34,12 @@ function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter
 	Set-Location $private:location
 }
 
-task . Build, Clean
+task . Build, Clean, RestorePackages
 
-#&([System.IO.Path]::Combine($env:Temp, "packages\Invoke-Build\tools\Invoke-Build.ps1")) -File .\.build\Build.ps1
+<#
+
+&([System.IO.Path]::Combine($env:Temp, "packages\Invoke-Build\tools\Invoke-Build.ps1")) -File .\.build\Build.ps1
+
+&"C:\Program Files (x86)\MSBuild\12.0\Bin\MSBuild.exe"
+
+#>
