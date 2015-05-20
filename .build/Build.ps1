@@ -38,6 +38,17 @@ task Tests {
 	}
 }
 
+# Create NuGet packages
+task CreatePackage {
+	exec { 
+		$nuspecFile = [System.IO.Path]::Combine($currentDir, "Nuget\PortableExtensions.nuspec")
+		$assemblyPath = [System.Reflection.Assembly]::LoadFile([System.IO.Path]::Combine($root, "PortableExtensions\bin\Release\PortableExtensions.dll" ))
+		
+		$nugetPack = [System.IO.Path]::Combine($currentDir, "Nuget\pack.ps1")	
+		&$nugetPack $assemblyPath $nuspecFile $nuget
+	}
+}
+
 function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path,  [int[]]$ExitCode=0) {
 	$private:location = Get-Location
 	Set-Location $Path
@@ -48,7 +59,7 @@ function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter
 	Set-Location $private:location
 }
 
-task . Clean, RestorePackages, Build, Tests
+task . Clean, RestorePackages, Build, Tests, CreatePackage
 
 <#
 
