@@ -12,7 +12,7 @@ task Build {
 task Clean {
 	ExecInDir {
 		Write-Host "Start git clean"
-		#git clean -xdf 
+		git clean -xdf 
 	} $root 0
 }
 
