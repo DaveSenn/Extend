@@ -10,17 +10,19 @@ task Build {
 
 task Clean {
 	ExecInDir {
+		Write-Host "Start git clean"
 		git clean -xdf 
-	} $root
+	} $root 0
 }
 
-function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path, [int[]]$ExitCode=0) {
-	$location = Get-Location
+function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path,  [int[]]$ExitCode=0) {
+	$private:location = Get-Location
 	Set-Location $Path
 	
-	exec $Command $Path $ExitCode
+	Write-Host "(Run in $private:location)"
+	exec $Command $ExitCode
 	
-	Set-Location $location
+	Set-Location $private:location
 }
 
 task . Build, Clean
