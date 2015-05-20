@@ -2,7 +2,7 @@ $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $root = [System.IO.Path]::Combine($currentDir, "..\")
 $packages = [System.IO.Path]::Combine($env:Temp, "packages")
 $nuget = [System.IO.Path]::Combine($root, ".tools\NuGet\nuget.exe")
-
+$nunit = [System.IO.Path]::Combine($root, ".tools\NUnit-2.6.4\bin\nunit-console.exe")
 $solution = [System.IO.Path]::Combine($root, "PortableExtensions.sln")
 
 task Build {
@@ -24,6 +24,20 @@ task RestorePackages {
 	}
 }
 
+# Build the project.
+task Build {
+	exec { 
+		MSBuild $solution /t:Build /p:Configuration=Release /verbosity:minimal
+	}
+}
+
+# Run unit tests.
+task Tests {
+	exec { 
+		&$nunit "C:\_git\PortableExtensions\PortableExtensions.Testing\bin\Release\PortableExtensions.Testing.dll"
+	}
+}
+
 function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter(Mandatory=$true)][string]$Path,  [int[]]$ExitCode=0) {
 	$private:location = Get-Location
 	Set-Location $Path
@@ -34,7 +48,7 @@ function ExecInDir([Parameter(Mandatory=$true)][scriptblock]$Command, [Parameter
 	Set-Location $private:location
 }
 
-task . Build, Clean, RestorePackages
+task . Clean, RestorePackages, Build, Tests
 
 <#
 
