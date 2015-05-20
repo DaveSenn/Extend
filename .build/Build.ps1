@@ -17,7 +17,7 @@ task Clean {
 	} $root 0
 }
 
-# Removes all not tracked files
+# Restores all NuGet packages
 task RestorePackages {
 	exec {
 		&$nuget restore $solution
