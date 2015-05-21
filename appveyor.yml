@@ -12,7 +12,7 @@ clone_folder: C:\_git\PortableExtensions
 # Install
 #---------------------------------
 install:
-- ps: .\build\SetupEnvironment.ps1
+- ps: .\.build\SetupEnvironment.ps1
 
 #---------------------------------
 # Before build
