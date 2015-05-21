@@ -9,6 +9,12 @@ clone_depth: 1
 clone_folder: C:\_git\PortableExtensions
 
 #---------------------------------
+# Install
+#---------------------------------
+install:
+- ps: .\build\SetupEnvironment.ps1
+
+#---------------------------------
 # Before build
 #---------------------------------
 
