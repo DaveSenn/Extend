@@ -1,18 +1,12 @@
-properties { 
-  $workingName = if ($workingName) {$workingName} else {"Working"}
-  $baseDir  = resolve-path ..
-  $buildDir = "$baseDir\Build"
-  $sourceDir = "$baseDir\Src"
-  $toolsDir = "$baseDir\Tools"
-}
-
 <#
 Main build script
 #>
-
-# Get some paths
-$currentDir = split-path -parent $MyInvocation.MyCommand.Definition
-$root = [System.IO.Path]::Combine($currentDir, "..\")
+properties { 
+    $srcDir = "$root\.Src\"
+    $nuget = "$root\.Tools\NuGet\nuget.exe"
+    $git = "git"
+}
+$root = Resolve-Path ..
 
 # Load additional scripts
 ."$root\.Build\Projects.ps1"
@@ -22,29 +16,23 @@ $root = [System.IO.Path]::Combine($currentDir, "..\")
 $allProjects = Get-Projects
 
 # Cleans the output directory
-task Clean {
-    Write-Host "Clean repository";
+Task Clean {
+    Write-Host "Clean repository" -fore Magenta
     
     ExecInDir $root {
-        exec { git clean -xdf  } "Git clean failed"
+        exec { &$git clean -xdf  } "Git clean failed"
     }
-
-    <#
-  Write-Host "Setting location to $baseDir"
-  Set-Location $baseDir
-  
-  if (Test-Path -path $workingDir)
-  {
-    Write-Host "Deleting existing working directory $workingDir"
-    
-    del $workingDir -Recurse -Force
-  }
-  
-  Write-Host "Creating working directory $workingDir"
-  New-Item -Path $workingDir -ItemType Directory
-    #>
 }
 
-task Clean2 {
-    Write-Host "Clean2...";
+# Restores all NuGet packages
+Task RestorePackages {
+	Write-Host "Restore NuGet packages" -fore Magenta
+
+	# For each project with enabled NuGet restore
+    foreach($project in $allProjects | where { $_.RestoreNuGetPackages } ) {
+		$projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
+		exec {
+			&$nuget restore $projectPath
+		} "NuGet restore failed for: '$projectPath'"
+    }
 }
