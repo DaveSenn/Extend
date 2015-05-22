@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8F65CF4E-8582-4A72-933B-87A07ADDC430}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PortableExtensions.Testing</RootNamespace>
+    <AssemblyName>PortableExtensions.Testing</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProductVersion>12.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\Portable\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;PORTABLE45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\Portable\</OutputPath>
+    <DefineConstants>TRACE;PORTABLE45</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.Test.cs" />
+    <Compile Include="Models\AttributeDefinitionTest.cs" />
+    <Compile Include="Models\ExecutionResultTest.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.Test.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.Test.cs" />
+    <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.Test.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfAnyFalse.Test.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfAnyTrue.Test.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfFalse.Test.cs" />
+    <Compile Include="System.Action\Action.ExecuteIfTrue.Test.cs" />
+    <Compile Include="System.Action\Action.SafeExecute.Test.cs" />
+    <Compile Include="System.Action\Action.SafeExecuteExcept.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Clear.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ClearAll.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.IndexOf.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.LastIndexOf.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Resize.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Reverse.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.Test.cs" />
+    <Compile Include="System.Array\System.Array.Generic\Array.Generic.ToGenericList.Test.cs" />
+    <Compile Include="System.Array\Array.Clear.Test.cs" />
+    <Compile Include="System.Array\Array.ClearAll.Test.cs" />
+    <Compile Include="System.Array\Array.Copy.cs" />
+    <Compile Include="System.Array\Array.IndexOf.Test.cs" />
+    <Compile Include="System.Array\Array.LastIndexOf.Test.cs" />
+    <Compile Include="System.Array\Array.Reverse.Test.cs" />
+    <Compile Include="System.Array\Array.ToList.Test.cs" />
+    <Compile Include="System.Array\Array.WithinIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionary.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsSameDay.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.NextMonthStart.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
+    <Compile Include="System.Enum\Enum.GetValuesExpect.Test.cs" />
+    <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.Test.cs" />
+    <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.GetNameChain.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Satisfies.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.SatisfiesWithMessages.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Specification.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Swap.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.ToSingleItemArray.Test.cs" />
+    <Compile Include="System.Boolean\Boolean.IfFalse.Test.cs" />
+    <Compile Include="System.Boolean\Boolean.IfTrue.Test.cs" />
+    <Compile Include="System.Boolean\Boolean.Select.Test.cs" />
+    <Compile Include="System.Char\Char.IsDigit.Test.cs" />
+    <Compile Include="System.Char\Char.IsLetter.Test.cs" />
+    <Compile Include="System.Char\Char.IsLetterOrDigit.Test.cs" />
+    <Compile Include="System.Char\Char.IsLower.Test.cs" />
+    <Compile Include="System.Char\Char.IsNumber.Test.cs" />
+    <Compile Include="System.Char\Char.IsUpper.Test.cs" />
+    <Compile Include="System.Char\Char.IsWhiteSpace.Test.cs" />
+    <Compile Include="System.Char\Char.Repeat.Test.cs" />
+    <Compile Include="System.Char\Char.ToLower.Test.cs" />
+    <Compile Include="System.Char\Char.ToUpper.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddIf.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddIfNotContains.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRange.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIfNotContains.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIf.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].StringJoin.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNotNullOrEmpty.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNullOrEmpty.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveIf.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveRange.Test.cs" />
+    <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveRangeIf.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].AddIfNotContainsKey.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].AddOrUpdate.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].AddRange.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ContainsAllKey.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ContainsAnyKey.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeys.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetAllKeysAsList.Test.cs" />
+    <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].GetOrAdd.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[String]\IEnumerable[String].PathCombine.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].AnyAndNotNull.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ContainsAll.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ContainsAny.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Distinct.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ForEach.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ForEachReverse.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Many.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].MinimumOf.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].NotAny.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Randomize.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].StringJoin.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].TakeUntil.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ToDictionary.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ToObservableCollection.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereIf.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToFullDateTimeString.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.Age.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.Elapsed.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.EndOfDay.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.EndOfMonth.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.EndOfWeek.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.EndOfYear.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.FirstDayOfWeek.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.Intersects.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsAfternoon.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsDateEqual.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsFuture.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsMorning.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsPast.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsTimeEquals.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsToday.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsWeekendDay.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsWeekDay.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.LastDayOfWeek.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.StartOfDay.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.StartOfMonth.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.StartOfWeek.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.StartOfYear.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.Tomorrow.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.Yesterday.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToMonthDayString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToMonthString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateLongTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortDateTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToShortTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToSortableDateTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToUniversalSortableDateTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToUniversalSortableLongDateTimeString.Test.cs" />
+    <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToYearMonthString.Test.cs" />
+    <Compile Include="System.Decimal\Decimal.PercentageOf.Test.cs" />
+    <Compile Include="System.Decimal\Decimal.PercentOf.Test.cs" />
+    <Compile Include="System.Decimal\Decimal.Sum.Test.cs" />
+    <Compile Include="System.Double\Double.Sum.Test.cs" />
+    <Compile Include="System.Double\System.TimeSpan\Double.ToDays.Test.cs" />
+    <Compile Include="System.Double\System.TimeSpan\Double.ToHours.Test.cs" />
+    <Compile Include="System.Double\System.TimeSpan\Double.ToMilliseconds.Test.cs" />
+    <Compile Include="System.Double\System.TimeSpan\Double.ToSeconds.Test.cs" />
+    <Compile Include="System.Double\System.TimeSpan\Double.ToMinutes.Test.cs" />
+    <Compile Include="System.Double\Double.IsNaN.Test.cs" />
+    <Compile Include="System.Double\Double.IsNegativeInfinit.yTest.cs" />
+    <Compile Include="System.Double\Double.IsInfinit.yTest.cs" />
+    <Compile Include="System.Double\Double.IsPositiveInfinit.yTest.cs" />
+    <Compile Include="System.Double\Double.PercentageOf.Test.cs" />
+    <Compile Include="System.Double\Double.PercentOf.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetValueAndStringValue.Test.cs" />
+    <Compile Include="System.Enum\Enum.GetValues.Test.cs" />
+    <Compile Include="System.EventHandler\EventHandler.Raise.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].Between.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].BetweenInclusive.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].Greater.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].GreaterOrEquals.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].Smaller.Test.cs" />
+    <Compile Include="System.IComparable[T]\IComparable[T].SmallerOrEquals.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\Int16.DaysInMonth.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.April.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.August.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.December.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.February.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.January.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.July.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.June.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.March.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.May.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.November.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.October.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\System.DateTime\Int16.September.Test.cs" />
+    <Compile Include="System.Int16\System.TimeSpan\Int16.ToDays.Test.cs" />
+    <Compile Include="System.Int16\System.TimeSpan\Int16.ToHours.Test.cs" />
+    <Compile Include="System.Int16\System.TimeSpan\Int16.ToMilliseconds.Test.cs" />
+    <Compile Include="System.Int16\System.TimeSpan\Int16.ToMinutes.Test.cs" />
+    <Compile Include="System.Int16\System.TimeSpan\Int16.ToSeconds.Test.cs" />
+    <Compile Include="System.Int16\Int16.FactorOf.Test.cs" />
+    <Compile Include="System.Int16\Int16.IsEven.Test.cs" />
+    <Compile Include="System.Int16\Int16.IsOdd.Test.cs" />
+    <Compile Include="System.Int16\Int16.PercentageOf.Test.cs" />
+    <Compile Include="System.Int16\Int16.PercentOf.Test.cs" />
+    <Compile Include="System.Int16\Int16.RangeTo.Test.cs" />
+    <Compile Include="System.Int16\Int16.IsMultipleOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.Sum.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\Int32.IsLeapYear.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\Int32.DaysInMonth.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.April.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.August.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.December.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.February.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.January.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.July.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.June.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.March.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.May.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.November.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.October.Test.cs" />
+    <Compile Include="System.Int32\System.DateTime\System.DateTime\Int32.September.Test.cs" />
+    <Compile Include="System.Int32\System.TimeSpan\Int32.ToDays.Test.cs" />
+    <Compile Include="System.Int16\System.DateTime\Int16.IsLeapYear.Test.cs" />
+    <Compile Include="System.Int32\System.TimeSpan\Int32.ToHours.Test.cs" />
+    <Compile Include="System.Int32\System.TimeSpan\Int32.ToSeconds.Test.cs" />
+    <Compile Include="System.Int32\System.TimeSpan\Int32.ToMinutes.Test.cs" />
+    <Compile Include="System.Int32\System.TimeSpan\Int32.ToMilliseconds.Test.cs" />
+    <Compile Include="System.Int32\Int32.FactorOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.RangeTo.Test.cs" />
+    <Compile Include="System.Int32\Int32.PercentOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.PercentageOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.IsOdd.Test.cs" />
+    <Compile Include="System.Int32\Int32.IsMultipleOf.Test.cs" />
+    <Compile Include="System.Int32\Int32.IsEven.Test.cs" />
+    <Compile Include="System.Int64\Int64.Sum.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64ToDays.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToSeconds.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToMinutes.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToMilliseconds.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToHours.Test.cs" />
+    <Compile Include="System.Int64\Int64.FactorOf.Test.cs" />
+    <Compile Include="System.Int64\Int64.RangeTo.Test.cs" />
+    <Compile Include="System.Int64\Int64.PercentOf.Test.cs" />
+    <Compile Include="System.Int64\Int64.PercentageOf.Test.cs" />
+    <Compile Include="System.Int64\Int64.IsOdd.Test.cs" />
+    <Compile Include="System.Int64\Int64.IsMultipleOf.Test.cs" />
+    <Compile Include="System.Int64\Int64.IsEven.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToBoolean.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToCharByCode.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToDateTime.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToChar.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToByte.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToDouble.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToDecimal.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToInt16.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToInt32.Test.cs" />
+    <Compile Include="System.Object\Convert\Object.ToInt64.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Chain.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Coalesce.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.CoalesceOrDefault.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.ExecuteSafe.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.GetName.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.IfNull.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.IsDefault.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.IsIn.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.IsNotIn.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Maximum.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.Minimum.Test.cs" />
+    <Compile Include="System.Object\Generic\Object.Generic.ThrowIfNull.Test.cs" />
+    <Compile Include="System.Object\Object.As.Test.cs" />
+    <Compile Include="System.Object\Object.IsNotNull.Test.cs" />
+    <Compile Include="System.Object\Object.IsNull.Test.cs" />
+    <Compile Include="System.Object\Object.ReferenceEquals.Test.cs" />
+    <Compile Include="System.Random\Random.CoinToss.Test.cs" />
+    <Compile Include="System.Random\Random.OneOf.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToBoolean.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToByte.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToChar.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDateTime.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDecimal.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToDouble.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt16.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt32.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToInt64.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToBoolean.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToByte.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToChar.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToDateTime.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToDecimal.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToDouble.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToInt16.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToInt32.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToInt64.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractFirstInt64.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractFirstInt32.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractFirstInt16.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractFirstDouble.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractFirstDecimal.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractAllDecimal.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractAllInt64.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractAllInt32.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractAllInt16.Test.cs" />
+    <Compile Include="System.String\ExtractNumbers\String.ExtractAllDouble.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsByte.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsInt16.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsDouble.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsDecimal.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsDateTimeExact.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsDateTime.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsChar.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsBoolean.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsInt32.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsInt64.Test.cs" />
+    <Compile Include="System.String\String.ChangeType.Test.cs" />
+    <Compile Include="System.String\String.CompareOrdinal.Test.cs" />
+    <Compile Include="System.String\String.CompareOrdinalIgnoreCase.Test.cs" />
+    <Compile Include="System.String\String.ConcatAll.Test.cs" />
+    <Compile Include="System.String\String.ContainsAll.Test.cs" />
+    <Compile Include="System.String\String.ContainsAny.Test.cs" />
+    <Compile Include="System.String\String.Extract.Test.cs" />
+    <Compile Include="System.String\String.ExtractLetters.Test.cs" />
+    <Compile Include="System.String\String.ExtractNumbers.Test.cs" />
+    <Compile Include="System.String\String.F.Test.cs" />
+    <Compile Include="System.String\String.FormatFileExtension.Test.cs" />
+    <Compile Include="System.String\String.GetAfter.Test.cs" />
+    <Compile Include="System.String\String.GetBefore.Test.cs" />
+    <Compile Include="System.String\String.GetBetween.Test.cs" />
+    <Compile Include="System.String\String.IfNotEmpty.Test.cs" />
+    <Compile Include="System.String\String.IsAlpha.Test.cs" />
+    <Compile Include="System.String\String.IsAlphaNumeric.Test.cs" />
+    <Compile Include="System.String\String.IsEmpty.Test.cs" />
+    <Compile Include="System.String\String.IsNotEmpty.Test.cs" />
+    <Compile Include="System.String\String.IsNumeric.Test.cs" />
+    <Compile Include="System.String\String.SafeToCultureInfo.Test - Copy.cs" />
+    <Compile Include="System.String\String.ToCultureInfo.Test.cs" />
+    <Compile Include="System.String\String.Join.Test.cs" />
+    <Compile Include="System.String\String.KeepLetters.Test.cs" />
+    <Compile Include="System.String\String.KeepLettersAndNumbers.Test.cs" />
+    <Compile Include="System.String\String.KeepNumbers.Test.cs" />
+    <Compile Include="System.String\String.KeepWhere.Test.cs" />
+    <Compile Include="System.String\String.RemoveLetters.Test.cs" />
+    <Compile Include="System.String\String.RemoveLettersAndNumbers.Test.cs" />
+    <Compile Include="System.String\String.RemoveNumbers.Test.cs" />
+    <Compile Include="System.String\String.RemoveWhere.Test.cs" />
+    <Compile Include="System.String\String.Repeat.Test.cs" />
+    <Compile Include="System.String\String.ReplaceByEmpty.Test.cs" />
+    <Compile Include="System.String\String.Reverse.Test.cs" />
+    <Compile Include="System.String\ConvertSave\String.SafeToInt.Test.cs" />
+    <Compile Include="System.String\String.Split.Test.cs" />
+    <Compile Include="System.String\String.SplitLines.Test.cs" />
+    <Compile Include="System.String\String.SubstringLeft.Test.cs" />
+    <Compile Include="System.String\String.SubstringRight.Test.cs" />
+    <Compile Include="System.String\String.SubstringRightSafe.Test.cs" />
+    <Compile Include="System.String\String.TakeAndRemove.Test.cs" />
+    <Compile Include="System.String\String.Truncate.Test.cs" />
+    <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.IsNotMatch.Test.cs" />
+    <Compile Include="System.String\String.ToEnum.Test.cs" />
+    <Compile Include="System.String\String.TryToEnum.Test.cs" />
+    <Compile Include="System.String\System.IO.Path\String.GetFileExtension.Test.cs" />
+    <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.IsMatch.Test.cs" />
+    <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.Match.Test.cs" />
+    <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.Matches.Test.cs" />
+    <Compile Include="System.Text.StringBuilder\StringBuilder.AppendLineFormat.Test.cs" />
+    <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
+    <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
+    <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />
+    <Compile Include="Utilities\Specification\XOrSpecification.Test.cs" />
+    <Compile Include="Utilities\Tree\TreeNodeCollectionTest.cs" />
+    <Compile Include="Utilities\Tree\TreeNodeTest.cs" />
+    <Compile Include="Utilities\Utilities.RandomValueEx.Test.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PortableExtensions\PortableExtensions.Portable.csproj">
+      <Project>{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}</Project>
+      <Name>PortableExtensions.Portable</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
