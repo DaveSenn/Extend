@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48E34E4F
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableExtensions.Net40", "PortableExtensions\PortableExtensions.Net40.csproj", "{0E550CAB-FDA1-4609-AF2D-E9F6CAC1DC0B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableExtensions.Net40.Testing", "PortableExtensions.Testing\PortableExtensions.Net40.Testing.csproj", "{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +19,15 @@ Global
 		{0E550CAB-FDA1-4609-AF2D-E9F6CAC1DC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E550CAB-FDA1-4609-AF2D-E9F6CAC1DC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E550CAB-FDA1-4609-AF2D-E9F6CAC1DC0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{14342ADC-C1FE-4F13-8D8A-0F0C34CB378B} = {48E34E4F-E3DA-4B53-A9BC-AAAF9DF9A9FE}
 	EndGlobalSection
 EndGlobal
