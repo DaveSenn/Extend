@@ -5,6 +5,10 @@ properties {
     $srcDir = "$root\.Src\"
     $nuget = "$root\.Tools\NuGet\nuget.exe"
     $git = "git"
+    $msBuild = "MSBuild"
+    $buildConfiguration = "Release"
+    $msBuildTargets = "Clean;Rebuild"
+    $msBuildVerbosity = "minimal"
 }
 $root = Resolve-Path ..
 
@@ -26,13 +30,42 @@ Task Clean {
 
 # Restores all NuGet packages
 Task RestorePackages {
-	Write-Host "Restore NuGet packages" -fore Magenta
+    Write-Host "Restore NuGet packages" -fore Magenta
 
-	# For each project with enabled NuGet restore
+    # For each project with enabled NuGet restore
     foreach($project in $allProjects | where { $_.RestoreNuGetPackages } ) {
-		$projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
-		exec {
-			&$nuget restore $projectPath
-		} "NuGet restore failed for: '$projectPath'"
+        $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
+        exec {
+            &$nuget restore $projectPath
+        } "NuGet restore failed for: '$projectPath'"
     }
 }
+
+# Build all projects.
+task Build {
+
+    # For each project
+    foreach($project in $allProjects) {
+        $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
+        exec {
+            &$msBuild $projectPath "/t:$msBuildTargets" "/p:Configuration=$buildConfiguration" "/p:Platform=Any CPU" "/verbosity:$msBuildVerbosity"
+        } "Failed to build: '$projectPath'"
+    }
+}
+
+<#
+
+exec { msbuild 
+    "/t:Clean;Rebuild" 
+    /p:Configuration=Release 
+    "/p:Platform=Any CPU" 
+
+    /p:OutputPath=bin\Release\$finalDir\ 
+    /p:AssemblyOriginatorKeyFile=$signKeyPath 
+    "/p:SignAssembly=$sign" 
+    "/p:TreatWarningsAsErrors=$treatWarningsAsErrors"
+     "/p:VisualStudioVersion=12.0" 
+    (GetConstants $build.Constants $sign) 
+    ".\Src\$name.sln" | Out-Default } "Error building $name"
+
+#>

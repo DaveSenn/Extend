@@ -7,6 +7,9 @@ using System.Globalization;
 
 namespace PortableExtensions
 {
+    /// <summary>
+    ///     Class containing some extension methods for <see cref="String" />.
+    /// </summary>
     public static partial class StringEx
     {
         /// <summary>
