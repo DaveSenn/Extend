@@ -14,15 +14,21 @@ Main build script
 $currentDir = split-path -parent $MyInvocation.MyCommand.Definition
 $root = [System.IO.Path]::Combine($currentDir, "..\")
 
-# Load projects file
+# Load additional scripts
 ."$root\.Build\Projects.ps1"
+."$root\.Build\BuildHelpers.ps1"
+
 # Get projects to build
 $allProjects = Get-Projects
 
 # Cleans the output directory
 task Clean {
+    Write-Host "Clean repository";
+    
+    ExecInDir $root {
+        exec { git clean -xdf  } "Git clean failed"
+    }
 
-	Write-Host "Clean...";
     <#
   Write-Host "Setting location to $baseDir"
   Set-Location $baseDir
@@ -40,5 +46,5 @@ task Clean {
 }
 
 task Clean2 {
-	Write-Host "Clean2...";
+    Write-Host "Clean2...";
 }
