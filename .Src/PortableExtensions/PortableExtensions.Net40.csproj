@@ -290,7 +290,6 @@
     <Compile Include="System.String\String.Join.cs" />
     <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.IsMatch.cs" />
     <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.Match.cs" />
-    <Compile Include="System.String\String._Comment.cs" />
     <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.Matches.cs" />
     <Compile Include="System.String\String.ContainsAll.cs" />
     <Compile Include="System.String\String.ContainsAny.cs" />
