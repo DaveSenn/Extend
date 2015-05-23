@@ -5,12 +5,12 @@
     <version>$version$</version>
     <authors>Dave Senn</authors>
 	<title>Extend</title>
-    <licenseUrl>https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt</licenseUrl>
-    <projectUrl>https://github.com/DaveSenn/PortableExtensions</projectUrl>
+    <licenseUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/DaveSenn/Extend</projectUrl>
 	<iconUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/.Art/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extend is a set of .Net extension methods build as portable class library. Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</description>
     <copyright>Copyright © Dave Senn 2015</copyright>
-    <tags>C# Extensions Portable Extension Methods .Net Library PCL</tags>
+    <tags>C# Extensions Extend Portable Extension Methods .Net Library PCL</tags>
   </metadata>
 </package>
