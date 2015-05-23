@@ -78,7 +78,7 @@ task CopyBuildOutput {
         
         # Get the files top copy
         Get-ChildItem -Path $buildOutput  -Recurse -Include @("*.xml", "*.dll") | Foreach ($_) { 
-            $destination = [System.IO.Path]::Combine($nugetPackDirectory, $project.NuGetDir)
+            $destination = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $project.NuGetDir)
             # Create output directory (NuGet dir) if not exists
             if(!(Test-Path -Path $destination )) {
                 New-Item -ItemType directory -Path $destination | Out-Null
@@ -115,6 +115,8 @@ task NuGetPack {
     # Copy NuGet spec file to NuGet directory
     $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
     Copy-Item $nuspec -Destination $nugetPackDirectory
+
+    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "id=Test;version=1.1.1.1;description=desc;copyright=DAveSenn;" -OutputDirectory $nugetPackDirectory
 }
 
 <#
