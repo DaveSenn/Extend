@@ -74,8 +74,20 @@ task CopyBuildOutput {
     # Copy each build output to the output directory
     foreach($project in $allProjects) {
         $buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
-        Copy-Item $buildOutput $outputDirectory -Recurse -Force
+        
+        # Get the files top copy
+        Get-ChildItem -Path $buildOutput  -Recurse -Include @("*.xml", "*.dll") | Foreach ($_) { 
+            $dest = [System.IO.Path]::Combine($outputDirectory, $project.NuGetDir)
+            # Create output directory (NuGet dir) if not exists
+            if(!(Test-Path -Path $dest )) {
+                New-Item -ItemType directory -Path $dest | Out-Null
+            }
+            # Copy the file
+            Copy-Item $_.FullName -Destination "$dest"
+        }
     }
+
+    Get-Childitem $outputDirectory -Include *.pdb -Recurse | Foreach ($_) { Remove-Item $_.fullname }
 }
 
 # Run all unit tests
@@ -94,6 +106,28 @@ task Test {
         }
     }
 }
+
+# Create all NuGet packages
+task NuGetPack {
+    Write-Host "Create NuGet packages" -fore Magenta
+    
+    
+}
+
+<#
+
+task CreatePackage {
+    exec { 
+        $nuspecFile = [System.IO.Path]::Combine($currentDir, "Nuget\PortableExtensions.nuspec")
+        $assemblyPath = [System.IO.Path]::Combine($root, "PortableExtensions\bin\Release\PortableExtensions.dll" )
+        $nugetOutput = [System.IO.Path]::Combine($outputDirectory, "Nuget\")
+        
+        $nugetPack = [System.IO.Path]::Combine($currentDir, "Nuget\pack.ps1")	
+        &$nugetPack $assemblyPath $nuspecFile $nuget $nugetOutput
+    }
+}
+
+#>
 
 # Run NUnit tests for the given project
 function RunNUnitTest($project, $testDll) {
