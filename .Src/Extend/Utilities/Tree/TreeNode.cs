@@ -7,7 +7,7 @@ using System.Linq;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class representing a node of a tree.

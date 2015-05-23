@@ -5,7 +5,7 @@ using System.Collections.ObjectModel;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class representing a collection of tree nodes.

@@ -5,7 +5,7 @@ using System.IO;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     public static partial class StringEx
     {

@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace PortableExtensions.Testing
+namespace Extend.Testing
 {
     [TestFixture]
     public partial class DateTimeExTest

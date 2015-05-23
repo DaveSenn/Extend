@@ -6,7 +6,7 @@ using System.Linq;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     XOr specification.

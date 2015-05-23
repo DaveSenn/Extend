@@ -8,8 +8,8 @@
     <ProjectGuid>{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PortableExtensions</RootNamespace>
-    <AssemblyName>PortableExtensions</AssemblyName>
+    <RootNamespace>Extend</RootNamespace>
+    <AssemblyName>Extend</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -33,7 +33,7 @@
     <DefineConstants>TRACE;DEBUG;PORTABLE45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\PortableExtensions.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug\Portable\Extend.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -42,7 +42,7 @@
     <DefineConstants>TRACE;PORTABLE45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\PortableExtensions.XML</DocumentationFile>
+    <DocumentationFile>bin\Release\Portable\Extend.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />

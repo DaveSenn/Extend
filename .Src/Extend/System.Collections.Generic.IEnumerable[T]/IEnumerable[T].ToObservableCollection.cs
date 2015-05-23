@@ -6,7 +6,7 @@ using System.Collections.ObjectModel;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="IEnumerable{T}" />.

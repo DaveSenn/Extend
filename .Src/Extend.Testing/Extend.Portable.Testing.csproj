@@ -7,8 +7,8 @@
     <ProjectGuid>{8F65CF4E-8582-4A72-933B-87A07ADDC430}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PortableExtensions.Testing</RootNamespace>
-    <AssemblyName>PortableExtensions.Testing</AssemblyName>
+    <RootNamespace>Extend.Testing</RootNamespace>
+    <AssemblyName>Extend.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProductVersion>12.0.0</ProductVersion>
@@ -414,9 +414,9 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PortableExtensions\PortableExtensions.Portable.csproj">
-      <Project>{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}</Project>
-      <Name>PortableExtensions.Portable</Name>
+    <ProjectReference Include="..\Extend\Extend.Portable.csproj">
+      <Project>{44f737d4-dcd5-49b8-bf90-44a7f95bbdf4}</Project>
+      <Name>Extend.Portable</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     [TestFixture]
     public partial class StringExTest

@@ -415,7 +415,7 @@
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PortableExtensions\PortableExtensions.Net40.csproj">
+    <ProjectReference Include="..\Extend\Extend.Net40.csproj">
       <Project>{0e550cab-fda1-4609-af2d-e9f6cac1dc0b}</Project>
       <Name>PortableExtensions.Net40</Name>
     </ProjectReference>

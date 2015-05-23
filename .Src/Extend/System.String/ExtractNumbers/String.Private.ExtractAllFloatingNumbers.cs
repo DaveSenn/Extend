@@ -6,7 +6,7 @@ using System.Text;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     public static partial class StringEx
     {

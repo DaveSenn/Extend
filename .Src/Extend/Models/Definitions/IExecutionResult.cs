@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Interface representing the result of a safe method execution.

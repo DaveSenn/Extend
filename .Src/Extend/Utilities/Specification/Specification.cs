@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Abstract base class for a specification.
