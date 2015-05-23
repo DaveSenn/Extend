@@ -75,7 +75,8 @@ task CopyBuildOutput {
         $buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
         Write-Host $buildOutput
 
-        #Copy-Item c:\scripts\* c:\test
+        Copy-Item $buildOutput $outputDirectory -Recurse -Force
+        # Copy-Item $_.fullname "$to" -Recurse -Force -Exclude @("app", "main.js")
     }
 }
 
