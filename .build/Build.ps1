@@ -11,8 +11,8 @@ properties {
     $msBuildTargets = "Clean;Rebuild"
     $msBuildVerbosity = "minimal"
     $treatWarningsAsErrors = $true
-	$binDir = "bin"
-	$outputDirectory = "$root\Output"
+    $binDir = "bin"
+    $outputDirectory = "$root\Output"
 }
 $root = Resolve-Path ..
 
@@ -66,23 +66,23 @@ task Build {
 task CopyBuildOutput {
     Write-Host "Copy build output" -fore Magenta
 
-	# Create output directory if not exists
-	if(!(Test-Path -Path $outputDirectory )) {
-		New-Item -ItemType directory -Path $outputDirectory | Out-Null
-	}
+    # Create output directory if not exists
+    if(!(Test-Path -Path $outputDirectory )) {
+        New-Item -ItemType directory -Path $outputDirectory | Out-Null
+    }
 
-	foreach($project in $allProjects) {
-		$buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
-		Write-Host $buildOutput
+    foreach($project in $allProjects) {
+        $buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
+        Write-Host $buildOutput
 
-		#Copy-Item c:\scripts\* c:\test
-	}
+        #Copy-Item c:\scripts\* c:\test
+    }
 }
 
 # Run all unit tests
 task Test {
     Write-Host "Run unit tests" -fore Magenta
-	
+    
 
     <# For each project
     foreach($project in $allProjects | where { $_.TestRunner -ne $null } ) {
@@ -95,10 +95,10 @@ task Test {
 
 <# Run NUnit tests for the given project
 function RunNUnitTest($project) {
-	
-	$testDll = [System.IO.Path]::Combine($srcDir, $project.TestName, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
-	$targetDll = [System.IO.Path]::Combine($srcDir, $project.Name, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
-	Write-Host $testDll
+    
+    $testDll = [System.IO.Path]::Combine($srcDir, $project.TestName, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
+    $targetDll = [System.IO.Path]::Combine($srcDir, $project.Name, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
+    Write-Host $testDll
 
 }
 #>
