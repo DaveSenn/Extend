@@ -71,12 +71,10 @@ task CopyBuildOutput {
         New-Item -ItemType directory -Path $outputDirectory | Out-Null
     }
 
+    # Copy each build output to the output directory
     foreach($project in $allProjects) {
         $buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
-        Write-Host $buildOutput
-
         Copy-Item $buildOutput $outputDirectory -Recurse -Force
-        # Copy-Item $_.fullname "$to" -Recurse -Force -Exclude @("app", "main.js")
     }
 }
 
@@ -84,22 +82,24 @@ task CopyBuildOutput {
 task Test {
     Write-Host "Run unit tests" -fore Magenta
     
-
-    <# For each project
+    # For each project
     foreach($project in $allProjects | where { $_.TestRunner -ne $null } ) {
+
+        $buildOutput = [System.IO.Path]::Combine($srcDir, $project.TestDirectory, $binDir, $buildConfiguration, $project.OutputDirectory, $project.TestProjectName) + ".dll"
+        Write-Host $buildOutput
+        
         switch ($project.TestRunner) { 
-            "NUnit" { RunNUnitTest $project } 
+            "NUnit" { RunNUnitTest $project $buildOutput } 
             default { throw "Test-runner '{0}' is not supported" -f $project.TestRunner }
         }
-    }#>
+    }
 }
 
-<# Run NUnit tests for the given project
-function RunNUnitTest($project) {
-    
-    $testDll = [System.IO.Path]::Combine($srcDir, $project.TestName, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
-    $targetDll = [System.IO.Path]::Combine($srcDir, $project.Name, "bin", $buildConfiguration, $project.OutputDirectory, $project.TestName, ".dll" )
-    Write-Host $testDll
+# Run NUnit tests for the given project
+function RunNUnitTest($project, $testDll) {
+    Write-Host "Run NUnit tests: '$testDll'"
+    exec { 
+        &$nunit $testDll | Out-Null 
+    } "Running NUnit tests '$testDll' failed"
 
 }
-#>
