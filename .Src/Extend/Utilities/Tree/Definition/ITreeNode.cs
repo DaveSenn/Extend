@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Interface representing a tree node.

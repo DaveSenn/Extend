@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     public static partial class StringEx
     {

@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Abstract base class for operator specifications.

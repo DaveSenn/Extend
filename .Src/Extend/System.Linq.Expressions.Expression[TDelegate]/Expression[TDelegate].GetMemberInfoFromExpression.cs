@@ -6,7 +6,7 @@ using System.Reflection;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="Expression{TDelegate}" />.

@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class representing an expression specification.

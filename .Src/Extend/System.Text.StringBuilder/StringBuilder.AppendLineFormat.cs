@@ -5,7 +5,7 @@ using System.Text;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="StringBuilder" />.

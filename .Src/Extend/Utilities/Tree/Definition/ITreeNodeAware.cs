@@ -1,4 +1,4 @@
-﻿namespace PortableExtensions
+﻿namespace Extend
 {
     /// <summary>
     ///     Interface representing a type which gets informed about it's tree node.

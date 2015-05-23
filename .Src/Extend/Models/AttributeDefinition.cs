@@ -6,7 +6,7 @@ using System.Reflection;
 
 #endregion
 
-namespace PortableExtensions
+namespace Extend
 {
     /// <summary>
     ///     Class representing a attribute definition.

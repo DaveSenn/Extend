@@ -1,4 +1,4 @@
-﻿namespace PortableExtensions
+﻿namespace Extend
 {
     /// <summary>
     ///     Enumeration of all traversal directions.

@@ -5,11 +5,11 @@ using System.Resources;
 
 #endregion
 
-[assembly: AssemblyTitle("PortableExtensions")]
+[assembly: AssemblyTitle("Extend")]
 [assembly:
     AssemblyDescription(
-        "PortableExtensions is a set of .Net extension methods build as portable class library. " +
-        "PortableExtensions enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.")]
+        "Extend is a set of .Net extension methods build as portable class library. " +
+        "Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.")]
 
 #if DEBUG
 
@@ -20,9 +20,9 @@ using System.Resources;
 #endif
 
 [assembly: AssemblyCompany("Dave Senn")]
-[assembly: AssemblyProduct("PortableExtensions")]
+[assembly: AssemblyProduct("Extend")]
 [assembly: AssemblyCopyright("Copyright © Dave Senn 2015")]
-[assembly: AssemblyTrademark("PortableExtensions")]
+[assembly: AssemblyTrademark("Extend")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 [assembly: AssemblyVersion("1.1.4.0")]
