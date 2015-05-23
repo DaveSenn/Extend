@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableExtensions.Portable", "PortableExtensions\PortableExtensions.Portable.csproj", "{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.Portable", "Extend\Extend.Portable.csproj", "{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortableExtensions.Portable.Testing", "PortableExtensions.Testing\PortableExtensions.Portable.Testing.csproj", "{8F65CF4E-8582-4A72-933B-87A07ADDC430}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Extend.Portable.Testing", "Extend.Testing\Extend.Portable.Testing.csproj", "{8F65CF4E-8582-4A72-933B-87A07ADDC430}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{48E34E4F-E3DA-4B53-A9BC-AAAF9DF9A9FE}"
 EndProject
