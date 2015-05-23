@@ -6,13 +6,13 @@
 clone_depth: 1
 
 # Folder to clone the repository to
-clone_folder: C:\_git\PortableExtensions
+clone_folder: C:\_git\Extend
 
 #---------------------------------
 # Install
 #---------------------------------
-install:
-- ps: .\.build\SetupEnvironment.ps1
+#install:
+#- ps: .\.build\SetupEnvironment.ps1
 
 #---------------------------------
 # Before build
@@ -61,18 +61,18 @@ build:
 #---------------------------------
 
 # Define artifacts
-artifacts:
-  - path: PortableExtensions\bin\Release\PortableExtensions.dll
-    name: PortableExtensions.dll
-  - path: PortableExtensions\bin\Release\PortableExtensions.XML
-    name: PortableExtensions.XML
-  - path: 'NuGet\*.nupkg'
-    name: NuGetPackage.nupkg
+#artifacts:
+#  - path: PortableExtensions\bin\Release\PortableExtensions.dll
+#    name: PortableExtensions.dll
+#  - path: PortableExtensions\bin\Release\PortableExtensions.XML
+#    name: PortableExtensions.XML
+#  - path: 'NuGet\*.nupkg'
+#    name: NuGetPackage.nupkg
 
 # After Build scripts
-after_build:
-  # Create new NuGet package
-  - ps: .\NuGet\pack.ps1
+#after_build:
+#  # Create new NuGet package
+#  - ps: .\NuGet\pack.ps1
 
 # Deploy to NuGet
 #deploy:
