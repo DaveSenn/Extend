@@ -25,7 +25,7 @@ $root = Resolve-Path ..
 $allProjects = Get-Projects
 
 # Default task
-Task default -Depends Clean, RestorePackages, Build, CopyBuildOutput, Test
+Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
 
 # Cleans the output directory
 Task Clean {
@@ -50,7 +50,7 @@ Task RestorePackages {
 }
 
 # Build all projects
-task Build {
+Task Build {
     Write-Host "Build projects" -fore Magenta
 
     # For each project
@@ -64,7 +64,7 @@ task Build {
 }
 
 # Run all unit tests
-task CopyBuildOutput {
+Task CopyBuildOutput {
     Write-Host "Copy build output" -fore Magenta
 
     # Create output directory if not exists
@@ -92,7 +92,7 @@ task CopyBuildOutput {
 }
 
 # Run all unit tests
-task Test {
+Task Test {
     Write-Host "Run unit tests" -fore Magenta
     
     # For each project
@@ -109,30 +109,15 @@ task Test {
 }
 
 # Create all NuGet packages
-task NuGetPack {
+Task NuGetPack {
     Write-Host "Create NuGet packages" -fore Magenta
     
     # Copy NuGet spec file to NuGet directory
     $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
     Copy-Item $nuspec -Destination $nugetPackDirectory
 
-    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "id=Test;version=1.1.1.1;description=desc;copyright=DAveSenn;" -OutputDirectory $nugetPackDirectory
+    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=1.1.1.1;" -OutputDirectory $nugetPackDirectory
 }
-
-<#
-
-task CreatePackage {
-    exec { 
-        $nuspecFile = [System.IO.Path]::Combine($currentDir, "Nuget\PortableExtensions.nuspec")
-        $assemblyPath = [System.IO.Path]::Combine($root, "PortableExtensions\bin\Release\PortableExtensions.dll" )
-        $nugetOutput = [System.IO.Path]::Combine($outputDirectory, "Nuget\")
-        
-        $nugetPack = [System.IO.Path]::Combine($currentDir, "Nuget\pack.ps1")	
-        &$nugetPack $assemblyPath $nuspecFile $nuget $nugetOutput
-    }
-}
-
-#>
 
 # Run NUnit tests for the given project
 function RunNUnitTest($project, $testDll) {
@@ -140,5 +125,4 @@ function RunNUnitTest($project, $testDll) {
     exec { 
         &$nunit $testDll | Out-Null 
     } "Running NUnit tests '$testDll' failed"
-
 }
