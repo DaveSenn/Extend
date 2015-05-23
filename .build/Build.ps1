@@ -13,6 +13,7 @@ properties {
     $treatWarningsAsErrors = $true
     $binDir = "bin"
     $outputDirectory = "$root\Output"
+    $nugetPackDirectory = "$outputDirectory\NuGet"
 }
 $root = Resolve-Path ..
 
@@ -77,13 +78,13 @@ task CopyBuildOutput {
         
         # Get the files top copy
         Get-ChildItem -Path $buildOutput  -Recurse -Include @("*.xml", "*.dll") | Foreach ($_) { 
-            $dest = [System.IO.Path]::Combine($outputDirectory, $project.NuGetDir)
+            $destination = [System.IO.Path]::Combine($nugetPackDirectory, $project.NuGetDir)
             # Create output directory (NuGet dir) if not exists
-            if(!(Test-Path -Path $dest )) {
-                New-Item -ItemType directory -Path $dest | Out-Null
+            if(!(Test-Path -Path $destination )) {
+                New-Item -ItemType directory -Path $destination | Out-Null
             }
             # Copy the file
-            Copy-Item $_.FullName -Destination "$dest"
+            Copy-Item $_.FullName -Destination "$destination"
         }
     }
 
@@ -111,7 +112,9 @@ task Test {
 task NuGetPack {
     Write-Host "Create NuGet packages" -fore Magenta
     
-    
+    # Copy NuGet spec file to NuGet directory
+    $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
+    Copy-Item $nuspec -Destination $nugetPackDirectory
 }
 
 <#

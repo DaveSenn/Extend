@@ -7,13 +7,10 @@
 	<title>$id$</title>
     <licenseUrl>https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt</licenseUrl>
     <projectUrl>https://github.com/DaveSenn/PortableExtensions</projectUrl>
+	<iconUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/.Art/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <copyright>$copyright$</copyright>
     <tags>C# Extensions Portable Extension Methods .Net Library PCL</tags>
   </metadata>
-  <files>
-	<file src="..\PortableExtensions\bin\Release\PortableExtensions.dll" target="lib\portable-net45+wp8+win8" />
-    <file src="..\PortableExtensions\bin\Release\PortableExtensions.XML" target="lib\portable-net45+wp8+win8" />
-  </files>
 </package>
