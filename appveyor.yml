@@ -11,8 +11,8 @@ clone_folder: C:\_git\Extend
 #---------------------------------
 # Install
 #---------------------------------
-install:
-- ps: .Build\InvokeBuild[Old]\Test.ps1
+#install:
+#- ps: .Build\InvokeBuild[Old]\Test.ps1
 
 #---------------------------------
 # Before build

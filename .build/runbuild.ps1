@@ -11,7 +11,7 @@ Import-Module ($path + '\..\Tools\PSake\psake.psm1')
 Try
 {
   write-host "Starting build.ps1"
-  Invoke-psake ($path + '\build.ps1') -properties $properties -parameters $parameters
+  Invoke-psake ($path + '\Build.ps1') -properties $properties -parameters $parameters
 
   if ($psake.build_success -eq $false)
   {
