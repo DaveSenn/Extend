@@ -55,7 +55,7 @@ build_script:
 test:
   # Assemblies to test
   assemblies:
-    - **\*.Testing.dll
+  - '**\*.Testing.dll'
 
 #---------------------------------
 # After build
