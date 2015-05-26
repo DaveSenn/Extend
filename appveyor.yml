@@ -34,8 +34,8 @@ cache:
   - packages -> **\packages.config
 
 # restore NuGet packages
-before_build:
-  - nuget restore
+#before_build:
+#  - nuget restore
 
 #---------------------------------
 # Build configuration
