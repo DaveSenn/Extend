@@ -51,7 +51,7 @@ configuration: Release
 platform: Any CPU
 
 build_script:
-- ps: psake .\build.tasks.ps1 appveyor-build
+- ps: .\Build\RunBuild.ps1
 
 # Solution to build
 #build:
