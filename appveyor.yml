@@ -8,12 +8,6 @@ clone_depth: 10
 clone_folder: C:\_git\Extend
 
 #---------------------------------
-# Install
-#---------------------------------
-#install:
-#- ps: .Build\InvokeBuild[Old]\Test.ps1
-
-#---------------------------------
 # Before build
 #---------------------------------
 
@@ -33,10 +27,6 @@ cache:
   # Cache NuGet packages until packages.config changes
   - packages -> **\packages.config
 
-# restore NuGet packages
-#before_build:
-#  - nuget restore
-
 #---------------------------------
 # Build configuration
 #---------------------------------
@@ -50,13 +40,13 @@ configuration: Release
 # Build platform
 platform: Any CPU
 
-build_script:
-- ps: .\Build\RunBuild.ps1
+#---------------------------------
+# Build
+#---------------------------------
 
-# Solution to build
-#build:
-#  project: PortableExtensions.sln
-#  verbosity: minimal
+# Script to build all the solution
+build_script:
+- ps: \.Build\RunBuild.ps1
 
 #---------------------------------
 # After build
