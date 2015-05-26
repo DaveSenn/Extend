@@ -1,3 +1,7 @@
+# Load needed assemblies
+Add-Type -AssemblyName System
+Add-Type -AssemblyName System.Reflection
+
 # Executes the given script block in the given directory
 function ExecInDir {
     [CmdletBinding()]
@@ -15,4 +19,25 @@ function ExecInDir {
     
     # Change location back
     Set-Location $private:location
+}
+
+# Gets the version of the given assembly
+function GetVersion([string] $dllPath) {
+    $version = $env:appveyor_build_version;
+    if($version) {
+        return $version;
+    }
+    
+    # Load built assembly
+    $assembly = [System.Reflection.Assembly]::LoadFile($dllPath)
+    # Get assembly version
+    $version = $assembly.GetName().Version;
+    Try {
+        $version = New-Object System.Version($version)
+        return New-Object System.Version($version.Major, $version.Minor, $version.Build, ($version.Revision + 1))
+    }
+    Catch [System.Exception] {
+        Write-Host  $_.Exception.Message
+        return $version
+    }
 }

@@ -54,8 +54,8 @@ build_script:
 
 test:
   assemblies:
-    - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
     - .Src\Extend.Testing\bin\$(configuration)\Portable\Extend.Testing.dll
+    - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
 
 #---------------------------------
 # After build
@@ -64,11 +64,8 @@ test:
 # Define artifacts
 artifacts:
   - path: Output
-#    name: PortableExtensions.dll
-#  - path: PortableExtensions\bin\Release\PortableExtensions.XML
-#    name: PortableExtensions.XML
-#  - path: 'NuGet\*.nupkg'
-#    name: NuGetPackage.nupkg
+  - path: 'Output\NuGet\*.nupkg'
+    name: NuGetPackage.nupkg
 
 # After Build scripts
 #after_build:
