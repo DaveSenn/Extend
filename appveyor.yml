@@ -3,8 +3,7 @@
 #---------------------------------
 
 # Set clone depth to speed up clone
-clone_depth: 1
-
+clone_depth: 10
 # Folder to clone the repository to
 clone_folder: C:\_git\Extend
 
@@ -50,6 +49,9 @@ configuration: Release
 
 # Build platform
 platform: Any CPU
+
+build_script:
+- ps: psake .\build.tasks.ps1 appveyor-build
 
 # Solution to build
 #build:
