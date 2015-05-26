@@ -49,6 +49,15 @@ build_script:
 - ps: .Build\RunBuild.ps1
 
 #---------------------------------
+# Testing
+#---------------------------------
+
+test:
+  # Assemblies to test
+  assemblies:
+    - **\*.Testing.dll
+
+#---------------------------------
 # After build
 #---------------------------------
 
