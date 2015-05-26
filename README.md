@@ -1,12 +1,12 @@
 # Welcome to Extend
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/PortableExtensions?svg=true)](https://ci.appveyor.com/project/DaveSenn/portableextensions/branch/master)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/Extend?svg=true)](https://ci.appveyor.com/project/DaveSenn/Extend/branch/master)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5112/badge.svg)](https://scan.coverity.com/projects/5112)
 
-[![NuGet](https://img.shields.io/nuget/v/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
-[![NuGet](https://img.shields.io/nuget/dt/PortableExtensions.svg)](https://www.nuget.org/packages/PortableExtensions)
+[![NuGet](https://img.shields.io/nuget/v/Extend.svg)](https://www.nuget.org/packages/Extend)
+[![NuGet](https://img.shields.io/nuget/dt/Extend.svg)](https://www.nuget.org/packages/Extend)
 
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/PortableExtensions/master/License.txt)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/Extend/master/License.txt)
 
 ### What is this?
 
