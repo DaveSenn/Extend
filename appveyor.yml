@@ -55,15 +55,16 @@ build_script:
 test:
   # Assemblies to test
   assemblies:
-  - '**\*.Testing.dll'
+  - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
+  - .Src\Extend.Testing\bin\$(configuration)\Portable\Extend.Testing.dll
 
 #---------------------------------
 # After build
 #---------------------------------
 
 # Define artifacts
-#artifacts:
-#  - path: PortableExtensions\bin\Release\PortableExtensions.dll
+artifacts:
+  - path: Output
 #    name: PortableExtensions.dll
 #  - path: PortableExtensions\bin\Release\PortableExtensions.XML
 #    name: PortableExtensions.XML
