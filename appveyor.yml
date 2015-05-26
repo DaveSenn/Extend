@@ -53,10 +53,9 @@ build_script:
 #---------------------------------
 
 test:
-  # Assemblies to test
   assemblies:
-  - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
-  - .Src\Extend.Testing\bin\$(configuration)\Portable\Extend.Testing.dll
+    - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
+    - .Src\Extend.Testing\bin\$(configuration)\Portable\Extend.Testing.dll
 
 #---------------------------------
 # After build
