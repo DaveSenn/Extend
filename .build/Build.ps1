@@ -116,7 +116,11 @@ Task NuGetPack {
     $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
     Copy-Item $nuspec -Destination $nugetPackDirectory
 
-    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=1.1.1.1;" -OutputDirectory $nugetPackDirectory
+	# Get package version
+    $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir) + "\Extend.dll"
+    $version = GetVersion $dllPath
+
+    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }
 
 # Run NUnit tests for the given project
