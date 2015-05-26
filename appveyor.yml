@@ -12,7 +12,7 @@ clone_folder: C:\_git\Extend
 # Install
 #---------------------------------
 #install:
-#- ps: .\.build\SetupEnvironment.ps1
+- ps: .Build\InvokeBuild[Old]\Test.ps1
 
 #---------------------------------
 # Before build
