@@ -25,7 +25,7 @@ assembly_info:
 # Cache configuration
 cache:
   # Cache NuGet packages until packages.config changes
-  - packages -> **\packages.config
+  - packages -> .Src\**\packages.config
 
 #---------------------------------
 # Build configuration
@@ -67,14 +67,9 @@ artifacts:
   - path: 'Output\NuGet\*.nupkg'
     name: NuGetPackage.nupkg
 
-# After Build scripts
-#after_build:
-#  # Create new NuGet package
-#  - ps: .\NuGet\pack.ps1
-
 # Deploy to NuGet
-#deploy:
-#  provider: NuGet
-#  api_key:
-#    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
-#  artifact: /.*\.nupkg/
+deploy:
+  provider: NuGet
+  api_key:
+    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
+  artifact: /.*\.nupkg/
