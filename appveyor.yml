@@ -72,8 +72,8 @@ artifacts:
     name: NuGetPackage.nupkg
 
 # Deploy to NuGet
-deploy:
-  provider: NuGet
-  api_key:
-    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
-  artifact: /.*\.nupkg/
+#deploy:
+#  provider: NuGet
+#  api_key:
+#    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
+#  artifact: /.*\.nupkg/
