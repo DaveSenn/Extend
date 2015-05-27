@@ -1,6 +1,7 @@
 ﻿param(
-    [hashtable] $parameters = @{},
-    [hashtable] $properties = @{}
+    [string[]]$taskList = @(),
+    [System.Collections.Hashtable]$parameters = @{},
+    [System.Collections.Hashtable]$properties = @{}
 )
 
 $currentDirectory = Split-Path -Path $MyInvocation.MyCommand.Path
@@ -9,7 +10,7 @@ $psakePath = [System.IO.Path]::Combine($currentDirectory, "..\", ".Tools\PSake\p
 Import-Module ($psakePath)
 Try
 {
-    Invoke-Psake ($currentDirectory + '\Build.ps1') -properties $properties -parameters $parameters
+    Invoke-Psake ($currentDirectory + '\Build.ps1') -taskList $taskList -properties $properties -parameters $parameters
 
     if ($psake.build_success -eq $false)
     {
