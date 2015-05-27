@@ -27,6 +27,9 @@ $allProjects = Get-Projects
 # Default task
 Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
 
+# CI task
+Task CI -Depends Clean, RestorePackages, Build, CopyBuildOutput, NuGetPack
+
 # Cleans the output directory
 Task Clean {
     Write-Host "Clean repository" -fore Magenta
