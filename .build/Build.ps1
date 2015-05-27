@@ -15,7 +15,7 @@ properties {
     $outputDirectory = "$root\Output"
     $nugetPackDirectory = "$outputDirectory\NuGet"
     $coverityBuildTool = "cov-build"
-    $coverityDir = "cov-int"
+    $coverityDir = "$outputDirectory\coverity"
     $coveritySolution = "$root\.Src\Extend..sln"
 }
 $root = Resolve-Path ..
@@ -134,6 +134,8 @@ Task NuGetPack {
 
 # Run Coverity scan
 Task Coverity {
+    Write-Host "Run Coverity scan" -fore Magenta
+
     &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release"
 }
 
