@@ -78,13 +78,16 @@ Task CopyBuildOutput {
         
         # Get the files top copy
         Get-ChildItem -Path $buildOutput  -Recurse -Include @("*.xml", "*.dll") | Foreach ($_) { 
-            $destination = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $project.NuGetDir)
-            # Create output directory (NuGet dir) if not exists
-            if(!(Test-Path -Path $destination )) {
-                New-Item -ItemType directory -Path $destination | Out-Null
+
+            foreach($nugetDir in  $project.NuGetDir) {
+                $destination = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $nugetDir)
+                # Create output directory (NuGet dir) if not exists
+                if(!(Test-Path -Path $destination )) {
+                    New-Item -ItemType directory -Path $destination | Out-Null
+                }
+                # Copy the file
+                Copy-Item $_.FullName -Destination "$destination"
             }
-            # Copy the file
-            Copy-Item $_.FullName -Destination "$destination"
         }
     }
 
@@ -116,8 +119,8 @@ Task NuGetPack {
     $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
     Copy-Item $nuspec -Destination $nugetPackDirectory
 
-	# Get package version
-    $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir) + "\Extend.dll"
+    # Get package version
+    $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir[0]) + "\Extend.dll"
     $version = GetVersion $dllPath
 
     &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
