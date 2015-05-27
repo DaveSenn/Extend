@@ -14,6 +14,9 @@ properties {
     $binDir = "bin"
     $outputDirectory = "$root\Output"
     $nugetPackDirectory = "$outputDirectory\NuGet"
+    $coverityBuildTool = "cov-build"
+    $coverityDir = "cov-int"
+    $coveritySolution = "$root\.Src\Extend..sln"
 }
 $root = Resolve-Path ..
 
@@ -28,7 +31,7 @@ $allProjects = Get-Projects
 Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
 
 # CI task
-Task CI -Depends Clean, RestorePackages, Build, CopyBuildOutput, NuGetPack
+Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, Coverity
 
 # Cleans the output directory
 Task Clean {
@@ -129,9 +132,9 @@ Task NuGetPack {
     &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }
 
-# Run coverity scan
+# Run Coverity scan
 Task Coverity {
-    
+    &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release"
 }
 
 # Run NUnit tests for the given project
