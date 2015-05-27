@@ -3,8 +3,10 @@ Main build script
 #>
 properties { 
     $srcDir = "$root\.Src\"
-    $nuget = "$root\.Tools\NuGet\nuget.exe"
-    $nunit = "$root\.Tools\NUnit\nunit-console.exe"
+    $toolsDir = "$root\.Tools\"
+    $nuget = "$toolsDir\NuGet\nuget.exe"
+    $nunit = "$toolsDir\NUnit\nunit-console.exe"
+    $7zip = "$toolsDir\7zip\7za.exe"
     $git = "git"
     $msBuild = "MSBuild"
     $buildConfiguration = "Release"
@@ -137,6 +139,11 @@ Task Coverity {
     Write-Host "Run Coverity scan" -fore Magenta
 
     &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release"
+
+    Write-Host "Create zip from coverity result"
+    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\coverity.zip"
+    $coverityOutDir = $coverityDir + "\*"
+    &$7zip a $zipPath $coverityOutDir
 }
 
 # Run NUnit tests for the given project
