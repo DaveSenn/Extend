@@ -417,7 +417,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Extend\Extend.Net40.csproj">
       <Project>{0e550cab-fda1-4609-af2d-e9f6cac1dc0b}</Project>
-      <Name>PortableExtensions.Net40</Name>
+      <Name>Extend.Net40</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

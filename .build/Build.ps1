@@ -129,6 +129,11 @@ Task NuGetPack {
     &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }
 
+# Run coverity scan
+Task Coverity {
+    
+}
+
 # Run NUnit tests for the given project
 function RunNUnitTest($project, $testDll) {
     Write-Host "Run NUnit tests: '$testDll'"
