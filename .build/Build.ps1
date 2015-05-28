@@ -153,8 +153,8 @@ Task CoverityUpload {
 	# Get needed values
     $version = GetVersionSecure
 	$zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
-	$token = $env:email
-	$email = $env:coverity_token
+	$token = $env:coverity_token
+	$email = $env:email
 	$message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
 	
 	&$curl --form token=$token --form email=$email --form file="@$zipPath" --form version=$version --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
