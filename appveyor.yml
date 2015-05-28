@@ -48,6 +48,8 @@ platform: Any CPU
 environment:
   email:
     secure: 3Lt1B4c7ElWBAbKecevrRmP55DyufIcsLdVip6s+ua8=
+  coverity_token:
+    secure: RvrepqlaiLhear65iBy87Q==
 
 #---------------------------------
 # Build
