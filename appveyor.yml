@@ -9,7 +9,7 @@ clone_folder: C:\_git\Extend
 
 # Skipping commits with noCI in commit message
 skip_commits:
-  message: noCI
+  message: ^.*\b(noCI)\b.*$
 
 #---------------------------------
 # Before build
