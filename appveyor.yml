@@ -49,7 +49,7 @@ environment:
   email:
     secure: 3Lt1B4c7ElWBAbKecevrRmP55DyufIcsLdVip6s+ua8=
   coverity_token:
-    secure: RvrepqlaiLhear65iBy87Q==
+    secure: ZI0+3VGXlTZ6NNQkmviypnUk+LJvZY4W/St9zOVZzjg=
 
 #---------------------------------
 # Build
