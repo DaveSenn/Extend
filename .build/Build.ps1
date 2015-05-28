@@ -172,5 +172,5 @@ function RunNUnitTest($project, $testDll) {
 function GetVersionSecure(){
 	# Get version
     $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir[0]) + "\Extend.dll"
-    $version = GetVersion $dllPath
+    return GetVersion $dllPath
 }
