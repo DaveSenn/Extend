@@ -157,7 +157,12 @@ Task CoverityUpload {
 	$email = $env:email
 	$message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
 	
-	&$curl --form token=$token --form email=$email --form file="@$zipPath" --form version=$version --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
+	Try {
+		&$curl --form token=$token --form email=$email --form file="@$zipPath" --form version=$version --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
+    }
+    Catch [System.Exception] {
+        Write-Host  $_.Exception.Message
+    }
 }
 
 # Run NUnit tests for the given project
