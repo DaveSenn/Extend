@@ -142,7 +142,7 @@ Task Coverity {
 
     Write-Host "Create zip from coverity result"
     $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
-    $coverityOutDir = $coverityDir + "\*"
+    $coverityOutDir = $coverityDir
     &$7zip a $zipPath $coverityOutDir | Out-Null 
 }
 
