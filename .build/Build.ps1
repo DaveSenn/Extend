@@ -18,7 +18,7 @@ properties {
     $outputDirectory = "$root\Output"
     $nugetPackDirectory = "$outputDirectory\NuGet"
     $coverityBuildTool = "cov-build"
-    $coverityDir = "$outputDirectory\coverity"
+    $coverityDir = "$outputDirectory\cov-int"
     $coveritySolution = "$root\.Src\Extend..sln"
 }
 $root = Resolve-Path ..
@@ -141,7 +141,7 @@ Task Coverity {
     &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release" | Out-Null
 
     Write-Host "Create zip from coverity result"
-    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\coverity.zip"
+    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
     $coverityOutDir = $coverityDir + "\*"
     &$7zip a $zipPath $coverityOutDir | Out-Null 
 }
@@ -152,7 +152,7 @@ Task CoverityUpload {
 	
 	# Get needed values
     $version = GetVersionSecure
-	$zipPath =[System.IO.Path]::Combine($outputDirectory) + "\coverity.zip"
+	$zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
 	$token = $env:email
 	$email = $env:coverity_token
 	$message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
