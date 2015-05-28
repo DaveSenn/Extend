@@ -57,7 +57,7 @@ environment:
 
 # Script to build all the solution
 build_script:
-- ps: .Build\RunBuild.ps1
+- ps: .Build\RunBuild.ps1 CI
 
 #---------------------------------
 # Testing
