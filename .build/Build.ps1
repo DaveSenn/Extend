@@ -157,7 +157,7 @@ Task CoverityUpload {
 	$email = $env:coverity_token
 	$message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
 	
-	&$curl --form token="$token" --form email="$email" --form file="@$zipPath" --form version="$version" --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
+	&$curl --form token=$token --form email=$email --form file="@$zipPath" --form version=$version --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
 }
 
 # Run NUnit tests for the given project
