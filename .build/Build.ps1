@@ -60,7 +60,8 @@ Task RestorePackages {
 # Build all projects
 Task Build {
     Write-Host "Build projects" -fore Magenta
-
+	Write-Host "Secure test: " $env:email
+	
     # For each project
     foreach($project in $allProjects) {
         $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
