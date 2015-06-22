@@ -55,6 +55,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System.String\ConvertSave\String.SaveToGuid.Test.cs" />
+    <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
+    <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
