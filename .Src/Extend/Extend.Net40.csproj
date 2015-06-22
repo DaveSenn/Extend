@@ -234,9 +234,12 @@
     <Compile Include="System.String\ConvertSave\String.SaveToDateTime.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToDecimal.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToDouble.cs" />
+    <Compile Include="System.String\ConvertSave\String.SaveToGuid.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToInt64.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToInt32.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToInt16.cs" />
+    <Compile Include="System.String\Convert\String.ToGuid.cs" />
+    <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
