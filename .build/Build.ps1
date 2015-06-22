@@ -34,7 +34,7 @@ $allProjects = Get-Projects
 Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
 
 # CI task
-Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, Coverity, CoverityUpload
+Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, CoverityScan, CoverityUpload
 
 # Cleans the output directory
 Task Clean {
@@ -61,7 +61,7 @@ Task RestorePackages {
 # Build all projects
 Task Build {
     Write-Host "Build projects" -fore Magenta
-	
+    
     # For each project
     foreach($project in $allProjects) {
         $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
@@ -135,7 +135,7 @@ Task NuGetPack {
 }
 
 # Run Coverity scan
-Task Coverity {
+Task CoverityScan {
     Write-Host "Run Coverity scan" -fore Magenta
 
     &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release" | Out-Null
@@ -149,20 +149,16 @@ Task Coverity {
 # Upload the Coverity scan results
 Task CoverityUpload {
     Write-Host "Upload Coverity scan result" -fore Magenta
-	
-	# Get needed values
+    
+    # Get needed values
     $version = GetVersionSecure
-	$zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
-	$token = $env:coverity_token
-	$email = $env:email
-	$message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
-	
-	Try {
-		&$curl --form token=$token --form email=$email --form file="@$zipPath" --form version=$version --form description="$message" --insecure https://scan.coverity.com/builds?project=DaveSenn%2FExtend
-    }
-    Catch [System.Exception] {
-        Write-Host  $_.Exception.Message
-    }
+    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
+    $token = $env:coverity_token
+    $email = $env:email
+    $message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
+    
+    # Upload the Coverity result
+    UploadCoverityScanResult $token $email $message $version $zipPath "https://scan.coverity.com/builds?project=DaveSenn%2FExtend"
 }
 
 # Run NUnit tests for the given project
@@ -175,7 +171,7 @@ function RunNUnitTest($project, $testDll) {
 
 # Gets the version of the built DLL
 function GetVersionSecure(){
-	# Get version
+    # Get version
     $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir[0]) + "\Extend.dll"
     return GetVersion $dllPath
 }
