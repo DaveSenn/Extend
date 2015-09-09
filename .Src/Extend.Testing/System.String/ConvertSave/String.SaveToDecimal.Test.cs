@@ -6,7 +6,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace Extend
+namespace Extend.Testing
 {
     [TestFixture]
     public partial class StringExTest

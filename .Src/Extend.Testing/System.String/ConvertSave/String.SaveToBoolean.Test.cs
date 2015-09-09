@@ -5,7 +5,7 @@ using NUnit.Framework;
 
 #endregion
 
-namespace Extend
+namespace Extend.Testing
 {
     [TestFixture]
     public partial class StringExTest
@@ -43,7 +43,7 @@ namespace Extend
         {
             var actual = "InvalidValue".SaveToBoolean();
 
-            Assert.AreEqual( default( Boolean ), actual );
+            Assert.AreEqual( default(Boolean), actual );
         }
 
         [Test]
