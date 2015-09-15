@@ -12,29 +12,36 @@ namespace Extend.Testing
     {
         private class HelperClass
         {
-            public event EventHandler<SampleEventArgs> MyGenericEvent;
-
             public event EventHandler MyEvent;
-
-            public void RaiseGenericEvent( SampleEventArgs args )
-            {
-                MyGenericEvent.Raise( this, args );
-            }
+            public event EventHandler<SampleEventArgs> MyGenericEvent;
 
             public void RaiseEvent( EventArgs args )
             {
                 MyEvent.Raise( this, args );
             }
+
+            public void RaiseGenericEvent( SampleEventArgs args )
+            {
+                MyGenericEvent.Raise( this, args );
+            }
         }
 
         private class SampleEventArgs : EventArgs
         {
+            #region Properties
+
+            public String Message { get; private set; }
+
+            #endregion
+
+            #region Ctor
+
             public SampleEventArgs( String message )
             {
                 Message = message;
             }
 
-            public String Message { get; private set; }
+            #endregion
         }
 
         [Test]

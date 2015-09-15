@@ -53,6 +53,20 @@ namespace Extend.Testing
             "".IsNotMatch( null, RegexOptions.Multiline );
         }
 
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsNotMatchTestCaseNullCheck()
+        {
+            StringEx.IsNotMatch( null, "" );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void IsNotMatchTestCaseNullCheck1()
+        {
+            "".IsNotMatch( null );
+        }
+
 #if PORTABLE45
         [Test]
         public void IsNotMatchTestCase2()
@@ -94,19 +108,5 @@ namespace Extend.Testing
             Assert.IsTrue( actual );
         }
 #endif
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void IsNotMatchTestCaseNullCheck()
-        {
-            StringEx.IsNotMatch( null, "" );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void IsNotMatchTestCaseNullCheck1()
-        {
-            "".IsNotMatch( null );
-        }
     }
 }

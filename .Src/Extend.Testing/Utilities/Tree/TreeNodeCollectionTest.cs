@@ -168,7 +168,7 @@ namespace Extend.Testing
                 "test1",
                 new TreeNode<String>( "test2" ),
                 "test3",
-                new TreeNode<String>( "test4" ),
+                new TreeNode<String>( "test4" )
             };
 
             Assert.AreSame( parent, target.Parent );
@@ -225,7 +225,7 @@ namespace Extend.Testing
                 "test1",
                 new TreeNode<String>( "test2" ),
                 "test3",
-                new TreeNode<String>( "test4" ),
+                new TreeNode<String>( "test4" )
             };
 
             target.ForEach( ( x, i ) => Assert.AreEqual( "test" + ( i + 1 ), x.Value ) );

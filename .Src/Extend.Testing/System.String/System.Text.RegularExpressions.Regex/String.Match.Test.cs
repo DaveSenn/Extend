@@ -53,6 +53,20 @@ namespace Extend.Testing
             "".Match( null, RegexOptions.Compiled );
         }
 
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void MatchTestCaseNullCheck()
+        {
+            StringEx.Match( null, "" );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void MatchTestCaseNullCheck1()
+        {
+            "".Match( null );
+        }
+
 #if PORTABLE45
         [Test]
         public void MatchTestCase2()
@@ -93,19 +107,5 @@ namespace Extend.Testing
             var actual = text.Match( emaiLpattern, RegexOptions.Compiled, 3.ToMilliseconds() );
         }
 #endif
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void MatchTestCaseNullCheck()
-        {
-            StringEx.Match( null, "" );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void MatchTestCaseNullCheck1()
-        {
-            "".Match( null );
-        }
     }
 }

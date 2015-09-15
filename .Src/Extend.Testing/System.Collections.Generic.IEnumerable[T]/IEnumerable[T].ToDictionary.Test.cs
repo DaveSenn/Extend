@@ -25,7 +25,7 @@ namespace Extend.Testing
                 new Tuple<Int32, String>( 2, "test2.3" ),
                 new Tuple<Int32, String>( 3, "test3.1" ),
                 new Tuple<Int32, String>( 3, "test3.2" ),
-                new Tuple<Int32, String>( 3, "test3.3" ),
+                new Tuple<Int32, String>( 3, "test3.3" )
             };
 
             var groups = list.GroupBy( x => x.Item1 );

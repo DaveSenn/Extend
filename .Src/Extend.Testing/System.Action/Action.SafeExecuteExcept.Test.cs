@@ -21,6 +21,13 @@ namespace Extend.Testing
         }
 
         [Test]
+        [ExpectedException( typeof (ArgumentException) )]
+        public void SafeExecuteExceptTestCase_1()
+        {
+            ActionEx.SafeExecuteExcept<ArgumentException>( () => { throw new ArgumentException(); } );
+        }
+
+        [Test]
         public void SafeExecuteExceptTestCase1()
         {
             var actual = ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>( () => { } );
@@ -30,14 +37,6 @@ namespace Extend.Testing
                 ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
                     () => { throw new InvalidCastException(); } );
             Assert.IsFalse( actual );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteExceptTestCase1NullCheck()
-        {
-            Action action = null;
-            action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
         }
 
         [Test]
@@ -57,6 +56,14 @@ namespace Extend.Testing
         }
 
         [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteExceptTestCase1NullCheck()
+        {
+            Action action = null;
+            action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
+        }
+
+        [Test]
         public void SafeExecuteExceptTestCase2()
         {
             var actual =
@@ -68,14 +75,6 @@ namespace Extend.Testing
                 ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                     () => { throw new InvalidCastException(); } );
             Assert.IsFalse( actual );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteExceptTestCase2NullCheck()
-        {
-            Action action = null;
-            action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
         }
 
         [Test]
@@ -103,6 +102,14 @@ namespace Extend.Testing
         }
 
         [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteExceptTestCase2NullCheck()
+        {
+            Action action = null;
+            action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
+        }
+
+        [Test]
         public void SafeExecuteExceptTestCase3()
         {
             var actual =
@@ -118,16 +125,6 @@ namespace Extend.Testing
                     <ArgumentException, NullReferenceException, InvalidOperationException, AccessViolationException>(
                         () => { throw new InvalidCastException(); } );
             Assert.IsFalse( actual );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteExceptTestCase3NullCheck()
-        {
-            Action action = null;
-            action
-                .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, AccessViolationException>();
         }
 
         [Test]
@@ -171,6 +168,16 @@ namespace Extend.Testing
         }
 
         [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteExceptTestCase3NullCheck()
+        {
+            Action action = null;
+            action
+                .SafeExecuteExcept
+                <ArgumentException, NullReferenceException, InvalidOperationException, AccessViolationException>();
+        }
+
+        [Test]
         public void SafeExecuteExceptTestCase4()
         {
             var actual = ActionEx.SafeExecuteExcept( () => { },
@@ -186,17 +193,6 @@ namespace Extend.Testing
                                                  typeof (InvalidOperationException),
                                                  typeof (AccessViolationException) );
             Assert.IsFalse( actual );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteExceptTestCase4NullCheck()
-        {
-            Action action = null;
-            action.SafeExecuteExcept( typeof (ArgumentException),
-                                      typeof (NullReferenceException),
-                                      typeof (InvalidOperationException),
-                                      typeof (AccessViolationException) );
         }
 
         [Test]
@@ -245,17 +241,21 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteExceptTestCase4NullCheck()
+        {
+            Action action = null;
+            action.SafeExecuteExcept( typeof (ArgumentException),
+                                      typeof (NullReferenceException),
+                                      typeof (InvalidOperationException),
+                                      typeof (AccessViolationException) );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
         public void SafeExecuteExceptTestCaseNullCheck()
         {
             Action action = null;
             action.SafeExecuteExcept<ArgumentException>();
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentException) )]
-        public void SafeExecuteExceptTestCase_1()
-        {
-            ActionEx.SafeExecuteExcept<ArgumentException>( () => { throw new ArgumentException(); } );
         }
     }
 }

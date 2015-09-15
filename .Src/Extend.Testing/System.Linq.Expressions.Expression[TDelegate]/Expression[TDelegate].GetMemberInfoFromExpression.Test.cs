@@ -14,8 +14,12 @@ namespace Extend.Testing
     {
         private class TestModel
         {
+            #region Properties
+
             public String Name { get; set; }
             public Int32 Age { get; set; }
+
+            #endregion
         }
 
         [Test]

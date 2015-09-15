@@ -135,18 +135,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomStringTestCase()
-        {
-            var actual = RandomValueEx.GetRandomString();
-            Assert.IsTrue( actual.Length > 0 );
-        }
-
-        [Test]
         public void GetRandomStringsTestCase()
         {
             var actual = RandomValueEx.GetRandomStrings( 100 );
             Assert.AreEqual( 100, actual.Count );
             actual.ForEach( x => Assert.IsTrue( x.Length > 0 ) );
+        }
+
+        [Test]
+        public void GetRandomStringTestCase()
+        {
+            var actual = RandomValueEx.GetRandomString();
+            Assert.IsTrue( actual.Length > 0 );
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToGuid();
 
-            Assert.AreEqual( default( Guid ), actual );
+            Assert.AreEqual( default(Guid), actual );
         }
 
         [Test]

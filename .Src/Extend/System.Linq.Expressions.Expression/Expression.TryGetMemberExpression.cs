@@ -56,7 +56,7 @@ namespace Extend
                         throw new NotSupportedException(
                             "TryGetMemberExpression does not support expressions of type ConstantExpression. Consider using none-constant member." );
 
-                        //I cant find any case when expression can be LambdaExpression
+                    //I cant find any case when expression can be LambdaExpression
                     case ExpressionType.Lambda:
                         var body = ( expression as LambdaExpression ).Body;
                         if ( body != null )

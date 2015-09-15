@@ -274,8 +274,12 @@ namespace Extend.Testing
         private class DisposeTestHelper : IDisposable
 
         {
+            #region Properties
+
             public String Value { get; set; }
             public Action<String> DisposeAction { get; set; }
+
+            #endregion
 
             #region Implementation of IDisposable
 
@@ -660,7 +664,7 @@ namespace Extend.Testing
             var exParent = new TreeNode<String>( "Ex" );
             var children = new TreeNodeCollection<String>( exParent )
             {
-                "Item0",
+                "Item0"
             };
 
             var target = new TreeNode<String>( "Target", children );
@@ -899,8 +903,8 @@ namespace Extend.Testing
                 new TreeNode<String>( "1" ),
                 new TreeNode<String>( "2" )
                 {
-                    new TreeNode<String>( "1" ),
-                },
+                    new TreeNode<String>( "1" )
+                }
             };
             target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
 
@@ -922,8 +926,8 @@ namespace Extend.Testing
                 new TreeNode<String>( "1" ),
                 new TreeNode<String>( "2" )
                 {
-                    new TreeNode<String>( "1" ),
-                },
+                    new TreeNode<String>( "1" )
+                }
             };
             target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
 
@@ -948,7 +952,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -957,7 +961,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -986,7 +990,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -995,7 +999,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1027,7 +1031,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1036,7 +1040,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1065,7 +1069,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1074,7 +1078,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1106,7 +1110,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1115,7 +1119,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1144,7 +1148,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1153,7 +1157,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1185,7 +1189,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1194,7 +1198,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1223,7 +1227,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a" ),
                     new TreeNode<String>( "b" ),
                     new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" ),
+                    new TreeNode<String>( "111" )
                 },
                 new TreeNode<String>( "3" ),
                 new TreeNode<String>( "11" ),
@@ -1232,7 +1236,7 @@ namespace Extend.Testing
                     new TreeNode<String>( "a1" ),
                     new TreeNode<String>( "b1" ),
                     new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" ),
+                    new TreeNode<String>( "1111" )
                 },
                 new TreeNode<String>( "31" )
             };
@@ -1265,44 +1269,6 @@ namespace Extend.Testing
             Assert.AreEqual( "1", actual[1].Value );
             Assert.AreEqual( "2", actual[2].Value );
             Assert.AreEqual( "3", actual[3].Value );
-        }
-
-        [Test]
-        [ExpectedException(typeof(NotSupportedException))]
-        public void GetEnumeratorTestCase8()
-        {
-            var target = new TreeNode<String>("root") { "1", "2", "3", new AlternativeTreeNode<String>() };
-            target.TraversalDirection = TreeTraversalDirection.TopDown;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (var node in target)
-                actual.Add(node);
-
-            Assert.AreEqual(4, actual.Count);
-            Assert.AreEqual("root", actual[0].Value);
-            Assert.AreEqual("1", actual[1].Value);
-            Assert.AreEqual("2", actual[2].Value);
-            Assert.AreEqual("3", actual[3].Value);
-        }
-
-        [Test]
-        [ExpectedException(typeof(NotSupportedException))]
-        public void GetEnumeratorTestCase9()
-        {
-            var target = new TreeNode<String>("root") { "1", "2", "3", new AlternativeTreeNode<String>() };
-            target.TraversalDirection = TreeTraversalDirection.BottomUp;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach (var node in target)
-                actual.Add(node);
-
-            Assert.AreEqual(4, actual.Count);
-            Assert.AreEqual("root", actual[0].Value);
-            Assert.AreEqual("1", actual[1].Value);
-            Assert.AreEqual("2", actual[2].Value);
-            Assert.AreEqual("3", actual[3].Value);
         }
 
         [Test]
@@ -1467,20 +1433,56 @@ namespace Extend.Testing
         [Test]
         public void GetEnumeratorTestCase7()
         {
-            var target = new TreeNode<String>("root") { "1", "2", "3" };
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
             var actual = new List<ITreeNode<String>>();
 
             var enumerator = ( target as IEnumerable ).GetEnumerator();
             while ( enumerator.MoveNext() )
-            {
-                actual.Add(enumerator.Current as ITreeNode<String>);
-            } 
+                actual.Add( enumerator.Current as ITreeNode<String> );
 
-            Assert.AreEqual(4, actual.Count);
-            Assert.AreEqual("root", actual[0].Value);
-            Assert.AreEqual("1", actual[1].Value);
-            Assert.AreEqual("2", actual[2].Value);
-            Assert.AreEqual("3", actual[3].Value);
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+        }
+
+        [Test]
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetEnumeratorTestCase8()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.TopDown;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+        }
+
+        [Test]
+        [ExpectedException( typeof (NotSupportedException) )]
+        public void GetEnumeratorTestCase9()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
         }
 
         [Test]

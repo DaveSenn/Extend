@@ -8,7 +8,7 @@ using System.Globalization;
 namespace Extend
 {
     /// <summary>
-    ///     Class containing some extension methods for <see cref="String" />.
+    ///     Class containing some extension methods for <see cref="string" />.
     /// </summary>
     public static partial class StringEx
     {

@@ -21,14 +21,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase1NullCheck()
-        {
-            Action action = null;
-            action.SafeExecute();
-        }
-
-        [Test]
         public void SafeExecuteTestCase1_1()
         {
             var actual = ActionEx.SafeExecute<ArgumentNullException>( () => { } );
@@ -47,7 +39,7 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase2NullCheck()
+        public void SafeExecuteTestCase1NullCheck()
         {
             Action action = null;
             action.SafeExecute();
@@ -80,7 +72,7 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase3NullCheck()
+        public void SafeExecuteTestCase2NullCheck()
         {
             Action action = null;
             action.SafeExecute();
@@ -120,7 +112,7 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase4NullCheck()
+        public void SafeExecuteTestCase3NullCheck()
         {
             Action action = null;
             action.SafeExecute();
@@ -177,19 +169,10 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase5NullCheck()
+        public void SafeExecuteTestCase4NullCheck()
         {
             Action action = null;
-            action.SafeExecute( typeof (Exception), typeof (ArgumentException) );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void SafeExecuteTestCase5NullCheck1()
-        {
-            Action action = () => { };
-            Type[] types = null;
-            action.SafeExecute( types );
+            action.SafeExecute();
         }
 
         [Test]
@@ -262,6 +245,23 @@ namespace Extend.Testing
                                   typeof (InvalidCastException),
                                   typeof (InvalidOperationException),
                                   typeof (ApplicationException) );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase5NullCheck()
+        {
+            Action action = null;
+            action.SafeExecute( typeof (Exception), typeof (ArgumentException) );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void SafeExecuteTestCase5NullCheck1()
+        {
+            Action action = () => { };
+            Type[] types = null;
+            action.SafeExecute( types );
         }
 
         [Test]

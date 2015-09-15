@@ -13,7 +13,7 @@ namespace Extend
     /// </summary>
     public static class RandomValueEx
     {
-        #region Fields
+        #region Constants
 
         /// <summary>
         ///     The object used to generate random values.
@@ -24,6 +24,10 @@ namespace Extend
         ///     The object used to synchronize accesses to <see cref="Rnd" /> across different threads.
         /// </summary>
         private static readonly Object SyncLock = new Object();
+
+        #endregion
+
+        #region Properties
 
         /// <summary>
         ///     Gets the random object used to create the random values.
@@ -37,7 +41,7 @@ namespace Extend
             }
         }
 
-        #endregion Fields
+        #endregion
 
         #region Methods
 

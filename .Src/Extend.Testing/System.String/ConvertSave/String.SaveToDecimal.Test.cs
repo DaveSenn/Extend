@@ -64,7 +64,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToDecimal();
 
-            Assert.AreEqual( default( Decimal ), actual );
+            Assert.AreEqual( default(Decimal), actual );
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( default( Decimal ), actual );
+            Assert.AreEqual( default(Decimal), actual );
         }
 
         [Test]

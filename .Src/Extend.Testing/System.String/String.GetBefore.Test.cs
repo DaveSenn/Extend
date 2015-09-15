@@ -12,13 +12,6 @@ namespace Extend.Testing
     {
         [Test]
         [ExpectedException( typeof (ArgumentOutOfRangeException) )]
-        public void GetBeforeArgumentOutOfRangExceptionTestCase()
-        {
-            "test test".GetBefore( "test", 15 );
-        }
-
-        [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangeTestCase1()
         {
             "test test1".GetBefore( "test1", 20, 2 );
@@ -47,9 +40,9 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentOutOfRangeException) )]
-        public void GetBeforeCharArgumentOutOfRangExceptionTestCase()
+        public void GetBeforeArgumentOutOfRangExceptionTestCase()
         {
-            "test test".GetBefore( 't', 15 );
+            "test test".GetBefore( "test", 15 );
         }
 
         [Test]
@@ -78,6 +71,13 @@ namespace Extend.Testing
         public void GetBeforeCharArgumentOutOfRangeTestCase4()
         {
             "test test test".GetBefore( 't', 2, -20 );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
+        public void GetBeforeCharArgumentOutOfRangExceptionTestCase()
+        {
+            "test test".GetBefore( 't', 15 );
         }
 
         [Test]

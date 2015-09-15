@@ -82,7 +82,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToDateTimeTestCase5()
         {
-            var expected = default( DateTime );
+            var expected = default(DateTime);
             var actual = "InvalidValue".SaveToDateTime();
 
             Assert.AreEqual( expected.Year, actual.Year );
@@ -111,7 +111,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToDateTimeTestCase7()
         {
-            var expected = default( DateTime );
+            var expected = default(DateTime);
             var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
             Assert.AreEqual( expected, actual );

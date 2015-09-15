@@ -64,7 +64,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToDouble();
 
-            Assert.AreEqual( default( Double ), actual );
+            Assert.AreEqual( default(Double), actual );
         }
 
         [Test]
@@ -82,7 +82,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( default( Double ), actual );
+            Assert.AreEqual( default(Double), actual );
         }
 
         [Test]
