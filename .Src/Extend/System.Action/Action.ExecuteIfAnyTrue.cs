@@ -24,7 +24,7 @@ namespace Extend
         {
             if ( values.Any( x => x ) )
             {
-                trueAction.ThrowIfNull( () => trueAction );
+                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction();
             }
             else if ( falseAction != null )
@@ -48,7 +48,7 @@ namespace Extend
         {
             if ( values.Any( x => x ) )
             {
-                trueAction.ThrowIfNull( () => trueAction );
+                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter );
             }
             else if ( falseAction != null )
@@ -75,7 +75,7 @@ namespace Extend
         {
             if ( values.Any( x => x ) )
             {
-                trueAction.ThrowIfNull( () => trueAction );
+                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2 );
             }
             else if ( falseAction != null )
@@ -105,7 +105,7 @@ namespace Extend
         {
             if ( values.Any( x => x ) )
             {
-                trueAction.ThrowIfNull( () => trueAction );
+                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3 );
             }
             else if ( falseAction != null )
@@ -138,7 +138,7 @@ namespace Extend
         {
             if ( values.Any( x => x ) )
             {
-                trueAction.ThrowIfNull( () => trueAction );
+                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3, parameter4 );
             }
             else if ( falseAction != null )
@@ -155,7 +155,7 @@ namespace Extend
         {
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( () => trueAction );
+            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction();
         }
@@ -174,7 +174,7 @@ namespace Extend
         {
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( () => trueAction );
+            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter );
         }
@@ -196,7 +196,7 @@ namespace Extend
         {
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( () => trueAction );
+            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2 );
         }
@@ -221,7 +221,7 @@ namespace Extend
         {
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( () => trueAction );
+            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2, parameter3 );
         }
@@ -249,7 +249,7 @@ namespace Extend
         {
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( () => trueAction );
+            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2, parameter3, parameter4 );
         }

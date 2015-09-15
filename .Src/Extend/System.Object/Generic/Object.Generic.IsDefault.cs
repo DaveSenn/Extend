@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns true if the value is the default value of it's type.</returns>
         public static Boolean IsDefault<T>( this T value )
         {
-            return Equals( value, default( T ) );
+            return Equals( value, default(T) );
         }
     }
 }

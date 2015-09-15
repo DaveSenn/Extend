@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToChar();
 
-            Assert.AreEqual( default( Char ), actual );
+            Assert.AreEqual( default(Char), actual );
         }
 
         [Test]

@@ -65,7 +65,7 @@ namespace Extend
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         public TreeNode()
-            : this( default( T ), null, null )
+            : this( default(T), null, null )
         {
         }
 
@@ -83,7 +83,7 @@ namespace Extend
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
         public TreeNode( ITreeNode<T> parent )
-            : this( default( T ), parent, null )
+            : this( default(T), parent, null )
         {
         }
 
@@ -92,7 +92,7 @@ namespace Extend
         /// </summary>
         /// <param name="children">The children of the node.</param>
         public TreeNode( ITreeNodeCollection<T> children )
-            : this( default( T ), null, children )
+            : this( default(T), null, children )
         {
         }
 
@@ -141,6 +141,29 @@ namespace Extend
                 AncestorsTraversalDirection = TreeTraversalDirection.BottomUp;
                 DescendantsTraversalDirection = TreeTraversalDirection.BottomUp;
             }
+        }
+
+        #endregion
+
+        #region Overrides of Object
+
+        /// <summary>
+        ///     Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        ///     A string that represents the current object.
+        /// </returns>
+        public override String ToString()
+        {
+            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}"
+                .F( Depth,
+                    Value == null
+                        ? "[NULL]"
+                        : Value.ToString(),
+                    Children.Count,
+                    Parent == null
+                        ? "[NULL]"
+                        : Parent.ToString() );
         }
 
         #endregion
@@ -531,29 +554,6 @@ namespace Extend
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
-        }
-
-        #endregion
-
-        #region Overrides of Object
-
-        /// <summary>
-        ///     Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>
-        ///     A string that represents the current object.
-        /// </returns>
-        public override String ToString()
-        {
-            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}"
-                .F( Depth,
-                    Value == null
-                        ? "[NULL]"
-                        : Value.ToString(),
-                    Children.Count,
-                    Parent == null
-                        ? "[NULL]"
-                        : Parent.ToString() );
         }
 
         #endregion

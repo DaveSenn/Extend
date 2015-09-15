@@ -11,6 +11,8 @@ namespace Extend
     /// </summary>
     public interface IExecutionResult<T>
     {
+        #region Properties
+
         /// <summary>
         ///     Gets or sets the exception.
         /// </summary>
@@ -22,5 +24,7 @@ namespace Extend
         /// </summary>
         /// <value>The result.</value>
         T Result { get; set; }
+
+        #endregion
     }
 }

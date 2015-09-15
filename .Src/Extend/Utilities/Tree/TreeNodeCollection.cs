@@ -35,6 +35,21 @@ namespace Extend
 
         #endregion
 
+        #region Overrides of Object
+
+        /// <summary>
+        ///     Returns a string that represents the current object.
+        /// </summary>
+        /// <returns>
+        ///     A string that represents the current object.
+        /// </returns>
+        public override String ToString()
+        {
+            return "Count: {0}, Parent: {{{1}}}".F( Count, Parent == null ? "[NULL]" : Parent.ToString() );
+        }
+
+        #endregion
+
         #region Implementation of ITreeNodeCollection<T>
 
         #region Properties
@@ -160,21 +175,6 @@ namespace Extend
         public new Boolean Remove( ITreeNode<T> item )
         {
             return Remove( item, true );
-        }
-
-        #endregion
-
-        #region Overrides of Object
-
-        /// <summary>
-        ///     Returns a string that represents the current object.
-        /// </summary>
-        /// <returns>
-        ///     A string that represents the current object.
-        /// </returns>
-        public override String ToString()
-        {
-            return "Count: {0}, Parent: {{{1}}}".F( Count, Parent == null ? "[NULL]" : Parent.ToString() );
         }
 
         #endregion

@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecute( this Action action )
         {
-            return action.SafeExecuteExcept( new Type[0] );
+            return action.SafeExecuteExcept();
         }
 
         /// <summary>
@@ -29,10 +29,7 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecute<TException>( this Action action ) where TException : Exception
         {
-            return action.SafeExecute( new[]
-            {
-                typeof (TException)
-            } );
+            return action.SafeExecute( typeof (TException) );
         }
 
         /// <summary>
@@ -46,11 +43,7 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
         {
-            return action.SafeExecute( new[]
-            {
-                typeof (TException1),
-                typeof (TException2)
-            } );
+            return action.SafeExecute( typeof (TException1), typeof (TException2) );
         }
 
         /// <summary>
@@ -66,12 +59,7 @@ namespace Extend
             where TException2 : Exception
             where TException3 : Exception
         {
-            return action.SafeExecute( new[]
-            {
-                typeof (TException1),
-                typeof (TException2),
-                typeof (TException3)
-            } );
+            return action.SafeExecute( typeof (TException1), typeof (TException2), typeof (TException3) );
         }
 
         /// <summary>
@@ -90,13 +78,7 @@ namespace Extend
             where TException4 : Exception
         {
             return
-                action.SafeExecute( new[]
-                {
-                    typeof (TException1),
-                    typeof (TException2),
-                    typeof (TException3),
-                    typeof (TException4)
-                } );
+                action.SafeExecute( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
         }
 
         /// <summary>
@@ -110,8 +92,8 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecute( this Action action, params Type[] exceptionsToCatch )
         {
-            action.ThrowIfNull( () => action );
-            exceptionsToCatch.ThrowIfNull( () => exceptionsToCatch );
+            action.ThrowIfNull( nameof( action ) );
+            exceptionsToCatch.ThrowIfNull( nameof( exceptionsToCatch ) );
 
             try
             {

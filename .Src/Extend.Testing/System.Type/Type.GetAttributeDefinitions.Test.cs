@@ -14,6 +14,8 @@ namespace Extend.Testing
     {
         private class TestPerson
         {
+            #region Properties
+
             [Display( Name = "FirstName-DisplayName" )]
             public String FirstName { get; set; }
 
@@ -23,18 +25,28 @@ namespace Extend.Testing
             [MyTest( Value = "1" )]
             [MyTest( Value = "2" )]
             public DateTime DateOfBirth { get; set; }
+
+            #endregion
         }
 
         private class TestPersonInherit : TestPerson
         {
+            #region Properties
+
             [MyTest( Value = "10000" )]
             public Double Weight { get; set; }
+
+            #endregion
         }
 
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true, Inherited = true )]
+        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
         private class MyTestAttribute : Attribute
         {
+            #region Properties
+
             public String Value { get; set; }
+
+            #endregion
         }
 
         [Test]

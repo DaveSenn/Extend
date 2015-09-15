@@ -22,7 +22,7 @@ namespace Extend.Testing
                 new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test1" ),
                 new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test1" ),
                 new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test2" ),
-                new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test2" ),
+                new KeyValuePair<String, String>( RandomValueEx.GetRandomString(), "Test2" )
             };
 
             var actual = list.Distinct( x => x.Value )

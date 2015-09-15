@@ -21,10 +21,7 @@ namespace Extend
         public static Boolean SafeExecuteExcept<TException>( this Action action )
             where TException : Exception
         {
-            return action.SafeExecuteExcept( new[]
-            {
-                typeof (TException)
-            } );
+            return action.SafeExecuteExcept( typeof (TException) );
         }
 
         /// <summary>
@@ -38,11 +35,7 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
         {
-            return action.SafeExecuteExcept( new[]
-            {
-                typeof (TException1),
-                typeof (TException2)
-            } );
+            return action.SafeExecuteExcept( typeof (TException1), typeof (TException2) );
         }
 
         /// <summary>
@@ -58,12 +51,7 @@ namespace Extend
             where TException2 : Exception
             where TException3 : Exception
         {
-            return action.SafeExecuteExcept( new[]
-            {
-                typeof (TException1),
-                typeof (TException2),
-                typeof (TException3)
-            } );
+            return action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3) );
         }
 
         /// <summary>
@@ -82,13 +70,7 @@ namespace Extend
             where TException4 : Exception
         {
             return
-                action.SafeExecuteExcept( new[]
-                {
-                    typeof (TException1),
-                    typeof (TException2),
-                    typeof (TException3),
-                    typeof (TException4)
-                } );
+                action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
         }
 
         /// <summary>
@@ -99,8 +81,8 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept( this Action action, params Type[] exceptionsToThrow )
         {
-            action.ThrowIfNull( () => action );
-            exceptionsToThrow.ThrowIfNull( () => exceptionsToThrow );
+            action.ThrowIfNull( nameof( action ) );
+            exceptionsToThrow.ThrowIfNull( nameof( exceptionsToThrow ) );
 
             try
             {

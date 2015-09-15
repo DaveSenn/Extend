@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToByte( default( Byte ) );
+                                 .SaveToByte( default(Byte) );
 
             Assert.AreEqual( expected, actual );
         }
@@ -45,7 +45,7 @@ namespace Extend.Testing
         {
             var actual = "InvalidValue".SaveToByte();
 
-            Assert.AreEqual( default( Byte ), actual );
+            Assert.AreEqual( default(Byte), actual );
         }
 
         [Test]
@@ -85,7 +85,7 @@ namespace Extend.Testing
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
                                                     CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( default( Byte ), actual );
+            Assert.AreEqual( default(Byte), actual );
         }
 
         [Test]

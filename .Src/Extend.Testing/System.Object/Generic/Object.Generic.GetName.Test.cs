@@ -16,14 +16,22 @@ namespace Extend.Testing
 
         private class TestModel
         {
+            #region Properties
+
             public Int32 Age { get; set; }
             public String Name { get; set; }
             public SubModel SubModel { get; set; }
+
+            #endregion
         }
 
         private class SubModel
         {
+            #region Properties
+
             public String Foo { get; set; }
+
+            #endregion
         }
 
         [Test]

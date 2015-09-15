@@ -23,7 +23,7 @@ namespace Extend
         {
             if ( values.NotAny( x => x ) )
             {
-                falseAction.ThrowIfNull( () => falseAction );
+                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction();
             }
             else if ( trueAction != null )
@@ -47,7 +47,7 @@ namespace Extend
         {
             if ( values.NotAny( x => x ) )
             {
-                falseAction.ThrowIfNull( () => falseAction );
+                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction( parameter );
             }
             else if ( trueAction != null )
@@ -74,7 +74,7 @@ namespace Extend
         {
             if ( values.NotAny( x => x ) )
             {
-                falseAction.ThrowIfNull( () => falseAction );
+                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction( parameter1, parameter2 );
             }
             else if ( trueAction != null )
@@ -104,7 +104,7 @@ namespace Extend
         {
             if ( values.NotAny( x => x ) )
             {
-                falseAction.ThrowIfNull( () => falseAction );
+                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction( parameter1, parameter2, parameter3 );
             }
             else if ( trueAction != null )
@@ -137,7 +137,7 @@ namespace Extend
         {
             if ( values.NotAny( x => x ) )
             {
-                falseAction.ThrowIfNull( () => falseAction );
+                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction( parameter1, parameter2, parameter3, parameter4 );
             }
             else if ( trueAction != null )
@@ -154,7 +154,7 @@ namespace Extend
         {
             if ( !values.NotAny( x => x ) )
                 return;
-            falseAction.ThrowIfNull( () => falseAction );
+            falseAction.ThrowIfNull( nameof( falseAction ) );
 
             falseAction();
         }
@@ -174,7 +174,7 @@ namespace Extend
             if ( !values.NotAny( x => x ) )
                 return;
 
-            falseAction.ThrowIfNull( () => falseAction );
+            falseAction.ThrowIfNull( nameof( falseAction ) );
             falseAction( parameter );
         }
 
@@ -195,7 +195,7 @@ namespace Extend
         {
             if ( !values.NotAny( x => x ) )
                 return;
-            falseAction.ThrowIfNull( () => falseAction );
+            falseAction.ThrowIfNull( nameof( falseAction ) );
 
             falseAction( parameter1, parameter2 );
         }
@@ -220,7 +220,7 @@ namespace Extend
         {
             if ( !values.NotAny( x => x ) )
                 return;
-            falseAction.ThrowIfNull( () => falseAction );
+            falseAction.ThrowIfNull( nameof( falseAction ) );
 
             falseAction( parameter1, parameter2, parameter3 );
         }
@@ -248,7 +248,7 @@ namespace Extend
         {
             if ( !values.NotAny( x => x ) )
                 return;
-            falseAction.ThrowIfNull( () => falseAction );
+            falseAction.ThrowIfNull( nameof( falseAction ) );
 
             falseAction( parameter1, parameter2, parameter3, parameter4 );
         }

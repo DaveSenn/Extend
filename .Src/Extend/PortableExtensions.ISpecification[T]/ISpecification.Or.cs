@@ -25,8 +25,8 @@ namespace Extend
                                                Func<T, Boolean> expression,
                                                String message = null )
         {
-            specification.ThrowIfNull( () => specification );
-            expression.ThrowIfNull( () => expression );
+            specification.ThrowIfNull( nameof( specification ) );
+            expression.ThrowIfNull( nameof( expression ) );
 
             var newSpecification = new ExpressionSpecification<T>( expression, message );
             return specification.Or( newSpecification );

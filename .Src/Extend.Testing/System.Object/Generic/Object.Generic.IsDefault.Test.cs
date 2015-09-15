@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Test]
         public void IsDefaultTestCase()
         {
-            var value = default( String );
+            var value = default(String);
             var actual = value.IsDefault();
             Assert.IsTrue( actual );
 
