@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Linq.Expressions;
 using NUnit.Framework;
 
 #endregion
@@ -11,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ThrowIfNullTestCase2()
+        public void ThrowIfNullTest()
         {
             var varName = RandomValueEx.GetRandomString();
             varName.ThrowIfNull( () => varName );
@@ -31,15 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void ThrowIfNullTestCase2NullCheck()
-        {
-            String value = null;
-            value.ThrowIfNull( () => value );
-        }
-
-        [Test]
-        public void ThrowIfNullTestCase3()
+        public void ThrowIfNullTest1()
         {
             var varName = RandomValueEx.GetRandomString();
             varName.ThrowIfNull( () => varName );
@@ -60,11 +53,69 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void ThrowIfNullTest2()
+        {
+            var varName = RandomValueEx.GetRandomString();
+            varName.ThrowIfNull( "varName" );
+
+            varName = null;
+            var errorMessage = String.Empty;
+            try
+            {
+                varName.ThrowIfNull( "varName" );
+            }
+            catch ( ArgumentNullException ex )
+            {
+                errorMessage = ex.Message;
+            }
+
+            Assert.IsTrue( errorMessage.Contains( "varName" ) );
+        }
+
+        [Test]
+        public void ThrowIfNullTest3()
+        {
+            var varName = RandomValueEx.GetRandomString();
+            varName.ThrowIfNull( "varName" );
+
+            varName = null;
+            var expectedErrorMessage = RandomValueEx.GetRandomString();
+            var errorMessage = String.Empty;
+            try
+            {
+                varName.ThrowIfNull( "varName", expectedErrorMessage );
+            }
+            catch ( ArgumentNullException ex )
+            {
+                errorMessage = ex.Message;
+            }
+
+            Assert.IsTrue( errorMessage.Contains( expectedErrorMessage ) );
+        }
+
+        [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void ThrowIfNullTestCase3NullCheck()
+        public void ThrowIfNullTestNullCheck()
         {
             String value = null;
-            value.ThrowIfNull( () => value, "" );
+            value.ThrowIfNull( () => value );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ThrowIfNullTestNullCheck1()
+        {
+            String value = null;
+            Expression<Func<String>> expression = null;
+            value.ThrowIfNull( expression );
+        }
+
+        [Test]
+        [ExpectedException( typeof (ArgumentNullException) )]
+        public void ThrowIfNullTestNullCheck2()
+        {
+            String value = null;
+            value.ThrowIfNull( "varName" );
         }
     }
 }
