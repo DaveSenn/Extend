@@ -23,8 +23,8 @@ namespace Extend
         /// <returns>The items of the array as list.</returns>
         public static List<TResult> ToGenericList<TArray, TResult>( this TArray[] items, Func<TArray, TResult> selector )
         {
-            items.ThrowIfNull( () => items );
-            selector.ThrowIfNull( () => selector );
+            items.ThrowIfNull( nameof( items ) );
+            selector.ThrowIfNull( nameof( selector ) );
 
             return items.Select( selector )
                         .ToList();

@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>Ture if the index is within the array, otherwise false.</returns>
         public static Boolean WithinIndex( this Array array, Int32 index )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull(nameof(array));
 
             return index >= 0 && index < array.Length;
         }

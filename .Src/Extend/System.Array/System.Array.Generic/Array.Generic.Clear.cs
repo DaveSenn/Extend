@@ -22,7 +22,7 @@ namespace Extend
         /// <returns>Returns the cleard array.</returns>
         public static T[] Clear<T>( this T[] array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, index, length );
             return array;
