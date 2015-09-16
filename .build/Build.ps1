@@ -19,7 +19,7 @@ properties {
     $nugetPackDirectory = "$outputDirectory\NuGet"
     $coverityBuildTool = "cov-build"
     $coverityDir = "$outputDirectory\cov-int"
-    $coveritySolution = "$root\.Src\Extend..sln"
+    $coveritySolution = "$root\.Src\Extend.sln"
 }
 $root = Resolve-Path ..
 
