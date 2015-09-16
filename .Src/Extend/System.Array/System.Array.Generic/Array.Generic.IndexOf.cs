@@ -24,7 +24,7 @@ namespace Extend
         /// </returns>
         public static Int32 IndexOf<T>( this T[] array, T value )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             return Array.IndexOf( array, value );
         }

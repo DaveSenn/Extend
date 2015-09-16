@@ -24,11 +24,11 @@ namespace Extend
         {
             if ( !value )
             {
-                action.ThrowIfNull( () => action );
+                action.ThrowIfNull( nameof( action ) );
                 action();
             }
-            else if ( alternativeAction != null )
-                alternativeAction();
+            else
+                alternativeAction?.Invoke();
 
             return value;
         }
@@ -51,11 +51,11 @@ namespace Extend
         {
             if ( !value )
             {
-                action.ThrowIfNull( () => action );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter );
             }
-            else if ( alternativeAction != null )
-                alternativeAction( parameter );
+            else
+                alternativeAction?.Invoke( parameter );
 
             return value;
         }
@@ -81,11 +81,11 @@ namespace Extend
         {
             if ( !value )
             {
-                action.ThrowIfNull( () => action );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2 );
             }
-            else if ( alternativeAction != null )
-                alternativeAction( parameter1, parameter2 );
+            else
+                alternativeAction?.Invoke( parameter1, parameter2 );
 
             return value;
         }
@@ -114,11 +114,11 @@ namespace Extend
         {
             if ( !value )
             {
-                action.ThrowIfNull( () => action );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3 );
             }
-            else if ( alternativeAction != null )
-                alternativeAction( parameter1, parameter2, parameter3 );
+            else
+                alternativeAction?.Invoke( parameter1, parameter2, parameter3 );
 
             return value;
         }
@@ -150,11 +150,11 @@ namespace Extend
         {
             if ( !value )
             {
-                action.ThrowIfNull( () => action );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3, parameter4 );
             }
-            else if ( alternativeAction != null )
-                alternativeAction( parameter1, parameter2, parameter3, parameter4 );
+            else
+                alternativeAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
 
             return value;
         }

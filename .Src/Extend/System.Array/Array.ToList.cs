@@ -22,8 +22,8 @@ namespace Extend
         /// <returns>The items of the array as list.</returns>
         public static List<T> ToList<T>( this Array items, Func<Object, T> selector )
         {
-            items.ThrowIfNull( () => items );
-            selector.ThrowIfNull( () => selector );
+            items.ThrowIfNull( nameof( items ) );
+            selector.ThrowIfNull( nameof( selector ) );
 
             return ( from Object item in items
                      select selector( item ) ).ToList();

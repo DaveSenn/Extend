@@ -20,7 +20,7 @@ namespace Extend
         /// <param name="length">The number of elements to clear.</param>
         public static void Clear( this Array array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             Array.Clear( array, index, length );
         }
