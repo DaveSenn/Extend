@@ -648,7 +648,9 @@ function ConfigureBuildEnvironment {
 
     $frameworkDirs | foreach { Assert (test-path $_ -pathType Container) ($msgs.error_no_framework_install_dir_found -f $_)}
 
-    $env:path = ($frameworkDirs -join ";") + ";$env:path"
+    #$env:path = ($frameworkDirs -join ";") + ";$env:path"
+	#Set path to MSBuild v14
+	$env:path = "C:\Program Files (x86)\MSBuild\14.0\Bin" + ";$env:path"
     # if any error occurs in a PS function then "stop" processing immediately
     # this does not effect any external programs that return a non-zero exit code
     $global:ErrorActionPreference = "Stop"
