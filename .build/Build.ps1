@@ -138,7 +138,7 @@ Task NuGetPack {
 Task CoverityScan {
     Write-Host "Run Coverity scan" -fore Magenta
 
-    &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\12.0\Bin\msbuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release" | Out-Null
+    &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release" | Out-Null
 
     Write-Host "Create zip from coverity result"
     $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
