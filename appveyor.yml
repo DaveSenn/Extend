@@ -36,7 +36,7 @@ cache:
 #---------------------------------
 
 # Build OS
-os: Windows Server 2012 R2
+os: Visual Studio 2015
 
 # Build configuration
 configuration: Release
