@@ -12,7 +12,7 @@ namespace Extend
     public static partial class ArrayEx
     {
         /// <summary>
-        ///     Populaes the given array with the specified value.
+        ///     Populates the given array with the specified value.
         /// </summary>
         /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
@@ -21,7 +21,7 @@ namespace Extend
         /// <returns>Returns the given array.</returns>
         public static T[] Populate<T>( this T[] array, T value )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull(nameof(array));
 
             for ( var i = 0; i < array.Length; i++ )
                 array[i] = value;

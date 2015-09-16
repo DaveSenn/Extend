@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>Returns the cleared array.</returns>
         public static T[] ClearAll<T>( this T[] array )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, 0, array.Length );
             return array;
