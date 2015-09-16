@@ -18,7 +18,7 @@ namespace Extend
         /// <param name="array">The one-dimensional array to reverse.</param>
         public static void Reverse( this Array array )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             Array.Reverse( array );
         }
@@ -32,7 +32,7 @@ namespace Extend
         /// <param name="length">The number of elements in the section to reverse.</param>
         public static void Reverse( this Array array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             Array.Reverse( array, index, length );
         }

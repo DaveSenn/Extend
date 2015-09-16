@@ -23,8 +23,8 @@ namespace Extend
         /// <param name="length">A 32-bit integer that represents the number of elements to copy.</param>
         public static void Copy( this Array sourceArray, Array destinationArray, Int32 length )
         {
-            sourceArray.ThrowIfNull( () => sourceArray );
-            destinationArray.ThrowIfNull( () => destinationArray );
+            sourceArray.ThrowIfNull( nameof( sourceArray ) );
+            destinationArray.ThrowIfNull( nameof( destinationArray ) );
 
             Array.Copy( sourceArray, destinationArray, length );
         }

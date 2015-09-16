@@ -22,7 +22,7 @@ namespace Extend
         /// </returns>
         public static Int32 IndexOf( this Array array, Object value )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             return Array.IndexOf( array, value );
         }

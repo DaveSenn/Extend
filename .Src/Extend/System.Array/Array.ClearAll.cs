@@ -18,7 +18,7 @@ namespace Extend
         /// <param name="array">The array to clear.</param>
         public static void ClearAll( this Array array )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             Array.Clear( array, 0, array.Length );
         }

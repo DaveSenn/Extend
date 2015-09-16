@@ -21,7 +21,7 @@ namespace Extend
         /// <returns>Returns the given array.</returns>
         public static T[] Populate<T>( this T[] array, T value )
         {
-            array.ThrowIfNull(nameof(array));
+            array.ThrowIfNull( nameof( array ) );
 
             for ( var i = 0; i < array.Length; i++ )
                 array[i] = value;

@@ -25,7 +25,7 @@ namespace Extend
         /// </returns>
         public static Int32 LastIndexOf<T>( this T[] array, T value )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             return Array.LastIndexOf( array, value );
         }

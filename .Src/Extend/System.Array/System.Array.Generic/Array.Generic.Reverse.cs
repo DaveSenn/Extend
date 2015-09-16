@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>Returns the reversed array.</returns>
         public static T[] Reverse<T>( this T[] array )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof( array ) );
 
             Array.Reverse( array );
             return array;
