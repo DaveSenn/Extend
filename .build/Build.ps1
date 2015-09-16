@@ -34,7 +34,8 @@ $allProjects = Get-Projects
 Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
 
 # CI task
-Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, CoverityScan, CoverityUpload
+#Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, CoverityScan, CoverityUpload
+Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack
 
 # Cleans the output directory
 Task Clean {
