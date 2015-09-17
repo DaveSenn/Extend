@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>Returns the given collection.</returns>
         public static ICollection<T> AddRangeIfNotContains<T>( this ICollection<T> collection, params T[] values )
         {
-            collection.ThrowIfNull( () => collection );
+            collection.ThrowIfNull(nameof(collection));
             values.ThrowIfNull( () => values );
 
             values.ForEach( x =>

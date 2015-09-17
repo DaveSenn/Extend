@@ -22,7 +22,7 @@ namespace Extend
         /// <returns>True if the value was added to the collection, otherwise false.</returns>
         public static Boolean AddIfNotContains<T>( this ICollection<T> collection, T value )
         {
-            collection.ThrowIfNull( () => collection );
+            collection.ThrowIfNull( nameof(collection) );
 
             if ( collection.Contains( value ) )
                 return false;

@@ -28,9 +28,9 @@ namespace Extend
                                                     Func<T, Boolean> predicate,
                                                     params T[] values )
         {
-            collection.ThrowIfNull( () => collection );
-            predicate.ThrowIfNull( () => predicate );
-            values.ThrowIfNull( () => values );
+            collection.ThrowIfNull(nameof(collection));
+            predicate.ThrowIfNull(nameof(predicate));
+            values.ThrowIfNull(nameof(values));
 
             values.Where( predicate )
                   .ForEach( collection.Add );
