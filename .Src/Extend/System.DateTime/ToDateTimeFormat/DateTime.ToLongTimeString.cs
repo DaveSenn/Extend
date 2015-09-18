@@ -31,7 +31,7 @@ namespace Extend
         /// <returns>The given value converted to a long time string.</returns>
         public static String ToLongTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull( () => formatInfo );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
             return dateTime.ToString( "T", formatInfo );
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>The given value converted to a long time string.</returns>
         public static String ToLongTimeString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull( () => culture );
+            culture.ThrowIfNull(nameof(culture));
 
             return dateTime.ToString( "T", culture );
         }

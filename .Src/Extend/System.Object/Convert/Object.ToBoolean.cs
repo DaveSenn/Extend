@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The boolean.</returns>
         public static Boolean ToBoolean( this Object obj )
         {
-            obj.ThrowIfNull( () => obj );
+            obj.ThrowIfNull(nameof(obj));
 
             return Convert.ToBoolean( obj, CultureInfo.CurrentCulture );
         }
@@ -35,8 +35,8 @@ namespace Extend
         /// <returns>The boolean.</returns>
         public static Boolean ToBoolean( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull( () => obj );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            obj.ThrowIfNull(nameof(obj));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Convert.ToBoolean( obj, formatProvider );
         }

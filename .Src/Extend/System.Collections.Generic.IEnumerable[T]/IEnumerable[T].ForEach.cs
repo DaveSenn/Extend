@@ -23,8 +23,8 @@ namespace Extend
         /// <param name="action">The action to perform on each item of the given enumerable.</param>
         public static IEnumerable<T> ForEach<T>( this IEnumerable<T> enumerable, Action<T> action )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            action.ThrowIfNull( () => action );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            action.ThrowIfNull(nameof(action));
 
             foreach ( var x in enumerable )
                 action( x );
@@ -45,8 +45,8 @@ namespace Extend
         /// </param>
         public static IEnumerable<T> ForEach<T>( this IEnumerable<T> enumerable, Action<T, Int32> action )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            action.ThrowIfNull( () => action );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            action.ThrowIfNull(nameof(action));
 
             var counter = 0;
             foreach ( var x in enumerable )

@@ -31,8 +31,8 @@ namespace Extend
         /// <returns>The given value converted to a short date string.</returns>
         public static String ToShortDateString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            dateTime.ThrowIfNull( () => dateTime );
-            formatInfo.ThrowIfNull( () => formatInfo );
+            dateTime.ThrowIfNull(nameof(dateTime));
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
             return dateTime.ToString( "d", formatInfo );
         }
@@ -46,8 +46,7 @@ namespace Extend
         /// <returns>The given value converted to a short date string.</returns>
         public static String ToShortDateString( this DateTime dateTime, CultureInfo culture )
         {
-            dateTime.ThrowIfNull( () => dateTime );
-            culture.ThrowIfNull( () => culture );
+            culture.ThrowIfNull(nameof(culture));
 
             return dateTime.ToString( "d", culture );
         }

@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>The given IEnumerable as ObservableCollection.</returns>
         public static ObservableCollection<T> ToObservableCollection<T>( this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( () => enumerable );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return new ObservableCollection<T>( enumerable );
         }

@@ -24,7 +24,7 @@ namespace Extend
         public static ICollection<T> AddRangeIfNotContains<T>( this ICollection<T> collection, params T[] values )
         {
             collection.ThrowIfNull(nameof(collection));
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             values.ForEach( x =>
             {

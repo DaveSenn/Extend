@@ -24,7 +24,7 @@ namespace Extend
         /// <returns>Returns the items which satisfy the given specification.</returns>
         public static IEnumerable<T> Where<T>( this IEnumerable<T> enumerable, ISpecification<T> specification )
         {
-            specification.ThrowIfNull( () => specification );
+            specification.ThrowIfNull(nameof(specification));
 
             return enumerable.Where( specification.IsSatisfiedBy );
         }

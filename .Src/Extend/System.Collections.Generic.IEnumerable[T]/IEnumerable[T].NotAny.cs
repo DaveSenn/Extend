@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         public static Boolean NotAny<T>( this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( () => enumerable );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return !enumerable.Any();
         }
@@ -39,8 +39,8 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
         public static Boolean NotAny<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            predicate.ThrowIfNull( () => predicate );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            predicate.ThrowIfNull(nameof(predicate));
 
             return !enumerable.Any( predicate );
         }
