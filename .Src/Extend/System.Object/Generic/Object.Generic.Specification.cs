@@ -22,7 +22,7 @@ namespace Extend
         /// <returns>Returns a specification with the given condition and message.</returns>
         public static ISpecification<T> Specification<T>( this T obj, Func<T, Boolean> expression, String message = null )
         {
-            expression.ThrowIfNull( () => expression );
+            expression.ThrowIfNull(nameof(expression));
 
             return new ExpressionSpecification<T>( expression, message );
         }

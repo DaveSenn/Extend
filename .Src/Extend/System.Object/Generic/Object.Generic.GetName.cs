@@ -27,7 +27,7 @@ namespace Extend
         /// <returns>Returns the name of the member to which the given expression points.</returns>
         public static String GetName<TObject, TMember>( this TObject obj, Expression<Func<TObject, TMember>> expression )
         {
-            expression.ThrowIfNull( () => expression );
+            expression.ThrowIfNull(nameof(expression));
 
             return GetName( expression.Body );
         }
@@ -47,7 +47,7 @@ namespace Extend
         /// <returns>Returns the name of the member to which the given expression points.</returns>
         public static String GetName<TObject, TMember>( this TObject obj, Expression<Func<TMember>> expression )
         {
-            expression.ThrowIfNull( () => expression );
+            expression.ThrowIfNull(nameof(expression));
 
             return GetName( expression.Body );
         }
