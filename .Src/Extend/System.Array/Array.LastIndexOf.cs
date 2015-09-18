@@ -43,7 +43,7 @@ namespace Extend
         /// </returns>
         public static Int32 LastIndexOf( this Array array, Object value, Int32 startIndex )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.LastIndexOf( array, value, startIndex );
         }
@@ -64,7 +64,7 @@ namespace Extend
         /// </returns>
         public static Int32 LastIndexOf( this Array array, Object value, Int32 startIndex, Int32 count )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.LastIndexOf( array, value, startIndex, count );
         }

@@ -24,8 +24,8 @@ namespace Extend
         /// <returns>Returns the given collection.</returns>
         public static ICollection<T> RemoveIf<T>( this ICollection<T> collection, T value, Func<T, Boolean> predicate )
         {
-            collection.ThrowIfNull( () => collection );
-            predicate.ThrowIfNull( () => predicate );
+            collection.ThrowIfNull( nameof( collection ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             if ( predicate( value ) )
                 collection.Remove( value );

@@ -23,8 +23,8 @@ namespace Extend
         /// <returns>Returns the given collection.</returns>
         public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, params T[] values )
         {
-            collection.ThrowIfNull( () => collection );
-            values.ThrowIfNull( () => values );
+            collection.ThrowIfNull( nameof(collection) );
+            values.ThrowIfNull( nameof(values) );
 
             values.ForEach( x => collection.Remove( x ) );
             return collection;
@@ -41,9 +41,11 @@ namespace Extend
         /// <returns>Returns the given collection.</returns>
         public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( () => collection );
-            enumerable.ThrowIfNull( () => enumerable );
+            collection.ThrowIfNull( nameof(collection) );
+            // ReSharper disable once PossibleMultipleEnumeration
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
+            // ReSharper disable once PossibleMultipleEnumeration
             enumerable.ForEach( x => collection.Remove( x ) );
             return collection;
         }
