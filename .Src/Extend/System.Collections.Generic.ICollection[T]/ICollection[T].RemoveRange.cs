@@ -42,10 +42,8 @@ namespace Extend
         public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( nameof(collection) );
-            // ReSharper disable once PossibleMultipleEnumeration
             enumerable.ThrowIfNull( nameof(enumerable) );
-
-            // ReSharper disable once PossibleMultipleEnumeration
+            
             enumerable.ForEach( x => collection.Remove( x ) );
             return collection;
         }

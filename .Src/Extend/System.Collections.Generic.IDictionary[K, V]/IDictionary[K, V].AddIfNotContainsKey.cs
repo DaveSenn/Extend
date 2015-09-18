@@ -28,8 +28,8 @@ namespace Extend
                                                                  TKey key,
                                                                  TValue value )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
+            dictionary.ThrowIfNull( nameof(dictionary) );
+            key.ThrowIfNull( nameof(key) );
 
             if ( dictionary.ContainsKey( key ) )
                 return false;
@@ -77,9 +77,9 @@ namespace Extend
                                                                  TKey key,
                                                                  Func<TValue> valueFactory )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
-            valueFactory.ThrowIfNull( () => valueFactory );
+            dictionary.ThrowIfNull( nameof(dictionary) );
+            key.ThrowIfNull( nameof(key) );
+            valueFactory.ThrowIfNull( nameof( valueFactory ) );
 
             if ( dictionary.ContainsKey( key ) )
                 return false;
@@ -104,9 +104,9 @@ namespace Extend
                                                                  TKey key,
                                                                  Func<TKey, TValue> valueFactory )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
-            valueFactory.ThrowIfNull( () => valueFactory );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
             if ( dictionary.ContainsKey( key ) )
                 return false;

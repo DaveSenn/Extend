@@ -27,8 +27,8 @@ namespace Extend
                                                         TKey key,
                                                         TValue value )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
 
             if ( dictionary.ContainsKey( key ) )
                 dictionary[key] = value;
@@ -50,8 +50,8 @@ namespace Extend
         public static TValue AddOrUpdate<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
                                                         KeyValuePair<TKey, TValue> keyValuePair )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            keyValuePair.Key.ThrowIfNull( () => keyValuePair.Key );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keyValuePair.Key.ThrowIfNull(nameof(keyValuePair.Key));
 
             if ( dictionary.ContainsKey( keyValuePair.Key ) )
                 dictionary[keyValuePair.Key] = keyValuePair.Value;
@@ -75,9 +75,9 @@ namespace Extend
                                                         TKey key,
                                                         Func<TValue> valueFactory )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
-            valueFactory.ThrowIfNull( () => valueFactory );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
             if ( dictionary.ContainsKey( key ) )
                 dictionary[key] = valueFactory();
