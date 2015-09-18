@@ -28,8 +28,8 @@ namespace Extend
                                                                  TKey key,
                                                                  TValue value )
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
 
             if ( dictionary.ContainsKey( key ) )
                 return false;
@@ -51,8 +51,8 @@ namespace Extend
         public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
                                                                  KeyValuePair<TKey, TValue> keyValuePair )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            keyValuePair.Key.ThrowIfNull( nameof( keyValuePair.Key ));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            keyValuePair.Key.ThrowIfNull( nameof( keyValuePair.Key ) );
 
             if ( dictionary.ContainsKey( keyValuePair.Key ) )
                 return false;
@@ -77,8 +77,8 @@ namespace Extend
                                                                  TKey key,
                                                                  Func<TValue> valueFactory )
         {
-            dictionary.ThrowIfNull( nameof(dictionary) );
-            key.ThrowIfNull( nameof(key) );
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
             valueFactory.ThrowIfNull( nameof( valueFactory ) );
 
             if ( dictionary.ContainsKey( key ) )
@@ -104,9 +104,9 @@ namespace Extend
                                                                  TKey key,
                                                                  Func<TKey, TValue> valueFactory )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            key.ThrowIfNull(nameof(key));
-            valueFactory.ThrowIfNull(nameof(valueFactory));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
+            valueFactory.ThrowIfNull( nameof( valueFactory ) );
 
             if ( dictionary.ContainsKey( key ) )
                 return false;

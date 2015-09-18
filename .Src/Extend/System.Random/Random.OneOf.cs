@@ -24,8 +24,8 @@ namespace Extend
         /// <returns>Returns randomly one of the given values.</returns>
         public static T RandomOne<T>( this Random random, params T[] values )
         {
-            random.ThrowIfNull(nameof(random));
-            values.ThrowIfNull(nameof(values));
+            random.ThrowIfNull( nameof( random ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return values[random.Next( values.Length )];
         }
@@ -41,8 +41,8 @@ namespace Extend
         /// <returns>Returns randomly one of the given values.</returns>
         public static T RandomOne<T>( this Random random, IEnumerable<T> values )
         {
-            random.ThrowIfNull(nameof(random));
-            values.ThrowIfNull(nameof(values));
+            random.ThrowIfNull( nameof( random ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return values.ElementAt( random.Next( values.Count() ) );
         }

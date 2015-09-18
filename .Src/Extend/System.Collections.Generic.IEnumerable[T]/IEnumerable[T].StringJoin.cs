@@ -29,7 +29,7 @@ namespace Extend
         /// </returns>
         public static String StringJoin<T>( this IEnumerable<T> enumerable, String separator = "" )
         {
-            enumerable.ThrowIfNull(nameof(enumerable));
+            enumerable.ThrowIfNull( nameof( enumerable ) );
 
             return String.Join( separator, enumerable );
         }

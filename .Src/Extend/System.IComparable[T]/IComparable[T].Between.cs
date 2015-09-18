@@ -25,9 +25,9 @@ namespace Extend
         /// <returns>Returns true if the given value is between the minValue and maxValue, otherwise false.</returns>
         public static Boolean Between<T>( this T value, T minValue, T maxValue ) where T : IComparable<T>
         {
-            value.ThrowIfNull(nameof(value));
-            minValue.ThrowIfNull(nameof(minValue));
-            maxValue.ThrowIfNull(nameof(maxValue));
+            value.ThrowIfNull( nameof( value ) );
+            minValue.ThrowIfNull( nameof( minValue ) );
+            maxValue.ThrowIfNull( nameof( maxValue ) );
 
             return minValue.CompareTo( value ) == -1 && value.CompareTo( maxValue ) == -1;
         }

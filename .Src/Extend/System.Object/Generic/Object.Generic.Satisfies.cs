@@ -21,7 +21,7 @@ namespace Extend
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
         public static Boolean Satisfies<T>( this T obj, ISpecification<T> specification )
         {
-            specification.ThrowIfNull(nameof(specification));
+            specification.ThrowIfNull( nameof( specification ) );
 
             return specification.IsSatisfiedBy( obj );
         }

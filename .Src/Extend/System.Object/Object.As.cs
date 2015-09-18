@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The object as the specified type.</returns>
         public static T As<T>( this Object obj )
         {
-            obj.ThrowIfNull(nameof(obj));
+            obj.ThrowIfNull( nameof( obj ) );
 
             return (T) obj;
         }

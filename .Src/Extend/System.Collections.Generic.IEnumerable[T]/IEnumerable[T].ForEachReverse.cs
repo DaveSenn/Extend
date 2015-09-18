@@ -24,8 +24,8 @@ namespace Extend
         /// <param name="action">The action to execute for each item in the IEnumerable.</param>
         public static IEnumerable<T> ForEachReverse<T>( this IEnumerable<T> enumerable, Action<T> action )
         {
-            enumerable.ThrowIfNull(nameof(enumerable));
-            action.ThrowIfNull(nameof(action));
+            enumerable.ThrowIfNull( nameof( enumerable ) );
+            action.ThrowIfNull( nameof( action ) );
 
             var list = enumerable.ToList();
             for ( var i = list.Count - 1; i >= 0; i-- )

@@ -28,9 +28,9 @@ namespace Extend
                                                        Func<T, Boolean> predicate,
                                                        params T[] values )
         {
-            collection.ThrowIfNull( nameof(collection) );
-            predicate.ThrowIfNull( nameof(predicate) );
-            values.ThrowIfNull( nameof(values) );
+            collection.ThrowIfNull( nameof( collection ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
+            values.ThrowIfNull( nameof( values ) );
 
             values.Where( predicate )
                   .ForEach( x => collection.Remove( x ) );
@@ -52,9 +52,9 @@ namespace Extend
                                                        Func<T, Boolean> predicate,
                                                        IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( nameof(collection) );
-            predicate.ThrowIfNull( nameof(predicate) );
-            enumerable.ThrowIfNull( nameof(enumerable) );
+            collection.ThrowIfNull( nameof( collection ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof( enumerable ) );
 
             enumerable.Where( predicate )
                       .ForEach( x => collection.Remove( x ) );

@@ -26,8 +26,8 @@ namespace Extend
         /// <returns>Returns the given object.</returns>
         public static T Chain<T>( this T obj, Action<T> action )
         {
-            obj.ThrowIfNull(nameof(obj));
-            action.ThrowIfNull(nameof(action));
+            obj.ThrowIfNull( nameof( obj ) );
+            action.ThrowIfNull( nameof( action ) );
 
             action( obj );
             return obj;

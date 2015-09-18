@@ -30,8 +30,8 @@ namespace Extend
         /// </returns>
         public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key, TValue value )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            key.ThrowIfNull(nameof(key));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
 
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, value );
@@ -56,8 +56,8 @@ namespace Extend
         public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
                                                      KeyValuePair<TKey, TValue> keyValuePair )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            keyValuePair.Key.ThrowIfNull( nameof( keyValuePair.Key ));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            keyValuePair.Key.ThrowIfNull( nameof( keyValuePair.Key ) );
 
             if ( !dictionary.ContainsKey( keyValuePair.Key ) )
                 dictionary.Add( keyValuePair );
@@ -84,9 +84,9 @@ namespace Extend
                                                      TKey key,
                                                      Func<TValue> valueFactory )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            key.ThrowIfNull(nameof(key));
-            valueFactory.ThrowIfNull(nameof(valueFactory));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
+            valueFactory.ThrowIfNull( nameof( valueFactory ) );
 
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, valueFactory() );
@@ -113,9 +113,9 @@ namespace Extend
                                                      TKey key,
                                                      Func<TKey, TValue> valueFactory )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
-            key.ThrowIfNull(nameof(key));
-            valueFactory.ThrowIfNull(nameof(valueFactory));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
+            key.ThrowIfNull( nameof( key ) );
+            valueFactory.ThrowIfNull( nameof( valueFactory ) );
 
             if ( !dictionary.ContainsKey( key ) )
                 dictionary.Add( key, valueFactory( key ) );

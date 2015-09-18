@@ -25,8 +25,8 @@ namespace Extend
         /// <returns>Returns the items from the start of the IEnumerable until the first item matching the predicate.</returns>
         public static IEnumerable<T> TakeUntil<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull(nameof(enumerable));
-            predicate.ThrowIfNull(nameof(predicate));
+            enumerable.ThrowIfNull( nameof( enumerable ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             return enumerable.TakeWhile( x => !predicate( x ) );
         }

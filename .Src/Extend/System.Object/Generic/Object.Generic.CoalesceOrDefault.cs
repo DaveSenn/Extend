@@ -27,13 +27,13 @@ namespace Extend
             if ( value != null )
                 return value;
 
-            values.ThrowIfNull(nameof(values));
+            values.ThrowIfNull( nameof( values ) );
 
             var notNullValues = values.Where( x => x != null );
             if ( notNullValues.Any() )
                 return notNullValues.First();
 
-            defaultValue.ThrowIfNull(nameof(defaultValue));
+            defaultValue.ThrowIfNull( nameof( defaultValue ) );
             return defaultValue;
         }
 
@@ -53,13 +53,13 @@ namespace Extend
             if ( value != null )
                 return value;
 
-            values.ThrowIfNull(nameof(values));
+            values.ThrowIfNull( nameof( values ) );
 
             var notNullValues = values.Where( x => x != null );
             if ( notNullValues.Any() )
                 return notNullValues.First();
 
-            defaultValueFactory.ThrowIfNull(nameof(defaultValueFactory));
+            defaultValueFactory.ThrowIfNull( nameof( defaultValueFactory ) );
             return defaultValueFactory();
         }
     }

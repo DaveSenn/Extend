@@ -31,7 +31,7 @@ namespace Extend
         /// <returns>The given value converted to year month string.</returns>
         public static String ToMonthString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull(nameof(formatInfo));
+            formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
             return dateTime.ToString( "MMMM", formatInfo );
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>The given value converted to a year month string.</returns>
         public static String ToMonthString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull(nameof(culture));
+            culture.ThrowIfNull( nameof( culture ) );
 
             return dateTime.ToString( "MMMM", culture );
         }
