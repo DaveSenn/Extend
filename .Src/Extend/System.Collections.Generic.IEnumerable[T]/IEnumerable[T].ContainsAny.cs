@@ -25,8 +25,8 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains any of the given values, otherwise false.</returns>
         public static Boolean ContainsAny<T>( this IEnumerable<T> enumerable, params T[] values )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            values.ThrowIfNull( () => values );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
             return values.Any( enumerable.Contains );
         }
@@ -45,8 +45,8 @@ namespace Extend
         /// </returns>
         public static Boolean ContainsAny<T>( this IEnumerable<T> enumerable, IEnumerable<T> values )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            values.ThrowIfNull( () => values );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
             return values.Any( enumerable.Contains );
         }

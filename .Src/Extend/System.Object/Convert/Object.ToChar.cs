@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char ToChar( this Object obj )
         {
-            obj.ThrowIfNull( () => obj );
+            obj.ThrowIfNull(nameof(obj));
 
             var str = obj.ToString();
             if ( str.Length != 1 )

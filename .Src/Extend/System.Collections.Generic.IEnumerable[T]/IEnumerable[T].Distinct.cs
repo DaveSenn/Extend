@@ -25,8 +25,8 @@ namespace Extend
         /// <typeparam name="TKey">The input type of the predicate.</typeparam>
         public static IEnumerable<T> Distinct<T, TKey>( this IEnumerable<T> enumerable, Func<T, TKey> predicate )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            predicate.ThrowIfNull( () => predicate );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            predicate.ThrowIfNull(nameof(predicate));
 
             return enumerable.GroupBy( predicate )
                              .Select( g => g )

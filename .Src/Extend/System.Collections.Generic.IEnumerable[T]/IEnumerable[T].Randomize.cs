@@ -22,7 +22,7 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
         public static IEnumerable<T> Randomize<T>( this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( () => enumerable );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             var rnd = new Random();
             return enumerable.OrderBy( x => ( rnd.Next() ) );

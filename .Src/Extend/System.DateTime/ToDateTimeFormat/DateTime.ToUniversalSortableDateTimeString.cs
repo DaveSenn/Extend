@@ -31,7 +31,7 @@ namespace Extend
         /// <returns>The given value converted to a universal sortable date time string.</returns>
         public static String ToUniversalSortableDateTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull( () => formatInfo );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
             return dateTime.ToString( "u", formatInfo );
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>The given value converted to a universal sortable date time string.</returns>
         public static String ToUniversalSortableDateTimeString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull( () => culture );
+            culture.ThrowIfNull(nameof(culture));
 
             return dateTime.ToString( "u", culture );
         }

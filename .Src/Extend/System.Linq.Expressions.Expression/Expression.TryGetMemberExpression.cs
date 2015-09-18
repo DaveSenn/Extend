@@ -31,7 +31,7 @@ namespace Extend
         {
             while ( true )
             {
-                expression.ThrowIfNull( () => expression );
+                expression.ThrowIfNull(nameof(expression));
 
                 switch ( expression.NodeType )
                 {

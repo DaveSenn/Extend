@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The byte.</returns>
         public static Byte ToByte( this Object obj )
         {
-            obj.ThrowIfNull( () => obj );
+            obj.ThrowIfNull(nameof(obj));
 
             return Convert.ToByte( obj, CultureInfo.CurrentCulture );
         }
@@ -35,8 +35,8 @@ namespace Extend
         /// <returns>The byte.</returns>
         public static Byte ToByte( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull( () => obj );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            obj.ThrowIfNull(nameof(obj));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Convert.ToByte( obj, formatProvider );
         }

@@ -26,7 +26,7 @@ namespace Extend
                                                                   Func<T, Boolean> expression,
                                                                   String message = null )
         {
-            expression.ThrowIfNull( () => expression );
+            expression.ThrowIfNull(nameof(enumerable));
 
             return new ExpressionSpecification<T>( expression, message );
         }

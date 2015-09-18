@@ -51,8 +51,8 @@ namespace Extend
         public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
                                                                  KeyValuePair<TKey, TValue> keyValuePair )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            keyValuePair.Key.ThrowIfNull( () => keyValuePair.Key );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            keyValuePair.Key.ThrowIfNull( nameof( keyValuePair.Key ));
 
             if ( dictionary.ContainsKey( keyValuePair.Key ) )
                 return false;

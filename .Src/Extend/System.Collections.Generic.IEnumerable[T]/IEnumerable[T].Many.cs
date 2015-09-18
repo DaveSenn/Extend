@@ -25,8 +25,8 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains more than one item matching the given predicate, otherwise false.</returns>
         public static Boolean Many<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            predicate.ThrowIfNull( () => predicate );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            predicate.ThrowIfNull(nameof(predicate));
 
             return enumerable.Count( predicate ) > 1;
         }
@@ -40,7 +40,7 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains more than one item, otherwise false.</returns>
         public static Boolean Many<T>( this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( () => enumerable );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return enumerable.Count() > 1;
         }

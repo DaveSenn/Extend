@@ -31,7 +31,7 @@ namespace Extend
         /// <returns>The given value converted to a full date time string.</returns>
         public static String ToFullDateTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull( () => formatInfo );
+            formatInfo.ThrowIfNull(nameof(formatInfo));
 
             return dateTime.ToString( "F", formatInfo );
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>The given value converted to a full date time string.</returns>
         public static String ToFullDateTimeString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull( () => culture );
+            culture.ThrowIfNull(nameof(culture));
 
             return dateTime.ToString( "F", culture );
         }

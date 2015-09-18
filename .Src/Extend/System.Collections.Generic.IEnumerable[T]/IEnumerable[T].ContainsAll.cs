@@ -26,8 +26,8 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, params T[] values )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            values.ThrowIfNull( () => values );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
             return values.All( enumerable.Contains );
         }
@@ -44,8 +44,8 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
         public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, IEnumerable<T> values )
         {
-            enumerable.ThrowIfNull( () => enumerable );
-            values.ThrowIfNull( () => values );
+            enumerable.ThrowIfNull(nameof(enumerable));
+            values.ThrowIfNull(nameof(values));
 
             return values.All( enumerable.Contains );
         }

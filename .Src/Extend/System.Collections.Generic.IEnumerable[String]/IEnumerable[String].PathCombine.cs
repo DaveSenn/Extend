@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>The combined path.</returns>
         public static String PathCombine( this IEnumerable<String> enumerable )
         {
-            enumerable.ThrowIfNull( () => enumerable );
+            enumerable.ThrowIfNull(nameof(enumerable));
 
             return Path.Combine( enumerable.ToArray() );
         }

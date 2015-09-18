@@ -101,9 +101,9 @@ namespace Extend
                                                         TKey key,
                                                         Func<TKey, TValue> valueFactory )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            key.ThrowIfNull( () => key );
-            valueFactory.ThrowIfNull( () => valueFactory );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            key.ThrowIfNull(nameof(key));
+            valueFactory.ThrowIfNull(nameof(valueFactory));
 
             if ( dictionary.ContainsKey( key ) )
                 dictionary[key] = valueFactory( key );
