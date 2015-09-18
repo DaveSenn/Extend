@@ -44,7 +44,7 @@ namespace Extend
         /// </returns>
         public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.IndexOf( array, value, startIndex );
         }
@@ -65,7 +65,7 @@ namespace Extend
         /// </returns>
         public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex, Int32 count )
         {
-            array.ThrowIfNull( () => array );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.IndexOf( array, value, startIndex, count );
         }

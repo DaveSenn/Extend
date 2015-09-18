@@ -45,8 +45,8 @@ namespace Extend
         /// <returns>Returns the given collection.</returns>
         public static ICollection<T> AddRangeIfNotContains<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( () => collection );
-            enumerable.ThrowIfNull( () => enumerable );
+            collection.ThrowIfNull( nameof(collection) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             enumerable.ForEach( x =>
             {

@@ -52,9 +52,9 @@ namespace Extend
                                                     Func<T, Boolean> predicate,
                                                     IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( () => collection );
-            predicate.ThrowIfNull( () => predicate );
-            enumerable.ThrowIfNull( () => enumerable );
+            collection.ThrowIfNull( nameof( collection ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof( enumerable ) );
 
             enumerable.Where( predicate )
                       .ForEach( collection.Add );

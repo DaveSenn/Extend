@@ -46,8 +46,8 @@ namespace Extend
                                  Int32 destinationIndex,
                                  Int32 length )
         {
-            sourceArray.ThrowIfNull( () => sourceArray );
-            destinationArray.ThrowIfNull( () => destinationArray );
+            sourceArray.ThrowIfNull( nameof(sourceArray) );
+            destinationArray.ThrowIfNull( nameof(destinationArray) );
 
             Array.Copy( sourceArray, sourceIndex, destinationArray, destinationIndex, length );
         }
