@@ -31,7 +31,7 @@ namespace Extend
         /// <returns>The given value converted to a month day string.</returns>
         public static String ToMonthDayString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull(nameof(formatInfo));
+            formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
             return dateTime.ToString( "m", formatInfo );
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>The given value converted to a month day string.</returns>
         public static String ToMonthDayString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull(nameof(culture));
+            culture.ThrowIfNull( nameof( culture ) );
 
             return dateTime.ToString( "m", culture );
         }

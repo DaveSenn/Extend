@@ -24,8 +24,8 @@ namespace Extend
         /// <returns>True if the value was added to the collection, otherwise false.</returns>
         public static Boolean AddIf<T>( this ICollection<T> collection, Func<T, Boolean> predicate, T value )
         {
-            collection.ThrowIfNull( nameof(collection) );
-            predicate.ThrowIfNull(nameof(predicate));
+            collection.ThrowIfNull( nameof( collection ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             if ( !predicate( value ) )
                 return false;

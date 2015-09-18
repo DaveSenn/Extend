@@ -24,7 +24,7 @@ namespace Extend
         /// <returns>Returns all keys of the given dictionary as list.</returns>
         public static List<TKey> GetAllKeysAsList<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
         {
-            dictionary.ThrowIfNull(nameof(dictionary));
+            dictionary.ThrowIfNull( nameof( dictionary ) );
 
             return dictionary.Select( x => x.Key )
                              .ToList();

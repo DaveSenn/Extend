@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The Int16.</returns>
         public static Int16 ToInt16( this Object obj )
         {
-            obj.ThrowIfNull(nameof(obj));
+            obj.ThrowIfNull( nameof( obj ) );
 
             return Convert.ToInt16( obj, CultureInfo.CurrentCulture );
         }
@@ -35,8 +35,8 @@ namespace Extend
         /// <returns>The Int16.</returns>
         public static Int16 ToInt16( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull(nameof(obj));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            obj.ThrowIfNull( nameof( obj ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToInt16( obj, formatProvider );
         }

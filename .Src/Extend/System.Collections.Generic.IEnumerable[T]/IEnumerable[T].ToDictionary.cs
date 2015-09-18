@@ -28,7 +28,7 @@ namespace Extend
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(
             this IEnumerable<IGrouping<TKey, TValue>> groupings )
         {
-            groupings.ThrowIfNull(nameof(groupings));
+            groupings.ThrowIfNull( nameof( groupings ) );
 
             return groupings.ToDictionary( x => x.Key, x => x.ToList() );
         }

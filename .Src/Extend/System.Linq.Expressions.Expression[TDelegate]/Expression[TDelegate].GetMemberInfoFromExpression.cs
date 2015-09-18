@@ -28,7 +28,7 @@ namespace Extend
         public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
             this Expression<Func<TDeclairingType, TMember>> expression )
         {
-            expression.ThrowIfNull(nameof(expression));
+            expression.ThrowIfNull( nameof( expression ) );
 
             MemberExpression memberExpression;
             expression.TryGetMemberExpression( out memberExpression );

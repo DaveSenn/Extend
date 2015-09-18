@@ -25,8 +25,8 @@ namespace Extend
         /// </returns>
         public static Boolean SmallerOrEquals<T>( this T value, T compareValue ) where T : IComparable<T>
         {
-            value.ThrowIfNull(nameof(value));
-            compareValue.ThrowIfNull(nameof(compareValue));
+            value.ThrowIfNull( nameof( value ) );
+            compareValue.ThrowIfNull( nameof( compareValue ) );
 
             return value.CompareTo( compareValue ) <= 0;
         }

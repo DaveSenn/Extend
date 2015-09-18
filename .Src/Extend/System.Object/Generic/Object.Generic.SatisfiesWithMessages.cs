@@ -22,7 +22,7 @@ namespace Extend
         /// <returns></returns>
         public static IEnumerable<String> SatisfiesWithMessages<T>( this T obj, ISpecification<T> specification )
         {
-            specification.ThrowIfNull(nameof(specification));
+            specification.ThrowIfNull( nameof( specification ) );
 
             return specification.IsSatisfiedByWithMessages( obj );
         }

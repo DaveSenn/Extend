@@ -22,7 +22,7 @@ namespace Extend
         /// <returns>Returns the sum of the values.</returns>
         public static Int32 Sum( this Int32 value, params Int32[] values )
         {
-            values.ThrowIfNull(nameof(values));
+            values.ThrowIfNull( nameof( values ) );
 
             var list = values.ToList();
             list.Add( value );
@@ -39,7 +39,7 @@ namespace Extend
         /// <returns>Returns the sum of the values.</returns>
         public static Int32? Sum( this Int32? value, params Int32?[] values )
         {
-            values.ThrowIfNull(nameof(values));
+            values.ThrowIfNull( nameof( values ) );
 
             var list = values.ToList();
             list.Add( value );
@@ -59,8 +59,8 @@ namespace Extend
         /// <returns>Returns the sum of the projected values.</returns>
         public static Int32 Sum<TSource>( this TSource value, Func<TSource, Int32> selector, params TSource[] values )
         {
-            selector.ThrowIfNull(nameof(selector));
-            values.ThrowIfNull(nameof(values));
+            selector.ThrowIfNull( nameof( selector ) );
+            values.ThrowIfNull( nameof( values ) );
 
             var list = values.ToList();
             list.Add( value );
@@ -80,8 +80,8 @@ namespace Extend
         /// <returns>Returns the sum of the projected values.</returns>
         public static Int32? Sum<TSource>( this TSource value, Func<TSource, Int32?> selector, params TSource[] values )
         {
-            selector.ThrowIfNull(nameof(selector));
-            values.ThrowIfNull(nameof(values));
+            selector.ThrowIfNull( nameof( selector ) );
+            values.ThrowIfNull( nameof( values ) );
 
             var list = values.ToList();
             list.Add( value );

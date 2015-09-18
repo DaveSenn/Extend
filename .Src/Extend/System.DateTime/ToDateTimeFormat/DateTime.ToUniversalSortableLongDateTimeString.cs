@@ -32,7 +32,7 @@ namespace Extend
         public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime,
                                                                     DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull(nameof(formatInfo));
+            formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
             return dateTime.ToString( "U", formatInfo );
         }
@@ -46,7 +46,7 @@ namespace Extend
         /// <returns>The given value converted to a universal sortable long date time string.</returns>
         public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime, CultureInfo culture )
         {
-            culture.ThrowIfNull(nameof(culture));
+            culture.ThrowIfNull( nameof( culture ) );
 
             return dateTime.ToString( "U", culture );
         }

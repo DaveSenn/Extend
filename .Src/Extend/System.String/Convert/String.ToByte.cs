@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The byte.</returns>
         public static Byte ToByte( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToByte( value, CultureInfo.InvariantCulture );
         }

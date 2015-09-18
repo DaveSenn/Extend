@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char ToCharByCode( this Object obj )
         {
-            obj.ThrowIfNull(nameof(obj));
+            obj.ThrowIfNull( nameof( obj ) );
 
             return Convert.ToChar( obj, CultureInfo.CurrentCulture );
         }
@@ -41,8 +41,8 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char ToCharByCode( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull(nameof(obj));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            obj.ThrowIfNull( nameof( obj ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToChar( obj, formatProvider );
         }

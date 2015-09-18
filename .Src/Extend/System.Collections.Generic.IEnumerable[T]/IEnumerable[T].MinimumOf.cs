@@ -29,8 +29,8 @@ namespace Extend
         /// </returns>
         public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count, Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull(nameof(enumerable));
-            predicate.ThrowIfNull(nameof(predicate));
+            enumerable.ThrowIfNull( nameof( enumerable ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             return enumerable.Count( predicate ) >= count;
         }
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable contains at least the specified number of items, otherwise false.</returns>
         public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count )
         {
-            enumerable.ThrowIfNull(nameof(enumerable));
+            enumerable.ThrowIfNull( nameof( enumerable ) );
 
             return enumerable.Count() >= count;
         }

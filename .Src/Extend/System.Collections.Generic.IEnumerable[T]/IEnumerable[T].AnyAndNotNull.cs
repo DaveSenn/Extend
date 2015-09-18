@@ -38,7 +38,7 @@ namespace Extend
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
         public static Boolean AnyAndNotNull<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             return enumerable != null && enumerable.Any( predicate );
         }

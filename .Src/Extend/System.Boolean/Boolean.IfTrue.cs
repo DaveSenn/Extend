@@ -24,7 +24,7 @@ namespace Extend
         {
             if ( value )
             {
-                action.ThrowIfNull( nameof(action) );
+                action.ThrowIfNull( nameof( action ) );
                 action();
             }
             else
@@ -51,7 +51,7 @@ namespace Extend
         {
             if ( value )
             {
-                action.ThrowIfNull( nameof(action) );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter );
             }
             else
@@ -81,7 +81,7 @@ namespace Extend
         {
             if ( value )
             {
-                action.ThrowIfNull( nameof(action) );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2 );
             }
             else
@@ -114,7 +114,7 @@ namespace Extend
         {
             if ( value )
             {
-                action.ThrowIfNull( nameof(action) );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3 );
             }
             else
@@ -150,7 +150,7 @@ namespace Extend
         {
             if ( value )
             {
-                action.ThrowIfNull( nameof(action) );
+                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3, parameter4 );
             }
             else

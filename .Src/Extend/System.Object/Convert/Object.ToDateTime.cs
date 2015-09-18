@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>The date time.</returns>
         public static DateTime ToDateTime( this Object obj )
         {
-            obj.ThrowIfNull(nameof(obj));
+            obj.ThrowIfNull( nameof( obj ) );
 
             return Convert.ToDateTime( obj );
         }
@@ -34,8 +34,8 @@ namespace Extend
         /// <returns>The date time.</returns>
         public static DateTime ToDateTime( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull(nameof(obj));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            obj.ThrowIfNull( nameof( obj ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToDateTime( obj, formatProvider );
         }

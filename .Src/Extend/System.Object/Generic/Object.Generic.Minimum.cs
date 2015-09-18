@@ -22,7 +22,7 @@ namespace Extend
         /// <returns>Returns the minimum value.</returns>
         public static TSource Minimum<TSource>( this TSource value, params TSource[] values )
         {
-            values.ThrowIfNull(nameof(values));
+            values.ThrowIfNull( nameof( values ) );
 
             var list = values.ToList();
             list.Add( value );
@@ -44,8 +44,8 @@ namespace Extend
                                                          Func<TSource, TResult> selector,
                                                          params TSource[] values )
         {
-            values.ThrowIfNull(nameof(values));
-            selector.ThrowIfNull(nameof(selector));
+            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof( selector ) );
 
             var list = values.ToList();
             list.Add( value );

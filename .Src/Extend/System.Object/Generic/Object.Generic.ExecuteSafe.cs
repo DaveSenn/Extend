@@ -21,7 +21,7 @@ namespace Extend
         /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
         public static IExecutionResult<T> ExecuteSafe<T>( this T value, Action<T> action )
         {
-            action.ThrowIfNull(nameof(action));
+            action.ThrowIfNull( nameof( action ) );
 
             var result = new ExecutionResult<T>();
             try
@@ -47,7 +47,7 @@ namespace Extend
         /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
         public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( this T value, Func<T, TResult> func )
         {
-            func.ThrowIfNull(nameof(func));
+            func.ThrowIfNull( nameof( func ) );
 
             var result = new ExecutionResult<TResult>();
             try
