@@ -21,8 +21,8 @@ namespace Extend
         /// <returns>Returns true if if the objects are the same instance.</returns>
         public static Boolean RefEquals( this Object obj0, Object obj1 )
         {
-            obj0.ThrowIfNull( () => obj0 );
-            obj1.ThrowIfNull( () => obj1 );
+            obj0.ThrowIfNull(nameof(obj0));
+            obj1.ThrowIfNull(nameof(obj1));
 
             return ReferenceEquals( obj0, obj1 );
         }

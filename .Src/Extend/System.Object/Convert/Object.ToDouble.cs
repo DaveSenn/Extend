@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The double.</returns>
         public static Double ToDouble( this Object obj )
         {
-            obj.ThrowIfNull( () => obj );
+            obj.ThrowIfNull(nameof(obj));
 
             return Convert.ToDouble( obj, CultureInfo.CurrentCulture );
         }
@@ -35,8 +35,8 @@ namespace Extend
         /// <returns>The double.</returns>
         public static Double ToDouble( this Object obj, IFormatProvider formatProvider )
         {
-            obj.ThrowIfNull( () => obj );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            obj.ThrowIfNull(nameof(obj));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Convert.ToDouble( obj, formatProvider );
         }

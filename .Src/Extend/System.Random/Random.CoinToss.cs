@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns true or false (random value).</returns>
         public static Boolean CoinToss( this Random random )
         {
-            random.ThrowIfNull( () => random );
+            random.ThrowIfNull(nameof(random));
 
             return random.Next( 2 ) == 0;
         }

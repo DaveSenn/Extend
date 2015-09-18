@@ -26,7 +26,7 @@ namespace Extend
             if ( value != null )
                 return value;
 
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             return values.First( x => x != null );
         }

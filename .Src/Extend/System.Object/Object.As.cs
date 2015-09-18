@@ -18,9 +18,9 @@ namespace Extend
         /// <typeparam name="T">The type.</typeparam>
         /// <param name="obj">The object to cast.</param>
         /// <returns>The object as the specified type.</returns>
-        public static T As<T>( this object obj )
+        public static T As<T>( this Object obj )
         {
-            obj.ThrowIfNull( () => obj );
+            obj.ThrowIfNull(nameof(obj));
 
             return (T) obj;
         }

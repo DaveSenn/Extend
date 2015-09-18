@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>>Returns true if the value is present in the array.</returns>
         public static Boolean IsIn<T>( this T value, params T[] values )
         {
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             return Array.IndexOf( values, value ) != -1;
         }
@@ -38,7 +38,7 @@ namespace Extend
         /// <returns>>Returns true if the value is present in the IEnumerable.</returns>
         public static Boolean IsIn<T>( this T value, IEnumerable<T> values )
         {
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             return values.Contains( value );
         }
