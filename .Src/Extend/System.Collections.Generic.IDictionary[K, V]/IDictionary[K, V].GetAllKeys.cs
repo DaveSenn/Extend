@@ -24,7 +24,7 @@ namespace Extend
         /// <returns>Returns all keys of the given dictionary.</returns>
         public static IEnumerable<TKey> GetAllKeys<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
         {
-            dictionary.ThrowIfNull( () => dictionary );
+            dictionary.ThrowIfNull(nameof(dictionary));
 
             return dictionary.Select( x => x.Key );
         }

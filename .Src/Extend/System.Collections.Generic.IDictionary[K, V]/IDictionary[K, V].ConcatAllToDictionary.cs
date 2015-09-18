@@ -31,8 +31,8 @@ namespace Extend
             this IDictionary<TValue, TKey> dictionary,
             params IDictionary<TValue, TKey>[] dictionaries )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            dictionaries.ThrowIfNull( () => dictionaries );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            dictionaries.ThrowIfNull(nameof(dictionaries));
 
             var result = dictionary;
             dictionaries.ForEach( x =>

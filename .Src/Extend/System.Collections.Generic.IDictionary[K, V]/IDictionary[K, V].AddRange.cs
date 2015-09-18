@@ -26,8 +26,8 @@ namespace Extend
         public static IDictionary<TKey, TValue> AddRange<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
                                                                         IDictionary<TKey, TValue> otherDictionary )
         {
-            dictionary.ThrowIfNull( () => dictionary );
-            otherDictionary.ThrowIfNull( () => otherDictionary );
+            dictionary.ThrowIfNull(nameof(dictionary));
+            otherDictionary.ThrowIfNull(nameof(otherDictionary));
 
             otherDictionary.ForEach( x => dictionary.Add( x.Key, x.Value ) );
             return dictionary;

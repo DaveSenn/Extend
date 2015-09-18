@@ -32,8 +32,8 @@ namespace Extend
             this IEnumerable<KeyValuePair<TValue, TKey>> first,
             IEnumerable<KeyValuePair<TValue, TKey>> second )
         {
-            first.ThrowIfNull( () => first );
-            second.ThrowIfNull( () => second );
+            first.ThrowIfNull(nameof(first));
+            second.ThrowIfNull(nameof(second));
 
             return first.Concat( second )
                         .ToDictionary( x => x.Key, x => x.Value );
