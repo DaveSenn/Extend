@@ -27,8 +27,8 @@ namespace Extend
                 trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction();
             }
-            else if ( falseAction != null )
-                falseAction();
+            else
+                falseAction?.Invoke();
         }
 
         /// <summary>
@@ -51,8 +51,8 @@ namespace Extend
                 trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter );
             }
-            else if ( falseAction != null )
-                falseAction( parameter );
+            else
+                falseAction?.Invoke( parameter );
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace Extend
                 trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2 );
             }
-            else if ( falseAction != null )
-                falseAction( parameter1, parameter2 );
+            else
+                falseAction?.Invoke( parameter1, parameter2 );
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Extend
                 trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3 );
             }
-            else if ( falseAction != null )
-                falseAction( parameter1, parameter2, parameter3 );
+            else
+                falseAction?.Invoke( parameter1, parameter2, parameter3 );
         }
 
         /// <summary>
@@ -141,8 +141,8 @@ namespace Extend
                 trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3, parameter4 );
             }
-            else if ( falseAction != null )
-                falseAction( parameter1, parameter2, parameter3, parameter4 );
+            else
+                falseAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
         }
 
         /// <summary>

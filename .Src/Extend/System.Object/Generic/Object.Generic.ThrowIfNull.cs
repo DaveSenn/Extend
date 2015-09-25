@@ -63,7 +63,7 @@ namespace Extend
                 return;
 
             throw new ArgumentNullException( parameterName,
-                                             errorMessage ?? "{0} can not be null.".F( parameterName ) );
+                                             errorMessage ?? $"{parameterName} can not be null." );
         }
     }
 }

@@ -50,7 +50,7 @@ namespace Extend
 
                         //Operand type is not supported
                         throw new NotSupportedException(
-                            "Expressions (operand of convert) of type {0} are not supported".F( operand.NodeType ) );
+                            $"Expressions (operand of convert) of type '{operand.NodeType}' are not supported" );
 
                     case ExpressionType.Constant:
                         throw new NotSupportedException(
@@ -67,7 +67,7 @@ namespace Extend
                         throw new NotSupportedException( "The given lambda expression has no valid body." );
 
                     default:
-                        throw new NotSupportedException( "Expressions of type {0} are not supported".F( expression.NodeType ) );
+                        throw new NotSupportedException( $"Expressions of type '{expression.NodeType}' are not supported" );
                 }
             }
         }
