@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The given string without any letters.</returns>
         public static String RemoveLetters( this String str )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return new String( str.ToCharArray()
                                   .Where( x => !x.IsLetter() )

@@ -19,8 +19,8 @@ namespace Extend
         /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
         public static Boolean ContainsAny( this String str, params String[] values )
         {
-            str.ThrowIfNull( () => str );
-            values.ThrowIfNull( () => values );
+            str.ThrowIfNull(nameof(str));
+            values.ThrowIfNull(nameof(values));
 
             return values.Any( str.Contains );
         }
@@ -36,8 +36,8 @@ namespace Extend
         /// <returns>Returns true if the string contains any of the values given, otherwise false.</returns>
         public static Boolean ContainsAny( this String str, StringComparison comparisonType, params String[] values )
         {
-            str.ThrowIfNull( () => str );
-            values.ThrowIfNull( () => values );
+            str.ThrowIfNull(nameof(str));
+            values.ThrowIfNull(nameof(values));
 
             return values.Any( x => str.IndexOf( x, comparisonType ) != -1 );
         }

@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the specified number of characters from the start of the string.</returns>
         public static String SubstringLeftSafe( this String str, Int32 length )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return str.Substring( 0, Math.Min( length, str.Length ) );
         }
@@ -34,7 +34,7 @@ namespace Extend
         /// <returns>Returns the specified number of characters from the start index of the string.</returns>
         public static String SubstringLeftSafe( this String str, Int32 startIndex, Int32 length )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return str.Substring( Math.Min( startIndex, str.Length ),
                                   Math.Min( length, Math.Max( str.Length - startIndex, 0 ) ) );

@@ -16,7 +16,7 @@ namespace Extend
         /// <returns>The concatenation of all strings.</returns>
         public static String ConcatAll( this String str, params String[] strings )
         {
-            strings.ThrowIfNull( () => strings );
+            strings.ThrowIfNull(nameof(strings));
 
             return String.Concat( str, String.Concat( strings ) );
         }
@@ -28,7 +28,7 @@ namespace Extend
         /// <returns>The concatenation of all strings.</returns>
         public static String ConcatAll( this String[] strings )
         {
-            strings.ThrowIfNull( () => strings );
+            strings.ThrowIfNull(nameof(strings));
 
             return String.Concat( strings );
         }
@@ -41,7 +41,7 @@ namespace Extend
         /// <returns>The concatenation of all values.</returns>
         public static String ConcatAll( this String str, params Object[] values )
         {
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             return String.Concat( str, String.Concat( values ) );
         }
@@ -53,7 +53,7 @@ namespace Extend
         /// <returns>The concatenation of all values.</returns>
         public static String ConcatAll( this Object[] values )
         {
-            values.ThrowIfNull( () => values );
+            values.ThrowIfNull(nameof(values));
 
             return String.Concat( values );
         }

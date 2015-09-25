@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the specified number of characters from the end of the string.</returns>
         public static String SubstringRightSafe( this String str, Int32 length )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return str.Substring( Math.Max( 0, str.Length - length ) );
         }

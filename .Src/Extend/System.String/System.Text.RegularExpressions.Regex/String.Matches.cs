@@ -39,8 +39,8 @@ namespace Extend
         /// </returns>
         public static MatchCollection Matches( this String input, String pattern, RegexOptions options )
         {
-            input.ThrowIfNull( () => input );
-            pattern.ThrowIfNull( () => pattern );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
             return Regex.Matches( input, pattern, options );
         }
@@ -60,9 +60,9 @@ namespace Extend
         /// </returns>
         public static MatchCollection Matches( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
         {
-            input.ThrowIfNull( () => input );
-            pattern.ThrowIfNull( () => pattern );
-            timeOut.ThrowIfNull( () => timeOut );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
+            timeOut.ThrowIfNull(nameof(timeOut));
 
             return Regex.Matches( input, pattern, options, timeOut );
         }

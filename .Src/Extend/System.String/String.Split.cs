@@ -29,8 +29,8 @@ namespace Extend
                                       String separator,
                                       StringSplitOptions stringSplitOption = StringSplitOptions.None )
         {
-            value.ThrowIfNull( () => value );
-            separator.ThrowIfNull( () => separator );
+            value.ThrowIfNull(nameof(value));
+            separator.ThrowIfNull(nameof(separator));
 
             return value.Split( new[]
             {
@@ -64,8 +64,8 @@ namespace Extend
                                       StringSplitOptions stringSplitOption,
                                       params String[] separators )
         {
-            value.ThrowIfNull( () => value );
-            separators.ThrowIfNull( () => separators );
+            value.ThrowIfNull(nameof(value));
+            separators.ThrowIfNull(nameof(separators));
 
             return value.Split( separators, stringSplitOption );
         }

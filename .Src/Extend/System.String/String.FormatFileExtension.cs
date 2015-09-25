@@ -21,7 +21,7 @@ namespace Extend
         public static String FormatFileExtension( this String fileExtension )
         {
             // ReSharper disable once AccessToModifiedClosure
-            fileExtension.ThrowIfNull( () => fileExtension );
+            fileExtension.ThrowIfNull(nameof(fileExtension));
 
             if ( fileExtension.IsEmpty() )
                 throw new ArgumentException( "Can not format a empty string to a file extension.", "fileExtension" );

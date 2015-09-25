@@ -37,7 +37,7 @@ namespace Extend
         /// <param name="message">The validation error message.</param>
         public ExpressionSpecification( Func<T, Boolean> expression, String message = null )
         {
-            expression.ThrowIfNull( () => expression );
+            expression.ThrowIfNull(nameof(expression));
 
             _expression = expression;
             _message = message;
