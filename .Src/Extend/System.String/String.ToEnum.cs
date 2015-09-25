@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted enumeration value.</returns>
         public static T ToEnum<T>( this String value, Boolean ignoreCase = true ) where T : struct
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return (T) Enum.Parse( typeof (T), value, ignoreCase );
         }

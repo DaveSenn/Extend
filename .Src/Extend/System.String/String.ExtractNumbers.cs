@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The extracted numbers.</returns>
         public static String ExtractNumbers( this String str )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull( nameof(str) );
 
             return new String( str.ToCharArray()
                                   .Where( x => x.IsNumber() )

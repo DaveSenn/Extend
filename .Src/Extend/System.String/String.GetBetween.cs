@@ -21,7 +21,7 @@ namespace Extend
         /// <returns>The part of the string between the before and after value.</returns>
         public static String GetBetween( this String str, String before, String after, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return GetBetween( str, before, after, startIndex, str.Length - startIndex );
         }
@@ -42,9 +42,9 @@ namespace Extend
         public static String GetBetween( this String str, String before, String after, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( () => str );
-            before.ThrowIfNull( () => before );
-            after.ThrowIfNull( () => after );
+            str.ThrowIfNull(nameof(str));
+            before.ThrowIfNull(nameof(before));
+            after.ThrowIfNull(nameof(after));
 
             if ( startIndex < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
@@ -73,7 +73,7 @@ namespace Extend
         /// <returns>The part of the string between the before and after value.</returns>
         public static String GetBetween( this String str, Char before, Char after, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( () => str );
+            str.ThrowIfNull(nameof(str));
 
             return GetBetween( str, before, after, startIndex, str.Length - startIndex );
         }
@@ -94,9 +94,9 @@ namespace Extend
         public static String GetBetween( this String str, Char before, Char after, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( () => str );
-            before.ThrowIfNull( () => before );
-            after.ThrowIfNull( () => after );
+            str.ThrowIfNull(nameof(str));
+            before.ThrowIfNull(nameof(before));
+            after.ThrowIfNull(nameof(after));
 
             if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );

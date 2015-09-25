@@ -24,7 +24,7 @@ namespace Extend
         /// </returns>
         public static String[] SplitLines( this String value, StringSplitOptions stringSplitOptions )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return value.Split( new[]
             {

@@ -19,8 +19,8 @@ namespace Extend
         /// <returns>The extracted parts of the input string.</returns>
         public static String Extract( this String str, Func<Char, Boolean> predicate )
         {
-            str.ThrowIfNull( () => str );
-            predicate.ThrowIfNull( () => predicate );
+            str.ThrowIfNull(nameof(str));
+            predicate.ThrowIfNull(nameof(predicate));
 
             return new String( str.ToCharArray()
                                   .Where( predicate )
