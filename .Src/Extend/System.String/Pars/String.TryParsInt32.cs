@@ -26,7 +26,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsInt32( this String value, out Int32 outValue )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return Int32.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
@@ -58,8 +58,8 @@ namespace Extend
                                             IFormatProvider formatProvider,
                                             out Int32 outValue )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Int32.TryParse( value, numberStyles, formatProvider, out outValue );
         }

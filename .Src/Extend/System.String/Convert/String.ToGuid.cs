@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the converted GUID.</returns>
         public static Guid ToGuid( this String value )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return Guid.Parse( value );
         }

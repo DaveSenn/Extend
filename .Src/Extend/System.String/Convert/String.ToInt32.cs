@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The Int32.</returns>
         public static Int32 ToInt32( this String value )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return Convert.ToInt32( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The Int32.</returns>
         public static Int32 ToInt32( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Convert.ToInt32( value, formatProvider );
         }

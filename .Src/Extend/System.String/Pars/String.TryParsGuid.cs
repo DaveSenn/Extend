@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns true if the parse operation was successful; otherwise, false.</returns>
         public static Boolean TryParsGuid( this String value, out Guid outValue )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return Guid.TryParse( value, out outValue );
         }

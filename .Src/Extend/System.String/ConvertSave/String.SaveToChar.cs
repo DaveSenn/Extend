@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char SaveToChar( this String value, Char? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             Char outValue;
             return value.TryParsChar( out outValue ) ? outValue : ( defaultValue ?? outValue );

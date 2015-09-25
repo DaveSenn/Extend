@@ -44,9 +44,9 @@ namespace Extend
                                                     DateTimeStyles dateTimeStyle,
                                                     out DateTime outValue )
         {
-            value.ThrowIfNull( () => value );
-            format.ThrowIfNull( () => format );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            format.ThrowIfNull(nameof(format));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return DateTime.TryParseExact( value, format, formatProvider, dateTimeStyle, out outValue );
         }
@@ -93,9 +93,9 @@ namespace Extend
                                                     DateTimeStyles dateTimeStyle,
                                                     out DateTime outValue )
         {
-            value.ThrowIfNull( () => value );
-            formats.ThrowIfNull( () => formats );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formats.ThrowIfNull(nameof(formats));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return DateTime.TryParseExact( value, formats, formatProvider, dateTimeStyle, out outValue );
         }

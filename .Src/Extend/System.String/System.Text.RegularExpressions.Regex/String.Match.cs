@@ -17,8 +17,8 @@ namespace Extend
         /// <returns>An object that contains information about the match.</returns>
         public static Match Match( this String input, String pattern )
         {
-            input.ThrowIfNull( () => input );
-            input.ThrowIfNull( () => pattern );
+            input.ThrowIfNull(nameof(input));
+            input.ThrowIfNull(nameof(pattern));
 
             return Regex.Match( input, pattern );
         }
@@ -33,8 +33,8 @@ namespace Extend
         /// <returns>An object that contains information about the match.</returns>
         public static Match Match( this String input, String pattern, RegexOptions options )
         {
-            input.ThrowIfNull( () => input );
-            input.ThrowIfNull( () => pattern );
+            input.ThrowIfNull(nameof(input));
+            input.ThrowIfNull(nameof(pattern));
 
             return Regex.Match( input, pattern, options );
         }
@@ -51,9 +51,9 @@ namespace Extend
         /// <returns>An object that contains information about the match.</returns>
         public static Match Match( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
         {
-            input.ThrowIfNull( () => input );
-            input.ThrowIfNull( () => pattern );
-            timeOut.ThrowIfNull( () => timeOut );
+            input.ThrowIfNull(nameof(input));
+            input.ThrowIfNull(nameof(pattern));
+            timeOut.ThrowIfNull(nameof(timeOut));
 
             return Regex.Match( input, pattern, options, timeOut );
         }

@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted Int32.</returns>
         public static Int32 SaveToInt32( this String value, Int32? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             Int32 outValue;
             return value.TryParsInt32( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -42,8 +42,8 @@ namespace Extend
                                          IFormatProvider formatProvider,
                                          Int32? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             Int32 outValue;
             return value.TryParsInt32( numberStyle, formatProvider, out outValue )
