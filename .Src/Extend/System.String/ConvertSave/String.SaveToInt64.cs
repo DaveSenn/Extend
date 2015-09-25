@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted Int64.</returns>
         public static Int64 SaveToInt64( this String value, Int64? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             Int64 outValue;
             return value.TryParsInt64( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -42,8 +42,8 @@ namespace Extend
                                          IFormatProvider formatProvider,
                                          Int64? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             Int64 outValue;
             return value.TryParsInt64( numberStyle, formatProvider, out outValue )

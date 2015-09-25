@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>The date time value.</returns>
         public static DateTime SaveToDateTime( this String value, DateTime? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             DateTime outValue;
             return value.TryParsDateTime( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -39,8 +39,8 @@ namespace Extend
                                                DateTimeStyles dateTimeStyle,
                                                DateTime? defaultValue = null )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             DateTime outValue;
             return value.TryParsDateTime( formatProvider, dateTimeStyle, out outValue )

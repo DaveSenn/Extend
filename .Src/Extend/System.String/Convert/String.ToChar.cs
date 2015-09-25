@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char ToChar( this String value )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull( nameof(value) );
 
             return Convert.ToChar( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The char.</returns>
         public static Char ToChar( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull( nameof(value) );
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return Convert.ToChar( value, formatProvider );
         }

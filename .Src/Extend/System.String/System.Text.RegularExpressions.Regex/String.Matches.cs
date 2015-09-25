@@ -20,8 +20,8 @@ namespace Extend
         /// </returns>
         public static MatchCollection Matches( this String input, String pattern )
         {
-            input.ThrowIfNull( () => input );
-            pattern.ThrowIfNull( () => pattern );
+            input.ThrowIfNull(nameof(input));
+            pattern.ThrowIfNull(nameof(pattern));
 
             return Regex.Matches( input, pattern );
         }

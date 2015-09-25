@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsChar( this String value, out Char outValue )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return Char.TryParse( value, out outValue );
         }

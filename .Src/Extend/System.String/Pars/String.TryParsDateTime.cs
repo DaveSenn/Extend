@@ -33,7 +33,7 @@ namespace Extend
         /// </returns>
         public static Boolean TryParsDateTime( this String value, out DateTime result )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             return DateTime.TryParse( value, CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
         }
@@ -75,8 +75,8 @@ namespace Extend
                                                DateTimeStyles dateTimeStyle,
                                                out DateTime result )
         {
-            value.ThrowIfNull( () => value );
-            formatProvider.ThrowIfNull( () => formatProvider );
+            value.ThrowIfNull(nameof(value));
+            formatProvider.ThrowIfNull(nameof(formatProvider));
 
             return DateTime.TryParse( value, formatProvider, dateTimeStyle, out result );
         }

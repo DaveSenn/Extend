@@ -19,10 +19,10 @@ namespace Extend
         /// <returns>The extracted floating point number as string.</returns>
         private static String ExtractFloatingNumber( this String value, Int32 startIndex = 0 )
         {
-            value.ThrowIfNull( () => value );
+            value.ThrowIfNull(nameof(value));
 
             if ( startIndex >= value.Length || startIndex < 0 )
-                throw new ArgumentOutOfRangeException( "Invalid start index." );
+                throw new ArgumentOutOfRangeException(nameof(value), "Invalid start index." );
 
             var chars = value.Substring( startIndex )
                              .ToCharArray();
