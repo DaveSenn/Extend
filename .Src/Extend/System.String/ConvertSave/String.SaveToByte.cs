@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>The byte.</returns>
         public static Byte SaveToByte( this String value, Byte? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Byte outValue;
             return value.TryParsByte( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -39,8 +39,8 @@ namespace Extend
                                        IFormatProvider formatProvider,
                                        Byte? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Byte outValue;
             return value.TryParsByte( numberStyle, formatProvider, out outValue )

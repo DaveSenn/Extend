@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns true if the string is numeric only, otherwise false.</returns>
         public static Boolean IsNumeric( this String str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.ToCharArray()
                       .All( x => x.IsNumber() );

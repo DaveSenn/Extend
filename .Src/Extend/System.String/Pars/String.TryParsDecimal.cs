@@ -27,7 +27,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsDecimal( this String value, out Decimal outValue )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Decimal.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
@@ -57,8 +57,8 @@ namespace Extend
                                               IFormatProvider formatProvider,
                                               out Decimal outValue )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Decimal.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }

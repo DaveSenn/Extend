@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The date time value.</returns>
         public static DateTime ToDateTime( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToDateTime( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The date time value.</returns>
         public static DateTime ToDateTime( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToDateTime( value, formatProvider );
         }

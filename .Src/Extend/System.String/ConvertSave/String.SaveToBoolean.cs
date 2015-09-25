@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The boolean.</returns>
         public static Boolean SaveToBoolean( this String value, Boolean? defaultValue = null )
         {
-            value.ThrowIfNull( nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Boolean outValue;
             return value.TryParsBoolean( out outValue ) ? outValue : ( defaultValue ?? outValue );

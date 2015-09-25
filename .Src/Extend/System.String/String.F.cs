@@ -21,7 +21,7 @@ namespace Extend
         /// </returns>
         public static String F( this String format, Object arg0 )
         {
-            format.ThrowIfNull(nameof(format));
+            format.ThrowIfNull( nameof( format ) );
 
             return String.Format( format, arg0 );
         }
@@ -39,7 +39,7 @@ namespace Extend
         /// </returns>
         public static String F( this String format, Object arg0, Object arg1 )
         {
-            format.ThrowIfNull(nameof(format));
+            format.ThrowIfNull( nameof( format ) );
 
             return String.Format( format, arg0, arg1 );
         }
@@ -58,7 +58,7 @@ namespace Extend
         /// </returns>
         public static String F( this String format, Object arg0, Object arg1, Object arg2 )
         {
-            format.ThrowIfNull(nameof(format));
+            format.ThrowIfNull( nameof( format ) );
 
             return String.Format( format, arg0, arg1, arg2 );
         }
@@ -81,8 +81,8 @@ namespace Extend
         /// </returns>
         public static String F( this String format, params Object[] args )
         {
-            format.ThrowIfNull(nameof(format));
-            args.ThrowIfNull(nameof(args));
+            format.ThrowIfNull( nameof( format ) );
+            args.ThrowIfNull( nameof( args ) );
 
             return String.Format( CultureInfo.InvariantCulture, format, args );
         }
@@ -106,9 +106,9 @@ namespace Extend
         /// </returns>
         public static String F( this String format, IFormatProvider formatProvider, params Object[] args )
         {
-            format.ThrowIfNull(nameof(format));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
-            args.ThrowIfNull(nameof(args));
+            format.ThrowIfNull( nameof( format ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            args.ThrowIfNull( nameof( args ) );
 
             return String.Format( formatProvider, format, args );
         }

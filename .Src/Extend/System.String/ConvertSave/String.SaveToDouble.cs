@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>The double.</returns>
         public static Double SaveToDouble( this String value, Double? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Double outValue;
             return value.TryParsDouble( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -46,8 +46,8 @@ namespace Extend
                                            IFormatProvider formatProvider,
                                            Double? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Double outValue;
             return value.TryParsDouble( numberStyle, formatProvider, out outValue )

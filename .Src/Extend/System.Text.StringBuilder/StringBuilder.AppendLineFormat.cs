@@ -24,9 +24,9 @@ namespace Extend
         /// <returns>Returns the string builder.</returns>
         public static StringBuilder AppendLineFormat( this StringBuilder sb, String format, params Object[] args )
         {
-            sb.ThrowIfNull(nameof(sb));
-            format.ThrowIfNull(nameof(format));
-            args.ThrowIfNull(nameof(args));
+            sb.ThrowIfNull( nameof( sb ) );
+            format.ThrowIfNull( nameof( format ) );
+            args.ThrowIfNull( nameof( args ) );
 
             return sb.AppendLine( format.F( args ) );
         }
@@ -48,8 +48,8 @@ namespace Extend
                                                       Object arg1,
                                                       Object arg2 )
         {
-            sb.ThrowIfNull(nameof(sb));
-            format.ThrowIfNull(nameof(format));
+            sb.ThrowIfNull( nameof( sb ) );
+            format.ThrowIfNull( nameof( format ) );
 
             return sb.AppendLine( format.F( arg0, arg1, arg2 ) );
         }
@@ -66,8 +66,8 @@ namespace Extend
         /// <returns>Returns the string builder.</returns>
         public static StringBuilder AppendLineFormat( this StringBuilder sb, String format, Object arg0, Object arg1 )
         {
-            sb.ThrowIfNull(nameof(sb));
-            format.ThrowIfNull(nameof(format));
+            sb.ThrowIfNull( nameof( sb ) );
+            format.ThrowIfNull( nameof( format ) );
 
             return sb.AppendLine( format.F( arg0, arg1 ) );
         }
@@ -83,8 +83,8 @@ namespace Extend
         /// <returns>Returns the string builder.</returns>
         public static StringBuilder AppendLineFormat( this StringBuilder sb, String format, Object arg0 )
         {
-            sb.ThrowIfNull(nameof(sb));
-            format.ThrowIfNull(nameof(format));
+            sb.ThrowIfNull( nameof( sb ) );
+            format.ThrowIfNull( nameof( format ) );
 
             return sb.AppendLine( format.F( arg0 ) );
         }

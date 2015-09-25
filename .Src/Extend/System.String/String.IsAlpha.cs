@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns true if the string is alpha only, otherwise false.</returns>
         public static Boolean IsAlpha( this String str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.ToCharArray()
                       .All( x => x.IsLetter() );

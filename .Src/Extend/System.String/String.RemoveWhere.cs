@@ -19,8 +19,8 @@ namespace Extend
         /// <returns>The input string without any of the removed characters.</returns>
         public static String RemoveWhere( this String str, Func<Char, Boolean> predicate )
         {
-            str.ThrowIfNull(nameof(str));
-            predicate.ThrowIfNull(nameof(predicate));
+            str.ThrowIfNull( nameof( str ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             return new String( str.ToCharArray()
                                   .Where( x => !predicate( x ) )

@@ -19,7 +19,7 @@ namespace Extend
         /// </returns>
         public static Int32? SafeToInt( this String input )
         {
-            input.ThrowIfNull(nameof(input));
+            input.ThrowIfNull( nameof( input ) );
 
             var intValue = 0;
             if ( Int32.TryParse( input, out intValue ) )

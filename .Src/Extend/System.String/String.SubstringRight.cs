@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the specified number of characters from the end of the string.</returns>
         public static String SubstringRight( this String str, Int32 length )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.Substring( str.Length - length );
         }

@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns true if the string is alpha numeric, otherwise false.</returns>
         public static Boolean IsAlphaNumeric( this string str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.ToCharArray()
                       .All( x => x.IsLetter() || x.IsNumber() );

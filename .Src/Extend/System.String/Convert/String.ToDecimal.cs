@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The decimal.</returns>
         public static Decimal ToDecimal( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToDecimal( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The decimal.</returns>
         public static Decimal ToDecimal( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToDecimal( value, formatProvider );
         }

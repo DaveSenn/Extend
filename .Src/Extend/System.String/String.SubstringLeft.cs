@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the specified number of characters from the start of the string.</returns>
         public static String SubstringLeft( this String str, Int32 length )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.Substring( 0, length );
         }

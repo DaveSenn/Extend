@@ -16,7 +16,7 @@ namespace Extend
         /// <returns>The reversed string.</returns>
         public static String Reverse( this String str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return str.Length <= 1
                 ? str

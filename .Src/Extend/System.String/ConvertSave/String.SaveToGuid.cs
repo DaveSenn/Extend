@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>Returns the converted GUID.</returns>
         public static Guid SaveToGuid( this String value, Guid? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Guid outValue;
             return value.TryParsGuid( out outValue ) ? outValue : ( defaultValue ?? outValue );

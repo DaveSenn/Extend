@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The extracted letters.</returns>
         public static String ExtractLetters( this String str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return new String( str.ToCharArray()
                                   .Where( x => x.IsLetter() )

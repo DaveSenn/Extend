@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>The decimal.</returns>
         public static Decimal SaveToDecimal( this String value, Decimal? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Decimal outValue;
             return value.TryParsDecimal( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -42,8 +42,8 @@ namespace Extend
                                              IFormatProvider formatProvider,
                                              Decimal? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Decimal outValue;
             return value.TryParsDecimal( numberStyle, formatProvider, out outValue )

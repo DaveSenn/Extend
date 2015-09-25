@@ -24,8 +24,8 @@ namespace Extend
         /// </returns>
         public static String Join( this String separator, String[] values )
         {
-            separator.ThrowIfNull(nameof(separator));
-            values.ThrowIfNull(nameof(values));
+            separator.ThrowIfNull( nameof( separator ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return String.Join( separator, values );
         }
@@ -45,8 +45,8 @@ namespace Extend
         /// </returns>
         public static String Join( this String separator, Object[] values )
         {
-            separator.ThrowIfNull(nameof(separator));
-            values.ThrowIfNull(nameof(values));
+            separator.ThrowIfNull( nameof( separator ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return String.Join( separator, values );
         }
@@ -67,8 +67,8 @@ namespace Extend
         /// </returns>
         public static String Join<T>( this String separator, IEnumerable<T> values )
         {
-            separator.ThrowIfNull(nameof(separator));
-            values.ThrowIfNull(nameof(values));
+            separator.ThrowIfNull( nameof( separator ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return String.Join( separator, values );
         }
@@ -90,8 +90,8 @@ namespace Extend
         /// </returns>
         public static String Join( this String separator, String[] values, Int32 startIndex, Int32 count )
         {
-            separator.ThrowIfNull(nameof(separator));
-            values.ThrowIfNull(nameof(values));
+            separator.ThrowIfNull( nameof( separator ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return String.Join( separator, values, startIndex, count );
         }

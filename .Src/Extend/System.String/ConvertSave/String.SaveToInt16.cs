@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted Int16.</returns>
         public static Int16 SaveToInt16( this String value, Int16? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             Int16 outValue;
             return value.TryParsInt16( out outValue ) ? outValue : ( defaultValue ?? outValue );
@@ -42,8 +42,8 @@ namespace Extend
                                          IFormatProvider formatProvider,
                                          Int16? defaultValue = null )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Int16 outValue;
             return value.TryParsInt16( numberStyle, formatProvider, out outValue )
