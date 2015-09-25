@@ -116,7 +116,7 @@ namespace Extend
         /// </param>
         public void Add( ITreeNode<T> item, Boolean setParent )
         {
-            item.ThrowIfNull(nameof(item));
+            item.ThrowIfNull( nameof( item ) );
 
             if ( Contains( item ) )
                 return;
@@ -138,7 +138,7 @@ namespace Extend
         /// </returns>
         public Boolean Remove( ITreeNode<T> item, Boolean setParent )
         {
-            item.ThrowIfNull(nameof(item));
+            item.ThrowIfNull( nameof( item ) );
 
             var result = base.Remove( item );
             if ( result && setParent )

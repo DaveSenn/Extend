@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The file extension.</returns>
         public static String GetFileExtension( this String fileName )
         {
-            fileName.ThrowIfNull(nameof(fileName));
+            fileName.ThrowIfNull( nameof( fileName ) );
 
             return Path.GetExtension( fileName );
         }

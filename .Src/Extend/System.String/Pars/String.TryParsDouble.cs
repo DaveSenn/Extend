@@ -26,7 +26,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsDouble( this String value, out Double outValue )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Double.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
@@ -67,8 +67,8 @@ namespace Extend
                                              IFormatProvider formatProvider,
                                              out Double outValue )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Double.TryParse( value, numberStyle, formatProvider, out outValue );
         }

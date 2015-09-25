@@ -20,8 +20,8 @@ namespace Extend
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
         public static Boolean IsMatch( this String input, String pattern )
         {
-            input.ThrowIfNull(nameof(input));
-            pattern.ThrowIfNull(nameof(pattern));
+            input.ThrowIfNull( nameof( input ) );
+            pattern.ThrowIfNull( nameof( pattern ) );
 
             return Regex.IsMatch( input, pattern );
         }
@@ -38,8 +38,8 @@ namespace Extend
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
         public static Boolean IsMatch( this String input, String pattern, RegexOptions options )
         {
-            input.ThrowIfNull(nameof(input));
-            pattern.ThrowIfNull(nameof(pattern));
+            input.ThrowIfNull( nameof( input ) );
+            pattern.ThrowIfNull( nameof( pattern ) );
 
             return Regex.IsMatch( input, pattern, options );
         }
@@ -59,8 +59,8 @@ namespace Extend
         /// <returns>A value of true if the regular expression finds a match, otherwise false.</returns>
         public static Boolean IsMatch( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
         {
-            input.ThrowIfNull(nameof(input));
-            pattern.ThrowIfNull(nameof(pattern));
+            input.ThrowIfNull( nameof( input ) );
+            pattern.ThrowIfNull( nameof( pattern ) );
 
             return Regex.IsMatch( input, pattern, options, timeOut );
         }

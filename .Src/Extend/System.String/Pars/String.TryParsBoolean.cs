@@ -26,7 +26,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsBoolean( this String value, out Boolean outValue )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Boolean.TryParse( value, out outValue );
         }

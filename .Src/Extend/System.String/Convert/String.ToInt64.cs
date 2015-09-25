@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the converted Int64.</returns>
         public static Int64 ToInt64( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToInt64( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>Returns the converted Int64.</returns>
         public static Int64 ToInt64( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToInt64( value, formatProvider );
         }

@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The byte.</returns>
         public static Byte ToByte( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( nameof(value) );
-            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToByte( value, formatProvider );
         }

@@ -28,7 +28,7 @@ namespace Extend
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         public static Boolean TryParsByte( this String value, out Byte outValue )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Byte.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
         }
@@ -63,8 +63,8 @@ namespace Extend
                                            IFormatProvider formatProvider,
                                            out Byte outValue )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Byte.TryParse( value, numberStyle, formatProvider, out outValue );
         }

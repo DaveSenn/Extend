@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>The string after the specified value.</returns>
         public static String GetAfter( this String str, String value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return GetAfter( str, value, startIndex, str.Length - startIndex );
         }
@@ -40,8 +40,8 @@ namespace Extend
         public static String GetAfter( this String str, String value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull(nameof(str));
-            value.ThrowIfNull(nameof(value));
+            str.ThrowIfNull( nameof( str ) );
+            value.ThrowIfNull( nameof( value ) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
@@ -63,7 +63,7 @@ namespace Extend
         /// <returns>The string after the specified value.</returns>
         public static String GetAfter( this String str, Char value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return GetAfter( str, value, startIndex, str.Length - startIndex );
         }
@@ -82,7 +82,7 @@ namespace Extend
         public static String GetAfter( this String str, Char value, Int32 startIndex, Int32 length )
         {
             // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
                 throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );

@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the converted Int16.</returns>
         public static Int16 ToInt16( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToInt16( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>Returns the converted Int16.</returns>
         public static Int16 ToInt16( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToInt16( value, formatProvider );
         }

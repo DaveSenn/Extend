@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>The double.</returns>
         public static Double ToDouble( this String value )
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Convert.ToDouble( value, CultureInfo.InvariantCulture );
         }
@@ -32,8 +32,8 @@ namespace Extend
         /// <returns>The double.</returns>
         public static Double ToDouble( this String value, IFormatProvider formatProvider )
         {
-            value.ThrowIfNull(nameof(value));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            value.ThrowIfNull( nameof( value ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ToDouble( value, formatProvider );
         }

@@ -19,8 +19,8 @@ namespace Extend
         /// <returns>Returns a string which only contains the characters matching the given predicate.</returns>
         public static String KeepWhere( this String str, Func<Char, Boolean> predicate )
         {
-            str.ThrowIfNull(nameof(str));
-            predicate.ThrowIfNull(nameof(predicate));
+            str.ThrowIfNull( nameof( str ) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             return new String( str.ToCharArray()
                                   .Where( predicate )

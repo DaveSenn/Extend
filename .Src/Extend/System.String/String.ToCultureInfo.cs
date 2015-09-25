@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the <see cref="CultureInfo" /> with the given name.</returns>
         public static CultureInfo ToCultureInfo( this String name )
         {
-            name.ThrowIfNull(nameof(name));
+            name.ThrowIfNull( nameof( name ) );
 
             return new CultureInfo( name );
         }

@@ -54,8 +54,8 @@ namespace Extend
         /// </returns>
         public static Object ChangeType( this String value, Type type, IFormatProvider formatProvider )
         {
-            type.ThrowIfNull(nameof(type));
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            type.ThrowIfNull( nameof( type ) );
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Convert.ChangeType( value, type, formatProvider );
         }
@@ -105,7 +105,7 @@ namespace Extend
         /// </returns>
         public static T ChangeType<T>( this String value, IFormatProvider formatProvider )
         {
-            formatProvider.ThrowIfNull(nameof(formatProvider));
+            formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return (T) Convert.ChangeType( value, typeof (T), formatProvider );
         }

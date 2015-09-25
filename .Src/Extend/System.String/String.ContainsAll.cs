@@ -18,8 +18,8 @@ namespace Extend
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
         public static Boolean ContainsAll( this String str, params String[] values )
         {
-            str.ThrowIfNull(nameof(str));
-            values.ThrowIfNull(nameof(values));
+            str.ThrowIfNull( nameof( str ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return values.NotAny( x => !str.Contains( x ) );
         }
@@ -35,8 +35,8 @@ namespace Extend
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
         public static Boolean ContainsAll( this String str, StringComparison comparisonType, params String[] values )
         {
-            str.ThrowIfNull(nameof(str));
-            values.ThrowIfNull(nameof(values));
+            str.ThrowIfNull( nameof( str ) );
+            values.ThrowIfNull( nameof( values ) );
 
             return values.NotAny( x => str.IndexOf( x, comparisonType ) == -1 );
         }

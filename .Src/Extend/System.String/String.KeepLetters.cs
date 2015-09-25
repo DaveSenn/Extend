@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>A new string containing the letters of the input string.</returns>
         public static String KeepLetters( this String str )
         {
-            str.ThrowIfNull(nameof(str));
+            str.ThrowIfNull( nameof( str ) );
 
             return new String( str.ToCharArray()
                                   .Where( x => x.IsLetter() )

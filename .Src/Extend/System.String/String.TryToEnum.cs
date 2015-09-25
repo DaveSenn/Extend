@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted enum value.</returns>
         public static Boolean TryToEnum<T>( String value, out T outValue, Boolean ignoreCase = true ) where T : struct
         {
-            value.ThrowIfNull(nameof(value));
+            value.ThrowIfNull( nameof( value ) );
 
             return Enum.TryParse( value, ignoreCase, out outValue );
         }
