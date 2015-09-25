@@ -14,18 +14,6 @@ namespace Extend
     /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
     public class AttributeDefinition<TAttribute> : IAttributeDefinition<TAttribute> where TAttribute : Attribute
     {
-        #region Ctor
-
-        /// <summary>
-        ///     Initialize a new instance of the <see cref="AttributeDefinition{TAttribute}" /> class.
-        /// </summary>
-        public AttributeDefinition()
-        {
-            Attributes = new List<TAttribute>();
-        }
-
-        #endregion
-
         #region Implementation of IAttributeDefinition{T}
 
         /// <summary>
@@ -38,7 +26,7 @@ namespace Extend
         ///     Gets or sets a collection of attributes of the specified type.
         /// </summary>
         /// <value>A collection of attributes of the specified type.</value>
-        public IEnumerable<TAttribute> Attributes { get; set; }
+        public IEnumerable<TAttribute> Attributes { get; set; } = new List<TAttribute>();
 
         #endregion Implementation of IAttributeDefinition{T}
     }

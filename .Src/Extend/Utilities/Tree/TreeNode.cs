@@ -571,7 +571,7 @@ namespace Extend
                 foreach ( var child in Children.Reverse() )
                 {
                     if ( child is TreeNode<T> == false )
-                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
+                        throw new NotSupportedException( $"Child '{child}' is not of type TreeNode{{T}}." );
 
                     var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
                     foreach ( var e in enumeration )
@@ -585,7 +585,7 @@ namespace Extend
                 foreach ( var child in Children )
                 {
                     if ( child is TreeNode<T> == false )
-                        throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( child ) );
+                        throw new NotSupportedException( $"Child '{child}' is not of type TreeNode{{T}}." );
 
                     var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
                     foreach ( var e in enumeration )
@@ -608,7 +608,7 @@ namespace Extend
             Children.ForEach( x =>
             {
                 if ( x is TreeNode<T> == false )
-                    throw new NotSupportedException( "Child '{0}' is not of type TreeNode{{T}}.".F( x ) );
+                    throw new NotSupportedException( $"Child '{x}' is not of type TreeNode{{T}}." );
 
                 descendants.Add( x );
                 ( x as TreeNode<T> ).GetDescendants( descendants );
