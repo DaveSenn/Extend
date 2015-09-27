@@ -243,6 +243,7 @@
     <Compile Include="System.String\ConvertSave\String.SaveToInt16.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
+    <Compile Include="System.String\String.Contains.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
