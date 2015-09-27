@@ -27,7 +27,7 @@ namespace Extend
             var attributes = type.Assembly.GetCustomAttributes( typeof (AssemblyCompanyAttribute), false )
                                  .OfType<AssemblyCompanyAttribute>();
 #endif
-            return attributes.Any( attr => attr.Company == "Microsoft Corporation" );
+            return attributes.Any( x => x.Company == "Microsoft Corporation" );
         }
     }
 }
