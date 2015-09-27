@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class TypeExTest
+    public partial class TypeExTest
     {
         private class TestPerson
         {
