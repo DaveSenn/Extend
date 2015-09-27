@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}</ProjectGuid>
@@ -11,7 +11,7 @@
     <RootNamespace>Extend</RootNamespace>
     <AssemblyName>Extend</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>12.0.0</ProductVersion>
@@ -392,6 +392,7 @@
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
+    <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
@@ -415,6 +416,9 @@
     <Compile Include="System.Int16\Int16.IsMultipleOf.cs" />
     <Compile Include="System.Int16\System.DateTime\Int16.IsLeapYear.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="project.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

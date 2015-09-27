@@ -390,6 +390,7 @@
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
+    <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
     <Compile Include="Utilities\Specification\ISpecification.cs" />

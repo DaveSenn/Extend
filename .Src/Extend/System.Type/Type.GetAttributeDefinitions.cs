@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+
 #if PORTABLE45
 using System.Reflection;
 
@@ -15,7 +16,7 @@ namespace Extend
     /// <summary>
     ///     Class containing some extension methods for <see cref="Type" />.
     /// </summary>
-    public static class TypeEx
+    public static partial class TypeEx
     {
         /// <summary>
         ///     Gets the attributes of the proprieties of the given type.
