@@ -15,7 +15,7 @@ namespace Extend
         #region Ctor
 
         /// <summary>
-        ///     Create a new instnace of the <see cref="InstanceValueArguments" /> class.
+        ///     Initializes a new instnace of the <see cref="InstanceValueArguments" /> class.
         /// </summary>
         /// <param name="propertyType">The type of the property.</param>
         /// <param name="propertyName">The name of the property.</param>
