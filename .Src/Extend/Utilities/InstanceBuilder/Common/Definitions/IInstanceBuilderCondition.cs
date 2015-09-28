@@ -12,10 +12,10 @@ namespace Extend
     public interface IInstanceBuilderCondition
     {
         /// <summary>
-        ///     Determines wheter the given arguments matches the condition or not.
+        ///     Determines whether the given arguments matches the condition or not.
         /// </summary>
         /// <param name="arguments">The arguments to check.</param>
-        /// <returns>Returns a value of true if the arguments matches the condition; oterwise, false.</returns>
+        /// <returns>Returns a value of true if the arguments matches the condition; otherwise, false.</returns>
         Boolean Matches( IInstanceValueArguments arguments );
     }
 }
