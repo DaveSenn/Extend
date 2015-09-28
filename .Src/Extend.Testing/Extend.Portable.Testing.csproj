@@ -416,6 +416,7 @@
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
     <Compile Include="Utilities\InstanceBuilder\Common\InstanceValueArgumentsTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ExpressionInstanceBuilderConditionTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Conditions\InstanceBuilderConditionCollectionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\NameInstanceBuilderConditionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\TypeInstanceBuilderConditionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ParentTypeInstanceBuilderConditionTest.cs" />
