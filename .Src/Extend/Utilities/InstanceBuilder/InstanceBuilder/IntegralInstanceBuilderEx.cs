@@ -4,7 +4,7 @@ using System;
 
 #endregion
 
-namespace Extend.Utilities.InstanceBuilder.InstanceBuilder
+namespace Extend
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="IIntegralInstanceBuilder" />.

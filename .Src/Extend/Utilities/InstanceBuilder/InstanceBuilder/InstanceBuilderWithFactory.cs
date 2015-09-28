@@ -13,7 +13,7 @@ namespace Extend
         ///     Gets the internal instance builder.
         /// </summary>
         /// <value>The internal instance builder.</value>
-        private IInstanceBuilder InstanceBuilder { get; }
+        private IIntegralInstanceBuilder InstanceBuilder { get; }
 
         /// <summary>
         ///     Gets the current factory.
@@ -30,7 +30,7 @@ namespace Extend
         /// </summary>
         /// <param name="instanceBuilder">The instance builder.</param>
         /// <param name="factory">The factory to add to the instance builder.</param>
-        public InstanceBuilderWithFactory(IInstanceBuilder instanceBuilder, Func<IInstanceValueArguments, Object> factory)
+        public InstanceBuilderWithFactory(IIntegralInstanceBuilder instanceBuilder, Func<IInstanceValueArguments, Object> factory)
         {
             InstanceBuilder = instanceBuilder;
             Factory = new InstanceValueFactory(factory);

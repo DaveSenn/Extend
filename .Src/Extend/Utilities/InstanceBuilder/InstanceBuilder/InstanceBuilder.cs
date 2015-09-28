@@ -10,7 +10,7 @@ namespace Extend
     /// <summary>
     ///     Instance builder.
     /// </summary>
-    public class InstanceBuilder : IInstanceBuilder
+    public class InstanceBuilder : IIntegralInstanceBuilder
     {
         #region Ctor
 

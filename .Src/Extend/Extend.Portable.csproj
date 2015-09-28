@@ -393,6 +393,7 @@
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
+    <Compile Include="System.Type\Type.BuildInstance.cs" />
     <Compile Include="System.Type\Type.CreateInstanceBuilder.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
@@ -412,7 +413,6 @@
     <Compile Include="Utilities\InstanceBuilder\Conditions\TypeInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Factory\Definitions\IInstanceValueFactory.cs" />
     <Compile Include="Utilities\InstanceBuilder\Factory\InstanceValueFactory.cs" />
-    <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IInstanceBuilder.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IInstanceBuilderWithCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IInstanceBuilderWithFactory.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IIntegralInstanceBuilder.cs" />

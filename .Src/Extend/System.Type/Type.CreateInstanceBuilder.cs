@@ -17,7 +17,7 @@ namespace Extend
         /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to create the instance builder for.</param>
         /// <returns>Returns the new created instance builder.</returns>
-        public static IInstanceBuilder CreateInstanceBuilder( this Type type )
+        public static IIntegralInstanceBuilder CreateInstanceBuilder( this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
 
