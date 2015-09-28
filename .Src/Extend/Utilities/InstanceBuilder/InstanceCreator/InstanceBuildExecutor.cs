@@ -146,11 +146,10 @@ namespace Extend
                 return factory.Factory( arguments );
 
             //Try default factory
-            Func<IInstanceValueArguments, Object> outFactory = null;
-            DefaultFactories.TryGetValue( arguments.PropertyType, out outFactory );
+            var defaultFactory = GetDefaultFactory( arguments.PropertyType );
 
             //Use default factory or activator
-            return outFactory != null ? outFactory( arguments ) : CreateInstanceUsingAcrivator( arguments, factories );
+            return defaultFactory != null ? defaultFactory( arguments ) : CreateInstanceUsingAcrivator( arguments, factories );
         }
 
         /// <summary>
@@ -220,9 +219,7 @@ namespace Extend
             var customFactory = GetMatchingCustomFactory( itemArguments, factories );
 
             //Try default factory
-            Func<IInstanceValueArguments, Object> defaultFactory = null;
-            if ( customFactory == null )
-                DefaultFactories.TryGetValue( collectionItemType, out defaultFactory );
+            var defaultFactory = GetDefaultFactory( collectionItemType );
 
             for ( var i = 0; i < RandomValueEx.GetRandomInt32( CollectionMinCount, CollectionMaxCount + 1 ); i++ )
             {
@@ -238,6 +235,28 @@ namespace Extend
             }
 
             return collection;
+        }
+
+        /// <summary>
+        ///     Gets the default factory for the given type.
+        /// </summary>
+        /// <param name="type">The type to get the factory for.</param>
+        /// <returns>Returns the matching default factory, or null if no matching factory was found.</returns>
+        private static Func<IInstanceValueArguments, Object> GetDefaultFactory( Type type )
+        {
+            //Try default factory
+            Func<IInstanceValueArguments, Object> defaultFactory = null;
+            DefaultFactories.TryGetValue( type, out defaultFactory );
+
+            if ( defaultFactory != null )
+                return defaultFactory;
+
+            //Check if type is nullable
+            var nullableType = GetTypeFromNullable( type );
+            if ( nullableType != null )
+                DefaultFactories.TryGetValue( nullableType, out defaultFactory );
+
+            return defaultFactory;
         }
 
         /// <summary>
@@ -306,6 +325,28 @@ namespace Extend
 #endif
 
             return propertyInfos.Where( x => x.CanWrite );
+        }
+
+        /// <summary>
+        ///     Gets the 'inner' type from a nullable type.
+        /// </summary>
+        /// <param name="possibleNullableType">The possible nullable type.</param>
+        /// <returns>Returns the inner type, or null if the given type is not a nullable.</returns>
+        private static Type GetTypeFromNullable( Type possibleNullableType )
+        {
+#if PORTABLE45
+            var typeInfo = possibleNullableType.GetTypeInfo();
+            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
+                return null;
+
+            return typeInfo.GenericTypeArguments.FirstOrDefault();
+#elif NET40
+            if ( !( possibleNullableType.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
+                return null;
+
+            return possibleNullableType.GetGenericArguments()
+                                       .FirstOrDefault();
+#endif
         }
 
         #endregion
