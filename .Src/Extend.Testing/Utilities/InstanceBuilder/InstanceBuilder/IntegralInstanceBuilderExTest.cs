@@ -36,21 +36,25 @@ namespace Extend.Testing
             #endregion
         }
 
+        private class TestModelNullable
+        {
+            public String MyString { get; set; }
+
+            public DateTime? MyDateTime { get; set; }
+
+            public List<DateTime?> DateTimes { get; set; }
+
+            public Foo Foo { get; set; }
+        }
+
         [Test]
         public void BuildTestGeneric()
         {
-            var instanceBuilder = typeof (Foo).CreateInstanceBuilder();
+            var instanceBuilder = typeof (TestModelNullable).CreateInstanceBuilder();
+            var actual = instanceBuilder.Build<TestModelNullable>();
 
-            var actual = instanceBuilder.Build<Foo>();
-            actual.Should()
+            actual.DateTimes.Should()
                   .NotBeNull();
-
-            actual.MyInt16.Should()
-                  .Be( 0 );
-            actual.MyString.Should()
-                  .NotBeEmpty();
-            actual.Bars.Count.Should()
-                  .NotBe( 0 );
         }
 
         [Test]
