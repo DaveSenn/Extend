@@ -134,8 +134,9 @@ Task NuGetPack {
 
     # Get package version
     $version = GetVersionSecure
-
-    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version" + "-alpha;" -OutputDirectory $nugetPackDirectory
+	$version = $version.ToString()	+ "-alpha"
+	Write-Host $version
+    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }
 
 # Run Coverity scan
