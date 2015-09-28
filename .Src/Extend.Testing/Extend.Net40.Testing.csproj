@@ -421,6 +421,8 @@
     <Compile Include="Utilities\InstanceBuilder\Conditions\NameInstanceBuilderConditionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ParentTypeInstanceBuilderConditionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\TypeInstanceBuilderConditionTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Definitions\IInstanceValueFactory.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\InstanceValueFactory.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />

@@ -12,6 +12,34 @@ namespace Extend.Testing
     public class InstanceBuilderConditionCollectionTest
     {
         [Test]
+        public void ArgumentsTest()
+
+        {
+            IInstanceValueArguments actualArguments = null;
+            var target = new InstanceBuilderConditionCollection
+            {
+                new ExpressionInstanceBuilderCondition( x =>
+                {
+                    actualArguments = x;
+                    return true;
+                } ),
+                new ExpressionInstanceBuilderCondition( x =>
+                {
+                    actualArguments = x;
+                    return true;
+                } )
+            };
+            target.CombinationOption = ConditionCombinationOption.MatchAll;
+            var expectedArguments = new InstanceValueArguments( typeof (String), "Name", null, null );
+            var actual = target.Matches( expectedArguments );
+            actual.Should()
+                  .BeTrue();
+
+            actualArguments.Should()
+                           .BeSameAs( expectedArguments );
+        }
+
+        [Test]
         public void CombinationOptionTest()
 
         {
