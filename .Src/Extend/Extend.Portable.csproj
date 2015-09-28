@@ -415,6 +415,9 @@
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IInstanceBuilderWithCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IInstanceBuilderWithFactory.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\Definitions\IIntegralInstanceBuilder.cs" />
+    <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilder.cs" />
+    <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderWithCondition.cs" />
+    <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderWithFactory.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
     <Compile Include="Utilities\Specification\ISpecification.cs" />
