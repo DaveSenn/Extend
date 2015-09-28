@@ -399,10 +399,13 @@
     <Compile Include="Utilities\InstanceBuilder\Common\Definitions\IInstanceValueArguments.cs" />
     <Compile Include="Utilities\InstanceBuilder\Common\Definitions\StringCompareOption.cs" />
     <Compile Include="Utilities\InstanceBuilder\Common\InstanceValueArguments.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Conditions\Definitions\ConditionCombinationOption.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\Definitions\IExpressionInstanceBuilderCondition.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Conditions\Definitions\IInstanceBuilderConditionCollection.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\Definitions\INameInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\Definitions\ITypeInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ExpressionInstanceBuilderCondition.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Conditions\InstanceBuilderConditionCollection.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\NameInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ParentTypeInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\TypeInstanceBuilderCondition.cs" />
