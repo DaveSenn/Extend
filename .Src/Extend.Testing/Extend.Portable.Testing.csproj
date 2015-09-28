@@ -442,5 +442,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utilities\InstanceBuilder\InstanceBuilder\" />
+  </ItemGroup>
 </Project>

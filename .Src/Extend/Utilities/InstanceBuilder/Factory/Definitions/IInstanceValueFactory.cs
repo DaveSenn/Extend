@@ -18,7 +18,7 @@ namespace Extend
         /// </summary>
         /// <value>The conditions of the factory.</value>
         IInstanceBuilderConditionCollection Conditions { get; }
-        
+
         /// <summary>
         ///     Gets the factory.
         /// </summary>
