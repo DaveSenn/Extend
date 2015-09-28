@@ -267,7 +267,15 @@ namespace Extend
         /// <returns>Returns the new created instance.</returns>
         private static Object CreateInstanceUsingAcrivator( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
         {
-            var instance = Activator.CreateInstance( arguments.PropertyType );
+            Object instance;
+            try
+            {
+                instance = Activator.CreateInstance( arguments.PropertyType );
+            }
+            catch ( Exception ex )
+            {
+                throw new InvalidOperationException( $"Failed to create an instance of the following type: '{arguments.PropertyType}'", ex );
+            }
             if ( DefaultChildMemberFilters.NotAny( x => x.Matches( arguments ) ) )
                 SetProperties( instance, factories );
 
@@ -303,8 +311,15 @@ namespace Extend
         /// <returns>Returns the new created instance.</returns>
         private static Object CreateInstance( Type type )
         {
-            var instance = Activator.CreateInstance( type );
-            return instance;
+            try
+            {
+                var instance = Activator.CreateInstance( type );
+                return instance;
+            }
+            catch ( Exception ex )
+            {
+                throw new InvalidOperationException( $"Failed to create an instance of the following type: '{type}'", ex );
+            }
         }
 
         /// <summary>
