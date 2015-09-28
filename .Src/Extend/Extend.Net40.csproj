@@ -406,6 +406,8 @@
     <Compile Include="Utilities\InstanceBuilder\Conditions\NameInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\ParentTypeInstanceBuilderCondition.cs" />
     <Compile Include="Utilities\InstanceBuilder\Conditions\TypeInstanceBuilderCondition.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Definitions\IInstanceValueFactory.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\InstanceValueFactory.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
     <Compile Include="Utilities\Specification\ISpecification.cs" />
