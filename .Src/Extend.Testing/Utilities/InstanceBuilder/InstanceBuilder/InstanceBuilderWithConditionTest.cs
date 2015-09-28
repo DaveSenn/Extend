@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+﻿#region Usings
+
+using System;
 using FluentAssertions;
 using NUnit.Framework;
+
+#endregion
 
 namespace Extend.Testing
 {
@@ -15,7 +14,7 @@ namespace Extend.Testing
         [Test]
         public void CtorTest()
         {
-            var instanceBuilder = new InstanceBuilder( typeof(String) );
+            var instanceBuilder = new InstanceBuilder( typeof (String) );
             IInstanceValueFactory factory = new InstanceValueFactory( x => "" );
             var target = new InstanceBuilderWithCondition( instanceBuilder, factory );
 
@@ -26,51 +25,59 @@ namespace Extend.Testing
         [Test]
         public void WithConditionCombinationTest()
         {
-            var instanceBuilder = new InstanceBuilder(typeof(String));
-            IInstanceValueFactory factory = new InstanceValueFactory(x => "");
-            var target = new InstanceBuilderWithCondition(instanceBuilder, factory);
+            var instanceBuilder = new InstanceBuilder( typeof (String) );
+            IInstanceValueFactory factory = new InstanceValueFactory( x => "" );
+            var target = new InstanceBuilderWithCondition( instanceBuilder, factory );
 
             var actual = target.WithConditionCombination( ConditionCombinationOption.MatchAny );
             actual.Should()
                   .BeSameAs( target );
         }
+
+        [Test]
+        public void WithConditionTest()
+        {
+            var instanceBuilder = new InstanceBuilder( typeof (String) );
+            IInstanceValueFactory factory = new InstanceValueFactory( x => "" );
+            var target = new InstanceBuilderWithCondition( instanceBuilder, factory );
+
+            var actual = target.WithCondition( new ExpressionInstanceBuilderCondition( x => true ) );
+            actual.Should()
+                  .BeSameAs( target );
+        }
+
+        [Test]
+        public void WithConditionTestArgumentNullException()
+        {
+            var instanceBuilder = new InstanceBuilder( typeof (String) );
+            IInstanceValueFactory factory = new InstanceValueFactory( x => "" );
+            var target = new InstanceBuilderWithCondition( instanceBuilder, factory );
+
+            Action test = () => target.WithCondition( null );
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void WithFactoryTest()
+        {
+            var target = new InstanceBuilderWithCondition( new InstanceBuilder( typeof (String) ), new InstanceValueFactory( x => "" ) );
+
+            Func<IInstanceValueArguments, Object> factory = x => "";
+
+            var actual = target.WithFactory( factory );
+            actual.Should()
+                  .NotBeNull();
+        }
+
+        [Test]
+        public void WithFactoryTestArgumentNullException()
+        {
+            var instanceBuilder = new InstanceBuilder( typeof (String) );
+            IInstanceValueFactory factory = new InstanceValueFactory( x => "" );
+            var target = new InstanceBuilderWithCondition( instanceBuilder, factory );
+
+            Action test = () => target.WithFactory( null );
+            test.ShouldThrow<ArgumentNullException>();
+        }
     }
 }
-
-/*
-
-    /// <summary>
-            ///     Adds the given condition to the factory.
-            /// </summary>
-            /// <exception cref="ArgumentNullException">condition can not be null.</exception>
-            /// <param name="condition">The condition to add.</param>
-            /// <returns>Returns an instance builder.</returns>
-            public IInstanceBuilderWithCondition WithCondition(IInstanceBuilderCondition condition)
-            {
-                condition.ThrowIfNull(nameof(condition));
-
-                Factory.Conditions.Add(condition);
-                return this;
-            }
-
-
-
-        /// <summary>
-            ///     Adds the given factor to the list of factories used to create the înstance values.
-            /// </summary>
-            /// <exception cref="ArgumentNullException">factory can not be null.</exception>
-            /// <param name="factory">The factory to add.</param>
-            /// <returns>Returns an instance builder.</returns>
-            public IInstanceBuilderWithFactory WithFactory(Func<IInstanceValueArguments, Object> factory)
-            {
-                factory.ThrowIfNull(nameof(factory));
-
-                return new InstanceBuilderWithFactory(InstanceBuilder, factory);
-            }
-
-            
-
-        #endregion
-    }
-
-*/
