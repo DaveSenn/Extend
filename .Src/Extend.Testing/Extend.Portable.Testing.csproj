@@ -423,6 +423,7 @@
     <Compile Include="Utilities\InstanceBuilder\Factory\InstanceValueFactoryTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderWithConditionTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderWithFactoryTest.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />
