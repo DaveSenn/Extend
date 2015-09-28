@@ -204,7 +204,7 @@ namespace Extend
             //Get the add method
 #if PORTABLE45
             var addMethod = collection.GetType()
-                                      .GetRuntimeMethod( "Add", null );
+                                      .GetRuntimeMethod( "Add", new[] { collectionItemType } );
 #elif NET40
             var addMethod = collection.GetType()
                                       .GetMethod( "Add" );
@@ -298,14 +298,14 @@ namespace Extend
             var type = instance.GetType();
 
 #if PORTABLE45
-            
+
             var propertyInfos = type.GetTypeInfo()
                                     .DeclaredProperties;
 #elif NET40
             var propertyInfos = type.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly );
 #endif
 
-            return propertyInfos;
+            return propertyInfos.Where( x => x.CanWrite );
         }
 
         #endregion
