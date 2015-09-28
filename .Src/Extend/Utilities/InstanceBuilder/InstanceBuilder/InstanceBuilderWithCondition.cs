@@ -14,7 +14,7 @@ namespace Extend
         ///     Gets the internal instance builder.
         /// </summary>
         /// <value>The internal instance builder.</value>
-        private IInstanceBuilder InstanceBuilder { get; }
+        private IIntegralInstanceBuilder InstanceBuilder { get; }
 
         /// <summary>
         ///     Gets the current factory.
@@ -31,7 +31,7 @@ namespace Extend
         /// </summary>
         /// <param name="instanceBuilder">The instance builder.</param>
         /// <param name="factory">The factory to crete conditions for.</param>
-        public InstanceBuilderWithCondition(IInstanceBuilder instanceBuilder, IInstanceValueFactory factory)
+        public InstanceBuilderWithCondition(IIntegralInstanceBuilder instanceBuilder, IInstanceValueFactory factory)
         {
             InstanceBuilder = instanceBuilder;
             Factory = factory;
