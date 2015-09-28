@@ -420,6 +420,7 @@
     <Compile Include="Utilities\InstanceBuilder\InstanceBuilder\InstanceBuilderWithFactory.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceCreator\Definitions\IInstanceCreatorFilter.cs" />
     <Compile Include="Utilities\InstanceBuilder\InstanceCreator\ExpressionInstanceCreatorFilter.cs" />
+    <Compile Include="Utilities\InstanceBuilder\InstanceCreator\InstanceBuildExecutor.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
     <Compile Include="Utilities\Specification\ISpecification.cs" />
