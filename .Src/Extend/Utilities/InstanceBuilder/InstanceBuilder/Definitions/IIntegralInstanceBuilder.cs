@@ -1,6 +1,7 @@
 #region Usings
 
 using System;
+using System.Collections.Generic;
 
 #endregion
 
@@ -11,16 +12,24 @@ namespace Extend
     /// </summary>
     public interface IIntegralInstanceBuilder
     {
-        /*
-        /// <summary>
-        ///     Builds the instance.
-        /// </summary>
-        /// <returns>Returns the created instance.</returns>
-        Object Build();
-        */
+        #region Properties
 
         /// <summary>
-        ///     Adds the given factor to the list of factories used to create the înstance values.
+        ///     Gets the instance value factories.
+        /// </summary>
+        /// <value>The instance value factories.</value>
+        List<IInstanceValueFactory> Factories { get; }
+
+        /// <summary>
+        ///     Gets the type to create.
+        /// </summary>
+        /// <value>The type to create.</value>
+        Type InstanceType { get; }
+
+        #endregion
+
+        /// <summary>
+        ///     Adds the given factor to the list of factories used to create the instance values.
         /// </summary>
         /// <param name="factory">The factory to add.</param>
         /// <returns>Returns an instance builder.</returns>

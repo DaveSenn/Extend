@@ -390,6 +390,7 @@
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
+    <Compile Include="System.Type\Type.CreateInstanceBuilder.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="Utilities\InstanceBuilder\Common\Definitions\IInstanceBuilderCondition.cs" />

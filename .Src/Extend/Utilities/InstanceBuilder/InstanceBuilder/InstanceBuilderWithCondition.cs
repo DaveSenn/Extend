@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Extend
 {
@@ -51,16 +52,17 @@ namespace Extend
             return this;
         }
 
-        /*
         /// <summary>
-        ///     Builds the instance.
+        ///     Gets the instance value factories.
         /// </summary>
-        /// <returns>Returns the created instance.</returns>
-        public Object Build()
-        {
-            return InstanceBuildExecutor.BuildInstance(InstanceBuilder.InstanceType, InstanceBuilder.Factories);
-        }
-        */
+        /// <value>The instance value factories.</value>
+        public List<IInstanceValueFactory> Factories => InstanceBuilder.Factories;
+
+        /// <summary>
+        ///     Gets the type to create.
+        /// </summary>
+        /// <value>The type to create.</value>
+        public Type InstanceType => InstanceBuilder.InstanceType;
 
         /// <summary>
         ///     Adds the given factor to the list of factories used to create the înstance values.
