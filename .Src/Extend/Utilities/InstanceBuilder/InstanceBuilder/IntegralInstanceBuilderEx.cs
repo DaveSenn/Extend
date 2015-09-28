@@ -18,6 +18,8 @@ namespace Extend
         /// <returns>Returns the new created instance.</returns>
         public static Object Build( this IIntegralInstanceBuilder instanceBuilder )
         {
+            instanceBuilder.ThrowIfNull( nameof( instanceBuilder ) );
+
             return InstanceBuildExecutor.BuildInstance( instanceBuilder.InstanceType, instanceBuilder.Factories );
         }
 
@@ -29,6 +31,8 @@ namespace Extend
         /// <returns>Returns the new created instance.</returns>
         public static T Build<T>( this IIntegralInstanceBuilder instanceBuilder ) where T : class
         {
+            instanceBuilder.ThrowIfNull( nameof( instanceBuilder ) );
+
             return InstanceBuildExecutor.BuildInstance( instanceBuilder.InstanceType, instanceBuilder.Factories ) as T;
         }
     }
