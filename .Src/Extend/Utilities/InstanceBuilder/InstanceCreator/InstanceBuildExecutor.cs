@@ -267,7 +267,12 @@ namespace Extend
         /// <returns>Returns the new created instance.</returns>
         private static Object CreateInstanceUsingAcrivator( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
         {
-            Object instance;
+            //Check if type is an array.
+            var instance = CheckForArray( arguments, factories );
+            if ( instance != null )
+                return instance;
+
+            //Create type using activator class
             try
             {
                 instance = Activator.CreateInstance( arguments.PropertyType );
@@ -280,6 +285,48 @@ namespace Extend
                 SetProperties( instance, factories );
 
             return CheckForCollection( arguments, instance, factories );
+        }
+
+        /// <summary>
+        ///     Checks if the given type is an array.
+        /// </summary>
+        /// <param name="arguments">The type to check.</param>
+        /// <param name="factories">The factories to use to create the array values.</param>
+        /// <returns>Returns the new created array, or null if the type is not an array.</returns>
+        private static Object CheckForArray( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
+        {
+            //Abord if type is not an array
+            if ( !arguments.PropertyType.IsArray )
+                return null;
+
+            //Create the array
+            var elementType = arguments.PropertyType.GetElementType();
+            var array = Array.CreateInstance( elementType, PopulateCollections ? RandomValueEx.GetRandomInt32( CollectionMinCount, CollectionMaxCount ) : 0 );
+
+            //Create arguments for the collection items
+            var itemArguments = new InstanceValueArguments( elementType, elementType.Name, null, array );
+
+            //Try custom factory
+            var customFactory = GetMatchingCustomFactory( itemArguments, factories );
+
+            //Try default factory
+            var defaultFactory = GetDefaultFactory( elementType );
+
+            //Add items
+            for ( var i = 0; i < array.Length; i++ )
+            {
+                Object newItem;
+                if ( customFactory != null )
+                    newItem = customFactory.Factory( itemArguments );
+                else if ( defaultFactory != null )
+                    newItem = defaultFactory( itemArguments );
+                else
+                    newItem = CreateInstanceUsingAcrivator( itemArguments, factories );
+
+                array.SetValue( newItem, i );
+            }
+
+            return array;
         }
 
         /// <summary>

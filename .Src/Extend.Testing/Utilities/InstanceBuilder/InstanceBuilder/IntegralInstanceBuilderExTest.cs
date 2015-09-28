@@ -45,6 +45,12 @@ namespace Extend.Testing
             public List<DateTime?> DateTimes { get; set; }
 
             public Foo Foo { get; set; }
+
+            public Byte[] ByteArray { get; set; }
+
+            public String[] StringArray { get; set; }
+
+            //public Int32?[] NullableInts { get; set; }
         }
 
         [Test]
