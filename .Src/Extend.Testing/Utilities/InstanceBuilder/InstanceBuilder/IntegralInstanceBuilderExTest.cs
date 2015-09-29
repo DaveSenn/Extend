@@ -65,6 +65,9 @@ namespace Extend.Testing
         {
             var instanceBuilder = typeof(TestModelEnumerable).CreateInstanceBuilder();
             var actual = instanceBuilder.Build<TestModelEnumerable>();
+
+            actual.EnumerableStrings.Should()
+                  .NotBeEmpty();
         }
 
         [Test]

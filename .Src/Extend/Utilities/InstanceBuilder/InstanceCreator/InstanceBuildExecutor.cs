@@ -170,7 +170,7 @@ namespace Extend
                                          .ImplementedInterfaces.ToList();
 #elif NET40
             var interfaces = instanceType.GetInterfaces()
-                                      .ToList();
+                                         .ToList();
 #endif
 
             //Check if instance implements ICollection{T}
@@ -183,7 +183,7 @@ namespace Extend
                                               .GenericTypeArguments.FirstOrDefault();
 #elif NET40
             var genericArgument = instanceType.GetGenericArguments()
-                                           .FirstOrDefault();
+                                              .FirstOrDefault();
 #endif
 
             return genericArgument == null ? instance : PopulateCollection( instance, genericArgument, factories );
@@ -313,13 +313,26 @@ namespace Extend
         /// <returns>Returns the new created IEnumerable{T}, or null if the type is not an IEnumerable{T}.</returns>
         private static Object CheckForIEnumerable( IInstanceValueArguments arguments )
         {
-            //Check for IEnumerable<T>
+#if PORTABLE45
+
+    //Check for IEnumerable<T>
             var isIEnumarable = arguments.PropertyType.GetTypeInfo()
                                          .IsGenericType && arguments.PropertyType.GetGenericTypeDefinition() == typeof (IEnumerable<>);
+#elif NET40
+            //Check for IEnumerable<T>
+            var isIEnumarable = arguments.PropertyType.IsGenericType && arguments.PropertyType.GetGenericTypeDefinition() == typeof (IEnumerable<>);
+#endif
+
             if ( !isIEnumarable )
                 return null;
 
+#if PORTABLE45
+
             var concreteType = typeof (List<>).MakeGenericType( arguments.PropertyType.GenericTypeArguments );
+#elif NET40
+            var concreteType = typeof (List<>).MakeGenericType( arguments.PropertyType.GetGenericArguments() );
+#endif
+
             return Activator.CreateInstance( concreteType );
         }
 
@@ -331,7 +344,7 @@ namespace Extend
         /// <returns>Returns the new created array, or null if the type is not an array.</returns>
         private static Object CheckForArray( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
         {
-            //Abord if type is not an array
+            //Aboard if type is not an array
             if ( !arguments.PropertyType.IsArray )
                 return null;
 
