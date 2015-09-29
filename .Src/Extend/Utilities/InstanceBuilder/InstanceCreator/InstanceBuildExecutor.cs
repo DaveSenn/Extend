@@ -161,14 +161,15 @@ namespace Extend
         /// <returns>Returns the instance.</returns>
         private static Object CheckForCollection( IInstanceValueArguments arguments, Object instance, IEnumerable<IInstanceValueFactory> factories )
         {
-            if ( !PopulateCollections )
+            if ( !PopulateCollections || instance == null )
                 return instance;
 
+            var instanceType = instance.GetType();
 #if PORTABLE45
-            var interfaces = arguments.PropertyType.GetTypeInfo()
-                                      .ImplementedInterfaces.ToList();
+            var interfaces = instanceType.GetTypeInfo()
+                                         .ImplementedInterfaces.ToList();
 #elif NET40
-            var interfaces = arguments.PropertyType.GetInterfaces()
+            var interfaces = instanceType.GetInterfaces()
                                       .ToList();
 #endif
 
@@ -178,10 +179,10 @@ namespace Extend
 
             //Get generic parameter type
 #if PORTABLE45
-            var genericArgument = arguments.PropertyType.GetTypeInfo()
-                                           .GenericTypeArguments.FirstOrDefault();
+            var genericArgument = instanceType.GetTypeInfo()
+                                              .GenericTypeArguments.FirstOrDefault();
 #elif NET40
-            var genericArgument = arguments.PropertyType.GetGenericArguments()
+            var genericArgument = instanceType.GetGenericArguments()
                                            .FirstOrDefault();
 #endif
 
@@ -268,9 +269,9 @@ namespace Extend
         private static Object CreateInstanceUsingAcrivator( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
         {
             //Check if type is an array.
-            var instance = CheckForArray( arguments, factories );
+            var instance = CheckForSupportedTypes( arguments, factories );
             if ( instance != null )
-                return instance;
+                return CheckForCollection( arguments, instance, factories );
 
             //Create type using activator class
             try
@@ -285,6 +286,41 @@ namespace Extend
                 SetProperties( instance, factories );
 
             return CheckForCollection( arguments, instance, factories );
+        }
+
+        /// <summary>
+        ///     Checks if the given type is supported.
+        /// </summary>
+        /// <param name="arguments">The arguments representing the type.</param>
+        /// <param name="factories">The factories to use.</param>
+        /// <returns>Returns the new creates instance, or null if the type is not supported.</returns>
+        private static Object CheckForSupportedTypes( IInstanceValueArguments arguments, IEnumerable<IInstanceValueFactory> factories )
+        {
+            //Check if type is an array.
+            var instance = CheckForArray( arguments, factories );
+            if ( instance != null )
+                return instance;
+
+            //Check if type is IEnumerable{T}
+            instance = CheckForIEnumerable( arguments );
+            return instance;
+        }
+
+        /// <summary>
+        ///     Checks if the given type is an IEnumerable{T}.
+        /// </summary>
+        /// <param name="arguments">The type to check.</param>
+        /// <returns>Returns the new created IEnumerable{T}, or null if the type is not an IEnumerable{T}.</returns>
+        private static Object CheckForIEnumerable( IInstanceValueArguments arguments )
+        {
+            //Check for IEnumerable<T>
+            var isIEnumarable = arguments.PropertyType.GetTypeInfo()
+                                         .IsGenericType && arguments.PropertyType.GetGenericTypeDefinition() == typeof (IEnumerable<>);
+            if ( !isIEnumarable )
+                return null;
+
+            var concreteType = typeof (List<>).MakeGenericType( arguments.PropertyType.GenericTypeArguments );
+            return Activator.CreateInstance( concreteType );
         }
 
         /// <summary>

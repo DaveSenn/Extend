@@ -72,6 +72,7 @@ namespace Extend
         /// <summary>
         ///     Gets a random integer value which is in the specified range.
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">min is greater than max</exception>
         /// <param name="min">
         ///     The inclusive min bound.
         ///     <value>Int32.MinValue</value>
@@ -83,7 +84,7 @@ namespace Extend
         /// <returns>A random integer value.</returns>
         public static Int32 GetRandomInt32( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
         {
-            if ( max <= min )
+            if ( max < min )
                 throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
 
             return Rnd.Next( min, max );
@@ -92,6 +93,7 @@ namespace Extend
         /// <summary>
         ///     Gets a random integer value which is in the specified range.
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">min is greater than max</exception>
         /// <param name="min">
         ///     The inclusive min bound.
         ///     <value>Int16.MinValue</value>
@@ -103,8 +105,8 @@ namespace Extend
         /// <returns>A random integer value.</returns>
         public static Int16 GetRandomInt16( Int16 min = Int16.MinValue, Int16 max = Int16.MaxValue )
         {
-            if ( max <= min )
-                throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
+            if ( max < min )
+                throw new ArgumentOutOfRangeException( nameof( max ), max, $"{nameof( max )} must be greater than {nameof( min )}" );
 
             return (Int16) Rnd.Next( min, max );
         }
@@ -159,6 +161,7 @@ namespace Extend
         /// <summary>
         ///     Gets a random long value which is in the specified range.
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">min is greater than max</exception>
         /// <param name="min">
         ///     The inclusive min bound.
         ///     <value>Int64.MinValue</value>
@@ -170,7 +173,7 @@ namespace Extend
         /// <returns>A random long value.</returns>
         public static Int64 GetRandomInt64( Int64 min = Int64.MinValue, Int64 max = Int64.MaxValue )
         {
-            if ( max <= min )
+            if ( max < min )
                 throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
 
             var uRange = (UInt64) ( max - min );
@@ -184,6 +187,36 @@ namespace Extend
             } while ( ulongRand > UInt64.MaxValue - ( ( UInt64.MaxValue % uRange ) + 1 ) % uRange );
 
             return (Int64) ( ulongRand % uRange ) + min;
+        }
+
+        /// <summary>
+        ///     Gets a random <see cref="Byte" /> value.
+        /// </summary>
+        /// <returns>A random <see cref="Byte" /> value.</returns>
+        public static Byte GetRandomByte()
+        {
+            return (Byte) GetRandomInt32();
+        }
+
+        /// <summary>
+        ///     Gets a random <see cref="Double" /> value which is in the specified range.
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">min is greater than max</exception>
+        /// <param name="min">
+        ///     The inclusive min bound.
+        ///     <value>Double.MinValue</value>
+        /// </param>
+        /// <param name="max">
+        ///     The exclusive maximum bound. Must be greater than min.
+        ///     <value>Double.MaxValue</value>
+        /// </param>
+        /// <returns>A random <see cref="Double" /> value.</returns>
+        public static Double GetRandomDouble( Double min = Double.MinValue, Double max = Double.MaxValue )
+        {
+            if ( max < min )
+                throw new ArgumentOutOfRangeException( nameof( max ), max, $"{nameof( max )} must be greater than {nameof( min )}" );
+
+            return min + ( Rnd.NextDouble() * ( max - min ) );
         }
 
         #endregion Methods

@@ -51,6 +51,20 @@ namespace Extend.Testing
             public String[] StringArray { get; set; }
 
             //public Int32?[] NullableInts { get; set; }
+
+            public IEnumerable<String> EnumerableStrings { get; set; }
+        }
+
+        private class TestModelEnumerable
+        {
+            public IEnumerable<String> EnumerableStrings { get; set; }
+        }
+
+        [Test]
+        public void BuildTestIEnuemrable()
+        {
+            var instanceBuilder = typeof(TestModelEnumerable).CreateInstanceBuilder();
+            var actual = instanceBuilder.Build<TestModelEnumerable>();
         }
 
         [Test]
