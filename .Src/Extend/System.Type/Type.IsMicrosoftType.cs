@@ -14,10 +14,10 @@ namespace Extend
     public static partial class TypeEx
     {
         /// <summary>
-        ///     Checks if th egiven type is a microsoft type, based on the company attribut eof it's declaring assembly.
+        ///     Checks if th given type is a Microsoft type, based on the company attribute of it's declaring assembly.
         /// </summary>
         /// <param name="type">The type to check.</param>
-        /// <returns>Returns a value of true if the given type is a microsft type; otherweise, false.</returns>
+        /// <returns>Returns a value of true if the given type is a Microsoft type; otherwise, false.</returns>
         public static Boolean IsMicrosoftType( this Type type )
         {
 #if PORTABLE45
