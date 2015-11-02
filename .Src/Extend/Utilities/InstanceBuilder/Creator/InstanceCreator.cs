@@ -429,7 +429,7 @@ namespace Extend
                 return collectionInstance;
 
             //Check if type is collection type
-            if ( !memberInformation.MemberType.IsICollectionT() )
+            if ( !memberInformation.MemberType.ImplementsICollectionT() )
                 return collectionInstance;
 
             //Get generic parameter type
@@ -479,7 +479,7 @@ namespace Extend
                 return;
 
             //Get the properties of the current member as member information
-            var propertyInfos = memberInformation.MemberType.GetSettableProperties()
+            var propertyInfos = memberInformation.MemberType.GetPublicSettableProperties()
                                                  .GetMemberInformation( memberInformation );
 
             propertyInfos.ForEach( x =>

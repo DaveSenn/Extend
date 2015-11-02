@@ -19,12 +19,11 @@ namespace Extend
         /// </summary>
         /// <param name="memberType">The type to get the properties of.</param>
         /// <returns>Returns the property infos.</returns>
-        public static IEnumerable<PropertyInfo> GetSettableProperties( this Type memberType )
+        public static IEnumerable<PropertyInfo> GetPublicSettableProperties( this Type memberType )
         {
 #if PORTABLE45
-
-            var propertyInfos = memberType.GetTypeInfo()
-                                          .DeclaredProperties;
+            var propertyInfos = memberType.GetRuntimeProperties()
+                                          .Where( x => x.SetMethod?.IsPublic ?? false );
 #elif NET40
             var propertyInfos = memberType.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly );
 #endif
