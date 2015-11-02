@@ -315,11 +315,11 @@ namespace Extend
         {
 #if PORTABLE45
 
-    //Check for IEnumerable<T>
+            //Check for IEnumerable<T>
             var isIEnumarable = arguments.PropertyType.GetTypeInfo()
                                          .IsGenericType && arguments.PropertyType.GetGenericTypeDefinition() == typeof (IEnumerable<>);
 #elif NET40
-            //Check for IEnumerable<T>
+    //Check for IEnumerable<T>
             var isIEnumarable = arguments.PropertyType.IsGenericType && arguments.PropertyType.GetGenericTypeDefinition() == typeof (IEnumerable<>);
 #endif
 

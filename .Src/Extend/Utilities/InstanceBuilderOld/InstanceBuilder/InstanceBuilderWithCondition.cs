@@ -1,5 +1,9 @@
-﻿using System;
+﻿#region Usings
+
+using System;
 using System.Collections.Generic;
+
+#endregion
 
 namespace Extend
 {
@@ -31,7 +35,7 @@ namespace Extend
         /// </summary>
         /// <param name="instanceBuilder">The instance builder.</param>
         /// <param name="factory">The factory to crete conditions for.</param>
-        public InstanceBuilderWithCondition(IIntegralInstanceBuilder instanceBuilder, IInstanceValueFactory factory)
+        public InstanceBuilderWithCondition( IIntegralInstanceBuilder instanceBuilder, IInstanceValueFactory factory )
         {
             InstanceBuilder = instanceBuilder;
             Factory = factory;
@@ -46,7 +50,7 @@ namespace Extend
         /// </summary>
         /// <param name="conditionCombinationOption">The condition combination option.</param>
         /// <returns>Returns an instance builder.</returns>
-        public IInstanceBuilderWithCondition WithConditionCombination(ConditionCombinationOption conditionCombinationOption)
+        public IInstanceBuilderWithCondition WithConditionCombination( ConditionCombinationOption conditionCombinationOption )
         {
             Factory.Conditions.CombinationOption = conditionCombinationOption;
             return this;
@@ -70,11 +74,11 @@ namespace Extend
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>
         /// <param name="factory">The factory to add.</param>
         /// <returns>Returns an instance builder.</returns>
-        public IInstanceBuilderWithFactory WithFactory(Func<IInstanceValueArguments, Object> factory)
+        public IInstanceBuilderWithFactory WithFactory( Func<IInstanceValueArguments, Object> factory )
         {
-            factory.ThrowIfNull(nameof(factory));
+            factory.ThrowIfNull( nameof( factory ) );
 
-            return new InstanceBuilderWithFactory(InstanceBuilder, factory);
+            return new InstanceBuilderWithFactory( InstanceBuilder, factory );
         }
 
         /// <summary>
@@ -83,11 +87,11 @@ namespace Extend
         /// <exception cref="ArgumentNullException">condition can not be null.</exception>
         /// <param name="condition">The condition to add.</param>
         /// <returns>Returns an instance builder.</returns>
-        public IInstanceBuilderWithCondition WithCondition(IInstanceBuilderCondition condition)
+        public IInstanceBuilderWithCondition WithCondition( IInstanceBuilderCondition condition )
         {
-            condition.ThrowIfNull(nameof(condition));
+            condition.ThrowIfNull( nameof( condition ) );
 
-            Factory.Conditions.Add(condition);
+            Factory.Conditions.Add( condition );
             return this;
         }
 
