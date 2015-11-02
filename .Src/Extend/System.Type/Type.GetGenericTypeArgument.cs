@@ -2,7 +2,10 @@
 
 using System;
 using System.Linq;
+#if PORTABLE45
 using System.Reflection;
+
+#endif
 
 #endregion
 
@@ -24,7 +27,8 @@ namespace Extend
             return type.GetTypeInfo()
                        .GenericTypeArguments.FirstOrDefault();
 #elif NET40
-            return type.GetGenericArguments().FirstOrDefault();
+            return type.GetGenericArguments()
+                       .FirstOrDefault();
 #endif
         }
     }

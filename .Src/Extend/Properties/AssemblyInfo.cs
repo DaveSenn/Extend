@@ -12,7 +12,7 @@ using System.Resources;
 [assembly: AssemblyTrademark( "Extend.Portable" )]
 #elif NET40
 
-[assembly: AssemblyTitle("Extend.Net40")]
+[assembly: AssemblyTitle( "Extend.Net40" )]
 [assembly: AssemblyProduct( "Extend.Net40" )]
 [assembly: AssemblyTrademark( "Extend.Net40" )]
 #endif

@@ -68,14 +68,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCaseNotSupportedException()
-        {
-            const Int32 myInt = 100;
-            Action test = () => this.GetNameChain(() => myInt);
-            test.ShouldThrow<ArgumentException>();
-        }
-
-        [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
         public void GetNameChainOverload1TestCaseNullCheck()
         {
@@ -139,7 +131,13 @@ namespace Extend.Testing
             Assert.AreEqual( "PropertyChanged", actual );
         }
 
-      
+        [Test]
+        public void GetNameChainTestCaseNotSupportedException()
+        {
+            const Int32 myInt = 100;
+            Action test = () => this.GetNameChain( () => myInt );
+            test.ShouldThrow<ArgumentException>();
+        }
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]

@@ -292,7 +292,7 @@ namespace Extend
 
             var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
 #elif NET40
-            var concreteType = typeof (List<>).MakeGenericType(  memberInformation.MemberType.GetGenericArguments() );
+            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
 #endif
             //Create an instance of the cunstructed type
             var instnace = Activator.CreateInstance( concreteType );
