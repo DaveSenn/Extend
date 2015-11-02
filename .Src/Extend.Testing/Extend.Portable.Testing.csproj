@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
+    <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToGuid.Test.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
@@ -413,6 +414,7 @@
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberInformationTest.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />

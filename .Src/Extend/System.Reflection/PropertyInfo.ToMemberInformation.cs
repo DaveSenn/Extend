@@ -19,12 +19,12 @@ namespace Extend
         /// <returns>Returns the new created member information.</returns>
         public static IMemberInformation ToMemberInformation( this PropertyInfo propertyInfo, IMemberInformation parentMemberInformation )
         {
+            var path = parentMemberInformation?.MemberPath ?? parentMemberInformation?.MemberName;
+
             return new MemberInformation
             {
                 MemberType = propertyInfo.PropertyType,
-                MemberPath = parentMemberInformation.MemberPath.IsNotEmpty()
-                    ? $"{parentMemberInformation.MemberPath}.{propertyInfo.Name}"
-                    : propertyInfo.Name,
+                MemberPath = path.IsNotEmpty() ? $"{path}.{propertyInfo.Name}" : propertyInfo.Name,
                 MemberName = propertyInfo.Name,
                 PropertyInfo = propertyInfo
             };
