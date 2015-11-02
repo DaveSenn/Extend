@@ -1,4 +1,8 @@
+#region Usings
+
 using System;
+
+#endregion
 
 namespace Extend
 {
@@ -30,11 +34,11 @@ namespace Extend
         /// </summary>
         /// <param name="instanceBuilder">The instance builder.</param>
         /// <param name="factory">The factory to add to the instance builder.</param>
-        public InstanceBuilderWithFactory(IIntegralInstanceBuilder instanceBuilder, Func<IInstanceValueArguments, Object> factory)
+        public InstanceBuilderWithFactory( IIntegralInstanceBuilder instanceBuilder, Func<IInstanceValueArguments, Object> factory )
         {
             InstanceBuilder = instanceBuilder;
-            Factory = new InstanceValueFactory(factory);
-            InstanceBuilder.Factories.Add(Factory);
+            Factory = new InstanceValueFactory( factory );
+            InstanceBuilder.Factories.Add( Factory );
         }
 
         #endregion
@@ -46,10 +50,10 @@ namespace Extend
         /// </summary>
         /// <param name="condition">The condition to add.</param>
         /// <returns>Returns an instance builder.</returns>
-        public IInstanceBuilderWithCondition WithCondition(IInstanceBuilderCondition condition)
+        public IInstanceBuilderWithCondition WithCondition( IInstanceBuilderCondition condition )
         {
-            Factory.Conditions.Add(condition);
-            return new InstanceBuilderWithCondition(InstanceBuilder, Factory);
+            Factory.Conditions.Add( condition );
+            return new InstanceBuilderWithCondition( InstanceBuilder, Factory );
         }
 
         #endregion

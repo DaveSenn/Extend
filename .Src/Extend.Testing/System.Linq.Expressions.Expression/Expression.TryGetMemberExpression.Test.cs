@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class Expression
+    public class ExpressionExTest
     {
         private event PropertyChangedEventHandler PropertyChanged;
 

@@ -1,8 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using NUnit.Framework;
 
 #endregion
@@ -24,10 +22,10 @@ namespace Extend.Testing
         [Test]
         public void IsMicrosoftTypeTest1()
         {
-            var type = typeof(TypeExTest);
+            var type = typeof (TypeExTest);
             var actual = type.IsMicrosoftType();
 
-            Assert.IsFalse(actual);
+            Assert.IsFalse( actual );
         }
     }
 }
