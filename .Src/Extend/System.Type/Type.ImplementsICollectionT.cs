@@ -22,7 +22,7 @@ namespace Extend
         /// </summary>
         /// <param name="type">The type to check.</param>
         /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherweise, false.</returns>
-        public static Boolean IsICollectionT( this Type type )
+        public static Boolean ImplementsICollectionT( this Type type )
         {
 #if PORTABLE45
             var typeInfo = type.GetTypeInfo();

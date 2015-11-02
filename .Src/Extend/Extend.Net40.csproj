@@ -394,8 +394,8 @@
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
-    <Compile Include="System.Type\Type.GetSettableProperties.cs" />
-    <Compile Include="System.Type\Type.IsICollectionT.cs" />
+    <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
+    <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreator.cs" />

@@ -13,8 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-	<TestProjectType>UnitTest</TestProjectType>
-	<ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TestProjectType>UnitTest</TestProjectType>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -409,6 +409,10 @@
     <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />
+    <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
+    <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
+    <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
