@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,6 +41,18 @@ namespace Extend.Testing
             MemberExpression outResult;
             Expression<Func<Object>> expression = null;
             expression.TryGetMemberExpression( out outResult );
+        }
+
+        [Test]
+        public void TryGetMemberExpressioInvalidTypeTest()
+        {
+            Expression<Func<String>> func = () => null;
+            Expression<Func<String>> func1 = () => "test";
+            Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
+
+            MemberExpression outResult;
+            Action test = () => expression.TryGetMemberExpression( out outResult );
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]

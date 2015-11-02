@@ -56,18 +56,12 @@ namespace Extend
                         throw new NotSupportedException(
                             "TryGetMemberExpression does not support expressions of type ConstantExpression. Consider using none-constant member." );
 
-                    //I cant find any case when expression can be LambdaExpression
                     case ExpressionType.Lambda:
-                        var body = ( expression as LambdaExpression ).Body;
-                        if ( body != null )
-                        {
-                            expression = body;
-                            continue;
-                        }
-                        throw new NotSupportedException( "The given lambda expression has no valid body." );
+                        expression = ( (LambdaExpression) expression ).Body;
+                        break;
 
                     default:
-                        throw new NotSupportedException( $"Expressions of type '{expression.NodeType}' are not supported" );
+                        throw new ArgumentOutOfRangeException( nameof( expression ), expression, $"Expressions of type '{expression.NodeType}' are not supported." );
                 }
             }
         }
