@@ -35,15 +35,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
-        public void GetNameChainOverload1TestCaseNullCheck()
-        {
-            MemberExpression outResult;
-            Expression<Func<Object>> expression = null;
-            expression.TryGetMemberExpression( out outResult );
-        }
-
-        [Test]
         public void TryGetMemberExpressioInvalidTypeTest()
         {
             Expression<Func<String>> func = () => null;
@@ -51,8 +42,11 @@ namespace Extend.Testing
             Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
 
             MemberExpression outResult;
-            Action test = () => expression.TryGetMemberExpression( out outResult );
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            var actual = expression.TryGetMemberExpression( out outResult );
+            actual.Should()
+                  .BeFalse();
+            outResult.Should()
+                     .BeNull();
         }
 
         [Test]
@@ -172,32 +166,40 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void TryGetMemberExpressionTestCaseNotSupportedException()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object, Object>> expression = x => myInt;
-            expression.TryGetMemberExpression( out outResult );
+
+            var actual = expression.TryGetMemberExpression( out outResult );
+            actual.Should()
+                  .BeFalse();
+            outResult.Should()
+                     .BeNull();
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void TryGetMemberExpressionTestCaseNotSupportedException1()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object>> expression = () => myInt;
-            expression.TryGetMemberExpression( out outResult );
+
+            var actual = expression.TryGetMemberExpression( out outResult );
+            actual.Should()
+                  .BeFalse();
+            outResult.Should()
+                     .BeNull();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryGetMemberExpressionTestCaseNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;
-            expression.TryGetMemberExpression( out outResult );
+            Action test = () => expression.TryGetMemberExpression( out outResult );
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

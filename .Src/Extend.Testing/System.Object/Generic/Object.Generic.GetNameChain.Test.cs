@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq.Expressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -59,11 +60,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void GetNameChainOverload1TestCaseNotSupportedException()
         {
             const Int32 myInt = 100;
-            this.GetNameChain( () => myInt );
+            Action test = () => this.GetNameChain( x => myInt );
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void GetNameChainTestCaseNotSupportedException()
+        {
+            const Int32 myInt = 100;
+            Action test = () => this.GetNameChain(() => myInt);
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
@@ -130,13 +139,7 @@ namespace Extend.Testing
             Assert.AreEqual( "PropertyChanged", actual );
         }
 
-        [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
-        public void GetNameChainTestCaseNotSupportedException()
-        {
-            const Int32 myInt = 100;
-            this.GetNameChain( x => myInt );
-        }
+      
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
