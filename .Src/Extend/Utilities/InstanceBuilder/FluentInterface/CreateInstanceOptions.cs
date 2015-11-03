@@ -67,74 +67,18 @@ namespace Extend
 
         #endregion
 
-        #region Implementation of IIncludeExcludeOptions<T>
-
-        /// <summary>
-        ///     Adds a type based member selection rule.
-        /// </summary>
-        /// <typeparam name="TTarget">The type to match.</typeparam>
-        /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> IsTypeOf<TTarget>()
-        {
-            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.Is ) );
-        }
-
-        /// <summary>
-        ///     Matches for members which have a matching path.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">expression can no the null.</exception>
-        /// <param name="expression">Expression representing the member path.</param>
-        /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, Object>> expression )
-        {
-            expression.ThrowIfNull( nameof( expression ) );
-
-            return AddMemberSlectionRule( new PathMemberSelectionRule( expression.GetMemberPath(), _currentMemberSelectionMode ) );
-        }
-
-        /// <summary>
-        ///     Matches for members which have a matching path.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">path can no the null.</exception>
-        /// <param name="path">The member path.</param>
-        /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> ByPath( String path )
-        {
-            path.ThrowIfNull( nameof( path ) );
-
-            return AddMemberSlectionRule( new PathMemberSelectionRule( path, _currentMemberSelectionMode ) );
-        }
-
-        /// <summary>
-        ///     Adds a type based member selection rule.
-        /// </summary>
-        /// <typeparam name="TTarget">The type to match.</typeparam>
-        /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> IsNotTypeOf<TTarget>()
-        {
-            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.IsNot ) );
-        }
-
-        /// <summary>
-        ///     Matches all members.
-        /// </summary>
-        /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> AllMembers()
-        {
-            return AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
-        }
-
-        #endregion
-
         #region Implementation of ICreateInstanceOptions<T>
 
         /// <summary>
         ///     Includes all members matching the specified options.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Including( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
             configurationFunc( this );
@@ -145,10 +89,13 @@ namespace Extend
         /// <summary>
         ///     Includes all members matching the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Including( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull( nameof( predicate ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
         }
@@ -156,10 +103,13 @@ namespace Extend
         /// <summary>
         ///     Excludes all members matching the specified options.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Excluding( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
             configurationFunc( this );
@@ -170,10 +120,13 @@ namespace Extend
         /// <summary>
         ///     Excludes all members matching the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull( nameof( predicate ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
         }
@@ -181,10 +134,13 @@ namespace Extend
         /// <summary>
         ///     Includes the children of all members matching the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull( nameof( predicate ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
         }
@@ -192,10 +148,13 @@ namespace Extend
         /// <summary>
         ///     Includes the children of all members matching the specified options.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
             configurationFunc( this );
@@ -207,10 +166,13 @@ namespace Extend
         ///     Excludes the children of all members matching the specified options.
         ///     The members themselves will still get created.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
             configurationFunc( this );
@@ -222,10 +184,13 @@ namespace Extend
         ///     Excludes the children of all members matching the given predicate.
         ///     The members themselves will still get created.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull( nameof( predicate ) );
+
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
         }
@@ -294,15 +259,81 @@ namespace Extend
 
         #endregion
 
+        #region Implementation of IIncludeExcludeOptions<T>
+
+        /// <summary>
+        ///     Adds a type based member selection rule.
+        /// </summary>
+        /// <typeparam name="TTarget">The type to match.</typeparam>
+        /// <returns>Returns the modified options.</returns>
+        public IIncludeExcludeOptions<T> IsTypeOf<TTarget>()
+        {
+            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.Is ) );
+        }
+
+        /// <summary>
+        ///     Matches for members which have a matching path.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">expression can no the null.</exception>
+        /// <param name="expression">Expression representing the member path.</param>
+        /// <returns>Returns the modified options.</returns>
+        public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, Object>> expression )
+        {
+            expression.ThrowIfNull( nameof( expression ) );
+
+            return AddMemberSlectionRule( new PathMemberSelectionRule( expression.GetMemberPath(), _currentMemberSelectionMode ) );
+        }
+
+        /// <summary>
+        ///     Matches for members which have a matching path.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">path can no the null.</exception>
+        /// <param name="path">The member path.</param>
+        /// <returns>Returns the modified options.</returns>
+        public IIncludeExcludeOptions<T> ByPath( String path )
+        {
+            path.ThrowIfNull( nameof( path ) );
+
+            return AddMemberSlectionRule( new PathMemberSelectionRule( path, _currentMemberSelectionMode ) );
+        }
+
+        /// <summary>
+        ///     Adds a type based member selection rule.
+        /// </summary>
+        /// <typeparam name="TTarget">The type to match.</typeparam>
+        /// <returns>Returns the modified options.</returns>
+        public IIncludeExcludeOptions<T> IsNotTypeOf<TTarget>()
+        {
+            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.IsNot ) );
+        }
+
+        /// <summary>
+        ///     Matches all members.
+        /// </summary>
+        /// <returns>Returns the modified options.</returns>
+        public IIncludeExcludeOptions<T> AllMembers()
+        {
+            return AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
+        }
+
+        #endregion
+
         #region Implementation of IFactoryOptionsInconsistent<T>
 
         /// <summary>
         ///     Factory will be used to create values for members matching the specified options.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+
+            //Check if target is factory.
+            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
+                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
+
             _currentMemberSelectionMode = MemberSelectionMode.Include;
             configurationFunc( this );
 
@@ -312,20 +343,34 @@ namespace Extend
         /// <summary>
         ///     Factory will be used to create values for members matching the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull(nameof(predicate));
+
+            //Check if target is factory.
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
         }
 
         /// <summary>
         ///     Factory will NOT be used to create values for members matching the specified options.
         /// </summary>
+        /// <exception cref="ArgumentNullException">configurationFunc can not be null.</exception>
         /// <param name="configurationFunc">Function used to configure the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
+            configurationFunc.ThrowIfNull(nameof(configurationFunc));
+
+            //Check if target is factory.
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
             configurationFunc( this );
 
@@ -335,10 +380,17 @@ namespace Extend
         /// <summary>
         ///     Factory will NOT be used to create values for members matching the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <param name="predicate">The predicate used to find the members which should NOT get created by the factory.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, Boolean> predicate )
         {
+            predicate.ThrowIfNull(nameof(predicate));
+
+            //Check if target is factory.
+            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
+                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
         }
 
