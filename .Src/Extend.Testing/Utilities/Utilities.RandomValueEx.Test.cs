@@ -25,6 +25,14 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void GetRandomCharTest()
+        {
+            var actual = RandomValueEx.GetRandomChar();
+            actual.Should()
+                  .NotBeNull();
+        }
+
+        [Test]
         public void GetRandomDateTimeTestCase()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
