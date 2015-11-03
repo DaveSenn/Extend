@@ -414,6 +414,7 @@
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreatorTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceExceptionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultExTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Factory\Base\InstanceFactoryBaseTest.cs" />

@@ -16,6 +16,11 @@ namespace Extend
         #region Constants
 
         /// <summary>
+        ///     Array of characters used to "generate" random characters.
+        /// </summary>
+        private static readonly Char[] Chars = "qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNMöäüéàè.;:()/&%ç*?`!".ToCharArray();
+
+        /// <summary>
         ///     The object used to generate random values.
         /// </summary>
         private static readonly Random Random = new Random();
@@ -53,6 +58,15 @@ namespace Extend
         {
             return Guid.NewGuid()
                        .ToString();
+        }
+
+        /// <summary>
+        ///     Gets random char.
+        /// </summary>
+        /// <returns>A random char.</returns>
+        public static Char GetRandomChar()
+        {
+            return Chars[GetRandomInt32( 0, Chars.Length )];
         }
 
         /// <summary>
