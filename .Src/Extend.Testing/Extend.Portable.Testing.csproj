@@ -418,6 +418,7 @@
     <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultExTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Factory\Base\InstanceFactoryBaseTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Factory\ExpressionInstanceFactoryTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\CreateInstanceOptionsTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\MemberInformation\MemberInformationTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\MemberSelection\Inspector\MemberSelectionRuleInspectorTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\AllMemberSelectionRuleTest.cs" />
