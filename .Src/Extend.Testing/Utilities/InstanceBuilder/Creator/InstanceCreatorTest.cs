@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
 using NUnit.Framework;
@@ -11,6 +13,103 @@ namespace Extend.Testing
     [TestFixture]
     public class InstanceCreatorTest
     {
+        private class TestModel
+        {
+            #region Properties
+
+            public Int16 MyInt16 { get; set; }
+            public Int32 MyInt32 { get; set; }
+            public Int64 MyInt64 { get; set; }
+            public Double MyDouble { get; set; }
+            public Char MyChar { get; set; }
+            public String MyString { get; set; }
+            public Boolean MyBoolean { get; set; }
+            public DateTime MyDateTime { get; set; }
+            public List<String> MyStringList { get; set; }
+            public List<Int32> MyIntList { get; set; }
+            public IEnumerable<String> MyStringEnumerable { get; set; }
+            public IEnumerable<Int32> MyInt32Enumerable { get; set; }
+            public String[] MyStringArray { get; set; }
+            public Int32[] MyIntArray { get; set; }
+
+            #endregion
+        }
+
+        private class ModelNeedingFactory
+        {
+            #region Properties
+
+            public ModelWithCtor MyProperty { get; set; }
+
+            #endregion
+        }
+
+        private class ModelWithCtor
+        {
+            #region Ctor
+
+            public ModelWithCtor( String arg )
+            {
+            }
+
+            #endregion
+        }
+
+        private class SimpleTestModel
+        {
+            #region Properties
+
+            public String MyString { get; set; }
+            public Int32 MyInt32 { get; set; }
+
+            #endregion
+        }
+
+        [Test]
+        public void ActivatorFailTest()
+        {
+            var options = InstanceCreator.CreateInstanceOptions<ModelNeedingFactory>();
+
+            Action test = () => options.Complete()
+                                       .CreateInstance();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Failed to create an instance of the following type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor' using Activator." );
+        }
+
+        [Test]
+        public void AnonymousItemNameDefaultValueTest()
+        {
+            InstanceCreator.AnonymousItemName.Should()
+                           .Be( "[AnonymousItem]" );
+        }
+
+        [Test]
+        public void AnonymousItemNameTest()
+        {
+            var expected = RandomValueEx.GetRandomString();
+            InstanceCreator.AnonymousItemName = expected;
+            InstanceCreator.AnonymousItemName.Should()
+                           .Be( expected );
+
+            InstanceCreator.AnonymousItemName = "[AnonymousItem]";
+        }
+
+        [Test]
+        public void CreateInstanceOptionsTest()
+        {
+            var actual = InstanceCreator.CreateInstanceOptions<TestModel>();
+            actual.Should()
+                  .NotBeNull();
+        }
+
+        [Test]
+        public void CreateInstanceTest()
+        {
+            var actual = InstanceCreator.CreateInstance<TestModel>();
+            actual.Should()
+                  .NotBeNull();
+        }
+
         [Test]
         public void DefaultFactoriesDefaultTest()
         {
@@ -56,6 +155,21 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void DefaultMemberChildreSelectionRulesDefaultValueTest()
+        {
+            var actual = InstanceCreator.DefaultMemberChildreSelectionRules;
+            actual.Count.Should()
+                  .Be( 2 );
+
+            actual.Count( x => x.RuleName == "Microsoft Type Filter" )
+                  .Should()
+                  .Be( 1 );
+            actual.Count( x => x.RuleName == "Include all child members" )
+                  .Should()
+                  .Be( 1 );
+        }
+
+        [Test]
         public void DefaultMemberSelectionRulesDefaultTest()
         {
             var actual = InstanceCreator.DefaultMemberSelectionRules;
@@ -77,521 +191,315 @@ namespace Extend.Testing
                            .Should()
                            .BeTrue();
         }
-    }
-}
 
-/*
-        public static BlockingCollection<IMemberSelectionRule> DefaultMemberChildreSelectionRules { get; } = new BlockingCollection<IMemberSelectionRule>();
-
-        /// <summary>
-        ///     Gets or sets a value determining whether collections should get populated or not.
-        /// </summary>
-        /// <value>A value determining whether collections should get populated or not.</value>
-        public static Boolean PopulateCollections { get; set; } = true;
-
-        /// <summary>
-        ///     Gets or sets the minimum number of items to generate for a collection.
-        /// </summary>
-        /// <value>The minimum number of items to generate for a collection.</value>
-        public static Int32 PopulateCollectionsMinCount { get; set; } = 2;
-
-        /// <summary>
-        ///     Gets or sets the maximum number of items to generate for a collection.
-        /// </summary>
-        /// <value>The maximum number of items to generate for a collection.</value>
-        public static Int32 PopulateCollectionsMaxCount { get; set; } = 10;
-
-        /// <summary>
-        ///     Gets or sets the <see cref="IMemberSelectionRuleInspector" /> used to inspect member selection rules.
-        /// </summary>
-        /// <value>The <see cref="IMemberSelectionRuleInspector" /> used to inspect member selection rules.</value>
-        public static IMemberSelectionRuleInspector RuleInspector { get; set; } = new MemberSelectionRuleInspector();
-
-        #endregion
-
-        #region Ctor
-
-        /// <summary>
-        ///     Initializes the <see cref="InstanceCreator" /> class.
-        /// </summary>
-        static InstanceCreator()
+        [Test]
+        public void DoNotPopulateCollectionTest()
         {
-            CreateDefaultFactories();
-            CreateDefaultMemberSelectionRules();
-            CreateDefaultMemberChildreSelectionRules();
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>()
+                                         .PopulateCollectionMembers( false );
+
+            var actual = options.Complete()
+                                .CreateInstance();
+            actual.MyIntList.Should()
+                  .BeEmpty();
+            actual.MyStringList.Should()
+                  .BeEmpty();
+
+            actual.MyIntArray.Should()
+                  .BeEmpty();
+            actual.MyStringArray.Should()
+                  .BeEmpty();
+
+            actual.MyInt32Enumerable.Should()
+                  .BeEmpty();
+            actual.MyStringEnumerable.Should()
+                  .BeEmpty();
         }
 
-        #endregion
-
-        #region Public Members
-
-        /// <summary>
-        ///     Creates instance options for the specified type.
-        /// </summary>
-        /// <typeparam name="T">The type to create an instance of.</typeparam>
-        /// <returns>Returns the new created create instance options.</returns>
-        public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new()
+        [Test]
+        public void ExcludeMemberTest()
         {
-            return new CreateInstanceOptions<T>();
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>();
+            options.Excluding( x => x.ByPath( y => y.MyIntList ) );
+
+            var actual = options.Complete()
+                                .CreateInstance();
+            actual.MyIntList.Should()
+                  .BeNull();
         }
 
-        /// <summary>
-        ///     Creates an instance of the specified type without any special configuration.
-        /// </summary>
-        /// <typeparam name="T">The type to create an instance of.</typeparam>
-        /// <returns>Returns the new created instance.</returns>
-        public static T CreateInstance<T>() where T : class, new()
+        [Test]
+        public void FactoryTest1()
         {
-            return CreateInstanceOptions<T>()
+            var actual = InstanceCreator
+                .CreateInstanceOptions<TestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.IsTypeOf<Int32>() )
                 .Complete()
                 .CreateInstance();
+
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyIntList.All( x => x == 666 )
+                  .Should()
+                  .BeTrue();
+            actual.MyIntArray.All( x => x == 666 )
+                  .Should()
+                  .BeTrue();
         }
 
-        /// <summary>
-        ///     Creates an instance of the specified type based on the given options.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">options can not be null.</exception>
-        /// <typeparam name="T">The type to create an instance of.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <returns>Returns the new created instance.</returns>
-        public static T CreateInstance<T>( this ICreateInstanceOptionsComplete<T> options ) where T : class
+        [Test]
+        public void FactoryTest2()
         {
-            options.ThrowIfNull( nameof( options ) );
+            var actual = InstanceCreator
+                .CreateInstanceOptions<TestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.ByPath( y => y.MyInt32 ) )
+                .Complete()
+                .CreateInstance();
 
-            //Create instance
-            var rootMemberInformation = new MemberInformation
-            {
-                MemberType = typeof (T),
-                MemberPath = String.Empty,
-                MemberName = String.Empty
-            };
-            var instance = CreateRootMember( options, rootMemberInformation );
-            rootMemberInformation.MemberObject = instance;
-
-            //Set each member of the created instance.
-            SetAllMembers( options, rootMemberInformation );
-
-            return instance;
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyIntList.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
+            actual.MyIntArray.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
         }
 
-        #endregion
-
-        #region Private Members
-
-        #region Reflection
-
-        /// <summary>
-        ///     Gets a <see cref="IMemberInformation" /> for each given <see cref="PropertyInfo" />.
-        /// </summary>
-        /// <param name="propertyInfos">The property informations.</param>
-        /// <param name="parentMemberInformation">The parent of the given properties.</param>
-        /// <returns>Returns the new created <see cref="IMemberInformation" />.</returns>
-        private static IEnumerable<IMemberInformation> GetMemberInformation( this IEnumerable<PropertyInfo> propertyInfos, IMemberInformation parentMemberInformation )
+        [Test]
+        public void FactoryTest3()
         {
-            return propertyInfos.Select( x => x.ToMemberInformation( parentMemberInformation ) );
+            var actual = InstanceCreator
+                .CreateInstanceOptions<TestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.ByPath( "MyInt32" ) )
+                .Complete()
+                .CreateInstance();
+
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyIntList.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
+            actual.MyIntArray.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
         }
 
-        #endregion
-
-        #region Selection
-
-        /// <summary>
-        ///     Gets a value determining whether the member should be included or not.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">No matching rule was found.</exception>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static Boolean IncludeMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
+        [Test]
+        public void FactoryTest4()
         {
-            return ShouldMemberBeIncluded( memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules );
+            var actual = InstanceCreator
+                .CreateInstanceOptions<TestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.ByPath( "MyInt32" ) )
+                .Complete()
+                .CreateInstance();
+
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyIntList.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
+            actual.MyIntArray.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
         }
 
-        /// <summary>
-        ///     Gets a value determining whether the children should be included or not.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">No matching rule was found.</exception>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns a value of true if the children should be included; otherwise, false.</returns>
-        private static Boolean IncludeChildMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
+        [Test]
+        public void FactoryTest5()
         {
-            return ShouldMemberBeIncluded( memberInformation, options.MemberChildrenSelectionRules, DefaultMemberChildreSelectionRules );
+            var actual = InstanceCreator
+                .CreateInstanceOptions<TestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.ByPath( "MyInt32" ) )
+                .For( x => x.ByPath( $"MyIntList.{InstanceCreator.AnonymousItemName}" ) )
+                .Complete()
+                .CreateInstance();
+
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyIntList.All( x => x == 666 )
+                  .Should()
+                  .BeTrue();
+            actual.MyIntArray.All( x => x == 666 )
+                  .Should()
+                  .BeFalse();
         }
 
-        /// <summary>
-        ///     Gets a value determining whether the member should be included or not.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">No matching rule was found.</exception>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <param name="selectionRuleSets">
-        ///     A set of member selection rules.
-        ///     Note: collections must be in correct order.
-        /// </param>
-        /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
-        private static Boolean ShouldMemberBeIncluded( IMemberInformation memberInformation, params IEnumerable<IMemberSelectionRule>[] selectionRuleSets )
+        [Test]
+        public void FactoryTest6()
         {
-            //Try to find selection result (starting at the first item in selectionRuleSets)
-            foreach ( var inspectionResult in selectionRuleSets
-                .Select( ruleSet => RuleInspector.Inspect( ruleSet, memberInformation )
-                                                 .AsBoolean() )
-                .Where( inspectionResult => inspectionResult.HasValue ) )
-                return inspectionResult.Value;
+            var actual = InstanceCreator
+                .CreateInstanceOptions<SimpleTestModel>()
+                .WithFactory( x => 666 )
+                .For( x => x.AllMembers() )
+                .NotFor( x => x.ByPath( y => y.MyString ) )
+                .NotFor( x => x.IsTypeOf<SimpleTestModel>() )
+                .WithFactory( x => "test" )
+                .For( x => x.IsTypeOf<String>() )
+                .Complete()
+                .CreateInstance();
 
-            //No matching rule found
-            throw new CreateInstanceException( "Found no selection rule targeting member.",
-                                               null,
-                                               null,
-                                               selectionRuleSets.SelectMany( x => x )
-                                                                .StringJoin( Environment.NewLine ),
-                                               memberInformation );
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyString.Should()
+                  .Be( "test" );
         }
 
-        #endregion
-
-        #region Creation
-
-        /// <summary>
-        ///     Gets the number of items to create for a collection.
-        /// </summary>
-        /// <returns>Returns the number of items to create.</returns>
-        private static Int32 GetCollectionItemCount()
+        [Test]
+        public void FactoryThrowsExceptionTest()
         {
-            return PopulateCollections ? RandomValueEx.GetRandomInt32( PopulateCollectionsMinCount, PopulateCollectionsMaxCount ) : 0;
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>()
+                                         .WithFactory( x => { throw new Exception( "Factory Failed" ); } )
+                                         .For( x => x.IsTypeOf<Double>() );
+
+            Action test = () => options.Complete()
+                                       .CreateInstance();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Factory has thrown exception." );
         }
 
-        /// <summary>
-        ///     Creates the root instance.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">Value creation failed.</exception>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to create.</param>
-        /// <returns>Returns the created value.</returns>
-        private static T CreateRootMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void MultipleMatchingFactoriesInGlobalConfigTest()
         {
-            try
-            {
-                var value = GetValue( options, memberInformation );
-                return (T) value;
-            }
-            catch ( Exception ex )
-            {
-                throw new CreateInstanceException( $"Failed to create root object of type: {typeof (T).Name}.",
-                                                   ex,
-                                                   options.Factories.Concat( DefaultFactories )
-                                                          .StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
-            }
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>();
+
+            InstanceCreator.DefaultFactories.Add( new ExpressionInstanceFactory( x => 100 )
+                                                      .AddSelectionRule( new TypeMemberSelectionRule( typeof (Double), MemberSelectionMode.Include, CompareMode.Is ) ) );
+
+            Action test = () => options.Complete()
+                                       .CreateInstance();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Found multiple matching factories for member (in global configuration). Please make sure only one factory matches the member." );
         }
 
-        /// <summary>
-        ///     Gets a value for the given member.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">Value creation failed.</exception>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns the created value.</returns>
-        private static Object GetValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void MultipleMatchingFactoriesInOptionsTest()
         {
-            //Try get value from factory
-            var factory = GetFactory( options, memberInformation );
-            if ( factory != null )
-                try
-                {
-                    return factory.CreateValue( memberInformation );
-                }
-                catch ( Exception ex )
-                {
-                    throw new CreateInstanceException( "Factory has thrown exception.", ex, factory.ToString(), null, memberInformation );
-                }
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>()
+                                         .WithFactory( x => 100 )
+                                         .For( x => x.IsTypeOf<Double>() )
+                                         .WithFactory( x => 200 )
+                                         .For( x => x.IsTypeOf<Double>() );
 
-            //Try create array value
-            var value = TryCreateArrayValue( options, memberInformation );
-            if ( value != null )
-                return value;
-
-            //Create value (first try IEnumerable than anything else)
-            value = TryCreateIEnumerableValue( options, memberInformation ) ?? CreateValueUsingAcrivator( memberInformation );
-
-            //Populate collection if collection (could be ICollection)
-            return TryPopulateCollection( options, memberInformation, value );
+            Action test = () => options.Complete()
+                                       .CreateInstance();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Found multiple matching factories for member (in options). Please make sure only one factory matches the member." );
         }
 
-        /// <summary>
-        ///     Tries to create an IEnumerable value for the given type.
-        /// </summary>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static Object TryCreateIEnumerableValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void NoMatchingSelectionRuleTest()
         {
-            //Check if member implements IEnumerable{T}
-            if ( !memberInformation.MemberType.IsIEnumerableT() )
-                return null;
+            var rules = new List<IMemberSelectionRule>();
+            while ( InstanceCreator.DefaultMemberSelectionRules.Count > 0 )
+                rules.Add( InstanceCreator.DefaultMemberSelectionRules.Take() );
 
-            //Get a List{T} of the IEnumerable{T}'s item type as type
-#if PORTABLE45
+            Action test = () => InstanceCreator.CreateInstance<TestModel>();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Found no selection rule targeting member." );
 
-            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
-#elif NET40
-            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
-#endif
-            //Create an instance of the cunstructed type
-            var instnace = Activator.CreateInstance( concreteType );
-
-            //Update the type of the member in the member information
-            var currentMember = memberInformation as MemberInformation;
-            if ( currentMember != null )
-                currentMember.MemberType = concreteType;
-            else
-                currentMember = new MemberInformation
-                {
-                    MemberType = memberInformation.MemberType,
-                    MemberPath = memberInformation.MemberPath,
-                    MemberName = memberInformation.MemberName,
-                    PropertyInfo = memberInformation.PropertyInfo,
-                    MemberObject = instnace
-                };
-            memberInformation = currentMember;
-
-            return instnace;
+            rules.ForEach( x => InstanceCreator.DefaultMemberSelectionRules.Add( x ) );
         }
 
-        /// <summary>
-        ///     Tries to create an array value for the given type.
-        /// </summary>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns the created value, or null if the given type is not an array type.</returns>
-        private static Object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void PopulateCollectionsDefaultValueTest()
         {
-            //Check if member is an array type
-            if ( !memberInformation.MemberType.IsArray )
-                return null;
-
-            //Create the array
-            var elementType = memberInformation.MemberType.GetElementType();
-            var array = Array.CreateInstance( elementType, GetCollectionItemCount() );
-
-            //Add items
-            for ( var i = 0; i < array.Length; i++ )
-            {
-                //Get the value of the current array item.
-                var arrayItemValue = GetValue( options,
-                                               new MemberInformation
-                                               {
-                                                   MemberType = elementType,
-                                                   MemberPath = memberInformation.MemberPath,
-                                                   MemberName = "[AnonymousArrayItem]"
-                                               } );
-                array.SetValue( arrayItemValue, i );
-            }
-
-            return array;
+            InstanceCreator.PopulateCollections.Should()
+                           .BeTrue();
         }
 
-        /// <summary>
-        ///     Creates a value for the given member using <see cref="Activator" />.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">Creation throw an exception.</exception>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns the created value.</returns>
-        private static Object CreateValueUsingAcrivator( IMemberInformation memberInformation )
+        [Test]
+        public void PopulateCollectionsMaxCountDefaultValueTest()
         {
-            try
-            {
-                //Create type using activator class
-                return Activator.CreateInstance( memberInformation.MemberType );
-            }
-            catch ( Exception ex )
-            {
-                throw new CreateInstanceException( $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator.",
-                                                   ex,
-                                                   null,
-                                                   null,
-                                                   memberInformation );
-            }
+            InstanceCreator.PopulateCollectionsMaxCount.Should()
+                           .Be( 10 );
         }
 
-        /// <summary>
-        ///     Gets the matching factory for the given member.
-        /// </summary>
-        /// <exception cref="CreateInstanceException">Multiple matching factories found.</exception>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <returns>Returns the matching factory, or null if no factory was found.</returns>
-        private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void PopulateCollectionsMaxCountTest()
         {
-            //Get factory from options
-            var matchingFactories = options.Factories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
-                                           .ToList();
-            if ( matchingFactories.Count == 1 )
-                return matchingFactories.Single();
-
-            //Check if multiple factories have matched
-            if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member. Please make sure only one factory matches the member.",
-                                                   null,
-                                                   options.Factories.StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
-
-            //Get factory from default factories
-            matchingFactories = DefaultFactories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
-                                                .ToList();
-            if ( matchingFactories.Count == 1 )
-                return matchingFactories.Single();
-
-            //Check if multiple factories have matched
-            if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member. Please make sure only one factory matches the member.",
-                                                   null,
-                                                   DefaultFactories.StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
-
-            //No factory found
-            return null;
+            var expeted = RandomValueEx.GetRandomInt32();
+            InstanceCreator.PopulateCollectionsMaxCount = expeted;
+            InstanceCreator.PopulateCollectionsMaxCount.Should()
+                           .Be( expeted );
+            InstanceCreator.PopulateCollectionsMaxCount = 10;
         }
 
-        /// <summary>
-        ///     Populates the given instance if it is a collection, based on the collection configuration.
-        /// </summary>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The member to check.</param>
-        /// <param name="collectionInstance">The instance to populate.</param>
-        /// <returns>Returns the populated or unmodified instance.</returns>
-        private static Object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, Object collectionInstance ) where T : class
+        [Test]
+        public void PopulateCollectionsMinCountDefaultValueTest()
         {
-            //Check if collection should get populated or not
-            if ( !PopulateCollections || collectionInstance == null )
-                return collectionInstance;
-
-            //Check if type is collection type
-            if ( !memberInformation.MemberType.ImplementsICollectionT() )
-                return collectionInstance;
-
-            //Get generic parameter type
-            var genericArgumentType = memberInformation.MemberType.GetGenericTypeArgument();
-
-            //Get the add method
-#if PORTABLE45
-            var addMethod = memberInformation.MemberType
-                                             .GetRuntimeMethod( "Add", new[] { genericArgumentType } );
-#elif NET40
-            var addMethod = memberInformation.MemberType.GetMethod( "Add" );
-#endif
-            if ( addMethod == null )
-                return collectionInstance;
-
-            //Add items
-            var collectionCount = GetCollectionItemCount();
-            for ( var i = 0; i < collectionCount; i++ )
-            {
-                //Get the value for the current collection item.
-                var collectionItemValue = GetValue( options,
-                                                    new MemberInformation
-                                                    {
-                                                        MemberType = genericArgumentType,
-                                                        MemberPath = memberInformation.MemberPath,
-                                                        MemberName = "[AnonymousCollectionItem]"
-                                                    } );
-                addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
-            }
-            return collectionInstance;
+            InstanceCreator.PopulateCollectionsMinCount.Should()
+                           .Be( 2 );
         }
 
-        #endregion
-
-        #region Set Value
-
-        /// <summary>
-        ///     Sets all members of the given member.
-        /// </summary>
-        /// <typeparam name="T">The type to create an instance of.</typeparam>
-        /// <param name="options">Some create instance options.</param>
-        /// <param name="memberInformation">The current member.</param>
-        private static void SetAllMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        [Test]
+        public void PopulateCollectionsMinCountTest()
         {
-            //Check if children should be set or not
-            if ( !IncludeChildMembers( options, memberInformation ) )
-                return;
-
-            //Get the properties of the current member as member information
-            var propertyInfos = memberInformation.MemberType.GetPublicSettableProperties()
-                                                 .GetMemberInformation( memberInformation );
-
-            propertyInfos.ForEach( x =>
-            {
-                //Check if member should be set or not
-                if ( !IncludeMember( options, x ) )
-                    return;
-
-                //Create member value
-                var value = GetValue( options, x );
-                x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
-
-                //Set children of value (recursive call)
-                var currentMember = x as MemberInformation;
-                if ( currentMember != null )
-                    currentMember.MemberObject = value;
-                else
-                    currentMember = new MemberInformation
-                    {
-                        MemberType = x.MemberType,
-                        MemberPath = x.MemberPath,
-                        MemberName = x.MemberName,
-                        PropertyInfo = x.PropertyInfo,
-                        MemberObject = value
-                    };
-
-                SetAllMembers( options, currentMember );
-            } );
+            var expeted = RandomValueEx.GetRandomInt32();
+            InstanceCreator.PopulateCollectionsMinCount = expeted;
+            InstanceCreator.PopulateCollectionsMinCount.Should()
+                           .Be( expeted );
+            InstanceCreator.PopulateCollectionsMinCount = 2;
         }
 
-        #endregion
-
-        #region Init
-
-        /// <summary>
-        ///     Creates the default factories.
-        /// </summary>
-        private static void CreateDefaultFactories()
+        [Test]
+        public void PopulateCollectionsTest()
         {
-            InstanceFactoryProvider.GetDefaultFactories()
-                                   .ForEach( x => { DefaultFactories.Add( x ); } );
+            var expeted = RandomValueEx.GetRandomBoolean();
+            InstanceCreator.PopulateCollections = expeted;
+            InstanceCreator.PopulateCollections.Should()
+                           .Be( expeted );
+            InstanceCreator.PopulateCollections = true;
         }
 
-        /// <summary>
-        ///     Creates the default member selection rules.
-        /// </summary>
-        private static void CreateDefaultMemberSelectionRules()
+        [Test]
+        public void RootFactoryThrowExceptionTest()
         {
-            MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
-                                       .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
+            var options = InstanceCreator.CreateInstanceOptions<TestModel>()
+                                         .WithFactory( x => { throw new Exception( "22" ); } )
+                                         .For( x => x.IsTypeOf<TestModel>() );
+
+            Action test = () => options.Complete()
+                                       .CreateInstance();
+            test.ShouldThrow<CreateInstanceException>()
+                .WithMessage( "Failed to create root object of type: TestModel." );
         }
 
-        /// <summary>
-        ///     Creates the default member children selection rules.
-        /// </summary>
-        private static void CreateDefaultMemberChildreSelectionRules()
+        [Test]
+        public void RuleInspectorDefaultValueTest()
         {
-            MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
-                                       .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
+            InstanceCreator.RuleInspector.Should()
+                           .BeOfType<MemberSelectionRuleInspector>();
         }
 
-        #endregion
+        [Test]
+        public void RuleInspectorTest()
+        {
+            var expeted = new MemberSelectionRuleInspector();
+            InstanceCreator.RuleInspector = expeted;
+            InstanceCreator.RuleInspector.Should()
+                           .BeSameAs( expeted );
+        }
 
-        #endregion
+        [Test]
+        public void SelectionRuleTest()
+        {
+            var actual = InstanceCreator
+                .CreateInstanceOptions<SimpleTestModel>()
+                .Excluding( x => x.ByPath( y => y.MyString ) )
+                .WithFactory( x => 666 )
+                .For( x => x.IsTypeOf<Int32>() )
+                .Complete()
+                .CreateInstance();
+
+            actual.MyInt32.Should()
+                  .Be( 666 );
+            actual.MyString.Should()
+                  .BeNull();
+        }
     }
-
-*/
+}

@@ -51,6 +51,12 @@ namespace Extend
         /// <value>The minimum number of items to create.</value>
         Int32? PopulateCollectionsMinCount { get; }
 
+        /// <summary>
+        ///     Gets the name to use for anonymous items.
+        /// </summary>
+        /// <value>The name to use for anonymous items.</value>
+        String AnonymousItemName { get; }
+
         #endregion
     }
 }

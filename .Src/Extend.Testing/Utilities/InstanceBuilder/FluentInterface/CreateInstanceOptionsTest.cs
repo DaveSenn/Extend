@@ -947,6 +947,28 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void SetAnonymousItemNameTest()
+        {
+            var target = new CreateInstanceOptions<String>();
+            var actual = target.SetAnonymousItemName( null );
+            actual.Should()
+                  .BeSameAs( target );
+            target.AnonymousItemName.Should()
+                  .Be( null );
+        }
+
+        [Test]
+        public void SetAnonymousItemNameTest1()
+        {
+            var target = new CreateInstanceOptions<String>();
+            var actual = target.SetAnonymousItemName( "name" );
+            actual.Should()
+                  .BeSameAs( target );
+            target.AnonymousItemName.Should()
+                  .Be( "name" );
+        }
+
+        [Test]
         public void WithFactoryArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
