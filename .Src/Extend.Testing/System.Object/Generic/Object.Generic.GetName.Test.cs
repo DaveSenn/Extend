@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -35,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase()
+        public void GetNameOverloadTest()
         {
             var model = new TestModel();
             var actual = model.Age.GetName( () => model.Age );
@@ -44,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase1()
+        public void GetNameOverloadTest1()
         {
             var model = new TestModel();
             var actual = model.Name.GetName( () => model.Name );
@@ -53,7 +54,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameOverloadTestCase2()
+        public void GetNameOverloadTest2()
         {
             var model = new TestModel();
             var actual = PropertyChanged.GetName( () => PropertyChanged );
@@ -62,15 +63,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
-        public void GetNameOverloadTestCase3()
+        public void GetNameOverloadTest3()
         {
             const String myString = "";
-            myString.GetName( () => myString );
+            Action test = () => myString.GetName( () => myString );
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void GetNameOverloadTestCase4()
+        public void GetNameOverloadTest4()
         {
             var model = new TestModel
             {
@@ -83,14 +84,14 @@ namespace Extend.Testing
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void GetNameOverloadTestCaseNullCheck()
+        public void GetNameOverloadTestNullCheck()
         {
             Expression<Func<Object>> fieldName = null;
             "".GetName( fieldName );
         }
 
         [Test]
-        public void GetNameTestCase()
+        public void GetNameTest()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Age );
@@ -99,7 +100,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameTestCase1()
+        public void GetNameTest1()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Name );
@@ -108,7 +109,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameTestCase2()
+        public void GetNameTest2()
         {
             var model = new TestModel();
             var actual = this.GetName( x => x.PropertyChanged );
@@ -117,7 +118,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameTestCase3()
+        public void GetNameTest3()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
@@ -127,7 +128,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameTestCase4()
+        public void GetNameTest4()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.SubModel.Foo );
@@ -137,16 +138,16 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
-        public void GetNameTestCaseNotSupportedException()
+        public void GetNameTestNotSupportedException()
         {
             const String myString = "";
-            myString.GetName( x => myString );
+            Action test = () => myString.GetName( x => myString );
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
         [ExpectedException( typeof (ArgumentNullException) )]
-        public void GetNameTestCaseNullCheck()
+        public void GetNameTestNullCheck()
         {
             Expression<Func<Object, Object>> fieldName = null;
             "".GetName( fieldName );

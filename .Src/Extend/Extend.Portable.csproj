@@ -2,7 +2,7 @@
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-    <MinimumVisualStudioVersion>11.0</MinimumVisualStudioVersion>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{44F737D4-DCD5-49B8-BF90-44A7F95BBDF4}</ProjectGuid>
@@ -11,7 +11,7 @@
     <RootNamespace>Extend</RootNamespace>
     <AssemblyName>Extend</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile7</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProductVersion>12.0.0</ProductVersion>
@@ -79,6 +79,7 @@
     <Compile Include="System.DateTime\DateTime.NextMonthStart.cs" />
     <Compile Include="System.Enum\GetValuesExpect.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.cs" />
+    <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.cs" />
     <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.SatisfiesWithMessages.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.Specification.cs" />
@@ -231,6 +232,7 @@
     <Compile Include="System.Object\Generic\Object.Generic.Satisfies.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
+    <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToChar.cs" />
@@ -243,6 +245,7 @@
     <Compile Include="System.String\ConvertSave\String.SaveToInt16.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
+    <Compile Include="System.String\String.Contains.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
@@ -392,7 +395,40 @@
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="Models\AttributeDefinition.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
+    <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
+    <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
+    <Compile Include="System.Type\Type.IsIEnumerableT.cs" />
+    <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreator.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceException.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultEx.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Base\InstanceFactoryBase.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Definition\IInstanceFactory.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\ExpressionInstanceFactory.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Provider\InstanceFactoryProvider.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\CreateInstanceOptions.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\Definition\ICreateInstanceOptions.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\Definition\ICreateInstanceOptionsComplete.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\Definition\IFactoryOptionsConstistent.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\Definition\IFactoryOptionsInconsistent.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\Definition\IIncludeExcludeOptions.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberInformation\Definition\IMemberInformation.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberInformation\MemberInformation.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Definition\IMemberSelectionRule.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Definition\IMemberSelectionRuleInspector.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Enum\CompareMode.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Enum\MemberSelectionMode.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Enum\MemberSelectionResult.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Enum\MemberSelectionRuleTarget.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Inspector\MemberSelectionRuleInspector.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Provider\MemberSelectionRuleProvider.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\AllMemberSelectionRule.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\Base\MemberSelectionRuleBase.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\ExpressionMemberSelectionRule.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\PathMemberSelectionRule.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\TypeMemberSelectionRule.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.cs" />
     <Compile Include="Utilities\Specification\ISpecification.cs" />
@@ -416,5 +452,19 @@
     <Compile Include="System.Int16\System.DateTime\Int16.IsLeapYear.cs" />
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.0.0\lib\portable-net40+sl5+win8+wp8+wpa81\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.0.0\lib\portable-net40+sl5+win8+wp8+wpa81\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

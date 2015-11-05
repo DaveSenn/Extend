@@ -13,14 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <ProductVersion>12.0.0</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <SccProjectName>
-    </SccProjectName>
-    <SccLocalPath>
-    </SccLocalPath>
-    <SccAuxPath>
-    </SccAuxPath>
-    <SccProvider>
-    </SccProvider>
+    <TestProjectType>UnitTest</TestProjectType>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -41,6 +35,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentAssertions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.0.0\lib\net40\FluentAssertions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentAssertions.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentAssertions.4.0.0\lib\net40\FluentAssertions.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
       <Private>True</Private>
@@ -55,9 +57,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
+    <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToGuid.Test.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
+    <Compile Include="System.String\String.Contains.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
@@ -405,6 +410,24 @@
     <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />
+    <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
+    <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
+    <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
+    <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreatorTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceExceptionTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultExTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\Base\InstanceFactoryBaseTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\Factory\ExpressionInstanceFactoryTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\FluentInterface\CreateInstanceOptionsTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberInformation\MemberInformationTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Inspector\MemberSelectionRuleInspectorTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\AllMemberSelectionRuleTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\Base\MemberSelectionRuleBaseTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\ExpressionMemberSelectionRuleTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\PathMemberSelectionRuleTest.cs" />
+    <Compile Include="Utilities\InstanceBuilder\MemberSelection\Rules\TypeMemberSelectionRuleTest.cs" />
     <Compile Include="Utilities\Specification\AndSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\ExpressionSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />
@@ -426,4 +449,5 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
 </Project>
