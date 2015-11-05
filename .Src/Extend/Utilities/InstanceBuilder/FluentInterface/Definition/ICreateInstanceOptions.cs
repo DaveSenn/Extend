@@ -96,6 +96,13 @@ namespace Extend
         ICreateInstanceOptions<T> PopulateCollectionMembers( Boolean? populateCollections );
 
         /// <summary>
+        ///     Configures the name of anonymous items.
+        /// </summary>
+        /// <param name="anonymousItemName">The name used for anonymouns items, or null to use global configuration.</param>
+        /// <returns>Returns the modified create instance options.</returns>
+        ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName );
+
+        /// <summary>
         ///     Adds the given factory to the value providers.
         /// </summary>
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>

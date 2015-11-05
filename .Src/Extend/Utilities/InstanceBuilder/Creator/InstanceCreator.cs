@@ -54,6 +54,15 @@ namespace Extend
         public static Int32 PopulateCollectionsMaxCount { get; set; } = 10;
 
         /// <summary>
+        ///     Gets or sets the name used for anonyoumous items.
+        /// </summary>
+        /// <remarks>
+        ///     Targets collection items.
+        /// </remarks>
+        /// <value>The name used for anonyoumous items.</value>
+        public static String AnonymousItemName { get; set; } = "[AnonymousItem]";
+
+        /// <summary>
         ///     Gets or sets the <see cref="IMemberSelectionRuleInspector" /> used to inspect member selection rules.
         /// </summary>
         /// <value>The <see cref="IMemberSelectionRuleInspector" /> used to inspect member selection rules.</value>
@@ -208,10 +217,41 @@ namespace Extend
         /// <summary>
         ///     Gets the number of items to create for a collection.
         /// </summary>
+        /// <typeparam name="T">The type of the instance to create.</typeparam>
+        /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the number of items to create.</returns>
-        private static Int32 GetCollectionItemCount()
+        private static Int32 GetCollectionItemCount<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
         {
-            return PopulateCollections ? RandomValueEx.GetRandomInt32( PopulateCollectionsMinCount, PopulateCollectionsMaxCount ) : 0;
+            //Return coubt od 0 if collection should net get populated
+            if ( !PopulateCollection( options ) )
+                return 0;
+
+            var min = options.PopulateCollectionsMinCount ?? PopulateCollectionsMinCount;
+            var max = options.PopulateCollectionsMaxCount ?? PopulateCollectionsMaxCount;
+
+            return RandomValueEx.GetRandomInt32( min, max );
+        }
+
+        /// <summary>
+        ///     Gets a value determining whether collections should get populated or not.
+        /// </summary>
+        /// <typeparam name="T">The type of the instance to create.</typeparam>
+        /// <param name="options">Some create instance options.</param>
+        /// <returns>Returns a value of true if collections should get populated or not.</returns>
+        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        {
+            return options.PopulateCollections ?? PopulateCollections;
+        }
+
+        /// <summary>
+        ///     Gets the name for anonymous items.
+        /// </summary>
+        /// <typeparam name="T">The type of the instance to create.</typeparam>
+        /// <param name="options">Some create instance options.</param>
+        /// <returns>Returns the name to use.</returns>
+        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        {
+            return options.AnonymousItemName ?? AnonymousItemName;
         }
 
         /// <summary>
@@ -301,15 +341,6 @@ namespace Extend
             var currentMember = memberInformation as MemberInformation;
             if ( currentMember != null )
                 currentMember.MemberType = concreteType;
-            else
-                currentMember = new MemberInformation
-                {
-                    MemberType = memberInformation.MemberType,
-                    MemberPath = memberInformation.MemberPath,
-                    MemberName = memberInformation.MemberName,
-                    PropertyInfo = memberInformation.PropertyInfo,
-                    MemberObject = instnace
-                };
             memberInformation = currentMember;
 
             return instnace;
@@ -330,9 +361,10 @@ namespace Extend
 
             //Create the array
             var elementType = memberInformation.MemberType.GetElementType();
-            var array = Array.CreateInstance( elementType, GetCollectionItemCount() );
+            var array = Array.CreateInstance( elementType, GetCollectionItemCount( options ) );
 
             //Add items
+            var anonymousItemName = GetAnonymousItemName( options );
             for ( var i = 0; i < array.Length; i++ )
             {
                 //Get the value of the current array item.
@@ -340,8 +372,8 @@ namespace Extend
                                                new MemberInformation
                                                {
                                                    MemberType = elementType,
-                                                   MemberPath = memberInformation.MemberPath,
-                                                   MemberName = "[AnonymousArrayItem]"
+                                                   MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                                                   MemberName = anonymousItemName
                                                } );
                 array.SetValue( arrayItemValue, i );
             }
@@ -390,7 +422,7 @@ namespace Extend
 
             //Check if multiple factories have matched
             if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member. Please make sure only one factory matches the member.",
+                throw new CreateInstanceException( "Found multiple matching factories for member (in options). Please make sure only one factory matches the member.",
                                                    null,
                                                    options.Factories.StringJoin( Environment.NewLine ),
                                                    null,
@@ -404,7 +436,7 @@ namespace Extend
 
             //Check if multiple factories have matched
             if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member. Please make sure only one factory matches the member.",
+                throw new CreateInstanceException( "Found multiple matching factories for member (in global configuration). Please make sure only one factory matches the member.",
                                                    null,
                                                    DefaultFactories.StringJoin( Environment.NewLine ),
                                                    null,
@@ -425,7 +457,7 @@ namespace Extend
         private static Object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, Object collectionInstance ) where T : class
         {
             //Check if collection should get populated or not
-            if ( !PopulateCollections || collectionInstance == null )
+            if ( !PopulateCollection( options ) || collectionInstance == null )
                 return collectionInstance;
 
             //Check if type is collection type
@@ -442,11 +474,10 @@ namespace Extend
 #elif NET40
             var addMethod = memberInformation.MemberType.GetMethod( "Add" );
 #endif
-            if ( addMethod == null )
-                return collectionInstance;
 
             //Add items
-            var collectionCount = GetCollectionItemCount();
+            var anonymousItemName = GetAnonymousItemName( options );
+            var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
             {
                 //Get the value for the current collection item.
@@ -454,8 +485,8 @@ namespace Extend
                                                     new MemberInformation
                                                     {
                                                         MemberType = genericArgumentType,
-                                                        MemberPath = memberInformation.MemberPath,
-                                                        MemberName = "[AnonymousCollectionItem]"
+                                                        MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                                                        MemberName = anonymousItemName
                                                     } );
                 addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
             }
@@ -496,15 +527,6 @@ namespace Extend
                 var currentMember = x as MemberInformation;
                 if ( currentMember != null )
                     currentMember.MemberObject = value;
-                else
-                    currentMember = new MemberInformation
-                    {
-                        MemberType = x.MemberType,
-                        MemberPath = x.MemberPath,
-                        MemberName = x.MemberName,
-                        PropertyInfo = x.PropertyInfo,
-                        MemberObject = value
-                    };
 
                 SetAllMembers( options, currentMember );
             } );

@@ -229,6 +229,17 @@ namespace Extend
         }
 
         /// <summary>
+        ///     Configures the name of anonymous items.
+        /// </summary>
+        /// <param name="anonymousItemName">The name used for anonymouns items, or null to use global configuration.</param>
+        /// <returns>Returns the modified create instance options.</returns>
+        public ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName )
+        {
+            AnonymousItemName = anonymousItemName;
+            return this;
+        }
+
+        /// <summary>
         ///     Adds the given factory to the value providers.
         /// </summary>
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>
@@ -328,7 +339,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
@@ -348,11 +359,11 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             //Check if target is factory.
-            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
-                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
+                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
 
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
         }
@@ -365,11 +376,11 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull(nameof(configurationFunc));
+            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
 
             //Check if target is factory.
-            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
-                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
+                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
 
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
             configurationFunc( this );
@@ -385,11 +396,11 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             //Check if target is factory.
-            if (_currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory)
-                throw new InvalidOperationException("Cannot add rule to factory without specifieing a factory first.");
+            if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
+                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
 
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
         }
@@ -433,6 +444,12 @@ namespace Extend
         /// </summary>
         /// <value>The minimum number of items to create.</value>
         public Int32? PopulateCollectionsMinCount { get; private set; }
+
+        /// <summary>
+        ///     Gets the name to use for anonymous items.
+        /// </summary>
+        /// <value>The name to use for anonymous items.</value>
+        public String AnonymousItemName { get; private set; }
 
         #endregion
     }

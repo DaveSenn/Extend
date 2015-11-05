@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-
 #if PORTABLE45
 using System.Reflection;
 
