@@ -12,7 +12,7 @@
 
 Extend is a set of .Net extension methods build as portable class library. 
 Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.
-Currently it contains 335 unique extension methods (577 overloads included).
+Currently it contains 377 unique extension methods (623 overloads included).
 ### Where can I use it?
 You can use it in every .Net application or library targeting one of the following profiles:
 * .Net 4.5
@@ -27,7 +27,7 @@ __Install-Package PortableExtensions__
 3. Done!
 
 ### Testing
-To guarantee its stability Extend contains over 1500 unit tests.
+To guarantee its stability Extend contains over 1900 unit tests.
 Each method has test with different input parameters, including invalid values to test the exception handling.
 
 ### Example
