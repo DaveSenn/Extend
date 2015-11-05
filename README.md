@@ -1,12 +1,12 @@
 # Welcome to Extend
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/Extend?svg=true)](https://ci.appveyor.com/project/DaveSenn/Extend/branch/master)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/Extend?svg=true)](https://ci.appveyor.com/project/DaveSenn/Extend/branch/dev)
 [![Coverity Scan Build Status](https://scan.coverity.com/projects/5272/badge.svg)](https://scan.coverity.com/projects/5272)
 
 [![NuGet](https://img.shields.io/nuget/v/Extend.svg)](https://www.nuget.org/packages/Extend)
 [![NuGet](https://img.shields.io/nuget/dt/Extend.svg)](https://www.nuget.org/packages/Extend)
 
-[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/Extend/master/License.txt)
+[![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/Extend/dev/License.txt)
 
 ### What is this?
 
@@ -85,4 +85,4 @@ var weekend = dateTime.IsWeekendDay();
 ```
 
 ### License
-Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/Extend/master/License.txt).
+Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/Extend/dev/License.txt).

@@ -37,6 +37,9 @@ Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGe
 #Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, CoverityScan, CoverityUpload
 Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack
 
+# Dirty build task
+Task Dirty -Depends Build, CopyBuildOutput, NuGetPack
+
 # Cleans the output directory
 Task Clean {
     Write-Host "Clean repository" -fore Magenta
@@ -131,7 +134,8 @@ Task NuGetPack {
 
     # Get package version
     $version = GetVersionSecure
-
+	$version = $version.ToString()	+ "-alpha"
+	Write-Host $version
     &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }
 

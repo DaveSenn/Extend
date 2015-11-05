@@ -16,23 +16,14 @@ namespace Extend
         ///     Tries to get a <see cref="MemberExpression" /> from the given expression.
         /// </summary>
         /// <exception cref="ArgumentNullException">expression can not be null.</exception>
-        /// <exception cref="NotSupportedException">
-        ///     The given expression is of a not supported type (supported are:
-        ///     <see cref="ExpressionType.MemberAccess" />, <see cref="ExpressionType.Convert" />).
-        /// </exception>
-        /// <exception cref="NotSupportedException">
-        ///     Expression is not supported (expression is <see cref="ConstantExpression" /> or
-        ///     <see cref="LambdaExpression" /> with an invalid body).
-        /// </exception>
         /// <param name="expression">The expression.</param>
         /// <param name="memberExpression">The extracted <see cref="MemberExpression" />.</param>
         /// <returns>Returns true if a <see cref="MemberExpression" /> could be extracted; otherwise, false.</returns>
         public static Boolean TryGetMemberExpression( this Expression expression, out MemberExpression memberExpression )
         {
-            while ( true )
-            {
-                expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof( expression ) );
 
+            while ( true )
                 switch ( expression.NodeType )
                 {
                     case ExpressionType.MemberAccess:
@@ -49,27 +40,21 @@ namespace Extend
                         }
 
                         //Operand type is not supported
-                        throw new NotSupportedException(
-                            $"Expressions (operand of convert) of type '{operand.NodeType}' are not supported" );
+                        memberExpression = null;
+                        return false;
 
                     case ExpressionType.Constant:
-                        throw new NotSupportedException(
-                            "TryGetMemberExpression does not support expressions of type ConstantExpression. Consider using none-constant member." );
+                        memberExpression = null;
+                        return false;
 
-                    //I cant find any case when expression can be LambdaExpression
                     case ExpressionType.Lambda:
-                        var body = ( expression as LambdaExpression ).Body;
-                        if ( body != null )
-                        {
-                            expression = body;
-                            continue;
-                        }
-                        throw new NotSupportedException( "The given lambda expression has no valid body." );
+                        expression = ( (LambdaExpression) expression ).Body;
+                        break;
 
                     default:
-                        throw new NotSupportedException( $"Expressions of type '{expression.NodeType}' are not supported" );
+                        memberExpression = null;
+                        return false;
                 }
-            }
         }
     }
 }

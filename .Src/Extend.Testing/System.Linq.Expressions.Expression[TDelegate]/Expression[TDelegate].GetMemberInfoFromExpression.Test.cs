@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class ExpressionTDelegateExTest
+    public partial class ExpressionTDelegateExTest
     {
         private class TestModel
         {
@@ -47,18 +47,3 @@ namespace Extend.Testing
         }
     }
 }
-
-/*
- public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
-            this Expression<Func<TDeclairingType, TMember>> memberExpression )
-        {
-            memberExpression.ThrowIfNull( () => memberExpression );
-
-            var memberSelectorExpression = memberExpression.Body.NodeType == ExpressionType.Convert
-                                               ? ( memberExpression.Body as UnaryExpression ).Operand as
-                                                 MemberExpression
-                                               : memberExpression.Body as MemberExpression;
-
-            return memberSelectorExpression == null ? null : memberSelectorExpression.Member;
-        }
- */

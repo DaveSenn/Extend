@@ -11,7 +11,7 @@ namespace Extend
     /// <summary>
     ///     Class containing some extension methods for <see cref="Expression{TDelegate}" />.
     /// </summary>
-    public static class ExpressionTDelegateEx
+    public static partial class ExpressionTDelegateEx
     {
         /// <summary>
         ///     Gets the member info of from the given member expression.
