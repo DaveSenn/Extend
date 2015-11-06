@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -21,10 +22,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void SafeExecuteExceptTestCase_1()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException>( () => { throw new ArgumentException(); } );
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException>( () => { throw new ArgumentException(); } );
+
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
@@ -40,27 +42,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void SafeExecuteExceptTestCase1_1()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
                 () => { throw new ArgumentException(); } );
+
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        [ExpectedException( typeof (NullReferenceException) )]
         public void SafeExecuteExceptTestCase1_2()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
                 () => { throw new NullReferenceException(); } );
+
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SafeExecuteExceptTestCase1NullCheck()
         {
             Action action = null;
-            action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
+            Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
+
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -78,27 +84,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void SafeExecuteExceptTestCase2_1()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => { throw new ArgumentException(); } );
+
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        [ExpectedException( typeof (NullReferenceException) )]
         public void SafeExecuteExceptTestCase2_2()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => { throw new NullReferenceException(); } );
+
+            test.ShouldThrow<NullReferenceException>();
         }
 
         [Test]
-        [ExpectedException( typeof (InvalidOperationException) )]
         public void SafeExecuteExceptTestCase2_3()
         {
-            ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
+            Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => { throw new InvalidOperationException(); } );
+
+            test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]

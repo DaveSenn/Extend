@@ -379,7 +379,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfTrueTestCase4NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null,
