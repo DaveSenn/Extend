@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,7 +19,8 @@ namespace Extend.Testing
             var target = left.And( x => true );
 
             var actual = target.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( actual );
+            actual.Should()
+                  .BeTrue();
         }
 
         [Test]
@@ -28,7 +30,8 @@ namespace Extend.Testing
             var target = left.And( x => false );
 
             var actual = target.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( actual );
+            actual.Should()
+                  .BeFalse();
         }
 
         [Test]
@@ -39,8 +42,11 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
-            Assert.AreEqual( "msgLeft", actual[0] );
+
+            actual.Should()
+                  .HaveCount( 1 );
+            actual.Should()
+                  .Contain( "msgLeft" );
         }
 
         [Test]
@@ -51,9 +57,11 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count() );
-            Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
-            Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
+
+            actual.Should()
+                  .HaveCount( 2 );
+            actual.Should()
+                  .Contain( "msgLeft", "msgRight" );
         }
 
         [Test]
@@ -146,20 +154,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AndTestCaseNullCheck()
         {
             ISpecification<String> left = null;
-            left.And( x => true );
+            Action test = () => left.And( x => true );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AndTestCaseNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;
-            left.And( expression );
+            Action test = () => left.And( expression );
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

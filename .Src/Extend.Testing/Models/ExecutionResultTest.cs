@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,31 +12,36 @@ namespace Extend.Testing
     public class ExecutionResultTest
     {
         [Test]
-        public void CtorTestCase()
+        public void CtorTest()
         {
             var target = new ExecutionResult<String>();
-            Assert.IsNull( target.Exception );
-            Assert.IsNull( target.Result );
+
+            target.Exception.Should()
+                  .BeNull();
+            target.Result.Should()
+                  .BeNull();
         }
 
         [Test]
-        public void ExceptionTestCase()
+        public void ExceptionTest()
         {
             var target = new ExecutionResult<String>();
             var expected = new NotImplementedException();
             target.Exception = expected;
 
-            Assert.AreSame( expected, target.Exception );
+            target.Exception.Should()
+                  .BeSameAs( expected );
         }
 
         [Test]
-        public void ResultTestCase()
+        public void ResultTest()
         {
             var target = new ExecutionResult<String>();
             var expected = RandomValueEx.GetRandomString();
             target.Result = expected;
 
-            Assert.AreEqual( expected, target.Result );
+            target.Result.Should()
+                  .Be( expected );
         }
     }
 }
