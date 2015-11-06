@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -121,10 +122,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase1NullCheck()
         {
-            ActionEx.ExecuteIfFalse( null, RandomValueEx.GetRandomString(), null, false, false );
+            Action test = () => ActionEx.ExecuteIfFalse( null, RandomValueEx.GetRandomString(), null, false, false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -204,15 +206,16 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase2NullCheck()
         {
-            ActionEx.ExecuteIfFalse( null,
+            Action test = () => ActionEx.ExecuteIfFalse( null,
                                      RandomValueEx.GetRandomString(),
                                      RandomValueEx.GetRandomString(),
                                      null,
                                      false,
                                      false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -298,16 +301,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase3NullCheck()
         {
-            ActionEx.ExecuteIfFalse( null,
+            Action test = () => ActionEx.ExecuteIfFalse( null,
                                      RandomValueEx.GetRandomString(),
                                      RandomValueEx.GetRandomString(),
                                      RandomValueEx.GetRandomString(),
                                      null,
                                      false,
                                      false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -405,10 +409,9 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase4NullCheck()
         {
-            ActionEx.ExecuteIfFalse( null,
+            Action test = () => ActionEx.ExecuteIfFalse( null,
                                      RandomValueEx.GetRandomString(),
                                      RandomValueEx.GetRandomString(),
                                      RandomValueEx.GetRandomString(),
@@ -416,6 +419,8 @@ namespace Extend.Testing
                                      null,
                                      false,
                                      false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -454,11 +459,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase5NullCheck()
         {
             Action action = null;
-            action.ExecuteIfFalse( false, false );
+            Action test = () => action.ExecuteIfFalse( false, false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -515,11 +521,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase6NullCheck()
         {
             Action<String> action = null;
-            action.ExecuteIfFalse( RandomValueEx.GetRandomString(), false, false );
+            Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(), false, false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -581,11 +588,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase7NullCheck()
         {
             Action<String, String> action = null;
-            action.ExecuteIfFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false );
+            Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -652,16 +660,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase8NullCheck()
         {
             Action<String, String, String> action = null;
-            action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
+            Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
                                    RandomValueEx.GetRandomString(),
                                    RandomValueEx.GetRandomString(),
                                    null,
                                    false,
                                    false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -737,24 +746,26 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCase9NullCheck()
         {
             Action<String, String, String, String> action = null;
-            action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
+            Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
                                    RandomValueEx.GetRandomString(),
                                    RandomValueEx.GetRandomString(),
                                    RandomValueEx.GetRandomString(),
                                    null,
                                    false,
                                    false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteIfFalseTestCaseNullCheck()
         {
-            ActionEx.ExecuteIfFalse( null, null, false, false );
+            Action test = () => ActionEx.ExecuteIfFalse( null, null, false, false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
