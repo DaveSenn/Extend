@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -142,20 +143,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void OrTestCaseNullCheck()
         {
             ISpecification<String> left = null;
-            left.Or( x => true );
+            Action test = () => left.Or( x => true );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void OrTestCaseNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;
-            left.Or( expression );
+            Action test = () => left.Or( expression );
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
