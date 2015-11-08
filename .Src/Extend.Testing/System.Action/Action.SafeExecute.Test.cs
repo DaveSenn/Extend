@@ -36,7 +36,7 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException>( () => { throw new OutOfMemoryException(); } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            test.ShouldThrow<OutOfMemoryException>();
         }
 
         [Test]
