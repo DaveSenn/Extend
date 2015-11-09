@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -375,9 +374,9 @@ namespace Extend
                 };
 
                 //Get the value of the current array item.
-                var arrayItemValue = GetValue( options, currentMember);
+                var arrayItemValue = GetValue( options, currentMember );
                 currentMember.MemberObject = arrayItemValue;
-                SetAllMembers(options, currentMember);
+                SetAllMembers( options, currentMember );
                 array.SetValue( arrayItemValue, i );
             }
 
@@ -418,7 +417,7 @@ namespace Extend
         private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
             //Get matching factory
-            var factory =  GetExactlymatchingFactory( options, memberInformation );
+            var factory = GetExactlymatchingFactory( options, memberInformation );
             if ( factory != null )
                 return factory;
 
@@ -432,7 +431,7 @@ namespace Extend
             if ( info != null )
                 info.MemberType = nullableType;
 
-            return GetExactlymatchingFactory(options, memberInformation);
+            return GetExactlymatchingFactory( options, memberInformation );
         }
 
         /// <summary>
@@ -484,11 +483,11 @@ namespace Extend
         /// </summary>
         /// <param name="possibleNullableType">The possible nullable type.</param>
         /// <returns>Returns the inner type, or null if the given type is not a nullable.</returns>
-        private static Type GetTypeFromNullable(Type possibleNullableType)
+        private static Type GetTypeFromNullable( Type possibleNullableType )
         {
 #if PORTABLE45
             var typeInfo = possibleNullableType.GetTypeInfo();
-            if (!(typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
                 return null;
 
             return typeInfo.GenericTypeArguments.FirstOrDefault();
@@ -500,7 +499,6 @@ namespace Extend
                                        .FirstOrDefault();
 #endif
         }
-
 
         /// <summary>
         ///     Populates the given instance if it is a collection, based on the collection configuration.
@@ -544,9 +542,9 @@ namespace Extend
                 };
 
                 //Get the value for the current collection item.
-                var collectionItemValue = GetValue( options, currentMember);
+                var collectionItemValue = GetValue( options, currentMember );
                 currentMember.MemberObject = collectionItemValue;
-                SetAllMembers( options, currentMember);
+                SetAllMembers( options, currentMember );
                 addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
             }
             return collectionInstance;
