@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,11 +33,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomizeTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.Randomize();
+            Action test = () => list.Randomize();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

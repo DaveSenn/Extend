@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -56,12 +57,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SpecificationForItemsTestCaseNullCheck()
         {
             var targets = new List<String>();
             Func<String, Boolean> expression = null;
-            var actual = targets.SpecificationForItems( expression );
+            Action test = () => targets.SpecificationForItems( expression );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

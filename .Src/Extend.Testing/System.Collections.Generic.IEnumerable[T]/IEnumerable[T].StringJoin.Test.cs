@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,11 +33,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void StringJoinTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.StringJoin( "" );
+            Action test = () => list.StringJoin( "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,27 +35,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void NotAnyTestCase1NullCheck()
         {
             List<Object> list = null;
-            list.NotAny( x => true );
+            Action test = () => list.NotAny( x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void NotAnyTestCase1NullCheck1()
         {
             Func<Object, Boolean> func = null;
-            new List<Object>().NotAny( func );
+            Action test = () => new List<Object>().NotAny( func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void NotAnyTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.NotAny();
+            Action test = () => list.NotAny();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

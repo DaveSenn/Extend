@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,12 +33,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void RangeToTestCaseArgumentException()
         {
             const Int16 start = 100;
 
-            start.RangeTo( 50 );
+            Action test = () => start.RangeTo( 50 );
+
+            test.ShouldThrow<ArgumentException>();
         }
     }
 }

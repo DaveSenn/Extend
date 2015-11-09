@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,33 +33,37 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAllTestCase1NullCheck()
         {
-            IEnumerableTEx.ContainsAll( null, new List<String>() );
+            Action test = () => IEnumerableTEx.ContainsAll( null, new List<String>() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAllTestCase1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
-            new List<Object>().ContainsAll( enumerable );
+            Action test = () => new List<Object>().ContainsAll( enumerable );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAllTestCaseNullCheck()
         {
-            IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
+            Action test = () => IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAllTestCaseNullCheck1()
         {
             Object[] array = null;
-            new List<Object>().ContainsAll( array );
+            Action test = () => new List<Object>().ContainsAll( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

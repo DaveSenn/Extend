@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -39,11 +40,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDictionaryTestCaseNullCheck()
         {
             IEnumerable<IGrouping<Object, Object>> groupings = null;
-            groupings.ToDictionary();
+            Action test = () => groupings.ToDictionary();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
