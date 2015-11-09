@@ -21,19 +21,19 @@ namespace Extend
         ///     Gets the default factories.
         /// </summary>
         /// <remarks>The default factories.</remarks>
-        public static BlockingCollection<IInstanceFactory> DefaultFactories { get; } = new BlockingCollection<IInstanceFactory>();
+        public static List<IInstanceFactory> DefaultFactories { get; } = new List<IInstanceFactory>();
 
         /// <summary>
         ///     Gets the default member selection rule.
         /// </summary>
         /// <value>The default member selection rule.</value>
-        public static BlockingCollection<IMemberSelectionRule> DefaultMemberSelectionRules { get; } = new BlockingCollection<IMemberSelectionRule>();
+        public static List<IMemberSelectionRule> DefaultMemberSelectionRules { get; } = new List<IMemberSelectionRule>();
 
         /// <summary>
         ///     Gets the default member children selection rule.
         /// </summary>
         /// <value>The default member children selection rule.</value>
-        public static BlockingCollection<IMemberSelectionRule> DefaultMemberChildreSelectionRules { get; } = new BlockingCollection<IMemberSelectionRule>();
+        public static List<IMemberSelectionRule> DefaultMemberChildreSelectionRules { get; } = new List<IMemberSelectionRule>();
 
         /// <summary>
         ///     Gets or sets a value determining whether collections should get populated or not.
@@ -367,14 +367,17 @@ namespace Extend
             var anonymousItemName = GetAnonymousItemName( options );
             for ( var i = 0; i < array.Length; i++ )
             {
+                var currentMember = new MemberInformation
+                {
+                    MemberType = elementType,
+                    MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                    MemberName = anonymousItemName
+                };
+
                 //Get the value of the current array item.
-                var arrayItemValue = GetValue( options,
-                                               new MemberInformation
-                                               {
-                                                   MemberType = elementType,
-                                                   MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
-                                                   MemberName = anonymousItemName
-                                               } );
+                var arrayItemValue = GetValue( options, currentMember);
+                currentMember.MemberObject = arrayItemValue;
+                SetAllMembers(options, currentMember);
                 array.SetValue( arrayItemValue, i );
             }
 
@@ -414,6 +417,34 @@ namespace Extend
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
         private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
+            //Get matching factory
+            var factory =  GetExactlymatchingFactory( options, memberInformation );
+            if ( factory != null )
+                return factory;
+
+            //Try get inner type of nullable
+            var nullableType = GetTypeFromNullable( memberInformation.MemberType );
+            if ( nullableType == null )
+                return null;
+
+            //Update type
+            var info = memberInformation as MemberInformation;
+            if ( info != null )
+                info.MemberType = nullableType;
+
+            return GetExactlymatchingFactory(options, memberInformation);
+        }
+
+        /// <summary>
+        ///     Gets the matching factory for the given member.
+        /// </summary>
+        /// <exception cref="CreateInstanceException">Multiple matching factories found.</exception>
+        /// <typeparam name="T">The type of the instance to create.</typeparam>
+        /// <param name="options">Some create instance options.</param>
+        /// <param name="memberInformation">The member to check.</param>
+        /// <returns>Returns the matching factory, or null if no factory was found.</returns>
+        private static IInstanceFactory GetExactlymatchingFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        {
             //Get factory from options
             var matchingFactories = options.Factories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
                                            .ToList();
@@ -422,11 +453,12 @@ namespace Extend
 
             //Check if multiple factories have matched
             if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member (in options). Please make sure only one factory matches the member.",
-                                                   null,
-                                                   options.Factories.StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
+                throw new CreateInstanceException(
+                    $"Found multiple matching factories for member (in options). Type is '{memberInformation.MemberType}'. Please make sure only one factory matches the member.",
+                    null,
+                    options.Factories.StringJoin( Environment.NewLine ),
+                    null,
+                    memberInformation );
 
             //Get factory from default factories
             matchingFactories = DefaultFactories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
@@ -436,15 +468,39 @@ namespace Extend
 
             //Check if multiple factories have matched
             if ( matchingFactories.Any() )
-                throw new CreateInstanceException( "Found multiple matching factories for member (in global configuration). Please make sure only one factory matches the member.",
-                                                   null,
-                                                   DefaultFactories.StringJoin( Environment.NewLine ),
-                                                   null,
-                                                   memberInformation );
+                throw new CreateInstanceException(
+                    $"Found multiple matching factories for member (in global configuration). Type is '{memberInformation.MemberType}'.  Please make sure only one factory matches the member.",
+                    null,
+                    DefaultFactories.StringJoin( Environment.NewLine ),
+                    null,
+                    memberInformation );
 
             //No factory found
             return null;
         }
+
+        /// <summary>
+        ///     Gets the 'inner' type from a nullable type.
+        /// </summary>
+        /// <param name="possibleNullableType">The possible nullable type.</param>
+        /// <returns>Returns the inner type, or null if the given type is not a nullable.</returns>
+        private static Type GetTypeFromNullable(Type possibleNullableType)
+        {
+#if PORTABLE45
+            var typeInfo = possibleNullableType.GetTypeInfo();
+            if (!(typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof(Nullable<>)))
+                return null;
+
+            return typeInfo.GenericTypeArguments.FirstOrDefault();
+#elif NET40
+            if ( !( possibleNullableType.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
+                return null;
+
+            return possibleNullableType.GetGenericArguments()
+                                       .FirstOrDefault();
+#endif
+        }
+
 
         /// <summary>
         ///     Populates the given instance if it is a collection, based on the collection configuration.
@@ -480,14 +536,17 @@ namespace Extend
             var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
             {
+                var currentMember = new MemberInformation
+                {
+                    MemberType = genericArgumentType,
+                    MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                    MemberName = anonymousItemName
+                };
+
                 //Get the value for the current collection item.
-                var collectionItemValue = GetValue( options,
-                                                    new MemberInformation
-                                                    {
-                                                        MemberType = genericArgumentType,
-                                                        MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
-                                                        MemberName = anonymousItemName
-                                                    } );
+                var collectionItemValue = GetValue( options, currentMember);
+                currentMember.MemberObject = collectionItemValue;
+                SetAllMembers( options, currentMember);
                 addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
             }
             return collectionInstance;

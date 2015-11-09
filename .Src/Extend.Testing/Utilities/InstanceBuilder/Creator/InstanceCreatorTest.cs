@@ -32,7 +32,18 @@ namespace Extend.Testing
             public String[] MyStringArray { get; set; }
             public Int32[] MyIntArray { get; set; }
 
+            public SubModel MySubModel { get; set; }
+
             #endregion
+        }
+
+        public class SubModel
+        {
+            public String MyString { get; set; }
+
+            public Int32? MyNullableInt32 { get; set; }
+
+            public DateTime? MyDateTime { get; set; }
         }
 
         private class ModelNeedingFactory
@@ -63,6 +74,19 @@ namespace Extend.Testing
             public Int32 MyInt32 { get; set; }
 
             #endregion
+        }
+
+        [Test]
+        public void SubModelTest()
+        {
+            var actual = InstanceCreator.CreateInstance<TestModel>();
+
+            actual.MySubModel.MyDateTime.HasValue.Should()
+                  .BeTrue();
+            actual.MySubModel.MyNullableInt32.HasValue.Should()
+                  .BeTrue();
+            actual.MySubModel.MyString.Should()
+                  .NotBeEmpty();
         }
 
         [Test]
@@ -395,8 +419,7 @@ namespace Extend.Testing
         public void NoMatchingSelectionRuleTest()
         {
             var rules = new List<IMemberSelectionRule>();
-            while ( InstanceCreator.DefaultMemberSelectionRules.Count > 0 )
-                rules.Add( InstanceCreator.DefaultMemberSelectionRules.Take() );
+            InstanceCreator.DefaultMemberSelectionRules.Clear();
 
             Action test = () => InstanceCreator.CreateInstance<TestModel>();
             test.ShouldThrow<CreateInstanceException>()
