@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -44,45 +45,51 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeIfTestCase1NullCheck1()
         {
-            new List<String>().RemoveRangeIf( x => false, null );
+            Action test = () => new List<String>().RemoveRangeIf( x => false, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeIfTestCase1NullCheck2()
         {
-            new List<String>().RemoveRangeIf( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => new List<String>().RemoveRangeIf( null, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeIfTestCaseNullCheck()
         {
-            CollectionTEx.RemoveRangeIf( null, x => false, "test0", "test1", "test2" );
+            Action test = () => CollectionTEx.RemoveRangeIf( null, x => false, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeIfTestCaseNullCheck1()
         {
-            new List<String>().RemoveRangeIf( x => false, null );
+            Action test = () => new List<String>().RemoveRangeIf( x => false, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeIfTestCaseNullCheck2()
         {
-            new List<String>().RemoveRangeIf( null, "test0", "test1", "test2" );
+            Action test = () => new List<String>().RemoveRangeIf( null, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveRangeTestIfCase1NullCheck()
         {
-            CollectionTEx.RemoveRangeIf( null, x => false, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => CollectionTEx.RemoveRangeIf( null, x => false, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

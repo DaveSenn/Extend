@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -12,18 +13,20 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKey1TestCaseNullCheck()
         {
             var keyValuePair = new KeyValuePair<Object, Object>();
-            new Dictionary<Object, Object>().AddIfNotContainsKey( keyValuePair );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( keyValuePair );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKey1TestCaseNullCheck1()
         {
-            IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
+            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -73,25 +76,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase2NullCheck()
         {
-            IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
+            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase2NullCheck1()
         {
-            new Dictionary<Object, Object>().AddIfNotContainsKey( null, () => new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, () => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase2NullCheck2()
         {
             Func<Object> func = null;
-            new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -110,39 +116,44 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase3NullCheck()
         {
-            IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
+            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase3NullCheck1()
         {
-            new Dictionary<Object, Object>().AddIfNotContainsKey( null, x => new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, x => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCase3NullCheck2()
         {
             Func<Object, Object> func = null;
-            new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCaseNullCheck()
         {
-            IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
+            Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsKeyTestCaseNullCheck1()
         {
-            new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -28,10 +29,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfNotContainsTestCaseNullCheck()
         {
-            CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
+            Action test = () => CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

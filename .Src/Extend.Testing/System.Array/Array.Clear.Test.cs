@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -27,11 +28,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ClearTestCaseNullCheck()
         {
             Array array = null;
-            array.Clear( 0, 0 );
+            Action test = () => array.Clear( 0, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -35,12 +36,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GenericIndexOfTestCase1NullCheck()
         {
             String[] array = null;
-            var actual = array.IndexOf( "test2", 1 );
-            Assert.AreEqual( 1, actual );
+            Action test = () => array.IndexOf( "test2", 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -58,21 +59,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GenericIndexOfTestCase2NullCheck()
         {
             String[] array = null;
-            var actual = array.IndexOf( "test3", 1, 2 );
-            Assert.AreEqual( 2, actual );
+            Action test = () => array.IndexOf( "test3", 1, 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GenericIndexOfTestCaseNullCheck()
         {
             String[] array = null;
-            var actual = array.IndexOf( "test2" );
-            Assert.AreEqual( 1, actual );
+            Action test = () => array.IndexOf( "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -35,10 +36,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IfFalseTestCase1NullCheck()
         {
-            false.IfFalse( "", null, x => Assert.Fail() );
+            Action test = () => false.IfFalse( "", null, x => Assert.Fail() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -54,10 +56,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IfFalseTestCase2NullCheck()
         {
-            false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -81,10 +84,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IfFalseTestCase3NullCheck()
         {
-            false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -110,17 +114,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IfFalseTestCase4NullCheck()
         {
-            false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.Fail() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IfFalseTestCaseNullCheck()
         {
-            false.IfFalse( null, Assert.Fail );
+            Action test = () => false.IfFalse( null, Assert.Fail );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

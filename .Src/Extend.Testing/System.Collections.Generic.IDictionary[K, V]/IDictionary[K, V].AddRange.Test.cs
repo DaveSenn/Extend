@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,17 +35,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCaseNullCheck()
         {
-            IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
+            Action test = () => IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCaseNullCheck1()
         {
-            new Dictionary<Object, Object>().AddRange( null );
+            Action test = () => new Dictionary<Object, Object>().AddRange( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

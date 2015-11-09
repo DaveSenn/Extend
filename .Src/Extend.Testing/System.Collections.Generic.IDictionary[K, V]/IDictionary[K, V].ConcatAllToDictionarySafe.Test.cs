@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -124,7 +125,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllToDictionarySafeTestCaseNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
@@ -134,11 +134,12 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32>[] others = null;
 
-            first.ConcatAllToDictionarySafe( others );
+            Action test = () => first.ConcatAllToDictionarySafe( others );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllToDictionarySafeTestCaseNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
@@ -153,7 +154,9 @@ namespace Extend.Testing
                 { 5, 6 }
             };
 
-            first.ConcatAllToDictionarySafe( other1, other2 );
+            Action test = () => first.ConcatAllToDictionarySafe( other1, other2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

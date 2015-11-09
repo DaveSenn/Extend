@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -49,7 +50,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase1ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -58,11 +58,12 @@ namespace Extend.Testing
             };
             var targetArray = new Int32[2];
 
-            var actual = sourceArray.Slice( 2, targetArray );
+            Action test = () => sourceArray.Slice( 2, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase1ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -74,19 +75,21 @@ namespace Extend.Testing
             };
             var targetArray = new Int32[1];
 
-            var actual = sourceArray.Slice( 2, targetArray );
+            Action test = () => sourceArray.Slice( 2, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCase1NullCheck()
         {
             Int32[] sourceArray = null;
-            var actual = sourceArray.Slice( 2, new Int32[2] );
+            Action test = () => sourceArray.Slice( 2, new Int32[2] );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCase1NullCheck1()
         {
             var sourceArray = new[]
@@ -94,7 +97,9 @@ namespace Extend.Testing
                 1,
                 2
             };
-            var actual = sourceArray.Slice( 2, null );
+            Action test = () => sourceArray.Slice( 2, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -116,7 +121,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase2ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -126,11 +130,12 @@ namespace Extend.Testing
                 3,
                 4
             };
-            var actual = sourceArray.Slice( 10, 2 );
+            Action test = () => sourceArray.Slice( 10, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase2ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -140,11 +145,12 @@ namespace Extend.Testing
                 3,
                 4
             };
-            var actual = sourceArray.Slice( 0, 10 );
+            Action test = () => sourceArray.Slice( 0, 10 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase2ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
@@ -154,16 +160,19 @@ namespace Extend.Testing
                 3,
                 4
             };
-            var actual = sourceArray.Slice( 2, 3 );
+            Action test = () => sourceArray.Slice( 2, 3 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCase2NullCheck()
         {
             Int32[] sourceArray = null;
 
-            var actual = sourceArray.Slice( 2, 2 );
+            Action test = () => sourceArray.Slice( 2, 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -187,7 +196,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase3ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -198,11 +206,12 @@ namespace Extend.Testing
                 4
             };
             var targetArray = new Int32[4];
-            var actual = sourceArray.Slice( 10, 2, targetArray );
+            Action test = () => sourceArray.Slice( 10, 2, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase3ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -213,11 +222,12 @@ namespace Extend.Testing
                 4
             };
             var targetArray = new Int32[4];
-            var actual = sourceArray.Slice( 0, 10, targetArray );
+            Action test = () => sourceArray.Slice( 0, 10, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase3ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
@@ -228,11 +238,12 @@ namespace Extend.Testing
                 4
             };
             var targetArray = new Int32[4];
-            var actual = sourceArray.Slice( 2, 3, targetArray );
+            Action test = () => sourceArray.Slice( 2, 3, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase3ArgumentOutOfRangeException3()
         {
             var sourceArray = new[]
@@ -243,11 +254,12 @@ namespace Extend.Testing
                 4
             };
             var targetArray = new Int32[4];
-            var actual = sourceArray.Slice( -1, 3, targetArray );
+            Action test = () => sourceArray.Slice( -1, 3, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCase3ArgumentOutOfRangeException4()
         {
             var sourceArray = new[]
@@ -258,19 +270,21 @@ namespace Extend.Testing
                 4
             };
             var targetArray = new Int32[4];
-            var actual = sourceArray.Slice( 1, -1, targetArray );
+            Action test = () => sourceArray.Slice( 1, -1, targetArray );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCase3NullCheck()
         {
             Int32[] sourceArray = null;
-            var actual = sourceArray.Slice( 2, 2, new Int32[2] );
+            Action test = () => sourceArray.Slice( 2, 2, new Int32[2] );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCase3NullCheck1()
         {
             var sourceArray = new[]
@@ -280,11 +294,12 @@ namespace Extend.Testing
                 3,
                 4
             };
-            var actual = sourceArray.Slice( 2, 2, null );
+            Action test = () => sourceArray.Slice( 2, 2, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void SliceTestCaseArgumentOutOfRangeExceptio()
         {
             var sourceArray = new[]
@@ -295,16 +310,19 @@ namespace Extend.Testing
                 4
             };
 
-            var actual = sourceArray.Slice( 10 );
+            Action test = () => sourceArray.Slice( 10 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SliceTestCaseNullCheck()
         {
             Int32[] sourceArray = null;
 
-            var actual = sourceArray.Slice( 2 );
+            Action test = () => sourceArray.Slice( 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

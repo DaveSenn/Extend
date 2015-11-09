@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -61,7 +62,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void ConcatToDictionaryTestCaseDuplicatedKeys()
         {
             var first = new Dictionary<Int32, Int32>
@@ -77,11 +77,12 @@ namespace Extend.Testing
                 { 3, 4 }
             };
 
-            first.ConcatToDictionary( second );
+            Action test = () => first.ConcatToDictionary( second );
+
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatToDictionaryTestCaseNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
@@ -91,11 +92,12 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32> second = null;
 
-            first.ConcatToDictionary( second );
+            Action test = () => first.ConcatToDictionary( second );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatToDictionaryTestCaseNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
@@ -105,7 +107,9 @@ namespace Extend.Testing
                 { 1, 2 }
             };
 
-            first.ConcatToDictionary( second );
+            Action test = () => first.ConcatToDictionary( second );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

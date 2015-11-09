@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -27,11 +28,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAllKeysTestCaseNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
-            dictionary.GetAllKeys();
+            Action test = () => dictionary.GetAllKeys();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

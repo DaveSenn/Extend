@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -43,19 +44,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReverseTestCase1NullCheck()
         {
             Array array = null;
-            array.Reverse( 1, 2 );
+            Action test = () => array.Reverse( 1, 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReverseTestCaseNullCheck()
         {
             Array array = null;
-            array.Reverse();
+            Action test = () => array.Reverse();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
