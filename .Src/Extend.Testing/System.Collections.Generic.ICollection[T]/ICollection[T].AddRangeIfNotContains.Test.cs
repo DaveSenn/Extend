@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -12,18 +13,20 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfNotContains1TestCaseNullCheck()
         {
-            CollectionTEx.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => CollectionTEx.AddRangeIfNotContains( null, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfNotContains1TestCaseNullCheck1()
         {
             List<String> list = null;
-            new List<String>().AddRangeIfNotContains( list );
+            Action test = () => new List<String>().AddRangeIfNotContains( list );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -53,17 +56,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfNotContainsTestCaseNullCheck()
         {
-            CollectionTEx.AddRangeIfNotContains( null, "test0", "test1", "test2" );
+            Action test = () => CollectionTEx.AddRangeIfNotContains( null, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfNotContainsTestCaseNullCheck1()
         {
-            new List<String>().AddRangeIfNotContains( null );
+            Action test = () => new List<String>().AddRangeIfNotContains( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -38,45 +39,51 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCase1NullCheck()
         {
-            CollectionTEx.AddRangeIf( null, x => true, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => CollectionTEx.AddRangeIf( null, x => true, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCase1NullCheck1()
         {
-            new List<String>().AddRangeIf( x => true, null );
+            Action test = () => new List<String>().AddRangeIf( x => true, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCase1NullCheck2()
         {
-            new List<String>().AddRangeIf( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => new List<String>().AddRangeIf( null, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCaseNullCheck()
         {
-            CollectionTEx.AddRangeIf( null, x => true, "test0", "test1", "test2" );
+            Action test = () => CollectionTEx.AddRangeIf( null, x => true, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCaseNullCheck1()
         {
-            new List<String>().AddRangeIf( x => true, null );
+            Action test = () => new List<String>().AddRangeIf( x => true, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeIfTestCaseNullCheck2()
         {
-            new List<String>().AddRangeIf( null, "test0", "test1", "test2" );
+            Action test = () => new List<String>().AddRangeIf( null, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

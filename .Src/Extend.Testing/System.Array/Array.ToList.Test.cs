@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -27,15 +28,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToListTestCaseNullCheck()
         {
             Array array = null;
-            array.ToList( x => "test" + x );
+            Action test = () => array.ToList( x => "test" + x );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToListTestCaseNullCheck1()
         {
             Array array = new[]
@@ -45,7 +46,9 @@ namespace Extend.Testing
                 "2"
             };
             Func<Object, String> func = null;
-            array.ToList( func );
+            Action test = () => array.ToList( func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

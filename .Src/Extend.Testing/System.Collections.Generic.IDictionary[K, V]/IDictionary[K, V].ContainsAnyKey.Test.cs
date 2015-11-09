@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -53,34 +54,38 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyKeyTestCase1NullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
-            dictionary.ContainsAnyKey( new List<Object>() );
+            Action test = () => dictionary.ContainsAnyKey( new List<Object>() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyKeyTestCase1NullCheck1()
         {
             IEnumerable<Object> keys = null;
-            new Dictionary<Object, Object>().ContainsAnyKey( keys );
+            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( keys );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyKeyTestCaseNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
-            dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
+            Action test = () => dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyKeyTestCaseNullCheck1()
         {
-            new Dictionary<Object, Object>().ContainsAnyKey( null );
+            Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

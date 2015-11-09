@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,32 +33,36 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCase1NullCheck()
         {
-            CollectionTEx.AddRange( null, new List<String> { "test0", "test1", "test2" } );
+            Action test = () => CollectionTEx.AddRange( null, new List<String> { "test0", "test1", "test2" } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCase1NullCheck1()
         {
             List<String> array = null;
-            CollectionTEx.AddRange( new List<String>(), array );
+            Action test = () => CollectionTEx.AddRange( new List<String>(), array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCaseNullCheck()
         {
-            CollectionTEx.AddRange( null, "test0", "test1", "test2" );
+            Action test = () => CollectionTEx.AddRange( null, "test0", "test1", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddRangeTestCaseNullCheck1()
         {
-            CollectionTEx.AddRange( new List<String>(), null );
+            Action test = () => CollectionTEx.AddRange( new List<String>(), null );
+
+            test.ShouldThrow<ArgumentException>();
         }
     }
 }

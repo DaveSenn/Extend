@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -26,19 +27,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfTestCaseNullCheck()
         {
             List<String> c = null;
-            c.AddIf( x => true, RandomValueEx.GetRandomString() );
+            Action test = () => c.AddIf( x => true, RandomValueEx.GetRandomString() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddIfTestCaseNullCheck1()
         {
             var c = new List<String>();
-            c.AddIf( null, RandomValueEx.GetRandomString() );
+            Action test = () => c.AddIf( null, RandomValueEx.GetRandomString() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

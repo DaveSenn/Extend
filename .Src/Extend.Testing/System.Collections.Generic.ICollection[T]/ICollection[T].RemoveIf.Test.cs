@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -29,17 +30,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveIfTestCaseNullCheck()
         {
-            CollectionTEx.RemoveIf( null, "", x => true );
+            Action test = () => CollectionTEx.RemoveIf( null, "", x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveIfTestCaseNullCheck1()
         {
-            new List<String>().RemoveIf( "", null );
+            Action test = () => new List<String>().RemoveIf( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

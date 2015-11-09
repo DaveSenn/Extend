@@ -248,11 +248,11 @@ namespace Extend.Testing
         public void SafeExecuteTestCase5_2()
         {
             Action test = () => ActionEx.SafeExecute( () => { throw new OutOfMemoryException(); },
-                                  typeof (ArgumentNullException),
-                                  typeof (ArgumentOutOfRangeException),
-                                  typeof (InvalidCastException),
-                                  typeof (InvalidOperationException),
-                                  typeof (ApplicationException) );
+                                                      typeof (ArgumentNullException),
+                                                      typeof (ArgumentOutOfRangeException),
+                                                      typeof (InvalidCastException),
+                                                      typeof (InvalidOperationException),
+                                                      typeof (ApplicationException) );
 
             test.ShouldThrow<OutOfMemoryException>();
         }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -46,17 +47,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase1NullCheck()
         {
-            IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
+            Action test = () => IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase1NullCheck1()
         {
-            new Dictionary<Object, Object>().AddOrUpdate( new KeyValuePair<Object, Object>( null, new Object() ) );
+            Action test = () => new Dictionary<Object, Object>().AddOrUpdate( new KeyValuePair<Object, Object>( null, new Object() ) );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -77,25 +80,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase2NullCheck()
         {
-            IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
+            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase2NullCheck1()
         {
-            new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase2NullCheck2()
         {
             Func<String> func = null;
-            new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
+            Action test = () => new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -116,31 +122,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase3NullCheck()
         {
-            IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
+            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCase3NullCheck1()
         {
-            new Dictionary<Object, Object>().AddOrUpdate( null, x => new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, x => new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCaseNullCheck()
         {
-            IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
+            Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddOrUpdateTestCaseNullCheck1()
         {
-            new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
+            Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

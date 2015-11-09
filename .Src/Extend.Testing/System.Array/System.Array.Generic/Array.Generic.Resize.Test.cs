@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -23,12 +24,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GenericResizeTestCaseNullCheck()
         {
             String[] array = null;
-            array = array.Resize( 10 );
-            Assert.AreEqual( 10, array.Length );
+            Action test = () => array.Resize( 10 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
