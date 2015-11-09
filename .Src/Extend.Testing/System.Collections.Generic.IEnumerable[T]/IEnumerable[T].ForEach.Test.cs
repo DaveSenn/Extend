@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,30 +26,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (InvalidOperationException) )]
         public void ForEachTestCase1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
-            var actual = IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
-            Assert.AreSame( list, actual );
-            Assert.AreEqual( 0, list.Count );
+            Action test = () => IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
+
+            test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachTestCase1NullCheck()
         {
             List<Object> list = null;
-            list.ForEach( ( x, i ) => { } );
+            Action test = () => list.ForEach( ( x, i ) => { } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachTestCase1NullCheck1()
         {
             Action<Object, Int32> action = null;
-            new List<Object>().ForEach( action );
+            Action test = () => new List<Object>().ForEach( action );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -64,12 +66,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (InvalidOperationException) )]
         public void ForEachTestCase3()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
-            list.ForEach( ( x, i ) => list.Remove( x ) );
+            Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
+
+            test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
@@ -84,19 +87,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachTestCaseNullCheck()
         {
             List<Object> list = null;
-            IEnumerableTEx.ForEach( list, Console.WriteLine );
+            Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachTestCaseNullCheck1()
         {
             Action<Object> action = null;
-            IEnumerableTEx.ForEach( new List<Object>(), action );
+            Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

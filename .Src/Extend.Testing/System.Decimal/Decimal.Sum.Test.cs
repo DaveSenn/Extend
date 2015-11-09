@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -35,11 +36,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase1NullCheck()
         {
             Decimal?[] values = null;
-            var actual = ( new Decimal( 10 ) as Decimal? ).Sum( values );
+            Action test = () => ( new Decimal( 10 ) as Decimal? ).Sum( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -53,19 +55,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase2NullCheck()
         {
             String[] values = null;
-            var actual = "Test".Sum( x => new Decimal( x.Length ), values );
+            Action test = () => "Test".Sum( x => new Decimal( x.Length ), values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase2NullCheck2()
         {
             Func<String, Decimal> func = null;
-            var actual = "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum( func, "test", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -79,27 +83,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase3NullCheck()
         {
             String[] values = null;
-            var actual = "Test".Sum( x => (Decimal?) x.Length, values );
+            Action test = () => "Test".Sum( x => (Decimal?) x.Length, values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase3NullCheck2()
         {
             Func<String, Decimal?> func = null;
-            var actual = "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum( func, "test", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCaseNullCheck()
         {
             Decimal[] values = null;
-            var actual = new Decimal( 10 ).Sum( values );
+            Action test = () => new Decimal( 10 ).Sum( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
