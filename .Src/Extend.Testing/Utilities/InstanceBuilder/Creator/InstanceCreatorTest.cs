@@ -39,11 +39,15 @@ namespace Extend.Testing
 
         public class SubModel
         {
+            #region Properties
+
             public String MyString { get; set; }
 
             public Int32? MyNullableInt32 { get; set; }
 
             public DateTime? MyDateTime { get; set; }
+
+            #endregion
         }
 
         private class ModelNeedingFactory
@@ -74,19 +78,6 @@ namespace Extend.Testing
             public Int32 MyInt32 { get; set; }
 
             #endregion
-        }
-
-        [Test]
-        public void SubModelTest()
-        {
-            var actual = InstanceCreator.CreateInstance<TestModel>();
-
-            actual.MySubModel.MyDateTime.HasValue.Should()
-                  .BeTrue();
-            actual.MySubModel.MyNullableInt32.HasValue.Should()
-                  .BeTrue();
-            actual.MySubModel.MyString.Should()
-                  .NotBeEmpty();
         }
 
         [Test]
@@ -176,6 +167,11 @@ namespace Extend.Testing
             InstanceCreator.DefaultFactories.Contains( factory )
                            .Should()
                            .BeTrue();
+
+            InstanceCreator.DefaultFactories.Remove( factory );
+            InstanceCreator.DefaultFactories.Contains( factory )
+                           .Should()
+                           .BeFalse();
         }
 
         [Test]
@@ -391,13 +387,20 @@ namespace Extend.Testing
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>();
 
-            InstanceCreator.DefaultFactories.Add( new ExpressionInstanceFactory( x => 100 )
-                                                      .AddSelectionRule( new TypeMemberSelectionRule( typeof (Double), MemberSelectionMode.Include, CompareMode.Is ) ) );
+            var factory = new ExpressionInstanceFactory( x => 100 )
+                .AddSelectionRule( new TypeMemberSelectionRule( typeof (Double), MemberSelectionMode.Include, CompareMode.Is ) );
+            InstanceCreator.DefaultFactories.Add( factory );
 
             Action test = () => options.Complete()
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Found multiple matching factories for member (in global configuration). Please make sure only one factory matches the member." );
+                .WithMessage(
+                    "Found multiple matching factories for member (in global configuration). Type is 'System.Double'.  Please make sure only one factory matches the member." );
+
+            InstanceCreator.DefaultFactories.Remove( factory );
+            InstanceCreator.DefaultFactories.Contains( factory )
+                           .Should()
+                           .BeFalse();
         }
 
         [Test]
@@ -412,13 +415,13 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Found multiple matching factories for member (in options). Please make sure only one factory matches the member." );
+                .WithMessage( "Found multiple matching factories for member (in options). Type is 'System.Double'. Please make sure only one factory matches the member." );
         }
 
         [Test]
         public void NoMatchingSelectionRuleTest()
         {
-            var rules = new List<IMemberSelectionRule>();
+            var rules = new List<IMemberSelectionRule>( InstanceCreator.DefaultMemberSelectionRules );
             InstanceCreator.DefaultMemberSelectionRules.Clear();
 
             Action test = () => InstanceCreator.CreateInstance<TestModel>();
@@ -523,6 +526,19 @@ namespace Extend.Testing
                   .Be( 666 );
             actual.MyString.Should()
                   .BeNull();
+        }
+
+        [Test]
+        public void SubModelTest()
+        {
+            var actual = InstanceCreator.CreateInstance<TestModel>();
+
+            actual.MySubModel.MyDateTime.HasValue.Should()
+                  .BeTrue();
+            actual.MySubModel.MyNullableInt32.HasValue.Should()
+                  .BeTrue();
+            actual.MySubModel.MyString.Should()
+                  .NotBeEmpty();
         }
     }
 }
