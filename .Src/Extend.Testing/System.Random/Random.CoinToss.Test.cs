@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,10 +19,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CoinTossTestCaseNullCheck()
         {
-            RandomEx.CoinToss( null );
+            Action test = () => RandomEx.CoinToss( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

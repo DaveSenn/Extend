@@ -3,6 +3,7 @@
 using System;
 using System.Globalization;
 using System.Threading;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -33,24 +34,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDecimalTestCase1NullCheck()
         {
-            ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
+            Action test = () => ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDecimalTestCase1NullCheck1()
         {
-            ObjectEx.ToDecimal( "false", null );
+            Action test = () => ObjectEx.ToDecimal( "false", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDecimalTestCaseNullCheck()
         {
-            ObjectEx.ToDecimal( null );
+            Action test = () => ObjectEx.ToDecimal( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

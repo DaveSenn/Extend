@@ -83,11 +83,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetNameOverloadTestNullCheck()
         {
             Expression<Func<Object>> fieldName = null;
-            "".GetName( fieldName );
+            Action test = () => "".GetName( fieldName );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -146,11 +147,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetNameTestNullCheck()
         {
             Expression<Func<Object, Object>> fieldName = null;
-            "".GetName( fieldName );
+            Action test = () => "".GetName( fieldName );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -3,6 +3,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -39,11 +40,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetMemberInfoFromExpressionTestCaseNullCheck()
         {
             Expression<Func<TestModel, Object>> memberExpression = null;
-            memberExpression.GetMemberInfoFromExpression();
+            Action test = () => memberExpression.GetMemberInfoFromExpression();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

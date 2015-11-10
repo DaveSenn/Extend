@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,24 +33,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToByteTestCase1NullCheck()
         {
-            StringEx.ToByte( null, CultureInfo.InvariantCulture );
+            Action test = () => StringEx.ToByte( null, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToByteTestCase1NullCheck1()
         {
-            "".ToByte( null );
+            Action test = () => "".ToByte( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToByteTestCaseNullCheck()
         {
-            StringEx.ToByte( null );
+            Action test = () => StringEx.ToByte( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

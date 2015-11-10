@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -29,38 +30,42 @@ namespace Extend.Testing
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings();
 
-            var actual = random.RandomOne<string>( list );
+            var actual = random.RandomOne<String>( list );
             Assert.IsTrue( list.Contains( actual ) );
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomOneTestCase1NullCheck()
         {
-            RandomEx.RandomOne( null, "", "" );
+            Action test = () => RandomEx.RandomOne( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomOneTestCase1NullCheck1()
         {
             List<String> list = null;
-            new Random().RandomOne<string>( list );
+            Action test = () => new Random().RandomOne<String>( list );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomOneTestCaseNullCheck()
         {
-            RandomEx.RandomOne( null, "", "" );
+            Action test = () => RandomEx.RandomOne( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomOneTestCaseNullCheck1()
         {
             String[] array = null;
-            new Random().RandomOne( array );
+            Action test = () => new Random().RandomOne( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

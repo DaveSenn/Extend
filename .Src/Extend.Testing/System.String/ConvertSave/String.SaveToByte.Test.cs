@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -89,17 +90,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToByteTestCaseNullCheck()
         {
-            StringEx.SaveToByte( null );
+            Action test = () => StringEx.SaveToByte( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToByteTestCaseNullCheck1()
         {
-            "".SaveToByte( NumberStyles.AllowDecimalPoint, null );
+            Action test = () => "".SaveToByte( NumberStyles.AllowDecimalPoint, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

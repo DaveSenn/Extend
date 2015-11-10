@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,17 +26,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReferenceEqualsTestCaseNullCheck()
         {
-            ObjectEx.RefEquals( null, "" );
+            Action test = () => ObjectEx.RefEquals( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReferenceEqualsTestCaseNullCheck1()
         {
-            "".RefEquals( null );
+            Action test = () => "".RefEquals( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
