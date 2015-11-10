@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -31,10 +32,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentOfTestCase1DivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Double) 100 );
+            Action test = () => Int64Ex.PercentOf( 0, (Double) 100 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
@@ -48,10 +50,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentOfTestCase2DivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Int64) 100 );
+            Action test = () => Int64Ex.PercentOf( 0, (Int64) 100 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
@@ -65,17 +68,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentOfTestCase3DivideByZero()
         {
-            Int64Ex.PercentOf( 0, 100 );
+            Action test = () => Int64Ex.PercentOf( 0, 100 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentOfTestCaseDivideByZero()
         {
-            Int64Ex.PercentOf( 0, (Int64) 100 );
+            Action test = () => Int64Ex.PercentOf( 0, (Int64) 100 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
     }
 }

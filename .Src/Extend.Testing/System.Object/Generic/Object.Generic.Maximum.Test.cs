@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,25 +33,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MaximumTestCase1NullCheck()
         {
-            10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
+            Action test = () => 10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MaximumTestCase1NullCheck1()
         {
             Func<Int32, Object> func = null;
-            10.Maximum( func, 1, 2, 3, 4, 5 );
+            Action test = () => 10.Maximum( func, 1, 2, 3, 4, 5 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MaximumTestCaseNullCheck()
         {
-            10.Maximum( null );
+            Action test = () => 10.Maximum( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

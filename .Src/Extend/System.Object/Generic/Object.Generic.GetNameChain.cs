@@ -69,7 +69,7 @@ namespace Extend
             if ( !expression.TryGetMemberExpression( out memberExpression ) )
                 throw new ArgumentException( "The given expression is not valid." );
 
-            var memberNames = new Stack<string>();
+            var memberNames = new Stack<String>();
             do
             {
                 //Check if the 'inner' expression as a constant expression, if so, break the loop

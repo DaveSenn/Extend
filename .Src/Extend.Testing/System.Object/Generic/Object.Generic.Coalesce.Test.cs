@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -67,20 +68,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (InvalidOperationException) )]
         public void CoalesceTestCaseInvalidOperationCheck()
         {
             Object[] array = null;
-            ObjectEx.Coalesce( null, array, null );
+            Action test = () => ObjectEx.Coalesce( null, array, null );
+
+            test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CoalesceTestCaseNullCheck()
         {
             String s = null;
             String[] array = null;
-            s.Coalesce( array );
+            Action test = () => s.Coalesce( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

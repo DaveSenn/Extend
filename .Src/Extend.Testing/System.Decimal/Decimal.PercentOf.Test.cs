@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Test]
         public void PercentOfTestCase()
         {
-            var number = new decimal( 1000 );
+            var number = new Decimal( 1000 );
             var expected = 50;
             var actual = number.PercentOf( 500 );
 
@@ -24,7 +24,7 @@ namespace Extend.Testing
         [Test]
         public void PercentOfTestCase1()
         {
-            var number = new decimal( 1000 );
+            var number = new Decimal( 1000 );
             var expected = 50;
             var actual = number.PercentOf( new Decimal( 500 ) );
 
@@ -42,7 +42,7 @@ namespace Extend.Testing
         [Test]
         public void PercentOfTestCase2()
         {
-            var number = new decimal( 1000 );
+            var number = new Decimal( 1000 );
             var expected = 50;
             var actual = number.PercentOf( (Int64) 500 );
 
