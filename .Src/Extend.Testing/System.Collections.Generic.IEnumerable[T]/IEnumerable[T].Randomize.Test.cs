@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,18 +26,18 @@ namespace Extend.Testing
             Assert.IsTrue( list.All( x => result.Contains( x ) ) );
 
             var resultList = result.ToList();
-            for ( var i = 0; i < list.Count; i++ )
-                if ( list[i] != resultList[i] )
-                    return;
+            if ( list.Where( ( t, i ) => t != resultList[i] ).Any() )
+                return;
             Assert.IsTrue( false, "The items are in the same order in both collections." );
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RandomizeTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.Randomize();
+            Action test = () => list.Randomize();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

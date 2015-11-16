@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,27 +41,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MinimumOfTestCase1NullCheck()
         {
             List<Object> list = null;
-            list.MinimumOf( 10 );
+            Action test = () => list.MinimumOf( 10 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MinimumOfTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.MinimumOf( 10, x => true );
+            Action test = () => list.MinimumOf( 10, x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MinimumOfTestCaseNullCheck1()
         {
             List<Object> list = null;
-            list.MinimumOf( 10, null );
+            Action test = () => list.MinimumOf( 10, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

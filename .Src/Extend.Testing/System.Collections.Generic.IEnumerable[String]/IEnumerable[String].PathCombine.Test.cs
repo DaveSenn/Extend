@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -22,10 +23,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void PathCombineTestCaseNullCheck()
         {
-            IEnumerableStringEx.PathCombine( null );
+            Action test = () => IEnumerableStringEx.PathCombine( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

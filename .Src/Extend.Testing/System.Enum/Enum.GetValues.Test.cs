@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -47,18 +48,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void GetValuesTestCaseArgumentExceptionCheck()
         {
-            EnumEx.GetValues<Int32>()
+            Action test = () => EnumEx.GetValues<Int32>()
                   .ToList();
+
+            test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void GetValuesTestCaseArgumentExceptionCheck1()
         {
-            EnumEx.GetValues( typeof (Int32) );
+            Action test = () => EnumEx.GetValues( typeof (Int32) );
+
+            test.ShouldThrow<ArgumentException>();
         }
     }
 }

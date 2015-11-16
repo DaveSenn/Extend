@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -65,35 +66,39 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void WhereIfTestCase1NullCheck()
         {
             List<Object> list = null;
-            list.WhereIf( true, ( x, i ) => true );
+            Action test = () => list.WhereIf( true, ( x, i ) => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void WhereIfTestCase1NullCheck1()
         {
             Func<Object, Int32, Boolean> func = null;
-            new List<Object>().WhereIf( true, func );
+            Action test = () => new List<Object>().WhereIf( true, func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void WhereIfTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.WhereIf( true, x => true );
+            Action test = () => list.WhereIf( true, x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void WhereIfTestCaseNullCheck1()
         {
             Func<Object, Boolean> func = null;
-            new List<Object>().WhereIf( true, func );
+            Action test = () => new List<Object>().WhereIf( true, func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

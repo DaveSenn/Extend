@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -12,10 +13,11 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AnyAndNotNullNullCheck1()
         {
-            new List<String>().AnyAndNotNull( null );
+            Action test = () => new List<String>().AnyAndNotNull( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
