@@ -26,7 +26,8 @@ namespace Extend.Testing
             Assert.IsTrue( list.All( x => result.Contains( x ) ) );
 
             var resultList = result.ToList();
-            if ( list.Where( ( t, i ) => t != resultList[i] ).Any() )
+            if ( list.Where( ( t, i ) => t != resultList[i] )
+                     .Any() )
                 return;
             Assert.IsTrue( false, "The items are in the same order in both collections." );
         }

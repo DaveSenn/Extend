@@ -48,13 +48,13 @@ namespace Extend.Testing
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTimeExact( null,
-                                           new[]
-                                           {
-                                               "test"
-                                           },
-                                           CultureInfo.InvariantCulture,
-                                           DateTimeStyles.AllowTrailingWhite,
-                                           out outValue );
+                                                               new[]
+                                                               {
+                                                                   "test"
+                                                               },
+                                                               CultureInfo.InvariantCulture,
+                                                               DateTimeStyles.AllowTrailingWhite,
+                                                               out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -121,10 +121,10 @@ namespace Extend.Testing
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTimeExact( null,
-                                           "",
-                                           CultureInfo.InvariantCulture,
-                                           DateTimeStyles.AllowTrailingWhite,
-                                           out outValue );
+                                                               "",
+                                                               CultureInfo.InvariantCulture,
+                                                               DateTimeStyles.AllowTrailingWhite,
+                                                               out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }
