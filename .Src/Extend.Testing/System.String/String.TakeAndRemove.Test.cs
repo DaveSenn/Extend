@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -41,19 +42,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void TakeAndRemoveTestCaseArgumentOutOfRangeException()
         {
             var value = "Test";
-            var actual = 5.TakeAndRemove( ref value );
+            Action test = () => 5.TakeAndRemove( ref value );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TakeAndRemoveTestCaseNullCheck()
         {
             String value = null;
-            var actual = 2.TakeAndRemove( ref value );
+            Action test = () => 2.TakeAndRemove( ref value );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
