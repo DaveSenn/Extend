@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -30,13 +31,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToCultureInfoTestCase1NullCheck()
         {
             const String culture = null;
-            var actual = culture.ToCultureInfo();
+            Action test = () => culture.ToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -49,13 +49,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (CultureNotFoundException) )]
         public void ToCultureInfoTestCase3()
         {
             const String culture = "invalidCultureName";
-            var actual = culture.ToCultureInfo();
+            Action test = () => culture.ToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            test.ShouldThrow<CultureNotFoundException>();
         }
     }
 }

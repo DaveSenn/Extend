@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -60,7 +61,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AndTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
@@ -68,21 +68,25 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
-            target.And( other );
+            Action test = () => target.And( other );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CtorTestCaseNulLCheck()
         {
-            var target = new AndSpecification<String>( new ExpressionSpecification<String>( x => true ), null );
+            Action test = () => new AndSpecification<String>( new ExpressionSpecification<String>( x => true ), null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CtorTestCaseNulLCheck1()
         {
-            var target = new AndSpecification<String>( null, new ExpressionSpecification<String>( x => true ) );
+            Action test = () => new AndSpecification<String>( null, new ExpressionSpecification<String>( x => true ) );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -282,7 +286,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void OrTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
@@ -290,7 +293,9 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
-            target.Or( other );
+            Action test = () => target.Or( other );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -342,7 +347,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void XOrTestCaseNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
@@ -350,7 +354,9 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
-            target.XOr( other );
+            Action test = () => target.XOr( other );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
