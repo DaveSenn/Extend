@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -39,26 +40,29 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ManyTestCase1NullCheck()
         {
             List<Object> list = null;
-            list.Many( x => true );
+            Action test = () => list.Many( x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ManyTestCase1NullCheck1()
         {
-            new List<Object>().Many( null );
+            Action test = () => new List<Object>().Many( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ManyTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.Many();
+            Action test = () => list.Many();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

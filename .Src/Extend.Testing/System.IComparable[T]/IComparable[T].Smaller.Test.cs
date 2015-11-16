@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -33,17 +34,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SmallerTestCaseNullCheck()
         {
-            IComparableTEx.Smaller( null, "" );
+            Action test = () => IComparableTEx.Smaller( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SmallerTestCaseNullCheck1()
         {
-            "".Smaller( null );
+            Action test = () => "".Smaller( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

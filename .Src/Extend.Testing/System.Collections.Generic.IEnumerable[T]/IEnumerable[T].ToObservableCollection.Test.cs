@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -23,11 +24,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToObservableCollectionTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.ToObservableCollection();
+            Action test = () => list.ToObservableCollection();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
