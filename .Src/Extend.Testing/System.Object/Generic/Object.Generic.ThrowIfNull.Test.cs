@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq.Expressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -94,28 +95,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ThrowIfNullTestNullCheck()
         {
             String value = null;
-            value.ThrowIfNull( () => value );
+            Action test = () => value.ThrowIfNull( () => value );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ThrowIfNullTestNullCheck1()
         {
             String value = null;
             Expression<Func<String>> expression = null;
-            value.ThrowIfNull( expression );
+            Action test = () => value.ThrowIfNull( expression );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ThrowIfNullTestNullCheck2()
         {
             String value = null;
-            value.ThrowIfNull( "varName" );
+            Action test = () => value.ThrowIfNull( "varName" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

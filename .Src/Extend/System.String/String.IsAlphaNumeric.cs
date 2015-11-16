@@ -15,7 +15,7 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to check.</param>
         /// <returns>Returns true if the string is alpha numeric, otherwise false.</returns>
-        public static Boolean IsAlphaNumeric( this string str )
+        public static Boolean IsAlphaNumeric( this String str )
         {
             str.ThrowIfNull( nameof( str ) );
 

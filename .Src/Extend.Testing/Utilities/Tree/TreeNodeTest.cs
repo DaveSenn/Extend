@@ -133,19 +133,19 @@ namespace Extend.Testing
             ///     Gets the depth of the node.
             /// </summary>
             /// <value>The depth of the node.</value>
-            public int Depth { get; private set; }
+            public Int32 Depth { get; private set; }
 
             /// <summary>
             ///     Gets a value indicating whether the node has any children or not.
             /// </summary>
             /// <value>A value indicating whether the node has any children or not.</value>
-            public bool HasChildren { get; private set; }
+            public Boolean HasChildren { get; private set; }
 
             /// <summary>
             ///     Gets a value indicating whether the node has a parent or not.
             /// </summary>
             /// <value>A value indicating whether the node has a parent or not.</value>
-            public bool HasParent { get; private set; }
+            public Boolean HasParent { get; private set; }
 
             /// <summary>
             ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
@@ -162,7 +162,7 @@ namespace Extend.Testing
             /// </remarks>
             /// <param name="predicate">The predicate.</param>
             /// <returns>Returns the values which matches the given predicate.</returns>
-            public IEnumerable<T> FindValue( Func<ITreeNode<T>, bool> predicate )
+            public IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
             {
                 throw new NotImplementedException();
             }
@@ -176,7 +176,7 @@ namespace Extend.Testing
             /// </remarks>
             /// <param name="predicate">The predicate.</param>
             /// <returns>Returns the nodes which matches the given predicate.</returns>
-            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, bool> predicate )
+            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
             {
                 throw new NotImplementedException();
             }
@@ -223,7 +223,7 @@ namespace Extend.Testing
             ///     TODO: add test for detachFromOldParent
             /// </remarks>
             /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-            public void SetParent( ITreeNode<T> parent, bool attacheToNewParent = true, bool detachFromOldParent = true )
+            public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
             {
                 throw new NotImplementedException();
             }

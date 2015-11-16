@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -41,19 +42,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotInTestCase1NullCheck()
         {
             IEnumerable<String> enumerable = null;
-            "".IsNotIn( enumerable );
+            Action test = () => "".IsNotIn( enumerable );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotInTestCaseNullCheck()
         {
             String[] array = null;
-            "".IsNotIn( array );
+            Action test = () => "".IsNotIn( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

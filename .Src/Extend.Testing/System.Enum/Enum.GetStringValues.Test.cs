@@ -31,7 +31,7 @@ namespace Extend.Testing
         public void GetStringValuesTestCaseArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValues<Int32>()
-                  .ToList();
+                                      .ToList();
 
             test.ShouldThrow<ArgumentException>();
         }
