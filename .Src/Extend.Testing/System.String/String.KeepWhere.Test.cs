@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,10 +12,11 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void KeepWhereCaseNullCheck()
         {
-            StringEx.KeepWhere( null, x => false );
+            Action test = () => StringEx.KeepWhere( null, x => false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -25,10 +27,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void KeepWhereTEstCaseNullCheck1()
         {
-            "".KeepWhere( null );
+            Action test = () => "".KeepWhere( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

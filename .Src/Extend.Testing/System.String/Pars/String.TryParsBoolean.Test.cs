@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -24,11 +25,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsBooleanTestCaseNullCheck()
         {
             var outValue = false;
-            StringEx.TryParsBoolean( null, out outValue );
+            Action test = () => StringEx.TryParsBoolean( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

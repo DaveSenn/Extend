@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,21 +35,23 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase1NullCheck()
         {
-            StringEx.Join( null,
+            Action test = () => StringEx.Join( null,
                            new Object[]
                            {
                            } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase1NullCheck1()
         {
             Object[] array = null;
-            "".Join( array );
+            Action test = () => "".Join( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -59,21 +62,23 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase2NullCheck()
         {
-            StringEx.Join( null,
+            Action test = () => StringEx.Join( null,
                            new Object[]
                            {
                            } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase2NullCheck1()
         {
             List<String> list = null;
-            "".Join( list );
+            Action test = () => "".Join( list );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -84,21 +89,23 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase3NullCheck()
         {
-            StringEx.Join( null,
+            Action test = () => StringEx.Join( null,
                            new Object[]
                            {
                            } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase3NullCheck1()
         {
             List<Object> list = null;
-            "".Join( list );
+            Action test = () => "".Join( list );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -116,7 +123,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase4NullCheck()
         {
             String seperator = null;
@@ -127,36 +133,39 @@ namespace Extend.Testing
                 "3"
             };
 
-            var actual = seperator.Join( array, 1, 2 );
-            Assert.AreEqual( "2,3", actual );
+            Action test = () => seperator.Join( array, 1, 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCase4NullCheck1()
         {
             String[] array = null;
 
-            var actual = ",".Join( array, 1, 2 );
-            Assert.AreEqual( "2,3", actual );
+            Action test = () => ",".Join( array, 1, 2 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCaseNullCheck()
         {
-            StringEx.Join( null,
+            Action test = () => StringEx.Join( null,
                            new String[]
                            {
                            } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void JoinTestCaseNullCheck1()
         {
             String[] array = null;
-            "".Join( array );
+            Action test = () => "".Join( array );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

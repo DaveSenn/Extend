@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -37,27 +38,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsInt64TestCase1NullCheck()
         {
             var outValue = (Int64) RandomValueEx.GetRandomInt32();
-            StringEx.TryParsInt64( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            Action test = () => StringEx.TryParsInt64( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsInt64TestCase1NullCheck1()
         {
             var outValue = (Int64) RandomValueEx.GetRandomInt32();
-            "".TryParsInt64( NumberStyles.Any, null, out outValue );
+            Action test = () => "".TryParsInt64( NumberStyles.Any, null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsInt64TestCaseNullCheck()
         {
             var outValue = (Int64) RandomValueEx.GetRandomInt32();
-            StringEx.TryParsInt64( null, out outValue );
+            Action test = () => StringEx.TryParsInt64( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

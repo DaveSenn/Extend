@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -41,17 +42,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstInt64TestCaseNullCheck()
         {
-            StringEx.ExtractFirstInt64( null );
+            Action test = () => StringEx.ExtractFirstInt64( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstInt64TestCaseNullCheck1()
         {
-            StringEx.ExtractFirstInt64( null, 0 );
+            Action test = () => StringEx.ExtractFirstInt64( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

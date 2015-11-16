@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -86,17 +87,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToInt64TestCaseNullCheck()
         {
-            StringEx.SaveToInt64( null );
+            Action test = () => StringEx.SaveToInt64( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToInt64TestCaseNullCheck1()
         {
-            "".SaveToInt64( NumberStyles.AllowExponent, null );
+            Action test = () => "".SaveToInt64( NumberStyles.AllowExponent, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

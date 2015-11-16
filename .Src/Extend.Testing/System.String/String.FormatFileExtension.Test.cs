@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -21,17 +22,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FormatFileExtensionTestCaseNullCheck()
         {
-            StringEx.FormatFileExtension( null );
+            Action test = () => StringEx.FormatFileExtension( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentException) )]
         public void FormatFileExtensionTestCaseNullCheckArgumentException()
         {
-            String.Empty.FormatFileExtension();
+            Action test = () => String.Empty.FormatFileExtension();
+
+            test.ShouldThrow<ArgumentException>();
         }
     }
 }

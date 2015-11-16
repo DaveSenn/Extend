@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,40 +41,44 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCase1NullCheck()
         {
-            StringEx.Match( null, "", RegexOptions.Compiled );
+            Action test = () => StringEx.Match( null, "", RegexOptions.Compiled );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCase1NullCheck1()
         {
-            "".Match( null, RegexOptions.Compiled );
+            Action test = () => "".Match( null, RegexOptions.Compiled );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCaseNullCheck()
         {
-            StringEx.Match( null, "" );
+            Action test = () => StringEx.Match( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCaseNullCheck1()
         {
-            "".Match( null );
+            Action test = () => "".Match( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
 #if PORTABLE45
         [Test]
         public void MatchTestCase2()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "firstname.lastname@myDomain.com";
+            const String invalidEmail = "firstname.lastname-myDomain.com";
 
             var actual = validEmail.Match( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
             Assert.IsTrue( actual.Success );
@@ -83,28 +88,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCase2NullCheck()
         {
-            StringEx.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => StringEx.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchTestCase2NullCheck1()
         {
-            "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (RegexMatchTimeoutException) )]
         public void MatchTimeoutTestCase()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var text = RandomValueEx.GetRandomStrings( 50000 )
                                     .StringJoin();
 
-            var actual = text.Match( emaiLpattern, RegexOptions.Compiled, 3.ToMilliseconds() );
+            Action test = () => text.Match( emaiLpattern, RegexOptions.Compiled, 3.ToMilliseconds() );
+
+            test.ShouldThrow<RegexMatchTimeoutException>();
         }
 #endif
     }

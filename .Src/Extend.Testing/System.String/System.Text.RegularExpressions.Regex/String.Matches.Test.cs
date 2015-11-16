@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,40 +41,44 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCase1NullCheck()
         {
-            StringEx.Matches( null, "", RegexOptions.Compiled );
+            Action test = () => StringEx.Matches( null, "", RegexOptions.Compiled );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCase1NullCheck1()
         {
-            "".Matches( null, RegexOptions.Compiled );
+            Action test = () => "".Matches( null, RegexOptions.Compiled );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCaseNullCheck()
         {
-            StringEx.Matches( null, "" );
+            Action test = () => StringEx.Matches( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCaseNullCheck1()
         {
-            "".Matches( null );
+            Action test = () => "".Matches( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
 #if PORTABLE45
         [Test]
         public void MatchesTestCase2()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "dave.senn@myDomain.com";
+            const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Matches( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
             Assert.AreEqual( 1, actual.Count );
@@ -83,17 +88,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCase2NullCheck()
         {
-            StringEx.Matches( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => StringEx.Matches( null, "", RegexOptions.Compiled, 100.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void MatchesTestCase2NullCheck1()
         {
-            "".Matches( null, RegexOptions.Compiled, 100.ToSeconds() );
+            Action test = () => "".Matches( null, RegexOptions.Compiled, 100.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 #endif
     }

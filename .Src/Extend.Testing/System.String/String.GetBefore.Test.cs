@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,73 +12,83 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangeTestCase1()
         {
-            "test test1".GetBefore( "test1", 20, 2 );
+            Action test = () => "test test1".GetBefore( "test1", 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangeTestCase2()
         {
-            "test test test".GetBefore( "test", 2, 20 );
+            Action test = () => "test test test".GetBefore( "test", 2, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangeTestCase3()
         {
-            "test test test".GetBefore( "test", -2, 20 );
+            Action test = () => "test test test".GetBefore( "test", -2, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangeTestCase4()
         {
-            "test test test".GetBefore( "test", 2, -20 );
+            Action test = () => "test test test".GetBefore( "test", 2, -20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeArgumentOutOfRangExceptionTestCase()
         {
-            "test test".GetBefore( "test", 15 );
+            Action test = () => "test test".GetBefore( "test", 15 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeCharArgumentOutOfRangeTestCase1()
         {
-            "test test1".GetBefore( 't', 20, 2 );
+            Action test = () => "test test1".GetBefore( 't', 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeCharArgumentOutOfRangeTestCase2()
         {
-            "test test test".GetBefore( 't', 2, 20 );
+            Action test = () => "test test test".GetBefore( 't', 2, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeCharArgumentOutOfRangeTestCase3()
         {
-            "test test test".GetBefore( 't', -2, 20 );
+            Action test = () => "test test test".GetBefore( 't', -2, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeCharArgumentOutOfRangeTestCase4()
         {
-            "test test test".GetBefore( 't', 2, -20 );
+            Action test = () => "test test test".GetBefore( 't', 2, -20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBeforeCharArgumentOutOfRangExceptionTestCase()
         {
-            "test test".GetBefore( 't', 15 );
+            Action test = () => "test test".GetBefore( 't', 15 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
@@ -101,10 +112,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeCharTestCase1NullCheck()
         {
-            StringEx.GetBefore( null, 't', 1, 1 );
+            Action test = () => StringEx.GetBefore( null, 't', 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -115,10 +127,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeCharTestCaseNullCheck()
         {
-            StringEx.GetBefore( null, 't' );
+            Action test = () => StringEx.GetBefore( null, 't' );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -142,17 +155,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeTestCase1NullCheck()
         {
-            StringEx.GetBefore( null, "", 1, 1 );
+            Action test = () => StringEx.GetBefore( null, "", 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeTestCase1NullCheck1()
         {
-            "".GetBefore( null, 1, 1 );
+            Action test = () => "".GetBefore( null, 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -163,17 +178,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeTestCaseNullCheck()
         {
-            StringEx.GetBefore( null, "" );
+            Action test = () => StringEx.GetBefore( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBeforeTestCaseNullCheck1()
         {
-            "".GetBefore( null );
+            Action test = () => "".GetBefore( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

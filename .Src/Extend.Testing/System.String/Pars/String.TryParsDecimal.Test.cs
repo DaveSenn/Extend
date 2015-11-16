@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,11 +26,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDecimalTestCaseNullCheck()
         {
             var outValue = new Decimal( 100 );
-            StringEx.TryParsDecimal( null, out outValue );
+            Action test = () => StringEx.TryParsDecimal( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

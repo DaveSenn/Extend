@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -54,10 +55,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FTestCase1NullCheck()
         {
-            StringEx.F( null, new Object(), new Object() );
+            Action test = () => StringEx.F( null, new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -75,10 +77,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FTestCase2NullCheck()
         {
-            StringEx.F( null, new Object(), new Object(), new Object() );
+            Action test = () => StringEx.F( null, new Object(), new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -97,10 +100,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FTestCase3NullCheck()
         {
-            StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -123,17 +127,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FTestCase4NullCheck()
         {
-            StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
+            Action test = () => StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void FTestCaseNullCheck()
         {
-            StringEx.F( null, new Object() );
+            Action test = () => StringEx.F( null, new Object() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
