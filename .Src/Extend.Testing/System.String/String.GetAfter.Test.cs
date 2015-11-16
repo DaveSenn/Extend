@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,59 +12,67 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfteOverloadrArgumentOutOfRangeTestCase1()
         {
-            "test test1".GetAfter( 't', 4, 10 );
+            Action test = () => "test test1".GetAfter( 't', 4, 10 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterArgumentOutOfRangeTestCase()
         {
-            "test test1".GetAfter( "test", 20 );
+            Action test = () => "test test1".GetAfter( "test", 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterArgumentOutOfRangeTestCase1()
         {
-            "test test1".GetAfter( "test", 4, 10 );
+            Action test = () => "test test1".GetAfter( "test", 4, 10 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterArgumentOutOfRangeTestCase2()
         {
-            "test test1".GetAfter( "test", 20, 2 );
+            Action test = () => "test test1".GetAfter( "test", 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterArgumentOutOfRangeTestCase3()
         {
-            "test test1".GetAfter( "test", -1, 2 );
+            Action test = () => "test test1".GetAfter( "test", -1, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterArgumentOutOfRangeTestCase4()
         {
-            "test test1".GetAfter( "test", 20, -2 );
+            Action test = () => "test test1".GetAfter( "test", 20, -2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterOverloadArgumentOutOfRangeTestCase()
         {
-            "test test1".GetAfter( 't', 20 );
+            Action test = () => "test test1".GetAfter( 't', 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetAfterOverloadArgumentOutOfRangeTestCase2()
         {
-            "test test1".GetAfter( 't', 20, 2 );
+            Action test = () => "test test1".GetAfter( 't', 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
@@ -87,10 +96,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterOverloadTestCase1NullCheck()
         {
-            StringEx.GetAfter( null, 't', 1, 1 );
+            Action test = () => StringEx.GetAfter( null, 't', 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -101,10 +111,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterOverloadTestCaseNullCheck()
         {
-            StringEx.GetAfter( null, 't' );
+            Action test = () => StringEx.GetAfter( null, 't' );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -128,17 +139,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterTestCase1NullCheck()
         {
-            StringEx.GetAfter( null, "", 1, 1 );
+            Action test = () => StringEx.GetAfter( null, "", 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterTestCase1NullCheck1()
         {
-            "".GetAfter( null, 1, 1 );
+            Action test = () => "".GetAfter( null, 1, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -149,17 +162,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterTestCaseNullCheck()
         {
-            StringEx.GetAfter( null, "test" );
+            Action test = () => StringEx.GetAfter( null, "test" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetAfterTestCaseNullCheck1()
         {
-            "".GetAfter( null );
+            Action test = () => "".GetAfter( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

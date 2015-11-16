@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,17 +19,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReplaceByEmptyTestCaseNullCheck()
         {
-            var actual = StringEx.ReplaceByEmpty( null, "a", "c" );
+            Action test = () => StringEx.ReplaceByEmpty( null, "a", "c" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ReplaceByEmptyTestCaseNullCheck1()
         {
-            var actual = "".ReplaceByEmpty( null );
+            Action test = () => "".ReplaceByEmpty( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

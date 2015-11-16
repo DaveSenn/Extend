@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,31 +41,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCase1NullCheck()
         {
-            StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
+            Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCase1NullCheck1()
         {
-            "".IsNotMatch( null, RegexOptions.Multiline );
+            Action test = () => "".IsNotMatch( null, RegexOptions.Multiline );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCaseNullCheck()
         {
-            StringEx.IsNotMatch( null, "" );
+            Action test = () => StringEx.IsNotMatch( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCaseNullCheck1()
         {
-            "".IsNotMatch( null );
+            Action test = () => "".IsNotMatch( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
 #if PORTABLE45
@@ -83,29 +88,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCase2NullCheck()
         {
-            StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+            Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsNotMatchTestCase2NullCheck1()
         {
-            "".IsNotMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+            Action test = () => "".IsNotMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (RegexMatchTimeoutException) )]
         public void IsNotMatchTestCase2TimeoutCheck()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = RandomValueEx.GetRandomStrings( 10000 )
                                           .StringJoin( Environment.NewLine );
 
-            var actual = validEmail.IsNotMatch( emaiLpattern, RegexOptions.Multiline, 3.ToMilliseconds() );
-            Assert.IsTrue( actual );
+            Action test = () => validEmail.IsNotMatch( emaiLpattern, RegexOptions.Multiline, 3.ToMilliseconds() );
+
+            test.ShouldThrow<RegexMatchTimeoutException>();
         }
 #endif
     }

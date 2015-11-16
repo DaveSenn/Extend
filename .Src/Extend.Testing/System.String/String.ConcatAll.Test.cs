@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -31,11 +32,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllTestCase1NullCheck()
         {
             String[] values = null;
-            var actual = values.ConcatAll();
+            Action test = () => values.ConcatAll();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -51,11 +53,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllTestCase2NullCheck()
         {
             Object[] values = null;
-            var actual = "test".ConcatAll( values );
+            Action test = () => "test".ConcatAll( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -72,19 +75,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllTestCase3NullCheck()
         {
             Object[] values = null;
-            var actual = values.ConcatAll();
+            Action test = () => values.ConcatAll();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ConcatAllTestCaseNullCheck()
         {
             String[] values = null;
-            var actual = "test".ConcatAll( values );
+            Action test = () => "test".ConcatAll( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

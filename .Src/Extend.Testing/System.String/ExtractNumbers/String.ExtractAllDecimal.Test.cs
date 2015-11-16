@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -30,17 +31,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllDecimalTestCaseNullCheck()
         {
-            StringEx.ExtractAllDecimal( null );
+            Action test = () => StringEx.ExtractAllDecimal( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllDecimalTestCaseNullCheck1()
         {
-            StringEx.ExtractAllDecimal( null, 0 );
+            Action test = () => StringEx.ExtractAllDecimal( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

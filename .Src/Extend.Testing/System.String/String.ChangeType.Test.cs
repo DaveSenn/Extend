@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -26,17 +27,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ChangeTypeTestCase1NullCkeck()
         {
-            var actual = "100".ChangeType( null, CultureInfo.InvariantCulture );
+            Action test = () => "100".ChangeType( null, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ChangeTypeTestCase1NullCkeck1()
         {
-            var actual = "100".ChangeType( typeof (Int32), null );
+            Action test = () => "100".ChangeType( typeof (Int32), null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -54,17 +57,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ChangeTypeTestCase3NullCkeck()
         {
-            var actual = "100".ChangeType( null );
+            Action test = () => "100".ChangeType( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ChangeTypeTestCaseNullCkeck()
         {
-            var actual = "100".ChangeType( null );
+            Action test = () => "100".ChangeType( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
