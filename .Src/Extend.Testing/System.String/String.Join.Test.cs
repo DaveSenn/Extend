@@ -38,9 +38,9 @@ namespace Extend.Testing
         public void JoinTestCase1NullCheck()
         {
             Action test = () => StringEx.Join( null,
-                           new Object[]
-                           {
-                           } );
+                                               new Object[]
+                                               {
+                                               } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -65,9 +65,9 @@ namespace Extend.Testing
         public void JoinTestCase2NullCheck()
         {
             Action test = () => StringEx.Join( null,
-                           new Object[]
-                           {
-                           } );
+                                               new Object[]
+                                               {
+                                               } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -92,9 +92,9 @@ namespace Extend.Testing
         public void JoinTestCase3NullCheck()
         {
             Action test = () => StringEx.Join( null,
-                           new Object[]
-                           {
-                           } );
+                                               new Object[]
+                                               {
+                                               } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -152,9 +152,9 @@ namespace Extend.Testing
         public void JoinTestCaseNullCheck()
         {
             Action test = () => StringEx.Join( null,
-                           new String[]
-                           {
-                           } );
+                                               new String[]
+                                               {
+                                               } );
 
             test.ShouldThrow<ArgumentNullException>();
         }

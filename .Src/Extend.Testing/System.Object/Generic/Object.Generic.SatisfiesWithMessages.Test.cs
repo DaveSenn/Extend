@@ -55,7 +55,7 @@ namespace Extend.Testing
             ISpecification<String> specification = null;
 
             Action test = () => "1234".SatisfiesWithMessages( specification )
-                  .ToList();
+                                      .ToList();
 
             test.ShouldThrow<ArgumentNullException>();
         }

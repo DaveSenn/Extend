@@ -44,7 +44,7 @@ namespace Extend.Testing
         [Test]
         public void ContainsAnyTestCaseNullCheck()
         {
-            Action test = () =>  StringEx.ContainsAny( null, "" );
+            Action test = () => StringEx.ContainsAny( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
