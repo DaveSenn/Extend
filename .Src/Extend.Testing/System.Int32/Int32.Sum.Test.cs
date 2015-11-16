@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,11 +33,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase1NullCheck()
         {
             Int32?[] values = null;
-            var actual = ( 10 as Int32? ).Sum( values );
+            Action test = () => ( 10 as Int32? ).Sum( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -50,19 +52,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase2NullCheck()
         {
             String[] values = null;
-            var actual = "Test".Sum( x => x.Length, values );
+            Action test = () => "Test".Sum( x => x.Length, values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase2NullCheck2()
         {
             Func<String, Int32> func = null;
-            var actual = "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum( func, "test", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -76,27 +80,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase3NullCheck()
         {
             String[] values = null;
-            var actual = "Test".Sum( x => (Int32?) x.Length, values );
+            Action test = () => "Test".Sum( x => (Int32?) x.Length, values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCase3NullCheck2()
         {
             Func<String, Int32?> func = null;
-            var actual = "Test".Sum( func, "test", "test2" );
+            Action test = () => "Test".Sum( func, "test", "test2" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SumTestCaseNullCheck()
         {
             Int32[] values = null;
-            var actual = 10.Sum( values );
+            Action test = () => 10.Sum( values );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

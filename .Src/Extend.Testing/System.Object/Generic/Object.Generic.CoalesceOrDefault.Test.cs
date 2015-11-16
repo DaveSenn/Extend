@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -47,12 +48,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CoalesceOrDefaultTestCase2NullCheck()
         {
             String s = null;
             Func<String> func = null;
-            s.CoalesceOrDefault( func, null, null );
+            Action test = () => s.CoalesceOrDefault( func, null, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -66,12 +68,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void CoalesceOrDefaultTestCaseNullCheck()
         {
             String s = null;
             String s1 = null;
-            s.CoalesceOrDefault( s1, null, null );
+            Action test = () => s.CoalesceOrDefault( s1, null, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

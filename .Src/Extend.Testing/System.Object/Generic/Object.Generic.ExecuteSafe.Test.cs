@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -52,37 +53,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteSafeTestCase1NullCheck()
         {
             Func<String, String> func = null;
-            "".ExecuteSafe( func );
+            Action test = () => "".ExecuteSafe( func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExecuteSafeTestCaseNullCheck()
         {
             Action<String> action = null;
-            "".ExecuteSafe( action );
+            Action test = () => "".ExecuteSafe( action );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
-
-/*
-		public static ExecutionResult<TResult> ExecuteSafe<T, TResult>(this T value, Func<T, TResult> func)
-		{
-			func.ThrowIfNull (() => func);
-
-			var result = new ExecutionResult<TResult> ();
-			try
-			{
-				result.Result = func(value);
-			}
-			catch (Exception ex)
-			{
-				result.Exception = ex;
-			}
-			return result;
-		}
- * */

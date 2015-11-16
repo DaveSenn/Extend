@@ -85,7 +85,7 @@ namespace Extend.Testing
         public void GetValuesExpectTestCaseArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValuesExpect( 0, 4, 5 )
-                  .ToList();
+                                      .ToList();
 
             test.ShouldThrow<ArgumentException>();
         }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -14,16 +15,17 @@ namespace Extend.Testing
         public void AsTestCase()
         {
             Object value = 10;
-            var actual = value.As<int>();
+            var actual = value.As<Int32>();
 
             Assert.AreEqual( value, actual );
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AsTestCaseNullCheck()
         {
-            ObjectEx.As<String>( null );
+            Action test = () => ObjectEx.As<String>( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

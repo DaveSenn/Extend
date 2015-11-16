@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -42,25 +43,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDateTimeTestCase1NullCheck()
         {
-            ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
+            Action test = () => ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDateTimeTestCase1NullCheck1()
         {
             var dateTime = DateTime.Now.ToString( CultureInfo.InvariantCulture ) as Object;
-            dateTime.ToDateTime( null );
+            Action test = () => dateTime.ToDateTime( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToDateTimeTestCaseNullCheck()
         {
-            ObjectEx.ToDateTime( null );
+            Action test = () => ObjectEx.ToDateTime( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
