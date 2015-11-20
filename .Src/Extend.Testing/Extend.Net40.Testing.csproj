@@ -65,6 +65,7 @@
     <Compile Include="System.String\ConvertSave\String.SaveToGuid.Test.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
+    <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
     <Compile Include="System.String\String.Contains.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
@@ -413,6 +414,7 @@
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />
+    <Compile Include="System.Type\Type.GetNameWithNamespace.Test.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
