@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -20,20 +21,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (InvalidCastException) )]
         public void ToCharTestCaseInvalidCastException()
         {
-            const String expected = "ab";
-            var value = expected;
-            var actual = ObjectEx.ToChar( value );
-            Assert.AreEqual( expected, actual );
+            Action test = () => ObjectEx.ToChar( "ab" );
+
+            test.ShouldThrow<InvalidCastException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToCharTestCaseNullCheck()
         {
-            ObjectEx.ToChar( null );
+            Action test = () => ObjectEx.ToChar( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

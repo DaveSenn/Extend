@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -21,10 +22,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ToEnumTestCaseNullCheck()
         {
-            StringEx.ToEnum<DayOfWeek>( null );
+            Action test = () => StringEx.ToEnum<DayOfWeek>( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

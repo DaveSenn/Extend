@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -40,31 +41,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCase1NullCheck()
         {
-            StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
+            Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCase1NullCheck1()
         {
-            "".IsMatch( null, RegexOptions.Multiline );
+            Action test = () => "".IsMatch( null, RegexOptions.Multiline );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCaseNullCheck()
         {
-            StringEx.IsMatch( null, "" );
+            Action test = () => StringEx.IsMatch( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCaseNullCheck1()
         {
-            "".IsMatch( null );
+            Action test = () => "".IsMatch( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
 #if PORTABLE45
@@ -83,17 +88,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCase2NullCheck()
         {
-            StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+            Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsMatchTestCase2NullCheck1()
         {
-            "".IsMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+            Action test = () => "".IsMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 #endif
     }

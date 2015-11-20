@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,12 +26,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SpecificationTestCaseNullCheck()
         {
-            const Int32 target = 11;
             Func<Int32, Boolean> expression = null;
-            target.Specification( expression );
+            Action test = () => 11.Specification( expression );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

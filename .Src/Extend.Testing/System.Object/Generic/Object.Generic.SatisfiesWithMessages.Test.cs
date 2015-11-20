@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -49,13 +50,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SatisfiesWithMessagesTestCasenullCheck()
         {
             ISpecification<String> specification = null;
 
-            "1234".SatisfiesWithMessages( specification )
-                  .ToList();
+            Action test = () => "1234".SatisfiesWithMessages( specification )
+                                      .ToList();
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

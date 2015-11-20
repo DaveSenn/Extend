@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -25,35 +26,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyTestCase1NullCheck()
         {
-            var actual = StringEx.ContainsAny( null, StringComparison.CurrentCulture, "" );
-            Assert.IsTrue( actual );
+            Action test = () => StringEx.ContainsAny( null, StringComparison.CurrentCulture, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyTestCase1NullCheck1()
         {
-            var actual = "".ContainsAny( StringComparison.CurrentCulture, null );
-            Assert.IsTrue( actual );
+            Action test = () => "".ContainsAny( StringComparison.CurrentCulture, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyTestCaseNullCheck()
         {
-            var actual = StringEx.ContainsAny( null, "" );
-            Assert.IsTrue( actual );
+            Action test = () => StringEx.ContainsAny( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ContainsAnyTestCaseNullCheck1()
         {
-            var actual = "".ContainsAny( null );
-            Assert.IsTrue( actual );
+            Action test = () => "".ContainsAny( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

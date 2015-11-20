@@ -57,17 +57,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\AttributeDefinitionPropertyTest.cs" />
+    <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
+    <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToGuid.Test.cs" />
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
+    <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
     <Compile Include="System.String\String.Contains.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.Test.cs" />
-    <Compile Include="Models\AttributeDefinitionTest.cs" />
     <Compile Include="Models\ExecutionResultTest.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.Test.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.Test.cs" />
@@ -411,6 +414,7 @@
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />
+    <Compile Include="System.Type\Type.GetNameWithNamespace.Test.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />

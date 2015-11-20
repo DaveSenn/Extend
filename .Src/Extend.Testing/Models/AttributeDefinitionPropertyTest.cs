@@ -11,12 +11,12 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class AttributeDefinitionTest
+    public class AttributeDefinitionPropertyTest
     {
         [Test]
         public void AttributesTest()
         {
-            var target = new AttributeDefinition<DisplayAttribute>();
+            var target = new AttributeDefinitionProperty<DisplayAttribute>();
             var expected = new List<DisplayAttribute>();
             target.Attributes = expected;
 
@@ -27,7 +27,7 @@ namespace Extend.Testing
         [Test]
         public void CtorTest()
         {
-            var target = new AttributeDefinition<DisplayAttribute>();
+            var target = new AttributeDefinitionProperty<DisplayAttribute>();
 
             target.Attributes.Should()
                   .HaveCount( 0 );
@@ -36,7 +36,7 @@ namespace Extend.Testing
         [Test]
         public void PropertyTest()
         {
-            var target = new AttributeDefinition<DisplayAttribute>();
+            var target = new AttributeDefinitionProperty<DisplayAttribute>();
             var expected = typeof (DisplayAttribute).GetProperties()
                                                     .First();
             target.Property = expected;

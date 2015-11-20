@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -118,17 +119,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToDateTimeTestCaseNullCheck()
         {
-            StringEx.SaveToDateTime( null );
+            Action test = () => StringEx.SaveToDateTime( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToDateTimeTestCaseNullCheck1()
         {
-            "".SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
+            Action test = () => "".SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -49,10 +50,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SaveToCharTestCaseNullCheck()
         {
-            StringEx.SaveToChar( null );
+            Action test = () => StringEx.SaveToChar( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

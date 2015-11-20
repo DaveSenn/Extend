@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -41,33 +42,37 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractFirstDecimalTestCase1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
-            sValue.ExtractFirstDecimal( sValue.Length );
+            Action test = () => sValue.ExtractFirstDecimal( sValue.Length );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractFirstDecimalTestCase2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
-            sValue.ExtractFirstDecimal( -1 );
+            Action test = () => sValue.ExtractFirstDecimal( -1 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstDecimalTestCaseNullCheck()
         {
-            StringEx.ExtractFirstDecimal( null );
+            Action test = () => StringEx.ExtractFirstDecimal( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstDecimalTestCaseNullCheck1()
         {
-            StringEx.ExtractFirstDecimal( null, 0 );
+            Action test = () => StringEx.ExtractFirstDecimal( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

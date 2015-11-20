@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -30,31 +31,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractAllDoubleTestCaseArgumentOutOfRangeException()
         {
-            var actual = "100.1".ExtractAllDouble( 100 );
+            Action test = () => "100.1".ExtractAllDouble( 100 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractAllDoubleTestCaseArgumentOutOfRangeException1()
         {
-            var actual = "100.1".ExtractAllDouble( -1 );
+            Action test = () => "100.1".ExtractAllDouble( -1 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllDoubleTestCaseNullCheck()
         {
-            StringEx.ExtractAllDouble( null );
+            Action test = () => StringEx.ExtractAllDouble( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllDoubleTestCaseNullCheck1()
         {
-            StringEx.ExtractAllDouble( null, 0 );
+            Action test = () => StringEx.ExtractAllDouble( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

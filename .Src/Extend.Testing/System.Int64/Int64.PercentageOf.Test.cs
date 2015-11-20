@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -31,11 +32,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentageOfTestCase1DivideByZeroException()
         {
             const Int64 number = 0;
-            number.PercentageOf( (Double) 50 );
+            Action test = () => number.PercentageOf( (Double) 50 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
@@ -49,11 +51,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentageOfTestCase2DivideByZeroException()
         {
             const Int64 number = 0;
-            number.PercentageOf( (Int64) 50 );
+            Action test = () => number.PercentageOf( (Int64) 50 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
@@ -67,11 +70,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentageOfTestCase3DivideByZeroException()
         {
             const Int64 number = 0;
-            number.PercentageOf( new Decimal( 50 ) );
+            Action test = () => number.PercentageOf( new Decimal( 50 ) );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
@@ -85,19 +89,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentageOfTestCase4DivideByZeroException()
         {
             const Int64 number = 0;
-            number.PercentageOf( 50 );
+            Action test = () => number.PercentageOf( 50 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
 
         [Test]
-        [ExpectedException( typeof (DivideByZeroException) )]
         public void PercentageOfTestCaseDivideByZeroException()
         {
             const Int64 number = 0;
-            number.PercentageOf( (Int64) 50 );
+            Action test = () => number.PercentageOf( (Int64) 50 );
+
+            test.ShouldThrow<DivideByZeroException>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -62,24 +63,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void BetweenTestCaseNullCheck()
         {
-            IComparableTEx.Between( null, "", "" );
+            Action test = () => IComparableTEx.Between( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void BetweenTestCaseNullCheck1()
         {
-            "".Between( null, "" );
+            Action test = () => "".Between( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void BetweenTestCaseNullCheck2()
         {
-            "".Between( "", null );
+            Action test = () => "".Between( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

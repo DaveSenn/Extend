@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -36,14 +37,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsGuidTestCaseNullCheck()
         {
-            var expected = Guid.NewGuid();
             const String input = null;
             Guid result;
-            var actual = input
+            Action test = () => input
                 .TryParsGuid( out result );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

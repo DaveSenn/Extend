@@ -110,10 +110,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetRandomInt16TestCaseArgumentOutOfRangeException()
         {
-            RandomValueEx.GetRandomInt16( 30, 20 );
+            Action test = () => RandomValueEx.GetRandomInt16( 30, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
@@ -125,10 +126,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetRandomInt32TestCaseArgumentOutOfRangeException()
         {
-            RandomValueEx.GetRandomInt32( 30, 20 );
+            Action test = () => RandomValueEx.GetRandomInt32( 30, 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
@@ -140,10 +142,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetRandomInt64TestCaseArgumentOutOfRangeException()
         {
-            RandomValueEx.GetRandomInt64( 20, 10 );
+            Action test = () => RandomValueEx.GetRandomInt64( 20, 10 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]

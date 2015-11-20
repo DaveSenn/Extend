@@ -23,12 +23,12 @@ namespace Extend
         /// <typeparam name="TAttribute">The type of attributes to return.</typeparam>
         /// <param name="t">The type to get the attribute definitions from.</param>
         /// <returns>Returns the attribute definitions of the given type.</returns>
-        public static IEnumerable<AttributeDefinition<TAttribute>> GetAttributeDefinitions<TAttribute>( this Type t )
+        public static IEnumerable<AttributeDefinitionProperty<TAttribute>> GetAttributeDefinitions<TAttribute>( this Type t )
             where TAttribute : Attribute
         {
 #if PORTABLE45
             return t.GetRuntimeProperties()
-                    .Select( x => new AttributeDefinition<TAttribute>
+                    .Select( x => new AttributeDefinitionProperty<TAttribute>
                     {
                         Property = x,
                         Attributes = x.GetCustomAttributes( typeof (TAttribute), true )
@@ -38,7 +38,7 @@ namespace Extend
 
 #elif NET40
             return t.GetProperties()
-                    .Select( x => new AttributeDefinition<TAttribute>
+                    .Select( x => new AttributeDefinitionProperty<TAttribute>
                     {
                         Property = x,
                         Attributes = x.GetCustomAttributes( typeof (TAttribute), true )

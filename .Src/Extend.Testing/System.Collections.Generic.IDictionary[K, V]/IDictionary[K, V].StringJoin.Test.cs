@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -45,11 +46,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void StringJoinTestCaseNullCheck()
         {
             Dictionary<String, String> dictionary = null;
-            dictionary.StringJoin( "", "" );
+            Action test = () => dictionary.StringJoin( "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

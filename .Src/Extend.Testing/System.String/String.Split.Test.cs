@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,31 +33,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SplitTestCase1NullCheck()
         {
-            var actual = StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
+            Action test = () => StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SplitTestCase1NullCheck1()
         {
-            var actual = "".Split( StringSplitOptions.RemoveEmptyEntries, null );
+            Action test = () => "".Split( StringSplitOptions.RemoveEmptyEntries, null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SplitTestCaseNullCheck()
         {
-            var actual = StringEx.Split( null, "" );
+            Action test = () => StringEx.Split( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SplitTestCaseNullCheck1()
         {
-            var actual = StringEx.Split( "", null );
+            Action test = () => StringEx.Split( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
