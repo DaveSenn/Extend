@@ -68,11 +68,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetNameChainOverload1TestCaseNullCheck()
         {
             Expression<Func<Object>> expression = null;
-            "".GetNameChain( expression );
+            Action test = () => "".GetNameChain( expression );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -140,11 +141,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetNameChainTestCaseNullCheck()
         {
             Expression<Func<Object, Object>> expression = null;
-            "".GetNameChain( expression );
+            Action test = () => "".GetNameChain( expression );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

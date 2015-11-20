@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -26,13 +27,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void WhereNotTestCaseNullCheck()
         {
             var target = new List<Int32> { 1, 10, 100, 1000 };
             ISpecification<Int32> specification = null;
 
-            target.WhereNot( specification );
+            Action test = () => target.WhereNot( specification );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

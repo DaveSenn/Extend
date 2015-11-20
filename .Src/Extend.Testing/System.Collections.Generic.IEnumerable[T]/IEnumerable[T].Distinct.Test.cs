@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,19 +35,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void DistinctTestCaseNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
-            list.Distinct( x => x.Value );
+            Action test = () => list.Distinct( x => x.Value );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void DistinctTestCaseNullCheck1()
         {
             Func<Object, Boolean> func = null;
-            new List<Object>().Distinct( func );
+            Action test = () => new List<Object>().Distinct( func );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

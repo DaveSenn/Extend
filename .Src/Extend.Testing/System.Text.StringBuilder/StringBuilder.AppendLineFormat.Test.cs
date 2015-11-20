@@ -2,6 +2,7 @@
 
 using System;
 using System.Text;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -48,17 +49,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase1NullCheck()
         {
-            StringBuilderEx.AppendLineFormat( null, "", "" );
+            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase1NullCheck1()
         {
-            new StringBuilder().AppendLineFormat( null, "" );
+            Action test = () => new StringBuilder().AppendLineFormat( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -78,17 +81,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase2NullCheck()
         {
-            StringBuilderEx.AppendLineFormat( null, "", "", "" );
+            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase2NullCheck1()
         {
-            new StringBuilder().AppendLineFormat( null, "", "" );
+            Action test = () => new StringBuilder().AppendLineFormat( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -109,47 +114,52 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase3NullCheck()
         {
-            StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
+            Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCase3NullCheck1()
         {
-            new StringBuilder().AppendLineFormat( null, "", "", "" );
+            Action test = () => new StringBuilder().AppendLineFormat( null, "", "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCaseNullCheck()
         {
-            StringBuilderEx.AppendLineFormat( null,
-                                              "",
-                                              new Object[]
-                                              {
-                                                  ""
-                                              } );
+            Action test = () => StringBuilderEx.AppendLineFormat( null,
+                                                                  "",
+                                                                  new Object[]
+                                                                  {
+                                                                      ""
+                                                                  } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCaseNullCheck1()
         {
-            new StringBuilder().AppendLineFormat( null,
-                                                  new Object[]
-                                                  {
-                                                      ""
-                                                  } );
+            Action test = () => new StringBuilder().AppendLineFormat( null,
+                                                                      new Object[]
+                                                                      {
+                                                                          ""
+                                                                      } );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AppendLineFormatTestCaseNullCheck2()
         {
-            new StringBuilder().AppendLineFormat( "", null );
+            Action test = () => new StringBuilder().AppendLineFormat( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -133,19 +134,19 @@ namespace Extend.Testing
             ///     Gets the depth of the node.
             /// </summary>
             /// <value>The depth of the node.</value>
-            public int Depth { get; private set; }
+            public Int32 Depth { get; private set; }
 
             /// <summary>
             ///     Gets a value indicating whether the node has any children or not.
             /// </summary>
             /// <value>A value indicating whether the node has any children or not.</value>
-            public bool HasChildren { get; private set; }
+            public Boolean HasChildren { get; private set; }
 
             /// <summary>
             ///     Gets a value indicating whether the node has a parent or not.
             /// </summary>
             /// <value>A value indicating whether the node has a parent or not.</value>
-            public bool HasParent { get; private set; }
+            public Boolean HasParent { get; private set; }
 
             /// <summary>
             ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
@@ -162,7 +163,7 @@ namespace Extend.Testing
             /// </remarks>
             /// <param name="predicate">The predicate.</param>
             /// <returns>Returns the values which matches the given predicate.</returns>
-            public IEnumerable<T> FindValue( Func<ITreeNode<T>, bool> predicate )
+            public IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
             {
                 throw new NotImplementedException();
             }
@@ -176,7 +177,7 @@ namespace Extend.Testing
             /// </remarks>
             /// <param name="predicate">The predicate.</param>
             /// <returns>Returns the nodes which matches the given predicate.</returns>
-            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, bool> predicate )
+            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
             {
                 throw new NotImplementedException();
             }
@@ -223,7 +224,7 @@ namespace Extend.Testing
             ///     TODO: add test for detachFromOldParent
             /// </remarks>
             /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-            public void SetParent( ITreeNode<T> parent, bool attacheToNewParent = true, bool detachFromOldParent = true )
+            public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
             {
                 throw new NotImplementedException();
             }
@@ -411,7 +412,6 @@ namespace Extend.Testing
         ///     Feel free to improve the implementation.
         /// </remarks>
         [Test]
-        [ExpectedException( typeof (InvalidOperationException) )]
         public void ChildrenTestCase2()
         {
             var node1 = new TreeNode<String>( "node1" )
@@ -436,9 +436,9 @@ namespace Extend.Testing
             var node2Children = node2.Children;
 
             //Add children from 2 to 1
-            node1.Children = node2Children;
-            //Add children from 1 to 2
-            node2.Children = node1Children;
+            Action test = () => node1.Children = node2Children;
+
+            test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
@@ -792,7 +792,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void DescendantsTestCaseNotSupportedException()
         {
             var target = new TreeNode<String>( "root" )
@@ -802,7 +801,8 @@ namespace Extend.Testing
                 new AlternativeTreeNode<String>()
             };
 
-            var actual = target.Descendants;
+            Action test = () => { var actual = target.Descendants; };
+            test.ShouldThrow<NotSupportedException>();
         }
 
         [Test]
@@ -1448,7 +1448,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void GetEnumeratorTestCase8()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
@@ -1456,18 +1455,16 @@ namespace Extend.Testing
             var actual = new List<ITreeNode<String>>();
 
             // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
+            Action test = () =>
+            {
+                foreach ( var node in target )
+                    actual.Add( node );
+            };
 
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
+            test.ShouldThrow<NotSupportedException>();
         }
 
         [Test]
-        [ExpectedException( typeof (NotSupportedException) )]
         public void GetEnumeratorTestCase9()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
@@ -1475,14 +1472,13 @@ namespace Extend.Testing
             var actual = new List<ITreeNode<String>>();
 
             // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
+            Action test = () =>
+            {
+                foreach ( var node in target )
+                    actual.Add( node );
+            };
 
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
+            test.ShouldThrow<NotSupportedException>();
         }
 
         [Test]

@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -22,10 +23,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetFileExtensionTestCaseNullCheck()
         {
-            StringEx.GetFileExtension( null );
+            Action test = () => StringEx.GetFileExtension( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

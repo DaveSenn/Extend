@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,17 +19,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveWhereTestCaseNullCheck()
         {
-            StringEx.RemoveWhere( null, x => false );
+            Action test = () => StringEx.RemoveWhere( null, x => false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveWhereTestCaseNullCheck1()
         {
-            "".RemoveWhere( null );
+            Action test = () => "".RemoveWhere( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

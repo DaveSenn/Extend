@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -14,8 +15,8 @@ namespace Extend.Testing
         [Test]
         public void TryParsByteTestCase()
         {
-            var expected = (byte) 1;
-            var result = (byte) 3;
+            var expected = (Byte) 1;
+            var result = (Byte) 3;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .TryParsByte( out result );
 
@@ -27,8 +28,8 @@ namespace Extend.Testing
         public void TryParsByteTestCase1()
         {
             var culture = new CultureInfo( "en-US" );
-            var expected = (byte) 1;
-            var result = (byte) 3;
+            var expected = (Byte) 1;
+            var result = (Byte) 3;
             var actual = expected.ToString( culture )
                                  .TryParsByte( NumberStyles.Any, culture, out result );
 
@@ -37,27 +38,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsByteTestCase1NullCheck()
         {
-            var outValue = (byte) 1;
-            StringEx.TryParsByte( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            var outValue = (Byte) 1;
+            Action test = () => StringEx.TryParsByte( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsByteTestCase1NullCheck1()
         {
-            var outValue = (byte) 1;
-            "".TryParsByte( NumberStyles.Any, null, out outValue );
+            var outValue = (Byte) 1;
+            Action test = () => "".TryParsByte( NumberStyles.Any, null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsByteTestCaseNullCheck()
         {
-            var outValue = (byte) 1;
-            StringEx.TryParsByte( null, out outValue );
+            var outValue = (Byte) 1;
+            Action test = () => StringEx.TryParsByte( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

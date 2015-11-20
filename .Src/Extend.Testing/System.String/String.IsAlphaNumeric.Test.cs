@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -24,10 +25,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void IsAlphaNumericTestCaseNullCheck()
         {
-            StringEx.IsAlphaNumeric( null );
+            Action test = () => StringEx.IsAlphaNumeric( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

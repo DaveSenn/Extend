@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,73 +12,83 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenArgumentOutOfRangeTestCase()
         {
-            "121test2".GetBetween( "1", "2", 20 );
+            Action test = () => "121test2".GetBetween( "1", "2", 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenArgumentOutOfRangeTestCase1()
         {
-            "1test2".GetBetween( "1", "2", 20, 2 );
+            Action test = () => "1test2".GetBetween( "1", "2", 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenArgumentOutOfRangeTestCase2()
         {
-            "121test2".GetBetween( "1", "2", 2, 60 );
+            Action test = () => "121test2".GetBetween( "1", "2", 2, 60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenArgumentOutOfRangeTestCase3()
         {
-            "121test2".GetBetween( "1", "2", -2, 60 );
+            Action test = () => "121test2".GetBetween( "1", "2", -2, 60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenArgumentOutOfRangeTestCase4()
         {
-            "121test2".GetBetween( "1", "2", 2, -60 );
+            Action test = () => "121test2".GetBetween( "1", "2", 2, -60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase()
         {
-            "121test2".GetBetween( '1', '2', 20 );
+            Action test = () => "121test2".GetBetween( '1', '2', 20 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase1()
         {
-            "1test2".GetBetween( '1', '2', 20, 2 );
+            Action test = () => "1test2".GetBetween( '1', '2', 20, 2 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase2()
         {
-            "121test2".GetBetween( '1', '2', 2, 60 );
+            Action test = () => "121test2".GetBetween( '1', '2', 2, 60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase3()
         {
-            "121test2".GetBetween( '1', '2', -2, 60 );
+            Action test = () => "121test2".GetBetween( '1', '2', -2, 60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void GetBetweenCharArgumentOutOfRangeTestCase4()
         {
-            "121test2".GetBetween( '1', '2', 2, -60 );
+            Action test = () => "121test2".GetBetween( '1', '2', 2, -60 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
@@ -101,10 +112,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenCharTestCase1NullCheck()
         {
-            var actual = StringEx.GetBetween( null, 't', 't' );
+            Action test = () => StringEx.GetBetween( null, 't', 't' );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -122,10 +134,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenCharTestCaseNullCheck()
         {
-            var actual = StringEx.GetBetween( null, 't', 't' );
+            Action test = () => StringEx.GetBetween( null, 't', 't' );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -149,24 +162,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCase1NullCheck()
         {
-            var actual = StringEx.GetBetween( null, "", "" );
+            Action test = () => StringEx.GetBetween( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCase1NullCheck1()
         {
-            var actual = "".GetBetween( null, "" );
+            Action test = () => "".GetBetween( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCase1NullCheck2()
         {
-            var actual = "".GetBetween( "", null );
+            Action test = () => "".GetBetween( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -184,24 +200,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCaseNullCheck()
         {
-            var actual = StringEx.GetBetween( null, "", "" );
+            Action test = () => StringEx.GetBetween( null, "", "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCaseNullCheck1()
         {
-            var actual = "".GetBetween( null, "" );
+            Action test = () => "".GetBetween( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void GetBetweenTestCaseNullCheck2()
         {
-            var actual = "".GetBetween( "", null );
+            Action test = () => "".GetBetween( "", null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

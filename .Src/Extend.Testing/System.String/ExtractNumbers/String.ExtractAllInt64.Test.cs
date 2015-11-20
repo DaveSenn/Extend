@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,17 +35,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllInt64TestCaseNullCheck()
         {
-            StringEx.ExtractAllInt64( null );
+            Action test = () => StringEx.ExtractAllInt64( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractAllInt64TestCaseNullCheck1()
         {
-            StringEx.ExtractAllInt64( null, 0 );
+            Action test = () => StringEx.ExtractAllInt64( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

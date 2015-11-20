@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -89,14 +90,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void AddTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
             ITreeNode<String> item = null;
-            target.Add( item );
+            Action test = () => target.Add( item );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -412,14 +414,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void RemoveNodeTestCaseNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
             ITreeNode<String> item = null;
-            target.Remove( item );
+            Action test = () => target.Remove( item );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]

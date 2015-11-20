@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,17 +19,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractTestCaseNullCheck()
         {
-            var actual = StringEx.Extract( null, y => false );
+            Action test = () => StringEx.Extract( null, y => false );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractTestCaseNullCheck1()
         {
-            var actual = "".Extract( null );
+            Action test = () => "".Extract( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -18,10 +19,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void SubstringLeftTestCaseNullCheck()
         {
-            var actual = StringEx.SubstringLeft( null, 1 );
+            Action test = () => StringEx.SubstringLeft( null, 1 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

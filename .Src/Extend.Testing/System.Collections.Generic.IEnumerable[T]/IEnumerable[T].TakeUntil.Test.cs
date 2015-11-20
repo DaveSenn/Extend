@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -37,18 +38,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TakeUntilTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.TakeUntil( x => true );
+            Action test = () => list.TakeUntil( x => true );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TakeUntilTestCaseNullCheck1()
         {
-            new List<Object>().TakeUntil( null );
+            Action test = () => new List<Object>().TakeUntil( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

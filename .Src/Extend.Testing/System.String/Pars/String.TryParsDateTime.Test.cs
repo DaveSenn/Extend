@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -46,27 +47,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeTestCase1NullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTime( null, out outValue );
+            Action test = () => StringEx.TryParsDateTime( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeTestCase1NullCheck1()
         {
             var outValue = DateTime.Now;
-            "".TryParsDateTime( null, DateTimeStyles.AllowInnerWhite, out outValue );
+            Action test = () => "".TryParsDateTime( null, DateTimeStyles.AllowInnerWhite, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeTestCaseNullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTime( null, out outValue );
+            Action test = () => StringEx.TryParsDateTime( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

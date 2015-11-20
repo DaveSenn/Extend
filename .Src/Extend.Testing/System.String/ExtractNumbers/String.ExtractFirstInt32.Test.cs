@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -41,31 +42,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractFirstInt32TestCaseArgumentOutOfRangeException()
         {
-            var actual = "100".ExtractFirstInt32( 100 );
+            Action test = () => "100".ExtractFirstInt32( 100 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentOutOfRangeException) )]
         public void ExtractFirstInt32TestCaseArgumentOutOfRangeException1()
         {
-            var actual = "100".ExtractFirstInt32( -1 );
+            Action test = () => "100".ExtractFirstInt32( -1 );
+
+            test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstInt32TestCaseNullCheck()
         {
-            StringEx.ExtractFirstInt32( null );
+            Action test = () => StringEx.ExtractFirstInt32( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ExtractFirstInt32TestCaseNullCheck1()
         {
-            StringEx.ExtractFirstInt32( null, 0 );
+            Action test = () => StringEx.ExtractFirstInt32( null, 0 );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

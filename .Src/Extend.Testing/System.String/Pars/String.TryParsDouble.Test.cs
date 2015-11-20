@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -37,38 +38,30 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDoubleTestCase1NullCheck()
         {
             var outValue = 100d;
-            StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            Action test = () => StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDoubleTestCase1NullCheck1()
         {
             var outValue = 100d;
-            "100".TryParsDouble( NumberStyles.Any, null, out outValue );
+            Action test = () => "100".TryParsDouble( NumberStyles.Any, null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDoubleTestCaseNullCheck()
         {
             var outValue = 100d;
-            StringEx.TryParsDouble( null, out outValue );
+            Action test = () => StringEx.TryParsDouble( null, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
-
-/*
- public static Boolean TryParsDouble( this String value, NumberStyles style, IFormatProvider provider,
-                                             out Double outValue )
-        {
-            value.ThrowIfNull( () => value );
-            provider.ThrowIfNull( () => provider );
-
-            return Double.TryParse( value, style, provider, out outValue );
-        }
- */

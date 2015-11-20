@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -33,18 +34,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachReverseTestCaseNullCheck()
         {
             List<Object> list = null;
-            list.ForEachReverse( Console.WriteLine );
+            Action test = () => list.ForEachReverse( Console.WriteLine );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void ForEachReverseTestCaseNullCheck1()
         {
-            new List<Object>().ForEachReverse( null );
+            Action test = () => new List<Object>().ForEachReverse( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

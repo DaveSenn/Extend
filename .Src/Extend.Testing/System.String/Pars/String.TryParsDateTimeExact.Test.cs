@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -43,41 +44,45 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCase1NullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTimeExact( null,
-                                           new[]
-                                           {
-                                               "test"
-                                           },
-                                           CultureInfo.InvariantCulture,
-                                           DateTimeStyles.AllowTrailingWhite,
-                                           out outValue );
+            Action test = () => StringEx.TryParsDateTimeExact( null,
+                                                               new[]
+                                                               {
+                                                                   "test"
+                                                               },
+                                                               CultureInfo.InvariantCulture,
+                                                               DateTimeStyles.AllowTrailingWhite,
+                                                               out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCase1NullCheck1()
         {
             var outValue = DateTime.Now;
             String[] s = null;
-            "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
+            Action test = () => "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCase1NullCheck2()
         {
             var outValue = DateTime.Now;
-            "".TryParsDateTimeExact( new[]
-            {
-                "test"
-            },
-                                     null,
-                                     DateTimeStyles.AllowTrailingWhite,
-                                     out outValue );
+            Action test = () => "".TryParsDateTimeExact(
+                new[]
+                {
+                    "test"
+                },
+                null,
+                DateTimeStyles.AllowTrailingWhite,
+                out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
@@ -112,32 +117,35 @@ namespace Extend.Testing
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCaseNullCheck()
         {
             var outValue = DateTime.Now;
-            StringEx.TryParsDateTimeExact( null,
-                                           "",
-                                           CultureInfo.InvariantCulture,
-                                           DateTimeStyles.AllowTrailingWhite,
-                                           out outValue );
+            Action test = () => StringEx.TryParsDateTimeExact( null,
+                                                               "",
+                                                               CultureInfo.InvariantCulture,
+                                                               DateTimeStyles.AllowTrailingWhite,
+                                                               out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCaseNullCheck1()
         {
             var outValue = DateTime.Now;
             String s = null;
-            "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
+            Action test = () => "".TryParsDateTimeExact( s, CultureInfo.InvariantCulture, DateTimeStyles.AllowTrailingWhite, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        [ExpectedException( typeof (ArgumentNullException) )]
         public void TryParsDateTimeExactTestCaseNullCheck2()
         {
             var outValue = DateTime.Now;
-            "".TryParsDateTimeExact( "", null, DateTimeStyles.AllowTrailingWhite, out outValue );
+            Action test = () => "".TryParsDateTimeExact( "", null, DateTimeStyles.AllowTrailingWhite, out outValue );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }
