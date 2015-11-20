@@ -11,10 +11,10 @@ namespace Extend
     /// <summary>
     ///     Class representing a attribute definition.
     /// </summary>
-    /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-    public class AttributeDefinition<TAttribute> : IAttributeDefinition<TAttribute> where TAttribute : Attribute
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    public class AttributeDefinitionProperty<T> : IAttributeDefinitionProperty<T> where T : Attribute
     {
-        #region Implementation of IAttributeDefinition{T}
+        #region Implementation of IAttributeDefinitionProperty{T}
 
         /// <summary>
         ///     Gets or sets the property which is decorated with the attributes.
@@ -26,8 +26,8 @@ namespace Extend
         ///     Gets or sets a collection of attributes of the specified type.
         /// </summary>
         /// <value>A collection of attributes of the specified type.</value>
-        public IEnumerable<TAttribute> Attributes { get; set; } = new List<TAttribute>();
+        public IEnumerable<T> Attributes { get; set; } = new List<T>();
 
-        #endregion Implementation of IAttributeDefinition{T}
+        #endregion Implementation of IAttributeDefinitionProperty{T}
     }
 }

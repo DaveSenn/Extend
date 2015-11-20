@@ -8,11 +8,12 @@ using System.Reflection;
 
 namespace Extend
 {
+    /// ///
     /// <summary>
-    ///     Interface representing a attribute definition.
+    ///     Interface representing the attribute definitions of a property.
     /// </summary>
-    /// <typeparam name="TAttribute">The type of the attribute.</typeparam>
-    public interface IAttributeDefinition<TAttribute> where TAttribute : Attribute
+    /// <typeparam name="T">The type of the attributes.</typeparam>
+    public interface IAttributeDefinitionProperty<T> where T : Attribute
     {
         #region Properties
 
@@ -26,7 +27,7 @@ namespace Extend
         ///     Gets or sets a collection of attributes of the specified type.
         /// </summary>
         /// <value>A collection of attributes of the specified type.</value>
-        IEnumerable<TAttribute> Attributes { get; set; }
+        IEnumerable<T> Attributes { get; set; }
 
         #endregion
     }

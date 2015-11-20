@@ -45,6 +45,8 @@
     <DocumentationFile>bin\Release\Portable\Extend.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Models\AttributeDefinitionType.cs" />
+    <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />
@@ -232,6 +234,7 @@
     <Compile Include="System.Object\Generic\Object.Generic.Satisfies.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
+    <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
@@ -393,8 +396,8 @@
     <Compile Include="System.Int16\Int16.RangeTo.cs" />
     <Compile Include="System.Int32\Int32.RangeTo.cs" />
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
-    <Compile Include="Models\AttributeDefinition.cs" />
-    <Compile Include="Models\Definitions\IAttributeDefinition.cs" />
+    <Compile Include="Models\AttributeDefinitionProperty.cs" />
+    <Compile Include="Models\Definitions\IAttributeDefinitionProperty.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
