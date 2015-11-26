@@ -12,10 +12,10 @@ namespace Extend
     public static partial class DateTimeEx
     {
         /// <summary>
-        ///     Subtracts a day to the given date time value.
+        ///     Subtracts a day to the given date dateTime value.
         /// </summary>
-        /// <param name="dateTime">The date time to decrease.</param>
-        /// <returns>Yesterday date at same time.</returns>
+        /// <param name="dateTime">The date dateTime to decrease.</param>
+        /// <returns>Yesterday date at same dateTime.</returns>
         public static DateTime Yesterday( this DateTime dateTime )
         {
             return dateTime.AddDays( -1 );
