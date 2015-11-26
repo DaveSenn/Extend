@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
+    <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
     <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
