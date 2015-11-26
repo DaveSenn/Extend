@@ -252,6 +252,7 @@
     <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
+    <Compile Include="System.String\String.CharAt.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
     <Compile Include="System.String\String.Contains.cs" />

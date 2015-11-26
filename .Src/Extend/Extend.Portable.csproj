@@ -264,6 +264,7 @@
     <Compile Include="System.String\String.SplitLines.cs" />
     <Compile Include="System.String\String.TakeAndRemove.cs" />
     <Compile Include="System.String\String.ToEnum.cs" />
+    <Compile Include="System.String\String.CharAt.cs" />
     <Compile Include="System.String\String.TryToEnum.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].ToDictionary.cs" />
     <Compile Include="System.DateTime\DateTime.Intersects.cs" />
