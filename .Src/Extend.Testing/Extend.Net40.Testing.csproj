@@ -71,6 +71,7 @@
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
     <Compile Include="System.String\String.CharAt.Test.cs" />
     <Compile Include="System.String\String.Contains.Test.cs" />
+    <Compile Include="System.String\String.Left.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
