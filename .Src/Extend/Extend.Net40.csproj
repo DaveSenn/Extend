@@ -256,6 +256,7 @@
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
     <Compile Include="System.String\String.Contains.cs" />
+    <Compile Include="System.String\String.Left.cs" />
     <Compile Include="System.String\String.SafeToCultureInfo.cs" />
     <Compile Include="System.String\String.ToCultureInfo.cs" />
     <Compile Include="System.String\String.IsEmpty.cs" />
