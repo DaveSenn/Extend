@@ -67,6 +67,7 @@
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
+    <Compile Include="System.String\String.GetLines.Test.cs" />
     <Compile Include="System.String\String.ReplaceAt.Test.cs" />
     <Compile Include="System.String\String.Right.Test.cs" />
     <Compile Include="System.String\String.Left.Test.cs" />
