@@ -53,5 +53,23 @@ namespace Extend.Testing
             actual.Should()
                   .Be( String.Empty );
         }
+
+        [Test]
+        public void LeftTest2()
+        {
+            var actual = "This is a test".Left( 0 );
+
+            actual.Should()
+                  .Be( "" );
+        }
+
+        [Test]
+        public void LeftTest3()
+        {
+            var actual = "this is a test".Left( 2 );
+
+            actual.Should()
+                  .Be( "th" );
+        }
     }
 }
