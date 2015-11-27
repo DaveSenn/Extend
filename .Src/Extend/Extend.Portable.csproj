@@ -252,6 +252,7 @@
     <Compile Include="System.String\Convert\String.ToGuid.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.cs" />
+    <Compile Include="System.String\String.GetLines.cs" />
     <Compile Include="System.String\String.ReplaceAt.cs" />
     <Compile Include="System.String\String.Contains.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
