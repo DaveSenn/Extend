@@ -57,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
+    <Compile Include="Models\IndexedItemTest.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
@@ -67,6 +72,10 @@
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
+    <Compile Include="System.String\String.GetLines.Test.cs" />
+    <Compile Include="System.String\String.ReplaceAt.Test.cs" />
+    <Compile Include="System.String\String.Right.Test.cs" />
+    <Compile Include="System.String\String.Left.Test.cs" />
     <Compile Include="System.String\String.Contains.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
@@ -404,6 +413,7 @@
     <Compile Include="System.String\String.SubstringRightSafe.Test.cs" />
     <Compile Include="System.String\String.TakeAndRemove.Test.cs" />
     <Compile Include="System.String\String.Truncate.Test.cs" />
+    <Compile Include="System.String\String.CharAt.Test.cs" />
     <Compile Include="System.String\System.Text.RegularExpressions.Regex\String.IsNotMatch.Test.cs" />
     <Compile Include="System.String\String.ToEnum.Test.cs" />
     <Compile Include="System.String\String.TryToEnum.Test.cs" />

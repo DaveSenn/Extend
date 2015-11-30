@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Net40\Extend.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -46,6 +52,8 @@
     <Compile Include="Models\AttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionProperty.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
+    <Compile Include="Models\Definitions\IIndexedItem.cs" />
+    <Compile Include="Models\IndexedItem.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />
@@ -70,11 +78,15 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />
@@ -252,9 +264,14 @@
     <Compile Include="System.String\Pars\String.TryParsGuid.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.cs" />
     <Compile Include="System.String\String.ChangeType.cs" />
+    <Compile Include="System.String\String.CharAt.cs" />
     <Compile Include="System.String\String.CompareOrdinal.cs" />
     <Compile Include="System.String\String.CompareOrdinalIgnoreCase.cs" />
     <Compile Include="System.String\String.Contains.cs" />
+    <Compile Include="System.String\String.GetLines.cs" />
+    <Compile Include="System.String\String.Left.cs" />
+    <Compile Include="System.String\String.ReplaceAt.cs" />
+    <Compile Include="System.String\String.Right.cs" />
     <Compile Include="System.String\String.SafeToCultureInfo.cs" />
     <Compile Include="System.String\String.ToCultureInfo.cs" />
     <Compile Include="System.String\String.IsEmpty.cs" />
@@ -458,6 +475,7 @@
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Extend.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
