@@ -44,9 +44,17 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Release\Portable\Extend.XML</DocumentationFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
+    <Compile Include="Models\Definitions\IIndexedItem.cs" />
+    <Compile Include="Models\IndexedItem.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />
@@ -71,6 +79,10 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
@@ -466,6 +478,7 @@
     <Compile Include="System.Object\Generic\Object.Generic.IsDefault.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Extend.snk" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

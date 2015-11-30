@@ -57,6 +57,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
+    <Compile Include="Models\IndexedItemTest.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
