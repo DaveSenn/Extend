@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="FluentAssertions, Version=4.0.1.0, Culture=neutral, PublicKeyToken=33f2691a05b67b6a, processorArchitecture=MSIL">
       <HintPath>..\packages\FluentAssertions.4.0.1\lib\net40\FluentAssertions.dll</HintPath>
@@ -59,7 +62,12 @@
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionPropertyTest.cs" />
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
+    <Compile Include="Models\IndexedItemTest.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
@@ -69,7 +77,12 @@
     <Compile Include="System.String\Convert\String.ToGuid.Test.cs" />
     <Compile Include="System.String\Pars\String.TryParsGuid.Test.cs" />
     <Compile Include="System.String\String.AppendWithNewLineIfNotEmpty.Test.cs" />
+    <Compile Include="System.String\String.CharAt.Test.cs" />
     <Compile Include="System.String\String.Contains.Test.cs" />
+    <Compile Include="System.String\String.GetLines.Test.cs" />
+    <Compile Include="System.String\String.Left.Test.cs" />
+    <Compile Include="System.String\String.ReplaceAt.Test.cs" />
+    <Compile Include="System.String\String.Right.Test.cs" />
     <Compile Include="System.String\String.SubstringLeftSafe.Test.cs" />
     <Compile Include="System.DateTime\ToDateTimeFormat\DateTime.ToLongDateShortTimeString.Test.cs" />
     <Compile Include="System.Enum\Enum.GetStringValues.Test.cs" />
