@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The double to check.</param>
         /// <returns>Returns true if the given double is infinity, otherwise false.</returns>
-        public static Boolean IsInfinity( this Double value )
-        {
-            return Double.IsInfinity( value );
-        }
+        public static Boolean IsInfinity( this Double value ) => Double.IsInfinity( value );
     }
 }

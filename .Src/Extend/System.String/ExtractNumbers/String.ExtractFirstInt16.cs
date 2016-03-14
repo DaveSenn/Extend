@@ -16,10 +16,7 @@ namespace Extend
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted Int16.</returns>
-        public static Int16 ExtractFirstInt16( this String value, Int32 startIndex = 0 )
-        {
-            return ExtractNumber( value, startIndex )
-                .ToInt16();
-        }
+        public static Int16 ExtractFirstInt16( this String value, Int32 startIndex = 0 ) => ExtractNumber( value, startIndex )
+            .ToInt16();
     }
 }

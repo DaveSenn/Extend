@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int64 value.</param>
         /// <returns>Returns the given Int64 value as days.</returns>
-        public static TimeSpan ToDays( this Int64 value )
-        {
-            return TimeSpan.FromDays( value );
-        }
+        public static TimeSpan ToDays( this Int64 value ) => TimeSpan.FromDays( value );
     }
 }

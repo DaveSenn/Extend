@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The <see cref="Object" /> to check.</param>
         /// <returns>A value of true if the <see cref="Object" /> is null, otherwise false.</returns>
-        public static Boolean IsNull( this Object obj )
-        {
-            return obj == null;
-        }
+        public static Boolean IsNull( this Object obj ) => obj == null;
     }
 }

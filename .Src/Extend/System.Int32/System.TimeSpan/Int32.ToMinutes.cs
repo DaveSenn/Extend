@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int32 value.</param>
         /// <returns>Returns the given Int32 value as minutes.</returns>
-        public static TimeSpan ToMinutes( this Int32 value )
-        {
-            return TimeSpan.FromMinutes( value );
-        }
+        public static TimeSpan ToMinutes( this Int32 value ) => TimeSpan.FromMinutes( value );
     }
 }

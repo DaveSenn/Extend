@@ -14,9 +14,6 @@ namespace Extend
         /// <param name="value">The input string.</param>
         /// <param name="alternativeValue">The alternative value.</param>
         /// <returns>The input or the alternative value.</returns>
-        public static String IfNotEmpty( this String value, String alternativeValue )
-        {
-            return !value.IsEmpty() ? value : alternativeValue;
-        }
+        public static String IfNotEmpty( this String value, String alternativeValue ) => !value.IsEmpty() ? value : alternativeValue;
     }
 }

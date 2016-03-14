@@ -15,15 +15,9 @@ namespace Extend.Testing
             public event EventHandler MyEvent;
             public event EventHandler<SampleEventArgs> MyGenericEvent;
 
-            public void RaiseEvent( EventArgs args )
-            {
-                MyEvent.Raise( this, args );
-            }
+            public void RaiseEvent( EventArgs args ) => MyEvent.Raise( this, args );
 
-            public void RaiseGenericEvent( SampleEventArgs args )
-            {
-                MyGenericEvent.Raise( this, args );
-            }
+            public void RaiseGenericEvent( SampleEventArgs args ) => MyGenericEvent.Raise( this, args );
         }
 
         private class SampleEventArgs : EventArgs

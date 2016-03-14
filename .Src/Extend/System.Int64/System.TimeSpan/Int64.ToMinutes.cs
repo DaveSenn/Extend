@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int64 value.</param>
         /// <returns>Returns the given Int64 value as minutes.</returns>
-        public static TimeSpan ToMinutes( this Int64 value )
-        {
-            return TimeSpan.FromMinutes( value );
-        }
+        public static TimeSpan ToMinutes( this Int64 value ) => TimeSpan.FromMinutes( value );
     }
 }

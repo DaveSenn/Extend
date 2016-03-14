@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int32 value.</param>
         /// <returns>Returns the given Int32 value as hours.</returns>
-        public static TimeSpan ToHours( this Int32 value )
-        {
-            return TimeSpan.FromHours( value );
-        }
+        public static TimeSpan ToHours( this Int32 value ) => TimeSpan.FromHours( value );
     }
 }

@@ -42,9 +42,6 @@ namespace Extend
         ///     Returns an array whose elements contain the substrings in this string that are delimited by
         ///     <see cref="Environment.NewLine" />.
         /// </returns>
-        public static String[] SplitLines( this String value )
-        {
-            return value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-        }
+        public static String[] SplitLines( this String value ) => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
     }
 }

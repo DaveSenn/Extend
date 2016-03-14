@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The double to check.</param>
         /// <returns>Returns true if the value is not a number, otherwise false.</returns>
-        public static Boolean IsNaN( this Double value )
-        {
-            return Double.IsNaN( value );
-        }
+        public static Boolean IsNaN( this Double value ) => Double.IsNaN( value );
     }
 }

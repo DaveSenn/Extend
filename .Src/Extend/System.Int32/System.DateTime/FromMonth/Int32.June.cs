@@ -18,9 +18,6 @@ namespace Extend
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>Return a date-time representing the specified day in June in the specified year.</returns>
-        public static DateTime June( this Int32 day, Int32 year )
-        {
-            return new DateTime( year, 6, day );
-        }
+        public static DateTime June( this Int32 day, Int32 year ) => new DateTime( year, 6, day );
     }
 }

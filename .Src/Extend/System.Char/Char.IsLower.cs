@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a lowercase letter, otherwise false.</returns>
-        public static Boolean IsLower( this Char c )
-        {
-            return Char.IsLower( c );
-        }
+        public static Boolean IsLower( this Char c ) => Char.IsLower( c );
     }
 }

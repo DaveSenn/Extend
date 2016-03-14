@@ -52,10 +52,7 @@ namespace Extend.Testing
             /// <returns>
             ///     An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
             /// </returns>
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return GetEnumerator();
-            }
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
             #endregion
 
@@ -287,11 +284,7 @@ namespace Extend.Testing
             /// <summary>
             ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
             /// </summary>
-            public void Dispose()
-            {
-                if ( DisposeAction != null )
-                    DisposeAction( Value );
-            }
+            public void Dispose() => DisposeAction?.Invoke( Value );
 
             #endregion
         }
@@ -967,7 +960,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
 
-            var actual = target.FindNode( x => x.Value.StartsWith( "1" ) )
+            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( "1", actual[0].Value );
@@ -1005,7 +998,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
 
-            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1" ) || x.Value.StartsWith( "b" ) )
+            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 7, actual.Count );
             Assert.AreEqual( "root", actual[0].Value );
@@ -1046,7 +1039,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
 
-            var actual = target.FindNode( x => x.Value.StartsWith( "1" ) )
+            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( "1111", actual[0].Value );
@@ -1084,7 +1077,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
 
-            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1" ) || x.Value.StartsWith( "b" ) )
+            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 7, actual.Count );
             Assert.AreEqual( "1111", actual[0].Value );
@@ -1125,7 +1118,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
 
-            var actual = target.FindValue( x => x.Value.StartsWith( "1" ) )
+            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( "1", actual[0] );
@@ -1163,7 +1156,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
 
-            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1" ) || x.Value.StartsWith( "b" ) )
+            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 7, actual.Count );
             Assert.AreEqual( "root", actual[0] );
@@ -1204,7 +1197,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
 
-            var actual = target.FindValue( x => x.Value.StartsWith( "1" ) )
+            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( "1111", actual[0] );
@@ -1242,7 +1235,7 @@ namespace Extend.Testing
             };
             target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
 
-            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1" ) || x.Value.StartsWith( "b" ) )
+            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.AreEqual( 7, actual.Count );
             Assert.AreEqual( "1111", actual[0] );
@@ -1749,7 +1742,7 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "1" );
             var actual = target.ToString();
-            Assert.AreEqual( "Depth: 0 - Value: 1, Children: 0, Parent: {[NULL]}", actual );
+            Assert.AreEqual( "Depth: 0 - Value: 1, Children: 0, Parent: [[NULL]]", actual );
         }
 
         [Test]
@@ -1759,7 +1752,7 @@ namespace Extend.Testing
             var node = new TreeNode<String>( "a" );
             target.Add( node );
             var actual = node.ToString();
-            Assert.AreEqual( "Depth: 1 - Value: a, Children: 0, Parent: {Depth: 0 - Value: 1, Children: 3, Parent: {[NULL]}}",
+            Assert.AreEqual( "Depth: 1 - Value: a, Children: 0, Parent: [Depth: 0 - Value: 1, Children: 3, Parent: [[NULL]]]",
                              actual );
         }
 

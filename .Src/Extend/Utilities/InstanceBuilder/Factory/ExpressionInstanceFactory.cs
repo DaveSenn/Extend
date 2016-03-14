@@ -46,10 +46,7 @@ namespace Extend
         /// </summary>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        public override Object CreateValue( IMemberInformation memberInformation )
-        {
-            return _factory( memberInformation );
-        }
+        public override Object CreateValue( IMemberInformation memberInformation ) => _factory( memberInformation );
 
         #endregion
     }

@@ -21,10 +21,7 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
-        public static Boolean AnyAndNotNull<T>( this IEnumerable<T> enumerable )
-        {
-            return enumerable != null && enumerable.Any();
-        }
+        public static Boolean AnyAndNotNull<T>( this IEnumerable<T> enumerable ) => enumerable != null && enumerable.Any();
 
         /// <summary>
         ///     Checks if the given IEnumerable is not null and contains some items

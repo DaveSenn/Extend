@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a suniversal sortable long date time string.</returns>
-        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "U", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime ) => dateTime.ToString( "U", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a universal sortable long date time string.

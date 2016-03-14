@@ -263,10 +263,7 @@ namespace Extend
         ///     Ends the configuration and returns the configuration result.
         /// </summary>
         /// <returns>Returns the completely configured create instance options. </returns>
-        public ICreateInstanceOptionsComplete<T> Complete()
-        {
-            return this;
-        }
+        public ICreateInstanceOptionsComplete<T> Complete() => this;
 
         #endregion
 
@@ -278,9 +275,7 @@ namespace Extend
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> IsTypeOf<TTarget>()
-        {
-            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.Is ) );
-        }
+            => AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.Is ) );
 
         /// <summary>
         ///     Matches for members which have a matching path.
@@ -314,18 +309,13 @@ namespace Extend
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> IsNotTypeOf<TTarget>()
-        {
-            return AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.IsNot ) );
-        }
+            => AddMemberSlectionRule( new TypeMemberSelectionRule( typeof (TTarget), _currentMemberSelectionMode, CompareMode.IsNot ) );
 
         /// <summary>
         ///     Matches all members.
         /// </summary>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> AllMembers()
-        {
-            return AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
-        }
+        public IIncludeExcludeOptions<T> AllMembers() => AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
 
         #endregion
 

@@ -15,8 +15,8 @@ namespace Extend.Testing
         [Test]
         public void ToDoubleTestCase()
         {
-            var expected = 100.12;
-            var value = expected.ToString();
+            const Double expected = 100.12;
+            var value = expected.ToString( CultureInfo.InvariantCulture );
             var actual = ObjectEx.ToDouble( value );
             Assert.AreEqual( expected, actual );
         }
@@ -24,7 +24,7 @@ namespace Extend.Testing
         [Test]
         public void ToDoubleTestCase1()
         {
-            var expected = 100.12;
+            const Double expected = 100.12;
             var value = expected.ToString( CultureInfo.InvariantCulture );
             var actual = ObjectEx.ToDouble( value, CultureInfo.InvariantCulture );
             Assert.AreEqual( expected, actual );

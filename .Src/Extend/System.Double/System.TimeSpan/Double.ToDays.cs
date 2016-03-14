@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Double value.</param>
         /// <returns>Returns the given Double value as days.</returns>
-        public static TimeSpan ToDays( this Double value )
-        {
-            return TimeSpan.FromDays( value );
-        }
+        public static TimeSpan ToDays( this Double value ) => TimeSpan.FromDays( value );
     }
 }

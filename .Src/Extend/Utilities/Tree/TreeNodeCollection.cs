@@ -43,10 +43,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return "Count: {0}, Parent: {{{1}}}".F( Count, Parent == null ? "[NULL]" : Parent.ToString() );
-        }
+        public override String ToString() => $"Count: {Count}, Parent: [{Parent?.ToString() ?? "[NULL]"}]";
 
         #endregion
 
@@ -158,10 +155,7 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">item can not be null.</exception>
         /// <param name="item">The item to add.</param>
-        public new void Add( ITreeNode<T> item )
-        {
-            Add( item, true );
-        }
+        public new void Add( ITreeNode<T> item ) => Add( item, true );
 
         /// <summary>
         ///     Removes the given item form the list and sets it's parent to null.
@@ -172,10 +166,7 @@ namespace Extend
         ///     true if item is successfully removed; otherwise, false. This method also
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
-        public new Boolean Remove( ITreeNode<T> item )
-        {
-            return Remove( item, true );
-        }
+        public new Boolean Remove( ITreeNode<T> item ) => Remove( item, true );
 
         #endregion
     }

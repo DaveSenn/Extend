@@ -90,22 +90,16 @@ namespace Extend
         /// </summary>
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <returns>Returns the new created create instance options.</returns>
-        public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new()
-        {
-            return new CreateInstanceOptions<T>();
-        }
+        public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new() => new CreateInstanceOptions<T>();
 
         /// <summary>
         ///     Creates an instance of the specified type without any special configuration.
         /// </summary>
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <returns>Returns the new created instance.</returns>
-        public static T CreateInstance<T>() where T : class, new()
-        {
-            return CreateInstanceOptions<T>()
-                .Complete()
-                .CreateInstance();
-        }
+        public static T CreateInstance<T>() where T : class, new() => CreateInstanceOptions<T>()
+            .Complete()
+            .CreateInstance();
 
         /// <summary>
         ///     Creates an instance of the specified type based on the given options.
@@ -147,9 +141,7 @@ namespace Extend
         /// <param name="parentMemberInformation">The parent of the given properties.</param>
         /// <returns>Returns the new created <see cref="IMemberInformation" />.</returns>
         private static IEnumerable<IMemberInformation> GetMemberInformation( this IEnumerable<PropertyInfo> propertyInfos, IMemberInformation parentMemberInformation )
-        {
-            return propertyInfos.Select( x => x.ToMemberInformation( parentMemberInformation ) );
-        }
+            => propertyInfos.Select( x => x.ToMemberInformation( parentMemberInformation ) );
 
         #endregion
 
@@ -164,9 +156,7 @@ namespace Extend
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
         private static Boolean IncludeMember<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
-        {
-            return ShouldMemberBeIncluded( memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules );
-        }
+            => ShouldMemberBeIncluded( memberInformation, options.MemberSelectionRules, DefaultMemberSelectionRules );
 
         /// <summary>
         ///     Gets a value determining whether the children should be included or not.
@@ -177,9 +167,7 @@ namespace Extend
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns a value of true if the children should be included; otherwise, false.</returns>
         private static Boolean IncludeChildMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation )
-        {
-            return ShouldMemberBeIncluded( memberInformation, options.MemberChildrenSelectionRules, DefaultMemberChildreSelectionRules );
-        }
+            => ShouldMemberBeIncluded( memberInformation, options.MemberChildrenSelectionRules, DefaultMemberChildreSelectionRules );
 
         /// <summary>
         ///     Gets a value determining whether the member should be included or not.
@@ -237,10 +225,7 @@ namespace Extend
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns a value of true if collections should get populated or not.</returns>
-        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
-        {
-            return options.PopulateCollections ?? PopulateCollections;
-        }
+        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class => options.PopulateCollections ?? PopulateCollections;
 
         /// <summary>
         ///     Gets the name for anonymous items.
@@ -248,10 +233,7 @@ namespace Extend
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the name to use.</returns>
-        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
-        {
-            return options.AnonymousItemName ?? AnonymousItemName;
-        }
+        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class => options.AnonymousItemName ?? AnonymousItemName;
 
         /// <summary>
         ///     Creates the root instance.
@@ -596,29 +578,20 @@ namespace Extend
         /// <summary>
         ///     Creates the default factories.
         /// </summary>
-        private static void CreateDefaultFactories()
-        {
-            InstanceFactoryProvider.GetDefaultFactories()
-                                   .ForEach( x => { DefaultFactories.Add( x ); } );
-        }
+        private static void CreateDefaultFactories() => InstanceFactoryProvider.GetDefaultFactories()
+                                                                               .ForEach( x => DefaultFactories.Add( x ) );
 
         /// <summary>
         ///     Creates the default member selection rules.
         /// </summary>
-        private static void CreateDefaultMemberSelectionRules()
-        {
-            MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
-                                       .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
-        }
+        private static void CreateDefaultMemberSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
+                                                                                              .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
 
         /// <summary>
         ///     Creates the default member children selection rules.
         /// </summary>
-        private static void CreateDefaultMemberChildreSelectionRules()
-        {
-            MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
-                                       .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
-        }
+        private static void CreateDefaultMemberChildreSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
+                                                                                                     .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
 
         #endregion
 

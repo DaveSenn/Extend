@@ -19,9 +19,6 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the given IEnumerable.</typeparam>
         /// <param name="source">The source IEnumerable.</param>
         /// <returns>A sequence of elements paired with their index in the sequence.</returns>
-        public static IEnumerable<IIndexedItem<T>> WithIndex<T>( this IEnumerable<T> source )
-        {
-            return source.Select( ( item, index ) => new IndexedItem<T>( index, item ) );
-        }
+        public static IEnumerable<IIndexedItem<T>> WithIndex<T>( this IEnumerable<T> source ) => source.Select( ( item, index ) => new IndexedItem<T>( index, item ) );
     }
 }

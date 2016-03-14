@@ -987,6 +987,7 @@ namespace Extend.Testing
                   .BeSameAs( target );
             target.Factories.Count.Should()
                   .Be( 1 );
+            // ReSharper disable once PossibleNullReferenceException
             var actualFactoryResult = ( target.Factories.First() as ExpressionInstanceFactory ).CreateValue( null );
             actualFactoryResult.Should()
                                .Be( "test" );

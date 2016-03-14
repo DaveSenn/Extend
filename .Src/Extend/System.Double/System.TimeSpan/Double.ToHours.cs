@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Double value.</param>
         /// <returns>Returns the given Double value as hours.</returns>
-        public static TimeSpan ToHours( this Double value )
-        {
-            return TimeSpan.FromHours( value );
-        }
+        public static TimeSpan ToHours( this Double value ) => TimeSpan.FromHours( value );
     }
 }

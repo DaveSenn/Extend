@@ -23,11 +23,14 @@ namespace Extend
         /// </returns>
         public static String TakeAndRemove( this Int32 count, ref String value )
         {
+            /*
             if ( value == null )
                 throw new ArgumentNullException( "value can not be null." );
+            */
+            value.ThrowIfNull( nameof( value ) );
 
             if ( count > value.Length )
-                throw new ArgumentOutOfRangeException( "count",
+                throw new ArgumentOutOfRangeException( nameof( count ),
                                                        "Count must be smaller than the length of the given value." );
 
             var returnValue = new String( value.ToCharArray()

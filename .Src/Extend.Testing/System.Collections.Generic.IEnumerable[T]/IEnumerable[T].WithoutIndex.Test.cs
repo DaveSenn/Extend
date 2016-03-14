@@ -33,7 +33,8 @@ namespace Extend.Testing
                 new IndexedItem<String>( 3, "d" )
             };
 
-            var actual = list.WithoutIndex().ToList();
+            var actual = list.WithoutIndex()
+                             .ToList();
             actual.Should()
                   .HaveCount( 4 );
             actual.Should()

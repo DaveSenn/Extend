@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Double value.</param>
         /// <returns>Returns the given Double value as milliseconds.</returns>
-        public static TimeSpan ToMilliseconds( this Double value )
-        {
-            return TimeSpan.FromMilliseconds( value );
-        }
+        public static TimeSpan ToMilliseconds( this Double value ) => TimeSpan.FromMilliseconds( value );
     }
 }

@@ -52,10 +52,7 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy( T obj )
-        {
-            return _expression( obj );
-        }
+        public override Boolean IsSatisfiedBy( T obj ) => _expression( obj );
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.

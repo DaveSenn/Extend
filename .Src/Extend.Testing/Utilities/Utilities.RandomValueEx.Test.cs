@@ -12,10 +12,7 @@ namespace Extend.Testing
     public class RandomValueExTest
     {
         [Test]
-        public void GetRandomBooleanTestCase()
-        {
-            RandomValueEx.GetRandomBoolean();
-        }
+        public void GetRandomBooleanTestCase() => RandomValueEx.GetRandomBoolean();
 
         [Test]
         public void GetRandomByteTest()
@@ -96,10 +93,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomEnumTestCase()
-        {
-            RandomValueEx.GetRandomEnum<DayOfWeek>();
-        }
+        public void GetRandomEnumTestCase() => RandomValueEx.GetRandomEnum<DayOfWeek>();
 
         [Test]
         public void GetRandomInt16TestCase()
