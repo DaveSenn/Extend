@@ -85,10 +85,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return $"[{RuleName}] = ({_selectionMode} where type {_compareMode} {_type.Name}) ({RuleDescription}).";
-        }
+        public override String ToString() => $"[{RuleName}] = ({_selectionMode} where type {_compareMode} {_type.Name}) ({RuleDescription}).";
 
         #endregion
     }

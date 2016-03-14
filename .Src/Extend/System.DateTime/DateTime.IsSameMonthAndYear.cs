@@ -17,9 +17,6 @@ namespace Extend
         /// <param name="dateTime">The first date-time value.</param>
         /// <param name="otherDateTime">The second date-time value.</param>
         /// <returns>Returns true if the given date-time values are the same month and year, otherwise false.</returns>
-        public static Boolean IsSameMonthAndYear( this DateTime dateTime, DateTime otherDateTime )
-        {
-            return dateTime.Year == otherDateTime.Year && dateTime.Month == otherDateTime.Month;
-        }
+        public static Boolean IsSameMonthAndYear( this DateTime dateTime, DateTime otherDateTime ) => dateTime.Year == otherDateTime.Year && dateTime.Month == otherDateTime.Month;
     }
 }

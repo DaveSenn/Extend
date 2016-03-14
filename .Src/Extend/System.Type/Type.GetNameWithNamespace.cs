@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-
 #if PORTABLE45
 using System.Reflection;
 
@@ -75,9 +74,6 @@ namespace Extend
         /// </summary>
         /// <param name="type">The type to get the name of.</param>
         /// <returns></returns>
-        private static String GetNameWithNamespaceSimpleType( this Type type )
-        {
-            return $"{type.FullName}, {type.GetAssemblyName()}";
-        }
+        private static String GetNameWithNamespaceSimpleType( this Type type ) => $"{type.FullName}, {type.GetAssemblyName()}";
     }
 }

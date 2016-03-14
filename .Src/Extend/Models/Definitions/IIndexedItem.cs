@@ -1,13 +1,19 @@
-﻿using System;
+﻿#region Usings
+
+using System;
+
+#endregion
 
 namespace Extend
 {
     /// <summary>
-    /// Interface representing an imte with an index.
+    ///     Interface representing an imte with an index.
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public interface IIndexedItem<T>
     {
+        #region Properties
+
         /// <summary>
         ///     Gets the index of the item.
         /// </summary>
@@ -19,5 +25,7 @@ namespace Extend
         /// </summary>
         /// <value>The item.</value>
         T Item { get; }
+
+        #endregion
     }
 }

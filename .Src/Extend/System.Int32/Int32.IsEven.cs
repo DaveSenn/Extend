@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int32 to check.</param>
         /// <returns>Returns true if the Int32 is even, otherwise false.</returns>
-        public static Boolean IsEven( this Int32 value )
-        {
-            return value % 2 == 0;
-        }
+        public static Boolean IsEven( this Int32 value ) => value % 2 == 0;
     }
 }

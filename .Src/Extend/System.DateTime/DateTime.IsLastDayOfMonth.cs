@@ -17,9 +17,6 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The date-time value.</param>
         /// <returns>Returns a value of true if the given date-time value is the last day of the month.</returns>
-        public static Boolean IsLastDayOfMonth( this DateTime dateTime )
-        {
-            return DateTime.DaysInMonth( dateTime.Year, dateTime.Month ) == dateTime.Day;
-        }
+        public static Boolean IsLastDayOfMonth( this DateTime dateTime ) => DateTime.DaysInMonth( dateTime.Year, dateTime.Month ) == dateTime.Day;
     }
 }

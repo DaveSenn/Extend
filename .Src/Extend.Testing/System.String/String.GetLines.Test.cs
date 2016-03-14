@@ -16,7 +16,8 @@ namespace Extend.Testing
         public void GetLinesArgumentNullExceptionTest()
         {
             String value = null;
-            Action test = () => value.GetLines().ToList();
+            Action test = () => value.GetLines()
+                                     .ToList();
 
             test.ShouldThrow<ArgumentNullException>();
         }

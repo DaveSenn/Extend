@@ -27,10 +27,7 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static Object ChangeType( this String value, Type type )
-        {
-            return value.ChangeType( type, CultureInfo.InvariantCulture );
-        }
+        public static Object ChangeType( this String value, Type type ) => value.ChangeType( type, CultureInfo.InvariantCulture );
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -78,10 +75,7 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static T ChangeType<T>( this String value )
-        {
-            return (T) Convert.ChangeType( value, typeof (T) );
-        }
+        public static T ChangeType<T>( this String value ) => (T) Convert.ChangeType( value, typeof (T) );
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to

@@ -432,7 +432,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( parent );
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 0, Parent: {Depth: 0 - Value: [NULL], Children: 0, Parent: {[NULL]}}", actual );
+            Assert.AreEqual( "Count: 0, Parent: [Depth: 0 - Value: [NULL], Children: 0, Parent: [[NULL]]]", actual );
         }
 
         [Test]
@@ -441,7 +441,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( null );
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 0, Parent: {[NULL]}", actual );
+            Assert.AreEqual( "Count: 0, Parent: [[NULL]]", actual );
         }
 
         [Test]
@@ -451,7 +451,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( parent ) { "1", "2" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 2, Parent: {Depth: 0 - Value: [NULL], Children: 2, Parent: {[NULL]}}", actual );
+            Assert.AreEqual( "Count: 2, Parent: [Depth: 0 - Value: [NULL], Children: 2, Parent: [[NULL]]]", actual );
         }
 
         [Test]
@@ -460,7 +460,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( null ) { "1", "2", "3" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 3, Parent: {[NULL]}", actual );
+            Assert.AreEqual( "Count: 3, Parent: [[NULL]]", actual );
         }
     }
 }

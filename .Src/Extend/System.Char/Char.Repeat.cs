@@ -17,9 +17,6 @@ namespace Extend
         /// <param name="c">The Char to repeat.</param>
         /// <param name="repeatCount">Number of repeats.</param>
         /// <returns>The repeated Char as String.</returns>
-        public static String Repeat( this Char c, Int32 repeatCount )
-        {
-            return new String( c, repeatCount );
-        }
+        public static String Repeat( this Char c, Int32 repeatCount ) => new String( c, repeatCount );
     }
 }

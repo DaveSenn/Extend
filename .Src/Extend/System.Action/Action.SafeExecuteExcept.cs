@@ -19,10 +19,7 @@ namespace Extend
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept<TException>( this Action action )
-            where TException : Exception
-        {
-            return action.SafeExecuteExcept( typeof (TException) );
-        }
+            where TException : Exception => action.SafeExecuteExcept( typeof (TException) );
 
         /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
@@ -33,10 +30,7 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept<TException1, TException2>( this Action action )
             where TException1 : Exception
-            where TException2 : Exception
-        {
-            return action.SafeExecuteExcept( typeof (TException1), typeof (TException2) );
-        }
+            where TException2 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2) );
 
         /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
@@ -49,10 +43,7 @@ namespace Extend
         public static Boolean SafeExecuteExcept<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
-            where TException3 : Exception
-        {
-            return action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3) );
-        }
+            where TException3 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3) );
 
         /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
@@ -67,11 +58,7 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
-            where TException4 : Exception
-        {
-            return
-                action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
-        }
+            where TException4 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
 
         /// <summary>
         ///     Executes the given action insed of a try catch block and catches all excepton expect the given ones.

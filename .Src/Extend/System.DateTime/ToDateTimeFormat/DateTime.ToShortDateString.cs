@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a short date string.</returns>
-        public static String ToShortDateString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "d", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToShortDateString( this DateTime dateTime ) => dateTime.ToString( "d", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a short date string.

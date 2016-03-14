@@ -17,9 +17,6 @@ namespace Extend
         /// <param name="date">The date.</param>
         /// <param name="dateToCompare">Date to compare.</param>
         /// <returns>Returns true if the date is equals to the given date, otherwise false.</returns>
-        public static Boolean IsDateEqual( this DateTime date, DateTime dateToCompare )
-        {
-            return date.Date == dateToCompare.Date;
-        }
+        public static Boolean IsDateEqual( this DateTime date, DateTime dateToCompare ) => date.Date == dateToCompare.Date;
     }
 }

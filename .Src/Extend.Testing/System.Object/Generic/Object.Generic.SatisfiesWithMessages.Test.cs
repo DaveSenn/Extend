@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void SatisfiesWithMessagesTestCase()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
-                .And( x => x.StartsWith( "1" ) );
+                .And( x => x.StartsWith( "1", StringComparison.Ordinal ) );
 
             var actual = "1234".SatisfiesWithMessages( specification )
                                .ToList();
@@ -27,7 +27,7 @@ namespace Extend.Testing
         public void SatisfiesWithMessagesTestCase1()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
-                .And( x => x.StartsWith( "1" ) );
+                .And( x => x.StartsWith( "1", StringComparison.Ordinal ) );
 
             var actual = "234".SatisfiesWithMessages( specification )
                               .ToList();
@@ -40,7 +40,7 @@ namespace Extend.Testing
         public void SatisfiesWithMessagesTestCase2()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3, "msg1" )
-                .And( x => x.StartsWith( "1" ), "msg2" );
+                .And( x => x.StartsWith( "1", StringComparison.Ordinal ), "msg2" );
 
             var actual = "234".SatisfiesWithMessages( specification )
                               .ToList();
@@ -54,8 +54,8 @@ namespace Extend.Testing
         {
             ISpecification<String> specification = null;
 
-            Action test = () => "1234".SatisfiesWithMessages( specification )
-                                      .ToList();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            Action test = () => "1234".SatisfiesWithMessages( specification );
 
             test.ShouldThrow<ArgumentNullException>();
         }

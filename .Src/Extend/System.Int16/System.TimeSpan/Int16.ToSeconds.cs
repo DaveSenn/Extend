@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Int16 value.</param>
         /// <returns>Returns the given Int16 value as seconds.</returns>
-        public static TimeSpan ToSeconds( this Int16 value )
-        {
-            return TimeSpan.FromSeconds( value );
-        }
+        public static TimeSpan ToSeconds( this Int16 value ) => TimeSpan.FromSeconds( value );
     }
 }

@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a sortable date time string.</returns>
-        public static String ToSortableDateTimeString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "s", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToSortableDateTimeString( this DateTime dateTime ) => dateTime.ToString( "s", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a sortable date time string.

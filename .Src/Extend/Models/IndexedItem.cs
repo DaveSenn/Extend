@@ -12,22 +12,6 @@ namespace Extend
     /// <typeparam name="T">The type of the item.</typeparam>
     public class IndexedItem<T> : IIndexedItem<T>
     {
-        #region Properties
-
-        /// <summary>
-        ///     Gets the index of the item.
-        /// </summary>
-        /// <value>The index of the item.</value>
-        public Int32 Index { get; }
-
-        /// <summary>
-        ///     Gets the item.
-        /// </summary>
-        /// <value>The item.</value>
-        public T Item { get; }
-
-        #endregion
-
         #region Ctor
 
         /// <summary>
@@ -42,5 +26,17 @@ namespace Extend
         }
 
         #endregion
+
+        /// <summary>
+        ///     Gets the index of the item.
+        /// </summary>
+        /// <value>The index of the item.</value>
+        public Int32 Index { get; }
+
+        /// <summary>
+        ///     Gets the item.
+        /// </summary>
+        /// <value>The item.</value>
+        public T Item { get; }
     }
 }

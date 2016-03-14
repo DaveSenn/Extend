@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a full date time string.</returns>
-        public static String ToFullDateTimeString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "F", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToFullDateTimeString( this DateTime dateTime ) => dateTime.ToString( "F", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a full date time string.

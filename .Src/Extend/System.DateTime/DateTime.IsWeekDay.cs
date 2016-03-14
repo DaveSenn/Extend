@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="day">The day to check.</param>
         /// <returns>Returns true if the day is a week day, otherwise false.</returns>
-        public static Boolean IsWeekdDay( this DateTime day )
-        {
-            return day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday;
-        }
+        public static Boolean IsWeekdDay( this DateTime day ) => day.DayOfWeek != DayOfWeek.Saturday && day.DayOfWeek != DayOfWeek.Sunday;
     }
 }

@@ -28,14 +28,17 @@ namespace Extend.Testing
         {
             Expression<Func<TestModel, String>> memberExpression = x => x.Name;
             var actual = memberExpression.GetMemberInfoFromExpression();
+            // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual( typeof (String), ( actual as PropertyInfo ).PropertyType );
 
             Expression<Func<TestModel, Object>> memberExpression1 = x => x.Age;
             actual = memberExpression1.GetMemberInfoFromExpression();
+            // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual( typeof (Int32), ( actual as PropertyInfo ).PropertyType );
 
             Expression<Func<TestModel, Int32>> memberExpression2 = x => x.Age;
             actual = memberExpression1.GetMemberInfoFromExpression();
+            // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual( typeof (Int32), ( actual as PropertyInfo ).PropertyType );
         }
 

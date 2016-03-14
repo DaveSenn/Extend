@@ -106,10 +106,7 @@ namespace Extend
         /// <param name="itemsToCpoy">The number of items to cpoy, starting at the given start index.</param>
         /// <param name="targetArray">The tartget array.</param>
         /// <returns>Returns the target array.</returns>
-        public static T[] Slice<T>( this T[] array, Int32 itemsToCpoy, T[] targetArray )
-        {
-            return array.Slice( 0, itemsToCpoy, targetArray );
-        }
+        public static T[] Slice<T>( this T[] array, Int32 itemsToCpoy, T[] targetArray ) => array.Slice( 0, itemsToCpoy, targetArray );
 
         /// <summary>
         ///     Cpoies the spcified range of items from the source array to the given arget array.

@@ -113,7 +113,7 @@ Task Test {
     
     # For each project
     foreach($project in $allProjects | where { $_.TestRunner -ne $null } ) {
-
+		
         $buildOutput = [System.IO.Path]::Combine($srcDir, $project.TestDirectory, $binDir, $buildConfiguration, $project.OutputDirectory, $project.TestProjectName) + ".dll"
         Write-Host $buildOutput
         
@@ -169,7 +169,7 @@ Task CoverityUpload {
 
 # Run NUnit tests for the given project
 function RunNUnitTest($project, $testDll) {
-    Write-Host "Run NUnit tests: '$testDll'"
+    Write-Host "Run NUnit tests: '$testDll' => '$nunit'"
     exec { 
         &$nunit $testDll | Out-Null 
     } "Running NUnit tests '$testDll' failed"

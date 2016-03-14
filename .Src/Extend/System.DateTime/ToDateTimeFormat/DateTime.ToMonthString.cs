@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a year month string.</returns>
-        public static String ToMonthString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToMonthString( this DateTime dateTime ) => dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a month string.

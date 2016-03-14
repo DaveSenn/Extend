@@ -35,10 +35,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return $"[{FactoryName}] = ({FactoryDescription}).";
-        }
+        public override String ToString() => $"[{FactoryName}] = ({FactoryDescription}).";
 
         #endregion
 

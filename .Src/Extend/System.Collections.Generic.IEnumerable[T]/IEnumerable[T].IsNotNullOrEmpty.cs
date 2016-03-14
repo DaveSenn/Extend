@@ -20,9 +20,6 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the collection.</typeparam>
         /// <param name="collection">The collection to check.</param>
         /// <returns>Returns true if the collection is not empty or null, otherwise false.</returns>
-        public static Boolean IsNotNullOrEmpty<T>( this IEnumerable<T> collection )
-        {
-            return collection.IsNotNull() && collection.Any();
-        }
+        public static Boolean IsNotNullOrEmpty<T>( this IEnumerable<T> collection ) => collection.IsNotNull() && collection.Any();
     }
 }

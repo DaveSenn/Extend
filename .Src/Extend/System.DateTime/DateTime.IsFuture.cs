@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The @date time to check.</param>
         /// <returns>Returns true if the value is in the future, otherwise false.</returns>
-        public static Boolean IsFuture( this DateTime dateTime )
-        {
-            return dateTime > DateTime.Now;
-        }
+        public static Boolean IsFuture( this DateTime dateTime ) => dateTime > DateTime.Now;
     }
 }

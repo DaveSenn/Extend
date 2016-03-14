@@ -22,8 +22,7 @@ namespace Extend
         /// <returns>Returns the given event handler.</returns>
         public static EventHandler Raise( this EventHandler eventHandler, Object sender, EventArgs e )
         {
-            if ( eventHandler != null )
-                eventHandler( sender, e );
+            eventHandler?.Invoke( sender, e );
 
             return eventHandler;
         }
@@ -41,8 +40,7 @@ namespace Extend
         public static EventHandler<T> Raise<T>( this EventHandler<T> eventHandler, Object sender, T e )
             where T : EventArgs
         {
-            if ( eventHandler != null )
-                eventHandler( sender, e );
+            eventHandler?.Invoke( sender, e );
 
             return eventHandler;
         }

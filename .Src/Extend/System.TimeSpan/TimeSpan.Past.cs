@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="timeSpan">The time span to subtract.</param>
         /// <returns>Returns the current date time with the specified time span subtracted from it.</returns>
-        public static DateTime Past( this TimeSpan timeSpan )
-        {
-            return DateTime.Now.Subtract( timeSpan );
-        }
+        public static DateTime Past( this TimeSpan timeSpan ) => DateTime.Now.Subtract( timeSpan );
     }
 }
