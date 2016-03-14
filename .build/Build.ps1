@@ -5,7 +5,8 @@ properties {
     $srcDir = "$root\.Src\"
     $toolsDir = "$root\.Tools\"
     $nuget = "$toolsDir\NuGet\nuget.exe"
-    $nunit = "$toolsDir\NUnit\nunit-console.exe"
+    # $nunit = "$toolsDir\NUnit\nunit-console.exe"
+	$nunit = "$toolsDir\NUnit\nunit3-console.exe"
     $7zip = "$toolsDir\7zip\7za.exe"
     $curl = "$toolsDir\Curl\curl.exe"
     $git = "git"
@@ -171,7 +172,7 @@ Task CoverityUpload {
 function RunNUnitTest($project, $testDll) {
     Write-Host "Run NUnit tests: '$testDll' => '$nunit'"
     exec { 
-        &$nunit $testDll | Out-Null 
+        &$nunit $testDll 
     } "Running NUnit tests '$testDll' failed"
 }
 
