@@ -159,9 +159,9 @@ namespace Extend
         {
             var values = Enum.GetValues( typeof (T) )
                              .Cast<T>();
+
             var enumerable = values as T[];
-            if ( enumerable == null )
-                throw new ArgumentException( "Given type is not a valid enum type.", nameof( T ) );
+            // ReSharper disable once PossibleNullReferenceException
             return enumerable.ElementAt( Rnd.Next( 0, enumerable.Length ) );
         }
 
