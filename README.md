@@ -5,6 +5,7 @@
 
 [![NuGet](https://img.shields.io/nuget/v/Extend.svg)](https://www.nuget.org/packages/Extend)
 [![NuGet](https://img.shields.io/nuget/dt/Extend.svg)](https://www.nuget.org/packages/Extend)
+[![GitHub issues](https://img.shields.io/github/issues/DaveSenn/Extend.svg)](https://github.com/DaveSenn/Extend/issues)
 
 [![License](http://img.shields.io/:license-mit-blue.svg)](https://raw.githubusercontent.com/DaveSenn/Extend/dev/License.txt)
 
