@@ -50,10 +50,7 @@ namespace Extend.Testing
         [Test]
         public void GetEqualItemsFromStartArgumentNullException()
         {
-            IEnumerable<Int32> source = null;
-            var other = Enumerable.Empty<Int32>();
-
-            Action test = () => source.GetEqualItemsFromStart( other );
+            Action test = () => IEnumerableTEx.GetEqualItemsFromStart( null, Enumerable.Empty<Int32>() );
             test.ShouldThrow<ArgumentNullException>();
         }
 
