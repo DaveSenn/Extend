@@ -61,6 +61,7 @@
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
     <Compile Include="Models\IndexedItemTest.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
