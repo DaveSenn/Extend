@@ -153,18 +153,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return "Depth: {0} - Value: {1}, Children: {2}, Parent: {{{3}}}"
-                .F( Depth,
-                    Value == null
-                        ? "[NULL]"
-                        : Value.ToString(),
-                    Children.Count,
-                    Parent == null
-                        ? "[NULL]"
-                        : Parent.ToString() );
-        }
+        public override String ToString() => $"Depth: {Depth} - Value: {Value?.ToString() ?? "[NULL]"}, Children: {Children.Count}, Parent: [{Parent?.ToString() ?? "[NULL]"}]";
 
         #endregion
 
@@ -176,10 +165,7 @@ namespace Extend
         ///     Gets an enumeration of all tree nodes which are above the current node in the tree.
         /// </summary>
         /// <value>An enumeration of all tree nodes which are above the current node in the tree.</value>
-        public IEnumerable<ITreeNode<T>> Ancestors
-        {
-            get { return GetAncestors(); }
-        }
+        public IEnumerable<ITreeNode<T>> Ancestors => GetAncestors();
 
         /// <summary>
         ///     Gets or sets the value of the node.
@@ -222,10 +208,7 @@ namespace Extend
         ///     Gets the root of the tree.
         /// </summary>
         /// <value>The root of the tree.</value>
-        public ITreeNode<T> Root
-        {
-            get { return Parent == null ? this : Parent.Root; }
-        }
+        public ITreeNode<T> Root => Parent == null ? this : Parent.Root;
 
         /// <summary>
         ///     Gets or sets the children of the node.
@@ -240,8 +223,7 @@ namespace Extend
                     return;
 
                 _children = value;
-                if ( _children != null )
-                    _children.ForEach( x => x.SetParent( this, false ) );
+                _children?.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -319,37 +301,25 @@ namespace Extend
         ///     Gets the depth of the node.
         /// </summary>
         /// <value>The depth of the node.</value>
-        public Int32 Depth
-        {
-            get { return ( Parent == null ? -1 : Parent.Depth ) + 1; }
-        }
+        public Int32 Depth => ( Parent?.Depth ?? -1 ) + 1;
 
         /// <summary>
         ///     Gets a value indicating whether the node has any children or not.
         /// </summary>
         /// <value>A value indicating whether the node has any children or not.</value>
-        public Boolean HasChildren
-        {
-            get { return Children != null && Children.Any(); }
-        }
+        public Boolean HasChildren => Children != null && Children.Any();
 
         /// <summary>
         ///     Gets a value indicating whether the node has a parent or not.
         /// </summary>
         /// <value>A value indicating whether the node has a parent or not.</value>
-        public Boolean HasParent
-        {
-            get { return Parent != null; }
-        }
+        public Boolean HasParent => Parent != null;
 
         /// <summary>
         ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
         /// </summary>
         /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
-        public IEnumerable<ITreeNode<T>> Descendants
-        {
-            get { return GetDescendants(); }
-        }
+        public IEnumerable<ITreeNode<T>> Descendants => GetDescendants();
 
         #endregion
 
@@ -539,11 +509,8 @@ namespace Extend
         /// <returns>
         ///     A <see cref="System.Collections.Generic.IEnumerator{T}" /> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<ITreeNode<T>> GetEnumerator()
-        {
-            return GetEnumeratorInternal()
-                .GetEnumerator();
-        }
+        public IEnumerator<ITreeNode<T>> GetEnumerator() => GetEnumeratorInternal()
+            .GetEnumerator();
 
         /// <summary>
         ///     Returns an enumerator that iterates through the collection.
@@ -551,10 +518,7 @@ namespace Extend
         /// <returns>
         ///     A <see cref="System.Collections.IEnumerator" /> that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         #endregion
 

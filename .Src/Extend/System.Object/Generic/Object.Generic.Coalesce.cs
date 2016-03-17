@@ -38,9 +38,6 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="value0">The second value.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T Coalesce<T>( this T value, T value0 ) where T : class
-        {
-            return value ?? value0;
-        }
+        public static T Coalesce<T>( this T value, T value0 ) where T : class => value ?? value0;
     }
 }

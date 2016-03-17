@@ -92,11 +92,8 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AnonymousItemNameDefaultValueTest()
-        {
-            InstanceCreator.AnonymousItemName.Should()
-                           .Be( "[AnonymousItem]" );
-        }
+        public void AnonymousItemNameDefaultValueTest() => InstanceCreator.AnonymousItemName.Should()
+                                                                          .Be( "[AnonymousItem]" );
 
         [Test]
         public void AnonymousItemNameTest()
@@ -432,18 +429,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PopulateCollectionsDefaultValueTest()
-        {
-            InstanceCreator.PopulateCollections.Should()
-                           .BeTrue();
-        }
+        public void PopulateCollectionsDefaultValueTest() => InstanceCreator.PopulateCollections.Should()
+                                                                            .BeTrue();
 
         [Test]
-        public void PopulateCollectionsMaxCountDefaultValueTest()
-        {
-            InstanceCreator.PopulateCollectionsMaxCount.Should()
-                           .Be( 10 );
-        }
+        public void PopulateCollectionsMaxCountDefaultValueTest() => InstanceCreator.PopulateCollectionsMaxCount.Should()
+                                                                                    .Be( 10 );
 
         [Test]
         public void PopulateCollectionsMaxCountTest()
@@ -456,11 +447,8 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PopulateCollectionsMinCountDefaultValueTest()
-        {
-            InstanceCreator.PopulateCollectionsMinCount.Should()
-                           .Be( 2 );
-        }
+        public void PopulateCollectionsMinCountDefaultValueTest() => InstanceCreator.PopulateCollectionsMinCount.Should()
+                                                                                    .Be( 2 );
 
         [Test]
         public void PopulateCollectionsMinCountTest()
@@ -496,11 +484,8 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RuleInspectorDefaultValueTest()
-        {
-            InstanceCreator.RuleInspector.Should()
-                           .BeOfType<MemberSelectionRuleInspector>();
-        }
+        public void RuleInspectorDefaultValueTest() => InstanceCreator.RuleInspector.Should()
+                                                                      .BeOfType<MemberSelectionRuleInspector>();
 
         [Test]
         public void RuleInspectorTest()

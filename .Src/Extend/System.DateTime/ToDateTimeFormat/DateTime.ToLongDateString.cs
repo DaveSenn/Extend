@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a long date time string.</returns>
-        public static String ToLongDateString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "D", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToLongDateString( this DateTime dateTime ) => dateTime.ToString( "D", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a long date time string.

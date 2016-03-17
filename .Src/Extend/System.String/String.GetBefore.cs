@@ -50,7 +50,7 @@ namespace Extend
             value.ThrowIfNull( nameof( value ) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
-                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
             return !str.Contains( value )
@@ -97,7 +97,7 @@ namespace Extend
             str.ThrowIfNull( nameof( str ) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
-                throw new ArgumentOutOfRangeException( "length", "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
             str = str.Substring( startIndex, length );
             var valueIndex = str.IndexOf( value );

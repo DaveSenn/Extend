@@ -37,10 +37,7 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy( T obj )
-        {
-            return Left.IsSatisfiedBy( obj ) || Right.IsSatisfiedBy( obj );
-        }
+        public override Boolean IsSatisfiedBy( T obj ) => Left.IsSatisfiedBy( obj ) || Right.IsSatisfiedBy( obj );
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.

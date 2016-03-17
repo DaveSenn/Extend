@@ -17,10 +17,7 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a month day string.</returns>
-        public static String ToMonthDayString( this DateTime dateTime )
-        {
-            return dateTime.ToString( "m", DateTimeFormatInfo.CurrentInfo );
-        }
+        public static String ToMonthDayString( this DateTime dateTime ) => dateTime.ToString( "m", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a month day string.

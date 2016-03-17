@@ -21,9 +21,7 @@ namespace Extend
         /// <param name="assemblies">The assemblies to search in.</param>
         /// <returns>Returns the found types and their attributes.</returns>
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( params Assembly[] assemblies ) where T : Attribute
-        {
-            return GetTypesWithAttribute<T>( false, null, assemblies );
-        }
+            => GetTypesWithAttribute<T>( false, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -36,9 +34,7 @@ namespace Extend
         /// <param name="assemblies">The assemblies to search in.</param>
         /// <returns>Returns the found types and their attributes.</returns>
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, params Assembly[] assemblies ) where T : Attribute
-        {
-            return GetTypesWithAttribute<T>( inherit, null, assemblies );
-        }
+            => GetTypesWithAttribute<T>( inherit, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type and are sub

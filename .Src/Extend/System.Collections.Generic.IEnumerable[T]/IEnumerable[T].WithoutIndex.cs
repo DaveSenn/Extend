@@ -19,9 +19,6 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the given IEnumerable.</typeparam>
         /// <param name="source">The IEnumerable to remove the indexes from.</param>
         /// <returns>A IEnumerable of elements without their associated indexes.</returns>
-        public static IEnumerable<T> WithoutIndex<T>( this IEnumerable<IIndexedItem<T>> source )
-        {
-            return source.Select( indexed => indexed.Item );
-        }
+        public static IEnumerable<T> WithoutIndex<T>( this IEnumerable<IIndexedItem<T>> source ) => source.Select( indexed => indexed.Item );
     }
 }

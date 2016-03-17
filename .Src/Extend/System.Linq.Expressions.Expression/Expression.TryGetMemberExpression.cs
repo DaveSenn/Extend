@@ -31,6 +31,7 @@ namespace Extend
                         return true;
 
                     case ExpressionType.Convert:
+                        // ReSharper disable once PossibleNullReferenceException
                         var operand = ( expression as UnaryExpression ).Operand;
                         //Check if operand is member expression
                         if ( operand is MemberExpression )

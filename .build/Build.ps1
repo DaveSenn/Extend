@@ -5,7 +5,8 @@ properties {
     $srcDir = "$root\.Src\"
     $toolsDir = "$root\.Tools\"
     $nuget = "$toolsDir\NuGet\nuget.exe"
-    $nunit = "$toolsDir\NUnit\nunit-console.exe"
+    # $nunit = "$toolsDir\NUnit\nunit-console.exe"
+	$nunit = "$toolsDir\NUnit\nunit3-console.exe"
     $7zip = "$toolsDir\7zip\7za.exe"
     $curl = "$toolsDir\Curl\curl.exe"
     $git = "git"
@@ -113,7 +114,7 @@ Task Test {
     
     # For each project
     foreach($project in $allProjects | where { $_.TestRunner -ne $null } ) {
-
+		
         $buildOutput = [System.IO.Path]::Combine($srcDir, $project.TestDirectory, $binDir, $buildConfiguration, $project.OutputDirectory, $project.TestProjectName) + ".dll"
         Write-Host $buildOutput
         
@@ -169,9 +170,9 @@ Task CoverityUpload {
 
 # Run NUnit tests for the given project
 function RunNUnitTest($project, $testDll) {
-    Write-Host "Run NUnit tests: '$testDll'"
+    Write-Host "Run NUnit tests: '$testDll' => '$nunit'"
     exec { 
-        &$nunit $testDll | Out-Null 
+        &$nunit $testDll 
     } "Running NUnit tests '$testDll' failed"
 }
 

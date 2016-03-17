@@ -22,7 +22,7 @@ namespace Extend
         public static List<Int16> RangeTo( this Int16 startValue, Int16 endValue )
         {
             if ( startValue > endValue )
-                throw new ArgumentException( "The start value can not be greater than the end value.", "startValue" );
+                throw new ArgumentException( "The start value can not be greater than the end value.", nameof( startValue ) );
 
             var list = new List<Int16>( endValue - startValue );
             for ( var i = startValue; i <= endValue; i++ )

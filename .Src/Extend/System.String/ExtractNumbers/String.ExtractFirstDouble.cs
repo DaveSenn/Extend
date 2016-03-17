@@ -16,10 +16,7 @@ namespace Extend
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted double.</returns>
-        public static Double ExtractFirstDouble( this String value, Int32 startIndex = 0 )
-        {
-            return ExtractFloatingNumber( value, startIndex )
-                .ToDouble();
-        }
+        public static Double ExtractFirstDouble( this String value, Int32 startIndex = 0 ) => ExtractFloatingNumber( value, startIndex )
+            .ToDouble();
     }
 }

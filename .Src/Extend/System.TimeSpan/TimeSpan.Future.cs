@@ -16,9 +16,6 @@ namespace Extend
         /// </summary>
         /// <param name="timeSpan">The time span to add.</param>
         /// <returns>Returns the current date time with the specified time span added to it.</returns>
-        public static DateTime Future( this TimeSpan timeSpan )
-        {
-            return DateTime.Now.Add( timeSpan );
-        }
+        public static DateTime Future( this TimeSpan timeSpan ) => DateTime.Now.Add( timeSpan );
     }
 }

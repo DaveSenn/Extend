@@ -24,7 +24,7 @@ namespace Extend
             fileExtension.ThrowIfNull( nameof( fileExtension ) );
 
             if ( fileExtension.IsEmpty() )
-                throw new ArgumentException( "Can not format a empty string to a file extension.", "fileExtension" );
+                throw new ArgumentException( "Can not format a empty string to a file extension.", nameof( fileExtension ) );
 
             if ( !fileExtension.StartsWith( ".", StringComparison.Ordinal ) )
                 fileExtension = fileExtension.Insert( 0, "." );

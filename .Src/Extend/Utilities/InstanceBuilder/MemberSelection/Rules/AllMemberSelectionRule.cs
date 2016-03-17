@@ -44,12 +44,9 @@ namespace Extend
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
-        {
-            return _selectionMode == MemberSelectionMode.Include
-                ? MemberSelectionResult.IncludeMember
-                : MemberSelectionResult.ExcludeMember;
-        }
+        public override MemberSelectionResult GetSelectionResult( IMemberInformation member ) => _selectionMode == MemberSelectionMode.Include
+            ? MemberSelectionResult.IncludeMember
+            : MemberSelectionResult.ExcludeMember;
 
         #endregion
 
@@ -61,10 +58,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return $"[{RuleName}] = ({_selectionMode} all members) ({RuleDescription}).";
-        }
+        public override String ToString() => $"[{RuleName}] = ({_selectionMode} all members) ({RuleDescription}).";
 
         #endregion
     }

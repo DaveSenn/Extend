@@ -22,9 +22,6 @@ namespace Extend
         public static Boolean Intersects( this DateTime startDate,
                                           DateTime endDate,
                                           DateTime intersectingStartDate,
-                                          DateTime intersectingEndDate )
-        {
-            return intersectingEndDate >= startDate && intersectingStartDate <= endDate;
-        }
+                                          DateTime intersectingEndDate ) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
     }
 }

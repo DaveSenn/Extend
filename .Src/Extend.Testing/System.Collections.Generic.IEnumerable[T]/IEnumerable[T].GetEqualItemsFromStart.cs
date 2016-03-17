@@ -60,6 +60,19 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void GetEqualItemsFromStartArgumentNullException1()
+        {
+            Action test = () =>
+            {
+                var result = IEnumerableTEx.GetEqualItemsFromStart( Enumerable.Empty<Int32>(), null);
+                result.Should()
+                      .BeNull("Should have thrown exception");
+            };
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+
+        [Test]
         public void GetEqualItemsFromStartTest3()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 };

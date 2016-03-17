@@ -54,20 +54,14 @@ namespace Extend
         ///     Gets random string.
         /// </summary>
         /// <returns>A random string.</returns>
-        public static String GetRandomString()
-        {
-            return Guid.NewGuid()
-                       .ToString();
-        }
+        public static String GetRandomString() => Guid.NewGuid()
+                                                      .ToString();
 
         /// <summary>
         ///     Gets random char.
         /// </summary>
         /// <returns>A random char.</returns>
-        public static Char GetRandomChar()
-        {
-            return Chars[GetRandomInt32( 0, Chars.Length )];
-        }
+        public static Char GetRandomChar() => Chars[GetRandomInt32( 0, Chars.Length )];
 
         /// <summary>
         ///     Gets a list of random strings.
@@ -99,7 +93,7 @@ namespace Extend
         public static Int32 GetRandomInt32( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
         {
             if ( max < min )
-                throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
+                throw new ArgumentOutOfRangeException( nameof( max ), "max must be greater than min" );
 
             return Rnd.Next( min, max );
         }
@@ -129,10 +123,7 @@ namespace Extend
         ///     Gets a random Boolean value.
         /// </summary>
         /// <returns>A random Boolean value.</returns>
-        public static Boolean GetRandomBoolean()
-        {
-            return GetRandomInt32() % 2 == 0;
-        }
+        public static Boolean GetRandomBoolean() => GetRandomInt32() % 2 == 0;
 
         /// <summary>
         ///     Gets a random date-time value between the given minimum and maximum.
@@ -169,7 +160,9 @@ namespace Extend
             var values = Enum.GetValues( typeof (T) )
                              .Cast<T>();
             var enumerable = values as T[];
-            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Count() ) );
+            if ( enumerable == null )
+                throw new ArgumentException( "Given type is not a valid enum type.", nameof( T ) );
+            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Length ) );
         }
 
         /// <summary>
@@ -188,7 +181,7 @@ namespace Extend
         public static Int64 GetRandomInt64( Int64 min = Int64.MinValue, Int64 max = Int64.MaxValue )
         {
             if ( max < min )
-                throw new ArgumentOutOfRangeException( "max", "max must be greater than min" );
+                throw new ArgumentOutOfRangeException( nameof( max ), "max must be greater than min" );
 
             var uRange = (UInt64) ( max - min );
 
@@ -198,7 +191,7 @@ namespace Extend
                 var buffer = new Byte[8];
                 Rnd.NextBytes( buffer );
                 ulongRand = (UInt64) BitConverter.ToInt64( buffer, 0 );
-            } while ( ulongRand > UInt64.MaxValue - ( ( UInt64.MaxValue % uRange ) + 1 ) % uRange );
+            } while ( ulongRand > UInt64.MaxValue - ( UInt64.MaxValue % uRange + 1 ) % uRange );
 
             return (Int64) ( ulongRand % uRange ) + min;
         }
@@ -207,10 +200,7 @@ namespace Extend
         ///     Gets a random <see cref="Byte" /> value.
         /// </summary>
         /// <returns>A random <see cref="Byte" /> value.</returns>
-        public static Byte GetRandomByte()
-        {
-            return (Byte) GetRandomInt32();
-        }
+        public static Byte GetRandomByte() => (Byte) GetRandomInt32();
 
         /// <summary>
         ///     Gets a random <see cref="Double" /> value which is in the specified range.
@@ -230,7 +220,7 @@ namespace Extend
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof( max ), max, $"{nameof( max )} must be greater than {nameof( min )}" );
 
-            return min + ( Rnd.NextDouble() * ( max - min ) );
+            return min + Rnd.NextDouble() * ( max - min );
         }
 
         #endregion Methods

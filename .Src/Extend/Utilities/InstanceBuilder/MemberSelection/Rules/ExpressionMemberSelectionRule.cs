@@ -76,10 +76,7 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString()
-        {
-            return $"[{RuleName}] = ({_selectionMode} members matching predicate) ({RuleDescription}).";
-        }
+        public override String ToString() => $"[{RuleName}] = ({_selectionMode} members matching predicate) ({RuleDescription}).";
 
         #endregion
     }

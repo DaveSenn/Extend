@@ -25,7 +25,7 @@ namespace Extend
             enumerable.ThrowIfNull( nameof( enumerable ) );
 
             var rnd = new Random();
-            return enumerable.OrderBy( x => ( rnd.Next() ) );
+            return enumerable.OrderBy( x => rnd.Next() );
         }
     }
 }
