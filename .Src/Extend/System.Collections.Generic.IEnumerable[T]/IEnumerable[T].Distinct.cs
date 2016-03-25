@@ -25,9 +25,11 @@ namespace Extend
         /// <typeparam name="TKey">The input type of the predicate.</typeparam>
         public static IEnumerable<T> Distinct<T, TKey>( this IEnumerable<T> enumerable, Func<T, TKey> predicate )
         {
+            // ReSharper disable once PossibleMultipleEnumeration
             enumerable.ThrowIfNull( nameof( enumerable ) );
             predicate.ThrowIfNull( nameof( predicate ) );
 
+            // ReSharper disable once PossibleMultipleEnumeration
             return enumerable.GroupBy( predicate )
                              .Select( g => g )
                              .Select( x => x.First() );

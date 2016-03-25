@@ -80,6 +80,8 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Except.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Partition.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.cs" />
@@ -89,6 +91,8 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
+    <Compile Include="Utilities\Compare\KeyEqualityComparer.cs" />
+    <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameMonthAndYear.cs" />
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
@@ -482,5 +486,6 @@
     <None Include="Extend.snk" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
 </Project>

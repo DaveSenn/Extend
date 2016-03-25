@@ -58,12 +58,15 @@
   <ItemGroup>
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
     <Compile Include="Models\IndexedItemTest.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Except.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Partition.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
@@ -432,6 +435,7 @@
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="Utilities\Compare\KeyEqualityComparerTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreatorTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceExceptionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultExTest.cs" />
