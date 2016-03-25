@@ -42,7 +42,7 @@ namespace Extend.Testing
             /// </exception>
             public Int32 GetHashCode( String obj )
             {
-                return obj.GetHashCode();
+                return obj.Length.GetHashCode();
             }
 
             #endregion

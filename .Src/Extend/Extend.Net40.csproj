@@ -82,6 +82,7 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Except.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Intersect.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Partition.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WhereNot.cs" />

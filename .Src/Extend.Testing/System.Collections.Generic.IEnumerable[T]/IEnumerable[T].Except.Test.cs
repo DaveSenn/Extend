@@ -42,6 +42,51 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void ExceptTest2()
+        {
+            var first = new List<String> { "a", "bb", "ccc" };
+            var second = new List<String> { "22", "4444", "55555" };
+
+            var actual = first.Except( second, x => x, new StringLengthComparer() )
+                              .ToList();
+            actual.Should()
+                  .HaveCount( 2 );
+            actual.Should()
+                  .Contain( "a", "ccc" );
+        }
+
+        [Test]
+        public void ExceptTest3()
+        {
+            var first = new List<TestModel>
+            {
+                new TestModel { Name = "a" },
+                new TestModel { Name = "b" },
+                new TestModel { Name = "c" },
+                new TestModel { Name = "d" }
+            };
+            var second = new List<TestModel>
+            {
+                new TestModel { Name = "g" },
+                new TestModel { Name = "b" },
+                new TestModel { Name = "z" },
+                new TestModel { Name = "d" }
+            };
+
+            var actual = first.Except( second, x => x.Name )
+                              .ToList();
+            actual.Should()
+                  .HaveCount( 2 );
+
+            actual.Any( x => x.Name == "a" )
+                  .Should()
+                  .BeTrue();
+            actual.Any( x => x.Name == "c" )
+                  .Should()
+                  .BeTrue();
+        }
+
+        [Test]
         public void ExpectFirstNullTest()
         {
             List<Int32> first = null;

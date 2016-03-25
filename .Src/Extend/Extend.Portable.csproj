@@ -79,6 +79,7 @@
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionarySafe.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Intersect.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Except.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Partition.cs" />
