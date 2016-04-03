@@ -25,10 +25,7 @@ namespace Extend.Testing
             /// </returns>
             /// <param name="x">The first object of type <paramref name="T" /> to compare.</param>
             /// <param name="y">The second object of type <paramref name="T" /> to compare.</param>
-            public Boolean Equals( String x, String y )
-            {
-                return x.Length == y.Length;
-            }
+            public Boolean Equals( String x, String y ) => x.Length == y.Length;
 
             /// <summary>
             ///     Returns a hash code for the specified object.
@@ -41,10 +38,7 @@ namespace Extend.Testing
             ///     The type of <paramref name="obj" /> is a reference type and
             ///     <paramref name="obj" /> is null.
             /// </exception>
-            public Int32 GetHashCode( String obj )
-            {
-                return obj.GetHashCode();
-            }
+            public Int32 GetHashCode( String obj ) => obj.GetHashCode();
 
             #endregion
         }

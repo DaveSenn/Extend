@@ -94,10 +94,7 @@ namespace Extend.Testing
             /// true if the specified objects are equal; otherwise, false.
             /// </returns>
             /// <param name="x">The first object of type <paramref name="T"/> to compare.</param><param name="y">The second object of type <paramref name="T"/> to compare.</param>
-            public Boolean Equals( Int32 x, Int32 y )
-            {
-                return Math.Abs( x ) == Math.Abs( y );
-            }
+            public Boolean Equals( Int32 x, Int32 y ) => Math.Abs( x ) == Math.Abs( y );
 
             /// <summary>
             /// Returns a hash code for the specified object.
@@ -106,10 +103,7 @@ namespace Extend.Testing
             /// A hash code for the specified object.
             /// </returns>
             /// <param name="obj">The <see cref="T:System.Object"/> for which a hash code is to be returned.</param><exception cref="T:System.ArgumentNullException">The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.</exception>
-            public Int32 GetHashCode( Int32 obj )
-            {
-                return EqualityComparer<Int32>.Default.GetHashCode(Math.Abs(obj));
-            }
+            public Int32 GetHashCode( Int32 obj ) => EqualityComparer<Int32>.Default.GetHashCode(Math.Abs(obj));
 
             #endregion
         }

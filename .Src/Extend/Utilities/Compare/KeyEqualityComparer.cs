@@ -56,10 +56,7 @@ namespace Extend
         /// </returns>
         /// <param name="x">The first object of type <typeparamref name="TSource" /> to compare.</param>
         /// <param name="y">The second object of type <typeparamref name="TSource" /> to compare.</param>
-        public Boolean Equals( TSource x, TSource y )
-        {
-            return _comparer.Equals( _keySelector( x ), _keySelector( y ) );
-        }
+        public Boolean Equals( TSource x, TSource y ) => _comparer.Equals( _keySelector( x ), _keySelector( y ) );
 
         /// <summary>
         ///     Returns a hash code for the specified object.
@@ -72,10 +69,7 @@ namespace Extend
         ///     The type of <paramref name="obj" /> is a reference type and
         ///     <paramref name="obj" /> is null.
         /// </exception>
-        public Int32 GetHashCode( TSource obj )
-        {
-            return _comparer.GetHashCode( _keySelector( obj ) );
-        }
+        public Int32 GetHashCode( TSource obj ) => _comparer.GetHashCode( _keySelector( obj ) );
 
         #endregion
     }
