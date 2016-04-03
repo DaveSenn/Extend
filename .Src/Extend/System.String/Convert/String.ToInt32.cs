@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,9 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The Int32.</returns>
-        public static Int32 ToInt32( this String value )
+        [Pure]
+        [PublicAPI]
+        public static Int32 ToInt32( [NotNull] this String value )
         {
             value.ThrowIfNull( nameof( value ) );
 
@@ -30,7 +33,9 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The Int32.</returns>
-        public static Int32 ToInt32( this String value, IFormatProvider formatProvider )
+        [Pure]
+        [PublicAPI]
+        public static Int32 ToInt32( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
             value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );

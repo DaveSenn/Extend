@@ -19,7 +19,7 @@ namespace Extend.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
-                null,
+                () => { },
                 false,
                 true );
 
@@ -55,7 +55,7 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 () => falseActionExecuted = true,
-                null,
+                () => { },
                 true,
                 true );
 
@@ -66,8 +66,8 @@ namespace Extend.Testing
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
-                null,
-                null,
+                () => { },
+                () => { },
                 true,
                 true );
 
@@ -800,6 +800,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfAnyFalseTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfAnyFalse( null, null, false, true );
             test.ShouldThrow<ArgumentNullException>();
         }

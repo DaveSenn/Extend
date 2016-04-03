@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,9 @@ namespace Extend
         /// <exception cref="FormatException">value is not in a recognized format.</exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>Returns the converted GUID.</returns>
-        public static Guid ToGuid( this String value )
+        [Pure]
+        [PublicAPI]
+        public static Guid ToGuid( [NotNull] this String value )
         {
             value.ThrowIfNull( nameof( value ) );
 

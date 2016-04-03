@@ -92,6 +92,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToByteTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToByte( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -100,6 +101,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToByteTestCaseNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".SaveToByte( NumberStyles.AllowDecimalPoint, null );
 
             test.ShouldThrow<ArgumentNullException>();

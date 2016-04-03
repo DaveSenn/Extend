@@ -35,6 +35,7 @@ namespace Extend.Testing
         [Test]
         public void ToByteTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToByte( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -43,6 +44,7 @@ namespace Extend.Testing
         [Test]
         public void ToByteTestCase1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ToByte( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -51,6 +53,7 @@ namespace Extend.Testing
         [Test]
         public void ToByteTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToByte( null );
 
             test.ShouldThrow<ArgumentNullException>();

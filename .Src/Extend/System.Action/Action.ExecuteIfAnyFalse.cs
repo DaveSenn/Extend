@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,17 +17,19 @@ namespace Extend
         ///     Executes the specified action if one of the given Boolean values is false,
         ///     otherwise it executes the specified true action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">False action can not be null, if any of the values is false.</exception>
+        /// <exception cref="ArgumentNullException">falseAction can not be null.</exception>
+        /// <exception cref="ArgumentNullException">trueAction can not be null.</exception>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
-        /// <param name="trueAction">The action to execute if all values are true.</param>
+        /// <param name="trueAction">The action to execute if all of the given value is true.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse( this Action falseAction, Action trueAction, params Boolean[] values )
+        public static void ExecuteIfAnyFalse( [NotNull] this Action falseAction, [CanBeNull] Action trueAction, [NotNull] params Boolean[] values )
         {
+            falseAction.ThrowIfNull( nameof( falseAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => !x ) )
-            {
-                falseAction.ThrowIfNull( nameof( falseAction ) );
                 falseAction();
-            }
             else
                 trueAction?.Invoke();
         }
@@ -41,10 +44,7 @@ namespace Extend
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="trueAction">The action to execute if all values are true.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyFalse<T>( this Action<T> falseAction,
-                                                 T parameter,
-                                                 Action<T> trueAction,
-                                                 params Boolean[] values )
+        public static void ExecuteIfAnyFalse<T>( this Action<T> falseAction, T parameter, Action<T> trueAction, params Boolean[] values )
         {
             if ( values.Any( x => !x ) )
             {

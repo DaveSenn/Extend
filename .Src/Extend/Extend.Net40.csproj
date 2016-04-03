@@ -48,6 +48,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+	<Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="Models\AttributeDefinitionProperty.cs" />
     <Compile Include="Models\AttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionProperty.cs" />

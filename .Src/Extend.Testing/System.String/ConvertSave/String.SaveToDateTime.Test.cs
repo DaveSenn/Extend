@@ -121,6 +121,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToDateTimeTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToDateTime( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -129,6 +130,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToDateTimeTestCaseNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
 
             test.ShouldThrow<ArgumentNullException>();

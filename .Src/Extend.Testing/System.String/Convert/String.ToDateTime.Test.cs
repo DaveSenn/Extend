@@ -45,6 +45,7 @@ namespace Extend.Testing
         [Test]
         public void ToDateTimeTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDateTime( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -53,6 +54,7 @@ namespace Extend.Testing
         [Test]
         public void ToDateTimeTestCase1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ToDateTime( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -61,6 +63,7 @@ namespace Extend.Testing
         [Test]
         public void ToDateTimeTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDateTime( null );
 
             test.ShouldThrow<ArgumentNullException>();

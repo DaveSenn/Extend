@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,9 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The char.</returns>
-        public static Char SaveToChar( this String value, Char? defaultValue = null )
+        [Pure]
+        [PublicAPI]
+        public static Char SaveToChar( [NotNull] this String value, Char? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
 

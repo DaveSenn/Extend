@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,9 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The byte.</returns>
-        public static Byte SaveToByte( this String value, Byte? defaultValue = null )
+        [Pure]
+        [PublicAPI]
+        public static Byte SaveToByte( [NotNull] this String value, Byte? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
 
@@ -34,9 +37,11 @@ namespace Extend
         /// <param name="formatProvider">The format formatProvider.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The byte.</returns>
-        public static Byte SaveToByte( this String value,
+        [Pure]
+        [PublicAPI]
+        public static Byte SaveToByte( [NotNull] this String value,
                                        NumberStyles numberStyle,
-                                       IFormatProvider formatProvider,
+                                       [NotNull] IFormatProvider formatProvider,
                                        Byte? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );

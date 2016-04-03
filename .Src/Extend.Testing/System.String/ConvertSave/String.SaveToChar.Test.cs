@@ -52,6 +52,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToCharTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToChar( null );
 
             test.ShouldThrow<ArgumentNullException>();

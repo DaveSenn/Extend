@@ -24,6 +24,7 @@ namespace Extend.Testing
         [Test]
         public void ToGuidTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToGuid( null );
 
             test.ShouldThrow<ArgumentNullException>();

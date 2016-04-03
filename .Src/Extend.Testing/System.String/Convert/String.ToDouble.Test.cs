@@ -36,6 +36,7 @@ namespace Extend.Testing
         [Test]
         public void ToDoubleTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDouble( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +45,7 @@ namespace Extend.Testing
         [Test]
         public void ToDoubleTestCase1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ToDouble( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -52,6 +54,7 @@ namespace Extend.Testing
         [Test]
         public void ToDoubleTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDouble( null );
 
             test.ShouldThrow<ArgumentNullException>();

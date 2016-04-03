@@ -35,6 +35,7 @@ namespace Extend.Testing
         [Test]
         public void ToBooleanTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToBoolean( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -43,6 +44,7 @@ namespace Extend.Testing
         [Test]
         public void ToBooleanTestCase1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ToBoolean( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -51,6 +53,7 @@ namespace Extend.Testing
         [Test]
         public void ToBooleanTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToBoolean( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -55,6 +55,7 @@
     <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IIndexedItem.cs" />
     <Compile Include="Models\IndexedItem.cs" />
+    <Compile Include="Properties\JetBrains.Annotations.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.XOr.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.Or.cs" />
     <Compile Include="PortableExtensions.ISpecification[T]\ISpecification.And.cs" />

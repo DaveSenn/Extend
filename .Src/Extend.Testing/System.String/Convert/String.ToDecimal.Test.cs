@@ -37,6 +37,7 @@ namespace Extend.Testing
         [Test]
         public void ToDecimalTestCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDecimal( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -45,6 +46,7 @@ namespace Extend.Testing
         [Test]
         public void ToDecimalTestCase1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ToDecimal( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -53,6 +55,7 @@ namespace Extend.Testing
         [Test]
         public void ToDecimalTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToDecimal( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,9 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value, DateTime? defaultValue = null )
+        [Pure]
+        [PublicAPI]
+        public static DateTime SaveToDateTime( [NotNull] this String value, DateTime? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
 
@@ -34,8 +37,10 @@ namespace Extend
         /// <param name="dateTimeStyle">The date time style.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value,
-                                               IFormatProvider formatProvider,
+        [Pure]
+        [PublicAPI]
+        public static DateTime SaveToDateTime( [NotNull] this String value,
+                                               [NotNull] IFormatProvider formatProvider,
                                                DateTimeStyles dateTimeStyle,
                                                DateTime? defaultValue = null )
         {

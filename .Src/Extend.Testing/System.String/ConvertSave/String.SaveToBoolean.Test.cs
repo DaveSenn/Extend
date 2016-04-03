@@ -50,6 +50,7 @@ namespace Extend.Testing
         [Test]
         public void SaveToBooleanTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToBoolean( null );
 
             test.ShouldThrow<ArgumentNullException>();
