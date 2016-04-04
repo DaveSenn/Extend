@@ -89,6 +89,8 @@ namespace Extend.Testing
         [Test]
         public void SaveToDoubleTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.SaveToDouble( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -97,6 +99,8 @@ namespace Extend.Testing
         [Test]
         public void SaveToDoubleTestCaseNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".SaveToDouble( NumberStyles.AllowExponent, null );
 
             test.ShouldThrow<ArgumentNullException>();

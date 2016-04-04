@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,9 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The double.</returns>
-        public static Double SaveToDouble( this String value, Double? defaultValue = null )
+        [Pure]
+        [PublicAPI]
+        public static Double SaveToDouble( [NotNull] this String value, Double? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
 
@@ -41,9 +44,11 @@ namespace Extend
         /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>The double.</returns>
-        public static Double SaveToDouble( this String value,
+        [Pure]
+        [PublicAPI]
+        public static Double SaveToDouble( [NotNull] this String value,
                                            NumberStyles numberStyle,
-                                           IFormatProvider formatProvider,
+                                           [NotNull] IFormatProvider formatProvider,
                                            Double? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );

@@ -51,6 +51,8 @@ namespace Extend.Testing
         [Test]
         public void SaveToGuidTestCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.SaveToGuid( null );
 
             test.ShouldThrow<ArgumentNullException>();

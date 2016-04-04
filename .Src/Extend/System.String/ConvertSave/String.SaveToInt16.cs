@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,8 @@ namespace Extend
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>Returns the converted Int16.</returns>
+        [Pure]
+        [PublicAPI]
         public static Int16 SaveToInt16( this String value, Int16? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
@@ -37,6 +40,8 @@ namespace Extend
         /// <param name="formatProvider">An object that supplies culture-specific formatting information about value.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
         /// <returns>Returns the converted Int16.</returns>
+        [Pure]
+        [PublicAPI]
         public static Int16 SaveToInt16( this String value,
                                          NumberStyles numberStyle,
                                          IFormatProvider formatProvider,

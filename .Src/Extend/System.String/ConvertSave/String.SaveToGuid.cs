@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,9 @@ namespace Extend
         ///     <see cref="Guid.Empty" />.
         /// </param>
         /// <returns>Returns the converted GUID.</returns>
-        public static Guid SaveToGuid( this String value, Guid? defaultValue = null )
+        [Pure]
+        [PublicAPI]
+        public static Guid SaveToGuid( [NotNull] this String value, Guid? defaultValue = null )
         {
             value.ThrowIfNull( nameof( value ) );
 
