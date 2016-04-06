@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDecimalTestCase()
+        public void ToDecimalTest()
         {
             Thread.CurrentThread.CurrentCulture = new CultureInfo( "en-US" );
 
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDecimalTestCase1()
+        public void ToDecimalTest1()
         {
             var expected = new Decimal( 100.12 );
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDecimalTestCase1NullCheck()
+        public void ToDecimalTest1NullCheck()
         {
             Action test = () => ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
 
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDecimalTestCase1NullCheck1()
+        public void ToDecimalTest1NullCheck1()
         {
             Action test = () => ObjectEx.ToDecimal( "false", null );
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDecimalTestCaseNullCheck()
+        public void ToDecimalTestNullCheck()
         {
             Action test = () => ObjectEx.ToDecimal( null );
 

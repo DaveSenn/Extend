@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericToListTestCase()
+        public void GenericToListTest()
         {
             var array = new[]
             {
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericToListTestCaseNullCheck()
+        public void GenericToListTestNullCheck()
         {
             String[] array = null;
             Action test = () => array.ToGenericList( x => x + "Test" );
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericToListTestCaseNullCheck1()
+        public void GenericToListTestNullCheck1()
         {
             var array = new[]
             {

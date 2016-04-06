@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToCharByCodeTestCase()
+        public void ToCharByCodeTest()
         {
             var charValue = 'a';
             var value = charValue.ToString();
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharByCodeTestCase1()
+        public void ToCharByCodeTest1()
         {
             var charValue = 'a';
             var value = charValue.ToString();
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharByCodeTestCase1NullCheck()
+        public void ToCharByCodeTest1NullCheck()
         {
             Action test = () => ObjectEx.ToCharByCode( null, CultureInfo.InvariantCulture );
 
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharByCodeTestCase1NullCheck1()
+        public void ToCharByCodeTest1NullCheck1()
         {
             Action test = () => "false".ToCharByCode( null );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharByCodeTestCaseNullCheck()
+        public void ToCharByCodeTestNullCheck()
         {
             Action test = () => ObjectEx.ToCharByCode( null );
 

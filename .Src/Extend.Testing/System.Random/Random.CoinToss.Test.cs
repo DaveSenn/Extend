@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void CoinTossTestCase()
+        public void CoinTossTest()
         {
             var random = new Random();
             var actual = random.CoinToss();
         }
 
         [Test]
-        public void CoinTossTestCaseNullCheck()
+        public void CoinTossTestNullCheck()
         {
             Action test = () => RandomEx.CoinToss( null );
 

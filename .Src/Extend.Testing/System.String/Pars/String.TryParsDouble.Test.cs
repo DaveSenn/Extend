@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDoubleTestCase()
+        public void TryParsDoubleTest()
         {
             var expected = 100.123d;
             var result = 100d;
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDoubleTestCase1()
+        public void TryParsDoubleTest1()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = 100.123d;
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDoubleTestCase1NullCheck()
+        public void TryParsDoubleTest1NullCheck()
         {
             var outValue = 100d;
             Action test = () => StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDoubleTestCase1NullCheck1()
+        public void TryParsDoubleTest1NullCheck1()
         {
             var outValue = 100d;
             Action test = () => "100".TryParsDouble( NumberStyles.Any, null, out outValue );
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDoubleTestCaseNullCheck()
+        public void TryParsDoubleTestNullCheck()
         {
             var outValue = 100d;
             Action test = () => StringEx.TryParsDouble( null, out outValue );

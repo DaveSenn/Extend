@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void AgeTestCase()
+        public void AgeTest()
         {
             var dateTime = new DateTime( 1980, 1, 1 );
             var expected = DateTime.Now.Year - 1980;
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase1()
+        public void AgeTest1()
         {
             var dateTime = DateTime.Now.AddYears( -2 )
                                    .Add( 1.ToDays() );
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase10()
+        public void AgeTest10()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( 2 )
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase11()
+        public void AgeTest11()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( 2 )
@@ -62,7 +62,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase12()
+        public void AgeTest12()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( -2 );
@@ -73,7 +73,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase13()
+        public void AgeTest13()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( -2 )
@@ -85,7 +85,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase14()
+        public void AgeTest14()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( -2 )
@@ -97,7 +97,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase15()
+        public void AgeTest15()
         {
             var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 )
                                                        .AddMonths( 1 );
@@ -108,7 +108,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase16()
+        public void AgeTest16()
         {
             var dateTime = new DateTime( 2014, 10, 31 ).AddYears( 1 )
                                                        .AddDays( 1 );
@@ -119,7 +119,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase17()
+        public void AgeTest17()
         {
             var dateTime = new DateTime( 2015, 10, 31 ).AddYears( 1 )
                                                        .AddMonths( 1 );
@@ -130,7 +130,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase18()
+        public void AgeTest18()
         {
             var dateTime = new DateTime( 2015, 10, 31 ).AddYears( 1 )
                                                        .AddDays( 1 );
@@ -141,7 +141,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase2()
+        public void AgeTest2()
         {
             var dateTime = DateTime.Now.AddYears( -1 )
                                    .AddMonths( -3 );
@@ -152,7 +152,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase3()
+        public void AgeTest3()
         {
             var dateTime = DateTime.Now.AddDays( 1 );
             const Int32 expected = 0;
@@ -162,7 +162,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase4()
+        public void AgeTest4()
         {
             var dateTime = DateTime.Now.AddYears( 3 );
             const Int32 expected = -3;
@@ -172,7 +172,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase5()
+        public void AgeTest5()
         {
             var dateTime = DateTime.Now.AddMonths( 1 );
             const Int32 expected = 0;
@@ -182,7 +182,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase6()
+        public void AgeTest6()
         {
             var dateTime = DateTime.Now;
             const Int32 expected = 0;
@@ -192,7 +192,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase7()
+        public void AgeTest7()
         {
             var dateTime = DateTime.Now.AddYears( 1 )
                                    .AddMonths( 1 );
@@ -203,7 +203,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase8()
+        public void AgeTest8()
         {
             var dateTime = DateTime.Now.AddYears( 1 )
                                    .AddDays( 1 );
@@ -214,7 +214,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AgeTestCase9()
+        public void AgeTest9()
         {
             var dateTime = DateTime.Now;
             var currentDate = DateTime.Now.AddYears( 2 );

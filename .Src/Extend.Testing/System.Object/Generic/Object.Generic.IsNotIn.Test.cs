@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void IsNotInTestCase()
+        public void IsNotInTest()
         {
             var array = RandomValueEx.GetRandomStrings()
                                      .ToArray();
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotInTestCase1()
+        public void IsNotInTest1()
         {
             var list = RandomValueEx.GetRandomStrings();
             var value = list[0];
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotInTestCase1NullCheck()
+        public void IsNotInTest1NullCheck()
         {
             IEnumerable<String> enumerable = null;
             Action test = () => "".IsNotIn( enumerable );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotInTestCaseNullCheck()
+        public void IsNotInTestNullCheck()
         {
             String[] array = null;
             Action test = () => "".IsNotIn( array );

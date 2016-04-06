@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void PopulateTestCase()
+        public void PopulateTest()
         {
             var array = new Int32[10];
             var actual = array.Populate( 100 );
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PopulateTestCaseNullCheck()
+        public void PopulateTestNullCheck()
         {
             String[] array = null;
             Action test = () => array.Populate( RandomValueEx.GetRandomString() );

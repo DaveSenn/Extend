@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddRangeIfTestCase()
+        public void AddRangeIfTest()
         {
             var c = new List<String>();
 
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCase1()
+        public void AddRangeIfTest1()
         {
             var c = new List<String>();
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCase1NullCheck()
+        public void AddRangeIfTest1NullCheck()
         {
             Action test = () => CollectionTEx.AddRangeIf( null, x => true, new List<String> { "test0", "test1", "test2" } );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCase1NullCheck1()
+        public void AddRangeIfTest1NullCheck1()
         {
             Action test = () => new List<String>().AddRangeIf( x => true, null );
 
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCase1NullCheck2()
+        public void AddRangeIfTest1NullCheck2()
         {
             Action test = () => new List<String>().AddRangeIf( null, new List<String> { "test0", "test1", "test2" } );
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCaseNullCheck()
+        public void AddRangeIfTestNullCheck()
         {
             Action test = () => CollectionTEx.AddRangeIf( null, x => true, "test0", "test1", "test2" );
 
@@ -71,7 +71,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCaseNullCheck1()
+        public void AddRangeIfTestNullCheck1()
         {
             Action test = () => new List<String>().AddRangeIf( x => true, null );
 
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeIfTestCaseNullCheck2()
+        public void AddRangeIfTestNullCheck2()
         {
             Action test = () => new List<String>().AddRangeIf( null, "test0", "test1", "test2" );
 

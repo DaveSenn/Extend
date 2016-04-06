@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsMatchTestCase()
+        public void IsMatchTest()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase1()
+        public void IsMatchTest1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase1NullCheck()
+        public void IsMatchTest1NullCheck()
         {
             Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase1NullCheck1()
+        public void IsMatchTest1NullCheck1()
         {
             Action test = () => "".IsMatch( null, RegexOptions.Multiline );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCaseNullCheck()
+        public void IsMatchTestNullCheck()
         {
             Action test = () => StringEx.IsMatch( null, "" );
 
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCaseNullCheck1()
+        public void IsMatchTestNullCheck1()
         {
             Action test = () => "".IsMatch( null );
 
@@ -74,7 +74,7 @@ namespace Extend.Testing
 
 #if PORTABLE45
         [Test]
-        public void IsMatchTestCase2()
+        public void IsMatchTest2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -88,7 +88,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase2NullCheck()
+        public void IsMatchTest2NullCheck()
         {
             Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
 
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase2NullCheck1()
+        public void IsMatchTest2NullCheck1()
         {
             Action test = () => "".IsMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
 

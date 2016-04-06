@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddIfNotContainsKey1TestCaseNullCheck()
+        public void AddIfNotContainsKey1TestNullCheck()
         {
             var keyValuePair = new KeyValuePair<Object, Object>();
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( keyValuePair );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKey1TestCaseNullCheck1()
+        public void AddIfNotContainsKey1TestNullCheck1()
         {
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
 
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase()
+        public void AddIfNotContainsKeyTest()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase1()
+        public void AddIfNotContainsKeyTest1()
         {
             var dic = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase2()
+        public void AddIfNotContainsKeyTest2()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -76,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase2NullCheck()
+        public void AddIfNotContainsKeyTest2NullCheck()
         {
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
 
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase2NullCheck1()
+        public void AddIfNotContainsKeyTest2NullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, () => new Object() );
 
@@ -92,7 +92,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase2NullCheck2()
+        public void AddIfNotContainsKeyTest2NullCheck2()
         {
             Func<Object> func = null;
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
@@ -101,7 +101,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase3()
+        public void AddIfNotContainsKeyTest3()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -116,7 +116,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase3NullCheck()
+        public void AddIfNotContainsKeyTest3NullCheck()
         {
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
 
@@ -124,7 +124,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase3NullCheck1()
+        public void AddIfNotContainsKeyTest3NullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, x => new Object() );
 
@@ -132,7 +132,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCase3NullCheck2()
+        public void AddIfNotContainsKeyTest3NullCheck2()
         {
             Func<Object, Object> func = null;
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
@@ -141,7 +141,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCaseNullCheck()
+        public void AddIfNotContainsKeyTestNullCheck()
         {
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
 
@@ -149,7 +149,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsKeyTestCaseNullCheck1()
+        public void AddIfNotContainsKeyTestNullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
 

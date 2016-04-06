@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void IsNotNullOrEmptyTestCase()
+        public void IsNotNullOrEmptyTest()
         {
             List<String> list = null;
             Assert.IsFalse( list.IsNotNullOrEmpty() );

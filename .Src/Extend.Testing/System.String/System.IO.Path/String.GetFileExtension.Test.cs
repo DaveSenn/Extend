@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetFileExtensionTestCase()
+        public void GetFileExtensionTest()
         {
             var fielName = "test.txt";
             var expected = Path.GetExtension( fielName );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetFileExtensionTestCaseNullCheck()
+        public void GetFileExtensionTestNullCheck()
         {
             Action test = () => StringEx.GetFileExtension( null );
 

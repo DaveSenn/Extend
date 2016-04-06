@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void SpecificationTestCase()
+        public void SpecificationTest()
         {
             var target = 11;
             var actual = target.Specification( x => x > 10 && x < 200 );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SpecificationTestCaseNullCheck()
+        public void SpecificationTestNullCheck()
         {
             Func<Int32, Boolean> expression = null;
             Action test = () => 11.Specification( expression );

@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryToEnumTestCase()
+        public void TryToEnumTest()
         {
             var expected = DayOfWeek.Monday;
             var actual = DayOfWeek.Saturday;
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryToEnumTestCaseNullCheck()
+        public void TryToEnumTestNullCheck()
         {
             var day = DayOfWeek.Saturday;
             Action test = () => StringEx.TryToEnum( null, out day );

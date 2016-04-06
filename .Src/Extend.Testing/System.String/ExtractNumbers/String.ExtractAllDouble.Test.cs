@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllDoubleTestCase()
+        public void ExtractAllDoubleTest()
         {
             var value0 = 100.2d;
             var value1 = 100.212d;
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException()
+        public void ExtractAllDoubleTestArgumentOutOfRangeException()
         {
             Action test = () => "100.1".ExtractAllDouble( 100 );
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDoubleTestCaseArgumentOutOfRangeException1()
+        public void ExtractAllDoubleTestArgumentOutOfRangeException1()
         {
             Action test = () => "100.1".ExtractAllDouble( -1 );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDoubleTestCaseNullCheck()
+        public void ExtractAllDoubleTestNullCheck()
         {
             Action test = () => StringEx.ExtractAllDouble( null );
 
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDoubleTestCaseNullCheck1()
+        public void ExtractAllDoubleTestNullCheck1()
         {
             Action test = () => StringEx.ExtractAllDouble( null, 0 );
 

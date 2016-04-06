@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void RemoveWhereTestCase()
+        public void RemoveWhereTest()
         {
             var actual = "a1-b2.c3".RemoveWhere( x => x.IsNumber() );
             Assert.AreEqual( "a-b.c", actual );
         }
 
         [Test]
-        public void RemoveWhereTestCaseNullCheck()
+        public void RemoveWhereTestNullCheck()
         {
             Action test = () => StringEx.RemoveWhere( null, x => false );
 
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveWhereTestCaseNullCheck1()
+        public void RemoveWhereTestNullCheck1()
         {
             Action test = () => "".RemoveWhere( null );
 

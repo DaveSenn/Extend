@@ -290,7 +290,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOverloadTestCase()
+        public void AddOverloadTest()
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
             var target = new TreeNode<String>( "root" );
@@ -307,7 +307,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddTestCase()
+        public void AddTest()
         {
 // ReSharper disable once UseObjectOrCollectionInitializer
             var target = new TreeNode<String>( "root" );
@@ -324,7 +324,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AncestorsTestCase()
+        public void AncestorsTest()
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Ancestors.ToList();
@@ -343,7 +343,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AncestorsTraversalDirectionTestCase()
+        public void AncestorsTraversalDirectionTest()
         {
             var target = new TreeNode<String>
             {
@@ -365,7 +365,7 @@ namespace Extend.Testing
         ///     Set children of node and add then children
         /// </summary>
         [Test]
-        public void ChildrenTestCase()
+        public void ChildrenTest()
         {
             var target = new TreeNode<String>();
             var children = new TreeNodeCollection<String>( target );
@@ -386,7 +386,7 @@ namespace Extend.Testing
         ///     Set children (Collection with some items)
         /// </summary>
         [Test]
-        public void ChildrenTestCase1()
+        public void ChildrenTest1()
         {
             var target = new TreeNode<String>();
             var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
@@ -405,7 +405,7 @@ namespace Extend.Testing
         ///     Feel free to improve the implementation.
         /// </remarks>
         [Test]
-        public void ChildrenTestCase2()
+        public void ChildrenTest2()
         {
             var node1 = new TreeNode<String>( "node1" )
             {
@@ -435,7 +435,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ChildrenTestCase3()
+        public void ChildrenTest3()
         {
             var target = new TreeNode<String>();
             var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
@@ -455,7 +455,7 @@ namespace Extend.Testing
         ///     Constructor with no parameters
         /// </summary>
         [Test]
-        public void CtorTestCase()
+        public void CtorTest()
         {
             var target = new TreeNode<String>();
             Assert.IsNull( target.Value );
@@ -471,7 +471,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: value
         /// </summary>
         [Test]
-        public void CtorTestCase1()
+        public void CtorTest1()
         {
             var value = RandomValueEx.GetRandomString();
 
@@ -489,7 +489,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: parent
         /// </summary>
         [Test]
-        public void CtorTestCase2()
+        public void CtorTest2()
         {
             var parent = new TreeNode<String>
             {
@@ -513,7 +513,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: children
         /// </summary>
         [Test]
-        public void CtorTestCase3()
+        public void CtorTest3()
         {
             var exParent = new TreeNode<String>();
             var children = new TreeNodeCollection<String>( exParent )
@@ -548,7 +548,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: value, children
         /// </summary>
         [Test]
-        public void CtorTestCase4()
+        public void CtorTest4()
         {
             var exParent = new TreeNode<String>();
             var value = RandomValueEx.GetRandomString();
@@ -584,7 +584,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: value, parent
         /// </summary>
         [Test]
-        public void CtorTestCase5()
+        public void CtorTest5()
         {
             var value = RandomValueEx.GetRandomString();
             var parent = new TreeNode<String>
@@ -609,7 +609,7 @@ namespace Extend.Testing
         ///     Constructor with the following parameters: children
         /// </summary>
         [Test]
-        public void CtorTestCase6()
+        public void CtorTest6()
         {
             var value = RandomValueEx.GetRandomString();
             var parent = new TreeNode<String>
@@ -652,7 +652,7 @@ namespace Extend.Testing
         ///     Test for switching parent
         /// </summary>
         [Test]
-        public void CtorTestCase7()
+        public void CtorTest7()
         {
             var exParent = new TreeNode<String>( "Ex" );
             var children = new TreeNodeCollection<String>( exParent )
@@ -673,7 +673,7 @@ namespace Extend.Testing
         ///     Test for full constructor
         /// </summary>
         [Test]
-        public void CtorTestCase8()
+        public void CtorTest8()
         {
             var value = RandomValueEx.GetRandomString();
             var parent = new TreeNode<String>( "parent" );
@@ -689,7 +689,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DepthTestCase()
+        public void DepthTest()
         {
             var target = new TreeNode<String>( "root" );
             Assert.AreEqual( 0, target.Depth );
@@ -714,7 +714,7 @@ namespace Extend.Testing
         ///     | 2
         /// </summary>
         [Test]
-        public void DescendantsTestCase()
+        public void DescendantsTest()
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
@@ -773,7 +773,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DescendantsTestCase1()
+        public void DescendantsTest1()
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
@@ -785,7 +785,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DescendantsTestCaseNotSupportedException()
+        public void DescendantsTestNotSupportedException()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -799,7 +799,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DescendantsTraversalDirectionTestCase()
+        public void DescendantsTraversalDirectionTest()
         {
             var target = new TreeNode<String>
             {
@@ -818,7 +818,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DisposeTestCase()
+        public void DisposeTest()
         {
             var target = new TreeNode<String>
             {
@@ -829,7 +829,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DisposeTestCase1()
+        public void DisposeTest1()
         {
             var values = new List<String>();
             var target = new TreeNode<DisposeTestHelper>
@@ -848,7 +848,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DisposeTestCase2()
+        public void DisposeTest2()
         {
             var values = new List<String>();
             var target = new TreeNode<DisposeTestHelper>
@@ -867,7 +867,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DisposeTraversalDirectionTestCase()
+        public void DisposeTraversalDirectionTest()
         {
             var target = new TreeNode<String>
             {
@@ -889,7 +889,7 @@ namespace Extend.Testing
         ///     Search TopDown only top level
         /// </summary>
         [Test]
-        public void FindNodeOverloadTestCase()
+        public void FindNodeOverloadTest()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -912,7 +912,7 @@ namespace Extend.Testing
         ///     Search BottomUp only top level
         /// </summary>
         [Test]
-        public void FindNodeOverloadTestCase1()
+        public void FindNodeOverloadTest1()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -935,7 +935,7 @@ namespace Extend.Testing
         ///     Search TopDown only top level
         /// </summary>
         [Test]
-        public void FindNodeTestCase()
+        public void FindNodeTest()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -973,7 +973,7 @@ namespace Extend.Testing
         ///     Search TopDown all level
         /// </summary>
         [Test]
-        public void FindNodeTestCase1()
+        public void FindNodeTest1()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1014,7 +1014,7 @@ namespace Extend.Testing
         ///     Search BottomUp only top level
         /// </summary>
         [Test]
-        public void FindNodeTestCase2()
+        public void FindNodeTest2()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1052,7 +1052,7 @@ namespace Extend.Testing
         ///     Search BottomUp all level
         /// </summary>
         [Test]
-        public void FindNodeTestCase3()
+        public void FindNodeTest3()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1093,7 +1093,7 @@ namespace Extend.Testing
         ///     Search TopDown only top level
         /// </summary>
         [Test]
-        public void FindValueTestCase()
+        public void FindValueTest()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1131,7 +1131,7 @@ namespace Extend.Testing
         ///     Search TopDown all level
         /// </summary>
         [Test]
-        public void FindValueTestCase1()
+        public void FindValueTest1()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1172,7 +1172,7 @@ namespace Extend.Testing
         ///     Search BottomUp only top level
         /// </summary>
         [Test]
-        public void FindValueTestCase2()
+        public void FindValueTest2()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1210,7 +1210,7 @@ namespace Extend.Testing
         ///     Search BottomUp all level
         /// </summary>
         [Test]
-        public void FindValueTestCase3()
+        public void FindValueTest3()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1248,7 +1248,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase()
+        public void GetEnumeratorTest()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
             var actual = new List<ITreeNode<String>>();
@@ -1265,7 +1265,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase1()
+        public void GetEnumeratorTest1()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
             target.TraversalDirection = TreeTraversalDirection.BottomUp;
@@ -1283,7 +1283,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase2()
+        public void GetEnumeratorTest2()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1311,7 +1311,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase3()
+        public void GetEnumeratorTest3()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1340,7 +1340,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase4()
+        public void GetEnumeratorTest4()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1372,7 +1372,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase5()
+        public void GetEnumeratorTest5()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1405,7 +1405,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase6()
+        public void GetEnumeratorTest6()
         {
             var target = new TreeNode<String>( "root" )
             {
@@ -1424,7 +1424,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase7()
+        public void GetEnumeratorTest7()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
             var actual = new List<ITreeNode<String>>();
@@ -1441,7 +1441,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase8()
+        public void GetEnumeratorTest8()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
             target.TraversalDirection = TreeTraversalDirection.TopDown;
@@ -1458,7 +1458,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetEnumeratorTestCase9()
+        public void GetEnumeratorTest9()
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
             target.TraversalDirection = TreeTraversalDirection.BottomUp;
@@ -1475,7 +1475,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void HasChildrenTestCase()
+        public void HasChildrenTest()
         {
             var target = new TreeNode<String>( "root" );
             Assert.IsFalse( target.HasChildren );
@@ -1497,14 +1497,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void HasChildrenTestCase1()
+        public void HasChildrenTest1()
         {
             var target = new TreeNode<String>( "root" ) { Children = null };
             Assert.IsFalse( target.HasChildren );
         }
 
         [Test]
-        public void HasParentTestCase()
+        public void HasParentTest()
         {
             var target = new TreeNode<String>( "root" );
             Assert.IsFalse( target.HasParent );
@@ -1524,7 +1524,7 @@ namespace Extend.Testing
         ///     Check if added as child to parent.
         /// </summary>
         [Test]
-        public void ParentTestCase()
+        public void ParentTest()
         {
             var parent = new TreeNode<String>();
 
@@ -1537,7 +1537,7 @@ namespace Extend.Testing
         ///     Check if added as child to new parent and removed from old parent.
         /// </summary>
         [Test]
-        public void ParentTestCase1()
+        public void ParentTest1()
         {
             var parent = new TreeNode<String>();
             var exParent = new TreeNode<String>();
@@ -1555,7 +1555,7 @@ namespace Extend.Testing
         ///     Check if added as child to parent and if children are getting updated.
         /// </summary>
         [Test]
-        public void ParentTestCase2()
+        public void ParentTest2()
         {
             var parent = new TreeNode<String>();
 
@@ -1615,14 +1615,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RootTestCase()
+        public void RootTest()
         {
             var target = new TreeNode<String>();
             Assert.AreSame( target, target.Root );
         }
 
         [Test]
-        public void RootTestCase1()
+        public void RootTest1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNode<String>( parent );
@@ -1630,7 +1630,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SearchTraversalDirectionTestCase()
+        public void SearchTraversalDirectionTest()
         {
             var target = new TreeNode<String>
             {
@@ -1649,7 +1649,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SetAllDirectionsTestCase()
+        public void SetAllDirectionsTest()
         {
             // ReSharper disable once UseObjectOrCollectionInitializer
             var target = new TreeNode<String>( "root" )
@@ -1693,7 +1693,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SetParentTestCase()
+        public void SetParentTest()
         {
             var targetA = new TreeNode<String>( "a" );
             var node1 = new TreeNode<String>( "1" );
@@ -1724,7 +1724,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SetParentTestCase1()
+        public void SetParentTest1()
         {
             var targetA = new TreeNode<String>( "a" )
             {
@@ -1738,7 +1738,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase()
+        public void ToStringTest()
         {
             var target = new TreeNode<String>( "1" );
             var actual = target.ToString();
@@ -1746,7 +1746,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase1()
+        public void ToStringTest1()
         {
             var target = new TreeNode<String>( "1" ) { "1", "2" };
             var node = new TreeNode<String>( "a" );
@@ -1757,7 +1757,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TraversalDirectionTestCase()
+        public void TraversalDirectionTest()
         {
             var target = new TreeNode<String>
             {
@@ -1779,7 +1779,7 @@ namespace Extend.Testing
         ///     Normal value
         /// </summary>
         [Test]
-        public void ValueTestCase()
+        public void ValueTest()
         {
             var target = new TreeNode<String>();
             var expected = RandomValueEx.GetRandomString();
@@ -1791,7 +1791,7 @@ namespace Extend.Testing
         ///     Value implementing <see cref="ITreeNodeAware{T}" />.
         /// </summary>
         [Test]
-        public void ValueTestCase1()
+        public void ValueTest1()
         {
             var target = new TreeNode<TestTreeNodeItem>();
             var expected = new TestTreeNodeItem();
@@ -1806,7 +1806,7 @@ namespace Extend.Testing
         ///     Reset value to check if node gets set to null.
         /// </summary>
         [Test]
-        public void ValueTestCase2()
+        public void ValueTest2()
         {
             var target = new TreeNode<TestTreeNodeItem>();
             var expected = new TestTreeNodeItem();

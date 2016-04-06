@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstDoubleTestCase()
+        public void ExtractFirstDoubleTest()
         {
             var value0 = 100.2;
             var value1 = 100.212;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCase1()
+        public void ExtractFirstDoubleTest1()
         {
             var sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDouble();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCase1ArgumentOutOfRangeException()
+        public void ExtractFirstDoubleTest1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             Action test = () => sValue.ExtractFirstDouble( sValue.Length );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCase2ArgumentOutOfRangeException()
+        public void ExtractFirstDoubleTest2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             Action test = () => sValue.ExtractFirstDouble( -1 );
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCaseNullCheck()
+        public void ExtractFirstDoubleTestNullCheck()
         {
             Action test = () => StringEx.ExtractFirstDouble( null );
 
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDoubleTestCaseNullCheck1()
+        public void ExtractFirstDoubleTestNullCheck1()
         {
             Action test = () => StringEx.ExtractFirstDouble( null, 0 );
 

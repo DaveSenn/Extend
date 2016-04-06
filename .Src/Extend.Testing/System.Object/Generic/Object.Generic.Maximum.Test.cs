@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void MaximumTestCase()
+        public void MaximumTest()
         {
             var actual = 1.Maximum( 2, 3, 4, 5, 6 );
             Assert.AreEqual( 6, actual );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MaximumTestCase1()
+        public void MaximumTest1()
         {
             var actual = 1.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
             Assert.AreEqual( "6", actual );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MaximumTestCase1NullCheck()
+        public void MaximumTest1NullCheck()
         {
             Action test = () => 10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
 
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MaximumTestCase1NullCheck1()
+        public void MaximumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
             Action test = () => 10.Maximum( func, 1, 2, 3, 4, 5 );
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MaximumTestCaseNullCheck()
+        public void MaximumTestNullCheck()
         {
             Action test = () => 10.Maximum( null );
 

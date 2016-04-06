@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void ToUpperTestCase()
+        public void ToUpperTest()
         {
             Assert.AreEqual( 'A', 'A'.ToUpper() );
             Assert.AreEqual( 'A', 'a'.ToUpper() );

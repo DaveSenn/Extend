@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void ExecuteIfFalseTestCase()
+        public void ExecuteIfFalseTest()
         {
             //Case 1
             var falseActionExecuted = false;
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase1()
+        public void ExecuteIfFalseTest1()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -122,7 +122,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase1NullCheck()
+        public void ExecuteIfFalseTest1NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfFalse( null, RandomValueEx.GetRandomString(), null, false, false );
 
@@ -130,7 +130,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase2()
+        public void ExecuteIfFalseTest2()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -206,7 +206,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase2NullCheck()
+        public void ExecuteIfFalseTest2NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfFalse( null,
                                                          RandomValueEx.GetRandomString(),
@@ -219,7 +219,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase3()
+        public void ExecuteIfFalseTest3()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -301,7 +301,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase3NullCheck()
+        public void ExecuteIfFalseTest3NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfFalse( null,
                                                          RandomValueEx.GetRandomString(),
@@ -315,7 +315,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase4()
+        public void ExecuteIfFalseTest4()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -409,7 +409,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase4NullCheck()
+        public void ExecuteIfFalseTest4NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfFalse( null,
                                                          RandomValueEx.GetRandomString(),
@@ -424,7 +424,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase5()
+        public void ExecuteIfFalseTest5()
         {
             //Case 1
             var falseActionExecuted = false;
@@ -459,7 +459,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase5NullCheck()
+        public void ExecuteIfFalseTest5NullCheck()
         {
             Action action = null;
             Action test = () => action.ExecuteIfFalse( false, false );
@@ -468,7 +468,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase6()
+        public void ExecuteIfFalseTest6()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -521,7 +521,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase6NullCheck()
+        public void ExecuteIfFalseTest6NullCheck()
         {
             Action<String> action = null;
             Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(), false, false );
@@ -530,7 +530,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase7()
+        public void ExecuteIfFalseTest7()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -588,7 +588,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase7NullCheck()
+        public void ExecuteIfFalseTest7NullCheck()
         {
             Action<String, String> action = null;
             Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), null, false, false );
@@ -597,7 +597,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase8()
+        public void ExecuteIfFalseTest8()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -660,7 +660,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase8NullCheck()
+        public void ExecuteIfFalseTest8NullCheck()
         {
             Action<String, String, String> action = null;
             Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
@@ -674,7 +674,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase9()
+        public void ExecuteIfFalseTest9()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -746,7 +746,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCase9NullCheck()
+        public void ExecuteIfFalseTest9NullCheck()
         {
             Action<String, String, String, String> action = null;
             Action test = () => action.ExecuteIfFalse( RandomValueEx.GetRandomString(),
@@ -761,7 +761,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfFalseTestCaseNullCheck()
+        public void ExecuteIfFalseTestNullCheck()
         {
             Action test = () => ActionEx.ExecuteIfFalse( null, null, false, false );
 

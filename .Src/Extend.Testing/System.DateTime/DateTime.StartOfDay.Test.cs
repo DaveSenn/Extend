@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void StartOfDaykTestCase()
+        public void StartOfDaykTest()
         {
             var dateTime = new DateTime( 2014, 3, 30, 12, 0, 2 );
             var actual = dateTime.StartOfDay();

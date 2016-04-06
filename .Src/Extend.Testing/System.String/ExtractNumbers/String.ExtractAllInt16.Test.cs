@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllInt16TestCase()
+        public void ExtractAllInt16Test()
         {
             var value0 = 100;
             var value1 = 102;
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllInt16TestCaseNullCheck()
+        public void ExtractAllInt16TestNullCheck()
         {
             Action test = () => StringEx.ExtractAllInt16( null );
 
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllInt16TestCaseNullCheck1()
+        public void ExtractAllInt16TestNullCheck1()
         {
             Action test = () => StringEx.ExtractAllInt16( null, 0 );
 

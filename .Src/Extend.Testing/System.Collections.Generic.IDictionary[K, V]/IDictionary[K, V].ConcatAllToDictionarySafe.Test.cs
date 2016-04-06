@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatAllToDictionarySafeTestCase()
+        public void ConcatAllToDictionarySafeTest()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCase1()
+        public void ConcatAllToDictionarySafeTest1()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCase2()
+        public void ConcatAllToDictionarySafeTest2()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCase3()
+        public void ConcatAllToDictionarySafeTest3()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
@@ -94,7 +94,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCase4()
+        public void ConcatAllToDictionarySafeTest4()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -125,7 +125,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCaseNullCheck()
+        public void ConcatAllToDictionarySafeTestNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -140,7 +140,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionarySafeTestCaseNullCheck1()
+        public void ConcatAllToDictionarySafeTestNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
             var other1 = new Dictionary<Int32, Int32>

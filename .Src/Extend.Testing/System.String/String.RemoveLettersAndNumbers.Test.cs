@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void RemoveLettersAndNumbersTestCase()
+        public void RemoveLettersAndNumbersTest()
         {
             var actual = "a1-b2.c3".RemoveLettersAndNumbers();
             Assert.AreEqual( "-.", actual );
         }
 
         [Test]
-        public void RemoveLettersAndNumbersTestCaseNullCheck()
+        public void RemoveLettersAndNumbersTestNullCheck()
         {
             Action test = () => StringEx.RemoveLettersAndNumbers( null );
 

@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractLettersTestCase()
+        public void ExtractLettersTest()
         {
             var actual = "1a2b3c4".ExtractLetters();
             Assert.AreEqual( "abc", actual );
         }
 
         [Test]
-        public void ExtractLettersTestCaseNullCheck()
+        public void ExtractLettersTestNullCheck()
         {
             Action test = () => StringEx.ExtractLetters( null );
 

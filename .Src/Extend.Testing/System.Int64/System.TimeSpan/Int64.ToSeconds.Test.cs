@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void ToSecondsTestCase()
+        public void ToSecondsTest()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
 

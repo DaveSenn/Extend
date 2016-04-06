@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void NovemberTestCase()
+        public void NovemberTest()
         {
             var expected = new DateTime( 2000, 11, 10 );
             var actual = 10.November( 2000 );

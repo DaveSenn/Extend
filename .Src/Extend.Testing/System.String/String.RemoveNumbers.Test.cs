@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void RemoveNumbersTestCase()
+        public void RemoveNumbersTest()
         {
             var actual = "a1-b2.c3".RemoveNumbers();
             Assert.AreEqual( "a-b.c", actual );
         }
 
         [Test]
-        public void RemoveNumbersTestCaseNullCheck()
+        public void RemoveNumbersTestNullCheck()
         {
             Action test = () => StringEx.RemoveNumbers( null );
 

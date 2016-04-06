@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ISpecificationExTest
     {
         [Test]
-        public void OrTestCase()
+        public void OrTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.Or( x => true );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase1()
+        public void OrTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.Or( x => false );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase10()
+        public void OrTest10()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.Or( x => true, "msgRight" );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase11()
+        public void OrTest11()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.Or( x => false, "msgRight" );
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase2()
+        public void OrTest2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.Or( x => true );
@@ -67,7 +67,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase3()
+        public void OrTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.Or( x => false );
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase4()
+        public void OrTest4()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.Or( x => true );
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase5()
+        public void OrTest5()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.Or( x => false );
@@ -98,7 +98,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase6()
+        public void OrTest6()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.Or( x => true );
@@ -109,7 +109,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase7()
+        public void OrTest7()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.Or( x => false );
@@ -122,7 +122,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase8()
+        public void OrTest8()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.Or( x => true, "msgRight" );
@@ -132,7 +132,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase9()
+        public void OrTest9()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.Or( x => false, "msgRight" );
@@ -143,7 +143,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCaseNullCheck()
+        public void OrTestNullCheck()
         {
             ISpecification<String> left = null;
             Action test = () => left.Or( x => true );
@@ -151,7 +151,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCaseNullCheck1()
+        public void OrTestNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;

@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void RangeToTestCase()
+        public void RangeToTest()
         {
             const Int32 start = 0;
             const Int32 end = 200;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RangeToTestCaseArgumentException()
+        public void RangeToTestArgumentException()
         {
             Action test = () => 200.RangeTo( 100 );
 

@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void CompareOrdinalIgnoreCaseTestCase()
+        public void CompareOrdinalIgnoreCaseTest()
         {
             var value1 = RandomValueEx.GetRandomString();
             var value2 = value1;

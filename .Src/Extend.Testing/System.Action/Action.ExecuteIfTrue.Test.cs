@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void ExecuteIfTrueTestCase()
+        public void ExecuteIfTrueTest()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase1()
+        public void ExecuteIfTrueTest1()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -110,7 +110,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase1NullCheck()
+        public void ExecuteIfTrueTest1NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null, RandomValueEx.GetRandomString(), null, true, true );
 
@@ -118,7 +118,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase2()
+        public void ExecuteIfTrueTest2()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -189,7 +189,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase2NullCheck()
+        public void ExecuteIfTrueTest2NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
@@ -202,7 +202,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase3()
+        public void ExecuteIfTrueTest3()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -278,7 +278,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase3NullCheck()
+        public void ExecuteIfTrueTest3NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
@@ -292,7 +292,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase4()
+        public void ExecuteIfTrueTest4()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -379,7 +379,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase4NullCheck()
+        public void ExecuteIfTrueTest4NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
@@ -394,7 +394,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase5()
+        public void ExecuteIfTrueTest5()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -429,7 +429,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase5NullCheck()
+        public void ExecuteIfTrueTest5NullCheck()
         {
             Action trueAction = null;
             Action test = () => trueAction.ExecuteIfTrue( true, true );
@@ -438,7 +438,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase6()
+        public void ExecuteIfTrueTest6()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -475,7 +475,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase6NullCheck()
+        public void ExecuteIfTrueTest6NullCheck()
         {
             Action<String> trueAction = null;
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), true, true );
@@ -484,7 +484,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase7()
+        public void ExecuteIfTrueTest7()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -542,7 +542,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase7NullCheck()
+        public void ExecuteIfTrueTest7NullCheck()
         {
             Action<String, String> trueAction = null;
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true );
@@ -551,7 +551,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase8()
+        public void ExecuteIfTrueTest8()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -614,7 +614,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase8NullCheck()
+        public void ExecuteIfTrueTest8NullCheck()
         {
             Action<String, String, String> trueAction = null;
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
@@ -627,7 +627,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase9()
+        public void ExecuteIfTrueTest9()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -699,7 +699,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase9NullCheck()
+        public void ExecuteIfTrueTest9NullCheck()
         {
             Action<String, String, String, String> trueAction = null;
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
@@ -713,7 +713,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCaseNullCheck()
+        public void ExecuteIfTrueTestNullCheck()
         {
             Action test = () => ActionEx.ExecuteIfTrue( null, null, true, true );
 

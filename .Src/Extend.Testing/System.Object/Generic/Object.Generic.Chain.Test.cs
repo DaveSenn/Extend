@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ChainTestCase()
+        public void ChainTest()
         {
             var list = new List<String>();
             var actual = list.Chain( x => x.Add( "Test1" ) );
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ChainTestCaseNullCheck()
+        public void ChainTestNullCheck()
         {
             Action test = () => new List<String>().Chain( null );
 
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ChainTestCaseNullCheck1()
+        public void ChainTestNullCheck1()
         {
             List<String> list = null;
             Action test = () => list.Chain( x => { } );

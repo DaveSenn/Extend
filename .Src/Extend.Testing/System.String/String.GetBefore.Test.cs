@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase1()
+        public void GetBeforeArgumentOutOfRangeTest1()
         {
             Action test = () => "test test1".GetBefore( "test1", 20, 2 );
 
@@ -20,7 +20,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase2()
+        public void GetBeforeArgumentOutOfRangeTest2()
         {
             Action test = () => "test test test".GetBefore( "test", 2, 20 );
 
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase3()
+        public void GetBeforeArgumentOutOfRangeTest3()
         {
             Action test = () => "test test test".GetBefore( "test", -2, 20 );
 
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase4()
+        public void GetBeforeArgumentOutOfRangeTest4()
         {
             Action test = () => "test test test".GetBefore( "test", 2, -20 );
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangExceptionTestCase()
+        public void GetBeforeArgumentOutOfRangExceptionTest()
         {
             Action test = () => "test test".GetBefore( "test", 15 );
 
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase1()
+        public void GetBeforeCharArgumentOutOfRangeTest1()
         {
             Action test = () => "test test1".GetBefore( 't', 20, 2 );
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase2()
+        public void GetBeforeCharArgumentOutOfRangeTest2()
         {
             Action test = () => "test test test".GetBefore( 't', 2, 20 );
 
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase3()
+        public void GetBeforeCharArgumentOutOfRangeTest3()
         {
             Action test = () => "test test test".GetBefore( 't', -2, 20 );
 
@@ -76,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase4()
+        public void GetBeforeCharArgumentOutOfRangeTest4()
         {
             Action test = () => "test test test".GetBefore( 't', 2, -20 );
 
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangExceptionTestCase()
+        public void GetBeforeCharArgumentOutOfRangExceptionTest()
         {
             Action test = () => "test test".GetBefore( 't', 15 );
 
@@ -92,7 +92,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase()
+        public void GetBeforeCharTest()
         {
             var actual = "test test1".GetBefore( 's' );
             Assert.AreEqual( "te", actual );
@@ -102,7 +102,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase1()
+        public void GetBeforeCharTest1()
         {
             var actual = "test test1".GetBefore( 'e', 0, 4 );
             Assert.AreEqual( "t", actual );
@@ -112,7 +112,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase1NullCheck()
+        public void GetBeforeCharTest1NullCheck()
         {
             Action test = () => StringEx.GetBefore( null, 't', 1, 1 );
 
@@ -120,14 +120,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase2()
+        public void GetBeforeCharTest2()
         {
             var actual = "test test1".GetBefore( 'a' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBeforeCharTestCaseNullCheck()
+        public void GetBeforeCharTestNullCheck()
         {
             Action test = () => StringEx.GetBefore( null, 't' );
 
@@ -135,7 +135,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase()
+        public void GetBeforeTest()
         {
             var actual = "test test1".GetBefore( "test1" );
             Assert.AreEqual( "test ", actual );
@@ -145,7 +145,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1()
+        public void GetBeforeTest1()
         {
             var actual = "test test1".GetBefore( "test1", 0, 10 );
             Assert.AreEqual( "test ", actual );
@@ -155,7 +155,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1NullCheck()
+        public void GetBeforeTest1NullCheck()
         {
             Action test = () => StringEx.GetBefore( null, "", 1, 1 );
 
@@ -163,7 +163,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1NullCheck1()
+        public void GetBeforeTest1NullCheck1()
         {
             Action test = () => "".GetBefore( null, 1, 1 );
 
@@ -171,14 +171,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase2()
+        public void GetBeforeTest2()
         {
             var actual = "test test1".GetBefore( "a", 0, 10 );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBeforeTestCaseNullCheck()
+        public void GetBeforeTestNullCheck()
         {
             Action test = () => StringEx.GetBefore( null, "" );
 
@@ -186,7 +186,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCaseNullCheck1()
+        public void GetBeforeTestNullCheck1()
         {
             Action test = () => "".GetBefore( null );
 

@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TakeAndRemoveTestCase()
+        public void TakeAndRemoveTest()
         {
             var value = "Test";
             var actual = 2.TakeAndRemove( ref value );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCase1()
+        public void TakeAndRemoveTest1()
         {
             var value = "Test";
             var actual = 4.TakeAndRemove( ref value );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCase2()
+        public void TakeAndRemoveTest2()
         {
             var value = "    ";
             var actual = 2.TakeAndRemove( ref value );
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCaseArgumentOutOfRangeException()
+        public void TakeAndRemoveTestArgumentOutOfRangeException()
         {
             var value = "Test";
             Action test = () => 5.TakeAndRemove( ref value );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeAndRemoveTestCaseNullCheck()
+        public void TakeAndRemoveTestNullCheck()
         {
             String value = null;
             Action test = () => 2.TakeAndRemove( ref value );

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToInt16TestCase()
+        public void ToInt16Test()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var value = expected.ToString();
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToInt16TestCase1()
+        public void ToInt16Test1()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var value = expected.ToString();
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToInt16TestCase1NullCheck()
+        public void ToInt16Test1NullCheck()
         {
             Action test = () => ObjectEx.ToInt16( null, CultureInfo.InvariantCulture );
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToInt16TestCase1NullCheck1()
+        public void ToInt16Test1NullCheck1()
         {
             Action test = () => ObjectEx.ToInt16( "false", null );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToInt16TestCaseNullCheck()
+        public void ToInt16TestNullCheck()
         {
             Action test = () => ObjectEx.ToInt16( null );
 

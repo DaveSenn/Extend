@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void BetweenInclusiveTestCase()
+        public void BetweenInclusiveTest()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase1()
+        public void BetweenInclusiveTest1()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase2()
+        public void BetweenInclusiveTest2()
         {
             const Int32 value = 100;
             const Int32 min = 50;
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase3()
+        public void BetweenInclusiveTest3()
         {
             const Int32 value = 200;
             const Int32 min = 50;
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCase4()
+        public void BetweenInclusiveTest4()
         {
             const Int32 value = 2;
             const Int32 min = 50;
@@ -67,7 +67,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCaseNullCheck()
+        public void BetweenInclusiveTestNullCheck()
         {
             Action test = () => IComparableTEx.BetweenInclusive( null, "", "" );
 
@@ -75,7 +75,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCaseNullCheck1()
+        public void BetweenInclusiveTestNullCheck1()
         {
             Action test = () => "".BetweenInclusive( null, "" );
 
@@ -83,7 +83,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void BetweenInclusiveTestCaseNullCheck2()
+        public void BetweenInclusiveTestNullCheck2()
         {
             Action test = () => "".BetweenInclusive( "", null );
 

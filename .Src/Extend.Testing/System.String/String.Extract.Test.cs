@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractTestCase()
+        public void ExtractTest()
         {
             var actual = "abcabc".Extract( x => x == 'a' );
             Assert.AreEqual( "aa", actual );
         }
 
         [Test]
-        public void ExtractTestCaseNullCheck()
+        public void ExtractTestNullCheck()
         {
             Action test = () => StringEx.Extract( null, y => false );
 
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractTestCaseNullCheck1()
+        public void ExtractTestNullCheck1()
         {
             Action test = () => "".Extract( null );
 

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsByteTestCase()
+        public void TryParsByteTest()
         {
             var expected = (Byte) 1;
             var result = (Byte) 3;
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsByteTestCase1()
+        public void TryParsByteTest1()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = (Byte) 1;
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsByteTestCase1NullCheck()
+        public void TryParsByteTest1NullCheck()
         {
             var outValue = (Byte) 1;
             Action test = () => StringEx.TryParsByte( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsByteTestCase1NullCheck1()
+        public void TryParsByteTest1NullCheck1()
         {
             var outValue = (Byte) 1;
             Action test = () => "".TryParsByte( NumberStyles.Any, null, out outValue );
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsByteTestCaseNullCheck()
+        public void TryParsByteTestNullCheck()
         {
             var outValue = (Byte) 1;
             Action test = () => StringEx.TryParsByte( null, out outValue );

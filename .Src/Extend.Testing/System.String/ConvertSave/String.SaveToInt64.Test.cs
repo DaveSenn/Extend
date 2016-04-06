@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt64TestCase()
+        public void SaveToInt64Test()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase1()
+        public void SaveToInt64Test1()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt64( expected );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase2()
+        public void SaveToInt64Test2()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase3()
+        public void SaveToInt64Test3()
         {
             var expected = (Int64) RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase4()
+        public void SaveToInt64Test4()
         {
             var expected = RandomValueEx.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase5()
+        public void SaveToInt64Test5()
         {
             var actual = "InvalidValue".SaveToInt64();
 
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase6()
+        public void SaveToInt64Test6()
         {
             var expected = RandomValueEx.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCase7()
+        public void SaveToInt64Test7()
         {
             var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCaseNullCheck()
+        public void SaveToInt64TestNullCheck()
         {
             Action test = () => StringEx.SaveToInt64( null );
 
@@ -95,7 +95,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestCaseNullCheck1()
+        public void SaveToInt64TestNullCheck1()
         {
             Action test = () => "".SaveToInt64( NumberStyles.AllowExponent, null );
 

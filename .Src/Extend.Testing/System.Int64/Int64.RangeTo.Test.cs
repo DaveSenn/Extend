@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void RangeToTestCase()
+        public void RangeToTest()
         {
             const Int64 start = 0;
             const Int64 end = 200;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RangeToTestCaseArgumentException()
+        public void RangeToTestArgumentException()
         {
             const Int64 start = 200;
             const Int64 end = 100;

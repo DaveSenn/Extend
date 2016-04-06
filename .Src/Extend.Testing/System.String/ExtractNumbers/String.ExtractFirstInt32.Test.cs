@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstInt32TestCase()
+        public void ExtractFirstInt32Test()
         {
             var value0 = 100;
             var value1 = 102;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCase1()
+        public void ExtractFirstInt32Test1()
         {
             var sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt32();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException()
+        public void ExtractFirstInt32TestArgumentOutOfRangeException()
         {
             Action test = () => "100".ExtractFirstInt32( 100 );
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCaseArgumentOutOfRangeException1()
+        public void ExtractFirstInt32TestArgumentOutOfRangeException1()
         {
             Action test = () => "100".ExtractFirstInt32( -1 );
 
@@ -58,7 +58,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCaseNullCheck()
+        public void ExtractFirstInt32TestNullCheck()
         {
             Action test = () => StringEx.ExtractFirstInt32( null );
 
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt32TestCaseNullCheck1()
+        public void ExtractFirstInt32TestNullCheck1()
         {
             Action test = () => StringEx.ExtractFirstInt32( null, 0 );
 

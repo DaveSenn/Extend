@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt32TestCase()
+        public void SaveToInt32Test()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase1()
+        public void SaveToInt32Test1()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt32( expected );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase2()
+        public void SaveToInt32Test2()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase3()
+        public void SaveToInt32Test3()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase4()
+        public void SaveToInt32Test4()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase5()
+        public void SaveToInt32Test5()
         {
             var actual = "InvalidValue".SaveToInt32();
 
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase6()
+        public void SaveToInt32Test6()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCase7()
+        public void SaveToInt32Test7()
         {
             var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCaseNullCheck()
+        public void SaveToInt32TestNullCheck()
         {
             Action test = () => StringEx.SaveToInt32( null );
 
@@ -95,7 +95,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt32TestCaseNullCheck1()
+        public void SaveToInt32TestNullCheck1()
         {
             Action test = () => "".SaveToInt32( NumberStyles.AllowExponent, null );
 

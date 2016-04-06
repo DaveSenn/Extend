@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SubstringLeftSafeTestCase()
+        public void SubstringLeftSafeTest()
         {
             var actual = "testabc".SubstringLeftSafe( 4 );
             Assert.AreEqual( "test", actual );
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SubstringLeftSafeTestCase1()
+        public void SubstringLeftSafeTest1()
         {
             var actual = "123test123".SubstringLeftSafe( 3, 4 );
             Assert.AreEqual( "test", actual );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SubstringLeftSafeTestCase1NullCheck()
+        public void SubstringLeftSafeTest1NullCheck()
         {
             Action test = () => StringEx.SubstringLeftSafe( null, 1, 5 );
 
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SubstringLeftSafeTestCaseNullCheck()
+        public void SubstringLeftSafeTestNullCheck()
         {
             Action test = () => StringEx.SubstringLeftSafe( null, 5 );
 

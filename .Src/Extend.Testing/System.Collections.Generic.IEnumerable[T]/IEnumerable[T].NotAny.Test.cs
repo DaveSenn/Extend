@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void NotAnyTestCase()
+        public void NotAnyTest()
         {
             var list = new List<String>();
             Assert.IsTrue( list.NotAny() );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCase1()
+        public void NotAnyTest1()
         {
             var list = new List<String>();
             Assert.IsTrue( list.NotAny( x => true ) );
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCase1NullCheck()
+        public void NotAnyTest1NullCheck()
         {
             List<Object> list = null;
             Action test = () => list.NotAny( x => true );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCase1NullCheck1()
+        public void NotAnyTest1NullCheck1()
         {
             Func<Object, Boolean> func = null;
             Action test = () => new List<Object>().NotAny( func );
@@ -53,7 +53,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCaseNullCheck()
+        public void NotAnyTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.NotAny();

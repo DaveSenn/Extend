@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ExecuteSafeTestCase()
+        public void ExecuteSafeTest()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x => { throw new InvalidOperationException( expectedValue ); } );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteSafeTestCase1()
+        public void ExecuteSafeTest1()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
@@ -53,7 +53,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteSafeTestCase1NullCheck()
+        public void ExecuteSafeTest1NullCheck()
         {
             Func<String, String> func = null;
             Action test = () => "".ExecuteSafe( func );
@@ -62,7 +62,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteSafeTestCaseNullCheck()
+        public void ExecuteSafeTestNullCheck()
         {
             Action<String> action = null;
             Action test = () => "".ExecuteSafe( action );

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class EnumExTest
     {
         [Test]
-        public void GetValueAndStringValueTestCase()
+        public void GetValueAndStringValueTest()
         {
             var actual = EnumEx.GetValueAndStringValue<DayOfWeek>()
                                .ToList();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValueAndStringValueTestCaseArgumentExceptionCheck()
+        public void GetValueAndStringValueTestArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValueAndStringValue<Int32>()
                                       .ToList();

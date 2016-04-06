@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericReverseTestCase()
+        public void GenericReverseTest()
         {
             var array = new[]
             {
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericReverseTestCase1()
+        public void GenericReverseTest1()
         {
             var array = new[]
             {
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericReverseTestCase1NullCheck()
+        public void GenericReverseTest1NullCheck()
         {
             String[] array = null;
             Action test = () => array.Reverse( 1, 2 );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericReverseTestCaseNullCheck()
+        public void GenericReverseTestNullCheck()
         {
             String[] array = null;
             Action test = () => array.Reverse();

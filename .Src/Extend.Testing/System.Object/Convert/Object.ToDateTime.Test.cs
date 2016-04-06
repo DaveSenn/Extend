@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDateTimeTestCase()
+        public void ToDateTimeTest()
         {
             var expected = DateTime.Now;
             var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDateTimeTestCase1()
+        public void ToDateTimeTest1()
         {
             var expected = DateTime.Now;
             var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDateTimeTestCase1NullCheck()
+        public void ToDateTimeTest1NullCheck()
         {
             Action test = () => ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
 
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDateTimeTestCase1NullCheck1()
+        public void ToDateTimeTest1NullCheck1()
         {
             var dateTime = DateTime.Now.ToString( CultureInfo.InvariantCulture ) as Object;
             Action test = () => dateTime.ToDateTime( null );
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDateTimeTestCaseNullCheck()
+        public void ToDateTimeTestNullCheck()
         {
             Action test = () => ObjectEx.ToDateTime( null );
 

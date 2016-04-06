@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToGuidTestCase()
+        public void SaveToGuidTest()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToGuidTestCase1()
+        public void SaveToGuidTest1()
         {
             var expected = Guid.NewGuid();
             var actual = "InvalidValue".SaveToGuid( expected );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToGuidTestCase4()
+        public void SaveToGuidTest4()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToGuidTestCase5()
+        public void SaveToGuidTest5()
         {
             var actual = "InvalidValue".SaveToGuid();
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToGuidTestCaseNullCheck()
+        public void SaveToGuidTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

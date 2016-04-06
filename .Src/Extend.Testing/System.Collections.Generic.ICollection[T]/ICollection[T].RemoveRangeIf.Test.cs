@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveRangeIfTestCase()
+        public void RemoveRangeIfTest()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -29,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1()
+        public void RemoveRangeIfTest1()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1NullCheck1()
+        public void RemoveRangeIfTest1NullCheck1()
         {
             Action test = () => new List<String>().RemoveRangeIf( x => false, null );
 
@@ -53,7 +53,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1NullCheck2()
+        public void RemoveRangeIfTest1NullCheck2()
         {
             Action test = () => new List<String>().RemoveRangeIf( null, new List<String> { "test0", "test1", "test2" } );
 
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck()
+        public void RemoveRangeIfTestNullCheck()
         {
             Action test = () => CollectionTEx.RemoveRangeIf( null, x => false, "test0", "test1", "test2" );
 
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck1()
+        public void RemoveRangeIfTestNullCheck1()
         {
             Action test = () => new List<String>().RemoveRangeIf( x => false, null );
 
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck2()
+        public void RemoveRangeIfTestNullCheck2()
         {
             Action test = () => new List<String>().RemoveRangeIf( null, "test0", "test1", "test2" );
 

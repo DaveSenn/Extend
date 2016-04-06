@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void CompareOrdinalCaseTestCase()
+        public void CompareOrdinalCaseTest()
         {
             var actual = "Test".CompareOrdinal( "Test" );
             Assert.IsTrue( actual );

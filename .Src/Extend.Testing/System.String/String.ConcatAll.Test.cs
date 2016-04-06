@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ConcatAllTestCase()
+        public void ConcatAllTest()
         {
             var actual = "test".ConcatAll( "0", "1", "2" );
             Assert.AreEqual( "test012", actual );
         }
 
         [Test]
-        public void ConcatAllTestCase1()
+        public void ConcatAllTest1()
         {
             var actual = new[]
             {
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCase1NullCheck()
+        public void ConcatAllTest1NullCheck()
         {
             String[] values = null;
             Action test = () => values.ConcatAll();
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCase2()
+        public void ConcatAllTest2()
         {
             var actual = "test".ConcatAll( new Object[]
             {
@@ -53,7 +53,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCase2NullCheck()
+        public void ConcatAllTest2NullCheck()
         {
             Object[] values = null;
             Action test = () => "test".ConcatAll( values );
@@ -62,7 +62,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCase3()
+        public void ConcatAllTest3()
         {
             var actual = new Object[]
             {
@@ -75,7 +75,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCase3NullCheck()
+        public void ConcatAllTest3NullCheck()
         {
             Object[] values = null;
             Action test = () => values.ConcatAll();
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllTestCaseNullCheck()
+        public void ConcatAllTestNullCheck()
         {
             String[] values = null;
             Action test = () => "test".ConcatAll( values );

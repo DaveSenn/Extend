@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ReferenceEqualsTestCase()
+        public void ReferenceEqualsTest()
         {
             var list = new List<String>();
             var list1 = new List<String>();
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ReferenceEqualsTestCaseNullCheck()
+        public void ReferenceEqualsTestNullCheck()
         {
             Action test = () => ObjectEx.RefEquals( null, "" );
 
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ReferenceEqualsTestCaseNullCheck1()
+        public void ReferenceEqualsTestNullCheck1()
         {
             Action test = () => "".RefEquals( null );
 

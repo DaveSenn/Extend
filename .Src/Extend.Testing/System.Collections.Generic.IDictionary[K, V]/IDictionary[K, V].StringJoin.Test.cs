@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void StringJoinTestCase()
+        public void StringJoinTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -46,7 +46,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void StringJoinTestCaseNullCheck()
+        public void StringJoinTestNullCheck()
         {
             Dictionary<String, String> dictionary = null;
             Action test = () => dictionary.StringJoin( "", "" );

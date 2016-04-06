@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void PercentageOfTestCase()
+        public void PercentageOfTest()
         {
             var number = 1000;
             var expected = 500;
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1()
+        public void PercentageOfTest1()
         {
             var number = 1000;
             var expected = 500;
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2()
+        public void PercentageOfTest2()
         {
             var number = 1000;
             var expected = 500;
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase3()
+        public void PercentageOfTest3()
         {
             var number = 1000;
             var expected = 500;

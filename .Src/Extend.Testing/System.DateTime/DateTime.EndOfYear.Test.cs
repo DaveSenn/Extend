@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfYearTestCase()
+        public void EndOfYearTest()
         {
             var dateTime = RandomValueEx.GetRandomDateTime( DateTime.Now, new DateTime( 3000, 1, 1 ) );
             var expected = new DateTime( dateTime.Year, 1, 1 ).AddYears( 1 )
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void EndOfYearTestCase1()
+        public void EndOfYearTest1()
         {
             var dateTime = new DateTime( 1, 1, 1 );
             var expected = new DateTime( dateTime.Year, 1, 1 ).AddYears( 1 )
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void EndOfYearTestCase2()
+        public void EndOfYearTest2()
         {
             var dateTime = new DateTime( 9999, 12, 31 );
             var expected = new DateTime( 9999, 12, 31, 23, 59, 59, 999 );

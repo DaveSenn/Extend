@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void ToMinutesTestCase()
+        public void ToMinutesTest()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
 

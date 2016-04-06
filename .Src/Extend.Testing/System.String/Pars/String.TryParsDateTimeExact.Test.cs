@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDateTimeExactTestCase()
+        public void TryParsDateTimeExactTest()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -29,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase1()
+        public void TryParsDateTimeExactTest1()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase1NullCheck()
+        public void TryParsDateTimeExactTest1NullCheck()
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTimeExact( null,
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase1NullCheck1()
+        public void TryParsDateTimeExactTest1NullCheck1()
         {
             var outValue = DateTime.Now;
             String[] s = null;
@@ -70,7 +70,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase1NullCheck2()
+        public void TryParsDateTimeExactTest1NullCheck2()
         {
             var outValue = DateTime.Now;
             Action test = () => "".TryParsDateTimeExact(
@@ -86,7 +86,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase2()
+        public void TryParsDateTimeExactTest2()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -102,7 +102,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCase3()
+        public void TryParsDateTimeExactTest3()
         {
             const String dateString = "5/01/2009 09:00";
 
@@ -117,7 +117,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCaseNullCheck()
+        public void TryParsDateTimeExactTestNullCheck()
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTimeExact( null,
@@ -130,7 +130,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCaseNullCheck1()
+        public void TryParsDateTimeExactTestNullCheck1()
         {
             var outValue = DateTime.Now;
             String s = null;
@@ -140,7 +140,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTestCaseNullCheck2()
+        public void TryParsDateTimeExactTestNullCheck2()
         {
             var outValue = DateTime.Now;
             Action test = () => "".TryParsDateTimeExact( "", null, DateTimeStyles.AllowTrailingWhite, out outValue );

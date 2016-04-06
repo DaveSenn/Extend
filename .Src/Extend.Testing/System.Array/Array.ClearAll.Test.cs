@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ClearAllTestCase()
+        public void ClearAllTest()
         {
             Array array = new[]
             {
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ClearAllTestCaseNullCheck()
+        public void ClearAllTestNullCheck()
         {
             Array array = null;
             Action test = () => array.ClearAll();

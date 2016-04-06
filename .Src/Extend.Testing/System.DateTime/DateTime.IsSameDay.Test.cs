@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsSameDayTestCase()
+        public void IsSameDayTest()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
@@ -20,7 +20,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSameDayTestCase1()
+        public void IsSameDayTest1()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Tomorrow();
@@ -29,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSameDayTestCase2()
+        public void IsSameDayTest2()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Yesterday();

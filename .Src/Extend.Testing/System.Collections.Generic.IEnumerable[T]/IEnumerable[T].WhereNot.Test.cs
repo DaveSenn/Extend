@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void WhereNotTestCase()
+        public void WhereNotTest()
         {
             var target = new List<Int32> { 1, 10, 100, 1000 };
             var specification = new ExpressionSpecification<Int32>( x => x >= 100 );
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereNotTestCaseNullCheck()
+        public void WhereNotTestNullCheck()
         {
             var target = new List<Int32> { 1, 10, 100, 1000 };
             ISpecification<Int32> specification = null;

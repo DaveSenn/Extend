@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void KeepNumbersTestCase()
+        public void KeepNumbersTest()
         {
             var actual = "a1b2c3".KeepNumbers();
             Assert.AreEqual( "123", actual );

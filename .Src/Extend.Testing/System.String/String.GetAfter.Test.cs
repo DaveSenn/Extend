@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetAfteOverloadrArgumentOutOfRangeTestCase1()
+        public void GetAfteOverloadrArgumentOutOfRangeTest1()
         {
             Action test = () => "test test1".GetAfter( 't', 4, 10 );
 
@@ -20,7 +20,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterArgumentOutOfRangeTestCase()
+        public void GetAfterArgumentOutOfRangeTest()
         {
             Action test = () => "test test1".GetAfter( "test", 20 );
 
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterArgumentOutOfRangeTestCase1()
+        public void GetAfterArgumentOutOfRangeTest1()
         {
             Action test = () => "test test1".GetAfter( "test", 4, 10 );
 
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterArgumentOutOfRangeTestCase2()
+        public void GetAfterArgumentOutOfRangeTest2()
         {
             Action test = () => "test test1".GetAfter( "test", 20, 2 );
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterArgumentOutOfRangeTestCase3()
+        public void GetAfterArgumentOutOfRangeTest3()
         {
             Action test = () => "test test1".GetAfter( "test", -1, 2 );
 
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterArgumentOutOfRangeTestCase4()
+        public void GetAfterArgumentOutOfRangeTest4()
         {
             Action test = () => "test test1".GetAfter( "test", 20, -2 );
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadArgumentOutOfRangeTestCase()
+        public void GetAfterOverloadArgumentOutOfRangeTest()
         {
             Action test = () => "test test1".GetAfter( 't', 20 );
 
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadArgumentOutOfRangeTestCase2()
+        public void GetAfterOverloadArgumentOutOfRangeTest2()
         {
             Action test = () => "test test1".GetAfter( 't', 20, 2 );
 
@@ -76,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadTestCase()
+        public void GetAfterOverloadTest()
         {
             var actual = "test test1".GetAfter( 's' );
             Assert.AreEqual( "t test1", actual );
@@ -86,7 +86,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadTestCase1()
+        public void GetAfterOverloadTest1()
         {
             var actual = "test test1".GetAfter( 'e', 0, 6 );
             Assert.AreEqual( "st t", actual );
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadTestCase1NullCheck()
+        public void GetAfterOverloadTest1NullCheck()
         {
             Action test = () => StringEx.GetAfter( null, 't', 1, 1 );
 
@@ -104,14 +104,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterOverloadTestCase2()
+        public void GetAfterOverloadTest2()
         {
             var actual = "test test1".GetAfter( 'a' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetAfterOverloadTestCaseNullCheck()
+        public void GetAfterOverloadTestNullCheck()
         {
             Action test = () => StringEx.GetAfter( null, 't' );
 
@@ -119,7 +119,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCase()
+        public void GetAfterTest()
         {
             var actual = "test test1".GetAfter( "test" );
             Assert.AreEqual( " test1", actual );
@@ -129,7 +129,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCase1()
+        public void GetAfterTest1()
         {
             var actual = "test test1".GetAfter( "test", 0, 10 );
             Assert.AreEqual( " test1", actual );
@@ -139,7 +139,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCase1NullCheck()
+        public void GetAfterTest1NullCheck()
         {
             Action test = () => StringEx.GetAfter( null, "", 1, 1 );
 
@@ -147,7 +147,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCase1NullCheck1()
+        public void GetAfterTest1NullCheck1()
         {
             Action test = () => "".GetAfter( null, 1, 1 );
 
@@ -155,14 +155,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCase2()
+        public void GetAfterTest2()
         {
             var actual = "test123456789".GetAfter( "a", 0, 10 );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetAfterTestCaseNullCheck()
+        public void GetAfterTestNullCheck()
         {
             Action test = () => StringEx.GetAfter( null, "test" );
 
@@ -170,7 +170,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAfterTestCaseNullCheck1()
+        public void GetAfterTestNullCheck1()
         {
             Action test = () => "".GetAfter( null );
 

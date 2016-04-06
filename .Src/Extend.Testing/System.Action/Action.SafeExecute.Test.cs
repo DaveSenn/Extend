@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void SafeExecuteTestCase()
+        public void SafeExecuteTest()
         {
             var actual = ActionEx.SafeExecute( () => { } );
             Assert.IsTrue( actual );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase1_1()
+        public void SafeExecuteTest1_1()
         {
             var actual = ActionEx.SafeExecute<ArgumentNullException>( () => { } );
             Assert.IsTrue( actual );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase1_2()
+        public void SafeExecuteTest1_2()
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException>( () => { throw new OutOfMemoryException(); } );
 
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase1NullCheck()
+        public void SafeExecuteTest1NullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute();
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase2_1()
+        public void SafeExecuteTest2_1()
         {
             var actual = ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>( () => { } );
             Assert.IsTrue( actual );
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase2_2()
+        public void SafeExecuteTest2_2()
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
                 () => { throw new OutOfMemoryException(); } );
@@ -75,7 +75,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase2NullCheck()
+        public void SafeExecuteTest2NullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute();
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase3_1()
+        public void SafeExecuteTest3_1()
         {
             var actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
@@ -108,7 +108,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase3_2()
+        public void SafeExecuteTest3_2()
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
                 () => { throw new OutOfMemoryException(); } );
@@ -117,7 +117,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase3NullCheck()
+        public void SafeExecuteTest3NullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute();
@@ -126,7 +126,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase4_1()
+        public void SafeExecuteTest4_1()
         {
             var actual =
                 ActionEx
@@ -165,7 +165,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase4_2()
+        public void SafeExecuteTest4_2()
         {
             Action test = () => ActionEx
                 .SafeExecute
@@ -176,7 +176,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase4NullCheck()
+        public void SafeExecuteTest4NullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute();
@@ -185,7 +185,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase5_1()
+        public void SafeExecuteTest5_1()
         {
             var actual =
                 ActionEx
@@ -245,7 +245,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase5_2()
+        public void SafeExecuteTest5_2()
         {
             Action test = () => ActionEx.SafeExecute( () => { throw new OutOfMemoryException(); },
                                                       typeof (ArgumentNullException),
@@ -258,7 +258,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase5NullCheck()
+        public void SafeExecuteTest5NullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute( typeof (Exception), typeof (ArgumentException) );
@@ -267,7 +267,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCase5NullCheck1()
+        public void SafeExecuteTest5NullCheck1()
         {
             Action action = () => { };
             Type[] types = null;
@@ -277,7 +277,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeExecuteTestCaseNullCheck()
+        public void SafeExecuteTestNullCheck()
         {
             Action action = null;
             Action test = () => action.SafeExecute();

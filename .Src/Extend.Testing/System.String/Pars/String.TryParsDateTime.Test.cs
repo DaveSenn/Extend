@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDateTimeTestCase()
+        public void TryParsDateTimeTest()
         {
             var expected = DateTime.Now;
             var result = expected.Add( 1.ToDays() );
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeTestCase1()
+        public void TryParsDateTimeTest1()
         {
             var expected = DateTime.Now;
             var result = expected.Add( 1.ToDays() );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeTestCase1NullCheck()
+        public void TryParsDateTimeTest1NullCheck()
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTime( null, out outValue );
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeTestCase1NullCheck1()
+        public void TryParsDateTimeTest1NullCheck1()
         {
             var outValue = DateTime.Now;
             Action test = () => "".TryParsDateTime( null, DateTimeStyles.AllowInnerWhite, out outValue );
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeTestCaseNullCheck()
+        public void TryParsDateTimeTestNullCheck()
         {
             var outValue = DateTime.Now;
             Action test = () => StringEx.TryParsDateTime( null, out outValue );

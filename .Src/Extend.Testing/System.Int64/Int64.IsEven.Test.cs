@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void IsEvenTestCase()
+        public void IsEvenTest()
         {
             var value = RandomValueEx.GetRandomInt32();
 

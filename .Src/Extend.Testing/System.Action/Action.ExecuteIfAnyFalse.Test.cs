@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void ExecuteIfAnyFalseTestCase()
+        public void ExecuteIfAnyFalseTest()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -76,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase1()
+        public void ExecuteIfAnyFalseTest1()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -147,14 +147,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase1NullCheck()
+        public void ExecuteIfAnyFalseTest1NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfAnyFalse( null, RandomValueEx.GetRandomString(), null, false, true );
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase2()
+        public void ExecuteIfAnyFalseTest2()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -231,7 +231,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase2NullCheck()
+        public void ExecuteIfAnyFalseTest2NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfAnyFalse( null,
                                                             RandomValueEx.GetRandomString(),
@@ -244,7 +244,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase3()
+        public void ExecuteIfAnyFalseTest3()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -327,7 +327,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase3NullCheck()
+        public void ExecuteIfAnyFalseTest3NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfAnyFalse( null,
                                                             RandomValueEx.GetRandomString(),
@@ -341,7 +341,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase4()
+        public void ExecuteIfAnyFalseTest4()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -436,7 +436,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase4NullCheck()
+        public void ExecuteIfAnyFalseTest4NullCheck()
         {
             Action test = () => ActionEx.ExecuteIfAnyFalse( null,
                                                             RandomValueEx.GetRandomString(),
@@ -451,7 +451,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase5()
+        public void ExecuteIfAnyFalseTest5()
         {
             //Case 1
             var falseActionExecuted = false;
@@ -499,7 +499,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase5NullCheck()
+        public void ExecuteIfAnyFalseTest5NullCheck()
         {
             Action action = null;
             Action test = () => action.ExecuteIfAnyFalse( false, true );
@@ -508,7 +508,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase6()
+        public void ExecuteIfAnyFalseTest6()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -561,7 +561,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase6NullCheck()
+        public void ExecuteIfAnyFalseTest6NullCheck()
         {
             Action<String> action = null;
             Action test = () => action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(), false, true );
@@ -570,7 +570,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase7()
+        public void ExecuteIfAnyFalseTest7()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -628,7 +628,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase7NullCheck()
+        public void ExecuteIfAnyFalseTest7NullCheck()
         {
             Action<String, String> action = null;
             Action test = () => action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), false, true );
@@ -636,7 +636,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase8()
+        public void ExecuteIfAnyFalseTest8()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -699,7 +699,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase8NullCheck()
+        public void ExecuteIfAnyFalseTest8NullCheck()
         {
             Action<String, String, String> action = null;
             Action test = () => action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(),
@@ -712,7 +712,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase9()
+        public void ExecuteIfAnyFalseTest9()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -784,7 +784,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCase9NullCheck()
+        public void ExecuteIfAnyFalseTest9NullCheck()
         {
             Action<String, String, String, String> action = null;
             Action test = () => action.ExecuteIfAnyFalse( RandomValueEx.GetRandomString(),
@@ -798,7 +798,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfAnyFalseTestCaseNullCheck()
+        public void ExecuteIfAnyFalseTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfAnyFalse( null, null, false, true );

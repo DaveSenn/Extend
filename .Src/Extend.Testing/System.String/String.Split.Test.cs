@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SplitTestCase()
+        public void SplitTest()
         {
             var actual = "1,2,3".Split( "," );
             Assert.AreEqual( 3, actual.Length );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCase1()
+        public void SplitTest1()
         {
             var actual = "1,2,,3.4".Split( StringSplitOptions.RemoveEmptyEntries, ",", "." );
             Assert.AreEqual( 4, actual.Length );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCase1NullCheck()
+        public void SplitTest1NullCheck()
         {
             Action test = () => StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
 
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCase1NullCheck1()
+        public void SplitTest1NullCheck1()
         {
             Action test = () => "".Split( StringSplitOptions.RemoveEmptyEntries, null );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCaseNullCheck()
+        public void SplitTestNullCheck()
         {
             Action test = () => StringEx.Split( null, "" );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCaseNullCheck1()
+        public void SplitTestNullCheck1()
         {
             Action test = () => StringEx.Split( "", null );
 

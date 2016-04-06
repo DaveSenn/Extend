@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void GetAllKeysTestCase()
+        public void GetAllKeysTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAllKeysTestCaseNullCheck()
+        public void GetAllKeysTestNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
             Action test = () => dictionary.GetAllKeys();

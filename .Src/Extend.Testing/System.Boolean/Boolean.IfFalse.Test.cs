@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class BooleanExTest
     {
         [Test]
-        public void IfFalseTestCase()
+        public void IfFalseTest()
         {
             var actual = String.Empty;
 
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase1()
+        public void IfFalseTest1()
         {
             var actual = String.Empty;
 
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase1NullCheck()
+        public void IfFalseTest1NullCheck()
         {
             Action test = () => false.IfFalse( "", null, x => Assert.Fail() );
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase2()
+        public void IfFalseTest2()
         {
             var actual = String.Empty;
 
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase2NullCheck()
+        public void IfFalseTest2NullCheck()
         {
             Action test = () => false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
 
@@ -64,7 +64,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase3()
+        public void IfFalseTest3()
         {
             var actual = String.Empty;
 
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase3NullCheck()
+        public void IfFalseTest3NullCheck()
         {
             Action test = () => false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
 
@@ -92,7 +92,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase4()
+        public void IfFalseTest4()
         {
             var actual = String.Empty;
 
@@ -114,7 +114,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCase4NullCheck()
+        public void IfFalseTest4NullCheck()
         {
             Action test = () => false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.Fail() );
 
@@ -122,7 +122,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IfFalseTestCaseNullCheck()
+        public void IfFalseTestNullCheck()
         {
             Action test = () => false.IfFalse( null, Assert.Fail );
 

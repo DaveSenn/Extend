@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsNotEmptyTestCase()
+        public void IsNotEmptyTest()
         {
             var value = "";
             Assert.IsFalse( value.IsNotEmpty() );

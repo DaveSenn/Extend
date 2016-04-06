@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class EnumExTest
     {
         [Test]
-        public void GetValuesExpectTestCase()
+        public void GetValuesExpectTest()
         {
             var actual = EnumEx.GetValuesExpect( DayOfWeek.Sunday, DayOfWeek.Thursday )
                                .ToList();
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValuesExpectTestCase1()
+        public void GetValuesExpectTest1()
         {
             var actual = EnumEx.GetValuesExpect<DayOfWeek>( null )
                                .ToList();
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValuesExpectTestCase2()
+        public void GetValuesExpectTest2()
         {
             var type = typeof (DayOfWeek);
             var actual = EnumEx.GetValuesExpect( type, DayOfWeek.Sunday, DayOfWeek.Thursday );
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValuesExpectTestCase3()
+        public void GetValuesExpectTest3()
         {
             var type = typeof (DayOfWeek);
             var param = new Object[0];
@@ -82,7 +82,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValuesExpectTestCaseArgumentExceptionCheck()
+        public void GetValuesExpectTestArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValuesExpect( 0, 4, 5 )
                                       .ToList();
@@ -91,7 +91,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetValuesExpectTestCaseArgumentExceptionCheck1()
+        public void GetValuesExpectTestArgumentExceptionCheck1()
         {
             Action test = () => EnumEx.GetValuesExpect( typeof (Int32), 2, 3, 4, 5 );
 

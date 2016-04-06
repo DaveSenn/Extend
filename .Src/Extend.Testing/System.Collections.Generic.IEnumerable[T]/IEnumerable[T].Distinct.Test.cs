@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void DistinctTestCase()
+        public void DistinctTest()
         {
             var list = new List<KeyValuePair<String, String>>
             {
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DistinctTestCaseNullCheck()
+        public void DistinctTestNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
             Action test = () => list.Distinct( x => x.Value );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DistinctTestCaseNullCheck1()
+        public void DistinctTestNullCheck1()
         {
             Func<Object, Boolean> func = null;
             Action test = () => new List<Object>().Distinct( func );

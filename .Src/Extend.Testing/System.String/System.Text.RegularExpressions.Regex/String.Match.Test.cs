@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void MatchTestCase()
+        public void MatchTest()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCase1()
+        public void MatchTest1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCase1NullCheck()
+        public void MatchTest1NullCheck()
         {
             Action test = () => StringEx.Match( null, "", RegexOptions.Compiled );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCase1NullCheck1()
+        public void MatchTest1NullCheck1()
         {
             Action test = () => "".Match( null, RegexOptions.Compiled );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCaseNullCheck()
+        public void MatchTestNullCheck()
         {
             Action test = () => StringEx.Match( null, "" );
 
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCaseNullCheck1()
+        public void MatchTestNullCheck1()
         {
             Action test = () => "".Match( null );
 
@@ -74,7 +74,7 @@ namespace Extend.Testing
 
 #if PORTABLE45
         [Test]
-        public void MatchTestCase2()
+        public void MatchTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             const String validEmail = "firstname.lastname@myDomain.com";
@@ -88,7 +88,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCase2NullCheck()
+        public void MatchTest2NullCheck()
         {
             Action test = () => StringEx.Match( null, "", RegexOptions.Compiled, 100.ToSeconds() );
 
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTestCase2NullCheck1()
+        public void MatchTest2NullCheck1()
         {
             Action test = () => "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
 
@@ -104,7 +104,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchTimeoutTestCase()
+        public void MatchTimeoutTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var text = RandomValueEx.GetRandomStrings( 50000 )

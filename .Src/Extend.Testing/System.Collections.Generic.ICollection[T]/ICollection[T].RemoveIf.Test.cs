@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveIfTestCase()
+        public void RemoveIfTest()
         {
             var list = new List<String>();
             var valueToRemove = RandomValueEx.GetRandomString();
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveIfTestCaseNullCheck()
+        public void RemoveIfTestNullCheck()
         {
             Action test = () => CollectionTEx.RemoveIf( null, "", x => true );
 
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveIfTestCaseNullCheck1()
+        public void RemoveIfTestNullCheck1()
         {
             Action test = () => new List<String>().RemoveIf( "", null );
 

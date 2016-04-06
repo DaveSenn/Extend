@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceTestCase()
+        public void CoalesceTest()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCase1()
+        public void CoalesceTest1()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = ObjectEx.Coalesce( null, null, null, null, expected, "Test2" );
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCase2()
+        public void CoalesceTest2()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = expected.Coalesce( null, null, null, expected, "Test2" );
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCase3()
+        public void CoalesceTest3()
         {
             var expected = RandomValueEx.GetRandomString();
             var actual = expected.Coalesce( "Test2" );
@@ -48,7 +48,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCase4()
+        public void CoalesceTest4()
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
@@ -58,7 +58,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCase5()
+        public void CoalesceTest5()
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCaseInvalidOperationCheck()
+        public void CoalesceTestInvalidOperationCheck()
         {
             Object[] array = null;
             Action test = () => ObjectEx.Coalesce( null, array, null );
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceTestCaseNullCheck()
+        public void CoalesceTestNullCheck()
         {
             String s = null;
             String[] array = null;

@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void FactorOfTestCase()
+        public void FactorOfTest()
         {
             var value = RandomValueEx.GetRandomInt32();
             var factorNumer = RandomValueEx.GetRandomInt32();

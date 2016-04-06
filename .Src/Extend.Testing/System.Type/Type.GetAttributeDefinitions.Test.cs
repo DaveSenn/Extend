@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAttributeDefinitionsTestCase()
+        public void GetAttributeDefinitionsTest()
         {
             var actual = typeof (TestPerson).GetAttributeDefinitions<DisplayAttribute>()
                                             .ToList();
@@ -70,7 +70,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAttributeDefinitionsTestCase1()
+        public void GetAttributeDefinitionsTest1()
         {
             var actual = typeof (TestPerson).GetAttributeDefinitions<MyTestAttribute>()
                                             .ToList();
@@ -83,7 +83,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAttributeDefinitionsTestCase2()
+        public void GetAttributeDefinitionsTest2()
         {
             var actual = typeof (TestPersonInherit).GetAttributeDefinitions<MyTestAttribute>()
                                                    .ToList();

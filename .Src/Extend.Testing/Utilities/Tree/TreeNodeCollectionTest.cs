@@ -15,7 +15,7 @@ namespace Extend.Testing
         ///     Update parent
         /// </summary>
         [Test]
-        public void AddNodeTestCase()
+        public void AddNodeTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -34,7 +34,7 @@ namespace Extend.Testing
         ///     Don't update parent
         /// </summary>
         [Test]
-        public void AddNodeTestCase1()
+        public void AddNodeTest1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -53,7 +53,7 @@ namespace Extend.Testing
         ///     Don't update parent, item has already a parent
         /// </summary>
         [Test]
-        public void AddNodeTestCase2()
+        public void AddNodeTest2()
         {
             var itemParent = new TreeNode<String>();
             var parent = new TreeNode<String>();
@@ -73,7 +73,7 @@ namespace Extend.Testing
         ///     Try add same item twice.
         /// </summary>
         [Test]
-        public void AddNodeTestCase3()
+        public void AddNodeTest3()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -90,7 +90,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddTestCaseNullCheck()
+        public void AddTestNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -102,7 +102,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddValueTestCase()
+        public void AddValueTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -119,7 +119,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddValueTestCase1()
+        public void AddValueTest1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -139,7 +139,7 @@ namespace Extend.Testing
         ///     Add same value twice
         /// </summary>
         [Test]
-        public void AddValueTestCase2()
+        public void AddValueTest2()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -162,7 +162,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CollectionInitTestCase()
+        public void CollectionInitTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent )
@@ -186,7 +186,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CtorTestCase()
+        public void CtorTest()
         {
             var parent = new TreeNode<String>();
 
@@ -195,7 +195,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DetachFromParentTestCase()
+        public void DetachFromParentTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -205,7 +205,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DetachFromParentTestCase1()
+        public void DetachFromParentTest1()
         {
             var parent = new TreeNode<String>();
 
@@ -219,7 +219,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IterationTestCase()
+        public void IterationTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent )
@@ -234,7 +234,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase()
+        public void ParentTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -243,7 +243,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase1()
+        public void ParentTest1()
         {
             var target = new TreeNodeCollection<String>( null );
 
@@ -251,7 +251,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase2()
+        public void ParentTest2()
         {
             var target = new TreeNodeCollection<String>( null );
             Assert.IsNull( target.Parent );
@@ -262,7 +262,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase3()
+        public void ParentTest3()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
@@ -275,7 +275,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase4()
+        public void ParentTest4()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
@@ -298,7 +298,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase5()
+        public void ParentTest5()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
             Assert.IsNull( target.Parent );
@@ -321,7 +321,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase6()
+        public void ParentTest6()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -331,7 +331,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ParentTestCase7()
+        public void ParentTest7()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -344,7 +344,7 @@ namespace Extend.Testing
         ///     Set parent.
         /// </summary>
         [Test]
-        public void RemoveNodeTestCase()
+        public void RemoveNodeTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -372,7 +372,7 @@ namespace Extend.Testing
         ///     Item is not in collection
         /// </summary>
         [Test]
-        public void RemoveNodeTestCase1()
+        public void RemoveNodeTest1()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -389,7 +389,7 @@ namespace Extend.Testing
         ///     Don't set parent.
         /// </summary>
         [Test]
-        public void RemoveNodeTestCase2()
+        public void RemoveNodeTest2()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -414,7 +414,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveNodeTestCaseNullCheck()
+        public void RemoveNodeTestNullCheck()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -426,7 +426,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase()
+        public void ToStringTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
@@ -436,7 +436,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase1()
+        public void ToStringTest1()
         {
             var target = new TreeNodeCollection<String>( null );
 
@@ -445,7 +445,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase2()
+        public void ToStringTest2()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent ) { "1", "2" };
@@ -455,7 +455,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToStringTestCase3()
+        public void ToStringTest3()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2", "3" };
 

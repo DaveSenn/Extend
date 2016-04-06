@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToCharTestCase()
+        public void SaveToCharTest()
         {
             const Char expected = 'c';
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToCharTestCase1()
+        public void SaveToCharTest1()
         {
             const Char expected = 'c';
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToCharTestCase2()
+        public void SaveToCharTest2()
         {
             const Char expected = 'a';
             var actual = "InvalidValue".SaveToChar( expected );
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToCharTestCase3()
+        public void SaveToCharTest3()
         {
             var actual = "InvalidValue".SaveToChar();
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToCharTestCaseNullCheck()
+        public void SaveToCharTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToChar( null );

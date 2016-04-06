@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToByteTestCase()
+        public void ToByteTest()
         {
             Byte expected = 1;
             var value = expected.ToString();
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToByteTestCase1()
+        public void ToByteTest1()
         {
             Byte expected = 1;
             var value = expected.ToString();
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToByteTestCase1NullCheck()
+        public void ToByteTest1NullCheck()
         {
             Action test = () => ObjectEx.ToByte( null, CultureInfo.InvariantCulture );
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToByteTestCase1NullCheck1()
+        public void ToByteTest1NullCheck1()
         {
             Action test = () => ObjectEx.ToByte( "false", null );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToByteTestCaseNullCheck()
+        public void ToByteTestNullCheck()
         {
             Action test = () => ObjectEx.ToByte( null );
 

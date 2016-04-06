@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsNumberTestCase()
+        public void IsNumberTest()
         {
             var range = 0.RangeTo( 9 );
             foreach ( var c in range.Select( x => x.ToChar() ) )

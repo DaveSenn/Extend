@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class DecimalExTest
     {
         [Test]
-        public void SumTestCase()
+        public void SumTest()
         {
             var actual = new Decimal( 10 ).Sum( new Decimal( 20 ),
                                                 new Decimal( 30 ),
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase1()
+        public void SumTest1()
         {
             var actual = ( new Decimal( 10 ) as Decimal? ).Sum( new Decimal( 20 ), null, new Decimal( 40 ), null );
             Assert.AreEqual( 70, actual );
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase1NullCheck()
+        public void SumTest1NullCheck()
         {
             Decimal?[] values = null;
             Action test = () => ( new Decimal( 10 ) as Decimal? ).Sum( values );
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase2()
+        public void SumTest2()
         {
             var actual = "test".Sum( x => new Decimal( x.Length ), "a", "b", "c", "d" );
             Assert.AreEqual( new Decimal( 8 ), actual );
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase2NullCheck()
+        public void SumTest2NullCheck()
         {
             String[] values = null;
             Action test = () => "Test".Sum( x => new Decimal( x.Length ), values );
@@ -64,7 +64,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase2NullCheck2()
+        public void SumTest2NullCheck2()
         {
             Func<String, Decimal> func = null;
             Action test = () => "Test".Sum( func, "test", "test2" );
@@ -73,7 +73,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase3()
+        public void SumTest3()
         {
             var actual = "test".Sum( x => new Decimal( x.Length ) > 1m ? (Decimal?) x.Length : null, "a", "b", "c", "d" );
             Assert.AreEqual( 4, actual );
@@ -83,7 +83,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase3NullCheck()
+        public void SumTest3NullCheck()
         {
             String[] values = null;
             Action test = () => "Test".Sum( x => (Decimal?) x.Length, values );
@@ -92,7 +92,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCase3NullCheck2()
+        public void SumTest3NullCheck2()
         {
             Func<String, Decimal?> func = null;
             Action test = () => "Test".Sum( func, "test", "test2" );
@@ -101,7 +101,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SumTestCaseNullCheck()
+        public void SumTestNullCheck()
         {
             Decimal[] values = null;
             Action test = () => new Decimal( 10 ).Sum( values );

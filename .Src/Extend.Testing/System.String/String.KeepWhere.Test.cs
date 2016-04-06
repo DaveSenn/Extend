@@ -20,7 +20,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void KeepWhereTestCase()
+        public void KeepWhereTest()
         {
             var actual = "a1-b2.c3".KeepWhere( x => x.IsLetter() || x.IsNumber() );
             Assert.AreEqual( "a1b2c3", actual );

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ManyTestCase()
+        public void ManyTest()
         {
             var list = new List<String>();
             Assert.IsFalse( list.Many() );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCase1()
+        public void ManyTest1()
         {
             var list = new List<String>();
             Assert.IsFalse( list.Many( x => true ) );
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCase1NullCheck()
+        public void ManyTest1NullCheck()
         {
             List<Object> list = null;
             Action test = () => list.Many( x => true );
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCase1NullCheck1()
+        public void ManyTest1NullCheck1()
         {
             Action test = () => new List<Object>().Many( null );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCaseNullCheck()
+        public void ManyTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.Many();

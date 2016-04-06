@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToBooleanTestCase()
+        public void SaveToBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = expected.ToString()
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTestCase1()
+        public void SaveToBooleanTest1()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = "InvalidValue".SaveToBoolean( expected );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTestCase2()
+        public void SaveToBooleanTest2()
         {
             var actual = true.ToString()
                              .SaveToBoolean( false );
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTestCase3()
+        public void SaveToBooleanTest3()
         {
             var actual = "InvalidValue".SaveToBoolean();
 
@@ -48,7 +48,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTestCaseNullCheck()
+        public void SaveToBooleanTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToBoolean( null );

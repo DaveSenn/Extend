@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RaiseTestCase()
+        public void RaiseTest()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RaiseTestCase1()
+        public void RaiseTest1()
         {
             var helperClass = new HelperClass();
             var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );

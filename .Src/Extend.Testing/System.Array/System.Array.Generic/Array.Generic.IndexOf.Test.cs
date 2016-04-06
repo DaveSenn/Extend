@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericIndexOfTestCase()
+        public void GenericIndexOfTest()
         {
             var array = new[]
             {
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase1()
+        public void GenericIndexOfTest1()
         {
             var array = new[]
             {
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase1NullCheck()
+        public void GenericIndexOfTest1NullCheck()
         {
             String[] array = null;
             Action test = () => array.IndexOf( "test2", 1 );
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase2()
+        public void GenericIndexOfTest2()
         {
             var array = new[]
             {
@@ -59,7 +59,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCase2NullCheck()
+        public void GenericIndexOfTest2NullCheck()
         {
             String[] array = null;
             Action test = () => array.IndexOf( "test3", 1, 2 );
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericIndexOfTestCaseNullCheck()
+        public void GenericIndexOfTestNullCheck()
         {
             String[] array = null;
             Action test = () => array.IndexOf( "test2" );

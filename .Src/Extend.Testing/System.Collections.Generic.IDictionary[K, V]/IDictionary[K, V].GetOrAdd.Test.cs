@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetOrAddTestCase()
+        public void GetOrAddTest()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -114,7 +114,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetOrAddTestCase1()
+        public void GetOrAddTest1()
         {
             var dictionary = new Dictionary<String, String>();
             var keyValuePair = new KeyValuePair<String, String>( RandomValueEx.GetRandomString(),
@@ -132,7 +132,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetOrAddTestCase2()
+        public void GetOrAddTest2()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();
@@ -150,7 +150,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetOrAddTestCase3()
+        public void GetOrAddTest3()
         {
             var dictionary = new Dictionary<String, String>();
             var key = RandomValueEx.GetRandomString();

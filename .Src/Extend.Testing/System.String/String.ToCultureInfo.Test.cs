@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToCultureInfoTestCase()
+        public void ToCultureInfoTest()
         {
             const String culture = "en";
             var actual = culture.ToCultureInfo();
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCultureInfoTestCase1()
+        public void ToCultureInfoTest1()
         {
             const String culture = "de-CH";
             var actual = culture.ToCultureInfo();
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCultureInfoTestCase1NullCheck()
+        public void ToCultureInfoTest1NullCheck()
         {
             const String culture = null;
             Action test = () => culture.ToCultureInfo();
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCultureInfoTestCase2()
+        public void ToCultureInfoTest2()
         {
             var culture = String.Empty;
             var actual = culture.ToCultureInfo();
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCultureInfoTestCase3()
+        public void ToCultureInfoTest3()
         {
             const String culture = "invalidCultureName";
             Action test = () => culture.ToCultureInfo();

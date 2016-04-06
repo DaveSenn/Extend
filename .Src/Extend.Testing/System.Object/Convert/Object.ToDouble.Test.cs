@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDoubleTestCase()
+        public void ToDoubleTest()
         {
             const Double expected = 100.12;
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDoubleTestCase1()
+        public void ToDoubleTest1()
         {
             const Double expected = 100.12;
             var value = expected.ToString( CultureInfo.InvariantCulture );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDoubleTestCase1NullCheck()
+        public void ToDoubleTest1NullCheck()
         {
             Action test = () => ObjectEx.ToDouble( null, CultureInfo.InvariantCulture );
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDoubleTestCase1NullCheck1()
+        public void ToDoubleTest1NullCheck1()
         {
             Action test = () => ObjectEx.ToDouble( "false", null );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDoubleTestCaseNullCheck()
+        public void ToDoubleTestNullCheck()
         {
             Action test = () => ObjectEx.ToDouble( null );
 

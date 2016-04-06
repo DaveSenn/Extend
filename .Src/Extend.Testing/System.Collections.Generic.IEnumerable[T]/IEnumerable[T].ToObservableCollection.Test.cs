@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ToObservableCollectionTestCase()
+        public void ToObservableCollectionTest()
         {
             var list = RandomValueEx.GetRandomStrings();
             var actual = list.ToObservableCollection();
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToObservableCollectionTestCaseNullCheck()
+        public void ToObservableCollectionTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.ToObservableCollection();

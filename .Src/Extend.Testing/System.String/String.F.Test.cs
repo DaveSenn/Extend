@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void FManyArgumentsTestCase()
+        public void FManyArgumentsTest()
         {
             const String arg0 = "0";
             const String arg1 = "1";
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase()
+        public void FTest()
         {
             var format = "Test: {0}";
             var value = RandomValueEx.GetRandomString();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase1()
+        public void FTest1()
         {
             var format = "Test: {0}, {1}";
             var value = RandomValueEx.GetRandomString();
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase1NullCheck()
+        public void FTest1NullCheck()
         {
             Action test = () => StringEx.F( null, new Object(), new Object() );
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase2()
+        public void FTest2()
         {
             var format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase2NullCheck()
+        public void FTest2NullCheck()
         {
             Action test = () => StringEx.F( null, new Object(), new Object(), new Object() );
 
@@ -85,7 +85,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase3()
+        public void FTest3()
         {
             var format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
@@ -100,7 +100,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase3NullCheck()
+        public void FTest3NullCheck()
         {
             Action test = () => StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
 
@@ -108,7 +108,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase4()
+        public void FTest4()
         {
             var format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString()
@@ -127,7 +127,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCase4NullCheck()
+        public void FTest4NullCheck()
         {
             Action test = () => StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
 
@@ -135,7 +135,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FTestCaseNullCheck()
+        public void FTestNullCheck()
         {
             Action test = () => StringEx.F( null, new Object() );
 

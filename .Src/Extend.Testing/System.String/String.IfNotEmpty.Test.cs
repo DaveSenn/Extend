@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IfEmptyTestCase()
+        public void IfEmptyTest()
         {
             var actual = StringEx.IfNotEmpty( null, "test" );
             Assert.AreEqual( "test", actual );

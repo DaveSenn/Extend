@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllDecimalTestCase()
+        public void ExtractAllDecimalTest()
         {
             var value0 = new Decimal( 100.2 );
             var value1 = new Decimal( 100.212 );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDecimalTestCaseNullCheck()
+        public void ExtractAllDecimalTestNullCheck()
         {
             Action test = () => StringEx.ExtractAllDecimal( null );
 
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractAllDecimalTestCaseNullCheck1()
+        public void ExtractAllDecimalTestNullCheck1()
         {
             Action test = () => StringEx.ExtractAllDecimal( null, 0 );
 

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveRangeTestCase()
+        public void RemoveRangeTest()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCase1()
+        public void RemoveRangeTest1()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCase1NullCheck()
+        public void RemoveRangeTest1NullCheck()
         {
             Action test = () => CollectionTEx.RemoveRange( null, new List<String> { "test0", "test1", "test2" } );
 
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCase1NullCheck1()
+        public void RemoveRangeTest1NullCheck1()
         {
             Action test = () => new List<String>().RemoveRange( null );
 
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCaseNullCheck()
+        public void RemoveRangeTestNullCheck()
         {
             Action test = () => CollectionTEx.RemoveRange( null, "test0", "test1", "test2" );
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCaseNullCheck1()
+        public void RemoveRangeTestNullCheck1()
         {
             Action test = () => new List<String>().RemoveRange( null );
 

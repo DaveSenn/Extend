@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDecimalTestCase()
+        public void TryParsDecimalTest()
         {
             var expected = new Decimal( 100.123123 );
             var result = new Decimal( 100 );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDecimalTestCaseNullCheck()
+        public void TryParsDecimalTestNullCheck()
         {
             var outValue = new Decimal( 100 );
             Action test = () => StringEx.TryParsDecimal( null, out outValue );

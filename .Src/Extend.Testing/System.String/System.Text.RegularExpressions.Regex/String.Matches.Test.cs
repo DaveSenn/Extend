@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void MatchesTestCase()
+        public void MatchesTest()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCase1()
+        public void MatchesTest1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCase1NullCheck()
+        public void MatchesTest1NullCheck()
         {
             Action test = () => StringEx.Matches( null, "", RegexOptions.Compiled );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCase1NullCheck1()
+        public void MatchesTest1NullCheck1()
         {
             Action test = () => "".Matches( null, RegexOptions.Compiled );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCaseNullCheck()
+        public void MatchesTestNullCheck()
         {
             Action test = () => StringEx.Matches( null, "" );
 
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCaseNullCheck1()
+        public void MatchesTestNullCheck1()
         {
             Action test = () => "".Matches( null );
 
@@ -74,7 +74,7 @@ namespace Extend.Testing
 
 #if PORTABLE45
         [Test]
-        public void MatchesTestCase2()
+        public void MatchesTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             const String validEmail = "dave.senn@myDomain.com";
@@ -88,7 +88,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCase2NullCheck()
+        public void MatchesTest2NullCheck()
         {
             Action test = () => StringEx.Matches( null, "", RegexOptions.Compiled, 100.ToSeconds() );
 
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MatchesTestCase2NullCheck1()
+        public void MatchesTest2NullCheck1()
         {
             Action test = () => "".Matches( null, RegexOptions.Compiled, 100.ToSeconds() );
 

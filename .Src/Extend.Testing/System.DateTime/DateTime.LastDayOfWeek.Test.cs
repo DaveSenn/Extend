@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void LastDayOfWeekTestCase()
+        public void LastDayOfWeekTest()
         {
             var dateTime = new DateTime( 2014, 3, 30 );
             var actual = dateTime.LastDayOfWeek();

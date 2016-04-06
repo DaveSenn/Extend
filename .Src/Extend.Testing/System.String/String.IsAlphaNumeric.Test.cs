@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsAlphaNumericTestCase()
+        public void IsAlphaNumericTest()
         {
             var actual = "test".IsAlphaNumeric();
             Assert.IsTrue( actual );
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsAlphaNumericTestCaseNullCheck()
+        public void IsAlphaNumericTestNullCheck()
         {
             Action test = () => StringEx.IsAlphaNumeric( null );
 

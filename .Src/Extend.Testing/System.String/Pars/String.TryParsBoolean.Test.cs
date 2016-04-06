@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsBooleanTestCase()
+        public void TryParsBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var result = !expected;
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsBooleanTestCaseNullCheck()
+        public void TryParsBooleanTestNullCheck()
         {
             var outValue = false;
             Action test = () => StringEx.TryParsBoolean( null, out outValue );

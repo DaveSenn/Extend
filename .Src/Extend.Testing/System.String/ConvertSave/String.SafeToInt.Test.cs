@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SafeToIntTestCase()
+        public void SafeToIntTest()
         {
             var actual = "1".SafeToInt();
             Assert.AreEqual( 1, actual );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToIntTestCaseNullCheck()
+        public void SafeToIntTestNullCheck()
         {
             Action test = () => StringEx.SafeToInt( null );
 

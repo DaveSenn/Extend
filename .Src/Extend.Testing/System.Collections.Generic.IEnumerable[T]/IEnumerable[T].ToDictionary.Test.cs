@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ToDictionaryTestCase()
+        public void ToDictionaryTest()
         {
             var list = new List<Tuple<Int32, String>>
             {
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDictionaryTestCaseNullCheck()
+        public void ToDictionaryTestNullCheck()
         {
             IEnumerable<IGrouping<Object, Object>> groupings = null;
             Action test = () => groupings.ToDictionary();

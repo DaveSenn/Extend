@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfDayTestCase()
+        public void EndOfDayTest()
         {
             var dateTime = DateTime.Now;
             var expected =

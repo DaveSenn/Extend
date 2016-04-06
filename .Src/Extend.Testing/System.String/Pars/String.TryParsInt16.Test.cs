@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsInt16TestCase()
+        public void TryParsInt16Test()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var result = RandomValueEx.GetRandomInt16();
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt16TestCase1()
+        public void TryParsInt16Test1()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = RandomValueEx.GetRandomInt16();
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt16TestCase1NullCheck()
+        public void TryParsInt16Test1NullCheck()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             Action test = () => StringEx.TryParsInt16( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt16TestCase1NullCheck1()
+        public void TryParsInt16Test1NullCheck1()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             Action test = () => "".TryParsInt16( NumberStyles.Any, null, out outValue );
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt16TestCaseNullCheck()
+        public void TryParsInt16TestNullCheck()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             Action test = () => StringEx.TryParsInt16( null, out outValue );

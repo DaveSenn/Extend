@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsDateEqualTestCase()
+        public void IsDateEqualTest()
         {
             var dateTime = new DateTime( 2014, 10, 10, 13, 0, 0 );
             var dateTime1 = new DateTime( 2014, 10, 10, 06, 0, 0 );

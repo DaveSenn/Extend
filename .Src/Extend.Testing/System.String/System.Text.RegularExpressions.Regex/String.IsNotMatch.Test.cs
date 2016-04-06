@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsNotMatchTestCase()
+        public void IsNotMatchTest()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase1()
+        public void IsNotMatchTest1()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase1NullCheck()
+        public void IsNotMatchTest1NullCheck()
         {
             Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant );
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase1NullCheck1()
+        public void IsNotMatchTest1NullCheck1()
         {
             Action test = () => "".IsNotMatch( null, RegexOptions.Multiline );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCaseNullCheck()
+        public void IsNotMatchTestNullCheck()
         {
             Action test = () => StringEx.IsNotMatch( null, "" );
 
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCaseNullCheck1()
+        public void IsNotMatchTestNullCheck1()
         {
             Action test = () => "".IsNotMatch( null );
 
@@ -74,7 +74,7 @@ namespace Extend.Testing
 
 #if PORTABLE45
         [Test]
-        public void IsNotMatchTestCase2()
+        public void IsNotMatchTest2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -88,7 +88,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase2NullCheck()
+        public void IsNotMatchTest2NullCheck()
         {
             Action test = () => StringEx.IsNotMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
 
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase2NullCheck1()
+        public void IsNotMatchTest2NullCheck1()
         {
             Action test = () => "".IsNotMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
 
@@ -104,7 +104,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotMatchTestCase2TimeoutCheck()
+        public void IsNotMatchTest2TimeoutCheck()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = RandomValueEx.GetRandomStrings( 10000 )

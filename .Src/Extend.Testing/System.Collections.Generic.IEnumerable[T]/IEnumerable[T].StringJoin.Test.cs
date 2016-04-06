@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void StringJoinTestCase()
+        public void StringJoinTest()
         {
             var list = new List<String>();
             var actual = list.StringJoin( "," );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void StringJoinTestCaseNullCheck()
+        public void StringJoinTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.StringJoin( "" );

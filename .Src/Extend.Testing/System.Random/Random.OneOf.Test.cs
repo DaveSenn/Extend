@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void RandomOneTestCase()
+        public void RandomOneTest()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings()
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCase1()
+        public void RandomOneTest1()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings();
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCase1NullCheck()
+        public void RandomOneTest1NullCheck()
         {
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCase1NullCheck1()
+        public void RandomOneTest1NullCheck1()
         {
             List<String> list = null;
             Action test = () => new Random().RandomOne<String>( list );
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCaseNullCheck()
+        public void RandomOneTestNullCheck()
         {
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCaseNullCheck1()
+        public void RandomOneTestNullCheck1()
         {
             String[] array = null;
             Action test = () => new Random().RandomOne( array );

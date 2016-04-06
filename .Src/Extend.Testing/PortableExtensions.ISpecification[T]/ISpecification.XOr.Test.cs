@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ISpecificationExTest
     {
         [Test]
-        public void XOrTestCase()
+        public void XOrTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => true );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase1()
+        public void XOrTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => false );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase10()
+        public void XOrTest10()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.XOr( x => true, "msgRight" );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase11()
+        public void XOrTest11()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.XOr( x => false, "msgRight" );
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase2()
+        public void XOrTest2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => true );
@@ -67,7 +67,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase3()
+        public void XOrTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => false );
@@ -77,7 +77,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase4()
+        public void XOrTest4()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => true );
@@ -89,7 +89,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase5()
+        public void XOrTest5()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.XOr( x => false );
@@ -100,7 +100,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase6()
+        public void XOrTest6()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => true );
@@ -111,7 +111,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase7()
+        public void XOrTest7()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.XOr( x => false );
@@ -124,7 +124,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase8()
+        public void XOrTest8()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.XOr( x => true, "msgRight" );
@@ -136,7 +136,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase9()
+        public void XOrTest9()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.XOr( x => false, "msgRight" );
@@ -147,7 +147,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCaseNullCheck()
+        public void XOrTestNullCheck()
         {
             ISpecification<String> left = null;
             Action test = () => left.XOr( x => true );
@@ -155,7 +155,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCaseNullCheck1()
+        public void XOrTestNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;

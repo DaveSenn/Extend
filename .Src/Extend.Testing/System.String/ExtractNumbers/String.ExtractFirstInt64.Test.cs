@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstInt64TestCase()
+        public void ExtractFirstInt64Test()
         {
             var value0 = 100;
             var value1 = 102;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt64TestCase1()
+        public void ExtractFirstInt64Test1()
         {
             var sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt64();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt64TestCaseNullCheck()
+        public void ExtractFirstInt64TestNullCheck()
         {
             Action test = () => StringEx.ExtractFirstInt64( null );
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstInt64TestCaseNullCheck1()
+        public void ExtractFirstInt64TestNullCheck1()
         {
             Action test = () => StringEx.ExtractFirstInt64( null, 0 );
 

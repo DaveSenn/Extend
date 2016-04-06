@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsInt32TestCase()
+        public void TryParsInt32Test()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var result = RandomValueEx.GetRandomInt32();
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt32TestCase1()
+        public void TryParsInt32Test1()
         {
             var culture = new CultureInfo( "en-US" );
             var expected = RandomValueEx.GetRandomInt32();
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt32TestCase1NullCheck()
+        public void TryParsInt32Test1NullCheck()
         {
             var outValue = RandomValueEx.GetRandomInt32();
             Action test = () => StringEx.TryParsInt32( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt32TestCase1NullCheck1()
+        public void TryParsInt32Test1NullCheck1()
         {
             var outValue = RandomValueEx.GetRandomInt32();
             Action test = () => "".TryParsInt32( NumberStyles.Any, null, out outValue );
@@ -56,7 +56,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt32TestCaseNullCheck()
+        public void TryParsInt32TestNullCheck()
         {
             var outValue = RandomValueEx.GetRandomInt32();
             Action test = () => StringEx.TryParsInt32( null, out outValue );

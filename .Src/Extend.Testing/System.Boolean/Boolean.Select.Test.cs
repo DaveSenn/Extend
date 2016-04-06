@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class BooleanExTest
     {
         [Test]
-        public void SelectValueTestCase()
+        public void SelectValueTest()
         {
             var trueValue = "true";
             var falseValue = "false";

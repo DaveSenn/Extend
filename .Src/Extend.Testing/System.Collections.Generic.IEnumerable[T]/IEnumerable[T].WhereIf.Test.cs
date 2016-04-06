@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void WhereIfTestCase()
+        public void WhereIfTest()
         {
             var list = new List<String>();
 
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCase1()
+        public void WhereIfTest1()
         {
             var list = new List<String>();
 
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCase1NullCheck()
+        public void WhereIfTest1NullCheck()
         {
             List<Object> list = null;
             Action test = () => list.WhereIf( true, ( x, i ) => true );
@@ -75,7 +75,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCase1NullCheck1()
+        public void WhereIfTest1NullCheck1()
         {
             Func<Object, Int32, Boolean> func = null;
             Action test = () => new List<Object>().WhereIf( true, func );
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCaseNullCheck()
+        public void WhereIfTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.WhereIf( true, x => true );
@@ -93,7 +93,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCaseNullCheck1()
+        public void WhereIfTestNullCheck1()
         {
             Func<Object, Boolean> func = null;
             Action test = () => new List<Object>().WhereIf( true, func );

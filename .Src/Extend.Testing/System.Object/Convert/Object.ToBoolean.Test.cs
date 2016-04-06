@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToBooleanTestCase()
+        public void ToBooleanTest()
         {
             var value = "false";
             Assert.IsFalse( ObjectEx.ToBoolean( value ) );
@@ -23,17 +23,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToBooleanTestCase1()
+        public void ToBooleanTest1()
         {
             var value = "false";
-            Assert.IsFalse( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
+            Assert.IsFalse( value.ToBoolean( CultureInfo.InvariantCulture ) );
 
             value = "true";
-            Assert.IsTrue( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
+            Assert.IsTrue( value.ToBoolean( CultureInfo.InvariantCulture ) );
         }
 
         [Test]
-        public void ToBooleanTestCase1NullCheck()
+        public void ToBooleanTest1NullCheck()
         {
             Action test = () => ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
 
@@ -41,15 +41,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToBooleanTestCase1NullCheck1()
+        public void ToBooleanTest1NullCheck1()
         {
-            Action test = () => ObjectEx.ToBoolean( "false", null );
+            Action test = () => "false".ToBoolean( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ToBooleanTestCaseNullCheck()
+        public void ToBooleanTestNullCheck()
         {
             Action test = () => ObjectEx.ToBoolean( null );
 

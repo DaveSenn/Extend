@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void StartOfYearTestCase()
+        public void StartOfYearTest()
         {
             var dateTime = DateTime.Today;
             var expected = new DateTime( dateTime.Year, 1, 1 );

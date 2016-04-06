@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void MinimumOfTestCase()
+        public void MinimumOfTest()
         {
             var list = new List<String>();
             Assert.IsFalse( list.MinimumOf( 1, x => true ) );
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCase1()
+        public void MinimumOfTest1()
         {
             var list = new List<String>();
             Assert.IsFalse( list.MinimumOf( 1 ) );
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCase1NullCheck()
+        public void MinimumOfTest1NullCheck()
         {
             List<Object> list = null;
             Action test = () => list.MinimumOf( 10 );
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCaseNullCheck()
+        public void MinimumOfTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.MinimumOf( 10, x => true );
@@ -59,7 +59,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCaseNullCheck1()
+        public void MinimumOfTestNullCheck1()
         {
             List<Object> list = null;
             Action test = () => list.MinimumOf( 10, null );

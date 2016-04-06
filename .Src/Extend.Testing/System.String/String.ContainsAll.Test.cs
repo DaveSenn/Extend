@@ -12,21 +12,21 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ContainsAllTestCase()
+        public void ContainsAllTest()
         {
             var actual = "test012".ContainsAll( "0", "1", "2" );
             Assert.IsTrue( actual );
         }
 
         [Test]
-        public void ContainsAllTestCase1()
+        public void ContainsAllTest1()
         {
             var actual = "ABC".ContainsAll( StringComparison.OrdinalIgnoreCase, "a", "b", "c" );
             Assert.IsTrue( actual );
         }
 
         [Test]
-        public void ContainsAllTestCase1NullCheck()
+        public void ContainsAllTest1NullCheck()
         {
             Action test = () => StringEx.ContainsAll( null, StringComparison.CurrentCulture, "" );
 
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAllTestCase1NullCheck1()
+        public void ContainsAllTest1NullCheck1()
         {
             Action test = () => "".ContainsAll( StringComparison.CurrentCulture, null );
 
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAllTestCaseNullCheck()
+        public void ContainsAllTestNullCheck()
         {
             Action test = () => StringEx.ContainsAll( null, "" );
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAllTestCaseNullCheck1()
+        public void ContainsAllTestNullCheck1()
         {
             Action test = () => "".ContainsAll( null );
 

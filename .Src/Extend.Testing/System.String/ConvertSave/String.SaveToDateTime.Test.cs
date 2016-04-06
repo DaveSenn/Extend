@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDateTimeTestCase()
+        public void SaveToDateTimeTest()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase1()
+        public void SaveToDateTimeTest1()
         {
             var expected = DateTime.Now;
             var actual = "InvalidValue".SaveToDateTime( expected );
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase2()
+        public void SaveToDateTimeTest2()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase3()
+        public void SaveToDateTimeTest3()
         {
             var expected = DateTime.Now;
             var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase4()
+        public void SaveToDateTimeTest4()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -81,7 +81,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase5()
+        public void SaveToDateTimeTest5()
         {
             var expected = default(DateTime);
             var actual = "InvalidValue".SaveToDateTime();
@@ -95,7 +95,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase6()
+        public void SaveToDateTimeTest6()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -110,7 +110,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCase7()
+        public void SaveToDateTimeTest7()
         {
             var expected = default(DateTime);
             var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
@@ -119,7 +119,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCaseNullCheck()
+        public void SaveToDateTimeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToDateTime( null );
@@ -128,7 +128,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDateTimeTestCaseNullCheck1()
+        public void SaveToDateTimeTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddRangeTestCase()
+        public void AddRangeTest()
         {
             var c = new List<String>();
 
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCase1()
+        public void AddRangeTest1()
         {
             var c = new List<String>();
 
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCase1NullCheck()
+        public void AddRangeTest1NullCheck()
         {
             Action test = () => CollectionTEx.AddRange( null, new List<String> { "test0", "test1", "test2" } );
 
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCase1NullCheck1()
+        public void AddRangeTest1NullCheck1()
         {
             List<String> array = null;
             Action test = () => CollectionTEx.AddRange( new List<String>(), array );
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck()
+        public void AddRangeTestNullCheck()
         {
             Action test = () => CollectionTEx.AddRange( null, "test0", "test1", "test2" );
 
@@ -58,7 +58,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck1()
+        public void AddRangeTestNullCheck1()
         {
             Action test = () => CollectionTEx.AddRange( new List<String>(), null );
 

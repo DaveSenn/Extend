@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void FirstDayOfWeekTestCase()
+        public void FirstDayOfWeekTest()
         {
             var dateTime = RandomValueEx.GetRandomDateTime();
             var expected =

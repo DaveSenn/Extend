@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDoubleTestCase()
+        public void SaveToDoubleTest()
         {
             const Double expected = 100.1d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase1()
+        public void SaveToDoubleTest1()
         {
             const Double expected = 123.12334d;
             var actual = "InvalidValue".SaveToDouble( expected );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase2()
+        public void SaveToDoubleTest2()
         {
             const Double expected = 12345234.1321d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase3()
+        public void SaveToDoubleTest3()
         {
             const Double expected = 12345234.1321d;
             var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase4()
+        public void SaveToDoubleTest4()
         {
             const Double expected = 100.1d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase5()
+        public void SaveToDoubleTest5()
         {
             var actual = "InvalidValue".SaveToDouble();
 
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase6()
+        public void SaveToDoubleTest6()
         {
             const Double expected = 12345234.1321d;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCase7()
+        public void SaveToDoubleTest7()
         {
             var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCaseNullCheck()
+        public void SaveToDoubleTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -97,7 +97,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDoubleTestCaseNullCheck1()
+        public void SaveToDoubleTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

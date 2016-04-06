@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToByteTestCase()
+        public void SaveToByteTest()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase1()
+        public void SaveToByteTest1()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase2()
+        public void SaveToByteTest2()
         {
             const Byte expected = (Byte) 10;
             var actual = "InvalidValue".SaveToByte( expected );
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase3()
+        public void SaveToByteTest3()
         {
             var actual = "InvalidValue".SaveToByte();
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase4()
+        public void SaveToByteTest4()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase5()
+        public void SaveToByteTest5()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -70,7 +70,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase6()
+        public void SaveToByteTest6()
         {
             const Byte expected = (Byte) 10;
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
@@ -81,7 +81,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCase7()
+        public void SaveToByteTest7()
         {
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
                                                     CultureInfo.InvariantCulture );
@@ -90,7 +90,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCaseNullCheck()
+        public void SaveToByteTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.SaveToByte( null );
@@ -99,7 +99,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTestCaseNullCheck1()
+        public void SaveToByteTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".SaveToByte( NumberStyles.AllowDecimalPoint, null );

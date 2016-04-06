@@ -14,7 +14,7 @@ namespace Extend.Testing
     public class IEnumerableStringExTest
     {
         [Test]
-        public void PathCombineTestCase()
+        public void PathCombineTest()
         {
             var list = new List<String> { @"C:\", "Temp", "Test", "test.xml" };
             var expected = Path.Combine( list.ToArray() );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PathCombineTestCaseNullCheck()
+        public void PathCombineTestNullCheck()
         {
             Action test = () => IEnumerableStringEx.PathCombine( null );
 

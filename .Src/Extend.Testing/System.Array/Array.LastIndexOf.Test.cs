@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void LastIndexOfTestCase()
+        public void LastIndexOfTest()
         {
             Array array = new[]
             {
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase1()
+        public void LastIndexOfTest1()
         {
             Array array = new[]
             {
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase1NullCheck()
+        public void LastIndexOfTest1NullCheck()
         {
             Array array = null;
             Action test = () => array.LastIndexOf( "test2", 1 );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase2()
+        public void LastIndexOfTest2()
         {
             Array array = new[]
             {
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase2NullCheck()
+        public void LastIndexOfTest2NullCheck()
         {
             Array array = null;
             Action test = () => array.LastIndexOf( "test2", 0, 2 );
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCaseNullCheck()
+        public void LastIndexOfTestNullCheck()
         {
             Array array = null;
             Action test = () => array.LastIndexOf( "test2" );

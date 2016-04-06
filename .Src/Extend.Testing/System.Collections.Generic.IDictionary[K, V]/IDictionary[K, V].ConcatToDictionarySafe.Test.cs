@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatToDictionarySafeTestCase()
+        public void ConcatToDictionarySafeTest()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase1()
+        public void ConcatToDictionarySafeTest1()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase2()
+        public void ConcatToDictionarySafeTest2()
         {
             var first = new Dictionary<Int32, Int32>();
             var second = new Dictionary<Int32, Int32>();
@@ -62,7 +62,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase3()
+        public void ConcatToDictionarySafeTest3()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -86,7 +86,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCaseNullCheck()
+        public void ConcatToDictionarySafeTestNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -101,7 +101,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCaseNullCheck1()
+        public void ConcatToDictionarySafeTestNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
             var second = new Dictionary<Int32, Int32>

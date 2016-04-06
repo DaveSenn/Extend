@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDecimalTestCase()
+        public void SaveToDecimalTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase1()
+        public void SaveToDecimalTest1()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = "InvalidValue".SaveToDecimal( expected );
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase2()
+        public void SaveToDecimalTest2()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase3()
+        public void SaveToDecimalTest3()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase4()
+        public void SaveToDecimalTest4()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase5()
+        public void SaveToDecimalTest5()
         {
             var actual = "InvalidValue".SaveToDecimal();
 
@@ -69,7 +69,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase6()
+        public void SaveToDecimalTest6()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.1523 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCase7()
+        public void SaveToDecimalTest7()
         {
             var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCaseNullCheck()
+        public void SaveToDecimalTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -97,7 +97,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestCaseNullCheck1()
+        public void SaveToDecimalTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

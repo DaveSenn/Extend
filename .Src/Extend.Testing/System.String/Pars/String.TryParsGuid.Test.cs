@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsGuidTestCase()
+        public void TryParsGuidTest()
         {
             var expected = Guid.NewGuid();
             Guid result;
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsGuidTestCase1()
+        public void TryParsGuidTest1()
         {
             var expected = Guid.NewGuid();
             const String input = "NotAGuid";
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsGuidTestCaseNullCheck()
+        public void TryParsGuidTestNullCheck()
         {
             const String input = null;
             Guid result;

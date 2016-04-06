@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractFirstDecimalTestCase()
+        public void ExtractFirstDecimalTest()
         {
             var value0 = new Decimal( 100.2 );
             var value1 = new Decimal( 100.212 );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCase1()
+        public void ExtractFirstDecimalTest1()
         {
             var sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDecimal();
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCase1ArgumentOutOfRangeException()
+        public void ExtractFirstDecimalTest1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             Action test = () => sValue.ExtractFirstDecimal( sValue.Length );
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCase2ArgumentOutOfRangeException()
+        public void ExtractFirstDecimalTest2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
             Action test = () => sValue.ExtractFirstDecimal( -1 );
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCaseNullCheck()
+        public void ExtractFirstDecimalTestNullCheck()
         {
             Action test = () => StringEx.ExtractFirstDecimal( null );
 
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExtractFirstDecimalTestCaseNullCheck1()
+        public void ExtractFirstDecimalTestNullCheck1()
         {
             Action test = () => StringEx.ExtractFirstDecimal( null, 0 );
 

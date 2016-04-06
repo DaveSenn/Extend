@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAllKeysAsListTestCase()
+        public void GetAllKeysAsListTest()
         {
             var dictionary = new Dictionary<String, String>
             {

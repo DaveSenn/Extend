@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ContainsAnyTestCase()
+        public void ContainsAnyTest()
         {
             var list = new List<String> { "test", "test1" };
 
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyTestCase1()
+        public void ContainsAnyTest1()
         {
             var list = new List<String> { "test", "test1" };
 
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyTestCase1NullCheck()
+        public void ContainsAnyTest1NullCheck()
         {
             Action test = () => IEnumerableTEx.ContainsAny( null, new List<Object>() );
 
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyTestCase1NullCheck1()
+        public void ContainsAnyTest1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
             Action test = () => new List<String>().ContainsAny( enumerable );
@@ -52,7 +52,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyTestCaseNullCheck()
+        public void ContainsAnyTestNullCheck()
         {
             Action test = () => IEnumerableTEx.ContainsAny( null, new Object(), new Object() );
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyTestCaseNullCheck1()
+        public void ContainsAnyTestNullCheck1()
         {
             Object[] array = null;
             Action test = () => new List<String>().ContainsAny( array );

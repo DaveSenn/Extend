@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddIfTestCase()
+        public void AddIfTest()
         {
             var c = new List<String>();
 
@@ -27,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfTestCaseNullCheck()
+        public void AddIfTestNullCheck()
         {
             List<String> c = null;
             Action test = () => c.AddIf( x => true, RandomValueEx.GetRandomString() );
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfTestCaseNullCheck1()
+        public void AddIfTestNullCheck1()
         {
             var c = new List<String>();
             Action test = () => c.AddIf( null, RandomValueEx.GetRandomString() );

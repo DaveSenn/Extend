@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void TakeUntilTestCase()
+        public void TakeUntilTest()
         {
             var list = new List<String>();
             var result = list.TakeUntil( x => true );
@@ -38,7 +38,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeUntilTestCaseNullCheck()
+        public void TakeUntilTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.TakeUntil( x => true );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeUntilTestCaseNullCheck1()
+        public void TakeUntilTestNullCheck1()
         {
             Action test = () => new List<Object>().TakeUntil( null );
 

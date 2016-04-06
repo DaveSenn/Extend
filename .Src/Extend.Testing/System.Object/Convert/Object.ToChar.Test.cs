@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToCharTestCase()
+        public void ToCharTest()
         {
             const Char expected = 'a';
             var value = expected.ToString();
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharTestCaseInvalidCastException()
+        public void ToCharTestInvalidCastException()
         {
             Action test = () => ObjectEx.ToChar( "ab" );
 
@@ -29,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToCharTestCaseNullCheck()
+        public void ToCharTestNullCheck()
         {
             Action test = () => ObjectEx.ToChar( null );
 

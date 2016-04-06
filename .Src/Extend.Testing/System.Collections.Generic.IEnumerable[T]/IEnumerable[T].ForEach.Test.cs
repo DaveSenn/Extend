@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ForEachTestCase()
+        public void ForEachTest()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase1()
+        public void ForEachTest1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
@@ -36,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase1NullCheck()
+        public void ForEachTest1NullCheck()
         {
             List<Object> list = null;
             Action test = () => list.ForEach( ( x, i ) => { } );
@@ -45,7 +45,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase1NullCheck1()
+        public void ForEachTest1NullCheck1()
         {
             Action<Object, Int32> action = null;
             Action test = () => new List<Object>().ForEach( action );
@@ -54,7 +54,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase2()
+        public void ForEachTest2()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase3()
+        public void ForEachTest3()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
@@ -76,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase4()
+        public void ForEachTest4()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var total = 0;
@@ -87,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCaseNullCheck()
+        public void ForEachTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCaseNullCheck1()
+        public void ForEachTestNullCheck1()
         {
             Action<Object> action = null;
             Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );

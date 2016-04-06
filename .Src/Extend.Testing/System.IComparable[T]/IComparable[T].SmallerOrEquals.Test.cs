@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void SmallerOrEqualsTestCase()
+        public void SmallerOrEqualsTest()
         {
             var value = 1000;
             var value1 = 900;
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SmallerOrEqualsTestCaseNullCheck()
+        public void SmallerOrEqualsTestNullCheck()
         {
             Action test = () => IComparableTEx.SmallerOrEquals( null, "" );
 
@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SmallerOrEqualsTestCaseNullCheck1()
+        public void SmallerOrEqualsTestNullCheck1()
         {
             Action test = () => "".SmallerOrEquals( null );
 

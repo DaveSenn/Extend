@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddOrUpdateTestCase()
+        public void AddOrUpdateTest()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase1()
+        public void AddOrUpdateTest1()
         {
             var key = RandomValueEx.GetRandomString();
             var pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase1NullCheck()
+        public void AddOrUpdateTest1NullCheck()
         {
             Action test = () => IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
 
@@ -55,7 +55,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase1NullCheck1()
+        public void AddOrUpdateTest1NullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( new KeyValuePair<Object, Object>( null, new Object() ) );
 
@@ -63,7 +63,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase2()
+        public void AddOrUpdateTest2()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -80,7 +80,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase2NullCheck()
+        public void AddOrUpdateTest2NullCheck()
         {
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
 
@@ -88,7 +88,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase2NullCheck1()
+        public void AddOrUpdateTest2NullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
 
@@ -96,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase2NullCheck2()
+        public void AddOrUpdateTest2NullCheck2()
         {
             Func<String> func = null;
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
@@ -105,7 +105,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase3()
+        public void AddOrUpdateTest3()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
@@ -122,7 +122,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase3NullCheck()
+        public void AddOrUpdateTest3NullCheck()
         {
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
 
@@ -130,7 +130,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCase3NullCheck1()
+        public void AddOrUpdateTest3NullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, x => new Object() );
 
@@ -138,7 +138,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCaseNullCheck()
+        public void AddOrUpdateTestNullCheck()
         {
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
 
@@ -146,7 +146,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddOrUpdateTestCaseNullCheck1()
+        public void AddOrUpdateTestNullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
 

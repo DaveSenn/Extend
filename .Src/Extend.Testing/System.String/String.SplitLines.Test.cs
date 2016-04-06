@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SplitLinesTestCase()
+        public void SplitLinesTest()
         {
             var value = "test";
 
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCase1()
+        public void SplitLinesTest1()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCase2()
+        public void SplitLinesTest2()
         {
             var value = "test";
 
@@ -54,7 +54,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCase2NullCheck()
+        public void SplitLinesTest2NullCheck()
         {
             String value = null;
             Action test = () => value.SplitLines();
@@ -63,7 +63,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCase3()
+        public void SplitLinesTest3()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
 
@@ -74,7 +74,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCaseNullCheck()
+        public void SplitLinesTestNullCheck()
         {
             String value = null;
 
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitLinesTestCaseNullCheck1()
+        public void SplitLinesTestNullCheck1()
         {
             String value = null;
 

@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IntersectsTestCase()
+        public void IntersectsTest()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IntersectsTestCase1()
+        public void IntersectsTest1()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IntersectsTestCase2()
+        public void IntersectsTest2()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IntersectsTestCase3()
+        public void IntersectsTest3()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );
@@ -59,7 +59,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IntersectsTestCase4()
+        public void IntersectsTest4()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );
@@ -71,7 +71,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IntersectsTestCase5()
+        public void IntersectsTest5()
         {
             var startDate = DateTime.Now;
             var end = startDate.Add( 1.ToHours() );

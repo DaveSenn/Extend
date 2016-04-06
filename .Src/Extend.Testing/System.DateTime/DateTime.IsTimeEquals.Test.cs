@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsTimeEqualTestCase()
+        public void IsTimeEqualTest()
         {
             var dateTime = DateTime.Now;
             var dateTime1 = dateTime.AddDays( -2 );

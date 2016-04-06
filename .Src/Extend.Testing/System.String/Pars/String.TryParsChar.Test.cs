@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsCharTestCase()
+        public void TryParsCharTest()
         {
             var expected = 'b';
             var result = 'a';
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsCharTestCaseNullCheck()
+        public void TryParsCharTestNullCheck()
         {
             var outValue = 's';
             Action test = () => StringEx.TryParsChar( null, out outValue );

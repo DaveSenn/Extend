@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void PercentageOfTestCase()
+        public void PercentageOfTest()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1()
+        public void PercentageOfTest1()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase1DivideByZeroException()
+        public void PercentageOfTest1DivideByZeroException()
         {
             const Int64 number = 0;
             Action test = () => number.PercentageOf( (Double) 50 );
@@ -41,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2()
+        public void PercentageOfTest2()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
@@ -51,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase2DivideByZeroException()
+        public void PercentageOfTest2DivideByZeroException()
         {
             const Int64 number = 0;
             Action test = () => number.PercentageOf( (Int64) 50 );
@@ -60,7 +60,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase3()
+        public void PercentageOfTest3()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
@@ -70,7 +70,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase3DivideByZeroException()
+        public void PercentageOfTest3DivideByZeroException()
         {
             const Int64 number = 0;
             Action test = () => number.PercentageOf( new Decimal( 50 ) );
@@ -79,7 +79,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase4()
+        public void PercentageOfTest4()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
@@ -89,7 +89,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCase4DivideByZeroException()
+        public void PercentageOfTest4DivideByZeroException()
         {
             const Int64 number = 0;
             Action test = () => number.PercentageOf( 50 );
@@ -98,7 +98,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTestCaseDivideByZeroException()
+        public void PercentageOfTestDivideByZeroException()
         {
             const Int64 number = 0;
             Action test = () => number.PercentageOf( (Int64) 50 );

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public class StringBuilderExTest
     {
         [Test]
-        public void AppendLineFormatTestCase()
+        public void AppendLineFormatTest()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -34,7 +34,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase1()
+        public void AppendLineFormatTest1()
         {
             var value0 = RandomValueEx.GetRandomString();
 
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase1NullCheck()
+        public void AppendLineFormatTest1NullCheck()
         {
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "" );
 
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase1NullCheck1()
+        public void AppendLineFormatTest1NullCheck1()
         {
             Action test = () => new StringBuilder().AppendLineFormat( null, "" );
 
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase2()
+        public void AppendLineFormatTest2()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -81,7 +81,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase2NullCheck()
+        public void AppendLineFormatTest2NullCheck()
         {
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "" );
 
@@ -89,7 +89,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase2NullCheck1()
+        public void AppendLineFormatTest2NullCheck1()
         {
             Action test = () => new StringBuilder().AppendLineFormat( null, "", "" );
 
@@ -97,7 +97,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase3()
+        public void AppendLineFormatTest3()
         {
             var value0 = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
@@ -114,7 +114,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase3NullCheck()
+        public void AppendLineFormatTest3NullCheck()
         {
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
 
@@ -122,7 +122,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCase3NullCheck1()
+        public void AppendLineFormatTest3NullCheck1()
         {
             Action test = () => new StringBuilder().AppendLineFormat( null, "", "", "" );
 
@@ -130,7 +130,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCaseNullCheck()
+        public void AppendLineFormatTestNullCheck()
         {
             Action test = () => StringBuilderEx.AppendLineFormat( null,
                                                                   "",
@@ -143,7 +143,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCaseNullCheck1()
+        public void AppendLineFormatTestNullCheck1()
         {
             Action test = () => new StringBuilder().AppendLineFormat( null,
                                                                       new Object[]
@@ -155,7 +155,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AppendLineFormatTestCaseNullCheck2()
+        public void AppendLineFormatTestNullCheck2()
         {
             Action test = () => new StringBuilder().AppendLineFormat( "", null );
 

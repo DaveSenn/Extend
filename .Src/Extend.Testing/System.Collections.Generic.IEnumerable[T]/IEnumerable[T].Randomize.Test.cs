@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void RandomizeTestCase()
+        public void RandomizeTest()
         {
             var list = new List<String>();
             var result = list.Randomize();
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomizeTestCaseNullCheck()
+        public void RandomizeTestNullCheck()
         {
             List<Object> list = null;
             Action test = () => list.Randomize();

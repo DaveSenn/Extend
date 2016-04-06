@@ -93,15 +93,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomEnumTest() => RandomValueEx.GetRandomEnum<DayOfWeek>();
-        
-        [Test]
         public void GetRandomEnumINvalidTypeTest()
         {
             Action test = () => RandomValueEx.GetRandomEnum<Int32>();
 
             test.ShouldThrow<ArgumentException>();
         }
+
+        [Test]
+        public void GetRandomEnumTest() => RandomValueEx.GetRandomEnum<DayOfWeek>();
 
         [Test]
         public void GetRandomInt16Test()

@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void EndOfWeekTestCase()
+        public void EndOfWeekTest()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 30 ).AddDays( 1 )
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void EndOfWeekTestCase1()
+        public void EndOfWeekTest1()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 31 ).AddDays( 1 )

@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void KeepLettersAndNumbersTestCase()
+        public void KeepLettersAndNumbersTest()
         {
             var actual = "a1b2c3".KeepLettersAndNumbers();
             Assert.AreEqual( "a1b2c3", actual );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void KeepLettersAndNumbersTestCaseNullCheck()
+        public void KeepLettersAndNumbersTestNullCheck()
         {
             Action test = () => StringEx.KeepLettersAndNumbers( null );
 

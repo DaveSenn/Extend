@@ -12,14 +12,14 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SubstringRightTestCase()
+        public void SubstringRightTest()
         {
             var actual = "testabc".SubstringRight( 3 );
             Assert.AreEqual( "abc", actual );
         }
 
         [Test]
-        public void SubstringRightTestCaseNullCheck()
+        public void SubstringRightTestNullCheck()
         {
             Action test = () => StringEx.SubstringRight( null, 5 );
 

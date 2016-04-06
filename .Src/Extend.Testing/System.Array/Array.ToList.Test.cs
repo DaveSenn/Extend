@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ToListTestCase()
+        public void ToListTest()
         {
             Array array = new[]
             {
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToListTestCaseNullCheck()
+        public void ToListTestNullCheck()
         {
             Array array = null;
             Action test = () => array.ToList( x => "test" + x );
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToListTestCaseNullCheck1()
+        public void ToListTestNullCheck1()
         {
             Array array = new[]
             {

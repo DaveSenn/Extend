@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void NextWeekDayTestCase()
+        public void NextWeekDayTest()
         {
             var friday = new DateTime( 2014, 8, 8 );
             var saturday = new DateTime( 2014, 8, 9 );

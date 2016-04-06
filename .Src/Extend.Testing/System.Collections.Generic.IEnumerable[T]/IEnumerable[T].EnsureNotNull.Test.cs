@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void EnsureNotNullTestCase()
+        public void EnsureNotNullTest()
         {
             List<String> list = null;
             var actual = list.EnsureNotNull();
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void EnsureNotNullTestCase1()
+        public void EnsureNotNullTest1()
         {
             var list = new List<String>
             {

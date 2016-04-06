@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetMemberInfoFromExpressionTestCase()
+        public void GetMemberInfoFromExpressionTest()
         {
             Expression<Func<TestModel, String>> memberExpression = x => x.Name;
             var actual = memberExpression.GetMemberInfoFromExpression();
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetMemberInfoFromExpressionTestCaseNullCheck()
+        public void GetMemberInfoFromExpressionTestNullCheck()
         {
             Expression<Func<TestModel, Object>> memberExpression = null;
             Action test = () => memberExpression.GetMemberInfoFromExpression();

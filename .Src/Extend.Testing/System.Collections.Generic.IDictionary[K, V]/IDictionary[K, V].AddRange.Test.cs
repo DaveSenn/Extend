@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddRangeTestCase()
+        public void AddRangeTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck()
+        public void AddRangeTestNullCheck()
         {
             Action test = () => IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
 
@@ -43,7 +43,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck1()
+        public void AddRangeTestNullCheck1()
         {
             Action test = () => new Dictionary<Object, Object>().AddRange( null );
 

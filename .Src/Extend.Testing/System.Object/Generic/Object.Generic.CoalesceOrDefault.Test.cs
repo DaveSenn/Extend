@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceOrDefault1TestCase()
+        public void CoalesceOrDefault1Test()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase()
+        public void CoalesceOrDefaultTest()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase2()
+        public void CoalesceOrDefaultTest2()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -48,7 +48,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase2NullCheck()
+        public void CoalesceOrDefaultTest2NullCheck()
         {
             String s = null;
             Func<String> func = null;
@@ -58,7 +58,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase3()
+        public void CoalesceOrDefaultTest3()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
@@ -68,7 +68,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCaseNullCheck()
+        public void CoalesceOrDefaultTestNullCheck()
         {
             String s = null;
             String s1 = null;
