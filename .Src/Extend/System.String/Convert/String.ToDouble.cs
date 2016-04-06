@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
 using JetBrains.Annotations;
 
 #endregion
@@ -14,6 +13,11 @@ namespace Extend
         ///     Converts the given string to a double.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
+        /// <exception cref="FormatException">value does not represent a number in a valid format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Double.MinValue" /> or
+        ///     greater than <see cref="Double.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The double.</returns>
         [Pure]
@@ -22,7 +26,7 @@ namespace Extend
         {
             value.ThrowIfNull( nameof( value ) );
 
-            return Convert.ToDouble( value, CultureInfo.InvariantCulture );
+            return Double.Parse( value );
         }
 
         /// <summary>
@@ -30,6 +34,11 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
+        /// <exception cref="FormatException">value does not represent a number in a valid format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Double.MinValue" /> or
+        ///     greater than <see cref="Double.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The double.</returns>
@@ -40,7 +49,7 @@ namespace Extend
             value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return Convert.ToDouble( value, formatProvider );
+            return Double.Parse( value, formatProvider );
         }
     }
 }
