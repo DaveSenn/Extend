@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,6 +12,38 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
+        public void TryParsGuidInvalidValueTest()
+        {
+            Guid result;
+            var actual = "InvalidValue".TryParsGuid( out result );
+
+            result
+                .Should()
+                .Be( default(Guid) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsGuidNullTest()
+        {
+            Guid result;
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsGuid( out result );
+
+            result
+                .Should()
+                .Be( default(Guid) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
         public void TryParsGuidTest()
         {
             var expected = Guid.NewGuid();
@@ -18,21 +51,13 @@ namespace Extend.Testing
             var actual = expected.ToString()
                                  .TryParsGuid( out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
-        }
+            result
+                .Should()
+                .Be( expected );
 
-        [Test]
-        public void TryParsGuidTest1()
-        {
-            var expected = Guid.NewGuid();
-            const String input = "NotAGuid";
-            Guid result;
-            var actual = input
-                .TryParsGuid( out result );
-
-            Assert.AreEqual( Guid.Empty, result );
-            Assert.IsFalse( actual );
+            actual
+                .Should()
+                .BeTrue();
         }
     }
 }

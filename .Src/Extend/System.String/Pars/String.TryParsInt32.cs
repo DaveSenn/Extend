@@ -20,9 +20,9 @@ namespace Extend
         /// <param name="outValue">
         ///     When this method returns, contains the 32-bit signed integer value equivalent
         ///     to the number contained in s, if the conversion succeeded, or zero if the
-        ///     conversion failed. The conversion fails if the s parameter is null or System.String.Empty,
-        ///     is not of the correct format, or represents a number less than System.Int32.MinValue
-        ///     or greater than System.Int32.MaxValue. This parameter is passed uninitialized.
+        ///     conversion failed. The conversion fails if the s parameter is null or <see cref="String.Empty" />,
+        ///     is not of the correct format, or represents a number less than <see cref="Int32.MinValue" />
+        ///     or greater than <see cref="Int32.MaxValue" />. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
         [Pure]
@@ -52,9 +52,9 @@ namespace Extend
         /// <param name="outValue">
         ///     When this method returns, contains the 32-bit signed integer value equivalent
         ///     to the number contained in s, if the conversion succeeded, or zero if the
-        ///     conversion failed. The conversion fails if the s parameter is null or System.String.Empty,
+        ///     conversion failed. The conversion fails if the s parameter is null or <see cref="String.Empty" />,
         ///     is not in a format compliant with numberStyles, or represents a number less than
-        ///     System.Int32.MinValue or greater than System.Int32.MaxValue. This parameter
+        ///     <see cref="Int32.MinValue" /> or greater than <see cref="Int32.MaxValue" />. This parameter
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
