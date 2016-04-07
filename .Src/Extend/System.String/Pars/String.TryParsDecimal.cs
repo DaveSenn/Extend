@@ -64,7 +64,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return Decimal.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            return Decimal.TryParse( value, numberStyle, CultureInfo.InvariantCulture, out outValue );
         }
     }
 }
