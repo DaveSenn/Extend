@@ -1,8 +1,6 @@
 ﻿#region Usings
 
-using System;
 using System.Globalization;
-using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -22,15 +20,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( expected, result );
             Assert.IsTrue( actual );
-        }
-
-        [Test]
-        public void TryParsCharTestNullCheck()
-        {
-            var outValue = 's';
-            Action test = () => StringEx.TryParsChar( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

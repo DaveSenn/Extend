@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -24,18 +25,22 @@ namespace Extend
         ///     or greater than System.Int32.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt32( this String value, out Int32 outValue )
-        {
-            value.ThrowIfNull( nameof( value ) );
-
-            return Int32.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-        }
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsInt32( [CanBeNull] this String value, out Int32 outValue )
+            => Int32.TryParse( value, out outValue );
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyles and culture-specific
         ///     format to its 32-bit signed integer equivalent. A return value indicates
         ///     whether the conversion succeeded or failed.
         /// </summary>
+        /// <exception cref="ArgumentNullException">formatProvider can not be null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     numberStyle is not a <see cref="System.Globalization.NumberStyles" /> value. -or-style is not a
+        ///     combination of <see cref="System.Globalization.NumberStyles.AllowHexSpecifier" /> and
+        ///     <see cref="System.Globalization.NumberStyles.HexNumber" /> values.
+        /// </exception>
         /// <param name="value">
         ///     A string containing a number to convert. The string is interpreted using
         /// </param>
@@ -53,12 +58,13 @@ namespace Extend
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt32( this String value,
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsInt32( [CanBeNull] this String value,
                                             NumberStyles numberStyles,
-                                            IFormatProvider formatProvider,
+                                            [NotNull] IFormatProvider formatProvider,
                                             out Int32 outValue )
         {
-            value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Int32.TryParse( value, numberStyles, formatProvider, out outValue );

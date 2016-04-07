@@ -38,28 +38,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsByteTest1NullCheck()
-        {
-            var outValue = (Byte) 1;
-            Action test = () => StringEx.TryParsByte( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void TryParsByteTest1NullCheck1()
         {
             var outValue = (Byte) 1;
             Action test = () => "".TryParsByte( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsByteTestNullCheck()
-        {
-            var outValue = (Byte) 1;
-            Action test = () => StringEx.TryParsByte( null, out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -2,7 +2,6 @@
 
 using System;
 using System.Globalization;
-using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -23,15 +22,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( expected, result );
             Assert.IsTrue( actual );
-        }
-
-        [Test]
-        public void TryParsDecimalTestNullCheck()
-        {
-            var outValue = new Decimal( 100 );
-            Action test = () => StringEx.TryParsDecimal( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

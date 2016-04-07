@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -45,15 +44,6 @@ namespace Extend.Testing
             var actual = "InvalidValue".SaveToBoolean();
 
             Assert.AreEqual( default(Boolean), actual );
-        }
-
-        [Test]
-        public void SaveToBooleanTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringEx.SaveToBoolean( null );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

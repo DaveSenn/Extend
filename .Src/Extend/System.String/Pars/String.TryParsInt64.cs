@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,7 +15,6 @@ namespace Extend
         ///     equivalent. A return value indicates whether the conversion succeeded or
         ///     failed.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">A string containing a number to convert.</param>
         /// <param name="outValue">
         ///     When this method returns, contains the 64-bit signed integer value equivalent
@@ -24,18 +24,22 @@ namespace Extend
         ///     or greater than System.Int64.MaxValue. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt64( this String value, out Int64 outValue )
-        {
-            value.ThrowIfNull( nameof( value ) );
-
-            return Int64.TryParse( value, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-        }
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsInt64( [CanBeNull] this String value, out Int64 outValue )
+            => Int64.TryParse( value, out outValue );
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
         ///     format to its 64-bit signed integer equivalent. A return value indicates
         ///     whether the conversion succeeded or failed.
         /// </summary>
+        /// <exception cref="ArgumentNullException">formatProvider can not be null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     numberStyle is not a <see cref="System.Globalization.NumberStyles" /> value. -or-style is not a
+        ///     combination of <see cref="System.Globalization.NumberStyles.AllowHexSpecifier" /> and
+        ///     <see cref="System.Globalization.NumberStyles.HexNumber" /> values.
+        /// </exception>
         /// <param name="value">
         ///     A string containing a number to convert. The string is interpreted using
         /// </param>
@@ -53,12 +57,11 @@ namespace Extend
         ///     is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsInt64( this String value,
+        public static Boolean TryParsInt64( [CanBeNull] this String value,
                                             NumberStyles numberStyle,
-                                            IFormatProvider formatProvider,
+                                            [NotNull] IFormatProvider formatProvider,
                                             out Int64 outValue )
         {
-            value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             return Int64.TryParse( value, numberStyle, formatProvider, out outValue );

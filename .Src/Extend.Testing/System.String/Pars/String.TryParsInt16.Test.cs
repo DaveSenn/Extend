@@ -38,28 +38,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt16Test1NullCheck()
-        {
-            var outValue = RandomValueEx.GetRandomInt16();
-            Action test = () => StringEx.TryParsInt16( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void TryParsInt16Test1NullCheck1()
         {
             var outValue = RandomValueEx.GetRandomInt16();
             Action test = () => "".TryParsInt16( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsInt16TestNullCheck()
-        {
-            var outValue = RandomValueEx.GetRandomInt16();
-            Action test = () => StringEx.TryParsInt16( null, out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }

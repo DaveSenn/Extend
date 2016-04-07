@@ -13,21 +13,6 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDateTimeTest()
-        {
-            var expected = DateTime.Now;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDateTime();
-
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
-        }
-
-        [Test]
         public void SaveToDateTimeTest1()
         {
             var expected = DateTime.Now;
@@ -63,21 +48,6 @@ namespace Extend.Testing
             var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
 
             Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToDateTimeTest4()
-        {
-            var expected = DateTime.Now;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDateTime( DateTime.MaxValue );
-
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
         }
 
         [Test]

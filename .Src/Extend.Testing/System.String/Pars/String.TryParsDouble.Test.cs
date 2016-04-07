@@ -38,28 +38,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDoubleTest1NullCheck()
-        {
-            var outValue = 100d;
-            Action test = () => StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void TryParsDoubleTest1NullCheck1()
         {
             var outValue = 100d;
             Action test = () => "100".TryParsDouble( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsDoubleTestNullCheck()
-        {
-            var outValue = 100d;
-            Action test = () => StringEx.TryParsDouble( null, out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }

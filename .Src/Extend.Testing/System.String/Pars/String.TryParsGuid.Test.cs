@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -34,17 +33,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( Guid.Empty, result );
             Assert.IsFalse( actual );
-        }
-
-        [Test]
-        public void TryParsGuidTestNullCheck()
-        {
-            const String input = null;
-            Guid result;
-            Action test = () => input
-                .TryParsGuid( out result );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

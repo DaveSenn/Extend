@@ -44,22 +44,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsDateTimeExactTest1NullCheck()
-        {
-            var outValue = DateTime.Now;
-            Action test = () => StringEx.TryParsDateTimeExact( null,
-                                                               new[]
-                                                               {
-                                                                   "test"
-                                                               },
-                                                               CultureInfo.InvariantCulture,
-                                                               DateTimeStyles.AllowTrailingWhite,
-                                                               out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void TryParsDateTimeExactTest1NullCheck1()
         {
             var outValue = DateTime.Now;
@@ -114,19 +98,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( DateTime.MinValue, actual );
             Assert.IsFalse( result );
-        }
-
-        [Test]
-        public void TryParsDateTimeExactTestNullCheck()
-        {
-            var outValue = DateTime.Now;
-            Action test = () => StringEx.TryParsDateTimeExact( null,
-                                                               "",
-                                                               CultureInfo.InvariantCulture,
-                                                               DateTimeStyles.AllowTrailingWhite,
-                                                               out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]

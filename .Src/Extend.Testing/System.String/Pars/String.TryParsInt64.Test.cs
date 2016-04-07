@@ -38,28 +38,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryParsInt64Test1NullCheck()
-        {
-            var outValue = (Int64) RandomValueEx.GetRandomInt32();
-            Action test = () => StringEx.TryParsInt64( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void TryParsInt64Test1NullCheck1()
         {
             var outValue = (Int64) RandomValueEx.GetRandomInt32();
             Action test = () => "".TryParsInt64( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsInt64TestNullCheck()
-        {
-            var outValue = (Int64) RandomValueEx.GetRandomInt32();
-            Action test = () => StringEx.TryParsInt64( null, out outValue );
 
             test.ShouldThrow<ArgumentNullException>();
         }

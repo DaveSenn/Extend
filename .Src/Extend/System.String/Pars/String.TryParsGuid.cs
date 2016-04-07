@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,11 +18,9 @@ namespace Extend
         ///     valid System.Guid. If the method returns false, result equals <see cref="Guid.Empty" />.
         /// </param>
         /// <returns>Returns true if the parse operation was successful; otherwise, false.</returns>
-        public static Boolean TryParsGuid( this String value, out Guid outValue )
-        {
-            value.ThrowIfNull( nameof( value ) );
-
-            return Guid.TryParse( value, out outValue );
-        }
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsGuid( [CanBeNull] this String value, out Guid outValue )
+            => Guid.TryParse( value, out outValue );
     }
 }
