@@ -412,7 +412,6 @@
     <Compile Include="System.String\String.Repeat.Test.cs" />
     <Compile Include="System.String\String.ReplaceByEmpty.Test.cs" />
     <Compile Include="System.String\String.Reverse.Test.cs" />
-    <Compile Include="System.String\ConvertSave\String.SafeToInt.Test.cs" />
     <Compile Include="System.String\String.Split.Test.cs" />
     <Compile Include="System.String\String.SplitLines.Test.cs" />
     <Compile Include="System.String\String.SubstringLeft.Test.cs" />

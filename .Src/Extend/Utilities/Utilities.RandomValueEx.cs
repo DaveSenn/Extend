@@ -161,8 +161,7 @@ namespace Extend
                              .Cast<T>();
 
             var enumerable = values as T[];
-            // ReSharper disable once PossibleNullReferenceException
-            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Length ) );
+            return enumerable?.ElementAt( Rnd.Next( 0, enumerable.Length ) ) ?? default(T);
         }
 
         /// <summary>
