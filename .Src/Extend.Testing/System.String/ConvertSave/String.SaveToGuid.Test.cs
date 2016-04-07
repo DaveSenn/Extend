@@ -47,15 +47,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( default(Guid), actual );
         }
-
-        [Test]
-        public void SaveToGuidTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.SaveToGuid( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
+        
     }
 }

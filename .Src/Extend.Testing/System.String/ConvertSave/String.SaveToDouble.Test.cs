@@ -85,16 +85,7 @@ namespace Extend.Testing
 
             Assert.AreEqual( default(Double), actual );
         }
-
-        [Test]
-        public void SaveToDoubleTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.SaveToDouble( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
+        
 
         [Test]
         public void SaveToDoubleTestNullCheck1()

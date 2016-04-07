@@ -87,15 +87,7 @@ namespace Extend.Testing
 
             Assert.AreEqual( expected, actual );
         }
-
-        [Test]
-        public void SaveToDateTimeTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringEx.SaveToDateTime( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
+        
 
         [Test]
         public void SaveToDateTimeTestNullCheck1()

@@ -87,16 +87,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToDecimalTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.SaveToDecimal( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void SaveToDecimalTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

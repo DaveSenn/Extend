@@ -87,14 +87,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToInt64TestNullCheck()
-        {
-            Action test = () => StringEx.SaveToInt64( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
         public void SaveToInt64TestNullCheck1()
         {
             Action test = () => "".SaveToInt64( NumberStyles.AllowExponent, null );

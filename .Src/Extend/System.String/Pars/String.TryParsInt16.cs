@@ -41,7 +41,7 @@ namespace Extend
         ///     values.
         /// </exception>
         /// <param name="value">
-        ///     A string containing a number to convert. The string is interpreted using
+        ///     A string containing a number to convert.
         /// </param>
         /// <param name="numberStyle">
         ///     A bitwise combination of enumeration values that indicates the numberStyle elements

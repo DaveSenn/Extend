@@ -85,15 +85,7 @@ namespace Extend.Testing
 
             Assert.AreEqual( default(Int32), actual );
         }
-
-        [Test]
-        public void SaveToInt32TestNullCheck()
-        {
-            Action test = () => StringEx.SaveToInt32( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
+        
         [Test]
         public void SaveToInt32TestNullCheck1()
         {

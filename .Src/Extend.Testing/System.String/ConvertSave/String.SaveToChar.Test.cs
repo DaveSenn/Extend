@@ -48,14 +48,6 @@ namespace Extend.Testing
 
             Assert.AreEqual( default(Char), actual );
         }
-
-        [Test]
-        public void SaveToCharTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringEx.SaveToChar( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
+        
     }
 }
