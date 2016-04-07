@@ -24,7 +24,6 @@ namespace Extend
         ///     contains an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
         ///     <see cref="DateTimeStyles.AssumeLocal" /> and <see cref="DateTimeStyles.AssumeUniversal" />).
         /// </exception>
-        /// <exception cref="NotSupportedException">formatProvider is a neutral culture and cannot be used in a parsing operation.</exception>
         /// <param name="value">A <see cref="String" /> containing a date and time to convert.</param>
         /// <param name="format">The required format of s. See the Remarks section for more information.</param>
         /// <param name="formatProvider">
@@ -79,7 +78,6 @@ namespace Extend
         ///     contains an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
         ///     <see cref="DateTimeStyles.AssumeLocal" /> and <see cref="DateTimeStyles.AssumeUniversal" />).
         /// </exception>
-        /// <exception cref="NotSupportedException">formatProvider is a neutral culture and cannot be used in a parsing operation.</exception>
         /// <param name="value">A <see cref="String" /> containing a date and time to convert.</param>
         /// <param name="formats">An array of allowable formats of s. See the Remarks section for more information.</param>
         /// <param name="formatProvider">

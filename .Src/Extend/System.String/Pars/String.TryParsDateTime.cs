@@ -20,17 +20,10 @@ namespace Extend
         ///     When this method returns, contains the <see cref="DateTime" /> value equivalent to the date and time contained in
         ///     <paramref name="value" />, if the conversion succeeded, or <see cref="DateTime.MinValue" /> if the conversion
         ///     failed. The conversion fails if the <paramref name="value" />
-        ///     parameter is
-        ///     <value>null</value>
-        ///     , is an empty string (""), or does not contain a valid string representation of a date and time. This parameter is
-        ///     passed uninitialized.
+        ///     parameter is null, is an empty string (""), or does not contain a valid string representation of a date and time.
+        ///     This parameter is passed uninitialized.
         /// </param>
-        /// <returns>
-        ///     <value>true</value>
-        ///     if the s parameter was converted successfully; otherwise,
-        ///     <value>false</value>
-        ///     .
-        /// </returns>
+        /// <returns>Returns true if the s parameter was converted successfully; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
         public static Boolean TryParsDateTime( [CanBeNull] this String value, out DateTime result )
@@ -42,7 +35,6 @@ namespace Extend
         ///     conversion succeeded.
         /// </summary>
         /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <exception cref="NotSupportedException">formatProvider is a neutral culture and cannot be used in a parsing operation.</exception>
         /// <exception cref="ArgumentException">
         ///     dateTimeStyle is not a valid <see cref="DateTimeStyles" /> value.-or-styles contains
         ///     an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
@@ -62,16 +54,10 @@ namespace Extend
         ///     When this method returns, contains the <see cref="DateTime" /> value equivalent to the date and time contained in
         ///     <paramref name="value" />, if the conversion succeeded, or <see cref="DateTime.MinValue" /> if the conversion
         ///     failed. The conversion fails if the <paramref name="value" /> parameter is
-        ///     <value>null</value>
-        ///     , is an empty string (""), or does not contain a valid string representation of a date and time. This parameter is
-        ///     passed uninitialized.
+        ///     null, is an empty string (""), or does not contain a valid string representation of a date and time.
+        ///     This parameter is passed uninitialized.
         /// </param>
-        /// <returns>
-        ///     <value>true</value>
-        ///     if the s parameter was converted successfully; otherwise,
-        ///     <value>false</value>
-        ///     .
-        /// </returns>
+        /// <returns>Returns true if the s parameter was converted successfully; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
         public static Boolean TryParsDateTime( [CanBeNull] this String value,
