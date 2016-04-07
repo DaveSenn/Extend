@@ -13,44 +13,75 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToByteTest()
+        public void SaveToByteInvalidValueTest()
         {
-            const Byte expected = (Byte) 10;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToByte();
+            var actual = "InvalidValue".SaveToByte();
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( default(Byte) );
         }
 
         [Test]
-        public void SaveToByteTest1()
-        {
-            const Byte expected = (Byte) 10;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToByte( default(Byte) );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToByteTest2()
+        public void SaveToByteInvalidValueWithDefaultValueTest()
         {
             const Byte expected = (Byte) 10;
             var actual = "InvalidValue".SaveToByte( expected );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToByteTest3()
+        public void SaveToByteNullTest()
         {
-            var actual = "InvalidValue".SaveToByte();
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToByte();
 
-            Assert.AreEqual( default(Byte), actual );
+            actual
+                .Should()
+                .Be( default(Byte) );
         }
 
         [Test]
-        public void SaveToByteTest4()
+        public void SaveToByteOverloadInvalidNumberFormatTest()
+        {
+            const Byte expected = (Byte) 10;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .SaveToByte( (NumberStyles) 1024, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void SaveToByteOverloadInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
+                                                    CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Byte) );
+        }
+
+        [Test]
+        public void SaveToByteOverloadInvalidValueWithDefaultValueTest()
+        {
+            const Byte expected = (Byte) 10;
+            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
+                                                    CultureInfo.InvariantCulture,
+                                                    expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToByteOverloadTest()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
@@ -60,51 +91,52 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToByteTest5()
+        public void SaveToByteOverloadTest1()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToByte( NumberStyles.Any, CultureInfo.InvariantCulture, 11 );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToByteTest6()
+        public void SaveToByteTest()
         {
             const Byte expected = (Byte) 10;
-            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
-                                                    CultureInfo.InvariantCulture,
-                                                    expected );
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToByte();
 
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToByteTest7()
-        {
-            var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
-                                                    CultureInfo.InvariantCulture );
-
-            Assert.AreEqual( default(Byte), actual );
-        }
-
-        [Test]
-        public void SaveToByteTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => StringEx.SaveToByte( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
         public void SaveToByteTestNullCheck1()
         {
+            const Byte value = (Byte) 10;
+
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".SaveToByte( NumberStyles.AllowDecimalPoint, null );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToString()
+                                     .SaveToByte( NumberStyles.AllowDecimalPoint, null );
 
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void SaveToByteWithDefaultValueTest()
+        {
+            const Byte expected = (Byte) 10;
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToByte( Byte.MinValue );
+
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

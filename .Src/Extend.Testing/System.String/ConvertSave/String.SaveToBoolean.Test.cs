@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,17 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToBooleanTest()
-        {
-            var expected = RandomValueEx.GetRandomBoolean();
-            var actual = expected.ToString()
-                                 .SaveToBoolean();
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToBooleanTest1()
+        public void SaveToBooleanInvalidValueTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = "InvalidValue".SaveToBoolean( expected );
@@ -30,20 +21,39 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTest2()
+        public void SaveToBooleanNullTest()
         {
-            var actual = true.ToString()
-                             .SaveToBoolean( false );
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToBoolean();
 
-            Assert.AreEqual( true, actual );
+            actual
+                .Should()
+                .Be( default(Boolean) );
         }
 
         [Test]
-        public void SaveToBooleanTest3()
+        public void SaveToBooleanNullTest1()
         {
-            var actual = "InvalidValue".SaveToBoolean();
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToBoolean( !default(Boolean) );
 
-            Assert.AreEqual( default(Boolean), actual );
+            actual
+                .Should()
+                .Be( !default(Boolean) );
+        }
+
+        [Test]
+        public void SaveToBooleanTest()
+        {
+            var expected = RandomValueEx.GetRandomBoolean();
+            var actual = expected.ToString()
+                                 .SaveToBoolean();
+
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Extend
         [PublicAPI]
         public static Int16 SaveToInt16( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
-                                         IFormatProvider formatProvider,
+                                         [NotNull] IFormatProvider formatProvider,
                                          Int16 defaultValue = default(Int16) )
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );

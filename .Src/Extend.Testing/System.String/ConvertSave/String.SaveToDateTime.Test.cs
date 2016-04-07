@@ -13,89 +13,142 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDateTimeTest1()
+        public void SaveToDateTimeInvalidValueTest()
         {
             var expected = DateTime.Now;
             var actual = "InvalidValue".SaveToDateTime( expected );
 
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
 
         [Test]
-        public void SaveToDateTimeTest2()
+        public void SaveToDateTimeInvalidValueTest1()
+        {
+            var expected = default(DateTime);
+            var actual = "InvalidValue".SaveToDateTime();
+
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
+        }
+
+        [Test]
+        public void SaveToDateTimeNullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToDateTime();
+
+            actual
+                .Should()
+                .Be( default(DateTime) );
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadFormatProviderNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
+                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                                        .SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadInvalidDateTimeStyleTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
+                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                                        .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadInvalidValueTest()
+        {
+            var expected = DateTime.Now;
+            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadInvalidValueTest1()
+        {
+            var expected = default(DateTime);
+            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadNullTest()
+        {
+            String value = null;
+            var expected = DateTime.Now;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToDateTimeOverloadTest()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
 
         [Test]
-        public void SaveToDateTimeTest3()
-        {
-            var expected = DateTime.Now;
-            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToDateTimeTest5()
-        {
-            var expected = default(DateTime);
-            var actual = "InvalidValue".SaveToDateTime();
-
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
-        }
-
-        [Test]
-        public void SaveToDateTimeTest6()
+        public void SaveToDateTimeOverloadTest1()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, DateTime.MinValue );
 
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
 
         [Test]
-        public void SaveToDateTimeTest7()
+        public void SaveToDateTimeTest()
         {
-            var expected = default(DateTime);
-            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+            var expected = DateTime.Now;
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .SaveToDateTime();
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
-        
 
         [Test]
-        public void SaveToDateTimeTestNullCheck1()
+        public void SaveToDateTimeWithDefaultTest()
         {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "".SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
+            var expected = DateTime.Now;
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .SaveToDateTime( RandomValueEx.GetRandomDateTime() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
     }
 }

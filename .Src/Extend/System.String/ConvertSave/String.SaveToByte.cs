@@ -25,8 +25,6 @@ namespace Extend
         [PublicAPI]
         public static Byte SaveToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             Byte outValue;
             return value.TryParsByte( out outValue ) ? outValue : defaultValue;
         }
@@ -63,7 +61,6 @@ namespace Extend
                                        [NotNull] IFormatProvider formatProvider,
                                        Byte defaultValue = default(Byte) )
         {
-            value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Byte outValue;

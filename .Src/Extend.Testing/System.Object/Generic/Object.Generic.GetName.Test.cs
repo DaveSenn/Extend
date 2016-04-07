@@ -86,6 +86,8 @@ namespace Extend.Testing
         public void GetNameOverloadTestNullCheck()
         {
             Expression<Func<Object>> fieldName = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetName( fieldName );
 
             test.ShouldThrow<ArgumentNullException>();

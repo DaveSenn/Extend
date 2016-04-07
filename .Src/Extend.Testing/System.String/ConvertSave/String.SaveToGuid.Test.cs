@@ -12,41 +12,73 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
+        public void SaveToGuidInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToGuid();
+
+            actual
+                .Should()
+                .Be( default(Guid) );
+        }
+
+        [Test]
+        public void SaveToGuidInvalidValueWithDefaultTest()
+        {
+            var expected = Guid.NewGuid();
+            var actual = "InvalidValue".SaveToGuid( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToGuidNullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToGuid();
+
+            actual
+                .Should()
+                .Be( default(Guid) );
+        }
+
+        [Test]
+        public void SaveToGuidNullWitDefaultTest()
+        {
+            var expected = Guid.NewGuid();
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToGuid( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
         public void SaveToGuidTest()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
                                  .SaveToGuid();
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToGuidTest1()
-        {
-            var expected = Guid.NewGuid();
-            var actual = "InvalidValue".SaveToGuid( expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToGuidTest4()
+        public void SaveToGuidWithDefaultTest()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
                                  .SaveToGuid( Guid.NewGuid() );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
-
-        [Test]
-        public void SaveToGuidTest5()
-        {
-            var actual = "InvalidValue".SaveToGuid();
-
-            Assert.AreEqual( default(Guid), actual );
-        }
-        
     }
 }

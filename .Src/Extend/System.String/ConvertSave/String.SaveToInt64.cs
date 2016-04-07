@@ -47,7 +47,7 @@ namespace Extend
         [PublicAPI]
         public static Int64 SaveToInt64( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
-                                         IFormatProvider formatProvider,
+                                         [NotNull] IFormatProvider formatProvider,
                                          Int64 defaultValue = default(Int64) )
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
