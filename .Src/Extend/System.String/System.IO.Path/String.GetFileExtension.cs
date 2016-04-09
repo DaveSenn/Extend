@@ -2,6 +2,7 @@
 
 using System;
 using System.IO;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The file name can not be null.</exception>
         /// <param name="fileName">The name of the file.</param>
         /// <returns>The file extension.</returns>
-        public static String GetFileExtension( this String fileName )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetFileExtension( [NotNull] this String fileName )
         {
             fileName.ThrowIfNull( nameof( fileName ) );
 

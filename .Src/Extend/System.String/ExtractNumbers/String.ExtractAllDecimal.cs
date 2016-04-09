@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,11 @@ namespace Extend
         /// <param name="value">The string to extract the decimals from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted decimals.</returns>
-        public static List<Decimal> ExtractAllDecimal( this String value, Int32 startIndex = 0 ) => new List<Decimal>( ExtractAllFloatingNumbers( value, startIndex )
-                                                                                                                           .Select( x => x.ToDecimal() ) );
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static List<Decimal> ExtractAllDecimal( [NotNull] this String value, Int32 startIndex = 0 )
+            => new List<Decimal>( ExtractAllFloatingNumbers( value, startIndex )
+                                      .Select( x => x.ToDecimal() ) );
     }
 }

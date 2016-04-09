@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,7 +12,7 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Extracts all floating point numbers from the the given string.
+        ///     Extracts all floating point numbers from the given string.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">Invalid start index.</exception>
@@ -19,7 +20,10 @@ namespace Extend
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted floating point numbers as strings.</returns>
         // ReSharper disable once ReturnTypeCanBeEnumerable.Local
-        private static List<String> ExtractAllFloatingNumbers( this String value, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static List<String> ExtractAllFloatingNumbers( [NotNull] this String value, Int32 startIndex = 0 )
         {
             value.ThrowIfNull( nameof( value ) );
 

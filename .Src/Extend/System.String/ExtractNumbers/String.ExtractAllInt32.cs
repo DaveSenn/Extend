@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,11 @@ namespace Extend
         /// <param name="value">The string to extract the decimal from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted Int32.</returns>
-        public static List<Int32> ExtractAllInt32( this String value, Int32 startIndex = 0 ) => new List<Int32>( ExtractAllNumbers( value, startIndex )
-                                                                                                                     .Select( x => x.ToInt32() ) );
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static List<Int32> ExtractAllInt32( [NotNull] this String value, Int32 startIndex = 0 )
+            => new List<Int32>( ExtractAllNumbers( value, startIndex )
+                                    .Select( x => x.ToInt32() ) );
     }
 }
