@@ -15,10 +15,10 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDoubleTest()
         {
-            var value0 = 100.2;
-            var value1 = 100.212;
-            var value2 = -1100.2231232;
-            var value3 = 12300;
+            const Double value0 = 100.2;
+            const Double value1 = 100.212;
+            const Double value2 = -1100.2231232;
+            const Int32 value3 = 12300;
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
                                 .Replace( ",", "." );
@@ -35,7 +35,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDoubleTest1()
         {
-            var sValue = "asdf-100.1234asdf";
+            const String sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDouble();
 
             Assert.AreEqual( -100.1234d, actual );
@@ -45,6 +45,7 @@ namespace Extend.Testing
         public void ExtractFirstDoubleTest1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDouble( sValue.Length );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -54,6 +55,7 @@ namespace Extend.Testing
         public void ExtractFirstDoubleTest2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDouble( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -62,6 +64,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDoubleTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractFirstDouble( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -70,7 +74,9 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDoubleTestNullCheck1()
         {
-            Action test = () => StringEx.ExtractFirstDouble( null, 0 );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ExtractFirstDouble( null, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

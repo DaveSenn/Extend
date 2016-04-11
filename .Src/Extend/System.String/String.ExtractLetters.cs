@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to extract the letters from.</param>
         /// <returns>The extracted letters.</returns>
-        public static String ExtractLetters( this String str )
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String ExtractLetters( [NotNull] this String str )
         {
             str.ThrowIfNull( nameof( str ) );
 

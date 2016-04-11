@@ -15,10 +15,10 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32Test()
         {
-            var value0 = 100;
-            var value1 = 102;
-            var value2 = -1100;
-            var value3 = 12300;
+            const Int32 value0 = 100;
+            const Int32 value1 = 102;
+            const Int32 value2 = -1100;
+            const Int32 value3 = 12300;
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
                                 .Replace( ",", "." );
@@ -35,7 +35,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32Test1()
         {
-            var sValue = "asdf-100asdf";
+            const String sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt32();
 
             Assert.AreEqual( -100, actual );
@@ -44,6 +44,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32TestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ExtractFirstInt32( 100 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -52,6 +53,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32TestArgumentOutOfRangeException1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ExtractFirstInt32( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -60,6 +62,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32TestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractFirstInt32( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -68,7 +72,9 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstInt32TestNullCheck1()
         {
-            Action test = () => StringEx.ExtractFirstInt32( null, 0 );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ExtractFirstInt32( null, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

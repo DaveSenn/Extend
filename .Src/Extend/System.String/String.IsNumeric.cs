@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,9 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The string to check.</param>
         /// <returns>Returns true if the string is numeric only, otherwise false.</returns>
-        public static Boolean IsNumeric( this String str )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsNumeric( [NotNull] this String str )
         {
             str.ThrowIfNull( nameof( str ) );
 

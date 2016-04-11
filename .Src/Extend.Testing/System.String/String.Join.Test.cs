@@ -37,6 +37,8 @@ namespace Extend.Testing
         [Test]
         public void JoinTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -49,6 +51,8 @@ namespace Extend.Testing
         public void JoinTest1NullCheck1()
         {
             Object[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( array );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -64,6 +68,8 @@ namespace Extend.Testing
         [Test]
         public void JoinTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -76,6 +82,8 @@ namespace Extend.Testing
         public void JoinTest2NullCheck1()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( list );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -91,6 +99,8 @@ namespace Extend.Testing
         [Test]
         public void JoinTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -103,6 +113,8 @@ namespace Extend.Testing
         public void JoinTest3NullCheck1()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( list );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -133,6 +145,8 @@ namespace Extend.Testing
                 "3"
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => seperator.Join( array, 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -143,6 +157,8 @@ namespace Extend.Testing
         {
             String[] array = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ",".Join( array, 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -151,6 +167,8 @@ namespace Extend.Testing
         [Test]
         public void JoinTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new String[]
                                                {
@@ -163,6 +181,8 @@ namespace Extend.Testing
         public void JoinTestNullCheck1()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( array );
 
             test.ShouldThrow<ArgumentNullException>();

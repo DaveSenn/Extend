@@ -27,6 +27,8 @@ namespace Extend.Testing
         [Test]
         public void IsNumericTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsNumeric( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -16,8 +16,9 @@ namespace Extend.Testing
         public void GetLinesArgumentNullExceptionTest()
         {
             String value = null;
-            Action test = () => value.GetLines()
-                                     .ToList();
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.GetLines().ToList();
 
             test.ShouldThrow<ArgumentNullException>();
         }

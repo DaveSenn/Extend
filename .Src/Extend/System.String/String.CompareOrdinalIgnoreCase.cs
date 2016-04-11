@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,6 +15,9 @@ namespace Extend
         /// <param name="value">The first string to compare.</param>
         /// <param name="compareValue">The second string to compare.</param>
         /// <returns>Returns true if the given strings are equals, otherwise false.</returns>
-        public static Boolean CompareOrdinalIgnoreCase( this String value, String compareValue ) => String.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
+        [Pure]
+        [PublicAPI]
+        public static Boolean CompareOrdinalIgnoreCase( [CanBeNull] this String value, [CanBeNull] String compareValue )
+            => String.Compare( value, compareValue, StringComparison.OrdinalIgnoreCase ) == 0;
     }
 }

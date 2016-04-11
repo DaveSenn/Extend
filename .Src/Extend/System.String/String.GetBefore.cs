@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,18 +15,21 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified start index is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore( this String str, String value, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBefore( [NotNull] this String s, String value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return GetBefore( str, value, startIndex, str.Length - startIndex );
+            return s.GetBefore( value, startIndex, s.Length - startIndex );
         }
 
         /// <summary>
@@ -35,7 +39,7 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified range is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
@@ -43,19 +47,21 @@ namespace Extend
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore( this String str, String value, Int32 startIndex, Int32 length )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBefore( [NotNull] this String s, [NotNull] String value, Int32 startIndex, Int32 length )
         {
-            // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
             value.ThrowIfNull( nameof( value ) );
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
                 throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
-            str = str.Substring( startIndex, length );
-            return !str.Contains( value )
+            s = s.Substring( startIndex, length );
+            return !s.Contains( value )
                 ? String.Empty
-                : str.Substring( 0, str.IndexOf( value, StringComparison.Ordinal ) );
+                : s.Substring( 0, s.IndexOf( value, StringComparison.Ordinal ) );
         }
 
         /// <summary>
@@ -63,18 +69,21 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified start index is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore( this String str, Char value, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBefore( [NotNull] this String s, Char value, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return GetBefore( str, value, startIndex, str.Length - startIndex );
+            return s.GetBefore( value, startIndex, s.Length - startIndex );
         }
 
         /// <summary>
@@ -83,7 +92,7 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified range is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="value">The value to search for.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
@@ -91,19 +100,21 @@ namespace Extend
         ///     The part of the string before the specified value, starting at the given start index.
         ///     Or an empty string if the given string doesn't contain the given value.
         /// </returns>
-        public static String GetBefore( this String str, Char value, Int32 startIndex, Int32 length )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBefore( [NotNull] this String s, Char value, Int32 startIndex, Int32 length )
         {
-            // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
                 throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
-            str = str.Substring( startIndex, length );
-            var valueIndex = str.IndexOf( value );
+            s = s.Substring( startIndex, length );
+            var valueIndex = s.IndexOf( value );
             return valueIndex < 0
                 ? String.Empty
-                : str.Substring( 0, valueIndex );
+                : s.Substring( 0, valueIndex );
         }
     }
 }

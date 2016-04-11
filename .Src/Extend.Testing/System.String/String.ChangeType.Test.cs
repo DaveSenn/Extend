@@ -29,6 +29,8 @@ namespace Extend.Testing
         [Test]
         public void ChangeTypeTest1NullCkeck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ChangeType( null, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -37,6 +39,8 @@ namespace Extend.Testing
         [Test]
         public void ChangeTypeTest1NullCkeck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ChangeType( typeof (Int32), null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -59,6 +63,8 @@ namespace Extend.Testing
         [Test]
         public void ChangeTypeTest3NullCkeck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ChangeType( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -67,6 +73,8 @@ namespace Extend.Testing
         [Test]
         public void ChangeTypeTestNullCkeck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ChangeType( null );
 
             test.ShouldThrow<ArgumentNullException>();

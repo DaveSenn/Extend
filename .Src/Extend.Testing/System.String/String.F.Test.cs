@@ -32,7 +32,7 @@ namespace Extend.Testing
         [Test]
         public void FTest()
         {
-            var format = "Test: {0}";
+            const String format = "Test: {0}";
             var value = RandomValueEx.GetRandomString();
 
             var expected = String.Format( format, value );
@@ -44,7 +44,7 @@ namespace Extend.Testing
         [Test]
         public void FTest1()
         {
-            var format = "Test: {0}, {1}";
+            const String format = "Test: {0}, {1}";
             var value = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
 
@@ -57,6 +57,8 @@ namespace Extend.Testing
         [Test]
         public void FTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.F( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -65,7 +67,7 @@ namespace Extend.Testing
         [Test]
         public void FTest2()
         {
-            var format = "Test: {0}, {1}, {2}";
+            const String format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
             var value2 = RandomValueEx.GetRandomString();
@@ -79,6 +81,8 @@ namespace Extend.Testing
         [Test]
         public void FTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.F( null, new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -87,7 +91,7 @@ namespace Extend.Testing
         [Test]
         public void FTest3()
         {
-            var format = "Test: {0}, {1}, {2}";
+            const String format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString();
             var value1 = RandomValueEx.GetRandomString();
             var value2 = RandomValueEx.GetRandomString();
@@ -102,6 +106,8 @@ namespace Extend.Testing
         [Test]
         public void FTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.F( null, new Object(), new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -110,7 +116,7 @@ namespace Extend.Testing
         [Test]
         public void FTest4()
         {
-            var format = "Test: {0}, {1}, {2}";
+            const String format = "Test: {0}, {1}, {2}";
             var value = RandomValueEx.GetRandomString()
                                      .Substring( 0, 2 );
             var value1 = RandomValueEx.GetRandomString()
@@ -120,7 +126,8 @@ namespace Extend.Testing
             var value3 = RandomValueEx.GetRandomString()
                                       .Substring( 0, 2 );
 
-            var expected = String.Format( CultureInfo.InvariantCulture, format, value, value1, value2, value3 );
+            var expected = String.Format( CultureInfo.InvariantCulture, format, value, value1, value2 );
+            // ReSharper disable once FormatStringProblem
             var actual = format.F( CultureInfo.InvariantCulture, value, value1, value2, value3 );
 
             Assert.AreEqual( expected, actual );
@@ -129,6 +136,8 @@ namespace Extend.Testing
         [Test]
         public void FTest4NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.F( null, CultureInfo.InvariantCulture, new Object(), new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -137,6 +146,8 @@ namespace Extend.Testing
         [Test]
         public void FTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.F( null, new Object() );
 
             test.ShouldThrow<ArgumentNullException>();

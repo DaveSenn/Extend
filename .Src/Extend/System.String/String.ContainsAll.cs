@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,15 +14,17 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="str">The string to check.</param>
+        /// <param name="s">The string to check.</param>
         /// <param name="values">A list of string values.</param>
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        public static Boolean ContainsAll( this String str, params String[] values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean ContainsAll( [NotNull] this String s, [NotNull] params String[] values )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
             values.ThrowIfNull( nameof( values ) );
 
-            return values.NotAny( x => !str.Contains( x ) );
+            return values.NotAny( x => !s.Contains( x ) );
         }
 
         /// <summary>
@@ -29,16 +32,18 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="str">The string to check.</param>
+        /// <param name="s">The string to check.</param>
         /// <param name="comparisonType">Type of the comparison.</param>
         /// <param name="values">A list of string values.</param>
         /// <returns>Returns true if the string contains all values, otherwise false.</returns>
-        public static Boolean ContainsAll( this String str, StringComparison comparisonType, params String[] values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean ContainsAll( [NotNull] this String s, StringComparison comparisonType, [NotNull] params String[] values )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
             values.ThrowIfNull( nameof( values ) );
 
-            return values.NotAny( x => str.IndexOf( x, comparisonType ) == -1 );
+            return values.NotAny( x => s.IndexOf( x, comparisonType ) == -1 );
         }
     }
 }

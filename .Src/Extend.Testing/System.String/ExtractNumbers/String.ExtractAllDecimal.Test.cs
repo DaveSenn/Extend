@@ -33,6 +33,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDecimalTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractAllDecimal( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -41,6 +43,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDecimalTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractAllDecimal( null, 0 );
 
             test.ShouldThrow<ArgumentNullException>();

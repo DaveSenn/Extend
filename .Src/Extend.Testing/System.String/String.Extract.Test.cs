@@ -21,6 +21,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Extract( null, y => false );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -29,6 +31,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Extract( null );
 
             test.ShouldThrow<ArgumentNullException>();

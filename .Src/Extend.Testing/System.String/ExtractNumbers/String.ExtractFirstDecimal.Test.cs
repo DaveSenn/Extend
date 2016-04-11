@@ -35,7 +35,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDecimalTest1()
         {
-            var sValue = "asdf-100.1234asdf";
+            const String sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDecimal();
 
             Assert.AreEqual( -100.1234m, actual );
@@ -45,6 +45,7 @@ namespace Extend.Testing
         public void ExtractFirstDecimalTest1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDecimal( sValue.Length );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -54,6 +55,7 @@ namespace Extend.Testing
         public void ExtractFirstDecimalTest2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => sValue.ExtractFirstDecimal( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -62,6 +64,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDecimalTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractFirstDecimal( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -70,7 +74,9 @@ namespace Extend.Testing
         [Test]
         public void ExtractFirstDecimalTestNullCheck1()
         {
-            Action test = () => StringEx.ExtractFirstDecimal( null, 0 );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ExtractFirstDecimal( null, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,10 @@ namespace Extend
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, String[] values )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Join( [NotNull] this String separator, [NotNull] String[] values )
         {
             separator.ThrowIfNull( nameof( separator ) );
             values.ThrowIfNull( nameof( values ) );
@@ -43,7 +47,10 @@ namespace Extend
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, Object[] values )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Join( [NotNull] this String separator, [NotNull] Object[] values )
         {
             separator.ThrowIfNull( nameof( separator ) );
             values.ThrowIfNull( nameof( values ) );
@@ -65,7 +72,10 @@ namespace Extend
         ///     A string that consists of the elements in  delimited by the string.
         ///     If is an empty IEnumerable, the method returns String.Empty.
         /// </returns>
-        public static String Join<T>( this String separator, IEnumerable<T> values )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Join<T>( [NotNull] this String separator, [NotNull] IEnumerable<T> values )
         {
             separator.ThrowIfNull( nameof( separator ) );
             values.ThrowIfNull( nameof( values ) );
@@ -88,7 +98,10 @@ namespace Extend
         ///     A string that consists of the elements in  delimited by the  string.
         ///     If is an empty array, the method returns String.Empty.
         /// </returns>
-        public static String Join( this String separator, String[] values, Int32 startIndex, Int32 count )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Join( [NotNull] this String separator, [NotNull] String[] values, Int32 startIndex, Int32 count )
         {
             separator.ThrowIfNull( nameof( separator ) );
             values.ThrowIfNull( nameof( values ) );

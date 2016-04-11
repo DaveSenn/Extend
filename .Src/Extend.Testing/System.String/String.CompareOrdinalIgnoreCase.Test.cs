@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -10,7 +12,35 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void CompareOrdinalIgnoreCaseTest()
+        public void CompareOrdinalIgnoreNullTest()
+        {
+            var left = RandomValueEx.GetRandomString();
+            String right = null;
+
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = left.CompareOrdinalIgnoreCase( right );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void CompareOrdinalIgnoreNullTest1()
+        {
+            String left = null;
+            var right = RandomValueEx.GetRandomString();
+
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = left.CompareOrdinalIgnoreCase( right );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void CompareOrdinalIgnoreTest()
         {
             var value1 = RandomValueEx.GetRandomString();
             var value2 = value1;

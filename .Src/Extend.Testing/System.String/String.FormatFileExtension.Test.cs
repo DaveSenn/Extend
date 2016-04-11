@@ -24,6 +24,8 @@ namespace Extend.Testing
         [Test]
         public void FormatFileExtensionTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.FormatFileExtension( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -32,6 +34,8 @@ namespace Extend.Testing
         [Test]
         public void FormatFileExtensionTestNullCheckArgumentException()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => String.Empty.FormatFileExtension();
 
             test.ShouldThrow<ArgumentException>();

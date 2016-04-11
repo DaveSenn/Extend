@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,16 +15,19 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified start index is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="before">The before value.</param>
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, String before, String after, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return GetBetween( str, before, after, startIndex, str.Length - startIndex );
+            return s.GetBetween( before, after, startIndex, s.Length - startIndex );
         }
 
         /// <summary>
@@ -33,31 +37,33 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified range is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="before">The before value.</param>
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, String before, String after, Int32 startIndex, Int32 length )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex, Int32 length )
         {
-            // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
             before.ThrowIfNull( nameof( before ) );
             after.ThrowIfNull( nameof( after ) );
 
-            if ( startIndex < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || startIndex + length > s.Length )
                 throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
-            str = str.Substring( startIndex, length );
+            s = s.Substring( startIndex, length );
 
-            var beforeIndex = str.IndexOf( before, StringComparison.Ordinal );
+            var beforeIndex = s.IndexOf( before, StringComparison.Ordinal );
             if ( beforeIndex < 0 )
                 return String.Empty;
 
             var actualStartIndex = beforeIndex + before.Length;
-            var afterIndex = str.IndexOf( after, actualStartIndex, StringComparison.Ordinal );
-            return afterIndex < 0 ? String.Empty : str.Substring( actualStartIndex, afterIndex - actualStartIndex );
+            var afterIndex = s.IndexOf( after, actualStartIndex, StringComparison.Ordinal );
+            return afterIndex < 0 ? String.Empty : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
 
         /// <summary>
@@ -66,16 +72,19 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified start index is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="before">The before value.</param>
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, Char before, Char after, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex = 0 )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return GetBetween( str, before, after, startIndex, str.Length - startIndex );
+            return s.GetBetween( before, after, startIndex, s.Length - startIndex );
         }
 
         /// <summary>
@@ -85,33 +94,33 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The specified range is invalid.</exception>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="before">The before value.</param>
         /// <param name="after">The after value.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <param name="length">The length of the string, from the start index.</param>
         /// <returns>The part of the string between the before and after value.</returns>
-        public static String GetBetween( this String str, Char before, Char after, Int32 startIndex, Int32 length )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex, Int32 length )
         {
-            // ReSharper disable once AccessToModifiedClosure
-            str.ThrowIfNull( nameof( str ) );
-            before.ThrowIfNull( nameof( before ) );
-            after.ThrowIfNull( nameof( after ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            if ( startIndex < 0 || length < 0 || startIndex + length > str.Length )
+            if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
                 throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
 
-            str = str.Substring( startIndex, length );
+            s = s.Substring( startIndex, length );
 
-            var beforeIndex = str.IndexOf( before );
+            var beforeIndex = s.IndexOf( before );
             if ( beforeIndex < 0 )
                 return String.Empty;
 
             var actualStartIndex = beforeIndex + 1;
-            var afterIndex = str.IndexOf( after, actualStartIndex );
+            var afterIndex = s.IndexOf( after, actualStartIndex );
             return afterIndex < 0
                 ? String.Empty
-                : str.Substring( actualStartIndex, afterIndex - actualStartIndex );
+                : s.Substring( actualStartIndex, afterIndex - actualStartIndex );
         }
     }
 }

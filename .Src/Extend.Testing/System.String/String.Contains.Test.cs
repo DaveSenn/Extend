@@ -45,6 +45,9 @@ namespace Extend.Testing
         public void ContainsTestArgumentNullException()
         {
             const String target = null;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => target.Contains( "String", StringComparison.Ordinal );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -54,6 +57,9 @@ namespace Extend.Testing
         public void ContainsTestArgumentNullException1()
         {
             const String target = "my string";
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => target.Contains( null, StringComparison.Ordinal );
 
             test.ShouldThrow<ArgumentNullException>();

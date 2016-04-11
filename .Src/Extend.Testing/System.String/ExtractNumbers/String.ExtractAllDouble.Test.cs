@@ -14,10 +14,10 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDoubleTest()
         {
-            var value0 = 100.2d;
-            var value1 = 100.212d;
-            var value2 = -1100.2231232d;
-            var value3 = 12300d;
+            const Double value0 = 100.2d;
+            const Double value1 = 100.212d;
+            const Double value2 = -1100.2231232d;
+            const Double value3 = 12300d;
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
                                 .Replace( ",", "." );
@@ -33,6 +33,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDoubleTestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100.1".ExtractAllDouble( 100 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -41,6 +42,7 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDoubleTestArgumentOutOfRangeException1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100.1".ExtractAllDouble( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -49,6 +51,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDoubleTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractAllDouble( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -57,6 +61,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractAllDoubleTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractAllDouble( null, 0 );
 
             test.ShouldThrow<ArgumentNullException>();

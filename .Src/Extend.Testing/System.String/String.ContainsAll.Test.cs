@@ -28,6 +28,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAllTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ContainsAll( null, StringComparison.CurrentCulture, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -36,6 +38,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAllTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".ContainsAll( StringComparison.CurrentCulture, null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +48,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAllTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ContainsAll( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -52,6 +58,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAllTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".ContainsAll( null );
 
             test.ShouldThrow<ArgumentNullException>();

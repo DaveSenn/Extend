@@ -2,6 +2,7 @@
 
 using System;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,9 @@ namespace Extend
         /// <param name="input">The <see cref="String" /> to search for a match.</param>
         /// <param name="pattern">The regular expression pattern used by the <see cref="Regex" />.</param>
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
-        public static Boolean IsNotMatch( this String input, String pattern )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsNotMatch( [NotNull] this String input, [NotNull] String pattern )
         {
             input.ThrowIfNull( nameof( input ) );
             pattern.ThrowIfNull( nameof( pattern ) );
@@ -36,7 +39,9 @@ namespace Extend
         /// <param name="pattern">The regular expression pattern used by the <see cref="Regex" />.</param>
         /// <param name="options">The regular expression options used by the <see cref="Regex" />.</param>
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
-        public static Boolean IsNotMatch( this String input, String pattern, RegexOptions options )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsNotMatch( [NotNull] this String input, [NotNull] String pattern, RegexOptions options )
         {
             input.ThrowIfNull( nameof( input ) );
             pattern.ThrowIfNull( nameof( pattern ) );
@@ -51,13 +56,14 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The input can not be null.</exception>
         /// <exception cref="ArgumentNullException">The pattern can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The timeout can not be null.</exception>
         /// <param name="input">The <see cref="String" /> to search for a match.</param>
         /// <param name="pattern">The regular expression pattern used by the <see cref="Regex" />.</param>
         /// <param name="options">The regular expression options used by the <see cref="Regex" />.</param>
         /// <param name="timeOut">The timeout for the match operation.</param>
         /// <returns>A value of true if the regular expression doesn't find a match, otherwise false.</returns>
-        public static Boolean IsNotMatch( this String input, String pattern, RegexOptions options, TimeSpan timeOut )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsNotMatch( [NotNull] this String input, [NotNull] String pattern, RegexOptions options, TimeSpan timeOut )
         {
             input.ThrowIfNull( nameof( input ) );
             pattern.ThrowIfNull( nameof( pattern ) );

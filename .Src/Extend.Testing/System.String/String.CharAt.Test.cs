@@ -16,6 +16,8 @@ namespace Extend.Testing
         {
             String value = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.CharAt( 1 );
             test.ShouldThrow<ArgumentNullException>();
         }

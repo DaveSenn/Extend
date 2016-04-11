@@ -21,6 +21,8 @@ namespace Extend.Testing
         [Test]
         public void ExtractNumbersTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractNumbers( null );
 
             test.ShouldThrow<ArgumentNullException>();

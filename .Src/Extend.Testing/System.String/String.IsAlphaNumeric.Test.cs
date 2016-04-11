@@ -27,6 +27,8 @@ namespace Extend.Testing
         [Test]
         public void IsAlphaNumericTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsAlphaNumeric( null );
 
             test.ShouldThrow<ArgumentNullException>();

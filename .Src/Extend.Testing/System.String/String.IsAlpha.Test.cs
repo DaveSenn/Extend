@@ -24,6 +24,8 @@ namespace Extend.Testing
         [Test]
         public void IsAlphaTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsAlpha( null );
 
             test.ShouldThrow<ArgumentNullException>();
