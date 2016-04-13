@@ -86,3 +86,7 @@ var weekend = dateTime.IsWeekendDay();
 
 ### License
 Licensed under the [MIT License](https://raw.githubusercontent.com/DaveSenn/Extend/dev/License.txt).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/DaveSenn/extend/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
