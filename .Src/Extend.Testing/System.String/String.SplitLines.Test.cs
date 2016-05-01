@@ -57,6 +57,8 @@ namespace Extend.Testing
         public void SplitLinesTest2NullCheck()
         {
             String value = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.SplitLines();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -77,7 +79,8 @@ namespace Extend.Testing
         public void SplitLinesTestNullCheck()
         {
             String value = null;
-
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -87,7 +90,8 @@ namespace Extend.Testing
         public void SplitLinesTestNullCheck1()
         {
             String value = null;
-
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.SplitLines( StringSplitOptions.None );
 
             test.ShouldThrow<ArgumentNullException>();

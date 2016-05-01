@@ -21,6 +21,8 @@ namespace Extend.Testing
         [Test]
         public void RemoveLettersTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.RemoveLetters( null );
 
             test.ShouldThrow<ArgumentNullException>();

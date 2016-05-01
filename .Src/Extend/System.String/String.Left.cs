@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,12 +12,15 @@ namespace Extend
         /// <summary>
         ///     Returns a string containing a specified number of characters from the left side of a string.
         /// </summary>
+        /// <exception cref="ArgumentNullException">value can not be null.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">count is less than 0 or greater than the length of the given string.</exception>
         /// <param name="value">The string from which the leftmost characters are returned.</param>
         /// <param name="count">The number of characters to return.</param>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">count is less than 0 or greater than the length of the string.</exception>
-        /// <returns>A string containing a specified number of characters from the left side of a string.</returns>
-        public static String Left( this String value, Int32 count )
+        /// <returns>Returns a string containing a specified number of characters from the left side of the given string.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Left( [NotNull] this String value, Int32 count )
         {
             value.ThrowIfNull( nameof( value ) );
 

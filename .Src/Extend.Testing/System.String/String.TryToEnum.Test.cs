@@ -14,21 +14,30 @@ namespace Extend.Testing
         [Test]
         public void TryToEnumTest()
         {
-            var expected = DayOfWeek.Monday;
+            const DayOfWeek expected = DayOfWeek.Monday;
             var actual = DayOfWeek.Saturday;
             var result = StringEx.TryToEnum( expected.ToString(), out actual );
 
-            Assert.AreEqual( expected, actual );
-            Assert.IsTrue( result );
+            actual
+                .Should()
+                .Be( expected );
+            result
+                .Should()
+                .BeTrue();
         }
 
         [Test]
         public void TryToEnumTestNullCheck()
         {
             var day = DayOfWeek.Saturday;
-            Action test = () => StringEx.TryToEnum( null, out day );
+            var actual = StringEx.TryToEnum( null, out day );
 
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeFalse();
+            day
+                .Should()
+                .Be( default(DayOfWeek) );
         }
     }
 }

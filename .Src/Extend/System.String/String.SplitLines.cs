@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,7 +12,7 @@ namespace Extend
         /// <summary>
         ///     Splits the given string at each line break (<see cref="Environment.NewLine" />).
         /// </summary>
-        /// <example>value can not be null.</example>
+        /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <param name="value">The string to split.</param>
         /// <param name="stringSplitOptions">
         ///     <see cref="System.StringSplitOptions.RemoveEmptyEntries" /> to omit empty array elements
@@ -22,7 +23,10 @@ namespace Extend
         ///     Returns an array whose elements contain the substrings in this string that are delimited by
         ///     <see cref="Environment.NewLine" />.
         /// </returns>
-        public static String[] SplitLines( this String value, StringSplitOptions stringSplitOptions )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String[] SplitLines( [NotNull] this String value, StringSplitOptions stringSplitOptions )
         {
             value.ThrowIfNull( nameof( value ) );
 
@@ -36,12 +40,16 @@ namespace Extend
         /// <summary>
         ///     Splits the given string at each line break (<see cref="Environment.NewLine" />).
         /// </summary>
-        /// <example>value can not be null.</example>
+        /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <param name="value">The string to split.</param>
         /// <returns>
         ///     Returns an array whose elements contain the substrings in this string that are delimited by
         ///     <see cref="Environment.NewLine" />.
         /// </returns>
-        public static String[] SplitLines( this String value ) => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String[] SplitLines( [NotNull] this String value )
+            => value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
     }
 }

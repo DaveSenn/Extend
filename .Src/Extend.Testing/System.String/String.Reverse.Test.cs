@@ -35,6 +35,8 @@ namespace Extend.Testing
         [Test]
         public void ReverseTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Reverse( null );
 
             test.ShouldThrow<ArgumentNullException>();

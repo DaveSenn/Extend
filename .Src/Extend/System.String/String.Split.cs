@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -25,8 +26,11 @@ namespace Extend
         /// <returns>
         ///     Returns an array whose elements contain the substrings in this string that are delimited by the separator.
         /// </returns>
-        public static String[] Split( this String value,
-                                      String separator,
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String[] Split( [NotNull] this String value,
+                                      [NotNull] String separator,
                                       StringSplitOptions stringSplitOption = StringSplitOptions.None )
         {
             value.ThrowIfNull( nameof( value ) );
@@ -60,9 +64,12 @@ namespace Extend
         ///     Returns an array whose elements contain the substrings in this string that are delimited
         ///     by one or more strings in separator.
         /// </returns>
-        public static String[] Split( this String value,
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String[] Split( [NotNull] this String value,
                                       StringSplitOptions stringSplitOption,
-                                      params String[] separators )
+                                      [NotNull] params String[] separators )
         {
             value.ThrowIfNull( nameof( value ) );
             separators.ThrowIfNull( nameof( separators ) );

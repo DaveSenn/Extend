@@ -34,6 +34,8 @@ namespace Extend.Testing
         public void ToCultureInfoTest1NullCheck()
         {
             const String culture = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => culture.ToCultureInfo();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -52,6 +54,7 @@ namespace Extend.Testing
         public void ToCultureInfoTest3()
         {
             const String culture = "invalidCultureName";
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => culture.ToCultureInfo();
 
             test.ShouldThrow<CultureNotFoundException>();

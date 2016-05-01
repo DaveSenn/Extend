@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,16 +13,19 @@ namespace Extend
         /// <summary>
         ///     Removes all letters and numbers from the given string.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The input string.</param>
+        /// <exception cref="ArgumentNullException">s can not be null.</exception>
+        /// <param name="s">The input string.</param>
         /// <returns>The given string without any letters or numbers.</returns>
-        public static String RemoveLettersAndNumbers( this String str )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String RemoveLettersAndNumbers( [NotNull] this String s )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return new String( str.ToCharArray()
-                                  .Where( x => !x.IsNumber() && !x.IsLetter() )
-                                  .ToArray() );
+            return new String( s.ToCharArray()
+                                .Where( x => !x.IsNumber() && !x.IsLetter() )
+                                .ToArray() );
         }
     }
 }

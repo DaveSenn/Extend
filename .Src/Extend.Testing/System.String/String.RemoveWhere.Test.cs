@@ -21,6 +21,8 @@ namespace Extend.Testing
         [Test]
         public void RemoveWhereTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.RemoveWhere( null, x => false );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -29,6 +31,8 @@ namespace Extend.Testing
         [Test]
         public void RemoveWhereTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".RemoveWhere( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,11 +18,9 @@ namespace Extend
         /// <param name="ignoreCase">Determines whether or not to ignore the casing of the string.</param>
         /// <param name="outValue">The output value.</param>
         /// <returns>Returns the converted enum value.</returns>
-        public static Boolean TryToEnum<T>( String value, out T outValue, Boolean ignoreCase = true ) where T : struct
-        {
-            value.ThrowIfNull( nameof( value ) );
-
-            return Enum.TryParse( value, ignoreCase, out outValue );
-        }
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryToEnum<T>( [CanBeNull] String value, out T outValue, Boolean ignoreCase = true ) where T : struct
+            => Enum.TryParse( value, ignoreCase, out outValue );
     }
 }

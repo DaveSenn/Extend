@@ -46,6 +46,8 @@ namespace Extend.Testing
         [Test]
         public void SubstringLeftSafeTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.SubstringLeftSafe( null, 1, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -54,6 +56,8 @@ namespace Extend.Testing
         [Test]
         public void SubstringLeftSafeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.SubstringLeftSafe( null, 5 );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -15,6 +15,8 @@ namespace Extend.Testing
         public void LeftArgumentNullExceptionTest()
         {
             String value = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.Left( 1 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -23,6 +25,7 @@ namespace Extend.Testing
         [Test]
         public void LeftArgumentOutOfRangeExceptionTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".Left( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -31,6 +34,7 @@ namespace Extend.Testing
         [Test]
         public void LeftArgumentOutOfRangeExceptionTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".Left( 10 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();

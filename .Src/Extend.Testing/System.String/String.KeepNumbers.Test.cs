@@ -21,6 +21,8 @@ namespace Extend.Testing
         [Test]
         public void KeepNumbersTEstCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.KeepNumbers( null );
 
             test.ShouldThrow<ArgumentNullException>();

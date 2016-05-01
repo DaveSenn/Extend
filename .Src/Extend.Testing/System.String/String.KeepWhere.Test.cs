@@ -14,6 +14,8 @@ namespace Extend.Testing
         [Test]
         public void KeepWhereCaseNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.KeepWhere( null, x => false );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -29,6 +31,8 @@ namespace Extend.Testing
         [Test]
         public void KeepWhereTEstCaseNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".KeepWhere( null );
 
             test.ShouldThrow<ArgumentNullException>();

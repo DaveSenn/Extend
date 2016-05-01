@@ -24,6 +24,8 @@ namespace Extend.Testing
         [Test]
         public void KeepLettersAndNumbersTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.KeepLettersAndNumbers( null );
 
             test.ShouldThrow<ArgumentNullException>();
