@@ -35,6 +35,8 @@ namespace Extend.Testing
         [Test]
         public void MinimumTest1NullCheck()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => 10.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +46,8 @@ namespace Extend.Testing
         public void MinimumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Minimum( func, 1, 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -52,6 +56,8 @@ namespace Extend.Testing
         [Test]
         public void MinimumTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Minimum( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -83,7 +83,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static T ChangeType<T>( [CanBeNull] this String value )
-            => (T) Convert.ChangeType( value, typeof (T) );
+            => (T) Convert.ChangeType( value, typeof(T) );
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -111,7 +111,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return (T) Convert.ChangeType( value, typeof (T), formatProvider );
+            return (T) Convert.ChangeType( value, typeof(T), formatProvider );
         }
     }
 }

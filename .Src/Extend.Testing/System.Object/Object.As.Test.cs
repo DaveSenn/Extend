@@ -21,11 +21,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AsTestNullCheck()
+        public void AsTestNullValue()
         {
-            Action test = () => ObjectEx.As<String>( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            var res = ObjectEx.As<String>( null );
+            res.Should()
+               .BeNull();
         }
     }
 }

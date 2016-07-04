@@ -31,7 +31,7 @@ namespace Extend.Testing
         [Test]
         public void GetPublicSettablePropertiesTest()
         {
-            var type = typeof (TestModel);
+            var type = typeof(TestModel);
             var actual = type.GetPublicSettableProperties()
                              .ToList();
 
@@ -50,7 +50,7 @@ namespace Extend.Testing
         [Test]
         public void GetPublicSettablePropertiesTest1()
         {
-            var type = typeof (TestModelNoProperties);
+            var type = typeof(TestModelNoProperties);
             var actual = type.GetPublicSettableProperties()
                              .ToList();
 

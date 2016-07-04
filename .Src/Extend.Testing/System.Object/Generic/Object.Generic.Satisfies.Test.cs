@@ -31,6 +31,8 @@ namespace Extend.Testing
         public void SatisfiesTestnullCheck()
         {
             ISpecification<String> specification = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1234".Satisfies( specification );
 
             test.ShouldThrow<ArgumentNullException>();

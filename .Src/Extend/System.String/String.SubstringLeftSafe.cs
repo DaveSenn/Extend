@@ -44,7 +44,7 @@ namespace Extend
             s.ThrowIfNull( nameof( s ) );
 
             return s.Substring( Math.Min( startIndex, s.Length ),
-                                  Math.Min( length, Math.Max( s.Length - startIndex, 0 ) ) );
+                                Math.Min( length, Math.Max( s.Length - startIndex, 0 ) ) );
         }
     }
 }

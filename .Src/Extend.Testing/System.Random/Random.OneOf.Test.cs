@@ -37,6 +37,8 @@ namespace Extend.Testing
         [Test]
         public void RandomOneTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -46,6 +48,8 @@ namespace Extend.Testing
         public void RandomOneTest1NullCheck1()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Random().RandomOne<String>( list );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -54,6 +58,8 @@ namespace Extend.Testing
         [Test]
         public void RandomOneTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -63,6 +69,8 @@ namespace Extend.Testing
         public void RandomOneTestNullCheck1()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Random().RandomOne( array );
 
             test.ShouldThrow<ArgumentNullException>();

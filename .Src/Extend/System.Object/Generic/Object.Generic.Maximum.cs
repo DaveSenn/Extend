@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,10 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the maximum value.</returns>
-        public static TSource Maximum<TSource>( this TSource value, params TSource[] values )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static TSource Maximum<TSource>( [CanBeNull] this TSource value, [NotNull] params TSource[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -40,9 +44,12 @@ namespace Extend
         /// <param name="values">The other values.</param>
         /// <param name="selector"> A transform function to apply to each element.</param>
         /// <returns>Returns the maximum value.</returns>
-        public static TResult Maximum<TSource, TResult>( this TSource value,
-                                                         Func<TSource, TResult> selector,
-                                                         params TSource[] values )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static TResult Maximum<TSource, TResult>( [CanBeNull] this TSource value,
+                                                         [NotNull] Func<TSource, TResult> selector,
+                                                         [NotNull] params TSource[] values )
         {
             values.ThrowIfNull( nameof( values ) );
             selector.ThrowIfNull( nameof( selector ) );

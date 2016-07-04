@@ -29,6 +29,8 @@ namespace Extend.Testing
         public void SpecificationTestNullCheck()
         {
             Func<Int32, Boolean> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 11.Specification( expression );
 
             test.ShouldThrow<ArgumentNullException>();

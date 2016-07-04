@@ -43,7 +43,6 @@ namespace Extend.Testing
         [Test]
         public void IsMatchTest1NullCheck()
         {
-
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
@@ -54,7 +53,6 @@ namespace Extend.Testing
         [Test]
         public void IsMatchTest1NullCheck1()
         {
-
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsMatch( null, RegexOptions.Multiline );
@@ -65,7 +63,6 @@ namespace Extend.Testing
         [Test]
         public void IsMatchTestNullCheck()
         {
-
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsMatch( null, "" );

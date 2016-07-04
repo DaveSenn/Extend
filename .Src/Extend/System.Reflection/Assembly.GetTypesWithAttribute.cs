@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,15 +18,20 @@ namespace Extend
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">assemblies can not be null.</exception>
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="assemblies">The assemblies to search in.</param>
         /// <returns>Returns the found types and their attributes.</returns>
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( params Assembly[] assemblies ) where T : Attribute
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( [NotNull] params Assembly[] assemblies ) where T : Attribute
             => GetTypesWithAttribute<T>( false, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">assemblies can not be null.</exception>
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="inherit">
         ///     true to search this member's inheritance chain to find the attributes; otherwise, false. This
@@ -33,13 +39,17 @@ namespace Extend
         /// </param>
         /// <param name="assemblies">The assemblies to search in.</param>
         /// <returns>Returns the found types and their attributes.</returns>
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, params Assembly[] assemblies ) where T : Attribute
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
             => GetTypesWithAttribute<T>( inherit, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type and are sub
         ///     classes of the specified base type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">assemblies can not be null.</exception>
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="inherit">
         ///     true to search this member's inheritance chain to find the attributes; otherwise, false. This
@@ -48,11 +58,15 @@ namespace Extend
         /// <param name="baseType">The base type to search for, or null.</param>
         /// <param name="assemblies">The assemblies to search in.</param>
         /// <returns>Returns the found types and their attributes.</returns>
-        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, Type baseType, params Assembly[] assemblies ) where T : Attribute
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, Type baseType, [NotNull] params Assembly[] assemblies )
+            where T : Attribute
         {
             assemblies.ThrowIfNull( nameof( assemblies ) );
 
-            var attributeType = typeof (T);
+            var attributeType = typeof(T);
             var result = new List<AttributeDefinitionType<T>>();
 
             assemblies.ForEach( x =>

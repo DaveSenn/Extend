@@ -19,7 +19,7 @@ namespace Extend
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static String SubstringLeft([NotNull]this String s, Int32 length )
+        public static String SubstringLeft( [NotNull] this String s, Int32 length )
         {
             s.ThrowIfNull( nameof( s ) );
 

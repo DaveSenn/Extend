@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,10 +18,16 @@ namespace Extend
         /// <summary>
         ///     Gets the property info of each public settable property of the given type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">memberType can not be null.</exception>
         /// <param name="memberType">The type to get the properties of.</param>
         /// <returns>Returns the property infos.</returns>
-        public static IEnumerable<PropertyInfo> GetPublicSettableProperties( this Type memberType )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IEnumerable<PropertyInfo> GetPublicSettableProperties( [NotNull] this Type memberType )
         {
+            memberType.ThrowIfNull( nameof( memberType ) );
+
 #if PORTABLE45
             var propertyInfos = memberType.GetRuntimeProperties()
                                           .Where( x => x.SetMethod?.IsPublic ?? false );

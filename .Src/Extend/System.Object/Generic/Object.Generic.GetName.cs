@@ -26,7 +26,10 @@ namespace Extend
         /// <param name="obj">The source object.</param>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name of the member to which the given expression points.</returns>
-        public static String GetName<TObject, TMember>( this TObject obj, Expression<Func<TObject, TMember>> expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetName<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
@@ -46,6 +49,7 @@ namespace Extend
         /// <param name="obj">The object to call the method on.</param>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name of the member to which the given expression points.</returns>
+        [NotNull]
         [Pure]
         [PublicAPI]
         public static String GetName<TObject, TMember>( [CanBeNull] [NoEnumeration] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
@@ -64,7 +68,10 @@ namespace Extend
         ///     <see cref="LambdaExpression" /> with an invalid body).
         /// </exception>
         /// <returns>Returns the name of the member to which the given expression points.</returns>
-        private static String GetName( Expression expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String GetName( [NotNull] Expression expression )
         {
             MemberExpression memberExpression;
             if ( !expression.TryGetMemberExpression( out memberExpression ) )

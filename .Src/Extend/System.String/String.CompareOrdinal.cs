@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns true if the given strings are equals, otherwise false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean CompareOrdinal( this String value, String compareValue ) 
+        public static Boolean CompareOrdinal( this String value, String compareValue )
             => String.Compare( value, compareValue, StringComparison.Ordinal ) == 0;
     }
 }

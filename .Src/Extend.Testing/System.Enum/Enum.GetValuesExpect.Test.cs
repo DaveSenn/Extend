@@ -45,7 +45,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesExpectTest2()
         {
-            var type = typeof (DayOfWeek);
+            var type = typeof(DayOfWeek);
             var actual = EnumEx.GetValuesExpect( type, DayOfWeek.Sunday, DayOfWeek.Thursday );
 
             var casted = actual.Cast<Object>();
@@ -63,7 +63,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesExpectTest3()
         {
-            var type = typeof (DayOfWeek);
+            var type = typeof(DayOfWeek);
             var param = new Object[0];
             var actual = EnumEx.GetValuesExpect( type, param );
 
@@ -93,7 +93,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesExpectTestArgumentExceptionCheck1()
         {
-            Action test = () => EnumEx.GetValuesExpect( typeof (Int32), 2, 3, 4, 5 );
+            Action test = () => EnumEx.GetValuesExpect( typeof(Int32), 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentException>();
         }

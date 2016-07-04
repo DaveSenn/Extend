@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 #if PORTABLE45
 using System.Reflection;
 
@@ -19,10 +20,16 @@ namespace Extend
         /// <summary>
         ///     Gets the name of the assembly of the given type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to get the assembly name of.</param>
         /// <returns>Returns the assembly name without version and key.</returns>
-        private static String GetAssemblyName( this Type type )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String GetAssemblyName( [NotNull] this Type type )
         {
+            type.ThrowIfNull( nameof( type ) );
+
 #if PORTABLE45
             var assembly = type.GetTypeInfo()
                                .Assembly;
@@ -39,7 +46,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to get the name of.</param>
         /// <returns>Returns the name of the given type.</returns>
-        public static String GetNameWithNamespace( this Type type )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetNameWithNamespace( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
 
@@ -72,8 +82,13 @@ namespace Extend
         /// <summary>
         ///     Gets the name of a type without any generic arguments.
         /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to get the name of.</param>
-        /// <returns></returns>
-        private static String GetNameWithNamespaceSimpleType( this Type type ) => $"{type.FullName}, {type.GetAssemblyName()}";
+        /// <returns>Returns the name and namespace of a simple type.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String GetNameWithNamespaceSimpleType( [NotNull] this Type type )
+            => $"{type.FullName}, {type.GetAssemblyName()}";
     }
 }

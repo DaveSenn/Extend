@@ -385,7 +385,7 @@ namespace Extend.Testing
             var options = InstanceCreator.CreateInstanceOptions<TestModel>();
 
             var factory = new ExpressionInstanceFactory( x => 100 )
-                .AddSelectionRule( new TypeMemberSelectionRule( typeof (Double), MemberSelectionMode.Include, CompareMode.Is ) );
+                .AddSelectionRule( new TypeMemberSelectionRule( typeof(Double), MemberSelectionMode.Include, CompareMode.Is ) );
             InstanceCreator.DefaultFactories.Add( factory );
 
             Action test = () => options.Complete()

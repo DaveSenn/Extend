@@ -30,7 +30,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesTest1()
         {
-            var type = typeof (DayOfWeek);
+            var type = typeof(DayOfWeek);
             var actual = EnumEx.GetValues( type );
 
             var casted = actual.Cast<Object>();
@@ -59,7 +59,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesTestArgumentExceptionCheck1()
         {
-            Action test = () => EnumEx.GetValues( typeof (Int32) );
+            Action test = () => EnumEx.GetValues( typeof(Int32) );
 
             test.ShouldThrow<ArgumentException>();
         }

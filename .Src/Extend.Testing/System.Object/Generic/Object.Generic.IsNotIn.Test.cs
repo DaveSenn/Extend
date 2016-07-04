@@ -45,6 +45,8 @@ namespace Extend.Testing
         public void IsNotInTest1NullCheck()
         {
             IEnumerable<String> enumerable = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsNotIn( enumerable );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -54,6 +56,8 @@ namespace Extend.Testing
         public void IsNotInTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsNotIn( array );
 
             test.ShouldThrow<ArgumentNullException>();

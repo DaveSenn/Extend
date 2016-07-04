@@ -24,7 +24,7 @@ namespace Extend
         /// <typeparam name="TException">The type of the exception.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
-        public static Boolean SafeExecute<TException>( this Action action ) where TException : Exception => action.SafeExecute( typeof (TException) );
+        public static Boolean SafeExecute<TException>( this Action action ) where TException : Exception => action.SafeExecute( typeof(TException) );
 
         /// <summary>
         ///     Executes the given action insode of a try catch block. Cataches exceptions of the given types.
@@ -35,7 +35,7 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecute<TException1, TException2>( this Action action )
             where TException1 : Exception
-            where TException2 : Exception => action.SafeExecute( typeof (TException1), typeof (TException2) );
+            where TException2 : Exception => action.SafeExecute( typeof(TException1), typeof(TException2) );
 
         /// <summary>
         ///     Executes the given action insode of a try catch block. Cataches exceptions of the given types.
@@ -48,7 +48,7 @@ namespace Extend
         public static Boolean SafeExecute<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
-            where TException3 : Exception => action.SafeExecute( typeof (TException1), typeof (TException2), typeof (TException3) );
+            where TException3 : Exception => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3) );
 
         /// <summary>
         ///     Executes the given action insode of a try catch block. Cataches exceptions of the given types.
@@ -63,7 +63,7 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
-            where TException4 : Exception => action.SafeExecute( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
+            where TException4 : Exception => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4) );
 
         /// <summary>
         ///     Executes the given action insode of a try catch block. Cataches all exception types contained in the given list of

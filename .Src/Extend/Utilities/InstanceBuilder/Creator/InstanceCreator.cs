@@ -115,7 +115,7 @@ namespace Extend
             //Create instance
             var rootMemberInformation = new MemberInformation
             {
-                MemberType = typeof (T),
+                MemberType = typeof(T),
                 MemberPath = String.Empty,
                 MemberName = String.Empty
             };
@@ -252,7 +252,7 @@ namespace Extend
             }
             catch ( Exception ex )
             {
-                throw new CreateInstanceException( $"Failed to create root object of type: {typeof (T).Name}.",
+                throw new CreateInstanceException( $"Failed to create root object of type: {typeof(T).Name}.",
                                                    ex,
                                                    options.Factories.Concat( DefaultFactories )
                                                           .StringJoin( Environment.NewLine ),
@@ -311,7 +311,7 @@ namespace Extend
             //Get a List{T} of the IEnumerable{T}'s item type as type
 #if PORTABLE45
 
-            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
+            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
 #elif NET40
             var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
 #endif
@@ -469,7 +469,7 @@ namespace Extend
         {
 #if PORTABLE45
             var typeInfo = possibleNullableType.GetTypeInfo();
-            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
+            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof(Nullable<>) ) )
                 return null;
 
             return typeInfo.GenericTypeArguments.FirstOrDefault();

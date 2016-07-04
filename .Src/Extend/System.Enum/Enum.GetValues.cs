@@ -26,7 +26,7 @@ namespace Extend
         /// <returns>All values of the specified enumeration.</returns>
         public static IEnumerable<T> GetValues<T>() where T : struct
         {
-            var type = typeof (T);
+            var type = typeof(T);
 #if PORTABLE45
             if ( !type.GetTypeInfo()
                       .IsEnum )

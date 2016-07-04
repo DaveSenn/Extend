@@ -15,14 +15,14 @@ namespace Extend.Testing
         [Test]
         public void ChangeTypeTest()
         {
-            var actual = "100".ChangeType( typeof (Int32) );
+            var actual = "100".ChangeType( typeof(Int32) );
             Assert.AreEqual( 100, actual );
         }
 
         [Test]
         public void ChangeTypeTest1()
         {
-            var actual = "100".ChangeType( typeof (Int32), CultureInfo.InvariantCulture );
+            var actual = "100".ChangeType( typeof(Int32), CultureInfo.InvariantCulture );
             Assert.AreEqual( 100, actual );
         }
 
@@ -41,7 +41,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "100".ChangeType( typeof (Int32), null );
+            Action test = () => "100".ChangeType( typeof(Int32), null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

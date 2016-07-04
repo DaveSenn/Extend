@@ -63,6 +63,7 @@ namespace Extend.Testing
         public void GetNameChainOverload1TestNotSupportedException()
         {
             const Int32 myInt = 100;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( x => myInt );
             test.ShouldThrow<ArgumentException>();
         }
@@ -71,6 +72,8 @@ namespace Extend.Testing
         public void GetNameChainOverload1TestNullCheck()
         {
             Expression<Func<Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -136,6 +139,7 @@ namespace Extend.Testing
         public void GetNameChainTestNotSupportedException()
         {
             const Int32 myInt = 100;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( () => myInt );
             test.ShouldThrow<ArgumentException>();
         }
@@ -144,6 +148,8 @@ namespace Extend.Testing
         public void GetNameChainTestNullCheck()
         {
             Expression<Func<Object, Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
             test.ShouldThrow<ArgumentNullException>();

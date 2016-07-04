@@ -794,7 +794,10 @@ namespace Extend.Testing
                 new AlternativeTreeNode<String>()
             };
 
-            Action test = () => { var actual = target.Descendants; };
+            Action test = () =>
+            {
+                var actual = target.Descendants;
+            };
             test.ShouldThrow<NotSupportedException>();
         }
 

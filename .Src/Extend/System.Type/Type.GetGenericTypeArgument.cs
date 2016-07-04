@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 #if PORTABLE45
 using System.Reflection;
 
@@ -19,10 +20,16 @@ namespace Extend
         /// <summary>
         ///     Gets the first generic argument of the given type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to get the generic argument from.</param>
         /// <returns>Returns the first generic argument of the given type, or null if the type does not have any generic arguments.</returns>
-        public static Type GetGenericTypeArgument( this Type type )
+        [CanBeNull]
+        [Pure]
+        [PublicAPI]
+        public static Type GetGenericTypeArgument( [NotNull] this Type type )
         {
+            type.ThrowIfNull( nameof( type ) );
+
 #if PORTABLE45
             return type.GetTypeInfo()
                        .GenericTypeArguments.FirstOrDefault();

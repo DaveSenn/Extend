@@ -28,6 +28,8 @@ namespace Extend.Testing
         [Test]
         public void ReferenceEqualsTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.RefEquals( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -36,6 +38,8 @@ namespace Extend.Testing
         [Test]
         public void ReferenceEqualsTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".RefEquals( null );
 
             test.ShouldThrow<ArgumentNullException>();

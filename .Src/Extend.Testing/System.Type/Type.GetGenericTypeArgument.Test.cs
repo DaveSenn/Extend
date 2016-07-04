@@ -15,7 +15,7 @@ namespace Extend.Testing
         [Test]
         public void GetGenericTypeArgumentTest()
         {
-            var actual = typeof (String).GetGenericTypeArgument();
+            var actual = typeof(String).GetGenericTypeArgument();
             actual.Should()
                   .BeNull();
         }
@@ -23,17 +23,17 @@ namespace Extend.Testing
         [Test]
         public void GetGenericTypeArgumentTest1()
         {
-            var actual = typeof (List<String>).GetGenericTypeArgument();
+            var actual = typeof(List<String>).GetGenericTypeArgument();
             actual.Should()
-                  .Be( typeof (String) );
+                  .Be( typeof(String) );
         }
 
         [Test]
         public void GetGenericTypeArgumentTest2()
         {
-            var actual = typeof (Dictionary<Int32, String>).GetGenericTypeArgument();
+            var actual = typeof(Dictionary<Int32, String>).GetGenericTypeArgument();
             actual.Should()
-                  .Be( typeof (Int32) );
+                  .Be( typeof(Int32) );
         }
     }
 }

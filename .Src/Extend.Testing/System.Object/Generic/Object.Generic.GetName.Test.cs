@@ -19,7 +19,9 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public Int32 Age { get; set; }
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public String Name { get; set; }
             public SubModel SubModel { get; set; }
 
@@ -30,6 +32,7 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
             public String Foo { get; set; }
 
             #endregion
@@ -56,16 +59,17 @@ namespace Extend.Testing
         [Test]
         public void GetNameOverloadTest2()
         {
-            var model = new TestModel();
             var actual = PropertyChanged.GetName( () => PropertyChanged );
 
-            Assert.AreEqual( "PropertyChanged", actual );
+            actual.Should()
+                  .Be( "PropertyChanged" );
         }
 
         [Test]
         public void GetNameOverloadTest3()
         {
             const String myString = "";
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => myString.GetName( () => myString );
             test.ShouldThrow<ArgumentException>();
         }
@@ -114,10 +118,10 @@ namespace Extend.Testing
         [Test]
         public void GetNameTest2()
         {
-            var model = new TestModel();
             var actual = this.GetName( x => x.PropertyChanged );
 
-            Assert.AreEqual( "PropertyChanged", actual );
+            actual.Should()
+                  .Be( "PropertyChanged" );
         }
 
         [Test]
@@ -137,13 +141,13 @@ namespace Extend.Testing
             var actual = model.GetName( x => x.SubModel.Foo );
 
             Assert.AreEqual( "Foo", actual );
-            ;
         }
 
         [Test]
         public void GetNameTestNotSupportedException()
         {
             const String myString = "";
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => myString.GetName( x => myString );
             test.ShouldThrow<ArgumentException>();
         }
@@ -152,6 +156,8 @@ namespace Extend.Testing
         public void GetNameTestNullCheck()
         {
             Expression<Func<Object, Object>> fieldName = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".GetName( fieldName );
 
             test.ShouldThrow<ArgumentNullException>();

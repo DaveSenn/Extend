@@ -37,8 +37,8 @@ namespace Extend.Testing
         public void PropertyTest()
         {
             var target = new AttributeDefinitionProperty<DisplayAttribute>();
-            var expected = typeof (DisplayAttribute).GetProperties()
-                                                    .First();
+            var expected = typeof(DisplayAttribute).GetProperties()
+                                                   .First();
             target.Property = expected;
 
             target.Property.Should()

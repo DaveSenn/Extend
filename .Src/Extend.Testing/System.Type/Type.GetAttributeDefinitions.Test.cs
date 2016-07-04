@@ -3,6 +3,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -17,14 +18,17 @@ namespace Extend.Testing
             #region Properties
 
             [Display( Name = "FirstName-DisplayName" )]
-            public String FirstName { get; set; }
+            // ReSharper disable once UnusedMember.Local
+            public String FirstName { get; set; } = "Name";
 
             [Display( Name = "LastName-DisplayName" )]
-            public String LastName { get; set; }
+            // ReSharper disable once UnusedMember.Local
+            public String LastName { get; set; } = "LastName";
 
             [MyTest( Value = "1" )]
             [MyTest( Value = "2" )]
-            public DateTime DateOfBirth { get; set; }
+            // ReSharper disable once UnusedMember.Local
+            public DateTime DateOfBirth { get; set; } = DateTime.Now;
 
             #endregion
         }
@@ -34,7 +38,8 @@ namespace Extend.Testing
             #region Properties
 
             [MyTest( Value = "10000" )]
-            public Double Weight { get; set; }
+            // ReSharper disable once UnusedMember.Local
+            public Double Weight { get; set; } = 100;
 
             #endregion
         }
@@ -50,10 +55,21 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void GetAttributeDefinitionsNullTest()
+        {
+            Type t = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => t.GetAttributeDefinitions<DisplayAttribute>();
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
         public void GetAttributeDefinitionsTest()
         {
-            var actual = typeof (TestPerson).GetAttributeDefinitions<DisplayAttribute>()
-                                            .ToList();
+            var actual = typeof(TestPerson).GetAttributeDefinitions<DisplayAttribute>()
+                                           .ToList();
             Assert.AreEqual( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "FirstName" );
@@ -72,8 +88,8 @@ namespace Extend.Testing
         [Test]
         public void GetAttributeDefinitionsTest1()
         {
-            var actual = typeof (TestPerson).GetAttributeDefinitions<MyTestAttribute>()
-                                            .ToList();
+            var actual = typeof(TestPerson).GetAttributeDefinitions<MyTestAttribute>()
+                                           .ToList();
             Assert.AreEqual( 1, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
@@ -85,8 +101,8 @@ namespace Extend.Testing
         [Test]
         public void GetAttributeDefinitionsTest2()
         {
-            var actual = typeof (TestPersonInherit).GetAttributeDefinitions<MyTestAttribute>()
-                                                   .ToList();
+            var actual = typeof(TestPersonInherit).GetAttributeDefinitions<MyTestAttribute>()
+                                                  .ToList();
             Assert.AreEqual( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );

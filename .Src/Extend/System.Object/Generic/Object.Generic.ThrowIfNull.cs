@@ -26,7 +26,9 @@ namespace Extend
         /// <param name="errorMessage">
         ///     The text used as exception message if <paramref name="obj" /> is null.
         /// </param>
-        [Obsolete( "This method will be removed in future releases. Please use the overload accepting the argument name as string together with the new nameof keyword (value.ThrowIfNull( nameof( value ) );)" )]
+        [Obsolete(
+            "This method will be removed in future releases. Please use the overload accepting the argument name as string together with the new nameof keyword (value.ThrowIfNull( nameof( value ) );)"
+            )]
         public static void ThrowIfNull<TObject>( this TObject obj,
                                                  Expression<Func<TObject>> expression,
                                                  String errorMessage = null )
@@ -51,9 +53,10 @@ namespace Extend
         /// <param name="errorMessage">
         ///     The text used as exception message if <paramref name="obj" /> is null.
         /// </param>
+        [PublicAPI]
         public static void ThrowIfNull<TObject>( [NoEnumeration] [CanBeNull] this TObject obj,
-                                                 String parameterName,
-                                                 String errorMessage = null )
+                                                 [NotNull] String parameterName,
+                                                 [CanBeNull] String errorMessage = null )
         {
             // ReSharper disable once CompareNonConstrainedGenericWithNull
             if ( obj != null )

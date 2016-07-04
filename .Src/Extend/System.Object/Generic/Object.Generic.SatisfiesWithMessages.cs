@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,10 @@ namespace Extend
         /// <param name="obj">The object to check.</param>
         /// <param name="specification">The specification to use.</param>
         /// <returns></returns>
-        public static IEnumerable<String> SatisfiesWithMessages<T>( this T obj, ISpecification<T> specification )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IEnumerable<String> SatisfiesWithMessages<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
         {
             specification.ThrowIfNull( nameof( specification ) );
 

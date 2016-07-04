@@ -56,6 +56,8 @@ namespace Extend.Testing
         public void ExecuteSafeTest1NullCheck()
         {
             Func<String, String> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => "".ExecuteSafe( func );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -65,6 +67,8 @@ namespace Extend.Testing
         public void ExecuteSafeTestNullCheck()
         {
             Action<String> action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".ExecuteSafe( action );
 
             test.ShouldThrow<ArgumentNullException>();

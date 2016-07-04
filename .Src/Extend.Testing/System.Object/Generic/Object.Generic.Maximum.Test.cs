@@ -35,6 +35,8 @@ namespace Extend.Testing
         [Test]
         public void MaximumTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +46,8 @@ namespace Extend.Testing
         public void MaximumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Maximum( func, 1, 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -52,6 +56,8 @@ namespace Extend.Testing
         [Test]
         public void MaximumTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Maximum( null );
 
             test.ShouldThrow<ArgumentNullException>();

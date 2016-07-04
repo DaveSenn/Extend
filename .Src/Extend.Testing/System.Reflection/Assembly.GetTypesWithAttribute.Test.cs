@@ -50,6 +50,8 @@ namespace Extend.Testing
         [Test]
         public void GetTypesWithAttributeArgumentNullExceptionTest()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => AssemblyEx.GetTypesWithAttribute<FooAttribute>( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -59,7 +61,7 @@ namespace Extend.Testing
         public void GetTypesWithAttributeBaseTypeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
-                                                                         typeof (BaseTestClass),
+                                                                         typeof(BaseTestClass),
                                                                          GetType()
                                                                              .Assembly );
 
@@ -67,7 +69,7 @@ namespace Extend.Testing
                   .HaveCount( 3 );
 
             //TestClassA
-            var attributes = actual.First( x => x.Type == typeof (TestClassA) )
+            var attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                    .Attributes;
             attributes.Should()
                       .HaveCount( 2 );
@@ -77,7 +79,7 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "base" );
 
             //TestClassB
-            attributes = actual.First( x => x.Type == typeof (TestClassB) )
+            attributes = actual.First( x => x.Type == typeof(TestClassB) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -86,7 +88,7 @@ namespace Extend.Testing
                       .Be( "base" );
 
             //TestClassD
-            attributes = actual.First( x => x.Type == typeof (TestClassD) )
+            attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 3 );
@@ -109,7 +111,7 @@ namespace Extend.Testing
                   .HaveCount( 5 );
 
             //BaseTextClass
-            var attributes = actual.First( x => x.Type == typeof (BaseTestClass) )
+            var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
                                    .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -118,7 +120,7 @@ namespace Extend.Testing
                       .Be( "base" );
 
             //TestClassA
-            attributes = actual.First( x => x.Type == typeof (TestClassA) )
+            attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 2 );
@@ -128,7 +130,7 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "base" );
 
             //TestClassB
-            attributes = actual.First( x => x.Type == typeof (TestClassB) )
+            attributes = actual.First( x => x.Type == typeof(TestClassB) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -137,7 +139,7 @@ namespace Extend.Testing
                       .Be( "base" );
 
             //TestClassC
-            attributes = actual.First( x => x.Type == typeof (TestClassC) )
+            attributes = actual.First( x => x.Type == typeof(TestClassC) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -145,7 +147,7 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "C" );
 
             //TestClassD
-            attributes = actual.First( x => x.Type == typeof (TestClassD) )
+            attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 3 );
@@ -167,7 +169,7 @@ namespace Extend.Testing
                   .HaveCount( 4 );
 
             //BaseTextClass
-            var attributes = actual.First( x => x.Type == typeof (BaseTestClass) )
+            var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
                                    .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -176,7 +178,7 @@ namespace Extend.Testing
                       .Be( "base" );
 
             //TestClassA
-            attributes = actual.First( x => x.Type == typeof (TestClassA) )
+            attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -185,7 +187,7 @@ namespace Extend.Testing
                       .Be( "A" );
 
             //TestClassC
-            attributes = actual.First( x => x.Type == typeof (TestClassC) )
+            attributes = actual.First( x => x.Type == typeof(TestClassC) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 1 );
@@ -194,7 +196,7 @@ namespace Extend.Testing
                       .Be( "C" );
 
             //TestClassD
-            attributes = actual.First( x => x.Type == typeof (TestClassD) )
+            attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()
                       .HaveCount( 2 );

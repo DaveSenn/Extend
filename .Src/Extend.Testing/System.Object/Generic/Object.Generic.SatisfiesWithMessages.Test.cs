@@ -54,7 +54,8 @@ namespace Extend.Testing
         {
             ISpecification<String> specification = null;
 
-            // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1234".SatisfiesWithMessages( specification );
 
             test.ShouldThrow<ArgumentNullException>();

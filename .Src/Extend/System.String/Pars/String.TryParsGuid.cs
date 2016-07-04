@@ -15,7 +15,7 @@ namespace Extend
         /// <param name="value">The GUID to convert.</param>
         /// <param name="outValue">
         ///     The structure that will contain the parsed value. If the method returns true,result contains a
-        ///     valid <see cref="Guid"/>. If the method returns false, result equals <see cref="Guid.Empty" />.
+        ///     valid <see cref="Guid" />. If the method returns false, result equals <see cref="Guid.Empty" />.
         /// </param>
         /// <returns>Returns true if the parse operation was successful; otherwise, false.</returns>
         [Pure]

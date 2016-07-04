@@ -195,17 +195,17 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4()
         {
             var actual = ActionEx.SafeExecuteExcept( () => { },
-                                                     typeof (ArgumentException),
-                                                     typeof (NullReferenceException),
-                                                     typeof (InvalidOperationException),
-                                                     typeof (AccessViolationException) );
+                                                     typeof(ArgumentException),
+                                                     typeof(NullReferenceException),
+                                                     typeof(InvalidOperationException),
+                                                     typeof(AccessViolationException) );
             Assert.IsTrue( actual );
 
             actual = ActionEx.SafeExecuteExcept( () => { throw new InvalidCastException(); },
-                                                 typeof (ArgumentException),
-                                                 typeof (NullReferenceException),
-                                                 typeof (InvalidOperationException),
-                                                 typeof (AccessViolationException) );
+                                                 typeof(ArgumentException),
+                                                 typeof(NullReferenceException),
+                                                 typeof(InvalidOperationException),
+                                                 typeof(AccessViolationException) );
             Assert.IsFalse( actual );
         }
 
@@ -213,10 +213,10 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4_1()
         {
             Action test = () => ActionEx.SafeExecuteExcept( () => { throw new ArgumentException(); },
-                                                            typeof (ArgumentException),
-                                                            typeof (NullReferenceException),
-                                                            typeof (InvalidOperationException),
-                                                            typeof (AccessViolationException) );
+                                                            typeof(ArgumentException),
+                                                            typeof(NullReferenceException),
+                                                            typeof(InvalidOperationException),
+                                                            typeof(AccessViolationException) );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -225,10 +225,10 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4_2()
         {
             Action test = () => ActionEx.SafeExecuteExcept( () => { throw new NullReferenceException(); },
-                                                            typeof (ArgumentException),
-                                                            typeof (NullReferenceException),
-                                                            typeof (InvalidOperationException),
-                                                            typeof (AccessViolationException) );
+                                                            typeof(ArgumentException),
+                                                            typeof(NullReferenceException),
+                                                            typeof(InvalidOperationException),
+                                                            typeof(AccessViolationException) );
 
             test.ShouldThrow<NullReferenceException>();
         }
@@ -237,10 +237,10 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4_3()
         {
             Action test = () => ActionEx.SafeExecuteExcept( () => { throw new InvalidOperationException(); },
-                                                            typeof (ArgumentException),
-                                                            typeof (NullReferenceException),
-                                                            typeof (InvalidOperationException),
-                                                            typeof (AccessViolationException) );
+                                                            typeof(ArgumentException),
+                                                            typeof(NullReferenceException),
+                                                            typeof(InvalidOperationException),
+                                                            typeof(AccessViolationException) );
 
             test.ShouldThrow<InvalidOperationException>();
         }
@@ -249,10 +249,10 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4_4()
         {
             Action test = () => ActionEx.SafeExecuteExcept( () => { throw new AccessViolationException(); },
-                                                            typeof (ArgumentException),
-                                                            typeof (NullReferenceException),
-                                                            typeof (InvalidOperationException),
-                                                            typeof (AccessViolationException) );
+                                                            typeof(ArgumentException),
+                                                            typeof(NullReferenceException),
+                                                            typeof(InvalidOperationException),
+                                                            typeof(AccessViolationException) );
 
             test.ShouldThrow<AccessViolationException>();
         }
@@ -261,10 +261,10 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4NullCheck()
         {
             Action action = null;
-            Action test = () => action.SafeExecuteExcept( typeof (ArgumentException),
-                                                          typeof (NullReferenceException),
-                                                          typeof (InvalidOperationException),
-                                                          typeof (AccessViolationException) );
+            Action test = () => action.SafeExecuteExcept( typeof(ArgumentException),
+                                                          typeof(NullReferenceException),
+                                                          typeof(InvalidOperationException),
+                                                          typeof(AccessViolationException) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
