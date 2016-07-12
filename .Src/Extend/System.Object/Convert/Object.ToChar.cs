@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,20 +13,45 @@ namespace Extend
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Converts the given object to a char.
+        ///     Converts the value of the specified object to a Unicode character.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
-        /// <returns>The char.</returns>
-        public static Char ToChar( this Object obj )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
+        /// <exception cref="ArgumentNullException">value is a null <see cref="String" />.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface.
+        ///     Or the conversion of value to a <see cref="Char" /> is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value is less than <see cref="Char.MinValue" /> or greater than <see cref="Char.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface.</param>
+        /// <returns>
+        ///     A Unicode character that is equivalent to value, or <see cref="Char.MinValue" /> if value is null.
+        /// </returns>
+        [Pure]
+        [PublicAPI]
+        public static Char ToChar( [CanBeNull] this Object obj )
+            => Convert.ToChar( obj );
 
-            var str = obj.ToString();
-            if ( str.Length != 1 )
-                throw new InvalidCastException( "Cannot convert the given object to a char." );
-
-            return str[0];
-        }
+        /// <summary>
+        ///     Converts the value of the specified object to its equivalent Unicode character, using the specified
+        ///     culture-specific formatting information.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">value is a null <see cref="String" />.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface.
+        ///     Or the conversion of value to a <see cref="Char" /> is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value is less than <see cref="Char.MinValue" /> or greater than <see cref="Char.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface.</param>
+        /// <param name="provider">A format provider.</param>
+        /// <returns>
+        ///     A Unicode character that is equivalent to value, or <see cref="Char.MinValue" /> if value is null.
+        /// </returns>
+        [Pure]
+        [PublicAPI]
+        public static Char ToChar( [CanBeNull] this Object obj, IFormatProvider provider )
+            => Convert.ToChar( obj, provider );
     }
 }

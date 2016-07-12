@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,32 +13,49 @@ namespace Extend
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Converts the given object to a boolean.
+        ///     Converts the value of a specified object to an equivalent Boolean value.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
-        /// <returns>The boolean.</returns>
-        public static Boolean ToBoolean( this Object obj )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-
-            return Convert.ToBoolean( obj, CultureInfo.CurrentCulture );
-        }
+        /// <exception cref="FormatException">
+        ///     value is a string that does not equal <see cref="System.Boolean.TrueString" /> or
+        ///     <see cref="System.Boolean.FalseString" />.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the IConvertible interface.
+        ///     The conversion of value to a <see cref="System.Boolean" /> is not supported.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null..</param>
+        /// <returns>
+        ///     true or false, which reflects the value returned by invoking the
+        ///     System.IConvertible.ToBoolean(System.IFormatProvider) method for the underlying type of value.
+        ///     If value is null, the method returns false.
+        /// </returns>
+        [PublicAPI]
+        [Pure]
+        public static Boolean ToBoolean( [CanBeNull] this Object obj )
+            => Convert.ToBoolean( obj );
 
         /// <summary>
-        ///     Converts the given object to a boolean.
+        ///     Converts the value of the specified object to an equivalent Boolean value, using the specified culture-specific
+        ///     formatting information.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
+        /// <exception cref="FormatException">
+        ///     value is a string that does not equal <see cref="System.Boolean.TrueString" /> or
+        ///     <see cref="System.Boolean.FalseString" />.
+        /// </exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the IConvertible interface.
+        ///     The conversion of value to a <see cref="System.Boolean" /> is not supported.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null.</param>
         /// <param name="formatProvider">The format provider.</param>
-        /// <returns>The boolean.</returns>
-        public static Boolean ToBoolean( this Object obj, IFormatProvider formatProvider )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
-
-            return Convert.ToBoolean( obj, formatProvider );
-        }
+        /// <returns>
+        ///     true or false, which reflects the value returned by invoking the
+        ///     System.IConvertible.ToBoolean(System.IFormatProvider) method for the underlying type of value.
+        ///     If value is null, the method returns false.
+        /// </returns>
+        [PublicAPI]
+        [Pure]
+        public static Boolean ToBoolean( [CanBeNull] this Object obj, IFormatProvider formatProvider )
+            => Convert.ToBoolean( obj, formatProvider );
     }
 }

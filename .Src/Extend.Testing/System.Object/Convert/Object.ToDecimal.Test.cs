@@ -2,7 +2,6 @@
 
 using System;
 using System.Globalization;
-using System.Threading;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -14,47 +13,143 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
+        public void ToDecimalFormatProviderNullTest()
+        {
+            var expected = new Decimal( 100.12 );
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToDecimal( null );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void ToDecimalFormatProviderTest()
+        {
+            var expected = new Decimal( 100.12 );
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToDecimal( CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void ToDecimalInvalidCastFormatProviderTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToDecimalInvalidCastTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal();
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToDecimalInvalidFormatFormatProviderTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToDecimal( value, CultureInfo.InvariantCulture );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDecimalInvalidFormatTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToDecimal( value );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDecimalNullValueFormatProviderTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToDecimal( CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void ToDecimalNullValueTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToDecimal();
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
         public void ToDecimalTest()
         {
-            Thread.CurrentThread.CurrentCulture = new CultureInfo( "en-US" );
-
             var expected = new Decimal( 100.12 );
-            var value = expected.ToString( Thread.CurrentThread.CurrentCulture );
-            var actual = ObjectEx.ToDecimal( value );
-            Assert.AreEqual( expected, actual );
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToDecimal();
+
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToDecimalTest1()
+        public void ToDecimalTooLargeFormatProviderTest()
         {
-            var expected = new Decimal( 100.12 );
-            var value = expected.ToString( CultureInfo.InvariantCulture );
-            var actual = ObjectEx.ToDecimal( value, CultureInfo.InvariantCulture );
-            Assert.AreEqual( expected, actual );
+            var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            test.ShouldThrow<OverflowException>();
         }
 
         [Test]
-        public void ToDecimalTest1NullCheck()
+        public void ToDecimalTooLargeTest()
         {
-            Action test = () => ObjectEx.ToDecimal( null, CultureInfo.InvariantCulture );
+            var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal();
+            test.ShouldThrow<OverflowException>();
         }
 
         [Test]
-        public void ToDecimalTest1NullCheck1()
+        public void ToDecimalTooSmallFormatProviderTest()
         {
-            Action test = () => ObjectEx.ToDecimal( "false", null );
+            var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
+            test.ShouldThrow<OverflowException>();
         }
 
         [Test]
-        public void ToDecimalTestNullCheck()
+        public void ToDecimalTooSmallTest()
         {
-            Action test = () => ObjectEx.ToDecimal( null );
+            var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal();
+            test.ShouldThrow<OverflowException>();
         }
     }
 }

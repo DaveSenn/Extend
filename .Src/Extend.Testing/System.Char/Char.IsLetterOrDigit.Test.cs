@@ -1,6 +1,6 @@
 ﻿#region Usings
 
-using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -13,14 +13,25 @@ namespace Extend.Testing
         [Test]
         public void IsLetterOrDigitTest()
         {
-            var range = 0.RangeTo( 9 );
-            foreach ( var c in range.Select( x => x.ToChar() ) )
-                Assert.IsTrue( c.IsLetterOrDigit() );
+            '0'.IsLetterOrDigit()
+               .Should()
+               .BeTrue();
+            '9'.IsLetterOrDigit()
+               .Should()
+               .BeTrue();
 
-            Assert.IsTrue( 'a'.IsLetterOrDigit() );
-            Assert.IsTrue( 'A'.IsLetterOrDigit() );
-            Assert.IsTrue( 'z'.IsLetterOrDigit() );
-            Assert.IsFalse( '-'.IsLetterOrDigit() );
+            'a'.IsLetterOrDigit()
+               .Should()
+               .BeTrue();
+            'A'.IsLetterOrDigit()
+               .Should()
+               .BeTrue();
+            'z'.IsLetterOrDigit()
+               .Should()
+               .BeTrue();
+            '-'.IsLetterOrDigit()
+               .Should()
+               .BeFalse();
         }
     }
 }

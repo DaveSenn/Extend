@@ -159,6 +159,7 @@ namespace Extend.Testing
         public void NullExpression()
         {
             Expression<Func<A, String>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expression.GetMemberPath();
             test.ShouldThrow<ArgumentNullException>();
         }

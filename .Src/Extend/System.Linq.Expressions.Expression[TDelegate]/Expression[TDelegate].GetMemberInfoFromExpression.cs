@@ -3,6 +3,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -25,8 +26,11 @@ namespace Extend
         /// <typeparam name="TMember">The type of the member.</typeparam>
         /// <param name="expression">The member expression.</param>
         /// <returns>Returns the member info from the given expression, or null if the expression is not valid.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
         public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
-            this Expression<Func<TDeclairingType, TMember>> expression )
+            [NotNull] this Expression<Func<TDeclairingType, TMember>> expression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 

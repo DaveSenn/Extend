@@ -20,7 +20,6 @@ namespace Extend
         /// <param name="obj">The object to check.</param>
         /// <param name="specification">The specification to use.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        [NotNull]
         [Pure]
         [PublicAPI]
         public static Boolean Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )

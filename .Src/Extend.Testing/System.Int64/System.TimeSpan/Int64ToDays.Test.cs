@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -17,7 +18,30 @@ namespace Extend.Testing
 
             var expected = TimeSpan.FromDays( value );
             var actual = ( (Int64) value ).ToDays();
-            Assert.AreEqual( expected, actual );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void ToDaysTooLargeTest()
+        {
+            var value = (Int64) ( TimeSpan.MaxValue.Days + 1 );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDays();
+
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToDaysTooSmallTest()
+        {
+            var value = (Int64) ( TimeSpan.MinValue.Days - 1 );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDays();
+
+            test.ShouldThrow<OverflowException>();
         }
     }
 }
