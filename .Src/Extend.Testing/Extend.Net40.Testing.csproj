@@ -313,7 +313,6 @@
     <Compile Include="System.Int64\Int64.IsMultipleOf.Test.cs" />
     <Compile Include="System.Int64\Int64.IsEven.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToBoolean.Test.cs" />
-    <Compile Include="System.Object\Convert\Object.ToCharByCode.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToDateTime.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToChar.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToByte.Test.cs" />
