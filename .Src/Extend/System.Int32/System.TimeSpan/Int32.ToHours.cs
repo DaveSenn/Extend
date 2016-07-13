@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,10 +13,17 @@ namespace Extend
     public static partial class Int32Ex
     {
         /// <summary>
-        ///     Returns the given Int32 value as hours.
+        ///     Returns a <see cref="TimeSpan" /> that represents a specified number of hours, where  the specification is accurate
+        ///     to the nearest millisecond.
         /// </summary>
-        /// <param name="value">The Int32 value.</param>
-        /// <returns>Returns the given Int32 value as hours.</returns>
-        public static TimeSpan ToHours( this Int32 value ) => TimeSpan.FromHours( value );
+        /// <exception cref="OverflowException">
+        ///     value is less than <see cref="TimeSpan.MinValue" /> or greater than <see cref="TimeSpan.MaxValue" />.
+        /// </exception>
+        /// <param name="value">A number of hours.</param>
+        /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
+        [Pure]
+        [PublicAPI]
+        public static TimeSpan ToHours( this Int32 value )
+            => TimeSpan.FromHours( value );
     }
 }

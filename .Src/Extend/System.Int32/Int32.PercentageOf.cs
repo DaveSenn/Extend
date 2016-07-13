@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,7 +18,10 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf( this Int32 number, Int32 percent ) => (Double) number * percent / 100;
+        [Pure]
+        [PublicAPI]
+        public static Double PercentageOf( this Int32 number, Int32 percent )
+            => (Double) number * percent / 100;
 
         /// <summary>
         ///     Gets the specified percentage of the number.
@@ -25,7 +29,10 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Decimal PercentageOf( this Int32 number, Decimal percent ) => number * percent / 100;
+        [Pure]
+        [PublicAPI]
+        public static Decimal PercentageOf( this Int32 number, Decimal percent )
+            => number * percent / 100;
 
         /// <summary>
         ///     Gets the specified percentage of the number.
@@ -33,7 +40,10 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf( this Int32 number, Double percent ) => number * percent / 100;
+        [Pure]
+        [PublicAPI]
+        public static Double PercentageOf( this Int32 number, Double percent )
+            => number * percent / 100;
 
         /// <summary>
         ///     Gets the specified percentage of the number.
@@ -41,6 +51,9 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="percent">The percent.</param>
         /// <returns>Returns the specified percentage of the number</returns>
-        public static Double PercentageOf( this Int32 number, Int64 percent ) => (Double) number * percent / 100;
+        [Pure]
+        [PublicAPI]
+        public static Double PercentageOf( this Int32 number, Int64 percent )
+            => (Double) number * percent / 100;
     }
 }

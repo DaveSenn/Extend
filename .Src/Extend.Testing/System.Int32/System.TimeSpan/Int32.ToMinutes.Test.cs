@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -17,7 +18,10 @@ namespace Extend.Testing
 
             var expected = TimeSpan.FromMinutes( value );
             var actual = value.ToMinutes();
-            Assert.AreEqual( expected, actual );
+
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }
