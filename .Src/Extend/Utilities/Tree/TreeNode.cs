@@ -465,11 +465,11 @@ namespace Extend
             if ( _parent == parent )
                 return;
 
-            //Switch parent
+            // Switch parent
             var oldParent = _parent;
             _parent = parent;
 
-            //Remove node from old parent
+            // Remove node from old parent
             if ( oldParent != null && detachFromOldParent )
                 oldParent.Children.Remove( this, false );
 

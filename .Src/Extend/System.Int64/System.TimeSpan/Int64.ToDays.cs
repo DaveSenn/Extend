@@ -13,13 +13,14 @@ namespace Extend
     public static partial class Int64Ex
     {
         /// <summary>
-        ///     Returns the given Int64 value as day.
+        ///     Returns a <see cref="TimeSpan" /> that represents a specified number of days, where the specification is accurate
+        ///     to the nearest millisecond.
         /// </summary>
         /// <exception cref="OverflowException">
-        ///     value is less than <see cref="System.TimeSpan.MinValue" /> or greater than <see cref="System.TimeSpan.MaxValue" />.
+        ///     value is less than <see cref="TimeSpan.MinValue" /> or greater than <see cref="TimeSpan.MaxValue" />.
         /// </exception>
-        /// <param name="value">The Int64 value.</param>
-        /// <returns>Returns the given Int64 value as days.</returns>
+        /// <param name="value">A number of days.</param>
+        /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
         [Pure]
         [PublicAPI]
         public static TimeSpan ToDays( this Int64 value )

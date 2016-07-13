@@ -198,6 +198,7 @@ namespace Extend.Testing
         {
             MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expression.TryGetMemberExpression( out outResult );
             test.ShouldThrow<ArgumentNullException>();
         }

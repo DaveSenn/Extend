@@ -38,6 +38,7 @@ namespace Extend.Testing
             const Int64 start = 200;
             const Int64 end = 100;
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => start.RangeTo( end );
 
             test.ShouldThrow<ArgumentException>();

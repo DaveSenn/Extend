@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,6 +19,8 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Double PercentOf( this Int64 number, Int32 total )
         {
             if ( number <= 0 )
@@ -33,6 +36,8 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Double PercentOf( this Int64 number, Double total )
         {
             if ( number <= 0 )
@@ -48,6 +53,8 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Double PercentOf( this Int64 number, Int64 total )
         {
             if ( number <= 0 )

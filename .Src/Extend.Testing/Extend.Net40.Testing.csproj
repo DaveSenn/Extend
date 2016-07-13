@@ -72,6 +72,7 @@
     <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToDays.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
     <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
@@ -300,7 +301,6 @@
     <Compile Include="System.Int32\Int32.IsMultipleOf.Test.cs" />
     <Compile Include="System.Int32\Int32.IsEven.Test.cs" />
     <Compile Include="System.Int64\Int64.Sum.Test.cs" />
-    <Compile Include="System.Int64\System.TimeSpan\Int64ToDays.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToSeconds.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToMinutes.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToMilliseconds.Test.cs" />

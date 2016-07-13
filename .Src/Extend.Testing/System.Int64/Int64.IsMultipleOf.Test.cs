@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -33,6 +34,28 @@ namespace Extend.Testing
             expected = false;
             actual = value.IsMultipleOf( factor );
             Assert.AreEqual( expected, actual );
+        }
+
+        [Test]
+        public void IsMultipleValueOf0Test()
+        {
+            const Int64 value = 0;
+            const Int64 factor = 10;
+
+            var actual = value.IsMultipleOf( factor );
+            actual.Should()
+                  .BeFalse();
+        }
+
+        [Test]
+        public void IsMultipleFactorOf0Test()
+        {
+            const Int64 value = 10;
+            const Int64 factor = 0;
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.IsMultipleOf(factor);
+            test.ShouldThrow<DivideByZeroException>();
         }
     }
 }

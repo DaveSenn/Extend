@@ -22,6 +22,26 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void PercentageOfTest0ValueTest()
+        {
+            const Int64 number = 0;
+            var actual = number.PercentageOf( (Int64) 50 );
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void PercentageOfTest0ValueTest1()
+        {
+            const Int64 number = 0;
+            var actual = number.PercentageOf( 50 );
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
         public void PercentageOfTest1()
         {
             const Int64 number = 1000;
@@ -32,12 +52,13 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentageOfTest1DivideByZeroException()
+        public void PercentageOfTest0ValueTest2()
         {
             const Int64 number = 0;
-            Action test = () => number.PercentageOf( (Double) 50 );
-
-            test.ShouldThrow<DivideByZeroException>();
+            var actual = number.PercentageOf((Double)50);
+            actual
+                .Should()
+                .Be(0);
         }
 
         [Test]
@@ -47,16 +68,18 @@ namespace Extend.Testing
             const Int32 expected = 500;
             var actual = number.PercentageOf( (Int64) 50 );
 
-            Assert.AreEqual( expected, actual );
+            actual.Should()
+                  .Be( expected );
         }
 
         [Test]
-        public void PercentageOfTest2DivideByZeroException()
+        public void PercentageOfTest0ValueTest3()
         {
             const Int64 number = 0;
-            Action test = () => number.PercentageOf( (Int64) 50 );
-
-            test.ShouldThrow<DivideByZeroException>();
+            var actual = number.PercentageOf((Int64)50);
+            actual
+                .Should()
+                .Be(0);
         }
 
         [Test]
@@ -66,16 +89,18 @@ namespace Extend.Testing
             const Int32 expected = 500;
             var actual = number.PercentageOf( new Decimal( 50 ) );
 
-            Assert.AreEqual( expected, actual );
+            actual.Should()
+                  .Be( expected );
         }
 
         [Test]
-        public void PercentageOfTest3DivideByZeroException()
+        public void PercentageOfTest0ValueTest4()
         {
             const Int64 number = 0;
-            Action test = () => number.PercentageOf( new Decimal( 50 ) );
+            var actual = number.PercentageOf( new Decimal( 50 ) );
 
-            test.ShouldThrow<DivideByZeroException>();
+            actual.Should()
+                  .Be( 0 );
         }
 
         [Test]
@@ -85,25 +110,8 @@ namespace Extend.Testing
             const Int32 expected = 500;
             var actual = number.PercentageOf( 50 );
 
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void PercentageOfTest4DivideByZeroException()
-        {
-            const Int64 number = 0;
-            Action test = () => number.PercentageOf( 50 );
-
-            test.ShouldThrow<DivideByZeroException>();
-        }
-
-        [Test]
-        public void PercentageOfTestDivideByZeroException()
-        {
-            const Int64 number = 0;
-            Action test = () => number.PercentageOf( (Int64) 50 );
-
-            test.ShouldThrow<DivideByZeroException>();
+            actual.Should()
+                  .Be( expected );
         }
     }
 }
