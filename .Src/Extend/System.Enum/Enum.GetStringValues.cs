@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,9 @@ namespace Extend
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>All values of the specified enumeration as strings.</returns>
+        [Pure]
+        [PublicAPI]
+        [NotNull]
         public static IEnumerable<String> GetStringValues<T>() where T : struct => GetValues<T>()
             .Select( x => x.ToString() );
     }

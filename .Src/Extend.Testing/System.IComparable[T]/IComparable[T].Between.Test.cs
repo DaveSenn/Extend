@@ -65,6 +65,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IComparableTEx.Between( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -73,6 +75,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Between( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -81,6 +85,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenTestNullCheck2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Between( "", null );
 
             test.ShouldThrow<ArgumentNullException>();

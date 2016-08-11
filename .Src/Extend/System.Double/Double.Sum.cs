@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,9 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Double Sum( this Double value, params Double[] values )
+        [PublicAPI]
+        [Pure]
+        public static Double Sum( this Double value, [NotNull] params Double[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -37,7 +40,10 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Double? Sum( this Double? value, params Double?[] values )
+        [PublicAPI]
+        [Pure]
+        [CanBeNull]
+        public static Double? Sum( [CanBeNull] this Double? value, [NotNull] params Double?[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -57,7 +63,9 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Double Sum<TSource>( this TSource value, Func<TSource, Double> selector, params TSource[] values )
+        [PublicAPI]
+        [Pure]
+        public static Double Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );
@@ -78,7 +86,10 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Double? Sum<TSource>( this TSource value, Func<TSource, Double?> selector, params TSource[] values )
+        [PublicAPI]
+        [Pure]
+        [CanBeNull]
+        public static Double? Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double?> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );

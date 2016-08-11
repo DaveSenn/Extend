@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -32,14 +31,6 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTest1DivideByZero()
-        {
-            Action test = () => DoubleEx.PercentOf( 0, (Double) 100 );
-
-            test.ShouldThrow<DivideByZeroException>();
-        }
-
-        [Test]
         public void PercentOfTest2()
         {
             Double number = 1000;
@@ -47,22 +38,6 @@ namespace Extend.Testing
             var actual = number.PercentOf( (Int64) 500 );
 
             Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void PercentOfTest2DivideByZero()
-        {
-            Action test = () => DoubleEx.PercentOf( 0, (Int64) 100 );
-
-            test.ShouldThrow<DivideByZeroException>();
-        }
-
-        [Test]
-        public void PercentOfTestDivideByZero()
-        {
-            Action test = () => DoubleEx.PercentOf( 0, 100 );
-
-            test.ShouldThrow<DivideByZeroException>();
         }
     }
 }

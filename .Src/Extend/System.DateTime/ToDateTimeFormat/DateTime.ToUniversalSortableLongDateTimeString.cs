@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,8 +17,12 @@ namespace Extend
         ///     Converts the DateTime value to a universal sortable long date time string.
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
-        /// <returns>The given value converted to a suniversal sortable long date time string.</returns>
-        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime ) => dateTime.ToString( "U", DateTimeFormatInfo.CurrentInfo );
+        /// <returns>The given value converted to a universal sortable long date time string.</returns>
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime )
+            => dateTime.ToString( "U", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a universal sortable long date time string.
@@ -26,8 +31,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="formatInfo">The date time format info.</param>
         /// <returns>The given value converted to a universal sortable long date time string.</returns>
-        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime,
-                                                                    DateTimeFormatInfo formatInfo )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
         {
             formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
@@ -41,7 +48,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="culture">The culture.</param>
         /// <returns>The given value converted to a universal sortable long date time string.</returns>
-        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime, CultureInfo culture )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToUniversalSortableLongDateTimeString( this DateTime dateTime, [NotNull] CultureInfo culture )
         {
             culture.ThrowIfNull( nameof( culture ) );
 

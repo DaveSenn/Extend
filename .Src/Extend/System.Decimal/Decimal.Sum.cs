@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,9 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Decimal Sum( this Decimal value, params Decimal[] values )
+        [PublicAPI]
+        [Pure]
+        public static Decimal Sum( this Decimal value, [NotNull] params Decimal[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -37,7 +40,10 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Decimal? Sum( this Decimal? value, params Decimal?[] values )
+        [PublicAPI]
+        [Pure]
+        [CanBeNull]
+        public static Decimal? Sum( [CanBeNull] this Decimal? value, [NotNull] params Decimal?[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -57,7 +63,9 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Decimal Sum<TSource>( this TSource value, Func<TSource, Decimal> selector, params TSource[] values )
+        [PublicAPI]
+        [Pure]
+        public static Decimal Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Decimal> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );
@@ -78,9 +86,12 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Decimal? Sum<TSource>( this TSource value,
-                                             Func<TSource, Decimal?> selector,
-                                             params TSource[] values )
+        [PublicAPI]
+        [Pure]
+        [CanBeNull]
+        public static Decimal? Sum<TSource>( [CanBeNull] this TSource value,
+                                             [NotNull] Func<TSource, Decimal?> selector,
+                                             [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );

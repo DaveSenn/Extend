@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,10 @@ namespace Extend
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <param name="exceptions">The values to exclude from the result.</param>
         /// <returns>Returns all values of the specified enumeration type, expect the specified values.</returns>
-        public static IEnumerable<T> GetValuesExpect<T>( params T[] exceptions ) where T : struct
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> GetValuesExpect<T>( [CanBeNull] params T[] exceptions ) where T : struct
         {
             var values = GetValues<T>();
 
@@ -44,14 +48,16 @@ namespace Extend
         /// <param name="type">The type of the enumeration.</param>
         /// <param name="exceptions">The values to exclude from the result.</param>
         /// <returns>Returns all values of the specified enumeration type, expect the specified values.</returns>
-        public static IEnumerable GetValuesExpect( Type type, params Object[] exceptions )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable GetValuesExpect( [NotNull] Type type, [CanBeNull] params Object[] exceptions )
         {
-            var values = GetValues( type );
-
-            return values
+            var values = GetValues( type )
                 .OfType<Object>()
-                .ToList()
-                .RemoveRange( exceptions );
+                .ToList();
+
+            return exceptions == null ? values : values.RemoveRange( exceptions );
         }
     }
 }

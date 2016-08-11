@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,7 +18,11 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a long time string.</returns>
-        public static String ToLongTimeString( this DateTime dateTime ) => dateTime.ToString( "T", DateTimeFormatInfo.CurrentInfo );
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToLongTimeString( this DateTime dateTime )
+            => dateTime.ToString( "T", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
         ///     Converts the DateTime value to a long time string.
@@ -26,7 +31,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="formatInfo">The date time format info.</param>
         /// <returns>The given value converted to a long time string.</returns>
-        public static String ToLongTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToLongTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
         {
             formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
@@ -40,7 +48,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="culture">The culture.</param>
         /// <returns>The given value converted to a long time string.</returns>
-        public static String ToLongTimeString( this DateTime dateTime, CultureInfo culture )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToLongTimeString( this DateTime dateTime, [NotNull] CultureInfo culture )
         {
             culture.ThrowIfNull( nameof( culture ) );
 

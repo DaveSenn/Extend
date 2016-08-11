@@ -50,8 +50,8 @@ namespace Extend.Testing
         [Test]
         public void GetValuesTestArgumentExceptionCheck()
         {
-            Action test = () => EnumEx.GetValues<Int32>()
-                                      .ToList();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => EnumEx.GetValues<Int32>();
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -59,9 +59,21 @@ namespace Extend.Testing
         [Test]
         public void GetValuesTestArgumentExceptionCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => EnumEx.GetValues( typeof(Int32) );
 
             test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void GetValuesTestArgumentNullException()
+        {
+            Type t = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => EnumEx.GetValues( t );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

@@ -36,6 +36,8 @@ namespace Extend.Testing
         [Test]
         public void GreaterTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IComparableTEx.Greater( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +46,8 @@ namespace Extend.Testing
         [Test]
         public void GreaterTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Greater( null );
 
             test.ShouldThrow<ArgumentNullException>();

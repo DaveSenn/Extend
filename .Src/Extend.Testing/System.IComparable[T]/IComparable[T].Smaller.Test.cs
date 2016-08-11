@@ -36,6 +36,8 @@ namespace Extend.Testing
         [Test]
         public void SmallerTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IComparableTEx.Smaller( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -44,6 +46,8 @@ namespace Extend.Testing
         [Test]
         public void SmallerTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".Smaller( null );
 
             test.ShouldThrow<ArgumentNullException>();

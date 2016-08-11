@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,9 @@ namespace Extend
         /// <exception cref="ArgumentException">T must be an enumerated type.</exception>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>Returns a key value pair for each value of the specified enumeration type.</returns>
+        [Pure]
+        [PublicAPI]
+        [NotNull]
         public static IDictionary<T, String> GetValueAndStringValue<T>() where T : struct
         {
             var values = GetValues<T>();

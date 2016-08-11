@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="value">The double to check.</param>
         /// <returns>Returns true if the given double is positive infinity, otherwise false.</returns>
-        public static Boolean IsPositiveInfinity( this Double value ) => Double.IsPositiveInfinity( value );
+        [PublicAPI]
+        [Pure]
+        public static Boolean IsPositiveInfinity( this Double value )
+            => Double.IsPositiveInfinity( value );
     }
 }

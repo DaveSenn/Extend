@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="value">The Double value.</param>
         /// <returns>Returns the given Double value as hours.</returns>
-        public static TimeSpan ToHours( this Double value ) => TimeSpan.FromHours( value );
+        [Pure]
+        [PublicAPI]
+        public static TimeSpan ToHours( this Double value )
+            => TimeSpan.FromHours( value );
     }
 }

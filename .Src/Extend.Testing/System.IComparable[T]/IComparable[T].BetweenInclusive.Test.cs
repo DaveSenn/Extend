@@ -69,6 +69,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenInclusiveTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IComparableTEx.BetweenInclusive( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -77,6 +79,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenInclusiveTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".BetweenInclusive( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -85,6 +89,8 @@ namespace Extend.Testing
         [Test]
         public void BetweenInclusiveTestNullCheck2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".BetweenInclusive( "", null );
 
             test.ShouldThrow<ArgumentNullException>();
