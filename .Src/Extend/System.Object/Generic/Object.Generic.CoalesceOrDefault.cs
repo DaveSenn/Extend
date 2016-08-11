@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,24 +18,28 @@ namespace Extend
         ///     If all values are null, returns a default value.
         /// </summary>
         /// <exception cref="ArgumentNullException">The values can not be null.</exception>
+        /// <exception cref="ArgumentNullException">defaultValue can not be null.</exception>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <param name="value">The first value.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T CoalesceOrDefault<T>( this T value, T defaultValue, params T[] values ) where T : class
+        [NotNull]
+        [PublicAPI]
+        [Pure]
+        public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] T defaultValue, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
         {
+            defaultValue.ThrowIfNull( nameof( defaultValue ) );
+
             if ( value != null )
                 return value;
 
             values.ThrowIfNull( nameof( values ) );
 
-            var notNullValues = values.Where( x => x != null );
-            if ( notNullValues.Any() )
-                return notNullValues.First();
-
-            defaultValue.ThrowIfNull( nameof( defaultValue ) );
-            return defaultValue;
+            var notNullValues = values
+                .Where( x => x != null )
+                .ToList();
+            return notNullValues.Any() ? notNullValues.First() : defaultValue;
         }
 
         /// <summary>
@@ -42,25 +47,29 @@ namespace Extend
         ///     If all values are null, returns a default value.
         /// </summary>
         /// <exception cref="ArgumentNullException">The values can not be null.</exception>
+        /// <exception cref="ArgumentNullException">defaultValueFactory can not be null.</exception>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <param name="value">The first value.</param>
         /// <param name="defaultValueFactory">The default value factory.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T CoalesceOrDefault<T>( this T value, Func<T> defaultValueFactory, params T[] values )
+        [NotNull]
+        [PublicAPI]
+        [Pure]
+        public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] Func<T> defaultValueFactory, [NotNull] [ItemCanBeNull] params T[] values )
             where T : class
         {
+            defaultValueFactory.ThrowIfNull( nameof( defaultValueFactory ) );
+
             if ( value != null )
                 return value;
 
             values.ThrowIfNull( nameof( values ) );
 
-            var notNullValues = values.Where( x => x != null );
-            if ( notNullValues.Any() )
-                return notNullValues.First();
-
-            defaultValueFactory.ThrowIfNull( nameof( defaultValueFactory ) );
-            return defaultValueFactory();
+            var notNullValues = values
+                .Where( x => x != null )
+                .ToList();
+            return notNullValues.Any() ? notNullValues.First() : defaultValueFactory();
         }
     }
 }

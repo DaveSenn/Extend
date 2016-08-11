@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,10 @@ namespace Extend
         /// <param name="value">The first value..</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T Coalesce<T>( this T value, params T[] values ) where T : class
+        [CanBeNull]
+        [PublicAPI]
+        [Pure]
+        public static T Coalesce<T>( [CanBeNull] this T value, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
         {
             if ( value != null )
                 return value;
@@ -38,6 +42,10 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="value0">The second value.</param>
         /// <returns>Returns the first not null value.</returns>
-        public static T Coalesce<T>( this T value, T value0 ) where T : class => value ?? value0;
+        [CanBeNull]
+        [PublicAPI]
+        [Pure]
+        public static T Coalesce<T>( [CanBeNull] this T value, [CanBeNull] T value0 ) where T : class
+            => value ?? value0;
     }
 }

@@ -52,7 +52,7 @@ namespace Extend
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( this T value, Func<T, TResult> func )
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( [CanBeNull] this T value, [NotNull] Func<T, TResult> func )
         {
             func.ThrowIfNull( nameof( func ) );
 

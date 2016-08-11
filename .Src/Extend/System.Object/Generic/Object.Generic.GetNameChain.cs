@@ -84,7 +84,7 @@ namespace Extend
             var memberNames = new Stack<String>();
             do
             {
-                //Check if the 'inner' expression as a constant expression, if so, break the loop
+                // Check if the 'inner' expression as a constant expression, if so, break the loop
                 if ( memberExpression.Expression.NodeType == ExpressionType.Constant )
                 {
                     if ( memberNames.NotAny() )
@@ -94,7 +94,7 @@ namespace Extend
 
                 memberNames.Push( memberExpression.Member.Name );
 
-                //Check if expression is pointing to lambda parameter e.g. x (x => x)
+                // Check if expression is pointing to lambda parameter e.g. x (x => x)
                 if ( memberExpression.Expression.NodeType == ExpressionType.Parameter )
                     break;
             } while ( memberExpression.Expression.TryGetMemberExpression( out memberExpression ) );

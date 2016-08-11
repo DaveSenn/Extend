@@ -36,6 +36,7 @@ namespace Extend.Testing
         public void SumTest1NullCheck()
         {
             Int64?[] values = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ( (Int64?) 10 ).Sum( values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -55,6 +56,8 @@ namespace Extend.Testing
         public void SumTest2NullCheck()
         {
             String[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( x => (Int64) x.Length, values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -64,6 +67,8 @@ namespace Extend.Testing
         public void SumTest2NullCheck2()
         {
             Func<String, Int64> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( func, "test", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -83,6 +88,8 @@ namespace Extend.Testing
         public void SumTest3NullCheck()
         {
             String[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( x => (Int64?) x.Length, values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -92,6 +99,8 @@ namespace Extend.Testing
         public void SumTest3NullCheck2()
         {
             Func<String, Int64?> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( func, "test", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -101,6 +110,8 @@ namespace Extend.Testing
         public void SumTestNullCheck()
         {
             Int64[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ( (Int64) 10 ).Sum( values );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -46,6 +46,8 @@ namespace Extend.Testing
         public void GetMemberInfoFromExpressionTestNullCheck()
         {
             Expression<Func<TestModel, Object>> memberExpression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => memberExpression.GetMemberInfoFromExpression();
 
             test.ShouldThrow<ArgumentNullException>();

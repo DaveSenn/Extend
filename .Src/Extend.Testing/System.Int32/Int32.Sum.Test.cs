@@ -36,6 +36,8 @@ namespace Extend.Testing
         public void SumTest1NullCheck()
         {
             Int32?[] values = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ( 10 as Int32? ).Sum( values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -55,6 +57,8 @@ namespace Extend.Testing
         public void SumTest2NullCheck()
         {
             String[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( x => x.Length, values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -64,6 +68,8 @@ namespace Extend.Testing
         public void SumTest2NullCheck2()
         {
             Func<String, Int32> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( func, "test", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -83,6 +89,8 @@ namespace Extend.Testing
         public void SumTest3NullCheck()
         {
             String[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( x => (Int32?) x.Length, values );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -92,6 +100,8 @@ namespace Extend.Testing
         public void SumTest3NullCheck2()
         {
             Func<String, Int32?> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "Test".Sum( func, "test", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -101,6 +111,8 @@ namespace Extend.Testing
         public void SumTestNullCheck()
         {
             Int32[] values = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => 10.Sum( values );
 
             test.ShouldThrow<ArgumentNullException>();
