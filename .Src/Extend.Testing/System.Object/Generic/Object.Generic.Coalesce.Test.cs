@@ -52,6 +52,7 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = expected.Coalesce( value );
 
             Assert.AreEqual( expected, actual );
@@ -62,6 +63,7 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomString();
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.Coalesce( expected );
 
             Assert.AreEqual( expected, actual );
@@ -71,6 +73,8 @@ namespace Extend.Testing
         public void CoalesceTestInvalidOperationCheck()
         {
             Object[] array = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => ObjectEx.Coalesce( null, array, null );
 
             test.ShouldThrow<InvalidOperationException>();
@@ -81,6 +85,9 @@ namespace Extend.Testing
         {
             String s = null;
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.Coalesce( array );
 
             test.ShouldThrow<ArgumentNullException>();

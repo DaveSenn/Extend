@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,8 @@ namespace Extend
         /// <param name="startValue">The start of the range.</param>
         /// <param name="endValue">The end of the range.</param>
         /// <returns>Returns a list containing the specified range.</returns>
+        [Pure]
+        [PublicAPI]
         public static List<Int16> RangeTo( this Int16 startValue, Int16 endValue )
         {
             if ( startValue > endValue )

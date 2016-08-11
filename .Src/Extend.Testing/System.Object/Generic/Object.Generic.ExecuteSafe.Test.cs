@@ -58,6 +58,7 @@ namespace Extend.Testing
             Func<String, String> func = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ExecuteSafe( func );
 
             test.ShouldThrow<ArgumentNullException>();

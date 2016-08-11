@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,6 +19,9 @@ namespace Extend
         /// <param name="day">The day.</param>
         /// <param name="year">The year.</param>
         /// <returns>Return a date-time representing the specified day in May in the specified year.</returns>
-        public static DateTime May( this Int16 day, Int16 year ) => new DateTime( year, 5, day );
+        [Pure]
+        [PublicAPI]
+        public static DateTime May( this Int16 day, Int16 year )
+            => new DateTime( year, 5, day );
     }
 }

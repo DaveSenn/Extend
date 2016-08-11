@@ -12,6 +12,17 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
+        public void IsMultipleFactorOf0Test()
+        {
+            const Int64 value = 10;
+            const Int64 factor = 0;
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.IsMultipleOf( factor );
+            test.ShouldThrow<DivideByZeroException>();
+        }
+
+        [Test]
         public void IsMultipleOfTest()
         {
             Int64 value = RandomValueEx.GetRandomInt32();
@@ -45,17 +56,6 @@ namespace Extend.Testing
             var actual = value.IsMultipleOf( factor );
             actual.Should()
                   .BeFalse();
-        }
-
-        [Test]
-        public void IsMultipleFactorOf0Test()
-        {
-            const Int64 value = 10;
-            const Int64 factor = 0;
-
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => value.IsMultipleOf(factor);
-            test.ShouldThrow<DivideByZeroException>();
         }
     }
 }

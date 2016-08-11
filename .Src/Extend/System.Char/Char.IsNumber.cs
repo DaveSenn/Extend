@@ -16,7 +16,7 @@ namespace Extend
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a number, otherwise false.</returns>
-        public static Boolean IsNumber( this Char c ) 
+        public static Boolean IsNumber( this Char c )
             => Char.IsNumber( c );
     }
 }
