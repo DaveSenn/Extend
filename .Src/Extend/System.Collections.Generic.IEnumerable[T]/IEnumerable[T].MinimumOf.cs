@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,7 @@ namespace Extend
     public static partial class IEnumerableTEx
     {
         /// <summary>
-        ///     Gets whether the the IEnumerable contains at least the specified number of items matching the specified predicate.
+        ///     Gets whether the IEnumerable contains at least the specified number of items matching the specified predicate.
         /// </summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
@@ -27,7 +28,9 @@ namespace Extend
         ///     Returns true if the IEnumerable contains at least the specified number of items matching the specified
         ///     predicate, otherwise false.
         /// </returns>
-        public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count, Func<T, Boolean> predicate )
+        [Pure]
+        [PublicAPI]
+        public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count, [NotNull] Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
             predicate.ThrowIfNull( nameof( predicate ) );
@@ -43,7 +46,9 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable.</param>
         /// <param name="count">The minimum number of items.</param>
         /// <returns>Returns true if the IEnumerable contains at least the specified number of items, otherwise false.</returns>
-        public static Boolean MinimumOf<T>( this IEnumerable<T> enumerable, Int32 count )
+        [Pure]
+        [PublicAPI]
+        public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 

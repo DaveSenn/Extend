@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -24,7 +25,9 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="values">The values to search for.</param>
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
-        public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, params T[] values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
             values.ThrowIfNull( nameof( values ) );
@@ -42,7 +45,9 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="values">The IEnumerable containing the values to search for.</param>
         /// <returns>Returns true if the IEnumerable contains all given values, otherwise false.</returns>
-        public static Boolean ContainsAll<T>( this IEnumerable<T> enumerable, IEnumerable<T> values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
             values.ThrowIfNull( nameof( values ) );

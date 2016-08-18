@@ -154,7 +154,6 @@
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIfNotContains.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIf.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].StringJoin.Test.cs" />
-    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNotNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveIf.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveRange.Test.cs" />
@@ -193,7 +192,6 @@
     <Compile Include="System.DateTime\DateTime.FirstDayOfWeek.Test.cs" />
     <Compile Include="System.DateTime\DateTime.Intersects.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsAfternoon.Test.cs" />
-    <Compile Include="System.DateTime\DateTime.IsDateEqual.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsFuture.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsMorning.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsPast.Test.cs" />

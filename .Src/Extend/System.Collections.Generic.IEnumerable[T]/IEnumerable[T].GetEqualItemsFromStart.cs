@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -25,9 +26,13 @@ namespace Extend
         ///     <paramref name="right" />.
         ///     The resulting sequence ends when the two input sequence start to differ.
         /// </returns>
-        public static IEnumerable<T> GetEqualItemsFromStart<T>( this IEnumerable<T> left, IEnumerable<T> right, IEqualityComparer<T> comparer = null )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> GetEqualItemsFromStart<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> left,
+                                                                [NotNull] [ItemCanBeNull] IEnumerable<T> right,
+                                                                [CanBeNull] IEqualityComparer<T> comparer = null )
         {
-            // ReSharper disable PossibleMultipleEnumeration
             left.ThrowIfNull( nameof( left ) );
             right.ThrowIfNull( nameof( right ) );
 
@@ -40,7 +45,6 @@ namespace Extend
                         yield return rightEnumerator.Current;
                     else
                         yield break;
-            // ReSharper restore PossibleMultipleEnumeration
         }
     }
 }

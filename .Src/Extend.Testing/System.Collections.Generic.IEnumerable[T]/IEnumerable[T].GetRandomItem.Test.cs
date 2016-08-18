@@ -10,12 +10,15 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void GetRandomItemArgumentNullExceptionTest()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.GetRandomItem();
 
             test.ShouldThrow<ArgumentNullException>();

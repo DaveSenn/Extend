@@ -25,6 +25,7 @@ namespace Extend.Testing
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "T", DateTimeFormatInfo.CurrentInfo );
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = dateTime.ToLongTimeString( DateTimeFormatInfo.CurrentInfo );
             Assert.AreEqual( expected, actual );
         }

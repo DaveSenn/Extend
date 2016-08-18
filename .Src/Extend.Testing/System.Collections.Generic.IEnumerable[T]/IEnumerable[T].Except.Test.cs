@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -93,6 +94,8 @@ namespace Extend.Testing
             var second = new List<Int32> { 2, 4, 6, 8 };
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.Except( second, x => x );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -105,6 +108,8 @@ namespace Extend.Testing
             List<Int32> second = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Except( second, x => x );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -118,6 +123,8 @@ namespace Extend.Testing
             Func<Int32, Int32> keySelector = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Except( second, keySelector );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -43,6 +44,8 @@ namespace Extend.Testing
         public void ManyTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Many( x => true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -51,6 +54,8 @@ namespace Extend.Testing
         [Test]
         public void ManyTest1NullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().Many( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -60,6 +65,8 @@ namespace Extend.Testing
         public void ManyTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Many();
 
             test.ShouldThrow<ArgumentNullException>();

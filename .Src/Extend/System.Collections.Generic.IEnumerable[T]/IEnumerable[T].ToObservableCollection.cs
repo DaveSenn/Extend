@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,10 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>The given IEnumerable as ObservableCollection.</returns>
-        public static ObservableCollection<T> ToObservableCollection<T>( this IEnumerable<T> enumerable )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static ObservableCollection<T> ToObservableCollection<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 

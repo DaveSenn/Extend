@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,6 +18,9 @@ namespace Extend
         /// <param name="time">The time to check.</param>
         /// <param name="timeToCompare">The time to compare.</param>
         /// <returns>Returns true if the time is equals, otherwise false.</returns>
-        public static Boolean IsTimeEquals( this DateTime time, DateTime timeToCompare ) => time.TimeOfDay == timeToCompare.TimeOfDay;
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsTimeEquals( this DateTime time, DateTime timeToCompare )
+            => time.TimeOfDay == timeToCompare.TimeOfDay;
     }
 }

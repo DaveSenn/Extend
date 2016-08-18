@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,10 @@ namespace Extend
         /// </summary>
         /// <param name="day">The day to check.</param>
         /// <returns>Returns true if the day is a weekend day, otherwise false.</returns>
-        public static Boolean IsWeekendDay( this DateTime day ) => day.DayOfWeek == DayOfWeek.Saturday || day.DayOfWeek == DayOfWeek.Sunday;
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsWeekendDay( this DateTime day )
+            => day.DayOfWeek == DayOfWeek.Saturday
+               || day.DayOfWeek == DayOfWeek.Sunday;
     }
 }

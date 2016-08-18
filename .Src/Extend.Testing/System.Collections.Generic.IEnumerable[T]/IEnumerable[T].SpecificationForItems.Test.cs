@@ -11,11 +11,13 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void SpecificationForItemsTest()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
 
@@ -26,6 +28,7 @@ namespace Extend.Testing
         [Test]
         public void SpecificationForItemsTest1()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
 
@@ -36,6 +39,7 @@ namespace Extend.Testing
         [Test]
         public void SpecificationForItemsTest2()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3, "msg" );
 
@@ -47,6 +51,7 @@ namespace Extend.Testing
         [Test]
         public void SpecificationForItemsTest3()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var targets = new List<String>();
             var actual = targets.SpecificationForItems( x => x.Length > 3, "msg" );
 
@@ -59,8 +64,11 @@ namespace Extend.Testing
         [Test]
         public void SpecificationForItemsTestNullCheck()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var targets = new List<String>();
             Func<String, Boolean> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => targets.SpecificationForItems( expression );
 
             test.ShouldThrow<ArgumentNullException>();

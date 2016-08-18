@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -37,6 +38,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAnyTest1NullCheck()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ContainsAny( null, new List<Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -46,6 +49,8 @@ namespace Extend.Testing
         public void ContainsAnyTest1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().ContainsAny( enumerable );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -54,6 +59,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAnyTestNullCheck()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ContainsAny( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -63,6 +70,8 @@ namespace Extend.Testing
         public void ContainsAnyTestNullCheck1()
         {
             Object[] array = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().ContainsAny( array );
 
             test.ShouldThrow<ArgumentNullException>();

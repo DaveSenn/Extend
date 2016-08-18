@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,10 @@ namespace Extend
         /// <param name="keySelector">A function that returns the comparison key.</param>
         /// <param name="comparer">An optional comparer, used to compare the keys.</param>
         /// <returns>Returns an equality comparer based on the specified comparison key and key comparer.</returns>
-        public static IEqualityComparer<TSource> By<TSource, TKey>( Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer = null )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEqualityComparer<TSource> By<TSource, TKey>( [NotNull] Func<TSource, TKey> keySelector, [CanBeNull] IEqualityComparer<TKey> comparer = null )
         {
             keySelector.ThrowIfNull( nameof( keySelector ) );
 

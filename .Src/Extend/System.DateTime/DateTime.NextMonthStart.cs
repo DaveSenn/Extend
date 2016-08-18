@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,10 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The date-time value.</param>
         /// <returns>Returns the first day of the next month, based on the given date-time value.</returns>
-        public static DateTime NextMonthStart( this DateTime dateTime ) => dateTime.AddMonths( 1 )
-                                                                                   .StartOfMonth();
+        [Pure]
+        [PublicAPI]
+        public static DateTime NextMonthStart( this DateTime dateTime )
+            => dateTime.AddMonths( 1 )
+                       .StartOfMonth();
     }
 }

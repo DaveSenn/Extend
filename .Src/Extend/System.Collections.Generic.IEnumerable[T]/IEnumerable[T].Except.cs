@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -37,12 +38,14 @@ namespace Extend
         ///     keys of the items.
         /// </param>
         /// <returns>A sequence that contains the set difference of the elements of two sequences.</returns>
-        public static IEnumerable<TSource> Except<TSource, TKey>( this IEnumerable<TSource> first,
-                                                                  IEnumerable<TSource> second,
-                                                                  Func<TSource, TKey> keySelector,
-                                                                  IEqualityComparer<TKey> comparer = null )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<TSource> Except<TSource, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
+                                                                  [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
+                                                                  [NotNull] Func<TSource, TKey> keySelector,
+                                                                  [CanBeNull] IEqualityComparer<TKey> comparer = null )
         {
-            // ReSharper disable PossibleMultipleEnumeration
             first.ThrowIfNull( nameof( first ) );
             second.ThrowIfNull( nameof( second ) );
             keySelector.ThrowIfNull( nameof( keySelector ) );
@@ -50,7 +53,6 @@ namespace Extend
             var internalComparer = IEqualityComparerEx.By( keySelector, comparer );
 
             return first.Except( second, internalComparer );
-            // ReSharper restore PossibleMultipleEnumeration
         }
     }
 }

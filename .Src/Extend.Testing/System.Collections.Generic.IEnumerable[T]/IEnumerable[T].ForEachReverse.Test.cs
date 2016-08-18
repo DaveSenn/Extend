@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -19,6 +20,7 @@ namespace Extend.Testing
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( otherList.Add );
             Assert.AreEqual( list.Count, otherList.Count );
             Assert.IsTrue( list.All( x => otherList.Contains( x ) ) );
@@ -29,6 +31,7 @@ namespace Extend.Testing
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( x => list.Remove( x ) );
             Assert.AreEqual( 0, list.Count );
         }
@@ -37,6 +40,8 @@ namespace Extend.Testing
         public void ForEachReverseTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEachReverse( Console.WriteLine );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -45,6 +50,8 @@ namespace Extend.Testing
         [Test]
         public void ForEachReverseTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ForEachReverse( null );
 
             test.ShouldThrow<ArgumentNullException>();

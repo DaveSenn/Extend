@@ -23,8 +23,6 @@ namespace Extend.Testing
             /// <returns>
             ///     true if the specified objects are equal; otherwise, false.
             /// </returns>
-            /// <param name="x">The first object of type <paramref name="T" /> to compare.</param>
-            /// <param name="y">The second object of type <paramref name="T" /> to compare.</param>
             public Boolean Equals( String x, String y ) => x.Length == y.Length;
 
             /// <summary>
@@ -47,6 +45,8 @@ namespace Extend.Testing
         public void BySelectorNullTest()
         {
             Func<String, String> keySelector = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEqualityComparerEx.By( keySelector, new StringLengthComparer() );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -54,6 +54,7 @@ namespace Extend.Testing
         [Test]
         public void ByTest()
         {
+            // ReSharper disable once RedundantArgumentDefaultValue
             var actual = IEqualityComparerEx.By<String, Int32>( x => x.Length, null );
             var equals = actual.Equals( "test", "1234" );
             equals.Should()

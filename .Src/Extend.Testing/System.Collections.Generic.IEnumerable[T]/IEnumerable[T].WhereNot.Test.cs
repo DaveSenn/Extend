@@ -11,8 +11,35 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
+        [Test]
+        public void WhereNotCollectionNullTest()
+        {
+            List<Int32> target = null;
+            var specification = new ExpressionSpecification<Int32>( x => x >= 100 );
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => target.WhereNot( specification );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void WhereNotSpecificationNullTest()
+        {
+            var target = new List<Int32> { 1, 10, 100, 1000 };
+            ISpecification<Int32> specification = null;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => target.WhereNot( specification );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
         [Test]
         public void WhereNotTest()
         {
@@ -24,17 +51,6 @@ namespace Extend.Testing
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x == 1 ) );
             Assert.AreEqual( 1, actual.Count( x => x == 10 ) );
-        }
-
-        [Test]
-        public void WhereNotTestNullCheck()
-        {
-            var target = new List<Int32> { 1, 10, 100, 1000 };
-            ISpecification<Int32> specification = null;
-
-            Action test = () => target.WhereNot( specification );
-
-            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

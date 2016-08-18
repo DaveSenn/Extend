@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -25,9 +26,12 @@ namespace Extend
         /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
         /// <param name="predicate">The where predicate.</param>
         /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        public static IEnumerable<T> WhereIf<T>( this IEnumerable<T> source,
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> WhereIf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source,
                                                  Boolean condition,
-                                                 Func<T, Boolean> predicate )
+                                                 [NotNull] Func<T, Boolean> predicate )
         {
             source.ThrowIfNull( nameof( source ) );
             predicate.ThrowIfNull( nameof( predicate ) );
@@ -46,9 +50,12 @@ namespace Extend
         /// <param name="condition">The condition determining whether the where predicate gets applied or not.</param>
         /// <param name="predicate">The where predicate.</param>
         /// <returns>Returns the result of the predicate if the condition is true, otherwise the source IEnumerable.</returns>
-        public static IEnumerable<T> WhereIf<T>( this IEnumerable<T> source,
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> WhereIf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source,
                                                  Boolean condition,
-                                                 Func<T, Int32, Boolean> predicate )
+                                                 [NotNull] Func<T, Int32, Boolean> predicate )
         {
             source.ThrowIfNull( nameof( source ) );
             predicate.ThrowIfNull( nameof( predicate ) );

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,8 @@ namespace Extend
         /// <param name="week">The week to return the start of.</param>
         /// <param name="firstDayOfWeek">The first day of the week. Default is Monday.</param>
         /// <returns>Returns the first day of the current week.</returns>
+        [Pure]
+        [PublicAPI]
         public static DateTime StartOfWeek( this DateTime week, DayOfWeek firstDayOfWeek = DayOfWeek.Monday )
         {
             var currentDay = week.DayOfWeek;

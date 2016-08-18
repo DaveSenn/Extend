@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,13 +24,14 @@ namespace Extend
         /// <param name="predicate">The Predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <typeparam name="TKey">The input type of the predicate.</typeparam>
-        public static IEnumerable<T> Distinct<T, TKey>( this IEnumerable<T> enumerable, Func<T, TKey> predicate )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> Distinct<T, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, TKey> predicate )
         {
-            // ReSharper disable once PossibleMultipleEnumeration
             enumerable.ThrowIfNull( nameof( enumerable ) );
             predicate.ThrowIfNull( nameof( predicate ) );
 
-            // ReSharper disable once PossibleMultipleEnumeration
             return enumerable.GroupBy( predicate )
                              .Select( g => g )
                              .Select( x => x.First() );

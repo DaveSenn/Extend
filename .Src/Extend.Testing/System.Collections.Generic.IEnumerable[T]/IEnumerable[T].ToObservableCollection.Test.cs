@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -27,6 +28,8 @@ namespace Extend.Testing
         public void ToObservableCollectionTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ToObservableCollection();
 
             test.ShouldThrow<ArgumentNullException>();

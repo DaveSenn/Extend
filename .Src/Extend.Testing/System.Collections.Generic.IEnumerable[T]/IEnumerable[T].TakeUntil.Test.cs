@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -41,6 +42,8 @@ namespace Extend.Testing
         public void TakeUntilTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.TakeUntil( x => true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -49,6 +52,8 @@ namespace Extend.Testing
         [Test]
         public void TakeUntilTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().TakeUntil( null );
 
             test.ShouldThrow<ArgumentNullException>();

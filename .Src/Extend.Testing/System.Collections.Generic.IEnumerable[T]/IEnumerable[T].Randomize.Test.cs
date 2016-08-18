@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -22,9 +23,12 @@ namespace Extend.Testing
 
             list = RandomValueEx.GetRandomStrings( 100 );
             result = list.Randomize();
+            // ReSharper disable once PossibleMultipleEnumeration
             Assert.AreEqual( list.Count, result.Count() );
+            // ReSharper disable once PossibleMultipleEnumeration
             Assert.IsTrue( list.All( x => result.Contains( x ) ) );
 
+            // ReSharper disable once PossibleMultipleEnumeration
             var resultList = result.ToList();
             if ( list.Where( ( t, i ) => t != resultList[i] )
                      .Any() )
@@ -36,6 +40,8 @@ namespace Extend.Testing
         public void RandomizeTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Randomize();
 
             test.ShouldThrow<ArgumentNullException>();

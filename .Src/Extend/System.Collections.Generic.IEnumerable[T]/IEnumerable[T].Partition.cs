@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,14 +24,15 @@ namespace Extend
         /// <param name="source">The sequence to partition.</param>
         /// <param name="size">The number of items per block.</param>
         /// <returns>Returns the created blocks.</returns>
-        public static IEnumerable<IEnumerable<T>> Partition<T>( this IEnumerable<T> source, Int32 size )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<IEnumerable<T>> Partition<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, Int32 size )
         {
-            // ReSharper disable once PossibleMultipleEnumeration
             source.ThrowIfNull( nameof( source ) );
             if ( size < 1 )
                 throw new ArgumentOutOfRangeException( nameof( size ), size, $"{nameof( size )} is out of range. Size must be > 1." );
 
-            // ReSharper disable once PossibleMultipleEnumeration
             return source
                 .WithIndex()
                 .GroupBy( x => x.Index / size )

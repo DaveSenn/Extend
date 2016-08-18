@@ -33,8 +33,6 @@ namespace Extend.Testing
             /// <returns>
             ///     true if the specified objects are equal; otherwise, false.
             /// </returns>
-            /// <param name="x">The first object of type <paramref name="T" /> to compare.</param>
-            /// <param name="y">The second object of type <paramref name="T" /> to compare.</param>
             public Boolean Equals( String x, String y ) => x.Length == y.Length;
 
             /// <summary>
@@ -60,6 +58,8 @@ namespace Extend.Testing
             var second = new List<String> { "a", "d", "z" };
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.Intersect( second, x => x );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -71,6 +71,8 @@ namespace Extend.Testing
             List<String> second = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Intersect( second, x => x );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -83,6 +85,8 @@ namespace Extend.Testing
             Func<String, String> keySelector = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Intersect( second, keySelector );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -93,6 +97,7 @@ namespace Extend.Testing
             var first = new List<String> { "a", "b", "c" };
             var second = new List<String> { "a", "d", "z" };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = first.Intersect( second, x => x )
                               .ToList();
             actual.Should()
@@ -119,6 +124,7 @@ namespace Extend.Testing
                 new TestModel { Name = "d" }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = first.Intersect( second, x => x.Name )
                               .ToList();
             actual.Should()
@@ -150,6 +156,7 @@ namespace Extend.Testing
                 new TestModel { Name = "1234567890" }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = first.Intersect( second, x => x.Name, new StringLengthComparer() )
                               .ToList();
             actual.Should()

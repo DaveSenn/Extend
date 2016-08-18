@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         private class TestComparer : IEqualityComparer<Int32>
@@ -23,8 +24,6 @@ namespace Extend.Testing
             /// <returns>
             ///     true if the specified objects are equal; otherwise, false.
             /// </returns>
-            /// <param name="x">The first object of type <paramref name="T" /> to compare.</param>
-            /// <param name="y">The second object of type <paramref name="T" /> to compare.</param>
             public Boolean Equals( Int32 x, Int32 y ) => Math.Abs( x ) == Math.Abs( y );
 
             /// <summary>
@@ -48,6 +47,7 @@ namespace Extend.Testing
         {
             Action test = () =>
             {
+                // ReSharper disable once AssignNullToNotNullAttribute
                 var result = IEnumerableTEx.GetEqualItemsFromStart( null, Enumerable.Empty<Int32>() );
                 result.Should()
                       .BeNull( "Should have thrown exception" );
@@ -61,6 +61,7 @@ namespace Extend.Testing
             Action test = () =>
             {
                 var result = Enumerable.Empty<Int32>()
+                    // ReSharper disable once AssignNullToNotNullAttribute
                                        .GetEqualItemsFromStart( null );
                 result.Should()
                       .BeNull( "Should have thrown exception" );

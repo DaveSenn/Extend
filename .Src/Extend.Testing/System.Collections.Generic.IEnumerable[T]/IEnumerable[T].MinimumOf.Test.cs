@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -44,6 +45,8 @@ namespace Extend.Testing
         public void MinimumOfTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.MinimumOf( 10 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -53,6 +56,8 @@ namespace Extend.Testing
         public void MinimumOfTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.MinimumOf( 10, x => true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -62,7 +67,11 @@ namespace Extend.Testing
         public void MinimumOfTestNullCheck1()
         {
             List<Object> list = null;
-            Action test = () => list.MinimumOf( 10, null );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => list.MinimumOf( 10,
+                                                // ReSharper disable once AssignNullToNotNullAttribute
+                                                null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

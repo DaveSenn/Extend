@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -36,12 +37,14 @@ namespace Extend
         ///     keys of the items.
         /// </param>
         /// <returns>Returns a sequence that contains the elements that form the set intersection of two sequences.</returns>
-        public static IEnumerable<TSource> Intersect<TSource, TKey>( this IEnumerable<TSource> first,
-                                                                     IEnumerable<TSource> second,
-                                                                     Func<TSource, TKey> keySelector,
-                                                                     IEqualityComparer<TKey> comparer = null )
+        [Pure]
+        [PublicAPI]
+        [CanBeNull]
+        public static IEnumerable<TSource> Intersect<TSource, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<TSource> first,
+                                                                     [NotNull] [ItemCanBeNull] IEnumerable<TSource> second,
+                                                                     [NotNull] Func<TSource, TKey> keySelector,
+                                                                     [CanBeNull] IEqualityComparer<TKey> comparer = null )
         {
-            // ReSharper disable PossibleMultipleEnumeration
             first.ThrowIfNull( nameof( first ) );
             second.ThrowIfNull( nameof( second ) );
             keySelector.ThrowIfNull( nameof( keySelector ) );

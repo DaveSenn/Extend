@@ -11,12 +11,15 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void PartitionArgumentNullExceptionTest()
         {
             List<String> target = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => target.Partition( 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -25,7 +28,9 @@ namespace Extend.Testing
         [Test]
         public void PartitionInvalidSizeTest()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var target = new List<String>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => target.Partition( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -34,6 +39,7 @@ namespace Extend.Testing
         [Test]
         public void PartitionNoItemsTest()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var target = new List<String>();
             var actual = target.Partition( 1 )
                                .ToList();

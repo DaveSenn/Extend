@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The date dateTime to decrease.</param>
         /// <returns>Yesterday date at same dateTime.</returns>
-        public static DateTime Yesterday( this DateTime dateTime ) => dateTime.AddDays( -1 );
+        [Pure]
+        [PublicAPI]
+        public static DateTime Yesterday( this DateTime dateTime )
+            => dateTime.AddDays( -1 );
     }
 }

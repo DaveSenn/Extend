@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="day">The day to get the start of.</param>
         /// <returns>Returns the start of the given day ("00:00:00:000").</returns>
-        public static DateTime StartOfDay( this DateTime day ) => new DateTime( day.Year, day.Month, day.Day );
+        [Pure]
+        [PublicAPI]
+        public static DateTime StartOfDay( this DateTime day )
+            => new DateTime( day.Year, day.Month, day.Day );
     }
 }

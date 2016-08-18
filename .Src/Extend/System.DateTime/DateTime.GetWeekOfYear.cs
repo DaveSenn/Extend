@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,6 +24,8 @@ namespace Extend
         /// </remarks>
         /// <param name="dateTime">The date-time value.</param>
         /// <returns>Returns the number of the given week.</returns>
+        [Pure]
+        [PublicAPI]
         public static Int32 GetWeekOfYear( this DateTime dateTime )
         {
             // Seriously cheat.  If its Monday, Tuesday or Wednesday, then it'll 

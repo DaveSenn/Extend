@@ -1,7 +1,9 @@
 ﻿#region Usings
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,9 +18,18 @@ namespace Extend
         /// <summary>
         ///     Removes the indexes from a IEnumerable of indexed elements, returning only the elements themselves.
         /// </summary>
+        /// <exception cref="ArgumentNullException">source can not be null.</exception>
         /// <typeparam name="T">The type of the items in the given IEnumerable.</typeparam>
         /// <param name="source">The IEnumerable to remove the indexes from.</param>
         /// <returns>A IEnumerable of elements without their associated indexes.</returns>
-        public static IEnumerable<T> WithoutIndex<T>( this IEnumerable<IIndexedItem<T>> source ) => source.Select( indexed => indexed.Item );
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> WithoutIndex<T>( [NotNull] [ItemNotNull] this IEnumerable<IIndexedItem<T>> source )
+        {
+            source.ThrowIfNull( nameof( source ) );
+
+            return source.Select( indexed => indexed.Item );
+        }
     }
 }

@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -38,6 +39,8 @@ namespace Extend.Testing
         public void DistinctTestNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Distinct( x => x.Value );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -47,6 +50,8 @@ namespace Extend.Testing
         public void DistinctTestNullCheck1()
         {
             Func<Object, Boolean> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().Distinct( func );
 
             test.ShouldThrow<ArgumentNullException>();

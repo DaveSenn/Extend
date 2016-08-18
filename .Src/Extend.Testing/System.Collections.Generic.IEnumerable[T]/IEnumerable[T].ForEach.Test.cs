@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
@@ -30,6 +31,7 @@ namespace Extend.Testing
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
 
             test.ShouldThrow<InvalidOperationException>();
@@ -39,6 +41,8 @@ namespace Extend.Testing
         public void ForEachTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => { } );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -48,6 +52,8 @@ namespace Extend.Testing
         public void ForEachTest1NullCheck1()
         {
             Action<Object, Int32> action = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ForEach( action );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -70,6 +76,7 @@ namespace Extend.Testing
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
 
             test.ShouldThrow<InvalidOperationException>();
@@ -90,6 +97,8 @@ namespace Extend.Testing
         public void ForEachTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -99,6 +108,8 @@ namespace Extend.Testing
         public void ForEachTestNullCheck1()
         {
             Action<Object> action = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );
 
             test.ShouldThrow<ArgumentNullException>();
