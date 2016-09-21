@@ -13,27 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public class ExpressionExTest
     {
-        private event PropertyChangedEventHandler PropertyChanged;
-
-        private class TestModel
-        {
-            #region Properties
-
-            public Int32 Age { get; set; }
-            public SubModel SubModel { get; set; }
-
-            #endregion
-        }
-
-        private class SubModel
-        {
-            #region Properties
-
-            public String Foo { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void TryGetMemberExpressioInvalidTypeTest()
         {
@@ -201,6 +180,27 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expression.TryGetMemberExpression( out outResult );
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        private event PropertyChangedEventHandler PropertyChanged;
+
+        private class TestModel
+        {
+            #region Properties
+
+            public Int32 Age { get; set; }
+            public SubModel SubModel { get; set; }
+
+            #endregion
+        }
+
+        private class SubModel
+        {
+            #region Properties
+
+            public String Foo { get; set; }
+
+            #endregion
         }
     }
 }

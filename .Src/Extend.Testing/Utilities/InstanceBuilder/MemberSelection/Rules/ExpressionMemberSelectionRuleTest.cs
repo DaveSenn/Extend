@@ -17,10 +17,10 @@ namespace Extend.Testing
             var expected = new MemberInformation();
             MemberInformation actual = null;
             var target = new ExpressionMemberSelectionRule( x =>
-            {
-                actual = x as MemberInformation;
-                return true;
-            },
+                                                            {
+                                                                actual = x as MemberInformation;
+                                                                return true;
+                                                            },
                                                             MemberSelectionMode.Include );
 
             var result = target.GetSelectionResult( expected );

@@ -12,15 +12,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class TypeExTest
     {
-        private class TestClass
-        {
-        }
-
-        // ReSharper disable once UnusedTypeParameter
-        private class TestClassGeneric<T>
-        {
-        }
-
         [Test]
         public void GetNameWithNamespaceArgumentNullExceptionTest()
         {
@@ -227,6 +218,15 @@ namespace Extend.Testing
             var actualType = Type.GetType( actual );
             actualType.Should()
                       .NotBeNull();
+        }
+
+        private class TestClass
+        {
+        }
+
+        // ReSharper disable once UnusedTypeParameter
+        private class TestClassGeneric<T>
+        {
         }
     }
 }

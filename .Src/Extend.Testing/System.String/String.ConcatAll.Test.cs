@@ -97,11 +97,11 @@ namespace Extend.Testing
         public void ConcatAllTest2()
         {
             var actual = "test".ConcatAll( new Object[]
-            {
-                "0",
-                "1",
-                "2"
-            } );
+                                           {
+                                               "0",
+                                               "1",
+                                               "2"
+                                           } );
             Assert.AreEqual( "test012", actual );
         }
 

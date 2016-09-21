@@ -12,22 +12,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class TypeExTest
     {
-        private class TestModel
-        {
-            #region Properties
-
-            public String MyString { get; set; }
-            public Int32 MyInt32 { get; set; }
-            public String ReadonlyString { get; }
-            private String PrivateString { get; set; }
-
-            #endregion
-        }
-
-        private class TestModelNoProperties
-        {
-        }
-
         [Test]
         public void GetPublicSettablePropertiesTest()
         {
@@ -56,6 +40,22 @@ namespace Extend.Testing
 
             actual.Count.Should()
                   .Be( 0 );
+        }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public String MyString { get; set; }
+            public Int32 MyInt32 { get; set; }
+            public String ReadonlyString { get; }
+            private String PrivateString { get; set; }
+
+            #endregion
+        }
+
+        private class TestModelNoProperties
+        {
         }
     }
 }

@@ -25,10 +25,10 @@ namespace Extend.Testing
             Assert.AreEqual( 71.5, actual );
 
             actual = ( null as Double? ).Sum( new Double?[]
-            {
-                null,
-                null
-            } );
+                                              {
+                                                  null,
+                                                  null
+                                              } );
             Assert.AreEqual( 0d, actual );
         }
 

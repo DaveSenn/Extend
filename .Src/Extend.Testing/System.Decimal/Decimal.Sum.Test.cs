@@ -28,10 +28,10 @@ namespace Extend.Testing
             Assert.AreEqual( 70, actual );
 
             actual = ( null as Decimal? ).Sum( new Decimal?[]
-            {
-                null,
-                null
-            } );
+                                               {
+                                                   null,
+                                                   null
+                                               } );
             Assert.AreEqual( new Decimal( 0 ), actual );
         }
 

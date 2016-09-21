@@ -13,15 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public class PropertyInfoExTest
     {
-        private class TestModel
-        {
-            #region Properties
-
-            public String MyString { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void ToMemberInformationNullTest()
         {
@@ -57,9 +48,9 @@ namespace Extend.Testing
             var property = typeof(TestModel).GetPublicSettableProperties()
                                             .First();
             var actual = property.ToMemberInformation( new MemberInformation
-            {
-                MemberName = "Parent"
-            } );
+                                                       {
+                                                           MemberName = "Parent"
+                                                       } );
             actual.MemberName.Should()
                   .Be( "MyString" );
             actual.MemberObject.Should()
@@ -70,6 +61,15 @@ namespace Extend.Testing
                   .Be( typeof(String) );
             actual.PropertyInfo.Should()
                   .BeSameAs( property );
+        }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public String MyString { get; set; }
+
+            #endregion
         }
     }
 }

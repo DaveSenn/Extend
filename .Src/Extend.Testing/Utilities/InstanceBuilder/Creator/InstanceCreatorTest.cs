@@ -13,73 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public class InstanceCreatorTest
     {
-        private class TestModel
-        {
-            #region Properties
-
-            public Int16 MyInt16 { get; set; }
-            public Int32 MyInt32 { get; set; }
-            public Int64 MyInt64 { get; set; }
-            public Double MyDouble { get; set; }
-            public Char MyChar { get; set; }
-            public String MyString { get; set; }
-            public Boolean MyBoolean { get; set; }
-            public DateTime MyDateTime { get; set; }
-            public List<String> MyStringList { get; set; }
-            public List<Int32> MyIntList { get; set; }
-            public IEnumerable<String> MyStringEnumerable { get; set; }
-            public IEnumerable<Int32> MyInt32Enumerable { get; set; }
-            public String[] MyStringArray { get; set; }
-            public Int32[] MyIntArray { get; set; }
-
-            public SubModel MySubModel { get; set; }
-
-            #endregion
-        }
-
-        public class SubModel
-        {
-            #region Properties
-
-            public String MyString { get; set; }
-
-            public Int32? MyNullableInt32 { get; set; }
-
-            public DateTime? MyDateTime { get; set; }
-
-            #endregion
-        }
-
-        private class ModelNeedingFactory
-        {
-            #region Properties
-
-            public ModelWithCtor MyProperty { get; set; }
-
-            #endregion
-        }
-
-        private class ModelWithCtor
-        {
-            #region Ctor
-
-            public ModelWithCtor( String arg )
-            {
-            }
-
-            #endregion
-        }
-
-        private class SimpleTestModel
-        {
-            #region Properties
-
-            public String MyString { get; set; }
-            public Int32 MyInt32 { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void ActivatorFailTest()
         {
@@ -524,6 +457,73 @@ namespace Extend.Testing
                   .BeTrue();
             actual.MySubModel.MyString.Should()
                   .NotBeEmpty();
+        }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public Int16 MyInt16 { get; set; }
+            public Int32 MyInt32 { get; set; }
+            public Int64 MyInt64 { get; set; }
+            public Double MyDouble { get; set; }
+            public Char MyChar { get; set; }
+            public String MyString { get; set; }
+            public Boolean MyBoolean { get; set; }
+            public DateTime MyDateTime { get; set; }
+            public List<String> MyStringList { get; set; }
+            public List<Int32> MyIntList { get; set; }
+            public IEnumerable<String> MyStringEnumerable { get; set; }
+            public IEnumerable<Int32> MyInt32Enumerable { get; set; }
+            public String[] MyStringArray { get; set; }
+            public Int32[] MyIntArray { get; set; }
+
+            public SubModel MySubModel { get; set; }
+
+            #endregion
+        }
+
+        public class SubModel
+        {
+            #region Properties
+
+            public String MyString { get; set; }
+
+            public Int32? MyNullableInt32 { get; set; }
+
+            public DateTime? MyDateTime { get; set; }
+
+            #endregion
+        }
+
+        private class ModelNeedingFactory
+        {
+            #region Properties
+
+            public ModelWithCtor MyProperty { get; set; }
+
+            #endregion
+        }
+
+        private class ModelWithCtor
+        {
+            #region Ctor
+
+            public ModelWithCtor( String arg )
+            {
+            }
+
+            #endregion
+        }
+
+        private class SimpleTestModel
+        {
+            #region Properties
+
+            public String MyString { get; set; }
+            public Int32 MyInt32 { get; set; }
+
+            #endregion
         }
     }
 }

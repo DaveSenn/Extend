@@ -27,10 +27,10 @@ namespace Extend.Testing
 
             var counter = 0;
             var resultList = list.TakeUntil( x =>
-            {
-                counter++;
-                return counter > 5;
-            } )
+                                             {
+                                                 counter++;
+                                                 return counter > 5;
+                                             } )
                                  .ToList();
             Assert.AreEqual( 5, resultList.Count );
 

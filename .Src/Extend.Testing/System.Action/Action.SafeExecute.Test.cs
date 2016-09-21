@@ -132,35 +132,35 @@ namespace Extend.Testing
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                        >( () => { } );
+                    >( () => { } );
             Assert.IsTrue( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                        >( () => { throw new ArgumentNullException(); } );
+                    >( () => { throw new ArgumentNullException(); } );
             Assert.IsFalse( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                        >( () => { throw new ArgumentOutOfRangeException(); } );
+                    >( () => { throw new ArgumentOutOfRangeException(); } );
             Assert.IsFalse( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                        >( () => { throw new InvalidCastException(); } );
+                    >( () => { throw new InvalidCastException(); } );
             Assert.IsFalse( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                        >( () => { throw new InvalidOperationException(); } );
+                    >( () => { throw new InvalidOperationException(); } );
             Assert.IsFalse( actual );
         }
 

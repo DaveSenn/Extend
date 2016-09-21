@@ -13,47 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class TypeExTest
     {
-        private class TestPerson
-        {
-            #region Properties
-
-            [Display( Name = "FirstName-DisplayName" )]
-            // ReSharper disable once UnusedMember.Local
-            public String FirstName { get; set; } = "Name";
-
-            [Display( Name = "LastName-DisplayName" )]
-            // ReSharper disable once UnusedMember.Local
-            public String LastName { get; set; } = "LastName";
-
-            [MyTest( Value = "1" )]
-            [MyTest( Value = "2" )]
-            // ReSharper disable once UnusedMember.Local
-            public DateTime DateOfBirth { get; set; } = DateTime.Now;
-
-            #endregion
-        }
-
-        private class TestPersonInherit : TestPerson
-        {
-            #region Properties
-
-            [MyTest( Value = "10000" )]
-            // ReSharper disable once UnusedMember.Local
-            public Double Weight { get; set; } = 100;
-
-            #endregion
-        }
-
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
-        private class MyTestAttribute : Attribute
-        {
-            #region Properties
-
-            public String Value { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void GetAttributeDefinitionsNullTest()
         {
@@ -115,6 +74,47 @@ namespace Extend.Testing
             Assert.AreEqual( "10000",
                              actualItem.Attributes.Single()
                                        .Value );
+        }
+
+        private class TestPerson
+        {
+            #region Properties
+
+            [Display( Name = "FirstName-DisplayName" )]
+            // ReSharper disable once UnusedMember.Local
+            public String FirstName { get; set; } = "Name";
+
+            [Display( Name = "LastName-DisplayName" )]
+            // ReSharper disable once UnusedMember.Local
+            public String LastName { get; set; } = "LastName";
+
+            [MyTest( Value = "1" )]
+            [MyTest( Value = "2" )]
+            // ReSharper disable once UnusedMember.Local
+            public DateTime DateOfBirth { get; set; } = DateTime.Now;
+
+            #endregion
+        }
+
+        private class TestPersonInherit : TestPerson
+        {
+            #region Properties
+
+            [MyTest( Value = "10000" )]
+            // ReSharper disable once UnusedMember.Local
+            public Double Weight { get; set; } = 100;
+
+            #endregion
+        }
+
+        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        private class MyTestAttribute : Attribute
+        {
+            #region Properties
+
+            public String Value { get; set; }
+
+            #endregion
         }
     }
 }

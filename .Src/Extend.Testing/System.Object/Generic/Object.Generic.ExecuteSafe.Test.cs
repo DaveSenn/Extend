@@ -36,11 +36,11 @@ namespace Extend.Testing
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
-            {
-                if ( expectedValue.Length > 0 )
-                    throw new InvalidOperationException( expectedValue );
-                return expectedValue;
-            } );
+                                                    {
+                                                        if ( expectedValue.Length > 0 )
+                                                            throw new InvalidOperationException( expectedValue );
+                                                        return expectedValue;
+                                                    } );
 
             Assert.IsNull( actual.Result );
             Assert.IsNotNull( actual.Exception );

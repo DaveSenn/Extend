@@ -13,34 +13,6 @@ namespace Extend.Testing
     // ReSharper disable once InconsistentNaming
     public class IEqualityComparerExTest
     {
-        private class StringLengthComparer : IEqualityComparer<String>
-        {
-            #region Implementation of IEqualityComparer<in string>
-
-            /// <summary>
-            ///     Determines whether the specified objects are equal.
-            /// </summary>
-            /// <returns>
-            ///     true if the specified objects are equal; otherwise, false.
-            /// </returns>
-            public Boolean Equals( String x, String y ) => x.Length == y.Length;
-
-            /// <summary>
-            ///     Returns a hash code for the specified object.
-            /// </summary>
-            /// <returns>
-            ///     A hash code for the specified object.
-            /// </returns>
-            /// <param name="obj">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
-            /// <exception cref="T:System.ArgumentNullException">
-            ///     The type of <paramref name="obj" /> is a reference type and
-            ///     <paramref name="obj" /> is null.
-            /// </exception>
-            public Int32 GetHashCode( String obj ) => obj.GetHashCode();
-
-            #endregion
-        }
-
         [Test]
         public void BySelectorNullTest()
         {
@@ -68,6 +40,34 @@ namespace Extend.Testing
             var equals = actual.Equals( "test", "1234" );
             equals.Should()
                   .BeTrue();
+        }
+
+        private class StringLengthComparer : IEqualityComparer<String>
+        {
+            #region Implementation of IEqualityComparer<in string>
+
+            /// <summary>
+            ///     Determines whether the specified objects are equal.
+            /// </summary>
+            /// <returns>
+            ///     true if the specified objects are equal; otherwise, false.
+            /// </returns>
+            public Boolean Equals( String x, String y ) => x.Length == y.Length;
+
+            /// <summary>
+            ///     Returns a hash code for the specified object.
+            /// </summary>
+            /// <returns>
+            ///     A hash code for the specified object.
+            /// </returns>
+            /// <param name="obj">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
+            /// <exception cref="T:System.ArgumentNullException">
+            ///     The type of <paramref name="obj" /> is a reference type and
+            ///     <paramref name="obj" /> is null.
+            /// </exception>
+            public Int32 GetHashCode( String obj ) => obj.GetHashCode();
+
+            #endregion
         }
     }
 }

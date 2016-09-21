@@ -12,6 +12,34 @@ namespace Extend.Testing
     [TestFixture]
     public class KeyEqualityComparerTest
     {
+        [Test]
+        public void BySelectorNullTest()
+        {
+            Func<String, String> keySelector = null;
+            // ReSharper disable once ObjectCreationAsStatement
+            // ReSharper disable once ExpressionIsAlwaysNull
+            Action test = () => new KeyEqualityComparer<String, String>( keySelector, new StringLengthComparer() );
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ByTest()
+        {
+            var actual = new KeyEqualityComparer<String, Int32>( x => x.Length, null );
+            var equals = actual.Equals( "test", "1234" );
+            equals.Should()
+                  .BeTrue();
+        }
+
+        [Test]
+        public void ByTest1()
+        {
+            var actual = new KeyEqualityComparer<String, String>( x => x, new StringLengthComparer() );
+            var equals = actual.Equals( "test", "1234" );
+            equals.Should()
+                  .BeTrue();
+        }
+
         private class StringLengthComparer : IEqualityComparer<String>
         {
             #region Implementation of IEqualityComparer<in string>
@@ -40,34 +68,6 @@ namespace Extend.Testing
             public Int32 GetHashCode( String obj ) => obj.Length.GetHashCode();
 
             #endregion
-        }
-
-        [Test]
-        public void BySelectorNullTest()
-        {
-            Func<String, String> keySelector = null;
-            // ReSharper disable once ObjectCreationAsStatement
-            // ReSharper disable once ExpressionIsAlwaysNull
-            Action test = () => new KeyEqualityComparer<String, String>( keySelector, new StringLengthComparer() );
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ByTest()
-        {
-            var actual = new KeyEqualityComparer<String, Int32>( x => x.Length, null );
-            var equals = actual.Equals( "test", "1234" );
-            equals.Should()
-                  .BeTrue();
-        }
-
-        [Test]
-        public void ByTest1()
-        {
-            var actual = new KeyEqualityComparer<String, String>( x => x, new StringLengthComparer() );
-            var equals = actual.Equals( "test", "1234" );
-            equals.Should()
-                  .BeTrue();
         }
     }
 }

@@ -14,43 +14,6 @@ namespace Extend.Testing
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        private class TestModel
-        {
-            #region Properties
-
-            public String Name { get; set; }
-
-            #endregion
-        }
-
-        private class StringLengthComparer : IEqualityComparer<String>
-        {
-            #region Implementation of IEqualityComparer<in string>
-
-            /// <summary>
-            ///     Determines whether the specified objects are equal.
-            /// </summary>
-            /// <returns>
-            ///     true if the specified objects are equal; otherwise, false.
-            /// </returns>
-            public Boolean Equals( String x, String y ) => x.Length == y.Length;
-
-            /// <summary>
-            ///     Returns a hash code for the specified object.
-            /// </summary>
-            /// <returns>
-            ///     A hash code for the specified object.
-            /// </returns>
-            /// <param name="obj">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
-            /// <exception cref="T:System.ArgumentNullException">
-            ///     The type of <paramref name="obj" /> is a reference type and
-            ///     <paramref name="obj" /> is null.
-            /// </exception>
-            public Int32 GetHashCode( String obj ) => obj.Length.GetHashCode();
-
-            #endregion
-        }
-
         [Test]
         public void IntersectFirstNullTest()
         {
@@ -171,6 +134,43 @@ namespace Extend.Testing
             actual.Any( x => x.Name == "aaaa" )
                   .Should()
                   .BeTrue();
+        }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public String Name { get; set; }
+
+            #endregion
+        }
+
+        private class StringLengthComparer : IEqualityComparer<String>
+        {
+            #region Implementation of IEqualityComparer<in string>
+
+            /// <summary>
+            ///     Determines whether the specified objects are equal.
+            /// </summary>
+            /// <returns>
+            ///     true if the specified objects are equal; otherwise, false.
+            /// </returns>
+            public Boolean Equals( String x, String y ) => x.Length == y.Length;
+
+            /// <summary>
+            ///     Returns a hash code for the specified object.
+            /// </summary>
+            /// <returns>
+            ///     A hash code for the specified object.
+            /// </returns>
+            /// <param name="obj">The <see cref="T:System.Object" /> for which a hash code is to be returned.</param>
+            /// <exception cref="T:System.ArgumentNullException">
+            ///     The type of <paramref name="obj" /> is a reference type and
+            ///     <paramref name="obj" /> is null.
+            /// </exception>
+            public Int32 GetHashCode( String obj ) => obj.Length.GetHashCode();
+
+            #endregion
         }
     }
 }

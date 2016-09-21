@@ -14,281 +14,6 @@ namespace Extend.Testing
     [TestFixture]
     public class TreeNodeTest
     {
-        /// <summary>
-        ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
-        /// </summary>
-        private class TestTreeNodeItem : ITreeNodeAware<TestTreeNodeItem>
-        {
-            #region Implementation of ITreeNodeAware<TestTreeNodeItem>
-
-            /// <summary>
-            ///     Gets or sets the node of the object.
-            /// </summary>
-            /// <value>The node of the object.</value>
-            public ITreeNode<TestTreeNodeItem> Node { get; set; }
-
-            #endregion
-        }
-
-        private class AlternativeTreeNode<T> : ITreeNode<T>
-        {
-            #region Implementation of IDisposable
-
-            /// <summary>
-            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            /// </summary>
-            public void Dispose()
-            {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-
-            #region Implementation of IEnumerable
-
-            /// <summary>
-            ///     Returns an enumerator that iterates through a collection.
-            /// </summary>
-            /// <returns>
-            ///     An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
-            /// </returns>
-            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-            #endregion
-
-            #region Implementation of IEnumerable<out ITreeNode<T>>
-
-            /// <summary>
-            ///     Returns an enumerator that iterates through the collection.
-            /// </summary>
-            /// <returns>
-            ///     A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
-            /// </returns>
-            public IEnumerator<ITreeNode<T>> GetEnumerator()
-            {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-
-            #region Implementation of ITreeNode<T>
-
-            /// <summary>
-            ///     Gets or sets the value of the node.
-            /// </summary>
-            /// <value>The value of the node.</value>
-            public T Value { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the dispose traversal direction.
-            /// </summary>
-            /// <value>The dispose traversal direction.</value>
-            public TreeTraversalDirection DisposeTraversalDirection { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the search traversal direction.
-            /// </summary>
-            /// <value>The search traversal direction.</value>
-            public TreeTraversalDirection SearchTraversalDirection { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the ancestors traversal direction.
-            /// </summary>
-            /// <value>The ancestors traversal direction.</value>
-            public TreeTraversalDirection AncestorsTraversalDirection { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the descendants traversal direction.
-            /// </summary>
-            /// <value>The descendants traversal direction.</value>
-            public TreeTraversalDirection DescendantsTraversalDirection { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the traversal direction used to enumerate the nodes.
-            /// </summary>
-            /// <value>The traversal direction used to enumerate the nodes.</value>
-            public TreeTraversalDirection TraversalDirection { get; set; }
-
-            /// <summary>
-            ///     Gets or sets the parent of the node.
-            /// </summary>
-            /// <value>The parent of the node.</value>
-            public ITreeNode<T> Parent { get; set; }
-
-            /// <summary>
-            ///     Gets the children of the node.
-            /// </summary>
-            /// <value>The children of the node.</value>
-            public ITreeNodeCollection<T> Children { get; set; }
-
-            /// <summary>
-            ///     Gets the root of the tree.
-            /// </summary>
-            /// <value>The root of the tree.</value>
-            public ITreeNode<T> Root { get; private set; }
-
-            /// <summary>
-            ///     Gets the depth of the node.
-            /// </summary>
-            /// <value>The depth of the node.</value>
-            public Int32 Depth { get; private set; }
-
-            /// <summary>
-            ///     Gets a value indicating whether the node has any children or not.
-            /// </summary>
-            /// <value>A value indicating whether the node has any children or not.</value>
-            public Boolean HasChildren { get; private set; }
-
-            /// <summary>
-            ///     Gets a value indicating whether the node has a parent or not.
-            /// </summary>
-            /// <value>A value indicating whether the node has a parent or not.</value>
-            public Boolean HasParent { get; private set; }
-
-            /// <summary>
-            ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
-            /// </summary>
-            /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
-            public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
-
-            /// <summary>
-            ///     Gets the values which matches the given predicate.
-            /// </summary>
-            /// <remarks>
-            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
-            ///     <see cref="SearchTraversalDirection" />).
-            /// </remarks>
-            /// <param name="predicate">The predicate.</param>
-            /// <returns>Returns the values which matches the given predicate.</returns>
-            public IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Gets the nodes which matches the given predicate.
-            /// </summary>
-            /// <remarks>
-            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
-            ///     <see cref="SearchTraversalDirection" />).
-            /// </remarks>
-            /// <param name="predicate">The predicate.</param>
-            /// <returns>Returns the nodes which matches the given predicate.</returns>
-            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Gets the nodes with the given value.
-            /// </summary>
-            /// <param name="value">The value to search.</param>
-            /// <returns>Returns the nodes with the given value.</returns>
-            public IEnumerable<ITreeNode<T>> FindNode( T value )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Adds the given value as child to the node.
-            /// </summary>
-            /// <param name="value">The value to add.</param>
-            /// <returns>Returns the added node.</returns>
-            public ITreeNode<T> Add( T value )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Adds the given node as child to the node, if it is not already a child of the node.
-            /// </summary>
-            /// <param name="node">The node to add.</param>
-            /// <returns>Returns the added node.</returns>
-            public ITreeNode<T> Add( ITreeNode<T> node )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Sets the parent of the tree node.
-            /// </summary>
-            /// <param name="parent">The new parent.</param>
-            /// <param name="attacheToNewParent">
-            ///     A value determining whether the node should add it self to the children of the new parent
-            ///     or not.
-            /// </param>
-            /// <remarks>
-            ///     TODO: add test for detachFromOldParent
-            /// </remarks>
-            /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-            public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
-            {
-                throw new NotImplementedException();
-            }
-
-            /// <summary>
-            ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
-            ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
-            /// </summary>
-            /// <param name="direction">The new direction.</param>
-            public void SetAllDirections( TreeTraversalDirection direction )
-            {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-        }
-
-        private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.AreEqual( expected, node.AncestorsTraversalDirection );
-            node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
-        }
-
-        private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.AreEqual( expected, node.SearchTraversalDirection );
-            node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
-        }
-
-        private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.AreEqual( expected, node.DisposeTraversalDirection );
-            node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
-        }
-
-        private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.AreEqual( expected, node.DescendantsTraversalDirection );
-            node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
-        }
-
-        private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.AreEqual( expected, node.TraversalDirection );
-            node.Children.ForEach( x => AssertTraversalDirection( expected, x ) );
-        }
-
-        private class DisposeTestHelper : IDisposable
-
-        {
-            #region Properties
-
-            public String Value { get; set; }
-            public Action<String> DisposeAction { get; set; }
-
-            #endregion
-
-            #region Implementation of IDisposable
-
-            /// <summary>
-            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
-            /// </summary>
-            public void Dispose() => DisposeAction?.Invoke( Value );
-
-            #endregion
-        }
-
         [Test]
         public void AddOverloadTest()
         {
@@ -531,12 +256,12 @@ namespace Extend.Testing
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -567,12 +292,12 @@ namespace Extend.Testing
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -635,12 +360,12 @@ namespace Extend.Testing
             Assert.AreEqual( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
+                      x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
 
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -1670,13 +1395,13 @@ namespace Extend.Testing
             Assert.AreEqual( TreeTraversalDirection.BottomUp, target.TraversalDirection );
 
             target.Children.ForEach( x =>
-            {
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.TraversalDirection );
-            } );
+                                     {
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.TraversalDirection );
+                                     } );
 
             target.SetAllDirections( TreeTraversalDirection.TopDown );
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
@@ -1686,13 +1411,13 @@ namespace Extend.Testing
             Assert.AreEqual( TreeTraversalDirection.TopDown, target.TraversalDirection );
 
             target.Children.ForEach( x =>
-            {
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.TraversalDirection );
-            } );
+                                     {
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.TraversalDirection );
+                                     } );
         }
 
         [Test]
@@ -1825,6 +1550,281 @@ namespace Extend.Testing
 
             //Check if node is null.
             Assert.IsNull( expected.Node );
+        }
+
+        /// <summary>
+        ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
+        /// </summary>
+        private class TestTreeNodeItem : ITreeNodeAware<TestTreeNodeItem>
+        {
+            #region Implementation of ITreeNodeAware<TestTreeNodeItem>
+
+            /// <summary>
+            ///     Gets or sets the node of the object.
+            /// </summary>
+            /// <value>The node of the object.</value>
+            public ITreeNode<TestTreeNodeItem> Node { get; set; }
+
+            #endregion
+        }
+
+        private class AlternativeTreeNode<T> : ITreeNode<T>
+        {
+            #region Implementation of IDisposable
+
+            /// <summary>
+            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            public void Dispose()
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+
+            #region Implementation of IEnumerable
+
+            /// <summary>
+            ///     Returns an enumerator that iterates through a collection.
+            /// </summary>
+            /// <returns>
+            ///     An <see cref="T:System.Collections.IEnumerator" /> object that can be used to iterate through the collection.
+            /// </returns>
+            IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+            #endregion
+
+            #region Implementation of IEnumerable<out ITreeNode<T>>
+
+            /// <summary>
+            ///     Returns an enumerator that iterates through the collection.
+            /// </summary>
+            /// <returns>
+            ///     A <see cref="T:System.Collections.Generic.IEnumerator`1" /> that can be used to iterate through the collection.
+            /// </returns>
+            public IEnumerator<ITreeNode<T>> GetEnumerator()
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+
+            #region Implementation of ITreeNode<T>
+
+            /// <summary>
+            ///     Gets or sets the value of the node.
+            /// </summary>
+            /// <value>The value of the node.</value>
+            public T Value { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the dispose traversal direction.
+            /// </summary>
+            /// <value>The dispose traversal direction.</value>
+            public TreeTraversalDirection DisposeTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the search traversal direction.
+            /// </summary>
+            /// <value>The search traversal direction.</value>
+            public TreeTraversalDirection SearchTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the ancestors traversal direction.
+            /// </summary>
+            /// <value>The ancestors traversal direction.</value>
+            public TreeTraversalDirection AncestorsTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the descendants traversal direction.
+            /// </summary>
+            /// <value>The descendants traversal direction.</value>
+            public TreeTraversalDirection DescendantsTraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the traversal direction used to enumerate the nodes.
+            /// </summary>
+            /// <value>The traversal direction used to enumerate the nodes.</value>
+            public TreeTraversalDirection TraversalDirection { get; set; }
+
+            /// <summary>
+            ///     Gets or sets the parent of the node.
+            /// </summary>
+            /// <value>The parent of the node.</value>
+            public ITreeNode<T> Parent { get; set; }
+
+            /// <summary>
+            ///     Gets the children of the node.
+            /// </summary>
+            /// <value>The children of the node.</value>
+            public ITreeNodeCollection<T> Children { get; set; }
+
+            /// <summary>
+            ///     Gets the root of the tree.
+            /// </summary>
+            /// <value>The root of the tree.</value>
+            public ITreeNode<T> Root { get; private set; }
+
+            /// <summary>
+            ///     Gets the depth of the node.
+            /// </summary>
+            /// <value>The depth of the node.</value>
+            public Int32 Depth { get; private set; }
+
+            /// <summary>
+            ///     Gets a value indicating whether the node has any children or not.
+            /// </summary>
+            /// <value>A value indicating whether the node has any children or not.</value>
+            public Boolean HasChildren { get; private set; }
+
+            /// <summary>
+            ///     Gets a value indicating whether the node has a parent or not.
+            /// </summary>
+            /// <value>A value indicating whether the node has a parent or not.</value>
+            public Boolean HasParent { get; private set; }
+
+            /// <summary>
+            ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
+            /// </summary>
+            /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
+            public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
+
+            /// <summary>
+            ///     Gets the values which matches the given predicate.
+            /// </summary>
+            /// <remarks>
+            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+            ///     <see cref="SearchTraversalDirection" />).
+            /// </remarks>
+            /// <param name="predicate">The predicate.</param>
+            /// <returns>Returns the values which matches the given predicate.</returns>
+            public IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Gets the nodes which matches the given predicate.
+            /// </summary>
+            /// <remarks>
+            ///     Starts the search at the current tree node and traverses down the tree (Direction based on
+            ///     <see cref="SearchTraversalDirection" />).
+            /// </remarks>
+            /// <param name="predicate">The predicate.</param>
+            /// <returns>Returns the nodes which matches the given predicate.</returns>
+            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Gets the nodes with the given value.
+            /// </summary>
+            /// <param name="value">The value to search.</param>
+            /// <returns>Returns the nodes with the given value.</returns>
+            public IEnumerable<ITreeNode<T>> FindNode( T value )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Adds the given value as child to the node.
+            /// </summary>
+            /// <param name="value">The value to add.</param>
+            /// <returns>Returns the added node.</returns>
+            public ITreeNode<T> Add( T value )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Adds the given node as child to the node, if it is not already a child of the node.
+            /// </summary>
+            /// <param name="node">The node to add.</param>
+            /// <returns>Returns the added node.</returns>
+            public ITreeNode<T> Add( ITreeNode<T> node )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Sets the parent of the tree node.
+            /// </summary>
+            /// <param name="parent">The new parent.</param>
+            /// <param name="attacheToNewParent">
+            ///     A value determining whether the node should add it self to the children of the new parent
+            ///     or not.
+            /// </param>
+            /// <remarks>
+            ///     TODO: add test for detachFromOldParent
+            /// </remarks>
+            /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
+            public void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true )
+            {
+                throw new NotImplementedException();
+            }
+
+            /// <summary>
+            ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
+            ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
+            /// </summary>
+            /// <param name="direction">The new direction.</param>
+            public void SetAllDirections( TreeTraversalDirection direction )
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
+        }
+
+        private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.AncestorsTraversalDirection );
+            node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
+        }
+
+        private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.SearchTraversalDirection );
+            node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
+        }
+
+        private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.DisposeTraversalDirection );
+            node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
+        }
+
+        private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.DescendantsTraversalDirection );
+            node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
+        }
+
+        private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.AreEqual( expected, node.TraversalDirection );
+            node.Children.ForEach( x => AssertTraversalDirection( expected, x ) );
+        }
+
+        private class DisposeTestHelper : IDisposable
+
+        {
+            #region Properties
+
+            public String Value { get; set; }
+            public Action<String> DisposeAction { get; set; }
+
+            #endregion
+
+            #region Implementation of IDisposable
+
+            /// <summary>
+            ///     Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            /// </summary>
+            public void Dispose() => DisposeAction?.Invoke( Value );
+
+            #endregion
         }
     }
 }

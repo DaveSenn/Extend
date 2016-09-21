@@ -16,10 +16,10 @@ namespace Extend.Testing
         public void JoinTest()
         {
             var actual = ",".Join( new[]
-            {
-                "1",
-                "2"
-            } );
+                                   {
+                                       "1",
+                                       "2"
+                                   } );
             Assert.AreEqual( "1,2", actual );
         }
 
@@ -27,10 +27,10 @@ namespace Extend.Testing
         public void JoinTest1()
         {
             var actual = ",".Join( new Object[]
-            {
-                "1",
-                "2"
-            } );
+                                   {
+                                       "1",
+                                       "2"
+                                   } );
             Assert.AreEqual( "1,2", actual );
         }
 

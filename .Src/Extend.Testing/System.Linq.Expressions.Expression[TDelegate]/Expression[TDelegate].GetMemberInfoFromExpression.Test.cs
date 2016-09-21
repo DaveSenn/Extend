@@ -13,16 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class ExpressionTDelegateExTest
     {
-        private class TestModel
-        {
-            #region Properties
-
-            public String Name { get; set; }
-            public Int32 Age { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void GetMemberInfoFromExpressionTest()
         {
@@ -51,6 +41,16 @@ namespace Extend.Testing
             Action test = () => memberExpression.GetMemberInfoFromExpression();
 
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public String Name { get; set; }
+            public Int32 Age { get; set; }
+
+            #endregion
         }
     }
 }

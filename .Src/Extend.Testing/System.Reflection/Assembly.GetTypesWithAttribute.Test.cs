@@ -12,41 +12,6 @@ namespace Extend.Testing
     [TestFixture]
     public class AssemblyExTest
     {
-        [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
-        private class FooAttribute : Attribute
-        {
-            #region Properties
-
-            public String Value { get; set; }
-
-            #endregion
-        }
-
-        [Foo( Value = "base" )]
-        private class BaseTestClass
-        {
-        }
-
-        [Foo( Value = "A" )]
-        private class TestClassA : BaseTestClass
-        {
-        }
-
-        private class TestClassB : BaseTestClass
-        {
-        }
-
-        [Foo( Value = "C" )]
-        private class TestClassC
-        {
-        }
-
-        [Foo( Value = "D1" )]
-        [Foo( Value = "D2" )]
-        private class TestClassD : BaseTestClass
-        {
-        }
-
         [Test]
         public void GetTypesWithAttributeArgumentNullExceptionTest()
         {
@@ -204,6 +169,41 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "D1" );
             attributes.Should()
                       .Contain( x => x.Value == "D2" );
+        }
+
+        [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
+        private class FooAttribute : Attribute
+        {
+            #region Properties
+
+            public String Value { get; set; }
+
+            #endregion
+        }
+
+        [Foo( Value = "base" )]
+        private class BaseTestClass
+        {
+        }
+
+        [Foo( Value = "A" )]
+        private class TestClassA : BaseTestClass
+        {
+        }
+
+        private class TestClassB : BaseTestClass
+        {
+        }
+
+        [Foo( Value = "C" )]
+        private class TestClassC
+        {
+        }
+
+        [Foo( Value = "D1" )]
+        [Foo( Value = "D2" )]
+        private class TestClassD : BaseTestClass
+        {
         }
     }
 }

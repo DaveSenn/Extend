@@ -13,31 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class ObjectExTest
     {
-        private event PropertyChangedEventHandler PropertyChanged;
-
-        private class TestModel
-        {
-            #region Properties
-
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public Int32 Age { get; set; }
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public String Name { get; set; }
-            public SubModel SubModel { get; set; }
-
-            #endregion
-        }
-
-        private class SubModel
-        {
-            #region Properties
-
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public String Foo { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void GetNameOverloadTest()
         {
@@ -161,6 +136,31 @@ namespace Extend.Testing
             Action test = () => "".GetName( fieldName );
 
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        private event PropertyChangedEventHandler PropertyChanged;
+
+        private class TestModel
+        {
+            #region Properties
+
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public Int32 Age { get; set; }
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public String Name { get; set; }
+            public SubModel SubModel { get; set; }
+
+            #endregion
+        }
+
+        private class SubModel
+        {
+            #region Properties
+
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public String Foo { get; set; }
+
+            #endregion
         }
     }
 }

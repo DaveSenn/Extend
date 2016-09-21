@@ -11,6 +11,30 @@ namespace Extend.Testing
     [TestFixture]
     public class MemberSelectionRuleBaseTest
     {
+        [Test]
+        public void GetSelectionResultTest()
+        {
+            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
+            Action test = () => target.GetSelectionResult( new MemberInformation() );
+            test.ShouldThrow<NotImplementedException>();
+        }
+
+        [Test]
+        public void RuleDescriptionNameTest()
+        {
+            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
+            target.RuleDescription.Should()
+                  .Be( "Description" );
+        }
+
+        [Test]
+        public void RuleNameTest()
+        {
+            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
+            target.RuleName.Should()
+                  .Be( "Name" );
+        }
+
         private class MemberSelectionRuleBaseAccessor : MemberSelectionRuleBase
         {
             #region Ctor
@@ -40,30 +64,6 @@ namespace Extend.Testing
             }
 
             #endregion
-        }
-
-        [Test]
-        public void GetSelectionResultTest()
-        {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
-            Action test = () => target.GetSelectionResult( new MemberInformation() );
-            test.ShouldThrow<NotImplementedException>();
-        }
-
-        [Test]
-        public void RuleDescriptionNameTest()
-        {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
-            target.RuleDescription.Should()
-                  .Be( "Description" );
-        }
-
-        [Test]
-        public void RuleNameTest()
-        {
-            var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
-            target.RuleName.Should()
-                  .Be( "Name" );
         }
     }
 }

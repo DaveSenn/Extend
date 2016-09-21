@@ -51,7 +51,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
-                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                         .SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -62,7 +62,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
-                // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                         .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
 
             test.ShouldThrow<ArgumentException>();

@@ -12,41 +12,6 @@ namespace Extend.Testing
     [TestFixture]
     public partial class ExpressionTDelegateExTest
     {
-        private class A
-        {
-            #region Properties
-
-            public Int32[] IntArray { get; set; }
-
-            public B MyB { get; set; }
-
-            public Double MyDouble { get; set; }
-
-            #endregion
-        }
-
-        private class B
-        {
-            #region Properties
-
-            public String[] BStrings { get; set; }
-
-            public C MyC { get; set; }
-
-            #endregion
-        }
-
-        private class C
-        {
-            #region Properties
-
-            public Int32 MyInt { get; set; }
-
-            public String[] CStrings { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void GetMemberPathTestFirstLevel()
         {
@@ -195,6 +160,41 @@ namespace Extend.Testing
 
             Action test = () => expression.GetMemberPath();
             test.ShouldThrow<ArgumentOutOfRangeException>();
+        }
+
+        private class A
+        {
+            #region Properties
+
+            public Int32[] IntArray { get; set; }
+
+            public B MyB { get; set; }
+
+            public Double MyDouble { get; set; }
+
+            #endregion
+        }
+
+        private class B
+        {
+            #region Properties
+
+            public String[] BStrings { get; set; }
+
+            public C MyC { get; set; }
+
+            #endregion
+        }
+
+        private class C
+        {
+            #region Properties
+
+            public Int32 MyInt { get; set; }
+
+            public String[] CStrings { get; set; }
+
+            #endregion
         }
     }
 }

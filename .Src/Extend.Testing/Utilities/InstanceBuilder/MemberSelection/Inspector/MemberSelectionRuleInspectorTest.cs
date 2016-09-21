@@ -19,9 +19,9 @@ namespace Extend.Testing
             const MemberSelectionResult expected = MemberSelectionResult.ExcludeMember;
 
             var actual = target.Inspect( new List<IMemberSelectionRule>
-            {
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude )
-            },
+                                         {
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude )
+                                         },
                                          new MemberInformation() );
             actual.Should()
                   .Be( expected );
@@ -34,11 +34,11 @@ namespace Extend.Testing
             const MemberSelectionResult expected = MemberSelectionResult.ExcludeMember;
 
             var actual = target.Inspect( new List<IMemberSelectionRule>
-            {
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include ),
-                new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Exclude ),
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude )
-            },
+                                         {
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include ),
+                                             new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Exclude ),
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude )
+                                         },
                                          new MemberInformation() );
             actual.Should()
                   .Be( expected );
@@ -51,9 +51,9 @@ namespace Extend.Testing
             const MemberSelectionResult expected = MemberSelectionResult.IncludeMember;
 
             var actual = target.Inspect( new List<IMemberSelectionRule>
-            {
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include )
-            },
+                                         {
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include )
+                                         },
                                          new MemberInformation() );
             actual.Should()
                   .Be( expected );
@@ -66,11 +66,11 @@ namespace Extend.Testing
             const MemberSelectionResult expected = MemberSelectionResult.IncludeMember;
 
             var actual = target.Inspect( new List<IMemberSelectionRule>
-            {
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude ),
-                new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Include ),
-                new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include )
-            },
+                                         {
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude ),
+                                             new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Include ),
+                                             new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include )
+                                         },
                                          new MemberInformation() );
             actual.Should()
                   .Be( expected );
@@ -91,10 +91,10 @@ namespace Extend.Testing
             const MemberSelectionResult expected = MemberSelectionResult.Neutral;
 
             var actual = target.Inspect( new List<IMemberSelectionRule>
-            {
-                new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Include ),
-                new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Exclude )
-            },
+                                         {
+                                             new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Include ),
+                                             new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Exclude )
+                                         },
                                          new MemberInformation() );
             actual.Should()
                   .Be( expected );

@@ -25,10 +25,10 @@ namespace Extend.Testing
             Assert.AreEqual( 70, actual );
 
             actual = ( null as Int32? ).Sum( new Int32?[]
-            {
-                null,
-                null
-            } );
+                                             {
+                                                 null,
+                                                 null
+                                             } );
             Assert.AreEqual( 0, actual );
         }
 
