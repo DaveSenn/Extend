@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -100,45 +101,57 @@ namespace Extend
         /// <summary>
         ///     Gets the values which matches the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <remarks>
         ///     Starts the search at the current tree node and traverses down the tree (Direction based on
         ///     <see cref="SearchTraversalDirection" />).
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate );
+        [NotNull]
+        [PublicAPI]
+        IEnumerable<T> FindValue( [NotNull] Func<ITreeNode<T>, Boolean> predicate );
 
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <remarks>
         ///     Starts the search at the current tree node and traverses down the tree (Direction based on
         ///     <see cref="SearchTraversalDirection" />).
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate );
+        [PublicAPI]
+        [NotNull]
+        IEnumerable<ITreeNode<T>> FindNode( [NotNull] Func<ITreeNode<T>, Boolean> predicate );
 
         /// <summary>
         ///     Gets the nodes with the given value.
         /// </summary>
         /// <param name="value">The value to search.</param>
         /// <returns>Returns the nodes with the given value.</returns>
-        IEnumerable<ITreeNode<T>> FindNode( T value );
+        [PublicAPI]
+        [NotNull]
+        IEnumerable<ITreeNode<T>> FindNode( [CanBeNull] T value );
 
         /// <summary>
         ///     Adds the given value as child to the node.
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the added node.</returns>
-        ITreeNode<T> Add( T value );
+        [PublicAPI]
+        [NotNull]
+        ITreeNode<T> Add( [CanBeNull] T value );
 
         /// <summary>
         ///     Adds the given node as child to the node, if it is not already a child of the node.
         /// </summary>
         /// <param name="node">The node to add.</param>
         /// <returns>Returns the added node.</returns>
-        ITreeNode<T> Add( ITreeNode<T> node );
+        [PublicAPI]
+        [NotNull]
+        ITreeNode<T> Add( [NotNull] ITreeNode<T> node );
 
         /// <summary>
         ///     Sets the parent of the tree node.
@@ -152,13 +165,15 @@ namespace Extend
         ///     TODO: add test for detachFromOldParent
         /// </remarks>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-        void SetParent( ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true );
+        [PublicAPI]
+        void SetParent( [CanBeNull] ITreeNode<T> parent, Boolean attacheToNewParent = true, Boolean detachFromOldParent = true );
 
         /// <summary>
         ///     Sets all directions (<see cref="DisposeTraversalDirection" />, <see cref="SearchTraversalDirection" />,
         ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
         /// </summary>
         /// <param name="direction">The new direction.</param>
+        [PublicAPI]
         void SetAllDirections( TreeTraversalDirection direction );
 
         #endregion

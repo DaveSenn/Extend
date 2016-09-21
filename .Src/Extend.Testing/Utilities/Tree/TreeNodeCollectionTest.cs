@@ -432,7 +432,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( parent );
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 0, Parent: [Depth: 0 - Value: [NULL], Children: 0, Parent: [[NULL]]]", actual );
+            Assert.AreEqual( "[Depth: 0 - Value: '[NULL]', Children: 0]", actual );
         }
 
         [Test]
@@ -441,7 +441,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( null );
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 0, Parent: [[NULL]]", actual );
+            Assert.AreEqual( "[Items Count: 0]", actual );
         }
 
         [Test]
@@ -451,7 +451,7 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( parent ) { "1", "2" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 2, Parent: [Depth: 0 - Value: [NULL], Children: 2, Parent: [[NULL]]]", actual );
+            Assert.AreEqual( "[Depth: 0 - Value: '[NULL]', Children: 2]\r\n    [Depth: 1 - Value: '1', Children: 0]\r\n    [Depth: 1 - Value: '2', Children: 0]", actual );
         }
 
         [Test]
@@ -460,7 +460,48 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( null ) { "1", "2", "3" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "Count: 3, Parent: [[NULL]]", actual );
+            Assert.AreEqual( "[Items Count: 3]", actual );
+        }
+
+        [Test]
+        public void ToStringTest4()
+        {
+            var target = new TreeNodeCollection<String>( new TreeNode<String>( "Root" ) )
+            {
+                new TreeNode<String>
+                {
+                    Value = "1",
+                    Children =
+                    {
+                        new TreeNode<String>
+                        {
+                            Value = "A",
+                            Children = { "a", "b", "c" }
+                        }
+                    }
+                },
+                new TreeNode<String>
+                {
+                    Value = "2"
+                },
+                new TreeNode<String>
+                {
+                    Value = "3",
+                    Children =
+                    {
+                        new TreeNode<String>
+                        {
+                            Value = "B",
+                            Children = { "aa", "bb", "cc" }
+                        }
+                    }
+                }
+            };
+
+            var actual = target.ToString();
+            Assert.AreEqual(
+                "[Depth: 0 - Value: 'Root', Children: 3]\r\n    [Depth: 1 - Value: '1', Children: 1]\r\n        [Depth: 2 - Value: 'A', Children: 3]\r\n            [Depth: 3 - Value: 'a', Children: 0]\r\n            [Depth: 3 - Value: 'b', Children: 0]\r\n            [Depth: 3 - Value: 'c', Children: 0]\r\n    [Depth: 1 - Value: '2', Children: 0]\r\n    [Depth: 1 - Value: '3', Children: 1]\r\n        [Depth: 2 - Value: 'B', Children: 3]\r\n            [Depth: 3 - Value: 'aa', Children: 0]\r\n            [Depth: 3 - Value: 'bb', Children: 0]\r\n            [Depth: 3 - Value: 'cc', Children: 0]",
+                actual );
         }
     }
 }
