@@ -153,10 +153,20 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString() => $"Depth: {Depth} - Value: {Value?.ToString() ?? "[NULL]"}, Children: {Children.Count}, Parent: [{Parent?.ToString() ?? "[NULL]"}]";
+        public override String ToString()
+        {
+            var stringValue = $"{' '.Repeat( Depth * 4 )}[Depth: {Depth} - Value: '{Value?.ToString() ?? "[NULL]"}', Children: {Children.Count}]";
+            if ( !HasChildren )
+                return stringValue;
+
+            var childStrings = Children
+                .Select( x => x.ToString() )
+                .StringJoin( Environment.NewLine );
+            return $"{stringValue}{Environment.NewLine}{childStrings}";
+        }
 
         #endregion
-
+        
         #region Implementation of ITreeNode
 
         #region Properties
@@ -328,6 +338,7 @@ namespace Extend
         /// <summary>
         ///     Gets the values which matches the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <remarks>
         ///     Starts the search at the current tree node and traverses down the tree (Direction based on
         ///     <see cref="SearchTraversalDirection" />).
@@ -336,23 +347,27 @@ namespace Extend
         /// <returns>Returns the values which matches the given predicate.</returns>
         public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
         {
+            predicate.ThrowIfNull( nameof(predicate) );
+
             var result = new List<T>();
 
-            //Search from top to bottom
+            // Search from top to bottom
             switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
-                    //From top to bottom
+                    // From top to bottom
                     if ( predicate( this ) )
                         result.Add( Value );
                     Children.ForEach( x => result.AddRange( x.FindValue( predicate ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
-                    //From bottom to top
+                    // From bottom to top
                     Children.ForEachReverse( x => result.AddRange( x.FindValue( predicate ) ) );
                     if ( predicate( this ) )
                         result.Add( Value );
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
             }
 
             return result;
@@ -361,6 +376,7 @@ namespace Extend
         /// <summary>
         ///     Gets the nodes which matches the given predicate.
         /// </summary>
+        /// <exception cref="ArgumentNullException">predicate can not be null.</exception>
         /// <remarks>
         ///     Starts the search at the current tree node and traverses down the tree (Direction based on
         ///     <see cref="SearchTraversalDirection" />).
@@ -369,23 +385,27 @@ namespace Extend
         /// <returns>Returns the nodes which matches the given predicate.</returns>
         public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
         {
+            predicate.ThrowIfNull(nameof(predicate));
+
             var result = new List<ITreeNode<T>>();
 
-            //Search from top to bottom
+            // Search from top to bottom
             switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
-                    //From top to bottom
+                    // From top to bottom
                     if ( predicate( this ) )
                         result.Add( this );
                     Children.ForEach( x => result.AddRange( x.FindNode( predicate ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
-                    //From bottom to top
+                    // From bottom to top
                     Children.ForEachReverse( x => result.AddRange( x.FindNode( predicate ) ) );
                     if ( predicate( this ) )
                         result.Add( this );
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
             }
 
             return result;
@@ -400,21 +420,23 @@ namespace Extend
         {
             var result = new List<ITreeNode<T>>();
 
-            //Search from top to bottom
+            // Search from top to bottom
             switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
-                    //From top to bottom
+                    // From top to bottom
                     if ( Value.Equals( value ) )
                         result.Add( this );
                     Children.ForEach( x => result.AddRange( x.FindNode( value ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
-                    //From bottom to top
+                    // From bottom to top
                     Children.ForEachReverse( x => result.AddRange( x.FindNode( value ) ) );
                     if ( Value.Equals( value ) )
                         result.Add( this );
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
             }
 
             return result;
@@ -443,6 +465,8 @@ namespace Extend
         /// <returns>Returns the added node.</returns>
         public ITreeNode<T> Add( ITreeNode<T> node )
         {
+            node.ThrowIfNull( nameof(node) );
+
             if ( !Children.Contains( node ) )
                 Children.Add( node );
 
@@ -509,7 +533,8 @@ namespace Extend
         /// <returns>
         ///     A <see cref="System.Collections.Generic.IEnumerator{T}" /> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<ITreeNode<T>> GetEnumerator() => GetEnumeratorInternal()
+        public IEnumerator<ITreeNode<T>> GetEnumerator() 
+            => GetEnumeratorInternal()
             .GetEnumerator();
 
         /// <summary>
@@ -518,7 +543,8 @@ namespace Extend
         /// <returns>
         ///     A <see cref="System.Collections.IEnumerator" /> that can be used to iterate through the collection.
         /// </returns>
-        IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+        IEnumerator IEnumerable.GetEnumerator()
+            => GetEnumerator();
 
         #endregion
 
@@ -575,7 +601,7 @@ namespace Extend
                                       throw new NotSupportedException( $"Child '{x}' is not of type TreeNode{{T}}." );
 
                                   descendants.Add( x );
-                                  ( x as TreeNode<T> ).GetDescendants( descendants );
+                                  ( (TreeNode<T>) x ).GetDescendants( descendants );
                               } );
 
             return descendants;
