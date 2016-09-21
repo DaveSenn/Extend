@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,8 +20,10 @@ namespace Extend
         /// <param name="array">The array whose elements need to be cleared.</param>
         /// <param name="index">The starting index of the range of elements to clear.</param>
         /// <param name="length">The number of elements to clear.</param>
-        /// <returns>Returns the cleard array.</returns>
-        public static T[] Clear<T>( this T[] array, Int32 index, Int32 length )
+        /// <returns>Returns the cleared array.</returns>
+        [NotNull]
+        [PublicAPI]
+        public static T[] Clear<T>( [NotNull] this T[] array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( nameof( array ) );
 

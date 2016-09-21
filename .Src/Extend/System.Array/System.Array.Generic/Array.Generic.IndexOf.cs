@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,9 @@ namespace Extend
         ///     The index of the first occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value )
+        [PublicAPI]
+        [Pure]
+        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value )
         {
             array.ThrowIfNull( nameof( array ) );
 
@@ -42,7 +45,9 @@ namespace Extend
         ///     The index of the first occurrence of  within the range of elements in  that extends from  to the last element,
         ///     if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex )
+        [PublicAPI]
+        [Pure]
+        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex )
         {
             array.ThrowIfNull( nameof( array ) );
 
@@ -63,7 +68,9 @@ namespace Extend
         ///     The index of the first occurrence of  within the range of elements in  that starts at  and contains the
         ///     number of elements specified in , if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 IndexOf<T>( this T[] array, T value, Int32 startIndex, Int32 count )
+        [PublicAPI]
+        [Pure]
+        public static Int32 IndexOf<T>( [NotNull] this T[] array, [CanBeNull] T value, Int32 startIndex, Int32 count )
         {
             array.ThrowIfNull( nameof( array ) );
 

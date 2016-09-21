@@ -39,7 +39,7 @@ Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGe
 Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack
 
 # Dirty build task
-Task Dirty -Depends Build
+Task Dirty -Depends Build, Test
 
 # Cleans the output directory
 Task Clean {

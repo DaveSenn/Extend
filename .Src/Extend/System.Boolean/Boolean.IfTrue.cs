@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,18 +16,19 @@ namespace Extend
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Action can not be null, if the value is true.</exception>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <param name="value">The Boolean to check.</param>
         /// <param name="action">The action to execute if the given value is true.</param>
         /// <param name="alternativeAction">The action to execute if the given value is false.</param>
         /// <returns>Returns the given boolean value.</returns>
-        public static Boolean IfTrue( this Boolean value, Action action, Action alternativeAction = null )
+        [PublicAPI]
+        [Pure]
+        public static Boolean IfTrue( this Boolean value, [NotNull] Action action, [CanBeNull] Action alternativeAction = null )
         {
+            action.ThrowIfNull( nameof( action ) );
+
             if ( value )
-            {
-                action.ThrowIfNull( nameof( action ) );
                 action();
-            }
             else
                 alternativeAction?.Invoke();
 
@@ -37,23 +39,24 @@ namespace Extend
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Action can not be null, if the value is true.</exception>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="T">The type of the parameter.</typeparam>
         /// <param name="value">The Boolean to check.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="action">The action to execute if the given value is true.</param>
         /// <param name="alternativeAction">The action to execute if the given value is false.</param>
         /// <returns>Returns the given boolean value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Boolean IfTrue<T>( this Boolean value,
-                                         T parameter,
-                                         Action<T> action,
-                                         Action<T> alternativeAction = null )
+                                         [CanBeNull] T parameter,
+                                         [NotNull] Action<T> action,
+                                         [CanBeNull] Action<T> alternativeAction = null )
         {
+            action.ThrowIfNull( nameof( action ) );
+
             if ( value )
-            {
-                action.ThrowIfNull( nameof( action ) );
                 action( parameter );
-            }
             else
                 alternativeAction?.Invoke( parameter );
 
@@ -64,7 +67,7 @@ namespace Extend
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Action can not be null, if the value is true.</exception>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
         /// <param name="value">The Boolean to check.</param>
@@ -73,17 +76,18 @@ namespace Extend
         /// <param name="action">The action to execute if the given value is true.</param>
         /// <param name="alternativeAction">The action to execute if the given value is false.</param>
         /// <returns>Returns the given boolean value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Boolean IfTrue<T1, T2>( this Boolean value,
-                                              T1 parameter1,
-                                              T2 parameter2,
-                                              Action<T1, T2> action,
-                                              Action<T1, T2> alternativeAction = null )
+                                              [CanBeNull] T1 parameter1,
+                                              [CanBeNull] T2 parameter2,
+                                              [NotNull] Action<T1, T2> action,
+                                              [CanBeNull] Action<T1, T2> alternativeAction = null )
         {
+            action.ThrowIfNull( nameof( action ) );
+
             if ( value )
-            {
-                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2 );
-            }
             else
                 alternativeAction?.Invoke( parameter1, parameter2 );
 
@@ -94,7 +98,7 @@ namespace Extend
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Action can not be null, if the value is true.</exception>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
         /// <typeparam name="T3">The type of the third parameter.</typeparam>
@@ -105,18 +109,19 @@ namespace Extend
         /// <param name="action">The action to execute if the given value is true.</param>
         /// <param name="alternativeAction">The action to execute if the given value is false.</param>
         /// <returns>Returns the given boolean value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Boolean IfTrue<T1, T2, T3>( this Boolean value,
-                                                  T1 parameter1,
-                                                  T2 parameter2,
-                                                  T3 parameter3,
-                                                  Action<T1, T2, T3> action,
-                                                  Action<T1, T2, T3> alternativeAction = null )
+                                                  [CanBeNull] T1 parameter1,
+                                                  [CanBeNull] T2 parameter2,
+                                                  [CanBeNull] T3 parameter3,
+                                                  [NotNull] Action<T1, T2, T3> action,
+                                                  [CanBeNull] Action<T1, T2, T3> alternativeAction = null )
         {
+            action.ThrowIfNull( nameof( action ) );
+
             if ( value )
-            {
-                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3 );
-            }
             else
                 alternativeAction?.Invoke( parameter1, parameter2, parameter3 );
 
@@ -127,7 +132,7 @@ namespace Extend
         ///     Executes the specified action if the given Boolean is true,
         ///     otherwise it executes the specified alternative action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Action can not be null, if the value is true.</exception>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="T1">The type of the first parameter.</typeparam>
         /// <typeparam name="T2">The type of the second parameter.</typeparam>
         /// <typeparam name="T3">The type of the third parameter.</typeparam>
@@ -140,19 +145,20 @@ namespace Extend
         /// <param name="action">The action to execute if the given value is true.</param>
         /// <param name="alternativeAction">The action to execute if the given value is false.</param>
         /// <returns>Returns the given boolean value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Boolean IfTrue<T1, T2, T3, T4>( this Boolean value,
-                                                      T1 parameter1,
-                                                      T2 parameter2,
-                                                      T3 parameter3,
-                                                      T4 parameter4,
-                                                      Action<T1, T2, T3, T4> action,
-                                                      Action<T1, T2, T3, T4> alternativeAction = null )
+                                                      [CanBeNull] T1 parameter1,
+                                                      [CanBeNull] T2 parameter2,
+                                                      [CanBeNull] T3 parameter3,
+                                                      [CanBeNull] T4 parameter4,
+                                                      [NotNull] Action<T1, T2, T3, T4> action,
+                                                      [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null )
         {
+            action.ThrowIfNull( nameof( action ) );
+
             if ( value )
-            {
-                action.ThrowIfNull( nameof( action ) );
                 action( parameter1, parameter2, parameter3, parameter4 );
-            }
             else
                 alternativeAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
 

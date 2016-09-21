@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,7 +20,8 @@ namespace Extend
         /// <param name="array">The array.</param>
         /// <param name="value">The value.</param>
         /// <returns>Returns the given array.</returns>
-        public static T[] Populate<T>( this T[] array, T value )
+        [PublicAPI]
+        public static T[] Populate<T>( [NotNull] this T[] array, [CanBeNull] T value )
         {
             array.ThrowIfNull( nameof( array ) );
 

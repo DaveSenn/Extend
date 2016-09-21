@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,12 +13,12 @@ namespace Extend
     public static partial class ArrayEx
     {
         /// <summary>
-        ///     Copies the spcified range of items from the source array to the given arget array.
+        ///     Copies the specified range of items from the source array to the given target array.
         /// </summary>
         /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <exception cref="ArgumentNullException">targetArray can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The start index must be greater or equals to zero.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">The number of items to cpoy must be greater or equals to zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The number of items to copy must be greater or equals to zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The start index cannot be greater than the length of the given array.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         ///     The number of items to copy cannot be greater than the length of the
@@ -30,10 +31,12 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The source array.</param>
         /// <param name="startIndex">The start index of the items range.</param>
-        /// <param name="itemsToCpoy">The number of items to cpoy, starting at the given start index.</param>
-        /// <param name="targetArray">The tartget array.</param>
+        /// <param name="itemsToCpoy">The number of items to copy, starting at the given start index.</param>
+        /// <param name="targetArray">The target array.</param>
         /// <returns>Returns the target array.</returns>
-        public static T[] Slice<T>( this T[] array, Int32 startIndex, Int32 itemsToCpoy, T[] targetArray )
+        [PublicAPI]
+        [NotNull]
+        public static T[] Slice<T>( [NotNull] this T[] array, Int32 startIndex, Int32 itemsToCpoy, [NotNull] T[] targetArray )
         {
             array.ThrowIfNull( nameof( array ) );
             targetArray.ThrowIfNull( nameof( targetArray ) );
@@ -44,7 +47,7 @@ namespace Extend
 
             if ( itemsToCpoy < 0 )
                 throw new ArgumentOutOfRangeException( array.GetName( x => itemsToCpoy ),
-                                                       "The number of items to cpoy must be greater or equals to zero." );
+                                                       "The number of items to copy must be greater or equals to zero." );
 
             if ( startIndex > array.Length )
                 throw new ArgumentOutOfRangeException( array.GetName( x => startIndex ),
@@ -65,12 +68,12 @@ namespace Extend
         }
 
         /// <summary>
-        ///     Copies the spcified range of items from the source array to the given arget array.
+        ///     Copies the specified range of items from the source array to the given target array.
         /// </summary>
         /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <exception cref="ArgumentNullException">targetArray can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The start index must be greater or equals to zero.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">The number of items to cpoy must be greater or equals to zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The number of items to copy must be greater or equals to zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">The start index cannot be greater than the length of the given array.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         ///     The number of items to copy cannot be greater than the length of the
@@ -79,20 +82,22 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The source array.</param>
         /// <param name="startIndex">The start index of the items range.</param>
-        /// <param name="itemsToCpoy">The number of items to cpoy, starting at the given start index.</param>
+        /// <param name="itemsToCpoy">The number of items to copy, starting at the given start index.</param>
         /// <returns>Returns the target array.</returns>
-        public static T[] Slice<T>( this T[] array, Int32 startIndex, Int32 itemsToCpoy )
+        [PublicAPI]
+        [NotNull]
+        public static T[] Slice<T>( [NotNull] this T[] array, Int32 startIndex, Int32 itemsToCpoy )
         {
             var targetArray = new T[itemsToCpoy];
             return array.Slice( startIndex, itemsToCpoy, targetArray );
         }
 
         /// <summary>
-        ///     Cpoies the spcified range of items from the source array to the given arget array.
+        ///     Copies the specified range of items from the source array to the given target array.
         /// </summary>
         /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <exception cref="ArgumentNullException">targetArray can not be null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">The number of items to cpoy must be greater or equals to zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The number of items to copy must be greater or equals to zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         ///     The number of items to copy cannot be greater than the length of the
         ///     target array.
@@ -103,25 +108,30 @@ namespace Extend
         /// </exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The source array.</param>
-        /// <param name="itemsToCpoy">The number of items to cpoy, starting at the given start index.</param>
-        /// <param name="targetArray">The tartget array.</param>
+        /// <param name="itemsToCpoy">The number of items to copy, starting at the given start index.</param>
+        /// <param name="targetArray">The target array.</param>
         /// <returns>Returns the target array.</returns>
-        public static T[] Slice<T>( this T[] array, Int32 itemsToCpoy, T[] targetArray ) => array.Slice( 0, itemsToCpoy, targetArray );
+        [PublicAPI]
+        [NotNull]
+        public static T[] Slice<T>( [NotNull] this T[] array, Int32 itemsToCpoy, [NotNull] T[] targetArray )
+            => array.Slice( 0, itemsToCpoy, targetArray );
 
         /// <summary>
-        ///     Cpoies the spcified range of items from the source array to the given arget array.
+        ///     Copies the specified range of items from the source array to the given target array.
         /// </summary>
         /// <exception cref="ArgumentNullException">array can not be null.</exception>
-        /// <exception cref="ArgumentOutOfRangeException">The number of items to cpoy must be greater or equals to zero.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">The number of items to copy must be greater or equals to zero.</exception>
         /// <exception cref="ArgumentOutOfRangeException">
         ///     The number of items to copy cannot be greater than the length of the
         ///     source array.
         /// </exception>
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The source array.</param>
-        /// <param name="itemsToCpoy">The number of items to cpoy, starting at the given start index.</param>
+        /// <param name="itemsToCpoy">The number of items to copy, starting at the given start index.</param>
         /// <returns>Returns the target array.</returns>
-        public static T[] Slice<T>( this T[] array, Int32 itemsToCpoy )
+        [PublicAPI]
+        [NotNull]
+        public static T[] Slice<T>( [NotNull] this T[] array, Int32 itemsToCpoy )
         {
             var targetArray = new T[itemsToCpoy];
             return array.Slice( 0, itemsToCpoy, targetArray );

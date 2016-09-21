@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,11 +15,13 @@ namespace Extend
         /// <summary>
         ///     Checks if the given index is within the array or not.
         /// </summary>
-        /// <exception cref="ArgumentNullException">Array can not be null.</exception>
+        /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <param name="array">The array to check.</param>
         /// <param name="index">a Zero-based index.</param>
-        /// <returns>Ture if the index is within the array, otherwise false.</returns>
-        public static Boolean WithinIndex( this Array array, Int32 index )
+        /// <returns>Returns a value of true if the index is within the array, otherwise false.</returns>
+        [PublicAPI]
+        [Pure]
+        public static Boolean WithinIndex( [NotNull] this Array array, Int32 index )
         {
             array.ThrowIfNull( nameof( array ) );
 

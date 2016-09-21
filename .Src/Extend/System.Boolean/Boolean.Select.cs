@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,6 +19,10 @@ namespace Extend
         /// <param name="trueValue">The true value to be returned if the given value is true.</param>
         /// <param name="falseValue">The false value to be returned if the given value is false.</param>
         /// <returns>The true value if the given Boolean is true, otherwise the false value.</returns>
-        public static T SelectValue<T>( this Boolean value, T trueValue, T falseValue ) => value ? trueValue : falseValue;
+        [PublicAPI]
+        [Pure]
+        [CanBeNull]
+        public static T SelectValue<T>( this Boolean value, [CanBeNull] T trueValue, [CanBeNull] T falseValue )
+            => value ? trueValue : falseValue;
     }
 }
