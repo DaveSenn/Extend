@@ -48,6 +48,8 @@ namespace Extend.Testing
         public void CtorTestPredicateNullTest()
         {
             Func<IMemberInformation, Boolean> predicate = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include );
             test.ShouldThrow<ArgumentNullException>();
         }

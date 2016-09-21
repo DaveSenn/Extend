@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the <see cref="CultureInfo" /> with the given name, or null if the culture is not supported.</returns>
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [CanBeNull] this String name )
+        public static CultureInfo SafeToCultureInfo( [NotNull] this String name )
         {
             try
             {
@@ -38,7 +38,7 @@ namespace Extend
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static CultureInfo SafeToCultureInfo( [CanBeNull] this String name, CultureInfo fallbackCulture )
+        public static CultureInfo SafeToCultureInfo( [NotNull] this String name, CultureInfo fallbackCulture )
         {
             try
             {

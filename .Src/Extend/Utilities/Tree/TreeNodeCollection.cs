@@ -45,9 +45,7 @@ namespace Extend
         ///     A string that represents the current object.
         /// </returns>
         public override String ToString()
-            => Parent != null
-                ? Parent.ToString()
-                : $"[Items Count: {Count}]";
+            => Parent?.ToString() ?? $"[Items Count: {Count}]";
 
         #endregion
 

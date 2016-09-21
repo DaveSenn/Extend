@@ -34,7 +34,6 @@ namespace Extend
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
         [PublicAPI]
-        [NotNull]
         MemberSelectionResult GetSelectionResult( IMemberInformation member );
     }
 }

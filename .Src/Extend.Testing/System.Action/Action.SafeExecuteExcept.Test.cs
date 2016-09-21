@@ -63,6 +63,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest1NullCheck()
         {
             Action action = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -113,6 +114,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest2NullCheck()
         {
             Action action = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -184,6 +186,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest3NullCheck()
         {
             Action action = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action
                 .SafeExecuteExcept
                 <ArgumentException, NullReferenceException, InvalidOperationException, AccessViolationException>();
@@ -261,6 +264,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTest4NullCheck()
         {
             Action action = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept( typeof(ArgumentException),
                                                           typeof(NullReferenceException),
                                                           typeof(InvalidOperationException),
@@ -273,6 +277,7 @@ namespace Extend.Testing
         public void SafeExecuteExceptTestNullCheck()
         {
             Action action = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException>();
 
             test.ShouldThrow<ArgumentNullException>();

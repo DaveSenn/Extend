@@ -53,7 +53,7 @@ namespace Extend.Testing
             /// </returns>
             /// <param name="x">The first object to compare.</param>
             /// <param name="y">The second object to compare.</param>
-            public Boolean Equals( String x, String y ) 
+            public Boolean Equals( String x, String y )
                 => x.Length == y.Length;
 
             /// <summary>
@@ -67,7 +67,7 @@ namespace Extend.Testing
             ///     The type of <paramref name="obj" /> is a reference type and
             ///     <paramref name="obj" /> is null.
             /// </exception>
-            public Int32 GetHashCode( String obj ) 
+            public Int32 GetHashCode( String obj )
                 => obj.Length.GetHashCode();
 
             #endregion

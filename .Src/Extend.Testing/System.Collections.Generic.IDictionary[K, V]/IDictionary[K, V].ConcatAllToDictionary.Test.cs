@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -87,6 +88,7 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32> other2 = null;
 
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = first.ConcatAllToDictionary( other1, other2 );
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x.Key == 2 && x.Value == 3 ) );
@@ -128,6 +130,7 @@ namespace Extend.Testing
             Dictionary<Int32, Int32>[] others = null;
 
             // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once CoVariantArrayConversion
             Action test = () => first.ConcatAllToDictionary( others );
 
             test.ShouldThrow<ArgumentNullException>();

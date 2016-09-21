@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -40,7 +41,7 @@ namespace Extend.Testing
             Assert.IsTrue( result );
             Assert.AreEqual( 1, dic.Count );
 
-            result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
+            dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
             Assert.IsFalse( false );
             Assert.AreEqual( 1, dic.Count );
         }
@@ -67,11 +68,11 @@ namespace Extend.Testing
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
 
-            var result = dic.AddIfNotContainsKey( key, () => RandomValueEx.GetRandomString() );
+            var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
             Assert.IsTrue( result );
             Assert.AreEqual( 1, dic.Count );
 
-            result = dic.AddIfNotContainsKey( key, () => RandomValueEx.GetRandomString() );
+            dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
             Assert.IsFalse( false );
             Assert.AreEqual( 1, dic.Count );
         }
@@ -114,7 +115,7 @@ namespace Extend.Testing
             Assert.IsTrue( result );
             Assert.AreEqual( 1, dic.Count );
 
-            result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
+            dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
             Assert.IsFalse( false );
             Assert.AreEqual( 1, dic.Count );
         }

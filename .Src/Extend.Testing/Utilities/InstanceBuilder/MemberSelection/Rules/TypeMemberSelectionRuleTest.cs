@@ -27,6 +27,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTypeNullTest()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new TypeMemberSelectionRule( null, MemberSelectionMode.Include, CompareMode.Is );
             test.ShouldThrow<ArgumentNullException>();
         }

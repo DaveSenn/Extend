@@ -36,7 +36,8 @@ namespace Extend
             if ( obj != null )
                 return;
 
-            var parameterName = obj.GetName( expression );
+            var parameterName = expression.GetName( expression );
+            // ReSharper disable once ExpressionIsAlwaysNull
             obj.ThrowIfNull( parameterName, errorMessage );
         }
 
@@ -58,7 +59,6 @@ namespace Extend
                                                  [NotNull] String parameterName,
                                                  [CanBeNull] String errorMessage = null )
         {
-            // ReSharper disable once CompareNonConstrainedGenericWithNull
             if ( obj != null )
                 return;
 
