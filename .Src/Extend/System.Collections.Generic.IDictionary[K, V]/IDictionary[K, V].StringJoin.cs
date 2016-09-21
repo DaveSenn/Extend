@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -30,9 +31,12 @@ namespace Extend
         ///     A string that consists of the elements in the first delimited by the separator string.
         ///     If the given first is empty, the method returns String.Empty.
         /// </returns>
-        public static String StringJoin<TValue, TKey>( this IDictionary<TValue, TKey> dictionary,
-                                                       String keyValueSeparator = "=",
-                                                       String separator = "" )
+        [PublicAPI]
+        [NotNull]
+        [Pure]
+        public static String StringJoin<TValue, TKey>( [NotNull] this IDictionary<TValue, TKey> dictionary,
+                                                       [CanBeNull] String keyValueSeparator = "=",
+                                                       [CanBeNull] String separator = "" )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
 

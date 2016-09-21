@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is an uppercase letter, otherwise false.</returns>
-        public static Boolean IsUpper( this Char c ) => Char.IsUpper( c );
+        [PublicAPI]
+        [Pure]
+        public static Boolean IsUpper( this Char c )
+            => Char.IsUpper( c );
     }
 }

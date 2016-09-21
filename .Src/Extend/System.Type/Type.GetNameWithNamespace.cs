@@ -18,29 +18,6 @@ namespace Extend
     public static partial class TypeEx
     {
         /// <summary>
-        ///     Gets the name of the assembly of the given type.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">type can not be null.</exception>
-        /// <param name="type">The type to get the assembly name of.</param>
-        /// <returns>Returns the assembly name without version and key.</returns>
-        [NotNull]
-        [Pure]
-        [PublicAPI]
-        private static String GetAssemblyName( [NotNull] this Type type )
-        {
-            type.ThrowIfNull( nameof( type ) );
-
-#if PORTABLE45
-            var assembly = type.GetTypeInfo()
-                               .Assembly;
-#elif NET40
-            var assembly = type.Assembly;
-#endif
-
-            return assembly.FullName.Split( ',' )[0];
-        }
-
-        /// <summary>
         ///     Gets the name including namespace and assembly of the given type.
         /// </summary>
         /// <exception cref="ArgumentNullException">type can not be null.</exception>
@@ -77,6 +54,29 @@ namespace Extend
             var genericTypeFullName = $"{genericType.FullName}[{genericArgumentNames}]";
 
             return $"{genericTypeFullName}, {genericType.GetAssemblyName()}";
+        }
+
+        /// <summary>
+        ///     Gets the name of the assembly of the given type.
+        /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
+        /// <param name="type">The type to get the assembly name of.</param>
+        /// <returns>Returns the assembly name without version and key.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String GetAssemblyName( [NotNull] this Type type )
+        {
+            type.ThrowIfNull( nameof( type ) );
+
+#if PORTABLE45
+            var assembly = type.GetTypeInfo()
+                               .Assembly;
+#elif NET40
+            var assembly = type.Assembly;
+#endif
+
+            return assembly.FullName.Split( ',' )[0];
         }
 
         /// <summary>

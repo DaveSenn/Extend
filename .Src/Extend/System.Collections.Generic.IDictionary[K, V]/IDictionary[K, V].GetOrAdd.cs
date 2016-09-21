@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -28,7 +29,10 @@ namespace Extend
         ///     This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary, TKey key, TValue value )
+        [PublicAPI]
+        [MustUseReturnValue]
+        [CanBeNull]
+        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary, [NotNull] TKey key, TValue value )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             key.ThrowIfNull( nameof( key ) );
@@ -53,7 +57,10 @@ namespace Extend
         ///     This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+        [PublicAPI]
+        [MustUseReturnValue]
+        [CanBeNull]
+        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                      KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
@@ -80,9 +87,12 @@ namespace Extend
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                     TKey key,
-                                                     Func<TValue> valueFactory )
+        [PublicAPI]
+        [MustUseReturnValue]
+        [CanBeNull]
+        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                     [NotNull] TKey key,
+                                                     [NotNull] Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             key.ThrowIfNull( nameof( key ) );
@@ -109,9 +119,12 @@ namespace Extend
         ///     Returns the value for the key. This will be either the existing value for the key if the key is already in the
         ///     dictionary, or the new value for the key as returned by value factory if the key was not in the dictionary.
         /// </returns>
-        public static TValue GetOrAdd<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                     TKey key,
-                                                     Func<TKey, TValue> valueFactory )
+        [PublicAPI]
+        [MustUseReturnValue]
+        [CanBeNull]
+        public static TValue GetOrAdd<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                     [NotNull] TKey key,
+                                                     [NotNull] Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             key.ThrowIfNull( nameof( key ) );

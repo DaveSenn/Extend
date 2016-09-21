@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -24,8 +25,9 @@ namespace Extend
         /// <param name="key">The key.</param>
         /// <param name="value">The value.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
+        [PublicAPI]
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                                 [NotNull] TKey key,
                                                                  TValue value )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
@@ -41,14 +43,15 @@ namespace Extend
         /// <summary>
         ///     Adds the given key value pair to the dictionary, if it not already contains the key.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The dictionary can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The key value pair can not be null.</exception>
+        /// <exception cref="ArgumentNullException">dictionary can not be null.</exception>
+        /// <exception cref="ArgumentNullException">key can not be null.</exception>
         /// <typeparam name="TKey">The type of the key.</typeparam>
         /// <typeparam name="TValue">the type of the value.</typeparam>
         /// <param name="dictionary">The dictionary to which the item should get added.</param>
         /// <param name="keyValuePair">The KeyValuePair to add.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
+        [PublicAPI]
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                                  KeyValuePair<TKey, TValue> keyValuePair )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
@@ -73,9 +76,10 @@ namespace Extend
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
-                                                                 Func<TValue> valueFactory )
+        [PublicAPI]
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                                 [NotNull] TKey key,
+                                                                 [NotNull] Func<TValue> valueFactory )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             key.ThrowIfNull( nameof( key ) );
@@ -100,9 +104,10 @@ namespace Extend
         /// <param name="key">The key.</param>
         /// <param name="valueFactory">The factory which creates the value for the key value pair.</param>
         /// <returns>True if the item was added to the dictionary, otherwise false.</returns>
-        public static Boolean AddIfNotContainsKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                 TKey key,
-                                                                 Func<TKey, TValue> valueFactory )
+        [PublicAPI]
+        public static Boolean AddIfNotContainsKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                                 [NotNull] TKey key,
+                                                                 [NotNull] Func<TKey, TValue> valueFactory )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             key.ThrowIfNull( nameof( key ) );

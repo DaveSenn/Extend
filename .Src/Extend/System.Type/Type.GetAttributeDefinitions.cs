@@ -36,11 +36,11 @@ namespace Extend
 #if PORTABLE45
             return t.GetRuntimeProperties()
                     .Select( x => new AttributeDefinitionProperty<TAttribute>
-                    {
-                        Property = x,
-                        Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
-                                      .Cast<TAttribute>()
-                    } )
+                             {
+                                 Property = x,
+                                 Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
+                                               .Cast<TAttribute>()
+                             } )
                     .Where( x => x.Attributes.Any() );
 
 #elif NET40

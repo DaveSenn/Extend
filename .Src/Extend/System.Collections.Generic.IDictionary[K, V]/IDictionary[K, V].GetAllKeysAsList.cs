@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,10 @@ namespace Extend
         /// <typeparam name="TValue">Type of the value.</typeparam>
         /// <param name="dictionary">The Dictionary to act on.</param>
         /// <returns>Returns all keys of the given dictionary as list.</returns>
-        public static List<TKey> GetAllKeysAsList<TKey, TValue>( this IDictionary<TKey, TValue> dictionary )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static List<TKey> GetAllKeysAsList<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
 

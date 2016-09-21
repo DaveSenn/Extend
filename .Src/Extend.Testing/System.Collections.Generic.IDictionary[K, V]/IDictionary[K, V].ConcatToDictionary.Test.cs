@@ -29,6 +29,8 @@ namespace Extend.Testing
 
             var actual = first.ConcatToDictionary( second );
             Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual(2, first.Count);
+            Assert.AreEqual(2, second.Count);
             Assert.AreEqual( 1, actual.Count( x => x.Key == 0 && x.Value == 1 ) );
             Assert.AreEqual( 1, actual.Count( x => x.Key == 1 && x.Value == 2 ) );
             Assert.AreEqual( 1, actual.Count( x => x.Key == 2 && x.Value == 3 ) );

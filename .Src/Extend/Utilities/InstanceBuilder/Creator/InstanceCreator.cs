@@ -553,22 +553,22 @@ namespace Extend
                                                  .GetMemberInformation( memberInformation );
 
             propertyInfos.ForEach( x =>
-            {
-                //Check if member should be set or not
-                if ( !IncludeMember( options, x ) )
-                    return;
+                                   {
+                                       //Check if member should be set or not
+                                       if ( !IncludeMember( options, x ) )
+                                           return;
 
-                //Create member value
-                var value = GetValue( options, x );
-                x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
+                                       //Create member value
+                                       var value = GetValue( options, x );
+                                       x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
 
-                //Set children of value (recursive call)
-                var currentMember = x as MemberInformation;
-                if ( currentMember != null )
-                    currentMember.MemberObject = value;
+                                       //Set children of value (recursive call)
+                                       var currentMember = x as MemberInformation;
+                                       if ( currentMember != null )
+                                           currentMember.MemberObject = value;
 
-                SetAllMembers( options, currentMember );
-            } );
+                                       SetAllMembers( options, currentMember );
+                                   } );
         }
 
         #endregion

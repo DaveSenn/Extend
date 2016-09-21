@@ -21,6 +21,6 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Boolean TryToEnum<T>( [CanBeNull] String value, out T outValue, Boolean ignoreCase = true ) where T : struct
-            => Enum.TryParse( value, ignoreCase, out outValue );
+        => Enum.TryParse( value, ignoreCase, out outValue );
     }
 }

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,8 @@ namespace Extend
         /// <param name="collection">The collection to which the item should get added.</param>
         /// <param name="value">The value. to add</param>
         /// <returns>True if the value was added to the collection, otherwise false.</returns>
-        public static Boolean AddIfNotContains<T>( this ICollection<T> collection, T value )
+        [PublicAPI]
+        public static Boolean AddIfNotContains<T>( [NotNull] this ICollection<T> collection, T value )
         {
             collection.ThrowIfNull( nameof( collection ) );
 

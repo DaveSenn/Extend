@@ -31,9 +31,9 @@ namespace Extend
             value.ThrowIfNull( nameof( value ) );
 
             return value.Split( new[]
-            {
-                Environment.NewLine
-            },
+                                {
+                                    Environment.NewLine
+                                },
                                 stringSplitOptions );
         }
 

@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,7 +14,7 @@ namespace Extend
     public static partial class CollectionTEx
     {
         /// <summary>
-        ///     Adds the specified value to the given value it it satisfies the predicated provided.
+        ///     Adds the specified value to the given value it satisfies the predicated provided.
         /// </summary>
         /// <exception cref="ArgumentNullException">The collection can not be null.</exception>
         /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
@@ -22,7 +23,8 @@ namespace Extend
         /// <param name="predicate">The predicate.</param>
         /// <param name="value">The value to add.</param>
         /// <returns>True if the value was added to the collection, otherwise false.</returns>
-        public static Boolean AddIf<T>( this ICollection<T> collection, Func<T, Boolean> predicate, T value )
+        [PublicAPI]
+        public static Boolean AddIf<T>( [NotNull] [ItemCanBeNull] this ICollection<T> collection, [NotNull] Func<T, Boolean> predicate, T value )
         {
             collection.ThrowIfNull( nameof( collection ) );
             predicate.ThrowIfNull( nameof( predicate ) );

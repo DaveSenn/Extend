@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,8 +24,9 @@ namespace Extend
         /// <typeparam name="TKey">The type of the keys.</typeparam>
         /// <typeparam name="TValue">The type of the values.</typeparam>
         /// <returns>Returns the dictionary containing all the items..</returns>
-        public static IDictionary<TKey, TValue> AddRange<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                                        IDictionary<TKey, TValue> otherDictionary )
+        [PublicAPI]
+        public static IDictionary<TKey, TValue> AddRange<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                                        [NotNull] IDictionary<TKey, TValue> otherDictionary )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             otherDictionary.ThrowIfNull( nameof( otherDictionary ) );

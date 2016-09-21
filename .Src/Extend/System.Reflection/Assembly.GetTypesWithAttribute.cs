@@ -26,7 +26,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( [NotNull] params Assembly[] assemblies ) where T : Attribute
-            => GetTypesWithAttribute<T>( false, null, assemblies );
+        => GetTypesWithAttribute<T>( false, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -43,7 +43,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
-            => GetTypesWithAttribute<T>( inherit, null, assemblies );
+        => GetTypesWithAttribute<T>( inherit, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type and are sub
@@ -70,32 +70,32 @@ namespace Extend
             var result = new List<AttributeDefinitionType<T>>();
 
             assemblies.ForEach( x =>
-            {
+                                {
 #if PORTABLE45
-                x.DefinedTypes
+                                    x.DefinedTypes
 #elif NET40
                 x.GetTypes()
 #endif
-                 .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
-                 .ForEach( y =>
-                 {
-                     var attributes = y.GetCustomAttributes( attributeType, inherit )
-                                       .ToArray();
-                     if ( attributes.NotAny() )
-                         return;
+                                     .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
+                                     .ForEach( y =>
+                                               {
+                                                   var attributes = y.GetCustomAttributes( attributeType, inherit )
+                                                                     .ToArray();
+                                                   if ( attributes.NotAny() )
+                                                       return;
 
-                     result.Add( new AttributeDefinitionType<T>
-                     {
+                                                   result.Add( new AttributeDefinitionType<T>
+                                                               {
 #if PORTABLE45
-                         Type = y.AsType(),
+                                                                   Type = y.AsType(),
 #elif NET40
                          Type = y,
 #endif
-                         Attributes = attributes.Cast<T>()
-                                                .ToList()
-                     } );
-                 } );
-            } );
+                                                                   Attributes = attributes.Cast<T>()
+                                                                                          .ToList()
+                                                               } );
+                                               } );
+                                } );
 
             return result;
         }

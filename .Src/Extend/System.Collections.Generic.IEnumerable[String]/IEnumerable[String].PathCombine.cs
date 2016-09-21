@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <returns>The combined path.</returns>
-        public static String PathCombine( this IEnumerable<String> enumerable )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String PathCombine( [NotNull] [ItemCanBeNull] this IEnumerable<String> enumerable )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 

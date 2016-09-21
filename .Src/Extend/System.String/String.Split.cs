@@ -37,9 +37,9 @@ namespace Extend
             separator.ThrowIfNull( nameof( separator ) );
 
             return value.Split( new[]
-            {
-                separator
-            },
+                                {
+                                    separator
+                                },
                                 stringSplitOption );
         }
 

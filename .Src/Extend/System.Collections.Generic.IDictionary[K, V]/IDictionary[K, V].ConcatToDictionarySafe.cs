@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -30,18 +31,22 @@ namespace Extend
         ///     Returns an <see cref="IDictionary{TKey,TValue}" /> that contains the concatenated elements of the two input
         ///     sequences.
         /// </returns>
+        [PublicAPI]
+        [Pure]
+        [NotNull]
         public static IDictionary<TValue, TKey> ConcatToDictionarySafe<TValue, TKey>(
-            this IEnumerable<KeyValuePair<TValue, TKey>> first,
-            IEnumerable<KeyValuePair<TValue, TKey>> second )
+            [NotNull] this IEnumerable<KeyValuePair<TValue, TKey>> first,
+            [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second )
         {
             first.ThrowIfNull( nameof( first ) );
             second.ThrowIfNull( nameof( second ) );
 
-            return first.Concat( second )
-                        .GroupBy( x => x.Key )
-                        .ToDictionary( x => x.Key,
-                                       x => x.First()
-                                             .Value );
+            return first
+                .Concat( second )
+                .GroupBy( x => x.Key )
+                .ToDictionary( x => x.Key,
+                               x => x.First()
+                                     .Value );
         }
     }
 }

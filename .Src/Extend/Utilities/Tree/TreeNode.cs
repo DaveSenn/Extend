@@ -570,13 +570,13 @@ namespace Extend
                 return descendants;
 
             Children.ForEach( x =>
-            {
-                if ( x is TreeNode<T> == false )
-                    throw new NotSupportedException( $"Child '{x}' is not of type TreeNode{{T}}." );
+                              {
+                                  if ( x is TreeNode<T> == false )
+                                      throw new NotSupportedException( $"Child '{x}' is not of type TreeNode{{T}}." );
 
-                descendants.Add( x );
-                ( x as TreeNode<T> ).GetDescendants( descendants );
-            } );
+                                  descendants.Add( x );
+                                  ( x as TreeNode<T> ).GetDescendants( descendants );
+                              } );
 
             return descendants;
         }

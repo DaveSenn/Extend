@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,11 +13,15 @@ namespace Extend
     public static partial class CharEx
     {
         /// <summary>
-        ///     Reapeats the given Char the specified number of times.
+        ///     Repeats the given Char the specified number of times.
         /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">repeatCount is less than zero.</exception>
         /// <param name="c">The Char to repeat.</param>
         /// <param name="repeatCount">Number of repeats.</param>
         /// <returns>The repeated Char as String.</returns>
-        public static String Repeat( this Char c, Int32 repeatCount ) => new String( c, repeatCount );
+        [PublicAPI]
+        [Pure]
+        public static String Repeat( this Char c, Int32 repeatCount )
+            => new String( c, repeatCount );
     }
 }

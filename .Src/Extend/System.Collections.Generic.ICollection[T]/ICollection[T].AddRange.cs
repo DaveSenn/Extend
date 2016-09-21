@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,8 @@ namespace Extend
         /// <param name="collection">The collection to which the values should get added.</param>
         /// <param name="values">The values to add.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRange<T>( this ICollection<T> collection, params T[] values )
+        [PublicAPI]
+        public static ICollection<T> AddRange<T>( [NotNull] this ICollection<T> collection, [NotNull] params T[] values )
         {
             collection.ThrowIfNull( nameof( collection ) );
             values.ThrowIfNull( nameof( values ) );
@@ -39,7 +41,8 @@ namespace Extend
         /// <param name="collection">The collection to which the values should get added.</param>
         /// <param name="enumerable">The IEnumerable containing the items.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> AddRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
+        [PublicAPI]
+        public static ICollection<T> AddRange<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( nameof( collection ) );
             enumerable.ThrowIfNull( nameof( enumerable ) );

@@ -46,6 +46,6 @@ namespace Extend
         [PublicAPI]
         [Pure]
         public static T Coalesce<T>( [CanBeNull] this T value, [CanBeNull] T value0 ) where T : class
-            => value ?? value0;
+        => value ?? value0;
     }
 }

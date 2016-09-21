@@ -23,7 +23,6 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the given enumerable.</typeparam>
         /// <param name="enumerable">The enumerable containing all the items.</param>
         /// <param name="action">The action to perform on each item of the given enumerable.</param>
-        [Pure]
         [PublicAPI]
         [NotNull]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
@@ -49,7 +48,6 @@ namespace Extend
         ///     The action to perform on each item of the given enumerable.
         ///     The action takes a item of the given enumerable and it's index as parameter.
         /// </param>
-        [Pure]
         [PublicAPI]
         [NotNull]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T, Int32> action )

@@ -29,7 +29,10 @@ namespace Extend.Testing
 
             Assert.AreEqual( 2, dictionary.Count );
 
-            dictionary.AddRange( otherDictionary );
+            var actual = dictionary.AddRange( otherDictionary );
+            actual
+                .Should()
+                .BeSameAs( dictionary );
             Assert.AreEqual( 4, dictionary.Count );
             Assert.IsTrue( dictionary.ContainsAll( otherDictionary ) );
         }
