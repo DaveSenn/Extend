@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -37,19 +38,24 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy( T obj ) => Left.IsSatisfiedBy( obj ) && Right.IsSatisfiedBy( obj );
+        [PublicAPI]
+        public override Boolean IsSatisfiedBy( T obj )
+            => Left.IsSatisfiedBy( obj ) && Right.IsSatisfiedBy( obj );
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
+        [PublicAPI]
         public override IEnumerable<String> IsSatisfiedByWithMessages( T obj )
         {
-            var leftResult = Left.IsSatisfiedByWithMessages( obj )
-                                 .ToList();
-            var rightResult = Right.IsSatisfiedByWithMessages( obj )
-                                   .ToList();
+            var leftResult = Left
+                .IsSatisfiedByWithMessages( obj )
+                .ToList();
+            var rightResult = Right
+                .IsSatisfiedByWithMessages( obj )
+                .ToList();
 
             if ( leftResult.NotAny() && rightResult.NotAny() )
                 return new String[0];

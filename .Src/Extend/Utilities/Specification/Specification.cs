@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -34,21 +35,24 @@ namespace Extend
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> And( ISpecification<T> specification ) => new AndSpecification<T>( this, specification );
+        public ISpecification<T> And( ISpecification<T> specification ) 
+            => new AndSpecification<T>( this, specification );
 
         /// <summary>
         ///     Combines the current specification with the given specification using a OR link.
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> Or( ISpecification<T> specification ) => new OrSpecification<T>( this, specification );
+        public ISpecification<T> Or( ISpecification<T> specification ) 
+            => new OrSpecification<T>( this, specification );
 
         /// <summary>
         ///     Combines the current specification with the given specification using a XOR link.
         /// </summary>
         /// <param name="specification">The specification to add.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public ISpecification<T> XOr( ISpecification<T> specification ) => new XOrSpecification<T>( this, specification );
+        public ISpecification<T> XOr( ISpecification<T> specification ) 
+            => new XOrSpecification<T>( this, specification );
 
         #endregion
     }
