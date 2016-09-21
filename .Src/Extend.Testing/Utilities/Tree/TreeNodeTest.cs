@@ -1470,7 +1470,7 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "1" );
             var actual = target.ToString();
-            Assert.AreEqual( "Depth: 0 - Value: 1, Children: 0, Parent: [[NULL]]", actual );
+            Assert.AreEqual( "[Depth: 0 - Value: '1', Children: 0]", actual );
         }
 
         [Test]
@@ -1480,8 +1480,7 @@ namespace Extend.Testing
             var node = new TreeNode<String>( "a" );
             target.Add( node );
             var actual = node.ToString();
-            Assert.AreEqual( "Depth: 1 - Value: a, Children: 0, Parent: [Depth: 0 - Value: 1, Children: 3, Parent: [[NULL]]]",
-                             actual );
+            Assert.AreEqual( "    [Depth: 1 - Value: 'a', Children: 0]", actual );
         }
 
         [Test]
