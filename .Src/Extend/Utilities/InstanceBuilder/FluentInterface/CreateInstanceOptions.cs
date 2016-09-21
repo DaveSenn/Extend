@@ -12,11 +12,9 @@ namespace Extend
     ///     Class representing the options for the create instance feature.
     /// </summary>
     /// <typeparam name="T">The type of the instance to create.</typeparam>
-    public class CreateInstanceOptions<T> : ICreateInstanceOptions<T>,
-        ICreateInstanceOptionsComplete<T>,
+    public class CreateInstanceOptions<T> : ICreateInstanceOptionsComplete<T>,
         IIncludeExcludeOptions<T>,
-        IFactoryOptionsConstistent<T>,
-        IFactoryOptionsInconsistent<T> where T : class
+        IFactoryOptionsConstistent<T> where T : class
     {
         #region Fields
 
@@ -60,6 +58,10 @@ namespace Extend
                 case MemberSelectionRuleTarget.Factory:
                     _currentFactoriy?.AddSelectionRule( memberSelectionRule );
                     break;
+                default:
+                    throw new ArgumentOutOfRangeException( nameof( _currentMemberSelectionTarget ),
+                                                           _currentMemberSelectionTarget,
+                                                           $"The member selection target '{_currentMemberSelectionTarget}' is not supported." );
             }
 
             return this;
@@ -263,7 +265,8 @@ namespace Extend
         ///     Ends the configuration and returns the configuration result.
         /// </summary>
         /// <returns>Returns the completely configured create instance options. </returns>
-        public ICreateInstanceOptionsComplete<T> Complete() => this;
+        public ICreateInstanceOptionsComplete<T> Complete()
+            => this;
 
         #endregion
 
@@ -315,7 +318,8 @@ namespace Extend
         ///     Matches all members.
         /// </summary>
         /// <returns>Returns the modified options.</returns>
-        public IIncludeExcludeOptions<T> AllMembers() => AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
+        public IIncludeExcludeOptions<T> AllMembers()
+            => AddMemberSlectionRule( new AllMemberSelectionRule( _currentMemberSelectionMode ) );
 
         #endregion
 
@@ -333,7 +337,7 @@ namespace Extend
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
+                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
 
             _currentMemberSelectionMode = MemberSelectionMode.Include;
             configurationFunc( this );
@@ -353,7 +357,7 @@ namespace Extend
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
+                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
 
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
         }
@@ -370,7 +374,7 @@ namespace Extend
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
+                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
 
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
             configurationFunc( this );
@@ -390,7 +394,7 @@ namespace Extend
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
-                throw new InvalidOperationException( "Cannot add rule to factory without specifieing a factory first." );
+                throw new InvalidOperationException( "Cannot add rule to factory without specifying a factory first." );
 
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
         }

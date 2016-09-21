@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -40,13 +41,18 @@ namespace Extend
         /// <exception cref="ArgumentNullException">memberSelectionRule can not be null.</exception>
         /// <param name="memberSelectionRule">The <see cref="IMemberSelectionRule" /> to add.</param>
         /// <returns>Returns the modified factory.</returns>
-        IInstanceFactory AddSelectionRule( IMemberSelectionRule memberSelectionRule );
+        [PublicAPI]
+        [NotNull]
+        IInstanceFactory AddSelectionRule( [NotNull] IMemberSelectionRule memberSelectionRule );
 
         /// <summary>
         ///     Gets the value for the given <see cref="IMemberInformation" />.
         /// </summary>
+        /// <exception cref="ArgumentNullException">memberSelectionRule can not be null.</exception>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        Object CreateValue( IMemberInformation memberInformation );
+        [PublicAPI]
+        [CanBeNull]
+        Object CreateValue( [NotNull] IMemberInformation memberInformation );
     }
 }

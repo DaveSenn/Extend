@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -43,7 +44,7 @@ namespace Extend
         /// <param name="compareMode">The compare mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public TypeMemberSelectionRule( Type type, MemberSelectionMode selectionMode, CompareMode compareMode, String name = null, String description = null )
+        public TypeMemberSelectionRule( [NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode, String name = null, String description = null )
             : base( name, description )
         {
             type.ThrowIfNull( nameof( type ) );
@@ -62,8 +63,10 @@ namespace Extend
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
-        public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
+        public override MemberSelectionResult GetSelectionResult( [NotNull] IMemberInformation member )
         {
+            member.ThrowIfNull( nameof( member ) );
+
             var matchesType = member.MemberType == _type;
             if ( _compareMode == CompareMode.IsNot )
                 matchesType = !matchesType;
@@ -85,7 +88,8 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString() => $"[{RuleName}] = ({_selectionMode} where type {_compareMode} {_type.Name}) ({RuleDescription}).";
+        public override String ToString()
+            => $"[{RuleName}] = ({_selectionMode} where type {_compareMode} {_type.Name}) ({RuleDescription}).";
 
         #endregion
     }

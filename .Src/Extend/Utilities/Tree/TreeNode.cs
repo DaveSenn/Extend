@@ -65,16 +65,7 @@ namespace Extend
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         public TreeNode()
-            : this( default(T), null, null )
-        {
-        }
-
-        /// <summary>
-        ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
-        /// </summary>
-        /// <param name="value">The value of the node.</param>
-        public TreeNode( T value )
-            : this( value, null, null )
+            : this( default(T) )
         {
         }
 
@@ -122,7 +113,7 @@ namespace Extend
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
         /// <param name="children">The children of the node.</param>
-        public TreeNode( T value, ITreeNode<T> parent, ITreeNodeCollection<T> children )
+        public TreeNode( T value, ITreeNode<T> parent = null, ITreeNodeCollection<T> children = null )
         {
             Value = value;
             Parent = parent;
@@ -166,7 +157,7 @@ namespace Extend
         }
 
         #endregion
-        
+
         #region Implementation of ITreeNode
 
         #region Properties
@@ -347,7 +338,7 @@ namespace Extend
         /// <returns>Returns the values which matches the given predicate.</returns>
         public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof(predicate) );
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             var result = new List<T>();
 
@@ -367,7 +358,9 @@ namespace Extend
                         result.Add( Value );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof( SearchTraversalDirection ),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -385,7 +378,7 @@ namespace Extend
         /// <returns>Returns the nodes which matches the given predicate.</returns>
         public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof( predicate ) );
 
             var result = new List<ITreeNode<T>>();
 
@@ -405,7 +398,9 @@ namespace Extend
                         result.Add( this );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof( SearchTraversalDirection ),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -436,7 +431,9 @@ namespace Extend
                         result.Add( this );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection), SearchTraversalDirection, $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof( SearchTraversalDirection ),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -465,7 +462,7 @@ namespace Extend
         /// <returns>Returns the added node.</returns>
         public ITreeNode<T> Add( ITreeNode<T> node )
         {
-            node.ThrowIfNull( nameof(node) );
+            node.ThrowIfNull( nameof( node ) );
 
             if ( !Children.Contains( node ) )
                 Children.Add( node );
@@ -533,9 +530,9 @@ namespace Extend
         /// <returns>
         ///     A <see cref="System.Collections.Generic.IEnumerator{T}" /> that can be used to iterate through the collection.
         /// </returns>
-        public IEnumerator<ITreeNode<T>> GetEnumerator() 
+        public IEnumerator<ITreeNode<T>> GetEnumerator()
             => GetEnumeratorInternal()
-            .GetEnumerator();
+                .GetEnumerator();
 
         /// <summary>
         ///     Returns an enumerator that iterates through the collection.

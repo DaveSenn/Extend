@@ -33,7 +33,7 @@ namespace Extend.Testing
             actual.Should()
                   .HaveCount( 3 );
 
-            //TestClassA
+            // TestClassA
             var attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                    .Attributes;
             attributes.Should()
@@ -43,7 +43,7 @@ namespace Extend.Testing
             attributes.Should()
                       .Contain( x => x.Value == "base" );
 
-            //TestClassB
+            // TestClassB
             attributes = actual.First( x => x.Type == typeof(TestClassB) )
                                .Attributes;
             attributes.Should()
@@ -52,7 +52,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "base" );
 
-            //TestClassD
+            // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()
@@ -84,7 +84,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "base" );
 
-            //TestClassA
+            // TestClassA
             attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                .Attributes;
             attributes.Should()
@@ -94,7 +94,7 @@ namespace Extend.Testing
             attributes.Should()
                       .Contain( x => x.Value == "base" );
 
-            //TestClassB
+            // TestClassB
             attributes = actual.First( x => x.Type == typeof(TestClassB) )
                                .Attributes;
             attributes.Should()
@@ -103,7 +103,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "base" );
 
-            //TestClassC
+            // TestClassC
             attributes = actual.First( x => x.Type == typeof(TestClassC) )
                                .Attributes;
             attributes.Should()
@@ -111,7 +111,7 @@ namespace Extend.Testing
             attributes.Should()
                       .Contain( x => x.Value == "C" );
 
-            //TestClassD
+            // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()
@@ -142,7 +142,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "base" );
 
-            //TestClassA
+            // TestClassA
             attributes = actual.First( x => x.Type == typeof(TestClassA) )
                                .Attributes;
             attributes.Should()
@@ -151,7 +151,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "A" );
 
-            //TestClassC
+            // TestClassC
             attributes = actual.First( x => x.Type == typeof(TestClassC) )
                                .Attributes;
             attributes.Should()
@@ -160,7 +160,7 @@ namespace Extend.Testing
                       .Value.Should()
                       .Be( "C" );
 
-            //TestClassD
+            // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
                                .Attributes;
             attributes.Should()

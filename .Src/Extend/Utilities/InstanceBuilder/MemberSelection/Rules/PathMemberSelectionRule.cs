@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -34,7 +35,7 @@ namespace Extend
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public PathMemberSelectionRule( String memberPath, MemberSelectionMode selectionMode, String name = null, String description = null )
+        public PathMemberSelectionRule( [NotNull] String memberPath, MemberSelectionMode selectionMode, String name = null, String description = null )
             : base( name, description )
         {
             memberPath.ThrowIfNull( nameof( memberPath ) );
@@ -73,7 +74,8 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString() => $"[{RuleName}] = ({_selectionMode} members at {_memberPath}) ({RuleDescription}).";
+        public override String ToString()
+            => $"[{RuleName}] = ({_selectionMode} members at {_memberPath}) ({RuleDescription}).";
 
         #endregion
     }

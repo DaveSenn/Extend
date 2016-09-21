@@ -24,8 +24,12 @@ namespace Extend
                     return true;
                 case MemberSelectionResult.ExcludeMember:
                     return false;
-                default:
+                case MemberSelectionResult.Neutral:
                     return null;
+                default:
+                    throw new ArgumentOutOfRangeException( nameof( memberSelectionResult ),
+                                                           memberSelectionResult,
+                                                           $"The member selection result '{memberSelectionResult}' is not supported." );
             }
         }
     }

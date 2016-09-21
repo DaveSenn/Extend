@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -53,12 +54,12 @@ namespace Extend
         public static Int32 PopulateCollectionsMaxCount { get; set; } = 10;
 
         /// <summary>
-        ///     Gets or sets the name used for anonyoumous items.
+        ///     Gets or sets the name used for anonymous items.
         /// </summary>
         /// <remarks>
         ///     Targets collection items.
         /// </remarks>
-        /// <value>The name used for anonyoumous items.</value>
+        /// <value>The name used for anonymous items.</value>
         public static String AnonymousItemName { get; set; } = "[AnonymousItem]";
 
         /// <summary>
@@ -90,14 +91,19 @@ namespace Extend
         /// </summary>
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <returns>Returns the new created create instance options.</returns>
-        public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new() => new CreateInstanceOptions<T>();
+        public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new()
+        => new CreateInstanceOptions<T>();
 
         /// <summary>
         ///     Creates an instance of the specified type without any special configuration.
         /// </summary>
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <returns>Returns the new created instance.</returns>
-        public static T CreateInstance<T>() where T : class, new() => CreateInstanceOptions<T>()
+        [NotNull]
+        [PublicAPI]
+        [Pure]
+        public static T CreateInstance<T>() where T : class, new()
+        => CreateInstanceOptions<T>()
             .Complete()
             .CreateInstance();
 
@@ -108,7 +114,10 @@ namespace Extend
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the new created instance.</returns>
-        public static T CreateInstance<T>( this ICreateInstanceOptionsComplete<T> options ) where T : class
+        [NotNull]
+        [PublicAPI]
+        [Pure]
+        public static T CreateInstance<T>( [NotNull] this ICreateInstanceOptionsComplete<T> options ) where T : class
         {
             options.ThrowIfNull( nameof( options ) );
 
@@ -181,7 +190,7 @@ namespace Extend
         /// <returns>Returns a value of true if the member should be included; otherwise, false.</returns>
         private static Boolean ShouldMemberBeIncluded( IMemberInformation memberInformation, params IEnumerable<IMemberSelectionRule>[] selectionRuleSets )
         {
-            //Try to find selection result (starting at the first item in selectionRuleSets)
+            // Try to find selection result (starting at the first item in selectionRuleSets)
             foreach ( var inspectionResult in selectionRuleSets
                 .Select( ruleSet => RuleInspector.Inspect( ruleSet, memberInformation )
                                                  .AsBoolean() )
@@ -209,7 +218,7 @@ namespace Extend
         /// <returns>Returns the number of items to create.</returns>
         private static Int32 GetCollectionItemCount<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
         {
-            //Return coubt od 0 if collection should net get populated
+            //Return count of 0 if collection should net get populated
             if ( !PopulateCollection( options ) )
                 return 0;
 
@@ -225,7 +234,8 @@ namespace Extend
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns a value of true if collections should get populated or not.</returns>
-        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class => options.PopulateCollections ?? PopulateCollections;
+        private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        => options.PopulateCollections ?? PopulateCollections;
 
         /// <summary>
         ///     Gets the name for anonymous items.
@@ -233,7 +243,8 @@ namespace Extend
         /// <typeparam name="T">The type of the instance to create.</typeparam>
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the name to use.</returns>
-        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class => options.AnonymousItemName ?? AnonymousItemName;
+        private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
+        => options.AnonymousItemName ?? AnonymousItemName;
 
         /// <summary>
         ///     Creates the root instance.
@@ -271,7 +282,7 @@ namespace Extend
         /// <returns>Returns the created value.</returns>
         private static Object GetValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Try get value from factory
+            // Try get value from factory
             var factory = GetFactory( options, memberInformation );
             if ( factory != null )
                 try
@@ -283,13 +294,13 @@ namespace Extend
                     throw new CreateInstanceException( "Factory has thrown exception.", ex, factory.ToString(), null, memberInformation );
                 }
 
-            //Try create array value
+            // Try create array value
             var value = TryCreateArrayValue( options, memberInformation );
             if ( value != null )
                 return value;
 
             //Create value (first try IEnumerable than anything else)
-            value = TryCreateIEnumerableValue( options, memberInformation ) ?? CreateValueUsingAcrivator( memberInformation );
+            value = TryCreateIEnumerableValue( memberInformation ) ?? CreateValueUsingAcrivator( memberInformation );
 
             //Populate collection if collection (could be ICollection)
             return TryPopulateCollection( options, memberInformation, value );
@@ -298,11 +309,9 @@ namespace Extend
         /// <summary>
         ///     Tries to create an IEnumerable value for the given type.
         /// </summary>
-        /// <typeparam name="T">The type of the instance to create.</typeparam>
-        /// <param name="options">Some create instance options.</param>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static Object TryCreateIEnumerableValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
+        private static Object TryCreateIEnumerableValue( IMemberInformation memberInformation )
         {
             //Check if member implements IEnumerable{T}
             if ( !memberInformation.MemberType.IsIEnumerableT() )
@@ -315,14 +324,13 @@ namespace Extend
 #elif NET40
             var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
 #endif
-            //Create an instance of the cunstructed type
+            //Create an instance of the constructed type
             var instnace = Activator.CreateInstance( concreteType );
 
             //Update the type of the member in the member information
             var currentMember = memberInformation as MemberInformation;
             if ( currentMember != null )
                 currentMember.MemberType = concreteType;
-            memberInformation = currentMember;
 
             return instnace;
         }
@@ -403,7 +411,7 @@ namespace Extend
             if ( factory != null )
                 return factory;
 
-            //Try get inner type of nullable
+            // Try get inner type of null-able
             var nullableType = GetTypeFromNullable( memberInformation.MemberType );
             if ( nullableType == null )
                 return null;
@@ -544,25 +552,25 @@ namespace Extend
         /// <param name="memberInformation">The current member.</param>
         private static void SetAllMembers<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Check if children should be set or not
+            // Check if children should be set or not
             if ( !IncludeChildMembers( options, memberInformation ) )
                 return;
 
-            //Get the properties of the current member as member information
+            // Get the properties of the current member as member information
             var propertyInfos = memberInformation.MemberType.GetPublicSettableProperties()
                                                  .GetMemberInformation( memberInformation );
 
             propertyInfos.ForEach( x =>
                                    {
-                                       //Check if member should be set or not
+                                       // Check if member should be set or not
                                        if ( !IncludeMember( options, x ) )
                                            return;
 
-                                       //Create member value
+                                       // Create member value
                                        var value = GetValue( options, x );
                                        x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
 
-                                       //Set children of value (recursive call)
+                                       // Set children of value (recursive call)
                                        var currentMember = x as MemberInformation;
                                        if ( currentMember != null )
                                            currentMember.MemberObject = value;
