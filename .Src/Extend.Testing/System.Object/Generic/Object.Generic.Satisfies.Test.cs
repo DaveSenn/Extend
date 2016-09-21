@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void SatisfiesTestCase()
+        public void SatisfiesTest()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 );
             var actual = "1234".Satisfies( specification );
@@ -20,7 +20,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SatisfiesTestCase1()
+        public void SatisfiesTest1()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 );
             var actual = "123".Satisfies( specification );
@@ -28,9 +28,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SatisfiesTestCasenullCheck()
+        public void SatisfiesTestnullCheck()
         {
             ISpecification<String> specification = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1234".Satisfies( specification );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,9 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The array to clear.</param>
         /// <returns>Returns the cleared array.</returns>
-        public static T[] ClearAll<T>( this T[] array )
+        [NotNull]
+        [PublicAPI]
+        public static T[] ClearAll<T>( [NotNull] this T[] array )
         {
             array.ThrowIfNull( nameof( array ) );
 

@@ -13,93 +13,162 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt64TestCase()
-        {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt64();
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt64TestCase1()
-        {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt64( expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt64TestCase2()
-        {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt64TestCase3()
-        {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt64TestCase4()
+        public void SaveToInt64InvalidValueDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt64( RandomValueEx.GetRandomInt64() );
+            var actual = "InvalidValue".SaveToInt64( expected );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt64TestCase5()
+        public void SaveToInt64InvalidValueTest()
         {
             var actual = "InvalidValue".SaveToInt64();
 
-            Assert.AreEqual( default(Int64), actual );
+            actual
+                .Should()
+                .Be( default(Int64) );
         }
 
         [Test]
-        public void SaveToInt64TestCase6()
+        public void SaveToInt64NullDefaultTest()
+        {
+            String value = null;
+            var expected = RandomValueEx.GetRandomInt64();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt64( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt64NullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt64();
+
+            actual
+                .Should()
+                .Be( default(Int64) );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadFormatProviderNullTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => "12".SaveToInt64( NumberStyles.AllowExponent, null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void SaveToInt64OverloadInvalidNumberStyleTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "12".SaveToInt64( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.CurrentCulture );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void SaveToInt64OverloadInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Int64) );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadInvalidValueWithDefaultTest()
+        {
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadNullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Int64) );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadNullWithDefaultTest()
+        {
+            String value = null;
+            var expected = RandomValueEx.GetRandomInt64();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadTest()
+        {
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt64OverloadWitDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt64() );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt64TestCase7()
+        public void SaveToInt64Test()
         {
-            var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt64();
 
-            Assert.AreEqual( default(Int64), actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt64TestCaseNullCheck()
+        public void SaveToInt64WithDefaultTest()
         {
-            Action test = () => StringEx.SaveToInt64( null );
+            var expected = RandomValueEx.GetRandomInt64();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt64( RandomValueEx.GetRandomInt64() );
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void SaveToInt64TestCaseNullCheck1()
-        {
-            Action test = () => "".SaveToInt64( NumberStyles.AllowExponent, null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

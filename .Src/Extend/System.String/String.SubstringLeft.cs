@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,15 +12,18 @@ namespace Extend
         /// <summary>
         ///     Returns the specified number of characters from the start of the string.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to get the substring of.</param>
+        /// <exception cref="ArgumentNullException">s can not be null.</exception>
+        /// <param name="s">The string to get the substring of.</param>
         /// <param name="length">The number of characters.</param>
         /// <returns>Returns the specified number of characters from the start of the string.</returns>
-        public static String SubstringLeft( this String str, Int32 length )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String SubstringLeft( [NotNull] this String s, Int32 length )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return str.Substring( 0, length );
+            return s.Substring( 0, length );
         }
     }
 }

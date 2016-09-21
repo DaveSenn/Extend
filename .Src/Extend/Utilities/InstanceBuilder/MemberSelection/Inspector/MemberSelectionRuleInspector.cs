@@ -27,12 +27,12 @@ namespace Extend
 
             var result = MemberSelectionResult.Neutral;
             rules.ForEach( x =>
-            {
-                //Check if rule targets member and set result to rule result
-                var selectionReult = x.GetSelectionResult( memberInformation );
-                if ( selectionReult != MemberSelectionResult.Neutral )
-                    result = selectionReult;
-            } );
+                           {
+                               //Check if rule targets member and set result to rule result
+                               var selectionReult = x.GetSelectionResult( memberInformation );
+                               if ( selectionReult != MemberSelectionResult.Neutral )
+                                   result = selectionReult;
+                           } );
 
             return result;
         }

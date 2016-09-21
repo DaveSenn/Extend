@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddIfTestCase()
+        public void AddIfTest()
         {
             var c = new List<String>();
 
@@ -27,18 +27,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfTestCaseNullCheck()
+        public void AddIfTestNullCheck()
         {
             List<String> c = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => c.AddIf( x => true, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void AddIfTestCaseNullCheck1()
+        public void AddIfTestNullCheck1()
         {
             var c = new List<String>();
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => c.AddIf( null, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();

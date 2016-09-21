@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -28,7 +29,7 @@ namespace Extend
         ///     Initialize a new instance of the <see cref="TreeNodeCollection{T}" /> class.
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNodeCollection( ITreeNode<T> parent )
+        public TreeNodeCollection( [CanBeNull] ITreeNode<T> parent )
         {
             _parent = parent;
         }
@@ -43,7 +44,8 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString() => $"Count: {Count}, Parent: [{Parent?.ToString() ?? "[NULL]"}]";
+        public override String ToString()
+            => Parent?.ToString() ?? $"[Items Count: {Count}]";
 
         #endregion
 

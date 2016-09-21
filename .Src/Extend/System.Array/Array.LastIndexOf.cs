@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,9 @@ namespace Extend
         ///     The index of the last occurrence of  within the entire , if found; otherwise, the lower bound of the array
         ///     minus 1.
         /// </returns>
-        public static Int32 LastIndexOf( this Array array, Object value )
+        [PublicAPI]
+        [Pure]
+        public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value )
         {
             array.ThrowIfNull( nameof( array ) );
 
@@ -41,7 +44,9 @@ namespace Extend
         ///     The index of the last occurrence of  within the range of elements in  that extends from the first element to ,
         ///     if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 LastIndexOf( this Array array, Object value, Int32 startIndex )
+        [PublicAPI]
+        [Pure]
+        public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex )
         {
             array.ThrowIfNull( nameof( array ) );
 
@@ -62,7 +67,9 @@ namespace Extend
         ///     The index of the last occurrence of  within the range of elements in  that contains the number of elements
         ///     specified in  and ends at , if found; otherwise, the lower bound of the array minus 1.
         /// </returns>
-        public static Int32 LastIndexOf( this Array array, Object value, Int32 startIndex, Int32 count )
+        [PublicAPI]
+        [Pure]
+        public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex, Int32 count )
         {
             array.ThrowIfNull( nameof( array ) );
 

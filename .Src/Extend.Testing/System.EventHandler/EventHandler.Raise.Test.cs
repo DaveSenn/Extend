@@ -10,6 +10,32 @@ namespace Extend.Testing
     [TestFixture]
     public class EventHandlerExTest
     {
+        [Test]
+        public void RaiseTest()
+        {
+            var helperClass = new HelperClass();
+            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
+            helperClass.RaiseEvent( eventArgs );
+
+            EventArgs actual = null;
+            helperClass.MyEvent += ( sender, e ) => actual = e;
+            helperClass.RaiseEvent( eventArgs );
+            Assert.AreSame( eventArgs, actual );
+        }
+
+        [Test]
+        public void RaiseTest1()
+        {
+            var helperClass = new HelperClass();
+            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
+            helperClass.RaiseGenericEvent( eventArgs );
+
+            SampleEventArgs actual = null;
+            helperClass.MyGenericEvent += ( sender, e ) => actual = e;
+            helperClass.RaiseGenericEvent( eventArgs );
+            Assert.AreSame( eventArgs, actual );
+        }
+
         private class HelperClass
         {
             public event EventHandler MyEvent;
@@ -36,32 +62,6 @@ namespace Extend.Testing
             }
 
             #endregion
-        }
-
-        [Test]
-        public void RaiseTestCase()
-        {
-            var helperClass = new HelperClass();
-            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
-            helperClass.RaiseEvent( eventArgs );
-
-            EventArgs actual = null;
-            helperClass.MyEvent += ( sender, e ) => actual = e;
-            helperClass.RaiseEvent( eventArgs );
-            Assert.AreSame( eventArgs, actual );
-        }
-
-        [Test]
-        public void RaiseTestCase1()
-        {
-            var helperClass = new HelperClass();
-            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
-            helperClass.RaiseGenericEvent( eventArgs );
-
-            SampleEventArgs actual = null;
-            helperClass.MyGenericEvent += ( sender, e ) => actual = e;
-            helperClass.RaiseGenericEvent( eventArgs );
-            Assert.AreSame( eventArgs, actual );
         }
     }
 }

@@ -12,15 +12,20 @@ namespace Extend.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void CoinTossTestCase()
+        public void CoinTossTest()
         {
             var random = new Random();
             var actual = random.CoinToss();
+
+            actual.Should()
+                  .Be( actual );
         }
 
         [Test]
-        public void CoinTossTestCaseNullCheck()
+        public void CoinTossTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomEx.CoinToss( null );
 
             test.ShouldThrow<ArgumentNullException>();

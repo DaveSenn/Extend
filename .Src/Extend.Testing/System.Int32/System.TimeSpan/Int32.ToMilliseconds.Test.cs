@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,13 +12,16 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void ToMillisecondsTestCase()
+        public void ToMillisecondsTest()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
 
             var expected = TimeSpan.FromMilliseconds( value );
             var actual = value.ToMilliseconds();
-            Assert.AreEqual( expected, actual );
+
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

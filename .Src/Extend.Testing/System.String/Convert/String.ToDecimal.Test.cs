@@ -13,49 +13,111 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToDecimalTestCase()
+        public void ToDecimalInvalidFormatTest()
         {
-            var value = new Decimal( 100.120 );
-            var actual = value.ToString( CultureInfo.CurrentCulture )
-                              .Replace( ",", "." )
-                              .ToDecimal();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "InvalidFormat".ToDecimal();
 
-            Assert.AreEqual( value, actual );
+            test.ShouldThrow<FormatException>();
         }
 
         [Test]
-        public void ToDecimalTestCase1()
+        public void ToDecimalNullTest()
         {
-            var culture = new CultureInfo( "en-US" );
-            var value = new Decimal( 1123123.12 );
+            String value = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal();
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDecimalOverloadFormatNullTest()
+        {
+            CultureInfo formatProvider = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "10".ToDecimal( formatProvider );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDecimalOverloadInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "InvalidFormat".ToDecimal( new CultureInfo( "de-CH" ) );
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDecimalOverloadNullTest()
+        {
+            String value = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDecimal( new CultureInfo( "de-CH" ) );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDecimalOverloadTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+            var value = new Decimal( 100.123 );
             var actual = value.ToString( culture )
                               .ToDecimal( culture );
 
-            Assert.AreEqual( value, actual );
+            actual
+                .Should()
+                .Be( value );
         }
 
         [Test]
-        public void ToDecimalTestCase1NullCheck()
+        public void ToDecimalOverloadValueToBigTest()
         {
-            Action test = () => StringEx.ToDecimal( null, CultureInfo.InvariantCulture );
-
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "79228162514264337593543950335222".ToDecimal( new CultureInfo( "de-CH" ) );
+            test.ShouldThrow<OverflowException>();
         }
 
         [Test]
-        public void ToDecimalTestCase1NullCheck1()
+        public void ToDecimalOverloadValueToSmallTest()
         {
-            Action test = () => "".ToDecimal( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "-79228162514264337593543950335222".ToDecimal( new CultureInfo( "de-CH" ) );
+            test.ShouldThrow<OverflowException>();
         }
 
         [Test]
-        public void ToDecimalTestCaseNullCheck()
+        public void ToDecimalTest()
         {
-            Action test = () => StringEx.ToDecimal( null );
+            var value = new Decimal( 100.123 );
+            var actual = value.ToString( CultureInfo.CurrentCulture )
+                              .ToDecimal();
 
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( value );
+        }
+
+        [Test]
+        public void ToDecimalValueToBigTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "79228162514264337593543950335222".ToDecimal();
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToDecimalValueToSmallTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "-79228162514264337593543950335222".ToDecimal();
+            test.ShouldThrow<OverflowException>();
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void SatisfiesWithMessagesTestCase()
+        public void SatisfiesWithMessagesTest()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
                 .And( x => x.StartsWith( "1", StringComparison.Ordinal ) );
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SatisfiesWithMessagesTestCase1()
+        public void SatisfiesWithMessagesTest1()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
                 .And( x => x.StartsWith( "1", StringComparison.Ordinal ) );
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SatisfiesWithMessagesTestCase2()
+        public void SatisfiesWithMessagesTest2()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3, "msg1" )
                 .And( x => x.StartsWith( "1", StringComparison.Ordinal ), "msg2" );
@@ -50,11 +50,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SatisfiesWithMessagesTestCasenullCheck()
+        public void SatisfiesWithMessagesTestnullCheck()
         {
             ISpecification<String> specification = null;
 
-            // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1234".SatisfiesWithMessages( specification );
 
             test.ShouldThrow<ArgumentNullException>();

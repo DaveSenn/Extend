@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,15 +19,13 @@ namespace Extend
         /// </param>
         /// <param name="count">The numbers of characters to return.</param>
         /// <exception cref="ArgumentNullException">value can not be null.</exception>
-        /// <returns>
-        ///     A <see cref="String" /> that contains the specified number of chars.
-        /// </returns>
-        public static String TakeAndRemove( this Int32 count, ref String value )
+        /// <exception cref="ArgumentOutOfRangeException">Count must be smaller than the length of the given value.</exception>
+        /// <returns>A <see cref="String" /> that contains the specified number of chars. </returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String TakeAndRemove( this Int32 count, [NotNull] ref String value )
         {
-            /*
-            if ( value == null )
-                throw new ArgumentNullException( "value can not be null." );
-            */
             value.ThrowIfNull( nameof( value ) );
 
             if ( count > value.Length )

@@ -12,23 +12,27 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractTestCase()
+        public void ExtractTest()
         {
             var actual = "abcabc".Extract( x => x == 'a' );
             Assert.AreEqual( "aa", actual );
         }
 
         [Test]
-        public void ExtractTestCaseNullCheck()
+        public void ExtractTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Extract( null, y => false );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExtractTestCaseNullCheck1()
+        public void ExtractTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Extract( null );
 
             test.ShouldThrow<ArgumentNullException>();

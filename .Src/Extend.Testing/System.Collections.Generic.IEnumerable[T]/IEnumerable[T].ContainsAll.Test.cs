@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ContainsAllTestCase()
+        public void ContainsAllTest()
         {
             var list = new List<String> { "test", "test1" };
 
@@ -23,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAllTestCase1()
+        public void ContainsAllTest1()
         {
             var list = new List<String> { "test", "test1" };
 
@@ -33,34 +34,42 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAllTestCase1NullCheck()
+        public void ContainsAllTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEnumerableTEx.ContainsAll( null, new List<String>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAllTestCase1NullCheck1()
+        public void ContainsAllTest1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ContainsAll( enumerable );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAllTestCaseNullCheck()
+        public void ContainsAllTestNullCheck()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ContainsAll( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAllTestCaseNullCheck1()
+        public void ContainsAllTestNullCheck1()
         {
             Object[] array = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ContainsAll( array );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void StartOfWeekTestCase()
+        public void StartOfWeekTest()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 24 );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void StartOfWeekTestCase1()
+        public void StartOfWeekTest1()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
 
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void StartOfWeekTestCase2()
+        public void StartOfWeekTest2()
         {
             var week = new DateTime( 2014, 09, 21 );
             var expected = new DateTime( 2014, 09, 20 );

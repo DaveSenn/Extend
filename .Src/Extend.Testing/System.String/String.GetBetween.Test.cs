@@ -12,87 +12,97 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetBetweenArgumentOutOfRangeTestCase()
+        public void GetBetweenArgumentOutOfRangeTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenArgumentOutOfRangeTestCase1()
+        public void GetBetweenArgumentOutOfRangeTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1test2".GetBetween( "1", "2", 20, 2 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenArgumentOutOfRangeTestCase2()
+        public void GetBetweenArgumentOutOfRangeTest2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 2, 60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenArgumentOutOfRangeTestCase3()
+        public void GetBetweenArgumentOutOfRangeTest3()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", -2, 60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenArgumentOutOfRangeTestCase4()
+        public void GetBetweenArgumentOutOfRangeTest4()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 2, -60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharArgumentOutOfRangeTestCase()
+        public void GetBetweenCharArgumentOutOfRangeTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharArgumentOutOfRangeTestCase1()
+        public void GetBetweenCharArgumentOutOfRangeTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1test2".GetBetween( '1', '2', 20, 2 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharArgumentOutOfRangeTestCase2()
+        public void GetBetweenCharArgumentOutOfRangeTest2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 2, 60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharArgumentOutOfRangeTestCase3()
+        public void GetBetweenCharArgumentOutOfRangeTest3()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', -2, 60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharArgumentOutOfRangeTestCase4()
+        public void GetBetweenCharArgumentOutOfRangeTest4()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 2, -60 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBetweenCharTestCase()
+        public void GetBetweenCharTest()
         {
             var actual = "1test2".GetBetween( '1', '2' );
             Assert.AreEqual( "test", actual );
@@ -102,7 +112,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBetweenCharTestCase1()
+        public void GetBetweenCharTest1()
         {
             var actual = "1test2".GetBetween( '1', '2', 0, 6 );
             Assert.AreEqual( "test", actual );
@@ -112,37 +122,41 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBetweenCharTestCase1NullCheck()
+        public void GetBetweenCharTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, 't', 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenCharTestCase2()
+        public void GetBetweenCharTest2()
         {
             var actual = "1test2".GetBetween( 'a', '2' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBetweenCharTestCase3()
+        public void GetBetweenCharTest3()
         {
             var actual = "1test2".GetBetween( 't', 'b' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBetweenCharTestCaseNullCheck()
+        public void GetBetweenCharTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, 't', 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCase()
+        public void GetBetweenTest()
         {
             var actual = "1test2".GetBetween( "1", "2" );
             Assert.AreEqual( "test", actual );
@@ -152,7 +166,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBetweenTestCase1()
+        public void GetBetweenTest1()
         {
             var actual = "1test2".GetBetween( "1", "2", 0, 6 );
             Assert.AreEqual( "test", actual );
@@ -162,62 +176,74 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBetweenTestCase1NullCheck()
+        public void GetBetweenTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCase1NullCheck1()
+        public void GetBetweenTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCase1NullCheck2()
+        public void GetBetweenTest1NullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( "", null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCase2()
+        public void GetBetweenTest2()
         {
             var actual = "1test2".GetBetween( "1", "a" );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBetweenTestCase3()
+        public void GetBetweenTest3()
         {
             var actual = "1test2".GetBetween( "a", "t" );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBetweenTestCaseNullCheck()
+        public void GetBetweenTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCaseNullCheck1()
+        public void GetBetweenTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBetweenTestCaseNullCheck2()
+        public void GetBetweenTestNullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( "", null );
 
             test.ShouldThrow<ArgumentNullException>();

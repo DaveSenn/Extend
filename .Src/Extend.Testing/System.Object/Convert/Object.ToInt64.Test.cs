@@ -13,45 +13,143 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToInt64TestCase()
+        public void ToInt64FormatProviderNullTest()
         {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var value = expected.ToString();
-            var actual = ObjectEx.ToInt64( value );
-            Assert.AreEqual( expected, actual );
+            const Int64 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt64( null );
+
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToInt64TestCase1()
+        public void ToInt64FormatProviderTest()
         {
-            var expected = (Int64) RandomValueEx.GetRandomInt32();
-            var value = expected.ToString();
-            var actual = ObjectEx.ToInt64( value, CultureInfo.InvariantCulture );
-            Assert.AreEqual( expected, actual );
+            const Int64 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt64( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToInt64TestCase1NullCheck()
+        public void ToInt64InvalidCastFormatProviderTest()
         {
-            Action test = () => ObjectEx.ToInt64( null, CultureInfo.InvariantCulture );
+            var value = new TestModel();
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64( CultureInfo.CurrentCulture );
+            test.ShouldThrow<InvalidCastException>();
         }
 
         [Test]
-        public void ToInt64TestCase1NullCheck1()
+        public void ToInt64InvalidCastTest()
         {
-            Action test = () => ObjectEx.ToInt64( "false", null );
+            var value = new TestModel();
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64();
+            test.ShouldThrow<InvalidCastException>();
         }
 
         [Test]
-        public void ToInt64TestCaseNullCheck()
+        public void ToInt64InvalidFormatFormatProviderTest()
         {
-            Action test = () => ObjectEx.ToInt64( null );
+            const String value = "invalidFormat";
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToInt64( value, CultureInfo.CurrentCulture );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToInt64InvalidFormatTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToInt64( value );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToInt64NullValueFormatProviderTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToInt64( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void ToInt64NullValueTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToInt64();
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void ToInt64Test()
+        {
+            const Int64 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt64();
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void ToInt64TooLargeFormatProviderTest()
+        {
+            var value = Int64.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64( CultureInfo.CurrentCulture );
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt64TooLargeTest()
+        {
+            var value = Int64.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64();
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt64TooSmallFormatProviderTest()
+        {
+            var value = Int64.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64( CultureInfo.CurrentCulture );
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt64TooSmallTest()
+        {
+            var value = Int64.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt64();
+            test.ShouldThrow<OverflowException>();
         }
     }
 }

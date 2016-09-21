@@ -13,55 +13,127 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsInt32TestCase()
+        public void TryParsInt32InvalidValueTest()
         {
-            var expected = RandomValueEx.GetRandomInt32();
-            var result = RandomValueEx.GetRandomInt32();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsInt32( out result );
+            Int32 result;
+            var actual = "InvalidValue".TryParsInt32( out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            result
+                .Should()
+                .Be( default(Int32) );
+
+            actual
+                .Should()
+                .BeFalse();
         }
 
         [Test]
-        public void TryParsInt32TestCase1()
+        public void TryParsInt32NullTest()
         {
-            var culture = new CultureInfo( "en-US" );
+            Int32 result;
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsInt32( out result );
+
+            result
+                .Should()
+                .Be( default(Int32) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsInt32OverloadFormatProviderNullTest()
+        {
             var expected = RandomValueEx.GetRandomInt32();
-            var result = RandomValueEx.GetRandomInt32();
+            CultureInfo culture = null;
+            Int32 result;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .TryParsInt32( NumberStyles.Any, culture, out result );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TryParsInt32OverloadInvalidNumberFormatTest()
+        {
+            Int32 result;
+            var expected = RandomValueEx.GetRandomInt32();
+
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .TryParsInt32( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out result );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void TryParsInt32OverloadInvalidValueTest()
+        {
+            Int32 result;
+            var actual = "InvalidValue".TryParsInt32( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+
+            result
+                .Should()
+                .Be( default(Int32) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsInt32OverloadNullTest()
+        {
+            Int32 result;
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsInt32( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+
+            result
+                .Should()
+                .Be( default(Int32) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsInt32OverloadTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+            var expected = RandomValueEx.GetRandomInt32();
+            Int32 result;
             var actual = expected.ToString( culture )
                                  .TryParsInt32( NumberStyles.Any, culture, out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            result
+                .Should()
+                .Be( expected );
+
+            actual
+                .Should()
+                .BeTrue();
         }
 
         [Test]
-        public void TryParsInt32TestCase1NullCheck()
+        public void TryParsInt32Test()
         {
-            var outValue = RandomValueEx.GetRandomInt32();
-            Action test = () => StringEx.TryParsInt32( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            var expected = RandomValueEx.GetRandomInt32();
+            Int32 result;
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .TryParsInt32( out result );
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
+            result
+                .Should()
+                .Be( expected );
 
-        [Test]
-        public void TryParsInt32TestCase1NullCheck1()
-        {
-            var outValue = RandomValueEx.GetRandomInt32();
-            Action test = () => "".TryParsInt32( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsInt32TestCaseNullCheck()
-        {
-            var outValue = RandomValueEx.GetRandomInt32();
-            Action test = () => StringEx.TryParsInt32( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeTrue();
         }
     }
 }

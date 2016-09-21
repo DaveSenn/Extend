@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ComparableTExTest
     {
         [Test]
-        public void SmallerOrEqualsTestCase()
+        public void SmallerOrEqualsTest()
         {
             var value = 1000;
             var value1 = 900;
@@ -34,16 +34,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SmallerOrEqualsTestCaseNullCheck()
+        public void SmallerOrEqualsTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IComparableTEx.SmallerOrEquals( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SmallerOrEqualsTestCaseNullCheck1()
+        public void SmallerOrEqualsTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".SmallerOrEquals( null );
 
             test.ShouldThrow<ArgumentNullException>();

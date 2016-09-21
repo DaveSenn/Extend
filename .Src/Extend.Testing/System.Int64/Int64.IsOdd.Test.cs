@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -10,7 +12,17 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void IsOddTestCase()
+        public void IsOdd0Test()
+        {
+            const Int64 value = 0;
+
+            var actual = value.IsOdd();
+            actual.Should()
+                  .BeFalse();
+        }
+
+        [Test]
+        public void IsOddTest()
         {
             var value = RandomValueEx.GetRandomInt32();
 

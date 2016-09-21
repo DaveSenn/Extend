@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="value">The double to check.</param>
         /// <returns>Returns true if the value is not a number, otherwise false.</returns>
-        public static Boolean IsNaN( this Double value ) => Double.IsNaN( value );
+        [PublicAPI]
+        [Pure]
+        public static Boolean IsNaN( this Double value )
+            => Double.IsNaN( value );
     }
 }

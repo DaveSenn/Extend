@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveRangeIfTestCase()
+        public void RemoveRangeIfTest()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -29,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1()
+        public void RemoveRangeIfTest1()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -45,40 +45,45 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1NullCheck1()
+        public void RemoveRangeIfTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRangeIf( x => false, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeIfTestCase1NullCheck2()
+        public void RemoveRangeIfTest1NullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRangeIf( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck()
+        public void RemoveRangeIfTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRangeIf( null, x => false, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck1()
+        public void RemoveRangeIfTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRangeIf( x => false, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeIfTestCaseNullCheck2()
+        public void RemoveRangeIfTestNullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRangeIf( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -87,6 +92,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveRangeTestIfCase1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRangeIf( null, x => false, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();

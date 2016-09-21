@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -26,7 +27,10 @@ namespace Extend
         /// <typeparam name="TMember">The type of the member to which the expression points.</typeparam>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        public static String GetNameChain<TObject, TMember>( this TObject obj, Expression<Func<TObject, TMember>> expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
@@ -46,7 +50,10 @@ namespace Extend
         /// <typeparam name="TMember">The type of the member to which the expression points.</typeparam>
         /// <param name="expression">An expression pointing to the member to get the name of.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        public static String GetNameChain<TObject, TMember>( this TObject obj, Expression<Func<TMember>> expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
@@ -63,8 +70,13 @@ namespace Extend
         /// </exception>
         /// <param name="expression">The expression pointing to the member.</param>
         /// <returns>Returns the name, including a full name chain, of the member to which the given expression points.</returns>
-        private static String GetNameChain( this Expression expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String GetNameChain( [NotNull] this Expression expression )
         {
+            expression.ThrowIfNull( nameof( expression ) );
+
             MemberExpression memberExpression;
             if ( !expression.TryGetMemberExpression( out memberExpression ) )
                 throw new ArgumentException( "The given expression is not valid." );
@@ -72,7 +84,7 @@ namespace Extend
             var memberNames = new Stack<String>();
             do
             {
-                //Check if the 'inner' expression as a constant expression, if so, break the loop
+                // Check if the 'inner' expression as a constant expression, if so, break the loop
                 if ( memberExpression.Expression.NodeType == ExpressionType.Constant )
                 {
                     if ( memberNames.NotAny() )
@@ -82,7 +94,7 @@ namespace Extend
 
                 memberNames.Push( memberExpression.Member.Name );
 
-                //Check if expression is pointing to lambda parameter e.g. x (x => x)
+                // Check if expression is pointing to lambda parameter e.g. x (x => x)
                 if ( memberExpression.Expression.NodeType == ExpressionType.Parameter )
                     break;
             } while ( memberExpression.Expression.TryGetMemberExpression( out memberExpression ) );

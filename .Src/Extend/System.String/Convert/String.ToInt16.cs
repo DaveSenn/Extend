@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,13 +13,20 @@ namespace Extend
         ///     Converts the given string to a Int16.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
+        /// <exception cref="FormatException">value  s not in the correct format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number less than <see cref="Int16.MinValue" /> or greater than
+        ///     <see cref="Int16.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>Returns the converted Int16.</returns>
-        public static Int16 ToInt16( this String value )
+        [Pure]
+        [PublicAPI]
+        public static Int16 ToInt16( [NotNull] this String value )
         {
             value.ThrowIfNull( nameof( value ) );
 
-            return Convert.ToInt16( value, CultureInfo.InvariantCulture );
+            return Int16.Parse( value );
         }
 
         /// <summary>
@@ -27,15 +34,22 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
+        /// <exception cref="FormatException">value  s not in the correct format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number less than <see cref="Int16.MinValue" /> or greater than
+        ///     <see cref="Int16.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>Returns the converted Int16.</returns>
-        public static Int16 ToInt16( this String value, IFormatProvider formatProvider )
+        [Pure]
+        [PublicAPI]
+        public static Int16 ToInt16( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
             value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return Convert.ToInt16( value, formatProvider );
+            return Int16.Parse( value, formatProvider );
         }
     }
 }

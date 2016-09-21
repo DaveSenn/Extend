@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,8 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The array can not be null.</exception>
         /// <param name="array">The array to clear.</param>
-        public static void ClearAll( this Array array )
+        [PublicAPI]
+        public static void ClearAll( [NotNull] this Array array )
         {
             array.ThrowIfNull( nameof( array ) );
 

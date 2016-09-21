@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ActionExTest
     {
         [Test]
-        public void ExecuteIfTrueTestCase()
+        public void ExecuteIfTrueTest()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -24,7 +24,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue( () => trueActionExecuted = true, () => falseActionExecuted = true, true, true );
 
             Assert.IsTrue( trueActionExecuted );
@@ -49,14 +48,14 @@ namespace Extend.Testing
             //Case 5
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue( null, null, true, false );
+            ActionEx.ExecuteIfTrue( () => trueActionExecuted = true, null, true, false );
 
             Assert.IsFalse( trueActionExecuted );
             Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase1()
+        public void ExecuteIfTrueTest1()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -70,7 +69,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue( x => trueActionExecuted = x == parameter,
                                     parameter,
                                     x => falseActionExecuted = x == parameter,
@@ -103,22 +101,23 @@ namespace Extend.Testing
             //Case 5
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue( null, parameter, null, true, false );
+            ActionEx.ExecuteIfTrue( x => trueActionExecuted = x == parameter, parameter, null, true, false );
 
             Assert.IsFalse( trueActionExecuted );
             Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase1NullCheck()
+        public void ExecuteIfTrueTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, RandomValueEx.GetRandomString(), null, true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase2()
+        public void ExecuteIfTrueTest2()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -139,7 +138,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
@@ -182,15 +180,16 @@ namespace Extend.Testing
             //Case 5
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue( null, parameter1, parameter2, null, true, false );
+            ActionEx.ExecuteIfTrue( ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2, parameter1, parameter2, null, true, false );
 
             Assert.IsFalse( trueActionExecuted );
             Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase2NullCheck()
+        public void ExecuteIfTrueTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -202,7 +201,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase3()
+        public void ExecuteIfTrueTest3()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -225,7 +224,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
@@ -271,15 +269,22 @@ namespace Extend.Testing
             //Case 5
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue( null, parameter1, parameter2, parameter3, null, true, false );
+            ActionEx.ExecuteIfTrue( ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
+                                    parameter1,
+                                    parameter2,
+                                    parameter3,
+                                    null,
+                                    true,
+                                    false );
 
             Assert.IsFalse( trueActionExecuted );
             Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase3NullCheck()
+        public void ExecuteIfTrueTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -292,7 +297,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase4()
+        public void ExecuteIfTrueTest4()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -304,7 +309,7 @@ namespace Extend.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -318,16 +323,15 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
                 true );
 
@@ -339,13 +343,13 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
                 false );
 
@@ -357,7 +361,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -372,15 +376,24 @@ namespace Extend.Testing
             //Case 5
             trueActionExecuted = false;
             falseActionExecuted = false;
-            ActionEx.ExecuteIfTrue( null, parameter1, parameter2, parameter3, parameter4, null, true, false );
+            ActionEx.ExecuteIfTrue( ( p1, p2, p3, p4 ) =>
+                                            trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                                    parameter1,
+                                    parameter2,
+                                    parameter3,
+                                    parameter4,
+                                    null,
+                                    true,
+                                    false );
 
             Assert.IsFalse( trueActionExecuted );
             Assert.IsFalse( falseActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase4NullCheck()
+        public void ExecuteIfTrueTest4NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -394,7 +407,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase5()
+        public void ExecuteIfTrueTest5()
         {
             //Case 1
             var trueActionExecuted = false;
@@ -422,23 +435,24 @@ namespace Extend.Testing
 
             //Case 5
             trueActionExecuted = false;
-            Action trueAction = null;
+            Action trueAction = () => trueActionExecuted = true;
             trueAction.ExecuteIfTrue( true, false );
 
             Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase5NullCheck()
+        public void ExecuteIfTrueTest5NullCheck()
         {
             Action trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase6()
+        public void ExecuteIfTrueTest6()
         {
             var parameter = RandomValueEx.GetRandomString();
 
@@ -468,23 +482,24 @@ namespace Extend.Testing
 
             //Case 5
             trueActionExecuted = false;
-            Action<String> trueAction = null;
+            Action<String> trueAction = x => trueActionExecuted = x == parameter;
             trueAction.ExecuteIfTrue( parameter, true, false );
 
             Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase6NullCheck()
+        public void ExecuteIfTrueTest6NullCheck()
         {
             Action<String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase7()
+        public void ExecuteIfTrueTest7()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -535,23 +550,24 @@ namespace Extend.Testing
 
             //Case 5
             trueActionExecuted = false;
-            Action<String, String> trueAction = null;
+            Action<String, String> trueAction = ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2;
             trueAction.ExecuteIfTrue( parameter1, parameter2, true, false );
 
             Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase7NullCheck()
+        public void ExecuteIfTrueTest7NullCheck()
         {
             Action<String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase8()
+        public void ExecuteIfTrueTest8()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -607,16 +623,17 @@ namespace Extend.Testing
 
             //Case 5
             trueActionExecuted = false;
-            Action<String, String, String> trueAction = null;
+            Action<String, String, String> trueAction = ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3;
             trueAction.ExecuteIfTrue( parameter1, parameter2, parameter3, true, false );
 
             Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase8NullCheck()
+        public void ExecuteIfTrueTest8NullCheck()
         {
             Action<String, String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
@@ -627,7 +644,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase9()
+        public void ExecuteIfTrueTest9()
         {
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
@@ -638,7 +655,7 @@ namespace Extend.Testing
             var trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -652,7 +669,7 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -666,7 +683,7 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -680,7 +697,7 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
-                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -692,16 +709,18 @@ namespace Extend.Testing
 
             //Case 5
             trueActionExecuted = false;
-            Action<String, String, String, String> trueAction = null;
+            Action<String, String, String, String> trueAction = ( p1, p2, p3, p4 ) =>
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4;
             trueAction.ExecuteIfTrue( parameter1, parameter2, parameter3, parameter4, true, false );
 
             Assert.IsFalse( trueActionExecuted );
         }
 
         [Test]
-        public void ExecuteIfTrueTestCase9NullCheck()
+        public void ExecuteIfTrueTest9NullCheck()
         {
             Action<String, String, String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
@@ -713,8 +732,9 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteIfTrueTestCaseNullCheck()
+        public void ExecuteIfTrueTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, null, true, true );
 
             test.ShouldThrow<ArgumentNullException>();

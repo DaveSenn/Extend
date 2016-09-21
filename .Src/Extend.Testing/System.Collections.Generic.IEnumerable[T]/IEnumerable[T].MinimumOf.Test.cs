@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void MinimumOfTestCase()
+        public void MinimumOfTest()
         {
             var list = new List<String>();
             Assert.IsFalse( list.MinimumOf( 1, x => true ) );
@@ -28,7 +29,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCase1()
+        public void MinimumOfTest1()
         {
             var list = new List<String>();
             Assert.IsFalse( list.MinimumOf( 1 ) );
@@ -41,28 +42,36 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumOfTestCase1NullCheck()
+        public void MinimumOfTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.MinimumOf( 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void MinimumOfTestCaseNullCheck()
+        public void MinimumOfTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.MinimumOf( 10, x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void MinimumOfTestCaseNullCheck1()
+        public void MinimumOfTestNullCheck1()
         {
             List<Object> list = null;
-            Action test = () => list.MinimumOf( 10, null );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => list.MinimumOf( 10,
+                                                // ReSharper disable once AssignNullToNotNullAttribute
+                                                null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

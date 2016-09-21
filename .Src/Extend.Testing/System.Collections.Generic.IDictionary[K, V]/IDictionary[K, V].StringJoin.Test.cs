@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void StringJoinTestCase()
+        public void StringJoinTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -46,10 +47,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void StringJoinTestCaseNullCheck()
+        public void StringJoinTestNullCheck()
         {
             Dictionary<String, String> dictionary = null;
-            Action test = () => dictionary.StringJoin( "", "" );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => dictionary.StringJoin( "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }

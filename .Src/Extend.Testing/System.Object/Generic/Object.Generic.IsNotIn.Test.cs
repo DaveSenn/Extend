@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void IsNotInTestCase()
+        public void IsNotInTest()
         {
             var array = RandomValueEx.GetRandomStrings()
                                      .ToArray();
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotInTestCase1()
+        public void IsNotInTest1()
         {
             var list = RandomValueEx.GetRandomStrings();
             var value = list[0];
@@ -42,18 +42,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsNotInTestCase1NullCheck()
+        public void IsNotInTest1NullCheck()
         {
             IEnumerable<String> enumerable = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsNotIn( enumerable );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsNotInTestCaseNullCheck()
+        public void IsNotInTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsNotIn( array );
 
             test.ShouldThrow<ArgumentNullException>();

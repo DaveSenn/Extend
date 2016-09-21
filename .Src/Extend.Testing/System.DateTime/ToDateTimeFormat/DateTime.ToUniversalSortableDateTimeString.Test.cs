@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase()
+        public void ToUniversalSortableDateTimeStringTest()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u" );
@@ -21,16 +21,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase1()
+        public void ToUniversalSortableDateTimeStringTest1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u", DateTimeFormatInfo.CurrentInfo );
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = dateTime.ToUniversalSortableDateTimeString( DateTimeFormatInfo.CurrentInfo );
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void ToUniversalSortableDateTimeStringTestCase2()
+        public void ToUniversalSortableDateTimeStringTest2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "u", CultureInfo.InvariantCulture );

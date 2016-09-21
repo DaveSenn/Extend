@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,13 +18,18 @@ namespace Extend
         /// <summary>
         ///     Returns all items of the given enumerable which doesn't satisfy the given specification.
         /// </summary>
+        /// <exception cref="ArgumentNullException">enumerable can not be null.</exception>
         /// <exception cref="ArgumentNullException">specification can not be null.</exception>
         /// <typeparam name="T">The type of the item in the enumerable.</typeparam>
         /// <param name="enumerable">The enumerable.</param>
         /// <param name="specification">The specification.</param>
         /// <returns>Returns the items which doesn't satisfy the given specification.</returns>
-        public static IEnumerable<T> WhereNot<T>( this IEnumerable<T> enumerable, ISpecification<T> specification )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> WhereNot<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] ISpecification<T> specification )
         {
+            enumerable.ThrowIfNull( nameof( enumerable ) );
             specification.ThrowIfNull( nameof( specification ) );
 
             return enumerable.Where( x => !specification.IsSatisfiedBy( x ) );

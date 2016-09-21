@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void AddRangeTestCase()
+        public void AddRangeTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -29,22 +30,27 @@ namespace Extend.Testing
 
             Assert.AreEqual( 2, dictionary.Count );
 
-            dictionary.AddRange( otherDictionary );
+            var actual = dictionary.AddRange( otherDictionary );
+            actual
+                .Should()
+                .BeSameAs( dictionary );
             Assert.AreEqual( 4, dictionary.Count );
             Assert.IsTrue( dictionary.ContainsAll( otherDictionary ) );
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck()
+        public void AddRangeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void AddRangeTestCaseNullCheck1()
+        public void AddRangeTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddRange( null );
 
             test.ShouldThrow<ArgumentNullException>();

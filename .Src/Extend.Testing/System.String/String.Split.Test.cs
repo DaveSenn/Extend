@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SplitTestCase()
+        public void SplitTest()
         {
             var actual = "1,2,3".Split( "," );
             Assert.AreEqual( 3, actual.Length );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCase1()
+        public void SplitTest1()
         {
             var actual = "1,2,,3.4".Split( StringSplitOptions.RemoveEmptyEntries, ",", "." );
             Assert.AreEqual( 4, actual.Length );
@@ -33,32 +33,40 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SplitTestCase1NullCheck()
+        public void SplitTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Split( null, StringSplitOptions.RemoveEmptyEntries, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SplitTestCase1NullCheck1()
+        public void SplitTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Split( StringSplitOptions.RemoveEmptyEntries, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SplitTestCaseNullCheck()
+        public void SplitTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Split( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SplitTestCaseNullCheck1()
+        public void SplitTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Split( "", null );
 
             test.ShouldThrow<ArgumentNullException>();

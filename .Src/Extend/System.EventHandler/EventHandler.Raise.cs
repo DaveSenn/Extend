@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,9 @@ namespace Extend
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">The event arguments.</param>
         /// <returns>Returns the given event handler.</returns>
-        public static EventHandler Raise( this EventHandler eventHandler, Object sender, EventArgs e )
+        [Pure]
+        [PublicAPI]
+        public static EventHandler Raise( [CanBeNull] this EventHandler eventHandler, [CanBeNull] [NoEnumeration] Object sender, [CanBeNull] EventArgs e )
         {
             eventHandler?.Invoke( sender, e );
 
@@ -37,7 +40,9 @@ namespace Extend
         /// <param name="sender">The sender of the event.</param>
         /// <param name="e">The event arguments.</param>
         /// <returns>Returns the given event handler.</returns>
-        public static EventHandler<T> Raise<T>( this EventHandler<T> eventHandler, Object sender, T e )
+        [Pure]
+        [PublicAPI]
+        public static EventHandler<T> Raise<T>( [CanBeNull] this EventHandler<T> eventHandler, [CanBeNull] [NoEnumeration] Object sender, [CanBeNull] T e )
             where T : EventArgs
         {
             eventHandler?.Invoke( sender, e );

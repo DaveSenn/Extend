@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,7 +19,8 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the array.</typeparam>
         /// <param name="array">The one-dimensional array to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
-        public static T[] Reverse<T>( this T[] array )
+        [PublicAPI]
+        public static T[] Reverse<T>( [NotNull] this T[] array )
         {
             array.ThrowIfNull( nameof( array ) );
 
@@ -35,7 +37,8 @@ namespace Extend
         /// <param name="index">The starting index of the section to reverse.</param>
         /// <param name="length">The number of elements in the section to reverse.</param>
         /// <returns>Returns the reversed array.</returns>
-        public static T[] Reverse<T>( this T[] array, Int32 index, Int32 length )
+        [PublicAPI]
+        public static T[] Reverse<T>( [NotNull] this T[] array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( nameof( array ) );
 

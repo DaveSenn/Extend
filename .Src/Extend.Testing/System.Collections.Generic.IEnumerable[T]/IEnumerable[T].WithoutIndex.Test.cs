@@ -11,12 +11,15 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void WithoutIndexArgumentNullExceptionTest()
         {
             List<IIndexedItem<String>> list = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => list.WithoutIndex();
 
             test.ShouldThrow<ArgumentNullException>();

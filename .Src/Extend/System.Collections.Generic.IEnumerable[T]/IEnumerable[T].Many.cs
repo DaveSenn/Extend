@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,7 +24,9 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns true if the IEnumerable contains more than one item matching the given predicate, otherwise false.</returns>
-        public static Boolean Many<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        [Pure]
+        [PublicAPI]
+        public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
             predicate.ThrowIfNull( nameof( predicate ) );
@@ -38,7 +41,9 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable.</param>
         /// <returns>Returns true if the IEnumerable contains more than one item, otherwise false.</returns>
-        public static Boolean Many<T>( this IEnumerable<T> enumerable )
+        [Pure]
+        [PublicAPI]
+        public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 

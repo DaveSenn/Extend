@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The <see cref="Object" /> to check.</param>
         /// <returns>A value of true if the <see cref="Object" /> is null, otherwise false.</returns>
-        public static Boolean IsNull( this Object obj ) => obj == null;
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsNull( [CanBeNull] this Object obj )
+            => obj == null;
     }
 }

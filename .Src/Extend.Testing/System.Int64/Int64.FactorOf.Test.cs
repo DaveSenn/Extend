@@ -1,5 +1,7 @@
 ﻿#region Usings
 
+using System;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -10,26 +12,38 @@ namespace Extend.Testing
     public partial class Int64ExTest
     {
         [Test]
-        public void FactorOfTestCase()
+        public void FactorOfDivideByZeroTest()
+        {
+            Action test = () => Int64Ex.FactorOf( 0, 100 );
+            test.ShouldThrow<DivideByZeroException>();
+        }
+
+        [Test]
+        public void FactorOfTest()
         {
             var value = RandomValueEx.GetRandomInt32();
             var factorNumer = RandomValueEx.GetRandomInt32();
 
             var expected = factorNumer % value == 0;
             var actual = Int64Ex.FactorOf( value, factorNumer );
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
 
-            value = 10;
-            factorNumer = 100;
-            expected = true;
-            actual = Int64Ex.FactorOf( value, factorNumer );
-            Assert.AreEqual( expected, actual );
+            actual = Int64Ex.FactorOf( 10, 100 );
+            actual
+                .Should()
+                .Be( true );
 
-            value = 11;
-            factorNumer = 100;
-            expected = false;
-            actual = Int64Ex.FactorOf( value, factorNumer );
-            Assert.AreEqual( expected, actual );
+            actual = Int64Ex.FactorOf( 100, 10 );
+            actual
+                .Should()
+                .Be( false );
+
+            actual = Int64Ex.FactorOf( 11, 100 );
+            actual
+                .Should()
+                .Be( false );
         }
     }
 }

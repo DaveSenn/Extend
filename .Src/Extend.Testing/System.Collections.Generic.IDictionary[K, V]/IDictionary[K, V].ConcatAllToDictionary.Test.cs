@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatAllToDictionaryTestCase()
+        public void ConcatAllToDictionaryTest()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -43,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase1()
+        public void ConcatAllToDictionaryTest1()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -60,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase2()
+        public void ConcatAllToDictionaryTest2()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
@@ -77,7 +78,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCase3()
+        public void ConcatAllToDictionaryTest3()
         {
             var first = new Dictionary<Int32, Int32>();
             var other1 = new Dictionary<Int32, Int32>
@@ -87,6 +88,7 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32> other2 = null;
 
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = first.ConcatAllToDictionary( other1, other2 );
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x.Key == 2 && x.Value == 3 ) );
@@ -94,7 +96,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCaseDuplicatedKeys()
+        public void ConcatAllToDictionaryTestDuplicatedKeys()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -118,7 +120,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCaseNullCheck()
+        public void ConcatAllToDictionaryTestNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -127,13 +129,15 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32>[] others = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once CoVariantArrayConversion
             Action test = () => first.ConcatAllToDictionary( others );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ConcatAllToDictionaryTestCaseNullCheck1()
+        public void ConcatAllToDictionaryTestNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
             var other1 = new Dictionary<Int32, Int32>
@@ -147,6 +151,7 @@ namespace Extend.Testing
                 { 5, 6 }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionary( other1, other2 );
 
             test.ShouldThrow<ArgumentNullException>();

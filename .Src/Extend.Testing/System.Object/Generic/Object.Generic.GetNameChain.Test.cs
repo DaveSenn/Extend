@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void GetNameChainOverload1TestCase()
+        public void GetNameChainOverload1Test()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             var actual = this.GetNameChain( () => myInt );
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase1()
+        public void GetNameChainOverload1Test1()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.Age );
@@ -31,7 +31,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase2()
+        public void GetNameChainOverload1Test2()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( () => model.SubModel.Foo );
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase3()
+        public void GetNameChainOverload1Test3()
         {
             var model = new TestModel();
             Expression<Func<Object>> expression1 = () => model.Age;
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCase4()
+        public void GetNameChainOverload1Test4()
         {
             var model = new TestModel();
             Expression<Func<Object>> expression1 = () => model.SubModel.Foo;
@@ -60,24 +60,27 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainOverload1TestCaseNotSupportedException()
+        public void GetNameChainOverload1TestNotSupportedException()
         {
             const Int32 myInt = 100;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( x => myInt );
             test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void GetNameChainOverload1TestCaseNullCheck()
+        public void GetNameChainOverload1TestNullCheck()
         {
             Expression<Func<Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetNameChainTestCase()
+        public void GetNameChainTest()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             var actual = this.GetNameChain( x => myInt );
@@ -86,7 +89,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase1()
+        public void GetNameChainTest1()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.Age );
@@ -95,7 +98,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase2()
+        public void GetNameChainTest2()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => model.SubModel.Foo );
@@ -104,7 +107,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase3()
+        public void GetNameChainTest3()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
@@ -114,7 +117,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase4()
+        public void GetNameChainTest4()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.SubModel.Foo;
@@ -124,7 +127,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCase5()
+        public void GetNameChainTest5()
         {
             var model = new TestModel();
             var actual = model.GetNameChain( x => PropertyChanged );
@@ -133,17 +136,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetNameChainTestCaseNotSupportedException()
+        public void GetNameChainTestNotSupportedException()
         {
             const Int32 myInt = 100;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( () => myInt );
             test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
-        public void GetNameChainTestCaseNullCheck()
+        public void GetNameChainTestNullCheck()
         {
             Expression<Func<Object, Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
             test.ShouldThrow<ArgumentNullException>();

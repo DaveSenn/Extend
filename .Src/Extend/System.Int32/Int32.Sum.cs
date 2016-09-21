@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,9 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Int32 Sum( this Int32 value, params Int32[] values )
+        [Pure]
+        [PublicAPI]
+        public static Int32 Sum( this Int32 value, [NotNull] params Int32[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -37,7 +40,9 @@ namespace Extend
         /// <param name="value">The first value.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the values.</returns>
-        public static Int32? Sum( this Int32? value, params Int32?[] values )
+        [Pure]
+        [PublicAPI]
+        public static Int32? Sum( this Int32? value, [NotNull] params Int32?[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -57,7 +62,9 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Int32 Sum<TSource>( this TSource value, Func<TSource, Int32> selector, params TSource[] values )
+        [Pure]
+        [PublicAPI]
+        public static Int32 Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int32> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );
@@ -78,7 +85,9 @@ namespace Extend
         /// <param name="selector">A transform function to apply to each element.</param>
         /// <param name="values">The other values.</param>
         /// <returns>Returns the sum of the projected values.</returns>
-        public static Int32? Sum<TSource>( this TSource value, Func<TSource, Int32?> selector, params TSource[] values )
+        [Pure]
+        [PublicAPI]
+        public static Int32? Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int32?> selector, [NotNull] params TSource[] values )
         {
             selector.ThrowIfNull( nameof( selector ) );
             values.ThrowIfNull( nameof( values ) );

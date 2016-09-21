@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -20,7 +21,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <param name="enumerable">The IEnumerable.</param>
         /// <typeparam name="T">The type of the items in the enumerable.</typeparam>
-        public static IEnumerable<T> Randomize<T>( this IEnumerable<T> enumerable )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> Randomize<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 

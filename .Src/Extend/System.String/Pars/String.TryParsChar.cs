@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,7 +13,6 @@ namespace Extend
         ///     Converts the value of the specified string to its equivalent Unicode character.
         ///     A return code indicates whether the conversion succeeded or failed.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">A string that contains a single character.</param>
         /// <param name="outValue">
         ///     When this method returns, contains a Unicode character equivalent to the
@@ -21,11 +21,9 @@ namespace Extend
         ///     the length of s is not 1. This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsChar( this String value, out Char outValue )
-        {
-            value.ThrowIfNull( nameof( value ) );
-
-            return Char.TryParse( value, out outValue );
-        }
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsChar( [CanBeNull] this String value, out Char outValue )
+            => Char.TryParse( value, out outValue );
     }
 }

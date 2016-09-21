@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,7 +24,9 @@ namespace Extend
         /// <param name="minValue">The minimum value.</param>
         /// <param name="maxValue">The maximum value.</param>
         /// <returns>Returns true if the given value is between the minValue and maxValue, otherwise false.</returns>
-        public static Boolean Between<T>( this T value, T minValue, T maxValue ) where T : IComparable<T>
+        [Pure]
+        [PublicAPI]
+        public static Boolean Between<T>( [NotNull] this T value, [NotNull] T minValue, [NotNull] T maxValue ) where T : IComparable<T>
         {
             value.ThrowIfNull( nameof( value ) );
             minValue.ThrowIfNull( nameof( minValue ) );

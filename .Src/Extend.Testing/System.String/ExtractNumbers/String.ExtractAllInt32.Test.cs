@@ -12,15 +12,15 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ExtractAllInt32TestCase()
+        public void ExtractAllInt32Test()
         {
-            var value0 = 100;
-            var value1 = 102;
-            var value2 = -1100;
-            var value3 = 12300;
+            const Int32 value0 = 100;
+            const Int32 value1 = 102;
+            const Int32 value2 = -1100;
+            const Int32 value3 = 12300;
 
-            var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 );
-            var actual = stringValue.ExtractAllInt32( 0 );
+            var stringValue = "".ConcatAll( "asd", value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 );
+            var actual = stringValue.ExtractAllInt32( 1 );
 
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( value0, actual[0] );
@@ -28,40 +28,46 @@ namespace Extend.Testing
             Assert.AreEqual( value2, actual[2] );
             Assert.AreEqual( value3, actual[3] );
 
-            actual = "10.10".ExtractAllInt32( 0 );
+            actual = "310.10".ExtractAllInt32( 1 );
             Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 10, actual[0] );
             Assert.AreEqual( 10, actual[1] );
         }
 
         [Test]
-        public void ExtractAllInt32TestCaseArgumentOutOfRangeException()
+        public void ExtractAllInt32TestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ExtractAllInt32( 1000 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void ExtractAllInt32TestCaseArgumentOutOfRangeException1()
+        public void ExtractAllInt32TestArgumentOutOfRangeException1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "100".ExtractAllInt32( -1 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void ExtractAllInt32TestCaseNullCheck()
+        public void ExtractAllInt32TestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractAllInt32( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExtractAllInt32TestCaseNullCheck1()
+        public void ExtractAllInt32TestNullCheck1()
         {
-            Action test = () => StringEx.ExtractAllInt32( null, 0 );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ExtractAllInt32( null, 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

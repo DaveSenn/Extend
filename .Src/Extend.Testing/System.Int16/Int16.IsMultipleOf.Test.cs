@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void IsMultipleOfTestCase()
+        public void IsMultipleOfTest()
         {
             var value = RandomValueEx.GetRandomInt16();
             var factor = RandomValueEx.GetRandomInt16();

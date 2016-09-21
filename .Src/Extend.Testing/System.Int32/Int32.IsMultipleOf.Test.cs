@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void IsMultipleOfTestCase()
+        public void IsMultipleOfTest()
         {
             var value = RandomValueEx.GetRandomInt32();
             var factor = RandomValueEx.GetRandomInt32();

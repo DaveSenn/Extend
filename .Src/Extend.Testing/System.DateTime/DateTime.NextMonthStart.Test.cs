@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void NextMonthStartTestCase()
+        public void NextMonthStartTest()
         {
             var dateTime = DateTime.Now;
             var actual = dateTime.NextMonthStart();
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NextMonthStartTestCase1()
+        public void NextMonthStartTest1()
         {
             var dateTime = new DateTime( 2014, 08, 12, 12, 12, 5 );
             var expected = new DateTime( 2014, 09, 01 );
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NextMonthStartTestCase2()
+        public void NextMonthStartTest2()
         {
             var dateTime = new DateTime( 2014, 12, 12, 12, 12, 5 );
             var expected = new DateTime( 2015, 01, 01 );

@@ -1,9 +1,15 @@
 ﻿#region Usings
 
+#region Usings
+
 using System;
 using System.Linq.Expressions;
 using FluentAssertions;
 using NUnit.Framework;
+
+#endregion
+
+#pragma warning disable 618
 
 #endregion
 
@@ -16,13 +22,17 @@ namespace Extend.Testing
         public void ThrowIfNullTest()
         {
             var varName = RandomValueEx.GetRandomString();
+#pragma warning disable CS0618 // Type or member is obsolete
             varName.ThrowIfNull( () => varName );
+#pragma warning restore CS0618 // Type or member is obsolete
 
             varName = null;
             var errorMessage = String.Empty;
             try
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 varName.ThrowIfNull( () => varName );
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch ( ArgumentNullException ex )
             {
@@ -36,14 +46,18 @@ namespace Extend.Testing
         public void ThrowIfNullTest1()
         {
             var varName = RandomValueEx.GetRandomString();
+#pragma warning disable CS0618 // Type or member is obsolete
             varName.ThrowIfNull( () => varName );
+#pragma warning restore CS0618 // Type or member is obsolete
 
             varName = null;
             var expectedErrorMessage = RandomValueEx.GetRandomString();
             var errorMessage = String.Empty;
             try
             {
+#pragma warning disable CS0618 // Type or member is obsolete
                 varName.ThrowIfNull( () => varName, expectedErrorMessage );
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch ( ArgumentNullException ex )
             {
@@ -98,7 +112,9 @@ namespace Extend.Testing
         public void ThrowIfNullTestNullCheck()
         {
             String value = null;
+#pragma warning disable CS0618 // Type or member is obsolete
             Action test = () => value.ThrowIfNull( () => value );
+#pragma warning restore CS0618 // Type or member is obsolete
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -108,7 +124,9 @@ namespace Extend.Testing
         {
             String value = null;
             Expression<Func<String>> expression = null;
+#pragma warning disable CS0618 // Type or member is obsolete
             Action test = () => value.ThrowIfNull( expression );
+#pragma warning restore CS0618 // Type or member is obsolete
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,18 +12,21 @@ namespace Extend
         /// <summary>
         ///     Replace all given values by an empty string.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
-        /// <param name="str">The input string.</param>
+        /// <exception cref="ArgumentNullException">s can not be null.</exception>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
+        /// <param name="s">The input string.</param>
         /// <param name="values">A list of all values to replace.</param>
-        /// <returns>A string with all specified values replaced by an empty string.</returns>
-        public static String ReplaceByEmpty( this String str, params String[] values )
+        /// <returns>Returns a string with all specified values replaced by an empty string.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String ReplaceByEmpty( [NotNull] this String s, [NotNull] params String[] values )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
             values.ThrowIfNull( nameof( values ) );
 
-            values.ForEach( x => str = str.Replace( x, "" ) );
-            return str;
+            values.ForEach( x => s = s.Replace( x, String.Empty ) );
+            return s;
         }
     }
 }

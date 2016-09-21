@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,9 @@ namespace Extend
         ///     The uppercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" /> if
         ///     <paramref name="c" /> is already uppercase, has no uppercase equivalent, or is not alphabetic.
         /// </returns>
-        public static Char ToUpper( this Char c ) => Char.ToUpper( c );
+        [PublicAPI]
+        [Pure]
+        public static Char ToUpper( this Char c )
+            => Char.ToUpper( c );
     }
 }

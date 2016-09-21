@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,32 +13,43 @@ namespace Extend
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Converts the given object to a decimal.
+        ///     Converts the value of the specified object to an equivalent decimal number.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
-        /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this Object obj )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-
-            return Convert.ToDecimal( obj, CultureInfo.CurrentCulture );
-        }
+        /// <exception cref="FormatException">value is not in an appropriate format for a <see cref="Decimal" /> type.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface. -or-The conversion
+        ///     is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Decimal.MinValue" /> or greater than
+        ///     <see cref="Decimal.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null.</param>
+        /// <returns>A decimal number that is equivalent to value, or 0 (zero) if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Decimal ToDecimal( [CanBeNull] this Object obj )
+            => Convert.ToDecimal( obj );
 
         /// <summary>
-        ///     Converts the given object to a decimal.
+        ///     Converts the value of the specified object to an equivalent decimal number, using the specified culture-specific
+        ///     formatting information.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
+        /// <exception cref="FormatException">value is not in an appropriate format for a <see cref="Decimal" /> type.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface. -or-The conversion
+        ///     is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Decimal.MinValue" /> or greater than
+        ///     <see cref="Decimal.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null.</param>
         /// <param name="formatProvider">The format provider.</param>
-        /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this Object obj, IFormatProvider formatProvider )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
-
-            return Convert.ToDecimal( obj, formatProvider );
-        }
+        /// <returns>A decimal number that is equivalent to value, or 0 (zero) if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Decimal ToDecimal( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
+            => Convert.ToDecimal( obj, formatProvider );
     }
 }

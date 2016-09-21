@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void TakeUntilTestCase()
+        public void TakeUntilTest()
         {
             var list = new List<String>();
             var result = list.TakeUntil( x => true );
@@ -26,10 +27,10 @@ namespace Extend.Testing
 
             var counter = 0;
             var resultList = list.TakeUntil( x =>
-            {
-                counter++;
-                return counter > 5;
-            } )
+                                             {
+                                                 counter++;
+                                                 return counter > 5;
+                                             } )
                                  .ToList();
             Assert.AreEqual( 5, resultList.Count );
 
@@ -38,17 +39,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TakeUntilTestCaseNullCheck()
+        public void TakeUntilTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.TakeUntil( x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void TakeUntilTestCaseNullCheck1()
+        public void TakeUntilTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().TakeUntil( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ReverseTestCase()
+        public void ReverseTest()
         {
             Array array = new[]
             {
@@ -28,7 +28,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ReverseTestCase1()
+        public void ReverseTest1()
         {
             Array array = new[]
             {
@@ -44,18 +44,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ReverseTestCase1NullCheck()
+        public void ReverseTest1NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Reverse( 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ReverseTestCaseNullCheck()
+        public void ReverseTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Reverse();
 
             test.ShouldThrow<ArgumentNullException>();

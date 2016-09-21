@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,10 @@ namespace Extend
         /// <param name="source">The sequence to prepend an item to.</param>
         /// <param name="item">The item to prepend.</param>
         /// <returns>The source sequence preceded by the prepended item.</returns>
-        public static IEnumerable<T> Prepend<T>( this IEnumerable<T> source, T item )
+        [Pure]
+        [PublicAPI]
+        [NotNull]
+        public static IEnumerable<T> Prepend<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, [CanBeNull] T item )
         {
             source.ThrowIfNull( nameof( source ) );
 

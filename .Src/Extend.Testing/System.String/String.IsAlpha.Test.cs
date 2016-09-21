@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsAlphaTestCase()
+        public void IsAlphaTest()
         {
             var actual = "test".IsAlpha();
             Assert.IsTrue( actual );
@@ -22,8 +22,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsAlphaTestCaseNullCheck()
+        public void IsAlphaTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsAlpha( null );
 
             test.ShouldThrow<ArgumentNullException>();

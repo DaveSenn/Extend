@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -32,6 +33,7 @@ namespace Extend
         /// </summary>
         /// <param name="member">The member to get the selection result for.</param>
         /// <returns>Returns the selection result for the given member.</returns>
+        [PublicAPI]
         MemberSelectionResult GetSelectionResult( IMemberInformation member );
     }
 }

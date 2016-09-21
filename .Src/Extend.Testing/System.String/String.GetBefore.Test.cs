@@ -12,87 +12,97 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase1()
+        public void GetBeforeArgumentOutOfRangeTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test1".GetBefore( "test1", 20, 2 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase2()
+        public void GetBeforeArgumentOutOfRangeTest2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( "test", 2, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase3()
+        public void GetBeforeArgumentOutOfRangeTest3()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( "test", -2, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangeTestCase4()
+        public void GetBeforeArgumentOutOfRangeTest4()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( "test", 2, -20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeArgumentOutOfRangExceptionTestCase()
+        public void GetBeforeArgumentOutOfRangExceptionTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test".GetBefore( "test", 15 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase1()
+        public void GetBeforeCharArgumentOutOfRangeTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test1".GetBefore( 't', 20, 2 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase2()
+        public void GetBeforeCharArgumentOutOfRangeTest2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( 't', 2, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase3()
+        public void GetBeforeCharArgumentOutOfRangeTest3()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( 't', -2, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangeTestCase4()
+        public void GetBeforeCharArgumentOutOfRangeTest4()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test test".GetBefore( 't', 2, -20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharArgumentOutOfRangExceptionTestCase()
+        public void GetBeforeCharArgumentOutOfRangExceptionTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test test".GetBefore( 't', 15 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
         [Test]
-        public void GetBeforeCharTestCase()
+        public void GetBeforeCharTest()
         {
             var actual = "test test1".GetBefore( 's' );
             Assert.AreEqual( "te", actual );
@@ -102,7 +112,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase1()
+        public void GetBeforeCharTest1()
         {
             var actual = "test test1".GetBefore( 'e', 0, 4 );
             Assert.AreEqual( "t", actual );
@@ -112,30 +122,34 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeCharTestCase1NullCheck()
+        public void GetBeforeCharTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBefore( null, 't', 1, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBeforeCharTestCase2()
+        public void GetBeforeCharTest2()
         {
             var actual = "test test1".GetBefore( 'a' );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBeforeCharTestCaseNullCheck()
+        public void GetBeforeCharTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBefore( null, 't' );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBeforeTestCase()
+        public void GetBeforeTest()
         {
             var actual = "test test1".GetBefore( "test1" );
             Assert.AreEqual( "test ", actual );
@@ -145,7 +159,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1()
+        public void GetBeforeTest1()
         {
             var actual = "test test1".GetBefore( "test1", 0, 10 );
             Assert.AreEqual( "test ", actual );
@@ -155,7 +169,9 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1NullCheck()
+        public void GetBeforeTest1NullCheck()
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         {
             Action test = () => StringEx.GetBefore( null, "", 1, 1 );
 
@@ -163,31 +179,36 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetBeforeTestCase1NullCheck1()
+        public void GetBeforeTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBefore( null, 1, 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBeforeTestCase2()
+        public void GetBeforeTest2()
         {
             var actual = "test test1".GetBefore( "a", 0, 10 );
             Assert.AreEqual( String.Empty, actual );
         }
 
         [Test]
-        public void GetBeforeTestCaseNullCheck()
+        public void GetBeforeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBefore( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GetBeforeTestCaseNullCheck1()
+        public void GetBeforeTestNullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBefore( null );
 
             test.ShouldThrow<ArgumentNullException>();

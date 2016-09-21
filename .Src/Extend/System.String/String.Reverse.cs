@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,16 +13,19 @@ namespace Extend
         ///     Reverses the given string.
         /// </summary>
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
-        /// <param name="str">The string to reverse.</param>
-        /// <returns>The reversed string.</returns>
-        public static String Reverse( this String str )
+        /// <param name="s">The string to reverse.</param>
+        /// <returns>Returns the reversed string.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Reverse( [NotNull] this String s )
         {
-            str.ThrowIfNull( nameof( str ) );
+            s.ThrowIfNull( nameof( s ) );
 
-            return str.Length <= 1
-                ? str
-                : new String( str.ToCharArray()
-                                 .Reverse() );
+            return s.Length <= 1
+                ? s
+                : new String( s.ToCharArray()
+                               .Reverse() );
         }
     }
 }

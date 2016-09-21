@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,7 +20,10 @@ namespace Extend
         /// <param name="action">The action.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>Returns the given value as result or an exception if one is occurred.</returns>
-        public static IExecutionResult<T> ExecuteSafe<T>( this T value, Action<T> action )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IExecutionResult<T> ExecuteSafe<T>( [CanBeNull] this T value, [NotNull] Action<T> action )
         {
             action.ThrowIfNull( nameof( action ) );
 
@@ -45,7 +49,10 @@ namespace Extend
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <typeparam name="TResult">The type of the result.</typeparam>
         /// <returns>Returns the result of the function or an exception if one is occurred.</returns>
-        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( this T value, Func<T, TResult> func )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( [CanBeNull] this T value, [NotNull] Func<T, TResult> func )
         {
             func.ThrowIfNull( nameof( func ) );
 

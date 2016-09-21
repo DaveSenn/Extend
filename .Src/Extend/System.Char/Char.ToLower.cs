@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,6 +20,9 @@ namespace Extend
         ///     The lowercase equivalent of <paramref name="c" />, or the unchanged value of <paramref name="c" />, if
         ///     <paramref name="c" /> is already lowercase or not alphabetic.
         /// </returns>
-        public static Char ToLower( this Char c ) => Char.ToLower( c );
+        [PublicAPI]
+        [Pure]
+        public static Char ToLower( this Char c )
+            => Char.ToLower( c );
     }
 }

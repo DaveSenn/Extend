@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void WithinIndexTestCase()
+        public void WithinIndexTest()
         {
             Array array = new[]
             {
@@ -32,9 +32,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WithinIndexTestCaseNullCheck()
+        public void WithinIndexTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.WithinIndex( 10 );
 
             test.ShouldThrow<ArgumentNullException>();

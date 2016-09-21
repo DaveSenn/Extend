@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ManyTestCase()
+        public void ManyTest()
         {
             var list = new List<String>();
             Assert.IsFalse( list.Many() );
@@ -26,7 +27,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCase1()
+        public void ManyTest1()
         {
             var list = new List<String>();
             Assert.IsFalse( list.Many( x => true ) );
@@ -40,26 +41,32 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ManyTestCase1NullCheck()
+        public void ManyTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Many( x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ManyTestCase1NullCheck1()
+        public void ManyTest1NullCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().Many( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ManyTestCaseNullCheck()
+        public void ManyTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Many();
 
             test.ShouldThrow<ArgumentNullException>();

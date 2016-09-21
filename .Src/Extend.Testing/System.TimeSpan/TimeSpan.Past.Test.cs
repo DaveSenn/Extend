@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class TimeSpanExTest
     {
         [Test]
-        public void FPastTestCase()
+        public void FPastTest()
         {
             var expected = DateTime.Now.Subtract( TimeSpan.FromDays( 1 ) );
             var actual = TimeSpan.FromDays( 1 )

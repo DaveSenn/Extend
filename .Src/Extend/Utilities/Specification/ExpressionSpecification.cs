@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -35,7 +36,7 @@ namespace Extend
         /// <exception cref="ArgumentNullException">expression can not be null.</exception>
         /// <param name="expression">The validation expression.</param>
         /// <param name="message">The validation error message.</param>
-        public ExpressionSpecification( Func<T, Boolean> expression, String message = null )
+        public ExpressionSpecification( [NotNull] Func<T, Boolean> expression, [CanBeNull] String message = null )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
@@ -52,13 +53,16 @@ namespace Extend
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public override Boolean IsSatisfiedBy( T obj ) => _expression( obj );
+        [PublicAPI]
+        public override Boolean IsSatisfiedBy( T obj )
+            => _expression( obj );
 
         /// <summary>
         ///     Checks if the given objects satisfies the specification.
         /// </summary>
         /// <param name="obj">The object to validate.</param>
         /// <returns>Returns a collection of error messages.</returns>
+        [PublicAPI]
         public override IEnumerable<String> IsSatisfiedByWithMessages( T obj )
         {
             var result = _expression( obj );

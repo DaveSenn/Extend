@@ -2,6 +2,7 @@
 
 using System;
 using System.Text;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -10,14 +11,17 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Extracts the first floating point number from the the given string.
+        ///     Extracts the first floating point number from the given string.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentOutOfRangeException">Invalid start index.</exception>
         /// <param name="value">The string to extract the number from.</param>
         /// <param name="startIndex">The start index of the string.</param>
         /// <returns>The extracted floating point number as string.</returns>
-        private static String ExtractFloatingNumber( this String value, Int32 startIndex = 0 )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        private static String ExtractFloatingNumber( [NotNull] this String value, Int32 startIndex = 0 )
         {
             value.ThrowIfNull( nameof( value ) );
 

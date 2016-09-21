@@ -46,7 +46,7 @@ namespace Extend.Testing
         public void MemberTypeTest()
         {
             var target = new MemberInformation();
-            var expected = typeof (String);
+            var expected = typeof(String);
             target.MemberType = expected;
             target.MemberType.Should()
                   .Be( expected );
@@ -56,8 +56,8 @@ namespace Extend.Testing
         public void PropertyInfoTest()
         {
             var target = new MemberInformation();
-            var expected = typeof (MemberInformation).GetPublicSettableProperties()
-                                                     .First();
+            var expected = typeof(MemberInformation).GetPublicSettableProperties()
+                                                    .First();
             target.PropertyInfo = expected;
             target.PropertyInfo.Should()
                   .BeSameAs( expected );

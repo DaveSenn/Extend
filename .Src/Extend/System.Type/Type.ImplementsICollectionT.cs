@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 #if PORTABLE45
 using System.Reflection;
 
@@ -20,10 +21,15 @@ namespace Extend
         /// <summary>
         ///     Checks if the given type implements <see cref="ICollection{T}" />
         /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to check.</param>
-        /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherweise, false.</returns>
-        public static Boolean ImplementsICollectionT( this Type type )
+        /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherwise, false.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Boolean ImplementsICollectionT( [NotNull] this Type type )
         {
+            type.ThrowIfNull( nameof( type ) );
+
 #if PORTABLE45
             var typeInfo = type.GetTypeInfo();
             var interfaces = type.GetTypeInfo()

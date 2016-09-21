@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsPastTestCase()
+        public void IsPastTest()
         {
             var dateTime = DateTime.Now.Subtract( 1.ToMilliseconds() );
             var actual = dateTime.IsPast();

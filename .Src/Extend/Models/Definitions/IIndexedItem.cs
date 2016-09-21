@@ -7,9 +7,9 @@ using System;
 namespace Extend
 {
     /// <summary>
-    ///     Interface representing an imte with an index.
+    ///     Interface representing an item with an index.
     /// </summary>
-    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="T">The type of the item</typeparam>
     public interface IIndexedItem<T>
     {
         #region Properties

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -29,7 +30,7 @@ namespace Extend
         /// <param name="factory">The factory.</param>
         /// <param name="name">The name of the factory.</param>
         /// <param name="description">The description of the factory.</param>
-        public ExpressionInstanceFactory( Func<IMemberInformation, Object> factory, String name = null, String description = null )
+        public ExpressionInstanceFactory( [NotNull] Func<IMemberInformation, Object> factory, String name = null, String description = null )
             : base( name, description )
         {
             factory.ThrowIfNull( nameof( factory ) );
@@ -46,7 +47,8 @@ namespace Extend
         /// </summary>
         /// <param name="memberInformation">Information about the member to create a value for.</param>
         /// <returns>Returns the created value.</returns>
-        public override Object CreateValue( IMemberInformation memberInformation ) => _factory( memberInformation );
+        public override Object CreateValue( IMemberInformation memberInformation )
+            => _factory( memberInformation );
 
         #endregion
     }

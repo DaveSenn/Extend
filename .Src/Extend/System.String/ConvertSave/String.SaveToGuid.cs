@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -9,21 +10,20 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the given string to a GUID.
+        ///     Converts the string representation of a GUID to the equivalent <see cref="Guid" /> structure.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <param name="value">The string to convert.</param>
         /// <param name="defaultValue">
         ///     The default value, returned if the parsing fails. If not provided default will be
         ///     <see cref="Guid.Empty" />.
         /// </param>
-        /// <returns>Returns the converted GUID.</returns>
-        public static Guid SaveToGuid( this String value, Guid? defaultValue = null )
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Guid SaveToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             Guid outValue;
-            return value.TryParsGuid( out outValue ) ? outValue : ( defaultValue ?? outValue );
+            return value.TryParsGuid( out outValue ) ? outValue : defaultValue;
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,7 +20,9 @@ namespace Extend
         /// <param name="obj">The object to check.</param>
         /// <param name="specification">The specification to use.</param>
         /// <returns>Returns true if the object satisfies the specification; otherwise, false.</returns>
-        public static Boolean Satisfies<T>( this T obj, ISpecification<T> specification )
+        [Pure]
+        [PublicAPI]
+        public static Boolean Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
         {
             specification.ThrowIfNull( nameof( specification ) );
 

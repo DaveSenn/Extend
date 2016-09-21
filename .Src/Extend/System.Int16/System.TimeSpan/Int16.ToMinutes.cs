@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,10 +13,18 @@ namespace Extend
     public static partial class Int16Ex
     {
         /// <summary>
-        ///     Returns the given Int16 value as minutes.
+        ///     Returns a <see cref="TimeSpan" /> that represents a specified number of minutes, where  the specification is
+        ///     accurate
+        ///     to the nearest millisecond.
         /// </summary>
-        /// <param name="value">The Int16 value.</param>
-        /// <returns>Returns the given Int16 value as minutes.</returns>
-        public static TimeSpan ToMinutes( this Int16 value ) => TimeSpan.FromMinutes( value );
+        /// <exception cref="OverflowException">
+        ///     value is less than <see cref="TimeSpan.MinValue" /> or greater than <see cref="TimeSpan.MaxValue" />.
+        /// </exception>
+        /// <param name="value">A number of minutes.</param>
+        /// <returns>Returns a <see cref="TimeSpan" /> representing the given value.</returns>
+        [Pure]
+        [PublicAPI]
+        public static TimeSpan ToMinutes( this Int16 value )
+            => TimeSpan.FromMinutes( value );
     }
 }

@@ -1,5 +1,6 @@
 ﻿#region Usings
 
+using System;
 using NUnit.Framework;
 
 #endregion
@@ -10,10 +11,10 @@ namespace Extend.Testing
     public partial class BooleanExTest
     {
         [Test]
-        public void SelectValueTestCase()
+        public void SelectValueTest()
         {
-            var trueValue = "true";
-            var falseValue = "false";
+            const String trueValue = "true";
+            const String falseValue = "false";
 
             var actual = false.SelectValue( trueValue, falseValue );
             Assert.AreEqual( falseValue, actual );

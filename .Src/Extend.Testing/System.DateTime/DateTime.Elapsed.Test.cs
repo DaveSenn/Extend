@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ElapsedTestCase()
+        public void ElapsedTest()
         {
             var dateTime = new DateTime( 1980, 1, 1 );
             var expected = DateTime.Now - dateTime;

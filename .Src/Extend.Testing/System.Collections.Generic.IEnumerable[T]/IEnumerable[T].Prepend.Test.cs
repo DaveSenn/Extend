@@ -11,12 +11,15 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void PrependArgumentNullExceptionTest()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Prepend( "d" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -30,8 +33,10 @@ namespace Extend.Testing
 
             list.Should()
                 .HaveCount( 3 );
+            // ReSharper disable once PossibleMultipleEnumeration
             actual.Should()
                   .Contain( "d" );
+            // ReSharper disable once PossibleMultipleEnumeration
             actual.ElementAt( 0 )
                   .Should()
                   .Be( "d" );

@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,32 +13,43 @@ namespace Extend
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Converts the given object to a double.
+        ///     Converts the value of the specified object to a double-precision floating-point number.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
-        /// <returns>The double.</returns>
-        public static Double ToDouble( this Object obj )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-
-            return Convert.ToDouble( obj, CultureInfo.CurrentCulture );
-        }
+        /// <exception cref="FormatException">value is not in an appropriate format for a <see cref="Double" /> type.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface.
+        ///     Or the conversion is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Double.MinValue" /> or greater than
+        ///     <see cref="Double.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null.</param>
+        /// <returns>A double-precision floating-point number that is equivalent to value, or zero if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Double ToDouble( [CanBeNull] this Object obj )
+            => Convert.ToDouble( obj );
 
         /// <summary>
-        ///     Converts the given object to a double.
+        ///     Converts the value of the specified object to an double-precision floating-point number, using the specified
+        ///     culture-specific formatting information.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
+        /// <exception cref="FormatException">value is not in an appropriate format for a <see cref="Double" /> type.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement the System.IConvertible interface.
+        ///     Or the conversion is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Double.MinValue" /> or greater than
+        ///     <see cref="Double.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface, or null.</param>
         /// <param name="formatProvider">The format provider.</param>
-        /// <returns>The double.</returns>
-        public static Double ToDouble( this Object obj, IFormatProvider formatProvider )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
-
-            return Convert.ToDouble( obj, formatProvider );
-        }
+        /// <returns>A double-precision floating-point number that is equivalent to value, or zero if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Double ToDouble( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
+            => Convert.ToDouble( obj, formatProvider );
     }
 }

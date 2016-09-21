@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SafeToCultureInfoTestCase()
+        public void SafeToCultureInfoTest()
         {
             const String culture = "en";
             var actual = culture.SafeToCultureInfo();
@@ -21,7 +21,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase1()
+        public void SafeToCultureInfoTest1()
         {
             const String culture = "de-CH";
             var actual = culture.SafeToCultureInfo();
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase2()
+        public void SafeToCultureInfoTest2()
         {
             const String culture = null;
             var actual = culture.SafeToCultureInfo();
@@ -39,7 +39,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase3()
+        public void SafeToCultureInfoTest3()
         {
             var culture = String.Empty;
             var actual = culture.SafeToCultureInfo();
@@ -48,7 +48,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase4()
+        public void SafeToCultureInfoTest4()
         {
             const String culture = "invalidCultureName";
             var actual = culture.SafeToCultureInfo();
@@ -57,7 +57,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase5()
+        public void SafeToCultureInfoTest5()
         {
             const String culture = "en";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "it-CH" ) );
@@ -66,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase6()
+        public void SafeToCultureInfoTest6()
         {
             const String culture = "de-CH";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "fr-CH" ) );
@@ -75,7 +75,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase7()
+        public void SafeToCultureInfoTest7()
         {
             const String culture = null;
             var actual = culture.SafeToCultureInfo( new CultureInfo( "de-CH" ) );
@@ -84,7 +84,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase8()
+        public void SafeToCultureInfoTest8()
         {
             var culture = String.Empty;
             var actual = culture.SafeToCultureInfo( new CultureInfo( "en-GB" ) );
@@ -93,7 +93,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SafeToCultureInfoTestCase9()
+        public void SafeToCultureInfoTest9()
         {
             const String culture = "invalidCultureName";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "es" ) );

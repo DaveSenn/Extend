@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>Returns true if the year is a leap year, otherwise false.</returns>
-        public static Boolean IsLeapYear( this Int32 year ) => DateTime.IsLeapYear( year );
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsLeapYear( this Int32 year )
+            => DateTime.IsLeapYear( year );
     }
 }

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public class ExpressionSpecificationTest
     {
         [Test]
-        public void AndTestCase()
+        public void AndTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => true );
@@ -24,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase1()
+        public void AndTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => true );
@@ -35,7 +35,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase2()
+        public void AndTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => false );
@@ -46,7 +46,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase3()
+        public void AndTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => false );
@@ -57,26 +57,29 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCaseNullCheck()
+        public void AndTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.And( other );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CtorTestCaseNulLCheck()
+        public void CtorTestNulLCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionSpecification<String>( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsSatisfiedByTestCase()
+        public void IsSatisfiedByTest()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedBy( "123" );
@@ -84,7 +87,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase1()
+        public void IsSatisfiedByTest1()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedBy( "123456" );
@@ -92,7 +95,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCase()
+        public void IsSatisfiedByWithMessagesTest()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123" )
@@ -102,7 +105,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCase1()
+        public void IsSatisfiedByWithMessagesTest1()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123456" )
@@ -111,7 +114,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase()
+        public void OrTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => true );
@@ -122,7 +125,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase1()
+        public void OrTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => true );
@@ -133,7 +136,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase2()
+        public void OrTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => false );
@@ -144,7 +147,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase3()
+        public void OrTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => false );
@@ -155,18 +158,19 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCaseNullCheck()
+        public void OrTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Or( other );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void XOrTestCase()
+        public void XOrTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => true );
@@ -177,7 +181,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase1()
+        public void XOrTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => true );
@@ -188,7 +192,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase2()
+        public void XOrTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
             var other = new ExpressionSpecification<String>( x => false );
@@ -199,7 +203,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase3()
+        public void XOrTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
             var other = new ExpressionSpecification<String>( x => false );
@@ -210,11 +214,12 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCaseNullCheck()
+        public void XOrTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.XOr( other );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -12,29 +12,31 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ReverseTestCase()
+        public void ReverseTest()
         {
             var actual = "abc".Reverse();
             Assert.AreEqual( "cba", actual );
         }
 
         [Test]
-        public void ReverseTestCase1()
+        public void ReverseTest1()
         {
             var actual = "a".Reverse();
             Assert.AreEqual( "a", actual );
         }
 
         [Test]
-        public void ReverseTestCase2()
+        public void ReverseTest2()
         {
             var actual = "".Reverse();
             Assert.AreEqual( "", actual );
         }
 
         [Test]
-        public void ReverseTestCaseNullCheck()
+        public void ReverseTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Reverse( null );
 
             test.ShouldThrow<ArgumentNullException>();

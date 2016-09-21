@@ -13,45 +13,95 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToByteTestCase()
+        public void ToByteInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "test".ToByte();
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToByteNullTest()
+        {
+            String value = null;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToByte();
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToByteOverflowTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "300".ToByte();
+
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToByteTest()
         {
             const Byte value = (Byte) 1;
             var actual = value.ToString()
                               .ToByte();
 
-            Assert.AreEqual( value, actual );
+            actual
+                .Should()
+                .Be( value );
         }
 
         [Test]
-        public void ToByteTestCase1()
+        public void ToByteWithFormatFormatNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "1".ToByte( null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToByteWithFormatInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "test".ToByte( CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToByteWithFormatOverflowTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "300".ToByte( CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToByteWithFormatTest()
         {
             const Byte value = (Byte) 1;
-            var actual = value.ToString( CultureInfo.InvariantCulture )
+            var actual = value.ToString()
                               .ToByte( CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( value, actual );
+            actual
+                .Should()
+                .Be( value );
         }
 
         [Test]
-        public void ToByteTestCase1NullCheck()
+        public void ToByteWithFormatValueNullTest()
         {
-            Action test = () => StringEx.ToByte( null, CultureInfo.InvariantCulture );
+            String value = null;
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToByteTestCase1NullCheck1()
-        {
-            Action test = () => "".ToByte( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToByteTestCaseNullCheck()
-        {
-            Action test = () => StringEx.ToByte( null );
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToByte( CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentNullException>();
         }

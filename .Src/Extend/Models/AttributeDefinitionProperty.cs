@@ -28,6 +28,6 @@ namespace Extend
         /// <value>A collection of attributes of the specified type.</value>
         public IEnumerable<T> Attributes { get; set; } = new List<T>();
 
-        #endregion Implementation of IAttributeDefinitionProperty{T}
+        #endregion
     }
 }

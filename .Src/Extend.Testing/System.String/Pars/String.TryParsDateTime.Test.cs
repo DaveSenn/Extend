@@ -13,64 +13,131 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDateTimeTestCase()
+        public void TryParsDateTimeInvalidValueTest()
+        {
+            DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = "InvalidValue".TryParsDateTime( out result );
+
+            actual
+                .Should()
+                .BeFalse();
+
+            result
+                .Should()
+                .Be( default(DateTime) );
+        }
+
+        [Test]
+        public void TryParsDateTimeNullTest()
+        {
+            String value = null;
+            DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsDateTime( out result );
+
+            actual
+                .Should()
+                .BeFalse();
+
+            result
+                .Should()
+                .Be( default(DateTime) );
+        }
+
+        [Test]
+        public void TryParsDateTimeOverloadFormatProviderTest()
+        {
+            CultureInfo culture = null;
+            var expected = DateTime.Now;
+            DateTime result;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .TryParsDateTime( culture, DateTimeStyles.None, out result );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TryParsDateTimeOverloadInvalidValueTest()
+        {
+            DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = "InvalidValue".TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
+
+            actual
+                .Should()
+                .BeFalse();
+
+            result
+                .Should()
+                .Be( default(DateTime) );
+        }
+
+        [Test]
+        public void TryParsDateTimeOverloadNeutralFormatProviderTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+            var expected = DateTime.Now;
+            DateTime result;
+
+            Action test = () => expected.ToString( culture )
+                                        .TryParsDateTime( culture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal, out result );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void TryParsDateTimeOverloadNullTest()
+        {
+            String value = null;
+            DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
+
+            actual
+                .Should()
+                .BeFalse();
+
+            result
+                .Should()
+                .Be( default(DateTime) );
+        }
+
+        [Test]
+        public void TryParsDateTimeOverloadTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+            var expected = DateTime.Now;
+            DateTime result;
+            var actual = expected.ToString( culture )
+                                 .TryParsDateTime( culture, DateTimeStyles.None, out result );
+
+            actual
+                .Should()
+                .BeTrue();
+
+            result
+                .Should()
+                .BeCloseTo( expected, 999 );
+        }
+
+        [Test]
+        public void TryParsDateTimeTest()
         {
             var expected = DateTime.Now;
-            var result = expected.Add( 1.ToDays() );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
+            DateTime result;
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
                                  .TryParsDateTime( out result );
 
-            Assert.AreEqual( expected.Year, result.Year );
-            Assert.AreEqual( expected.Month, result.Month );
-            Assert.AreEqual( expected.Day, result.Day );
-            Assert.AreEqual( expected.Hour, result.Hour );
-            Assert.AreEqual( expected.Minute, result.Minute );
-            Assert.AreEqual( expected.Second, result.Second );
-            Assert.IsTrue( actual );
-        }
+            actual
+                .Should()
+                .BeTrue();
 
-        [Test]
-        public void TryParsDateTimeTestCase1()
-        {
-            var expected = DateTime.Now;
-            var result = expected.Add( 1.ToDays() );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
-
-            Assert.AreEqual( expected.Year, result.Year );
-            Assert.AreEqual( expected.Month, result.Month );
-            Assert.AreEqual( expected.Day, result.Day );
-            Assert.AreEqual( expected.Hour, result.Hour );
-            Assert.AreEqual( expected.Minute, result.Minute );
-            Assert.AreEqual( expected.Second, result.Second );
-            Assert.IsTrue( actual );
-        }
-
-        [Test]
-        public void TryParsDateTimeTestCase1NullCheck()
-        {
-            var outValue = DateTime.Now;
-            Action test = () => StringEx.TryParsDateTime( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsDateTimeTestCase1NullCheck1()
-        {
-            var outValue = DateTime.Now;
-            Action test = () => "".TryParsDateTime( null, DateTimeStyles.AllowInnerWhite, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsDateTimeTestCaseNullCheck()
-        {
-            var outValue = DateTime.Now;
-            Action test = () => StringEx.TryParsDateTime( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
+            result
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
     }
 }

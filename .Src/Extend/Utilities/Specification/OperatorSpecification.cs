@@ -1,6 +1,7 @@
 #region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -35,7 +36,7 @@ namespace Extend
         /// <exception cref="ArgumentNullException">right can not be null.</exception>
         /// <param name="left">The left specification.</param>
         /// <param name="right">The right specification.</param>
-        protected OperatorSpecification( ISpecification<T> left, ISpecification<T> right )
+        protected OperatorSpecification( [NotNull] ISpecification<T> left, [NotNull] ISpecification<T> right )
         {
             left.ThrowIfNull( nameof( left ) );
             right.ThrowIfNull( nameof( right ) );

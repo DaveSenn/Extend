@@ -13,48 +13,61 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToCharTestCase()
+        public void SaveToCharInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToChar();
+
+            actual
+                .Should()
+                .Be( default(Char) );
+        }
+
+        [Test]
+        public void SaveToCharInvalidValueWithDefaultTest()
+        {
+            const Char expected = 'a';
+            var actual = "InvalidValue".SaveToChar( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToCharNullTest()
+        {
+            String value = null;
+            const Char expected = 'y';
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToChar( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToCharTest()
         {
             const Char expected = 'c';
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToChar();
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToCharTestCase1()
+        public void SaveToCharTest1()
         {
             const Char expected = 'c';
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToChar( 'e' );
 
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToCharTestCase2()
-        {
-            const Char expected = 'a';
-            var actual = "InvalidValue".SaveToChar( expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToCharTestCase3()
-        {
-            var actual = "InvalidValue".SaveToChar();
-
-            Assert.AreEqual( default(Char), actual );
-        }
-
-        [Test]
-        public void SaveToCharTestCaseNullCheck()
-        {
-            Action test = () => StringEx.SaveToChar( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void RemoveRangeTestCase()
+        public void RemoveRangeTest()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCase1()
+        public void RemoveRangeTest1()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
@@ -39,32 +39,36 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RemoveRangeTestCase1NullCheck()
+        public void RemoveRangeTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRange( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeTestCase1NullCheck1()
+        public void RemoveRangeTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRange( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeTestCaseNullCheck()
+        public void RemoveRangeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRange( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RemoveRangeTestCaseNullCheck1()
+        public void RemoveRangeTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRange( null );
 
             test.ShouldThrow<ArgumentNullException>();

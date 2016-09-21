@@ -61,13 +61,18 @@
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
     <Compile Include="Models\IndexedItemTest.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Except.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetEqualItemsFromStart.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].GetRandomItem.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Intersect.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Partition.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Prepend.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithIndex.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].WithoutIndex.Test.cs" />
+    <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
+    <Compile Include="System.Int64\System.TimeSpan\Int64.ToDays.Test.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
     <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
@@ -152,7 +157,6 @@
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIfNotContains.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].AddRangeIf.Test.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].StringJoin.Test.cs" />
-    <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNotNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].IsNullOrEmpty.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveIf.Test.cs" />
     <Compile Include="System.Collections.Generic.ICollection[T]\ICollection[T].RemoveRange.Test.cs" />
@@ -191,7 +195,6 @@
     <Compile Include="System.DateTime\DateTime.FirstDayOfWeek.Test.cs" />
     <Compile Include="System.DateTime\DateTime.Intersects.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsAfternoon.Test.cs" />
-    <Compile Include="System.DateTime\DateTime.IsDateEqual.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsFuture.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsMorning.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsPast.Test.cs" />
@@ -296,7 +299,6 @@
     <Compile Include="System.Int32\Int32.IsMultipleOf.Test.cs" />
     <Compile Include="System.Int32\Int32.IsEven.Test.cs" />
     <Compile Include="System.Int64\Int64.Sum.Test.cs" />
-    <Compile Include="System.Int64\System.TimeSpan\Int64ToDays.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToSeconds.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToMinutes.Test.cs" />
     <Compile Include="System.Int64\System.TimeSpan\Int64.ToMilliseconds.Test.cs" />
@@ -309,7 +311,6 @@
     <Compile Include="System.Int64\Int64.IsMultipleOf.Test.cs" />
     <Compile Include="System.Int64\Int64.IsEven.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToBoolean.Test.cs" />
-    <Compile Include="System.Object\Convert\Object.ToCharByCode.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToDateTime.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToChar.Test.cs" />
     <Compile Include="System.Object\Convert\Object.ToByte.Test.cs" />
@@ -408,7 +409,6 @@
     <Compile Include="System.String\String.Repeat.Test.cs" />
     <Compile Include="System.String\String.ReplaceByEmpty.Test.cs" />
     <Compile Include="System.String\String.Reverse.Test.cs" />
-    <Compile Include="System.String\ConvertSave\String.SafeToInt.Test.cs" />
     <Compile Include="System.String\String.Split.Test.cs" />
     <Compile Include="System.String\String.SplitLines.Test.cs" />
     <Compile Include="System.String\String.SubstringLeft.Test.cs" />
@@ -433,6 +433,7 @@
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.Test.cs" />
+    <Compile Include="Utilities\Compare\KeyEqualityComparerTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreatorTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceExceptionTest.cs" />
     <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultExTest.cs" />

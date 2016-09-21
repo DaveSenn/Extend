@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,10 +19,12 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Decimal PercentOf( this Decimal number, Int32 total )
         {
             if ( number <= 0 )
-                throw new DivideByZeroException();
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
             return total / number * 100;
         }
@@ -33,10 +36,12 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Decimal PercentOf( this Decimal number, Decimal total )
         {
             if ( number <= 0 )
-                throw new DivideByZeroException();
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
             return total / number * 100;
         }
@@ -48,10 +53,12 @@ namespace Extend
         /// <param name="number">The number.</param>
         /// <param name="total">The total value.</param>
         /// <returns>Returns the percentage of the number.</returns>
+        [Pure]
+        [PublicAPI]
         public static Decimal PercentOf( this Decimal number, Int64 total )
         {
             if ( number <= 0 )
-                throw new DivideByZeroException();
+                throw new DivideByZeroException( "The number must be greater than zero." );
 
             return total / number * 100;
         }

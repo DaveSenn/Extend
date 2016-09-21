@@ -13,11 +13,11 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void IsMatchTestCase()
+        public void IsMatchTest()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "dave.senn@myDomain.com";
+            const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.IsMatch( emaiLpattern );
             Assert.IsTrue( actual );
@@ -27,11 +27,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase1()
+        public void IsMatchTest1()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "dave.senn@myDomain.com";
+            const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.IsMatch( emaiLpattern, RegexOptions.Compiled );
             Assert.IsTrue( actual );
@@ -41,32 +41,40 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase1NullCheck()
+        public void IsMatchTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsMatchTestCase1NullCheck1()
+        public void IsMatchTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsMatch( null, RegexOptions.Multiline );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsMatchTestCaseNullCheck()
+        public void IsMatchTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsMatch( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsMatchTestCaseNullCheck1()
+        public void IsMatchTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsMatch( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -74,7 +82,7 @@ namespace Extend.Testing
 
 #if PORTABLE45
         [Test]
-        public void IsMatchTestCase2()
+        public void IsMatchTest2()
         {
             var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
             var validEmail = "dave.senn@myDomain.com";
@@ -88,16 +96,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsMatchTestCase2NullCheck()
+        public void IsMatchTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.IsMatch( null, "", RegexOptions.CultureInvariant, 10.ToSeconds() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsMatchTestCase2NullCheck1()
+        public void IsMatchTest2NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".IsMatch( null, RegexOptions.Multiline, 10.ToSeconds() );
 
             test.ShouldThrow<ArgumentNullException>();

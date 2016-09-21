@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class CollectionTExTest
     {
         [Test]
-        public void AddIfNotContainsTestCase()
+        public void AddIfNotContainsTest()
         {
             var c = new List<String>();
 
@@ -29,8 +29,9 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AddIfNotContainsTestCaseNullCheck()
+        public void AddIfNotContainsTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -14,6 +14,1543 @@ namespace Extend.Testing
     [TestFixture]
     public class TreeNodeTest
     {
+        [Test]
+        public void AddOverloadTest()
+        {
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var target = new TreeNode<String>( "root" );
+            target.Add( new TreeNode<String>( "1" ) );
+            target.Add( new TreeNode<String>( "2" ) );
+
+            Assert.AreEqual( 2, target.Children.Count );
+            Assert.AreEqual( "1",
+                             target.Children.ElementAt( 0 )
+                                   .Value );
+            Assert.AreEqual( "2",
+                             target.Children.ElementAt( 1 )
+                                   .Value );
+        }
+
+        [Test]
+        public void AddTest()
+        {
+// ReSharper disable once UseObjectOrCollectionInitializer
+            var target = new TreeNode<String>( "root" );
+            target.Add( "1" );
+            target.Add( "2" );
+
+            Assert.AreEqual( 2, target.Children.Count );
+            Assert.AreEqual( "1",
+                             target.Children.ElementAt( 0 )
+                                   .Value );
+            Assert.AreEqual( "2",
+                             target.Children.ElementAt( 1 )
+                                   .Value );
+        }
+
+        [Test]
+        public void AncestorsTest()
+        {
+            var target = new TreeNode<String>( "root" );
+            var actual = target.Ancestors.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var node1 = new TreeNode<String>( "1", target );
+            actual = node1.Ancestors.ToList();
+            Assert.AreEqual( 1, actual.Count );
+            Assert.AreSame( target, actual[0] );
+
+            var node2 = new TreeNode<String>( "1", node1 );
+            actual = node2.Ancestors.ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreSame( node1, actual[0] );
+            Assert.AreSame( target, actual[1] );
+        }
+
+        [Test]
+        public void AncestorsTraversalDirectionTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.AncestorsTraversalDirection = expected;
+            AssertAncestorsTraversalDirection( expected, target );
+        }
+
+        /// <summary>
+        ///     Set children of node and add then children
+        /// </summary>
+        [Test]
+        public void ChildrenTest()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target );
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+
+            children.Add( "Item1" );
+            children.Add( "Item2" );
+
+            Assert.AreEqual( 2, target.Children.Count );
+            Assert.AreSame( children, target.Children );
+
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
+
+        /// <summary>
+        ///     Set children (Collection with some items)
+        /// </summary>
+        [Test]
+        public void ChildrenTest1()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+            Assert.AreEqual( 2, target.Children.Count );
+
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
+
+        /// <summary>
+        ///     Switch children of two nodes
+        /// </summary>
+        /// <remarks>
+        ///     Feel free to improve the implementation.
+        /// </remarks>
+        [Test]
+        public void ChildrenTest2()
+        {
+            var node1 = new TreeNode<String>( "node1" )
+            {
+                "Item1",
+                "Item2"
+            };
+
+            var node2 = new TreeNode<String>( "node2" )
+            {
+                "ItemA",
+                "ItemB"
+            };
+
+            Assert.AreEqual( 2, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 2, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
+
+            var node1Children = node1.Children;
+            var node2Children = node2.Children;
+
+            //Add children from 2 to 1
+            Action test = () => node1.Children = node2Children;
+
+            test.ShouldThrow<InvalidOperationException>();
+        }
+
+        [Test]
+        public void ChildrenTest3()
+        {
+            var target = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+            Assert.AreEqual( 2, target.Children.Count );
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+
+            target.Children = children;
+            Assert.AreSame( children, target.Children );
+            Assert.AreEqual( 2, target.Children.Count );
+            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+        }
+
+        /// <summary>
+        ///     Constructor with no parameters
+        /// </summary>
+        [Test]
+        public void CtorTest()
+        {
+            var target = new TreeNode<String>();
+            Assert.IsNull( target.Value );
+            Assert.IsNull( target.Parent );
+            Assert.AreEqual( 0, target.Children.Count );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: value
+        /// </summary>
+        [Test]
+        public void CtorTest1()
+        {
+            var value = RandomValueEx.GetRandomString();
+
+            var target = new TreeNode<String>( value );
+            Assert.AreEqual( value, target.Value );
+            Assert.IsNull( target.Parent );
+            Assert.AreEqual( 0, target.Children.Count );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: parent
+        /// </summary>
+        [Test]
+        public void CtorTest2()
+        {
+            var parent = new TreeNode<String>
+            {
+                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
+                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp
+            };
+
+            var target = new TreeNode<String>( parent );
+            Assert.IsNull( target.Value );
+            Assert.AreSame( parent, target.Parent );
+            Assert.AreEqual( 0, target.Children.Count );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: children
+        /// </summary>
+        [Test]
+        public void CtorTest3()
+        {
+            var exParent = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( exParent )
+            {
+                "Item0",
+                "Item1",
+                "Item2"
+            };
+            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
+
+            var target = new TreeNode<String>( children );
+            Assert.IsNull( target.Value );
+            Assert.IsNull( target.Parent );
+
+            Assert.AreEqual( 3, target.Children.Count );
+            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: value, children
+        /// </summary>
+        [Test]
+        public void CtorTest4()
+        {
+            var exParent = new TreeNode<String>();
+            var value = RandomValueEx.GetRandomString();
+            var children = new TreeNodeCollection<String>( exParent )
+            {
+                "Item0",
+                "Item1",
+                "Item2"
+            };
+            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
+
+            var target = new TreeNode<String>( value, children );
+            Assert.AreEqual( value, target.Value );
+            Assert.IsNull( target.Parent );
+
+            Assert.AreEqual( 3, target.Children.Count );
+            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: value, parent
+        /// </summary>
+        [Test]
+        public void CtorTest5()
+        {
+            var value = RandomValueEx.GetRandomString();
+            var parent = new TreeNode<String>
+            {
+                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
+                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp
+            };
+
+            var target = new TreeNode<String>( value, parent );
+            Assert.AreEqual( value, target.Value );
+            Assert.AreSame( parent, target.Parent );
+            Assert.AreEqual( 0, target.Children.Count );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Constructor with the following parameters: children
+        /// </summary>
+        [Test]
+        public void CtorTest6()
+        {
+            var value = RandomValueEx.GetRandomString();
+            var parent = new TreeNode<String>
+            {
+                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
+                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
+                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
+                SearchTraversalDirection = TreeTraversalDirection.BottomUp
+            };
+            var exParent = new TreeNode<String>();
+            var children = new TreeNodeCollection<String>( exParent )
+            {
+                "Item0",
+                "Item1",
+                "Item2"
+            };
+            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
+
+            var target = new TreeNode<String>( value, parent, children );
+            Assert.AreEqual( value, target.Value );
+            Assert.AreSame( parent, target.Parent );
+
+            Assert.AreEqual( 3, target.Children.Count );
+            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
+            target.Children.ForEach(
+                      x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
+
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+        }
+
+        /// <summary>
+        ///     Test for switching parent
+        /// </summary>
+        [Test]
+        public void CtorTest7()
+        {
+            var exParent = new TreeNode<String>( "Ex" );
+            var children = new TreeNodeCollection<String>( exParent )
+            {
+                "Item0"
+            };
+
+            var target = new TreeNode<String>( "Target", children );
+            Assert.AreEqual( 1, target.Children.Count, "Target should have 1 child" );
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent,
+                            "Parent should have been updated to target" );
+            Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
+        }
+
+        /// <summary>
+        ///     Test for full constructor
+        /// </summary>
+        [Test]
+        public void CtorTest8()
+        {
+            var value = RandomValueEx.GetRandomString();
+            var parent = new TreeNode<String>( "parent" );
+            var children = new TreeNodeCollection<String>( parent )
+            {
+                new TreeNode<String>( "1" )
+            };
+
+            var actual = new TreeNode<String>( value, parent, children );
+            Assert.AreEqual( value, actual.Value );
+            Assert.AreSame( parent, actual.Parent );
+            Assert.AreSame( children, actual.Children );
+        }
+
+        [Test]
+        public void DepthTest()
+        {
+            var target = new TreeNode<String>( "root" );
+            Assert.AreEqual( 0, target.Depth );
+
+            var item1 = new TreeNode<String>( "1" );
+            Assert.AreEqual( 0, item1.Depth );
+            target.Add( item1 );
+            Assert.AreEqual( 1, item1.Depth );
+
+            var item2 = new TreeNode<String>( "1" );
+            Assert.AreEqual( 0, item2.Depth );
+            item1.Add( item2 );
+            Assert.AreEqual( 2, item2.Depth );
+        }
+
+        /// <summary>
+        ///     Creates the following tree.
+        ///     root
+        ///     | 1
+        ///     | | A
+        ///     | | B
+        ///     | 2
+        /// </summary>
+        [Test]
+        public void DescendantsTest()
+        {
+            var target = new TreeNode<String>( "root" );
+            var actual = target.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var node1 = new TreeNode<String>( "1", target );
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual( 1, actual.Count );
+            Assert.AreSame( actual[0], node1 );
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var nodeA = new TreeNode<String>( "A", node1 );
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreSame( actual[0], node1 );
+            Assert.AreSame( actual[1], nodeA );
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual( 1, actual.Count );
+            Assert.AreSame( actual[0], nodeA );
+            //Descendants of nodeA
+            actual = nodeA.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var nodeB = new TreeNode<String>( "B", node1 );
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual( 3, actual.Count );
+            Assert.AreSame( actual[0], node1 );
+            Assert.AreSame( actual[1], nodeA );
+            Assert.AreSame( actual[2], nodeB );
+            //Descendants of node1
+            actual = node1.Descendants.ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreSame( actual[0], nodeA );
+            Assert.AreSame( actual[1], nodeB );
+            //Descendants of nodeB
+            actual = nodeB.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            var node2 = new TreeNode<String>( "2", target );
+            //Descendants of root
+            actual = target.Descendants.ToList();
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreSame( actual[0], node1 );
+            Assert.AreSame( actual[1], nodeA );
+            Assert.AreSame( actual[2], nodeB );
+            Assert.AreSame( actual[3], node2 );
+            //Descendants of node2
+            actual = node2.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void DescendantsTest1()
+        {
+            var target = new TreeNode<String>( "root" );
+            var actual = target.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+
+            target.Children = null;
+            actual = target.Descendants.ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void DescendantsTestNotSupportedException()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                "2",
+                new AlternativeTreeNode<String>()
+            };
+
+            Action test = () =>
+            {
+                var actual = target.Descendants;
+            };
+            test.ShouldThrow<NotSupportedException>();
+        }
+
+        [Test]
+        public void DescendantsTraversalDirectionTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.DescendantsTraversalDirection = expected;
+            AssertDescendantsTraversalDirection( expected, target );
+        }
+
+        [Test]
+        public void DisposeTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "1",
+                "2"
+            };
+            target.Dispose();
+        }
+
+        [Test]
+        public void DisposeTest1()
+        {
+            var values = new List<String>();
+            var target = new TreeNode<DisposeTestHelper>
+            {
+                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
+            };
+            target.DisposeTraversalDirection = TreeTraversalDirection.TopDown;
+            target.Dispose();
+
+            Assert.AreEqual( 3, values.Count );
+            Assert.AreEqual( "1", values[0] );
+            Assert.AreEqual( "2", values[1] );
+            Assert.AreEqual( "3", values[2] );
+        }
+
+        [Test]
+        public void DisposeTest2()
+        {
+            var values = new List<String>();
+            var target = new TreeNode<DisposeTestHelper>
+            {
+                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
+                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
+            };
+            target.DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
+            target.Dispose();
+
+            Assert.AreEqual( 3, values.Count );
+            Assert.AreEqual( "3", values[0] );
+            Assert.AreEqual( "2", values[1] );
+            Assert.AreEqual( "1", values[2] );
+        }
+
+        [Test]
+        public void DisposeTraversalDirectionTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.DisposeTraversalDirection = expected;
+            AssertDisposeTraversalDirection( expected, target );
+        }
+
+        /// <summary>
+        ///     Search TopDown only top level
+        /// </summary>
+        [Test]
+        public void FindNodeOverloadTest()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "1" )
+                }
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
+
+            var actual = target.FindNode( "1" )
+                               .ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreEqual( "root", actual[0].Parent.Value );
+            Assert.AreEqual( "2", actual[1].Parent.Value );
+        }
+
+        /// <summary>
+        ///     Search BottomUp only top level
+        /// </summary>
+        [Test]
+        public void FindNodeOverloadTest1()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "1" )
+                }
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+
+            var actual = target.FindNode( "1" )
+                               .ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreEqual( "2", actual[0].Parent.Value );
+            Assert.AreEqual( "root", actual[1].Parent.Value );
+        }
+
+        /// <summary>
+        ///     Search TopDown only top level
+        /// </summary>
+        [Test]
+        public void FindNodeTest()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
+
+            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "1", actual[0].Value );
+            Assert.AreEqual( "111", actual[1].Value );
+            Assert.AreEqual( "11", actual[2].Value );
+            Assert.AreEqual( "1111", actual[3].Value );
+        }
+
+        /// <summary>
+        ///     Search TopDown all level
+        /// </summary>
+        [Test]
+        public void FindNodeTest1()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
+
+            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "b", actual[2].Value );
+            Assert.AreEqual( "111", actual[3].Value );
+            Assert.AreEqual( "11", actual[4].Value );
+            Assert.AreEqual( "b1", actual[5].Value );
+            Assert.AreEqual( "1111", actual[6].Value );
+        }
+
+        /// <summary>
+        ///     Search BottomUp only top level
+        /// </summary>
+        [Test]
+        public void FindNodeTest2()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+
+            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "1111", actual[0].Value );
+            Assert.AreEqual( "11", actual[1].Value );
+            Assert.AreEqual( "111", actual[2].Value );
+            Assert.AreEqual( "1", actual[3].Value );
+        }
+
+        /// <summary>
+        ///     Search BottomUp all level
+        /// </summary>
+        [Test]
+        public void FindNodeTest3()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+
+            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "1111", actual[0].Value );
+            Assert.AreEqual( "b1", actual[1].Value );
+            Assert.AreEqual( "11", actual[2].Value );
+            Assert.AreEqual( "111", actual[3].Value );
+            Assert.AreEqual( "b", actual[4].Value );
+            Assert.AreEqual( "1", actual[5].Value );
+            Assert.AreEqual( "root", actual[6].Value );
+        }
+
+        /// <summary>
+        ///     Search TopDown only top level
+        /// </summary>
+        [Test]
+        public void FindValueTest()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
+
+            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "1", actual[0] );
+            Assert.AreEqual( "111", actual[1] );
+            Assert.AreEqual( "11", actual[2] );
+            Assert.AreEqual( "1111", actual[3] );
+        }
+
+        /// <summary>
+        ///     Search TopDown all level
+        /// </summary>
+        [Test]
+        public void FindValueTest1()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
+
+            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "root", actual[0] );
+            Assert.AreEqual( "1", actual[1] );
+            Assert.AreEqual( "b", actual[2] );
+            Assert.AreEqual( "111", actual[3] );
+            Assert.AreEqual( "11", actual[4] );
+            Assert.AreEqual( "b1", actual[5] );
+            Assert.AreEqual( "1111", actual[6] );
+        }
+
+        /// <summary>
+        ///     Search BottomUp only top level
+        /// </summary>
+        [Test]
+        public void FindValueTest2()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+
+            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "1111", actual[0] );
+            Assert.AreEqual( "11", actual[1] );
+            Assert.AreEqual( "111", actual[2] );
+            Assert.AreEqual( "1", actual[3] );
+        }
+
+        /// <summary>
+        ///     Search BottomUp all level
+        /// </summary>
+        [Test]
+        public void FindValueTest3()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                new TreeNode<String>( "1" ),
+                new TreeNode<String>( "2" )
+                {
+                    new TreeNode<String>( "a" ),
+                    new TreeNode<String>( "b" ),
+                    new TreeNode<String>( "c" ),
+                    new TreeNode<String>( "111" )
+                },
+                new TreeNode<String>( "3" ),
+                new TreeNode<String>( "11" ),
+                new TreeNode<String>( "21" )
+                {
+                    new TreeNode<String>( "a1" ),
+                    new TreeNode<String>( "b1" ),
+                    new TreeNode<String>( "c1" ),
+                    new TreeNode<String>( "1111" )
+                },
+                new TreeNode<String>( "31" )
+            };
+            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
+
+            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
+                               .ToList();
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "1111", actual[0] );
+            Assert.AreEqual( "b1", actual[1] );
+            Assert.AreEqual( "11", actual[2] );
+            Assert.AreEqual( "111", actual[3] );
+            Assert.AreEqual( "b", actual[4] );
+            Assert.AreEqual( "1", actual[5] );
+            Assert.AreEqual( "root", actual[6] );
+        }
+
+        [Test]
+        public void GetEnumeratorTest()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
+            var actual = new List<ITreeNode<String>>();
+
+// ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest1()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "3", actual[0].Value );
+            Assert.AreEqual( "2", actual[1].Value );
+            Assert.AreEqual( "1", actual[2].Value );
+            Assert.AreEqual( "root", actual[3].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest2()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    "4"
+                },
+                "5"
+            };
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 6, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+            Assert.AreEqual( "4", actual[4].Value );
+            Assert.AreEqual( "5", actual[5].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest3()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    "4"
+                },
+                "5"
+            };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 6, actual.Count );
+            Assert.AreEqual( "5", actual[0].Value );
+            Assert.AreEqual( "4", actual[1].Value );
+            Assert.AreEqual( "3", actual[2].Value );
+            Assert.AreEqual( "2", actual[3].Value );
+            Assert.AreEqual( "1", actual[4].Value );
+            Assert.AreEqual( "root", actual[5].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest4()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    new TreeNode<String>( "4" )
+                    {
+                        "5"
+                    }
+                },
+                "6"
+            };
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+            Assert.AreEqual( "4", actual[4].Value );
+            Assert.AreEqual( "5", actual[5].Value );
+            Assert.AreEqual( "6", actual[6].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest5()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    new TreeNode<String>( "4" )
+                    {
+                        "5"
+                    }
+                },
+                "6"
+            };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            foreach ( var node in target )
+                actual.Add( node );
+
+            Assert.AreEqual( 7, actual.Count );
+            Assert.AreEqual( "6", actual[0].Value );
+            Assert.AreEqual( "5", actual[1].Value );
+            Assert.AreEqual( "4", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+            Assert.AreEqual( "2", actual[4].Value );
+            Assert.AreEqual( "1", actual[5].Value );
+            Assert.AreEqual( "root", actual[6].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest6()
+        {
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                new TreeNode<String>( "2" )
+                {
+                    "3",
+                    new TreeNode<String>( "4" )
+                    {
+                        "5"
+                    }
+                },
+                "6"
+            };
+            var actual = target.GetEnumerator();
+        }
+
+        [Test]
+        public void GetEnumeratorTest7()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
+            var actual = new List<ITreeNode<String>>();
+
+            var enumerator = ( target as IEnumerable ).GetEnumerator();
+            while ( enumerator.MoveNext() )
+                actual.Add( enumerator.Current as ITreeNode<String> );
+
+            Assert.AreEqual( 4, actual.Count );
+            Assert.AreEqual( "root", actual[0].Value );
+            Assert.AreEqual( "1", actual[1].Value );
+            Assert.AreEqual( "2", actual[2].Value );
+            Assert.AreEqual( "3", actual[3].Value );
+        }
+
+        [Test]
+        public void GetEnumeratorTest8()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.TopDown;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            Action test = () =>
+            {
+                foreach ( var node in target )
+                    actual.Add( node );
+            };
+
+            test.ShouldThrow<NotSupportedException>();
+        }
+
+        [Test]
+        public void GetEnumeratorTest9()
+        {
+            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
+            target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            var actual = new List<ITreeNode<String>>();
+
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            Action test = () =>
+            {
+                foreach ( var node in target )
+                    actual.Add( node );
+            };
+
+            test.ShouldThrow<NotSupportedException>();
+        }
+
+        [Test]
+        public void HasChildrenTest()
+        {
+            var target = new TreeNode<String>( "root" );
+            Assert.IsFalse( target.HasChildren );
+
+            var item1 = new TreeNode<String>( "1" );
+            Assert.IsFalse( item1.HasChildren );
+            target.Add( item1 );
+            Assert.IsFalse( item1.HasChildren );
+            Assert.IsTrue( target.HasChildren );
+
+            var item2 = new TreeNode<String>( "1" );
+            Assert.IsFalse( item2.HasChildren );
+            Assert.AreEqual( 0, item2.Depth );
+            item1.Add( item2 );
+            Assert.AreEqual( 2, item2.Depth );
+            Assert.IsFalse( item2.HasChildren );
+            Assert.IsTrue( item1.HasChildren );
+            Assert.IsTrue( target.HasChildren );
+        }
+
+        [Test]
+        public void HasChildrenTest1()
+        {
+            var target = new TreeNode<String>( "root" ) { Children = null };
+            Assert.IsFalse( target.HasChildren );
+        }
+
+        [Test]
+        public void HasParentTest()
+        {
+            var target = new TreeNode<String>( "root" );
+            Assert.IsFalse( target.HasParent );
+
+            var item1 = new TreeNode<String>( "1" );
+            Assert.IsFalse( item1.HasParent );
+            target.Add( item1 );
+            Assert.IsTrue( item1.HasParent );
+
+            var item2 = new TreeNode<String>( "1" );
+            Assert.IsFalse( item2.HasParent );
+            item1.Add( item2 );
+            Assert.IsTrue( item2.HasParent );
+        }
+
+        /// <summary>
+        ///     Check if added as child to parent.
+        /// </summary>
+        [Test]
+        public void ParentTest()
+        {
+            var parent = new TreeNode<String>();
+
+            var target = new TreeNode<String> { Parent = parent };
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+        }
+
+        /// <summary>
+        ///     Check if added as child to new parent and removed from old parent.
+        /// </summary>
+        [Test]
+        public void ParentTest1()
+        {
+            var parent = new TreeNode<String>();
+            var exParent = new TreeNode<String>();
+
+            var target = new TreeNode<String>( exParent );
+            Assert.AreSame( exParent, target.Parent );
+
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+            Assert.IsFalse( exParent.Children.Contains( target ) );
+        }
+
+        /// <summary>
+        ///     Check if added as child to parent and if children are getting updated.
+        /// </summary>
+        [Test]
+        public void ParentTest2()
+        {
+            var parent = new TreeNode<String>();
+
+            var target = new TreeNode<String> { "Item1" };
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent );
+            Assert.AreEqual( 1,
+                             target.Children.First()
+                                   .Depth );
+
+            target.Parent = parent;
+            Assert.AreSame( parent, target.Parent );
+            Assert.IsTrue( parent.Children.Contains( target ) );
+            Assert.AreSame( target,
+                            target.Children.First()
+                                  .Parent );
+            Assert.AreEqual( 2,
+                             target.Children.First()
+                                   .Depth );
+        }
+
+        /// <summary>
+        ///     Remove item from node1 and add it to node2
+        /// </summary>
+        [Test]
+        public void RemoveAndAddChild()
+        {
+            var node1 = new TreeNode<String>( "node1" )
+            {
+                "Item1",
+                "Item2"
+            };
+
+            var node2 = new TreeNode<String>( "node2" )
+            {
+                "ItemA",
+                "ItemB"
+            };
+
+            Assert.AreEqual( 2, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 2, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
+
+            var child = node1.Children.First();
+            node2.Add( child );
+
+            node1.Children.Remove( child );
+
+            Assert.AreEqual( 1, node1.Children.Count );
+            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
+
+            Assert.AreEqual( 3, node2.Children.Count );
+            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
+        }
+
+        [Test]
+        public void RootTest()
+        {
+            var target = new TreeNode<String>();
+            Assert.AreSame( target, target.Root );
+        }
+
+        [Test]
+        public void RootTest1()
+        {
+            var parent = new TreeNode<String>();
+            var target = new TreeNode<String>( parent );
+            Assert.AreSame( parent, target.Root );
+        }
+
+        [Test]
+        public void SearchTraversalDirectionTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.SearchTraversalDirection = expected;
+            AssertSearchTraversalDirection( expected, target );
+        }
+
+        [Test]
+        public void SetAllDirectionsTest()
+        {
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var target = new TreeNode<String>( "root" )
+            {
+                "1",
+                "2",
+                "3"
+            };
+
+            target.SetAllDirections( TreeTraversalDirection.BottomUp );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.TraversalDirection );
+
+            target.Children.ForEach( x =>
+                                     {
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.BottomUp, x.TraversalDirection );
+                                     } );
+
+            target.SetAllDirections( TreeTraversalDirection.TopDown );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DisposeTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.SearchTraversalDirection );
+            Assert.AreEqual( TreeTraversalDirection.TopDown, target.TraversalDirection );
+
+            target.Children.ForEach( x =>
+                                     {
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
+                                         Assert.AreEqual( TreeTraversalDirection.TopDown, x.TraversalDirection );
+                                     } );
+        }
+
+        [Test]
+        public void SetParentTest()
+        {
+            var targetA = new TreeNode<String>( "a" );
+            var node1 = new TreeNode<String>( "1" );
+
+            var targetB = new TreeNode<String>( "b" );
+            var node2 = new TreeNode<String>( "2" );
+
+            //Add 1 to A
+            node1.SetParent( targetA );
+            Assert.AreSame( node1.Parent, targetA );
+
+            //Add 1 to A again
+            node1.SetParent( targetA );
+            Assert.AreSame( node1.Parent, targetA );
+
+            //Add 2 to B
+            node2.SetParent( targetB );
+            Assert.AreSame( node2.Parent, targetB );
+
+            //Add 2 to B again
+            node2.SetParent( targetB );
+            Assert.AreSame( node2.Parent, targetB );
+
+            //Add 1 to B
+            node1.SetParent( targetB );
+            Assert.AreSame( node1.Parent, targetB );
+            Assert.AreEqual( 0, targetA.Children.Count );
+        }
+
+        [Test]
+        public void SetParentTest1()
+        {
+            var targetA = new TreeNode<String>( "a" )
+            {
+                Children = null
+            };
+            var node1 = new TreeNode<String>( "1" );
+
+            //Add 1 to A
+            node1.SetParent( targetA );
+            Assert.AreSame( node1.Parent, targetA );
+        }
+
+        [Test]
+        public void ToStringTest()
+        {
+            var target = new TreeNode<String>( "1" );
+            var actual = target.ToString();
+            Assert.AreEqual( "[Depth: 0 - Value: '1', Children: 0]", actual );
+        }
+
+        [Test]
+        public void ToStringTest1()
+        {
+            var target = new TreeNode<String>( "1" ) { "1", "2" };
+            var node = new TreeNode<String>( "a" );
+            target.Add( node );
+            var actual = node.ToString();
+            Assert.AreEqual( "    [Depth: 1 - Value: 'a', Children: 0]", actual );
+        }
+
+        [Test]
+        public void TraversalDirectionTest()
+        {
+            var target = new TreeNode<String>
+            {
+                "Item1",
+                "Item2",
+                new TreeNode<String>( "ItemA" )
+                {
+                    "ItemA1",
+                    "ItemA2"
+                }
+            };
+
+            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
+            target.TraversalDirection = expected;
+            AssertTraversalDirection( expected, target );
+        }
+
+        /// <summary>
+        ///     Normal value
+        /// </summary>
+        [Test]
+        public void ValueTest()
+        {
+            var target = new TreeNode<String>();
+            var expected = RandomValueEx.GetRandomString();
+            target.Value = expected;
+            Assert.AreEqual( expected, target.Value );
+        }
+
+        /// <summary>
+        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
+        /// </summary>
+        [Test]
+        public void ValueTest1()
+        {
+            var target = new TreeNode<TestTreeNodeItem>();
+            var expected = new TestTreeNodeItem();
+            Assert.IsNull( expected.Node );
+            target.Value = expected;
+            Assert.AreSame( expected, target.Value );
+            Assert.AreSame( target, expected.Node );
+        }
+
+        /// <summary>
+        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
+        ///     Reset value to check if node gets set to null.
+        /// </summary>
+        [Test]
+        public void ValueTest2()
+        {
+            var target = new TreeNode<TestTreeNodeItem>();
+            var expected = new TestTreeNodeItem();
+            Assert.IsNull( expected.Node );
+            target.Value = expected;
+            Assert.AreSame( expected, target.Value );
+            Assert.AreSame( target, expected.Node );
+
+            var newValue = new TestTreeNodeItem();
+            target.Value = newValue;
+            Assert.AreSame( newValue, target.Value );
+            Assert.AreSame( target, newValue.Node );
+
+            //Check if node is null.
+            Assert.IsNull( expected.Node );
+        }
+
         /// <summary>
         ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
         /// </summary>
@@ -287,1541 +1824,6 @@ namespace Extend.Testing
             public void Dispose() => DisposeAction?.Invoke( Value );
 
             #endregion
-        }
-
-        [Test]
-        public void AddOverloadTestCase()
-        {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var target = new TreeNode<String>( "root" );
-            target.Add( new TreeNode<String>( "1" ) );
-            target.Add( new TreeNode<String>( "2" ) );
-
-            Assert.AreEqual( 2, target.Children.Count );
-            Assert.AreEqual( "1",
-                             target.Children.ElementAt( 0 )
-                                   .Value );
-            Assert.AreEqual( "2",
-                             target.Children.ElementAt( 1 )
-                                   .Value );
-        }
-
-        [Test]
-        public void AddTestCase()
-        {
-// ReSharper disable once UseObjectOrCollectionInitializer
-            var target = new TreeNode<String>( "root" );
-            target.Add( "1" );
-            target.Add( "2" );
-
-            Assert.AreEqual( 2, target.Children.Count );
-            Assert.AreEqual( "1",
-                             target.Children.ElementAt( 0 )
-                                   .Value );
-            Assert.AreEqual( "2",
-                             target.Children.ElementAt( 1 )
-                                   .Value );
-        }
-
-        [Test]
-        public void AncestorsTestCase()
-        {
-            var target = new TreeNode<String>( "root" );
-            var actual = target.Ancestors.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            var node1 = new TreeNode<String>( "1", target );
-            actual = node1.Ancestors.ToList();
-            Assert.AreEqual( 1, actual.Count );
-            Assert.AreSame( target, actual[0] );
-
-            var node2 = new TreeNode<String>( "1", node1 );
-            actual = node2.Ancestors.ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreSame( node1, actual[0] );
-            Assert.AreSame( target, actual[1] );
-        }
-
-        [Test]
-        public void AncestorsTraversalDirectionTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "Item1",
-                "Item2",
-                new TreeNode<String>( "ItemA" )
-                {
-                    "ItemA1",
-                    "ItemA2"
-                }
-            };
-
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
-            target.AncestorsTraversalDirection = expected;
-            AssertAncestorsTraversalDirection( expected, target );
-        }
-
-        /// <summary>
-        ///     Set children of node and add then children
-        /// </summary>
-        [Test]
-        public void ChildrenTestCase()
-        {
-            var target = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( target );
-
-            target.Children = children;
-            Assert.AreSame( children, target.Children );
-
-            children.Add( "Item1" );
-            children.Add( "Item2" );
-
-            Assert.AreEqual( 2, target.Children.Count );
-            Assert.AreSame( children, target.Children );
-
-            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-        }
-
-        /// <summary>
-        ///     Set children (Collection with some items)
-        /// </summary>
-        [Test]
-        public void ChildrenTestCase1()
-        {
-            var target = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
-
-            target.Children = children;
-            Assert.AreSame( children, target.Children );
-            Assert.AreEqual( 2, target.Children.Count );
-
-            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-        }
-
-        /// <summary>
-        ///     Switch children of two nodes
-        /// </summary>
-        /// <remarks>
-        ///     Feel free to improve the implementation.
-        /// </remarks>
-        [Test]
-        public void ChildrenTestCase2()
-        {
-            var node1 = new TreeNode<String>( "node1" )
-            {
-                "Item1",
-                "Item2"
-            };
-
-            var node2 = new TreeNode<String>( "node2" )
-            {
-                "ItemA",
-                "ItemB"
-            };
-
-            Assert.AreEqual( 2, node1.Children.Count );
-            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
-
-            Assert.AreEqual( 2, node2.Children.Count );
-            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
-
-            var node1Children = node1.Children;
-            var node2Children = node2.Children;
-
-            //Add children from 2 to 1
-            Action test = () => node1.Children = node2Children;
-
-            test.ShouldThrow<InvalidOperationException>();
-        }
-
-        [Test]
-        public void ChildrenTestCase3()
-        {
-            var target = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( target ) { "Item1", "Item2" };
-
-            target.Children = children;
-            Assert.AreSame( children, target.Children );
-            Assert.AreEqual( 2, target.Children.Count );
-            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-
-            target.Children = children;
-            Assert.AreSame( children, target.Children );
-            Assert.AreEqual( 2, target.Children.Count );
-            children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-        }
-
-        /// <summary>
-        ///     Constructor with no parameters
-        /// </summary>
-        [Test]
-        public void CtorTestCase()
-        {
-            var target = new TreeNode<String>();
-            Assert.IsNull( target.Value );
-            Assert.IsNull( target.Parent );
-            Assert.AreEqual( 0, target.Children.Count );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: value
-        /// </summary>
-        [Test]
-        public void CtorTestCase1()
-        {
-            var value = RandomValueEx.GetRandomString();
-
-            var target = new TreeNode<String>( value );
-            Assert.AreEqual( value, target.Value );
-            Assert.IsNull( target.Parent );
-            Assert.AreEqual( 0, target.Children.Count );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: parent
-        /// </summary>
-        [Test]
-        public void CtorTestCase2()
-        {
-            var parent = new TreeNode<String>
-            {
-                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
-                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp
-            };
-
-            var target = new TreeNode<String>( parent );
-            Assert.IsNull( target.Value );
-            Assert.AreSame( parent, target.Parent );
-            Assert.AreEqual( 0, target.Children.Count );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: children
-        /// </summary>
-        [Test]
-        public void CtorTestCase3()
-        {
-            var exParent = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( exParent )
-            {
-                "Item0",
-                "Item1",
-                "Item2"
-            };
-            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
-
-            var target = new TreeNode<String>( children );
-            Assert.IsNull( target.Value );
-            Assert.IsNull( target.Parent );
-
-            Assert.AreEqual( 3, target.Children.Count );
-            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
-
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: value, children
-        /// </summary>
-        [Test]
-        public void CtorTestCase4()
-        {
-            var exParent = new TreeNode<String>();
-            var value = RandomValueEx.GetRandomString();
-            var children = new TreeNodeCollection<String>( exParent )
-            {
-                "Item0",
-                "Item1",
-                "Item2"
-            };
-            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
-
-            var target = new TreeNode<String>( value, children );
-            Assert.AreEqual( value, target.Value );
-            Assert.IsNull( target.Parent );
-
-            Assert.AreEqual( 3, target.Children.Count );
-            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
-
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: value, parent
-        /// </summary>
-        [Test]
-        public void CtorTestCase5()
-        {
-            var value = RandomValueEx.GetRandomString();
-            var parent = new TreeNode<String>
-            {
-                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
-                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp
-            };
-
-            var target = new TreeNode<String>( value, parent );
-            Assert.AreEqual( value, target.Value );
-            Assert.AreSame( parent, target.Parent );
-            Assert.AreEqual( 0, target.Children.Count );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Constructor with the following parameters: children
-        /// </summary>
-        [Test]
-        public void CtorTestCase6()
-        {
-            var value = RandomValueEx.GetRandomString();
-            var parent = new TreeNode<String>
-            {
-                AncestorsTraversalDirection = TreeTraversalDirection.TopDown,
-                DisposeTraversalDirection = TreeTraversalDirection.BottomUp,
-                DescendantsTraversalDirection = TreeTraversalDirection.TopDown,
-                SearchTraversalDirection = TreeTraversalDirection.BottomUp
-            };
-            var exParent = new TreeNode<String>();
-            var children = new TreeNodeCollection<String>( exParent )
-            {
-                "Item0",
-                "Item1",
-                "Item2"
-            };
-            children.ForEach( x => x.DisposeTraversalDirection = TreeTraversalDirection.TopDown );
-
-            var target = new TreeNode<String>( value, parent, children );
-            Assert.AreEqual( value, target.Value );
-            Assert.AreSame( parent, target.Parent );
-
-            Assert.AreEqual( 3, target.Children.Count );
-            target.Children.ForEach( x => Assert.AreSame( target, x.Parent ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
-            target.Children.ForEach( x => Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
-            target.Children.ForEach(
-                x => Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
-
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
-        }
-
-        /// <summary>
-        ///     Test for switching parent
-        /// </summary>
-        [Test]
-        public void CtorTestCase7()
-        {
-            var exParent = new TreeNode<String>( "Ex" );
-            var children = new TreeNodeCollection<String>( exParent )
-            {
-                "Item0"
-            };
-
-            var target = new TreeNode<String>( "Target", children );
-            Assert.AreEqual( 1, target.Children.Count, "Target should have 1 child" );
-            Assert.AreSame( target,
-                            target.Children.First()
-                                  .Parent,
-                            "Parent should have been updated to target" );
-            Assert.AreEqual( 0, exParent.Children.Count, "The child should have been detached from it's old parent" );
-        }
-
-        /// <summary>
-        ///     Test for full constructor
-        /// </summary>
-        [Test]
-        public void CtorTestCase8()
-        {
-            var value = RandomValueEx.GetRandomString();
-            var parent = new TreeNode<String>( "parent" );
-            var children = new TreeNodeCollection<String>( parent )
-            {
-                new TreeNode<String>( "1" )
-            };
-
-            var actual = new TreeNode<String>( value, parent, children );
-            Assert.AreEqual( value, actual.Value );
-            Assert.AreSame( parent, actual.Parent );
-            Assert.AreSame( children, actual.Children );
-        }
-
-        [Test]
-        public void DepthTestCase()
-        {
-            var target = new TreeNode<String>( "root" );
-            Assert.AreEqual( 0, target.Depth );
-
-            var item1 = new TreeNode<String>( "1" );
-            Assert.AreEqual( 0, item1.Depth );
-            target.Add( item1 );
-            Assert.AreEqual( 1, item1.Depth );
-
-            var item2 = new TreeNode<String>( "1" );
-            Assert.AreEqual( 0, item2.Depth );
-            item1.Add( item2 );
-            Assert.AreEqual( 2, item2.Depth );
-        }
-
-        /// <summary>
-        ///     Creates the following tree.
-        ///     root
-        ///     | 1
-        ///     | | A
-        ///     | | B
-        ///     | 2
-        /// </summary>
-        [Test]
-        public void DescendantsTestCase()
-        {
-            var target = new TreeNode<String>( "root" );
-            var actual = target.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            var node1 = new TreeNode<String>( "1", target );
-            //Descendants of root
-            actual = target.Descendants.ToList();
-            Assert.AreEqual( 1, actual.Count );
-            Assert.AreSame( actual[0], node1 );
-            //Descendants of node1
-            actual = node1.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            var nodeA = new TreeNode<String>( "A", node1 );
-            //Descendants of root
-            actual = target.Descendants.ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreSame( actual[0], node1 );
-            Assert.AreSame( actual[1], nodeA );
-            //Descendants of node1
-            actual = node1.Descendants.ToList();
-            Assert.AreEqual( 1, actual.Count );
-            Assert.AreSame( actual[0], nodeA );
-            //Descendants of nodeA
-            actual = nodeA.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            var nodeB = new TreeNode<String>( "B", node1 );
-            //Descendants of root
-            actual = target.Descendants.ToList();
-            Assert.AreEqual( 3, actual.Count );
-            Assert.AreSame( actual[0], node1 );
-            Assert.AreSame( actual[1], nodeA );
-            Assert.AreSame( actual[2], nodeB );
-            //Descendants of node1
-            actual = node1.Descendants.ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreSame( actual[0], nodeA );
-            Assert.AreSame( actual[1], nodeB );
-            //Descendants of nodeB
-            actual = nodeB.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            var node2 = new TreeNode<String>( "2", target );
-            //Descendants of root
-            actual = target.Descendants.ToList();
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreSame( actual[0], node1 );
-            Assert.AreSame( actual[1], nodeA );
-            Assert.AreSame( actual[2], nodeB );
-            Assert.AreSame( actual[3], node2 );
-            //Descendants of node2
-            actual = node2.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void DescendantsTestCase1()
-        {
-            var target = new TreeNode<String>( "root" );
-            var actual = target.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-
-            target.Children = null;
-            actual = target.Descendants.ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void DescendantsTestCaseNotSupportedException()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                "2",
-                new AlternativeTreeNode<String>()
-            };
-
-            Action test = () => { var actual = target.Descendants; };
-            test.ShouldThrow<NotSupportedException>();
-        }
-
-        [Test]
-        public void DescendantsTraversalDirectionTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "Item1",
-                "Item2",
-                new TreeNode<String>( "ItemA" )
-                {
-                    "ItemA1",
-                    "ItemA2"
-                }
-            };
-
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
-            target.DescendantsTraversalDirection = expected;
-            AssertDescendantsTraversalDirection( expected, target );
-        }
-
-        [Test]
-        public void DisposeTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "1",
-                "2"
-            };
-            target.Dispose();
-        }
-
-        [Test]
-        public void DisposeTestCase1()
-        {
-            var values = new List<String>();
-            var target = new TreeNode<DisposeTestHelper>
-            {
-                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
-                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
-                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
-            };
-            target.DisposeTraversalDirection = TreeTraversalDirection.TopDown;
-            target.Dispose();
-
-            Assert.AreEqual( 3, values.Count );
-            Assert.AreEqual( "1", values[0] );
-            Assert.AreEqual( "2", values[1] );
-            Assert.AreEqual( "3", values[2] );
-        }
-
-        [Test]
-        public void DisposeTestCase2()
-        {
-            var values = new List<String>();
-            var target = new TreeNode<DisposeTestHelper>
-            {
-                new DisposeTestHelper { Value = "1", DisposeAction = s => values.Add( s ) },
-                new DisposeTestHelper { Value = "2", DisposeAction = s => values.Add( s ) },
-                new DisposeTestHelper { Value = "3", DisposeAction = s => values.Add( s ) }
-            };
-            target.DisposeTraversalDirection = TreeTraversalDirection.BottomUp;
-            target.Dispose();
-
-            Assert.AreEqual( 3, values.Count );
-            Assert.AreEqual( "3", values[0] );
-            Assert.AreEqual( "2", values[1] );
-            Assert.AreEqual( "1", values[2] );
-        }
-
-        [Test]
-        public void DisposeTraversalDirectionTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "Item1",
-                "Item2",
-                new TreeNode<String>( "ItemA" )
-                {
-                    "ItemA1",
-                    "ItemA2"
-                }
-            };
-
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
-            target.DisposeTraversalDirection = expected;
-            AssertDisposeTraversalDirection( expected, target );
-        }
-
-        /// <summary>
-        ///     Search TopDown only top level
-        /// </summary>
-        [Test]
-        public void FindNodeOverloadTestCase()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "1" )
-                }
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
-
-            var actual = target.FindNode( "1" )
-                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( "root", actual[0].Parent.Value );
-            Assert.AreEqual( "2", actual[1].Parent.Value );
-        }
-
-        /// <summary>
-        ///     Search BottomUp only top level
-        /// </summary>
-        [Test]
-        public void FindNodeOverloadTestCase1()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "1" )
-                }
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-
-            var actual = target.FindNode( "1" )
-                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( "2", actual[0].Parent.Value );
-            Assert.AreEqual( "root", actual[1].Parent.Value );
-        }
-
-        /// <summary>
-        ///     Search TopDown only top level
-        /// </summary>
-        [Test]
-        public void FindNodeTestCase()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
-
-            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "1", actual[0].Value );
-            Assert.AreEqual( "111", actual[1].Value );
-            Assert.AreEqual( "11", actual[2].Value );
-            Assert.AreEqual( "1111", actual[3].Value );
-        }
-
-        /// <summary>
-        ///     Search TopDown all level
-        /// </summary>
-        [Test]
-        public void FindNodeTestCase1()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
-
-            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "b", actual[2].Value );
-            Assert.AreEqual( "111", actual[3].Value );
-            Assert.AreEqual( "11", actual[4].Value );
-            Assert.AreEqual( "b1", actual[5].Value );
-            Assert.AreEqual( "1111", actual[6].Value );
-        }
-
-        /// <summary>
-        ///     Search BottomUp only top level
-        /// </summary>
-        [Test]
-        public void FindNodeTestCase2()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-
-            var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "1111", actual[0].Value );
-            Assert.AreEqual( "11", actual[1].Value );
-            Assert.AreEqual( "111", actual[2].Value );
-            Assert.AreEqual( "1", actual[3].Value );
-        }
-
-        /// <summary>
-        ///     Search BottomUp all level
-        /// </summary>
-        [Test]
-        public void FindNodeTestCase3()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-
-            var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "1111", actual[0].Value );
-            Assert.AreEqual( "b1", actual[1].Value );
-            Assert.AreEqual( "11", actual[2].Value );
-            Assert.AreEqual( "111", actual[3].Value );
-            Assert.AreEqual( "b", actual[4].Value );
-            Assert.AreEqual( "1", actual[5].Value );
-            Assert.AreEqual( "root", actual[6].Value );
-        }
-
-        /// <summary>
-        ///     Search TopDown only top level
-        /// </summary>
-        [Test]
-        public void FindValueTestCase()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
-
-            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "1", actual[0] );
-            Assert.AreEqual( "111", actual[1] );
-            Assert.AreEqual( "11", actual[2] );
-            Assert.AreEqual( "1111", actual[3] );
-        }
-
-        /// <summary>
-        ///     Search TopDown all level
-        /// </summary>
-        [Test]
-        public void FindValueTestCase1()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.TopDown;
-
-            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "root", actual[0] );
-            Assert.AreEqual( "1", actual[1] );
-            Assert.AreEqual( "b", actual[2] );
-            Assert.AreEqual( "111", actual[3] );
-            Assert.AreEqual( "11", actual[4] );
-            Assert.AreEqual( "b1", actual[5] );
-            Assert.AreEqual( "1111", actual[6] );
-        }
-
-        /// <summary>
-        ///     Search BottomUp only top level
-        /// </summary>
-        [Test]
-        public void FindValueTestCase2()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-
-            var actual = target.FindValue( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "1111", actual[0] );
-            Assert.AreEqual( "11", actual[1] );
-            Assert.AreEqual( "111", actual[2] );
-            Assert.AreEqual( "1", actual[3] );
-        }
-
-        /// <summary>
-        ///     Search BottomUp all level
-        /// </summary>
-        [Test]
-        public void FindValueTestCase3()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                new TreeNode<String>( "1" ),
-                new TreeNode<String>( "2" )
-                {
-                    new TreeNode<String>( "a" ),
-                    new TreeNode<String>( "b" ),
-                    new TreeNode<String>( "c" ),
-                    new TreeNode<String>( "111" )
-                },
-                new TreeNode<String>( "3" ),
-                new TreeNode<String>( "11" ),
-                new TreeNode<String>( "21" )
-                {
-                    new TreeNode<String>( "a1" ),
-                    new TreeNode<String>( "b1" ),
-                    new TreeNode<String>( "c1" ),
-                    new TreeNode<String>( "1111" )
-                },
-                new TreeNode<String>( "31" )
-            };
-            target.SearchTraversalDirection = TreeTraversalDirection.BottomUp;
-
-            var actual = target.FindValue( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
-                               .ToList();
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "1111", actual[0] );
-            Assert.AreEqual( "b1", actual[1] );
-            Assert.AreEqual( "11", actual[2] );
-            Assert.AreEqual( "111", actual[3] );
-            Assert.AreEqual( "b", actual[4] );
-            Assert.AreEqual( "1", actual[5] );
-            Assert.AreEqual( "root", actual[6] );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase()
-        {
-            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
-            var actual = new List<ITreeNode<String>>();
-
-// ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase1()
-        {
-            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
-            target.TraversalDirection = TreeTraversalDirection.BottomUp;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "3", actual[0].Value );
-            Assert.AreEqual( "2", actual[1].Value );
-            Assert.AreEqual( "1", actual[2].Value );
-            Assert.AreEqual( "root", actual[3].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase2()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                new TreeNode<String>( "2" )
-                {
-                    "3",
-                    "4"
-                },
-                "5"
-            };
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 6, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
-            Assert.AreEqual( "4", actual[4].Value );
-            Assert.AreEqual( "5", actual[5].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase3()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                new TreeNode<String>( "2" )
-                {
-                    "3",
-                    "4"
-                },
-                "5"
-            };
-            target.TraversalDirection = TreeTraversalDirection.BottomUp;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 6, actual.Count );
-            Assert.AreEqual( "5", actual[0].Value );
-            Assert.AreEqual( "4", actual[1].Value );
-            Assert.AreEqual( "3", actual[2].Value );
-            Assert.AreEqual( "2", actual[3].Value );
-            Assert.AreEqual( "1", actual[4].Value );
-            Assert.AreEqual( "root", actual[5].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase4()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                new TreeNode<String>( "2" )
-                {
-                    "3",
-                    new TreeNode<String>( "4" )
-                    {
-                        "5"
-                    }
-                },
-                "6"
-            };
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
-            Assert.AreEqual( "4", actual[4].Value );
-            Assert.AreEqual( "5", actual[5].Value );
-            Assert.AreEqual( "6", actual[6].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase5()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                new TreeNode<String>( "2" )
-                {
-                    "3",
-                    new TreeNode<String>( "4" )
-                    {
-                        "5"
-                    }
-                },
-                "6"
-            };
-            target.TraversalDirection = TreeTraversalDirection.BottomUp;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            foreach ( var node in target )
-                actual.Add( node );
-
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( "6", actual[0].Value );
-            Assert.AreEqual( "5", actual[1].Value );
-            Assert.AreEqual( "4", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
-            Assert.AreEqual( "2", actual[4].Value );
-            Assert.AreEqual( "1", actual[5].Value );
-            Assert.AreEqual( "root", actual[6].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase6()
-        {
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                new TreeNode<String>( "2" )
-                {
-                    "3",
-                    new TreeNode<String>( "4" )
-                    {
-                        "5"
-                    }
-                },
-                "6"
-            };
-            var actual = target.GetEnumerator();
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase7()
-        {
-            var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
-            var actual = new List<ITreeNode<String>>();
-
-            var enumerator = ( target as IEnumerable ).GetEnumerator();
-            while ( enumerator.MoveNext() )
-                actual.Add( enumerator.Current as ITreeNode<String> );
-
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( "root", actual[0].Value );
-            Assert.AreEqual( "1", actual[1].Value );
-            Assert.AreEqual( "2", actual[2].Value );
-            Assert.AreEqual( "3", actual[3].Value );
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase8()
-        {
-            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
-            target.TraversalDirection = TreeTraversalDirection.TopDown;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            Action test = () =>
-            {
-                foreach ( var node in target )
-                    actual.Add( node );
-            };
-
-            test.ShouldThrow<NotSupportedException>();
-        }
-
-        [Test]
-        public void GetEnumeratorTestCase9()
-        {
-            var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
-            target.TraversalDirection = TreeTraversalDirection.BottomUp;
-            var actual = new List<ITreeNode<String>>();
-
-            // ReSharper disable once LoopCanBeConvertedToQuery
-            Action test = () =>
-            {
-                foreach ( var node in target )
-                    actual.Add( node );
-            };
-
-            test.ShouldThrow<NotSupportedException>();
-        }
-
-        [Test]
-        public void HasChildrenTestCase()
-        {
-            var target = new TreeNode<String>( "root" );
-            Assert.IsFalse( target.HasChildren );
-
-            var item1 = new TreeNode<String>( "1" );
-            Assert.IsFalse( item1.HasChildren );
-            target.Add( item1 );
-            Assert.IsFalse( item1.HasChildren );
-            Assert.IsTrue( target.HasChildren );
-
-            var item2 = new TreeNode<String>( "1" );
-            Assert.IsFalse( item2.HasChildren );
-            Assert.AreEqual( 0, item2.Depth );
-            item1.Add( item2 );
-            Assert.AreEqual( 2, item2.Depth );
-            Assert.IsFalse( item2.HasChildren );
-            Assert.IsTrue( item1.HasChildren );
-            Assert.IsTrue( target.HasChildren );
-        }
-
-        [Test]
-        public void HasChildrenTestCase1()
-        {
-            var target = new TreeNode<String>( "root" ) { Children = null };
-            Assert.IsFalse( target.HasChildren );
-        }
-
-        [Test]
-        public void HasParentTestCase()
-        {
-            var target = new TreeNode<String>( "root" );
-            Assert.IsFalse( target.HasParent );
-
-            var item1 = new TreeNode<String>( "1" );
-            Assert.IsFalse( item1.HasParent );
-            target.Add( item1 );
-            Assert.IsTrue( item1.HasParent );
-
-            var item2 = new TreeNode<String>( "1" );
-            Assert.IsFalse( item2.HasParent );
-            item1.Add( item2 );
-            Assert.IsTrue( item2.HasParent );
-        }
-
-        /// <summary>
-        ///     Check if added as child to parent.
-        /// </summary>
-        [Test]
-        public void ParentTestCase()
-        {
-            var parent = new TreeNode<String>();
-
-            var target = new TreeNode<String> { Parent = parent };
-            Assert.AreSame( parent, target.Parent );
-            Assert.IsTrue( parent.Children.Contains( target ) );
-        }
-
-        /// <summary>
-        ///     Check if added as child to new parent and removed from old parent.
-        /// </summary>
-        [Test]
-        public void ParentTestCase1()
-        {
-            var parent = new TreeNode<String>();
-            var exParent = new TreeNode<String>();
-
-            var target = new TreeNode<String>( exParent );
-            Assert.AreSame( exParent, target.Parent );
-
-            target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
-            Assert.IsTrue( parent.Children.Contains( target ) );
-            Assert.IsFalse( exParent.Children.Contains( target ) );
-        }
-
-        /// <summary>
-        ///     Check if added as child to parent and if children are getting updated.
-        /// </summary>
-        [Test]
-        public void ParentTestCase2()
-        {
-            var parent = new TreeNode<String>();
-
-            var target = new TreeNode<String> { "Item1" };
-            Assert.AreSame( target,
-                            target.Children.First()
-                                  .Parent );
-            Assert.AreEqual( 1,
-                             target.Children.First()
-                                   .Depth );
-
-            target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
-            Assert.IsTrue( parent.Children.Contains( target ) );
-            Assert.AreSame( target,
-                            target.Children.First()
-                                  .Parent );
-            Assert.AreEqual( 2,
-                             target.Children.First()
-                                   .Depth );
-        }
-
-        /// <summary>
-        ///     Remove item from node1 and add it to node2
-        /// </summary>
-        [Test]
-        public void RemoveAndAddChild()
-        {
-            var node1 = new TreeNode<String>( "node1" )
-            {
-                "Item1",
-                "Item2"
-            };
-
-            var node2 = new TreeNode<String>( "node2" )
-            {
-                "ItemA",
-                "ItemB"
-            };
-
-            Assert.AreEqual( 2, node1.Children.Count );
-            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
-
-            Assert.AreEqual( 2, node2.Children.Count );
-            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
-
-            var child = node1.Children.First();
-            node2.Add( child );
-
-            node1.Children.Remove( child );
-
-            Assert.AreEqual( 1, node1.Children.Count );
-            node1.Children.ForEach( x => Assert.AreSame( node1, x.Parent ) );
-
-            Assert.AreEqual( 3, node2.Children.Count );
-            node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
-        }
-
-        [Test]
-        public void RootTestCase()
-        {
-            var target = new TreeNode<String>();
-            Assert.AreSame( target, target.Root );
-        }
-
-        [Test]
-        public void RootTestCase1()
-        {
-            var parent = new TreeNode<String>();
-            var target = new TreeNode<String>( parent );
-            Assert.AreSame( parent, target.Root );
-        }
-
-        [Test]
-        public void SearchTraversalDirectionTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "Item1",
-                "Item2",
-                new TreeNode<String>( "ItemA" )
-                {
-                    "ItemA1",
-                    "ItemA2"
-                }
-            };
-
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
-            target.SearchTraversalDirection = expected;
-            AssertSearchTraversalDirection( expected, target );
-        }
-
-        [Test]
-        public void SetAllDirectionsTestCase()
-        {
-            // ReSharper disable once UseObjectOrCollectionInitializer
-            var target = new TreeNode<String>( "root" )
-            {
-                "1",
-                "2",
-                "3"
-            };
-
-            target.SetAllDirections( TreeTraversalDirection.BottomUp );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DescendantsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.BottomUp, target.TraversalDirection );
-
-            target.Children.ForEach( x =>
-            {
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.BottomUp, x.TraversalDirection );
-            } );
-
-            target.SetAllDirections( TreeTraversalDirection.TopDown );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DescendantsTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.DisposeTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.SearchTraversalDirection );
-            Assert.AreEqual( TreeTraversalDirection.TopDown, target.TraversalDirection );
-
-            target.Children.ForEach( x =>
-            {
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
-                Assert.AreEqual( TreeTraversalDirection.TopDown, x.TraversalDirection );
-            } );
-        }
-
-        [Test]
-        public void SetParentTestCase()
-        {
-            var targetA = new TreeNode<String>( "a" );
-            var node1 = new TreeNode<String>( "1" );
-
-            var targetB = new TreeNode<String>( "b" );
-            var node2 = new TreeNode<String>( "2" );
-
-            //Add 1 to A
-            node1.SetParent( targetA );
-            Assert.AreSame( node1.Parent, targetA );
-
-            //Add 1 to A again
-            node1.SetParent( targetA );
-            Assert.AreSame( node1.Parent, targetA );
-
-            //Add 2 to B
-            node2.SetParent( targetB );
-            Assert.AreSame( node2.Parent, targetB );
-
-            //Add 2 to B again
-            node2.SetParent( targetB );
-            Assert.AreSame( node2.Parent, targetB );
-
-            //Add 1 to B
-            node1.SetParent( targetB );
-            Assert.AreSame( node1.Parent, targetB );
-            Assert.AreEqual( 0, targetA.Children.Count );
-        }
-
-        [Test]
-        public void SetParentTestCase1()
-        {
-            var targetA = new TreeNode<String>( "a" )
-            {
-                Children = null
-            };
-            var node1 = new TreeNode<String>( "1" );
-
-            //Add 1 to A
-            node1.SetParent( targetA );
-            Assert.AreSame( node1.Parent, targetA );
-        }
-
-        [Test]
-        public void ToStringTestCase()
-        {
-            var target = new TreeNode<String>( "1" );
-            var actual = target.ToString();
-            Assert.AreEqual( "Depth: 0 - Value: 1, Children: 0, Parent: [[NULL]]", actual );
-        }
-
-        [Test]
-        public void ToStringTestCase1()
-        {
-            var target = new TreeNode<String>( "1" ) { "1", "2" };
-            var node = new TreeNode<String>( "a" );
-            target.Add( node );
-            var actual = node.ToString();
-            Assert.AreEqual( "Depth: 1 - Value: a, Children: 0, Parent: [Depth: 0 - Value: 1, Children: 3, Parent: [[NULL]]]",
-                             actual );
-        }
-
-        [Test]
-        public void TraversalDirectionTestCase()
-        {
-            var target = new TreeNode<String>
-            {
-                "Item1",
-                "Item2",
-                new TreeNode<String>( "ItemA" )
-                {
-                    "ItemA1",
-                    "ItemA2"
-                }
-            };
-
-            var expected = RandomValueEx.GetRandomEnum<TreeTraversalDirection>();
-            target.TraversalDirection = expected;
-            AssertTraversalDirection( expected, target );
-        }
-
-        /// <summary>
-        ///     Normal value
-        /// </summary>
-        [Test]
-        public void ValueTestCase()
-        {
-            var target = new TreeNode<String>();
-            var expected = RandomValueEx.GetRandomString();
-            target.Value = expected;
-            Assert.AreEqual( expected, target.Value );
-        }
-
-        /// <summary>
-        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
-        /// </summary>
-        [Test]
-        public void ValueTestCase1()
-        {
-            var target = new TreeNode<TestTreeNodeItem>();
-            var expected = new TestTreeNodeItem();
-            Assert.IsNull( expected.Node );
-            target.Value = expected;
-            Assert.AreSame( expected, target.Value );
-            Assert.AreSame( target, expected.Node );
-        }
-
-        /// <summary>
-        ///     Value implementing <see cref="ITreeNodeAware{T}" />.
-        ///     Reset value to check if node gets set to null.
-        /// </summary>
-        [Test]
-        public void ValueTestCase2()
-        {
-            var target = new TreeNode<TestTreeNodeItem>();
-            var expected = new TestTreeNodeItem();
-            Assert.IsNull( expected.Node );
-            target.Value = expected;
-            Assert.AreSame( expected, target.Value );
-            Assert.AreSame( target, expected.Node );
-
-            var newValue = new TestTreeNodeItem();
-            target.Value = newValue;
-            Assert.AreSame( newValue, target.Value );
-            Assert.AreSame( target, newValue.Node );
-
-            //Check if node is null.
-            Assert.IsNull( expected.Node );
         }
     }
 }

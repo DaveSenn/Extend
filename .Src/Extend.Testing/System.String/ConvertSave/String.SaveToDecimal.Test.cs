@@ -13,93 +13,140 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToDecimalTestCase()
+        public void SaveToDecimalFormatProviderNullTest()
         {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal();
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
+                                                .SaveToDouble( NumberStyles.AllowExponent, null );
 
-            Assert.AreEqual( expected, actual );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SaveToDecimalTestCase1()
+        public void SaveToDecimalInvalidNumberStyleTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
+                                                .SaveToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void SaveToDecimalInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToDecimal();
+
+            actual
+                .Should()
+                .Be( default(Decimal) );
+        }
+
+        [Test]
+        public void SaveToDecimalInvalidValueWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = "InvalidValue".SaveToDecimal( expected );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToDecimalTestCase2()
+        public void SaveToDecimalNullTest()
+        {
+            String value = null;
+            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToDecimal( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToDecimalOverloadInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Decimal) );
+        }
+
+        [Test]
+        public void SaveToDecimalOverloadInvalidValueWithDefaultTest()
+        {
+            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToDecimalOverloadNullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Decimal) );
+        }
+
+        [Test]
+        public void SaveToDecimalOverloadTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToDecimalTestCase3()
-        {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
-            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToDecimalTestCase4()
-        {
-            var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal( Decimal.MaxValue );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToDecimalTestCase5()
-        {
-            var actual = "InvalidValue".SaveToDecimal();
-
-            Assert.AreEqual( default(Decimal), actual );
-        }
-
-        [Test]
-        public void SaveToDecimalTestCase6()
+        public void SaveToDecimalOverloadWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.1523 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToDecimalTestCase7()
+        public void SaveToDecimalTest()
         {
-            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var expected = new Decimal( RandomValueEx.GetRandomInt32() );
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToDecimal();
 
-            Assert.AreEqual( default(Decimal), actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToDecimalTestCaseNullCheck()
+        public void SaveToDecimalWithDefaultTest()
         {
-            Action test = () => StringEx.SaveToDecimal( null );
+            var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToDecimal( Decimal.MaxValue );
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void SaveToDecimalTestCaseNullCheck1()
-        {
-            Action test = () => "".SaveToDouble( NumberStyles.AllowExponent, null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

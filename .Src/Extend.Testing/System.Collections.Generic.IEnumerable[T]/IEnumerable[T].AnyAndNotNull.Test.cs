@@ -10,18 +10,21 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void AnyAndNotNullNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new List<String>().AnyAndNotNull( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void PathCombineTestCase()
+        public void PathCombineTest()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull() );
@@ -34,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PathCombineTestCase1()
+        public void PathCombineTest1()
         {
             List<String> list = null;
             Assert.IsFalse( list.AnyAndNotNull( x => true ) );

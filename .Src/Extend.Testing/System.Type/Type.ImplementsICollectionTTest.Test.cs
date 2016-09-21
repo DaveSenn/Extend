@@ -13,9 +13,20 @@ namespace Extend.Testing
     public partial class TypeExTest
     {
         [Test]
+        public void ImplementsICollectionTNullTest()
+        {
+            Type type = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => type.ImplementsICollectionT();
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
         public void ImplementsICollectionTTest()
         {
-            var actual = typeof (String).ImplementsICollectionT();
+            var actual = typeof(String).ImplementsICollectionT();
             actual.Should()
                   .BeFalse();
         }
@@ -23,7 +34,7 @@ namespace Extend.Testing
         [Test]
         public void ImplementsICollectionTTest1()
         {
-            var actual = typeof (List<String>).ImplementsICollectionT();
+            var actual = typeof(List<String>).ImplementsICollectionT();
             actual.Should()
                   .BeTrue();
         }
@@ -31,7 +42,7 @@ namespace Extend.Testing
         [Test]
         public void ImplementsICollectionTTest2()
         {
-            var actual = typeof (Dictionary<Int32, String>).ImplementsICollectionT();
+            var actual = typeof(Dictionary<Int32, String>).ImplementsICollectionT();
             actual.Should()
                   .BeTrue();
         }
@@ -39,7 +50,7 @@ namespace Extend.Testing
         [Test]
         public void ImplementsICollectionTTest3()
         {
-            var actual = typeof (Tuple<Int32>).ImplementsICollectionT();
+            var actual = typeof(Tuple<Int32>).ImplementsICollectionT();
             actual.Should()
                   .BeFalse();
         }

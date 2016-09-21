@@ -8,7 +8,6 @@ using System.Reflection;
 
 namespace Extend
 {
-    /// ///
     /// <summary>
     ///     Interface representing the attribute definitions of a property.
     /// </summary>

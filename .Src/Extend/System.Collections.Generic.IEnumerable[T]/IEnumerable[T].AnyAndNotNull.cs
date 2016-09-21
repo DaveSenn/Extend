@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,23 +18,27 @@ namespace Extend
         /// <summary>
         ///     Checks if the given IEnumerable is not null and contains some items.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
-        public static Boolean AnyAndNotNull<T>( this IEnumerable<T> enumerable ) => enumerable != null && enumerable.Any();
+        [Pure]
+        [PublicAPI]
+        public static Boolean AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+            => enumerable != null
+               && enumerable.Any();
 
         /// <summary>
         ///     Checks if the given IEnumerable is not null and contains some items
         ///     which mates the given predicate.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
         /// <exception cref="ArgumentNullException">The predicate can not be null.</exception>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns true if the IEnumerable is not null or empty, otherwise false.</returns>
-        public static Boolean AnyAndNotNull<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        [Pure]
+        [PublicAPI]
+        public static Boolean AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
             predicate.ThrowIfNull( nameof( predicate ) );
 

@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,7 +18,9 @@ namespace Extend
         /// <param name="str">The string to extract.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>The extracted parts of the input string.</returns>
-        public static String Extract( this String str, Func<Char, Boolean> predicate )
+        [Pure]
+        [PublicAPI]
+        public static String Extract( [NotNull] this String str, [NotNull] Func<Char, Boolean> predicate )
         {
             str.ThrowIfNull( nameof( str ) );
             predicate.ThrowIfNull( nameof( predicate ) );

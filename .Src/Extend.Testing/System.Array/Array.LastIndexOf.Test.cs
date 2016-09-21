@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void LastIndexOfTestCase()
+        public void LastIndexOfTest()
         {
             Array array = new[]
             {
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase1()
+        public void LastIndexOfTest1()
         {
             Array array = new[]
             {
@@ -38,16 +38,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase1NullCheck()
+        public void LastIndexOfTest1NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void LastIndexOfTestCase2()
+        public void LastIndexOfTest2()
         {
             Array array = new[]
             {
@@ -60,18 +62,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void LastIndexOfTestCase2NullCheck()
+        public void LastIndexOfTest2NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 0, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void LastIndexOfTestCaseNullCheck()
+        public void LastIndexOfTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2" );
 
             test.ShouldThrow<ArgumentNullException>();

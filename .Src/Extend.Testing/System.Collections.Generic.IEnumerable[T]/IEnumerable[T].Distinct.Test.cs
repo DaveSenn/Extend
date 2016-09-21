@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void DistinctTestCase()
+        public void DistinctTest()
         {
             var list = new List<KeyValuePair<String, String>>
             {
@@ -35,18 +36,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void DistinctTestCaseNullCheck()
+        public void DistinctTestNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.Distinct( x => x.Value );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void DistinctTestCaseNullCheck1()
+        public void DistinctTestNullCheck1()
         {
             Func<Object, Boolean> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().Distinct( func );
 
             test.ShouldThrow<ArgumentNullException>();

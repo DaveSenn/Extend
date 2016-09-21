@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericClearTestCase()
+        public void GenericClearTest()
         {
             var array = new[]
             {
@@ -26,8 +26,9 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericClearTestCase1()
+        public void GenericClearTest1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ArrayEx.Clear<String>( null, 0, 2 );
             test.ShouldThrow<ArgumentNullException>();
         }

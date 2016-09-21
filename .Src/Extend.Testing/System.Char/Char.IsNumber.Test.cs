@@ -1,6 +1,6 @@
 ﻿#region Usings
 
-using System.Linq;
+using FluentAssertions;
 using NUnit.Framework;
 
 #endregion
@@ -11,16 +11,27 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsNumberTestCase()
+        public void IsNumberTest()
         {
-            var range = 0.RangeTo( 9 );
-            foreach ( var c in range.Select( x => x.ToChar() ) )
-                Assert.IsTrue( c.IsNumber() );
+            '0'.IsNumber()
+               .Should()
+               .BeTrue();
+            '9'.IsNumber()
+               .Should()
+               .BeTrue();
 
-            Assert.IsFalse( 'a'.IsNumber() );
-            Assert.IsFalse( 'A'.IsNumber() );
-            Assert.IsFalse( 'z'.IsNumber() );
-            Assert.IsFalse( '-'.IsNumber() );
+            'a'.IsNumber()
+               .Should()
+               .BeFalse();
+            'A'.IsNumber()
+               .Should()
+               .BeFalse();
+            'z'.IsNumber()
+               .Should()
+               .BeFalse();
+            '-'.IsNumber()
+               .Should()
+               .BeFalse();
         }
     }
 }

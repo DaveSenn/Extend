@@ -12,17 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToBooleanTestCase()
-        {
-            var expected = RandomValueEx.GetRandomBoolean();
-            var actual = expected.ToString()
-                                 .SaveToBoolean();
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToBooleanTestCase1()
+        public void SaveToBooleanInvalidValueTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = "InvalidValue".SaveToBoolean( expected );
@@ -31,28 +21,39 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SaveToBooleanTestCase2()
+        public void SaveToBooleanNullTest()
         {
-            var actual = true.ToString()
-                             .SaveToBoolean( false );
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToBoolean();
 
-            Assert.AreEqual( true, actual );
+            actual
+                .Should()
+                .Be( default(Boolean) );
         }
 
         [Test]
-        public void SaveToBooleanTestCase3()
+        public void SaveToBooleanNullTest1()
         {
-            var actual = "InvalidValue".SaveToBoolean();
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToBoolean( !default(Boolean) );
 
-            Assert.AreEqual( default(Boolean), actual );
+            actual
+                .Should()
+                .Be( !default(Boolean) );
         }
 
         [Test]
-        public void SaveToBooleanTestCaseNullCheck()
+        public void SaveToBooleanTest()
         {
-            Action test = () => StringEx.SaveToBoolean( null );
+            var expected = RandomValueEx.GetRandomBoolean();
+            var actual = expected.ToString()
+                                 .SaveToBoolean();
 
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

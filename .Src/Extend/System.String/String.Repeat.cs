@@ -2,6 +2,7 @@
 
 using System;
 using System.Text;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -12,20 +13,23 @@ namespace Extend
         /// <summary>
         ///     Repeats the given string a specified number of times.
         /// </summary>
-        /// <param name="str">The input string.</param>
+        /// <param name="s">The input string.</param>
         /// <param name="repeatCount">The number of repeats.</param>
-        /// <returns>The repeated string.</returns>
-        public static String Repeat( this String str, Int32 repeatCount )
+        /// <returns>Returns the repeated string.</returns>
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String Repeat( this String s, Int32 repeatCount )
         {
-            if ( str.IsEmpty() )
+            if ( s.IsEmpty() )
                 return String.Empty;
 
-            if ( str.Length == 1 )
-                return new String( str[0], repeatCount );
+            if ( s.Length == 1 )
+                return new String( s[0], repeatCount );
 
-            var sb = new StringBuilder( repeatCount * str.Length );
+            var sb = new StringBuilder( repeatCount * s.Length );
             while ( repeatCount-- > 0 )
-                sb.Append( str );
+                sb.Append( s );
 
             return sb.ToString();
         }

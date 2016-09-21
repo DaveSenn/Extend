@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,8 +18,12 @@ namespace Extend
         /// <summary>
         ///     Gets a dotted path of property names representing the property expression. E.g. Parent.Child.Sibling.Name.
         /// </summary>
+        /// <exception cref="ArgumentNullException">expression can not be null.</exception>
         /// <param name="expression">The expression pointing to the member.</param>
-        public static String GetMemberPath<TDeclaringType, TMember>( this Expression<Func<TDeclaringType, TMember>> expression )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String GetMemberPath<TDeclaringType, TMember>( [NotNull] this Expression<Func<TDeclaringType, TMember>> expression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
@@ -26,6 +31,7 @@ namespace Extend
             Expression node = expression;
 
             while ( node != null )
+                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch ( node.NodeType )
                 {
                     case ExpressionType.Lambda:

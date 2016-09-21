@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,7 +16,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The string can not be null.</exception>
         /// <param name="str">The input string.</param>
         /// <returns>The given string without any letters.</returns>
-        public static String RemoveLetters( this String str )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String RemoveLetters( [NotNull] this String str )
         {
             str.ThrowIfNull( nameof( str ) );
 

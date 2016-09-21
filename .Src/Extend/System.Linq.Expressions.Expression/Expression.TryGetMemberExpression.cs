@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq.Expressions;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,11 +20,14 @@ namespace Extend
         /// <param name="expression">The expression.</param>
         /// <param name="memberExpression">The extracted <see cref="MemberExpression" />.</param>
         /// <returns>Returns true if a <see cref="MemberExpression" /> could be extracted; otherwise, false.</returns>
-        public static Boolean TryGetMemberExpression( this Expression expression, out MemberExpression memberExpression )
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryGetMemberExpression( [NotNull] this Expression expression, out MemberExpression memberExpression )
         {
             expression.ThrowIfNull( nameof( expression ) );
 
             while ( true )
+                // ReSharper disable once SwitchStatementMissingSomeCases
                 switch ( expression.NodeType )
                 {
                     case ExpressionType.MemberAccess:
@@ -33,14 +37,14 @@ namespace Extend
                     case ExpressionType.Convert:
                         // ReSharper disable once PossibleNullReferenceException
                         var operand = ( expression as UnaryExpression ).Operand;
-                        //Check if operand is member expression
+                        // Check if operand is member expression
                         if ( operand is MemberExpression )
                         {
                             memberExpression = operand as MemberExpression;
                             return true;
                         }
 
-                        //Operand type is not supported
+                        // Operand type is not supported
                         memberExpression = null;
                         return false;
 

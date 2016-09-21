@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,8 @@ namespace Extend
         /// </summary>
         /// <param name="day">The day.</param>
         /// <returns>Returns the next week day (can be <paramref name="day" /> if the given day is a week day).</returns>
+        [Pure]
+        [PublicAPI]
         public static DateTime NextWeekDay( this DateTime day )
         {
             while ( day.IsWeekendDay() )

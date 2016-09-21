@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class ISpecificationExTest
     {
         [Test]
-        public void AndTestCase()
+        public void AndTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.And( x => true );
@@ -24,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase1()
+        public void AndTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.And( x => false );
@@ -35,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase10()
+        public void AndTest10()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.And( x => true, "msgRight" );
@@ -50,7 +51,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase11()
+        public void AndTest11()
         {
             var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
             var target = left.And( x => false, "msgRight" );
@@ -65,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase2()
+        public void AndTest2()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.And( x => true );
@@ -75,7 +76,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase3()
+        public void AndTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.And( x => false );
@@ -85,7 +86,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase4()
+        public void AndTest4()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.And( x => true );
@@ -95,44 +96,44 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase5()
+        public void AndTest5()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var target = left.And( x => false );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.IsNull( actual[0] );
         }
 
         [Test]
-        public void AndTestCase6()
+        public void AndTest6()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.And( x => true );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.IsNull( actual[0] );
         }
 
         [Test]
-        public void AndTestCase7()
+        public void AndTest7()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var target = left.And( x => false );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count() );
+            Assert.AreEqual( 2, actual.Count );
             Assert.IsNull( actual[0] );
             Assert.IsNull( actual[1] );
         }
 
         [Test]
-        public void AndTestCase8()
+        public void AndTest8()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.And( x => true, "msgRight" );
@@ -142,30 +143,32 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase9()
+        public void AndTest9()
         {
             var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
             var target = left.And( x => false, "msgRight" );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.AreEqual( "msgRight", actual[0] );
         }
 
         [Test]
-        public void AndTestCaseNullCheck()
+        public void AndTestNullCheck()
         {
             ISpecification<String> left = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( x => true );
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void AndTestCaseNullCheck1()
+        public void AndTestNullCheck1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( expression );
             test.ShouldThrow<ArgumentNullException>();
         }

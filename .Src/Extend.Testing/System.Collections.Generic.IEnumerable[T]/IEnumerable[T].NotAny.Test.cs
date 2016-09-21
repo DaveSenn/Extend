@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void NotAnyTestCase()
+        public void NotAnyTest()
         {
             var list = new List<String>();
             Assert.IsTrue( list.NotAny() );
@@ -23,7 +24,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCase1()
+        public void NotAnyTest1()
         {
             var list = new List<String>();
             Assert.IsTrue( list.NotAny( x => true ) );
@@ -35,27 +36,33 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void NotAnyTestCase1NullCheck()
+        public void NotAnyTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.NotAny( x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void NotAnyTestCase1NullCheck1()
+        public void NotAnyTest1NullCheck1()
         {
             Func<Object, Boolean> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().NotAny( func );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void NotAnyTestCaseNullCheck()
+        public void NotAnyTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.NotAny();
 
             test.ShouldThrow<ArgumentNullException>();

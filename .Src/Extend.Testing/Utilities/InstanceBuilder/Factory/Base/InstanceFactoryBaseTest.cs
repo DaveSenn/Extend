@@ -12,41 +12,11 @@ namespace Extend.Testing
     [TestFixture]
     public class InstanceFactoryBaseTest
     {
-        private class InstanceFactoryBaseAccessor : InstanceFactoryBase
-        {
-            #region Ctor
-
-            /// <summary>
-            ///     Initializes a new instance of the <see cref="InstanceFactoryBase" /> class.
-            /// </summary>
-            /// <param name="name">The name of the factory.</param>
-            /// <param name="description">The description of the factory.</param>
-            public InstanceFactoryBaseAccessor( String name, String description )
-                : base( name, description )
-            {
-            }
-
-            #endregion
-
-            #region Overrides of InstanceFactoryBase
-
-            /// <summary>
-            ///     Gets the value for the given <see cref="IMemberInformation" />.
-            /// </summary>
-            /// <param name="memberInformation">Information about the member to create a value for.</param>
-            /// <returns>Returns the created value.</returns>
-            public override Object CreateValue( IMemberInformation memberInformation )
-            {
-                throw new NotImplementedException();
-            }
-
-            #endregion
-        }
-
         [Test]
         public void AddSelectionRuleArgumentNullExceptionTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -106,6 +76,37 @@ namespace Extend.Testing
             var actual = target.ToString();
             actual.Should()
                   .Be( expected );
+        }
+
+        private class InstanceFactoryBaseAccessor : InstanceFactoryBase
+        {
+            #region Ctor
+
+            /// <summary>
+            ///     Initializes a new instance of the <see cref="InstanceFactoryBase" /> class.
+            /// </summary>
+            /// <param name="name">The name of the factory.</param>
+            /// <param name="description">The description of the factory.</param>
+            public InstanceFactoryBaseAccessor( String name, String description )
+                : base( name, description )
+            {
+            }
+
+            #endregion
+
+            #region Overrides of InstanceFactoryBase
+
+            /// <summary>
+            ///     Gets the value for the given <see cref="IMemberInformation" />.
+            /// </summary>
+            /// <param name="memberInformation">Information about the member to create a value for.</param>
+            /// <returns>Returns the created value.</returns>
+            public override Object CreateValue( IMemberInformation memberInformation )
+            {
+                throw new NotImplementedException();
+            }
+
+            #endregion
         }
     }
 }

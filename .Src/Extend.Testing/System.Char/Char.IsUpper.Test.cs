@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsUpperTestCase()
+        public void IsUpperTest()
         {
             Assert.IsFalse( 'a'.IsUpper() );
             Assert.IsTrue( 'A'.IsUpper() );

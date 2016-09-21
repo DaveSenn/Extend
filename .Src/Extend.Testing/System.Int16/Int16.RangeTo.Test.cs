@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class Int16ExTest
     {
         [Test]
-        public void RangeToTestCase()
+        public void RangeToTest()
         {
             const Int16 start = 0;
             const Int16 end = 200;
@@ -33,7 +33,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RangeToTestCaseArgumentException()
+        public void RangeToTestArgumentException()
         {
             const Int16 start = 100;
 

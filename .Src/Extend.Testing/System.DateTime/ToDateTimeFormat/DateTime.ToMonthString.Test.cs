@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToMonthStringTestCase()
+        public void ToMonthStringTest()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM" );
@@ -21,16 +21,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToMonthStringTestCase1()
+        public void ToMonthStringTest1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM", DateTimeFormatInfo.CurrentInfo );
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = dateTime.ToMonthString( DateTimeFormatInfo.CurrentInfo );
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void ToMonthStringTestCase2()
+        public void ToMonthStringTest2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "MMMM", new CultureInfo( "de-CH" ) );

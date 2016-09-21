@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsLowerTestCase()
+        public void IsLowerTest()
         {
             Assert.IsTrue( 'a'.IsLower() );
             Assert.IsFalse( 'A'.IsLower() );

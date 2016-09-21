@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,6 +19,10 @@ namespace Extend
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable.</param>
         /// <returns>Returns the given IEnumerable if it's not null, otherwise an empty array of type T.</returns>
-        public static IEnumerable<T> EnsureNotNull<T>( this IEnumerable<T> enumerable ) => enumerable ?? new T[0];
+        [NotNull]
+        [PublicAPI]
+        [Pure]
+        public static IEnumerable<T> EnsureNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
+            => enumerable ?? new T[0];
     }
 }

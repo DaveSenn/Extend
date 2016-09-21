@@ -17,10 +17,10 @@ namespace Extend.Testing
             var expected = new MemberInformation();
             MemberInformation actual = null;
             var target = new ExpressionMemberSelectionRule( x =>
-            {
-                actual = x as MemberInformation;
-                return true;
-            },
+                                                            {
+                                                                actual = x as MemberInformation;
+                                                                return true;
+                                                            },
                                                             MemberSelectionMode.Include );
 
             var result = target.GetSelectionResult( expected );
@@ -48,6 +48,8 @@ namespace Extend.Testing
         public void CtorTestPredicateNullTest()
         {
             Func<IMemberInformation, Boolean> predicate = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include );
             test.ShouldThrow<ArgumentNullException>();
         }

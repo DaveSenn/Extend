@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void MinimumTestCase()
+        public void MinimumTest()
         {
             var actual = 1.Minimum( 2, 3, 4, 5, 6 );
             Assert.AreEqual( 1, actual );
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumTestCase1()
+        public void MinimumTest1()
         {
             var actual = 1.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
             Assert.AreEqual( "1", actual );
@@ -33,25 +33,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void MinimumTestCase1NullCheck()
+        public void MinimumTest1NullCheck()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => 10.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void MinimumTestCase1NullCheck1()
+        public void MinimumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Minimum( func, 1, 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void MinimumTestCaseNullCheck()
+        public void MinimumTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 10.Minimum( null );
 
             test.ShouldThrow<ArgumentNullException>();

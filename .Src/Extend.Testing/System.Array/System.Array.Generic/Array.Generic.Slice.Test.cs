@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void SliceTestCase()
+        public void SliceTest()
         {
             var sourceArray = new[]
             {
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase1()
+        public void SliceTest1()
         {
             var sourceArray = new[]
             {
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase1ArgumentOutOfRangeException()
+        public void SliceTest1ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
             {
@@ -64,7 +64,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase1ArgumentOutOfRangeException1()
+        public void SliceTest1ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
             {
@@ -81,29 +81,31 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase1NullCheck()
+        public void SliceTest1NullCheck()
         {
             Int32[] sourceArray = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, new Int32[2] );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SliceTestCase1NullCheck1()
+        public void SliceTest1NullCheck1()
         {
             var sourceArray = new[]
             {
                 1,
                 2
             };
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SliceTestCase2()
+        public void SliceTest2()
         {
             var sourceArray = new[]
             {
@@ -121,7 +123,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase2ArgumentOutOfRangeException()
+        public void SliceTest2ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
             {
@@ -136,7 +138,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase2ArgumentOutOfRangeException1()
+        public void SliceTest2ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
             {
@@ -151,7 +153,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase2ArgumentOutOfRangeException2()
+        public void SliceTest2ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
             {
@@ -166,17 +168,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase2NullCheck()
+        public void SliceTest2NullCheck()
         {
             Int32[] sourceArray = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SliceTestCase3()
+        public void SliceTest3()
         {
             var sourceArray = new[]
             {
@@ -196,7 +199,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3ArgumentOutOfRangeException()
+        public void SliceTest3ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
             {
@@ -212,7 +215,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3ArgumentOutOfRangeException1()
+        public void SliceTest3ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
             {
@@ -228,7 +231,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3ArgumentOutOfRangeException2()
+        public void SliceTest3ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
             {
@@ -244,7 +247,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3ArgumentOutOfRangeException3()
+        public void SliceTest3ArgumentOutOfRangeException3()
         {
             var sourceArray = new[]
             {
@@ -260,7 +263,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3ArgumentOutOfRangeException4()
+        public void SliceTest3ArgumentOutOfRangeException4()
         {
             var sourceArray = new[]
             {
@@ -276,16 +279,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCase3NullCheck()
+        public void SliceTest3NullCheck()
         {
             Int32[] sourceArray = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, new Int32[2] );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SliceTestCase3NullCheck1()
+        public void SliceTest3NullCheck1()
         {
             var sourceArray = new[]
             {
@@ -294,13 +298,14 @@ namespace Extend.Testing
                 3,
                 4
             };
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void SliceTestCaseArgumentOutOfRangeExceptio()
+        public void SliceTestArgumentOutOfRangeExceptio()
         {
             var sourceArray = new[]
             {
@@ -316,10 +321,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SliceTestCaseNullCheck()
+        public void SliceTestNullCheck()
         {
             Int32[] sourceArray = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2 );
 
             test.ShouldThrow<ArgumentNullException>();

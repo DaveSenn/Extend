@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq.Expressions;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,6 +18,8 @@ namespace Extend
         ///     Matches all members.
         /// </summary>
         /// <returns>Returns the modified options.</returns>
+        [PublicAPI]
+        [NotNull]
         IIncludeExcludeOptions<T> AllMembers();
 
         /// <summary>
@@ -25,7 +28,9 @@ namespace Extend
         /// <exception cref="ArgumentNullException">expression can no the null.</exception>
         /// <param name="expression">Expression representing the member path.</param>
         /// <returns>Returns the modified options.</returns>
-        IIncludeExcludeOptions<T> ByPath( Expression<Func<T, Object>> expression );
+        [PublicAPI]
+        [NotNull]
+        IIncludeExcludeOptions<T> ByPath( [NotNull] Expression<Func<T, Object>> expression );
 
         /// <summary>
         ///     Matches for members which have a matching path.
@@ -33,13 +38,17 @@ namespace Extend
         /// <exception cref="ArgumentNullException">path can no the null.</exception>
         /// <param name="path">The member path.</param>
         /// <returns>Returns the modified options.</returns>
-        IIncludeExcludeOptions<T> ByPath( String path );
+        [PublicAPI]
+        [NotNull]
+        IIncludeExcludeOptions<T> ByPath( [NotNull] String path );
 
         /// <summary>
         ///     Matches for members which are NOT of the given type.
         /// </summary>
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
+        [PublicAPI]
+        [NotNull]
         IIncludeExcludeOptions<T> IsNotTypeOf<TTarget>();
 
         /// <summary>
@@ -47,6 +56,8 @@ namespace Extend
         /// </summary>
         /// <typeparam name="TTarget">The type to match.</typeparam>
         /// <returns>Returns the modified options.</returns>
+        [PublicAPI]
+        [NotNull]
         IIncludeExcludeOptions<T> IsTypeOf<TTarget>();
     }
 }

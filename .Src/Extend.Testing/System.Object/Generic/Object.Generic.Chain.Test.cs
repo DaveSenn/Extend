@@ -13,30 +13,23 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ChainTestCase()
+        public void ChainTest()
         {
             var list = new List<String>();
-            var actual = list.Chain( x => x.Add( "Test1" ) );
-            list.Chain( x => x.Add( "Test2" ) );
-            list.Chain( x => x.Add( "Test3" ) );
+            var actual = list.Chain( x => x.Add( "Test1" ) )
+                             .Chain( x => x.Add( "Test2" ) )
+                             .Chain( x => x.Add( "Test3" ) );
 
             Assert.AreSame( list, actual );
             Assert.AreEqual( 3, list.Count );
         }
 
         [Test]
-        public void ChainTestCaseNullCheck()
+        public void ChainTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new List<String>().Chain( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ChainTestCaseNullCheck1()
-        {
-            List<String> list = null;
-            Action test = () => list.Chain( x => { } );
 
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,8 @@ namespace Extend
         ///     Ends the configuration and returns the configuration result.
         /// </summary>
         /// <returns>Returns the completely configured create instance options. </returns>
+        [PublicAPI]
+        [NotNull]
         ICreateInstanceOptionsComplete<T> Complete();
 
         /// <summary>
@@ -23,14 +26,18 @@ namespace Extend
         /// </summary>
         /// <param name="configurationFunc">Function used to configuration the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> Excluding( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> Excluding( [NotNull] Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
 
         /// <summary>
         ///     Excludes all members matching the given predicate.
         /// </summary>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, Boolean> predicate );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> Excluding( [NotNull] Func<IMemberInformation, Boolean> predicate );
 
         /// <summary>
         ///     Excludes the children of all members matching the given predicate.
@@ -38,7 +45,9 @@ namespace Extend
         /// </summary>
         /// <param name="predicate">The predicate used to find the members to exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, Boolean> predicate );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> ExcludingChildrenOf( [NotNull] Func<IMemberInformation, Boolean> predicate );
 
         /// <summary>
         ///     Excludes the children of all members matching the specified options.
@@ -46,35 +55,45 @@ namespace Extend
         /// </summary>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> ExcludingChildrenOf( [NotNull] Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
 
         /// <summary>
         ///     Includes all members matching the specified options.
         /// </summary>
         /// <param name="configurationFunc">Function used to configuration the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> Including( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> Including( [NotNull] Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
 
         /// <summary>
         ///     Includes all members matching the given predicate.
         /// </summary>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> Including( Func<IMemberInformation, Boolean> predicate );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> Including( [NotNull] Func<IMemberInformation, Boolean> predicate );
 
         /// <summary>
         ///     Includes the children of all members matching the given predicate.
         /// </summary>
         /// <param name="predicate">The predicate used to find the members to include.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, Boolean> predicate );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> IncludingChildrenOf( [NotNull] Func<IMemberInformation, Boolean> predicate );
 
         /// <summary>
         ///     Includes the children of all members matching the specified options.
         /// </summary>
         /// <param name="configurationFunc">Function used to configure the exclude.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        ICreateInstanceOptions<T> IncludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
+        [PublicAPI]
+        [NotNull]
+        ICreateInstanceOptions<T> IncludingChildrenOf( [NotNull] Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc );
 
         /// <summary>
         ///     Configures the number of items to create for collection members.
@@ -83,6 +102,8 @@ namespace Extend
         /// <param name="min">The minimum number of items to create.</param>
         /// <param name="max">The maximum number of items to create.</param>
         /// <returns>Returns the modified create instance options.</returns>
+        [PublicAPI]
+        [NotNull]
         ICreateInstanceOptions<T> PopulateCollectionItemCount( Int32? min, Int32? max );
 
         /// <summary>
@@ -93,13 +114,17 @@ namespace Extend
         ///     means use default configuration.
         /// </param>
         /// <returns>Returns the modified create instance options.</returns>
+        [PublicAPI]
+        [NotNull]
         ICreateInstanceOptions<T> PopulateCollectionMembers( Boolean? populateCollections );
 
         /// <summary>
         ///     Configures the name of anonymous items.
         /// </summary>
-        /// <param name="anonymousItemName">The name used for anonymouns items, or null to use global configuration.</param>
+        /// <param name="anonymousItemName">The name used for anonymous items, or null to use global configuration.</param>
         /// <returns>Returns the modified create instance options.</returns>
+        [PublicAPI]
+        [NotNull]
         ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName );
 
         /// <summary>
@@ -108,6 +133,8 @@ namespace Extend
         /// <exception cref="ArgumentNullException">factory can not be null.</exception>
         /// <param name="factory">The factory to add.</param>
         /// <returns>Returns the modified create instance options.</returns>
-        IFactoryOptionsInconsistent<T> WithFactory( Func<IMemberInformation, Object> factory );
+        [PublicAPI]
+        [NotNull]
+        IFactoryOptionsInconsistent<T> WithFactory( [NotNull] Func<IMemberInformation, Object> factory );
     }
 }

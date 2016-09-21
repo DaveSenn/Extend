@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void ToLowerTestCase()
+        public void ToLowerTest()
         {
             Assert.AreEqual( 'a', 'A'.ToLower() );
             Assert.AreEqual( 'a', 'a'.ToLower() );

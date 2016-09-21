@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,6 +15,10 @@ namespace Extend
         /// <param name="value">The input string.</param>
         /// <param name="alternativeValue">The alternative value.</param>
         /// <returns>The input or the alternative value.</returns>
-        public static String IfNotEmpty( this String value, String alternativeValue ) => !value.IsEmpty() ? value : alternativeValue;
+        [CanBeNull]
+        [Pure]
+        [PublicAPI]
+        public static String IfNotEmpty( [CanBeNull] this String value, [CanBeNull] String alternativeValue )
+            => !value.IsEmpty() ? value : alternativeValue;
     }
 }

@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,13 +13,20 @@ namespace Extend
         ///     Converts the given string to a decimal.
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
+        /// <exception cref="FormatException">The value is not in the correct format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number less than <see cref="Decimal.MinValue" /> or greater than
+        ///     <see cref="Decimal.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this String value )
+        [Pure]
+        [PublicAPI]
+        public static Decimal ToDecimal( [NotNull] this String value )
         {
             value.ThrowIfNull( nameof( value ) );
 
-            return Convert.ToDecimal( value, CultureInfo.InvariantCulture );
+            return Decimal.Parse( value );
         }
 
         /// <summary>
@@ -27,15 +34,22 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
+        /// <exception cref="FormatException">The value is not in the correct format.</exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number less than <see cref="Decimal.MinValue" /> or greater than
+        ///     <see cref="Decimal.MaxValue" />.
+        /// </exception>
         /// <param name="value">The string to convert.</param>
         /// <param name="formatProvider">The format provider.</param>
         /// <returns>The decimal.</returns>
-        public static Decimal ToDecimal( this String value, IFormatProvider formatProvider )
+        [Pure]
+        [PublicAPI]
+        public static Decimal ToDecimal( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
             value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return Convert.ToDecimal( value, formatProvider );
+            return Decimal.Parse( value, formatProvider );
         }
     }
 }

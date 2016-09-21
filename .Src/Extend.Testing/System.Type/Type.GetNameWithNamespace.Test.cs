@@ -12,18 +12,12 @@ namespace Extend.Testing
     [TestFixture]
     public partial class TypeExTest
     {
-        private class TestClass
-        {
-        }
-
-        private class TestClassGeneric<T>
-        {
-        }
-
         [Test]
         public void GetNameWithNamespaceArgumentNullExceptionTest()
         {
             Type type = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => type.GetNameWithNamespace();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -32,7 +26,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest()
         {
-            var actual = typeof (List<TestClassGeneric<String>>).GetNameWithNamespace();
+            var actual = typeof(List<TestClassGeneric<String>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[Extend.Testing.TypeExTest+TestClassGeneric`1[[System.String, mscorlib]], Extend.Testing]], mscorlib" );
@@ -45,7 +39,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest1()
         {
-            var actual = typeof (List<List<String>>).GetNameWithNamespace();
+            var actual = typeof(List<List<String>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib]], mscorlib" );
@@ -58,7 +52,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest2()
         {
-            var actual = typeof (List<List<TypeExTest>>).GetNameWithNamespace();
+            var actual = typeof(List<List<TypeExTest>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[Extend.Testing.TypeExTest, Extend.Testing]], mscorlib]], mscorlib" );
@@ -71,7 +65,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest3()
         {
-            var actual = typeof (List<List<TestClass>>).GetNameWithNamespace();
+            var actual = typeof(List<List<TestClass>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[System.Collections.Generic.List`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], mscorlib]], mscorlib" );
@@ -84,7 +78,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest4()
         {
-            var actual = typeof (List<List<TestClassGeneric<String>>>).GetNameWithNamespace();
+            var actual = typeof(List<List<TestClassGeneric<String>>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be(
@@ -98,7 +92,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericNestedTest5()
         {
-            var actual = typeof (List<List<Dictionary<String, TestClass>>>).GetNameWithNamespace();
+            var actual = typeof(List<List<Dictionary<String, TestClass>>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be(
@@ -112,7 +106,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericTest()
         {
-            var actual = typeof (List<String>).GetNameWithNamespace();
+            var actual = typeof(List<String>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[System.String, mscorlib]], mscorlib" );
@@ -125,7 +119,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericTest1()
         {
-            var actual = typeof (List<DateTime>).GetNameWithNamespace();
+            var actual = typeof(List<DateTime>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[System.DateTime, mscorlib]], mscorlib" );
@@ -138,7 +132,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericTest2()
         {
-            var actual = typeof (List<TypeExTest>).GetNameWithNamespace();
+            var actual = typeof(List<TypeExTest>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[Extend.Testing.TypeExTest, Extend.Testing]], mscorlib" );
@@ -151,7 +145,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceGenericTest3()
         {
-            var actual = typeof (List<TestClass>).GetNameWithNamespace();
+            var actual = typeof(List<TestClass>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Collections.Generic.List`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], mscorlib" );
@@ -164,7 +158,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespacePrivateClassGenericTest()
         {
-            var actual = typeof (TestClassGeneric<String>).GetNameWithNamespace();
+            var actual = typeof(TestClassGeneric<String>).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "Extend.Testing.TypeExTest+TestClassGeneric`1[[System.String, mscorlib]], Extend.Testing" );
@@ -177,7 +171,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespacePrivateClassTest()
         {
-            var actual = typeof (TestClass).GetNameWithNamespace();
+            var actual = typeof(TestClass).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "Extend.Testing.TypeExTest+TestClass, Extend.Testing" );
@@ -190,7 +184,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceSimpleTest()
         {
-            var actual = typeof (String).GetNameWithNamespace();
+            var actual = typeof(String).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.String, mscorlib" );
@@ -203,7 +197,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceSimpleTest1()
         {
-            var actual = typeof (Int32).GetNameWithNamespace();
+            var actual = typeof(Int32).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "System.Int32, mscorlib" );
@@ -216,7 +210,7 @@ namespace Extend.Testing
         [Test]
         public void GetNameWithNamespaceSimpleTest2()
         {
-            var actual = typeof (TypeExTest).GetNameWithNamespace();
+            var actual = typeof(TypeExTest).GetNameWithNamespace();
 
             actual.Should()
                   .Be( "Extend.Testing.TypeExTest, Extend.Testing" );
@@ -224,6 +218,15 @@ namespace Extend.Testing
             var actualType = Type.GetType( actual );
             actualType.Should()
                       .NotBeNull();
+        }
+
+        private class TestClass
+        {
+        }
+
+        // ReSharper disable once UnusedTypeParameter
+        private class TestClassGeneric<T>
+        {
         }
     }
 }

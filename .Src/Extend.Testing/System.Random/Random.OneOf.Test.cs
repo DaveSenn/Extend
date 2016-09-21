@@ -14,7 +14,7 @@ namespace Extend.Testing
     public partial class RandomExTest
     {
         [Test]
-        public void RandomOneTestCase()
+        public void RandomOneTest()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings()
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCase1()
+        public void RandomOneTest1()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings();
@@ -35,34 +35,42 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void RandomOneTestCase1NullCheck()
+        public void RandomOneTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RandomOneTestCase1NullCheck1()
+        public void RandomOneTest1NullCheck1()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Random().RandomOne<String>( list );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RandomOneTestCaseNullCheck()
+        public void RandomOneTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomEx.RandomOne( null, "", "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void RandomOneTestCaseNullCheck1()
+        public void RandomOneTestNullCheck1()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Random().RandomOne( array );
 
             test.ShouldThrow<ArgumentNullException>();

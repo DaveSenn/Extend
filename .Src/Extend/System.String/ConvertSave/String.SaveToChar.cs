@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -9,18 +10,17 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the given string to a char.
+        ///     Converts the value of the specified string to its equivalent Unicode character.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">A string that contains a single character.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The char.</returns>
-        public static Char SaveToChar( this String value, Char? defaultValue = null )
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Char SaveToChar( [CanBeNull] this String value, Char defaultValue = default(Char) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             Char outValue;
-            return value.TryParsChar( out outValue ) ? outValue : ( defaultValue ?? outValue );
+            return value.TryParsChar( out outValue ) ? outValue : defaultValue;
         }
     }
 }

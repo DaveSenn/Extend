@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -19,9 +20,12 @@ namespace Extend
         /// <param name="intersectingStartDate">The intersecting start date.</param>
         /// <param name="intersectingEndDate">The intersecting end date.</param>
         /// <returns>Returns true if the two date ranges intersects, otherwise false.</returns>
+        [Pure]
+        [PublicAPI]
         public static Boolean Intersects( this DateTime startDate,
                                           DateTime endDate,
                                           DateTime intersectingStartDate,
-                                          DateTime intersectingEndDate ) => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
+                                          DateTime intersectingEndDate )
+            => intersectingEndDate >= startDate && intersectingStartDate <= endDate;
     }
 }

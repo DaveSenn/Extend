@@ -15,6 +15,8 @@ namespace Extend.Testing
         public void ReplaceAtArgumentNullExceptionTest()
         {
             String value = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ReplaceAt( 4, '1' );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -23,6 +25,7 @@ namespace Extend.Testing
         [Test]
         public void ReplaceAtArgumentOutOfRangeExceptionTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".ReplaceAt( -1, '1' );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -31,6 +34,7 @@ namespace Extend.Testing
         [Test]
         public void ReplaceAtArgumentOutOfRangeExceptionTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".ReplaceAt( 4, '1' );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();

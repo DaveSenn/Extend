@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,28 +14,32 @@ namespace Extend
     public static partial class ActionEx
     {
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified type.
+        ///     Executes the given action inside of a try catch block and catches all exception expect the specified type.
         /// </summary>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="TException">The type of the exception to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
+        [PublicAPI]
         public static Boolean SafeExecuteExcept<TException>( this Action action )
-            where TException : Exception => action.SafeExecuteExcept( typeof (TException) );
+            where TException : Exception => action.SafeExecuteExcept( typeof(TException) );
 
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        ///     Executes the given action inside of a try catch block and catches all exception expect the specified types.
         /// </summary>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="TException1">The first exception type to throw.</typeparam>
         /// <typeparam name="TException2">The second exception type to throw.</typeparam>
         /// <param name="action">The action to execute.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept<TException1, TException2>( this Action action )
             where TException1 : Exception
-            where TException2 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2) );
+            where TException2 : Exception => action.SafeExecuteExcept( typeof(TException1), typeof(TException2) );
 
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        ///     Executes the given action inside of a try catch block and catches all exception expect the specified types.
         /// </summary>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="TException1">The first exception type to throw.</typeparam>
         /// <typeparam name="TException2">The second exception type to throw.</typeparam>
         /// <typeparam name="TException3">The third exception type to throw.</typeparam>
@@ -43,11 +48,12 @@ namespace Extend
         public static Boolean SafeExecuteExcept<TException1, TException2, TException3>( this Action action )
             where TException1 : Exception
             where TException2 : Exception
-            where TException3 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3) );
+            where TException3 : Exception => action.SafeExecuteExcept( typeof(TException1), typeof(TException2), typeof(TException3) );
 
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the spcified typea.
+        ///     Executes the given action inside of a try catch block and catches all exception expect the specified types.
         /// </summary>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
         /// <typeparam name="TException1">The first exception type to throw.</typeparam>
         /// <typeparam name="TException2">The second exception type to throw.</typeparam>
         /// <typeparam name="TException3">The third exception type to throw.</typeparam>
@@ -58,11 +64,13 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
-            where TException4 : Exception => action.SafeExecuteExcept( typeof (TException1), typeof (TException2), typeof (TException3), typeof (TException4) );
+            where TException4 : Exception => action.SafeExecuteExcept( typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4) );
 
         /// <summary>
-        ///     Executes the given action insed of a try catch block and catches all excepton expect the given ones.
+        ///     Executes the given action inside of a try catch block and catches all exception expect the given ones.
         /// </summary>
+        /// <exception cref="ArgumentNullException">action can not be null.</exception>
+        /// <exception cref="ArgumentNullException">exceptionsToThrow can not be null.</exception>
         /// <param name="action">The action to execute.</param>
         /// <param name="exceptionsToThrow">The exceptions to throw.</param>
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>

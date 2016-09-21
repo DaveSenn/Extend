@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToSingleItemArrayTestCase()
+        public void ToSingleItemArrayTest()
         {
             var item = RandomValueEx.GetRandomString();
 

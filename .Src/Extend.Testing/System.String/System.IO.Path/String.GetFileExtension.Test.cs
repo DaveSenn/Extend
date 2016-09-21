@@ -13,9 +13,9 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void GetFileExtensionTestCase()
+        public void GetFileExtensionTest()
         {
-            var fielName = "test.txt";
+            const String fielName = "test.txt";
             var expected = Path.GetExtension( fielName );
             var actual = fielName.GetFileExtension();
 
@@ -23,8 +23,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetFileExtensionTestCaseNullCheck()
+        public void GetFileExtensionTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetFileExtension( null );
 
             test.ShouldThrow<ArgumentNullException>();

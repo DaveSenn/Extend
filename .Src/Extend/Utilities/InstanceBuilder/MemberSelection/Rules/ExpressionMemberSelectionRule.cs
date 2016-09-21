@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -37,7 +38,10 @@ namespace Extend
         /// <param name="selectionMode">The selection mode to apply.</param>
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
-        public ExpressionMemberSelectionRule( Func<IMemberInformation, Boolean> predicate, MemberSelectionMode selectionMode, String name = null, String description = null )
+        public ExpressionMemberSelectionRule( [NotNull] Func<IMemberInformation, Boolean> predicate,
+                                              MemberSelectionMode selectionMode,
+                                              String name = null,
+                                              String description = null )
             : base( name, description )
         {
             predicate.ThrowIfNull( nameof( predicate ) );
@@ -76,7 +80,8 @@ namespace Extend
         /// <returns>
         ///     A string that represents the current object.
         /// </returns>
-        public override String ToString() => $"[{RuleName}] = ({_selectionMode} members matching predicate) ({RuleDescription}).";
+        public override String ToString()
+            => $"[{RuleName}] = ({_selectionMode} members matching predicate) ({RuleDescription}).";
 
         #endregion
     }

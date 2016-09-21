@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -27,7 +28,10 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static Object ChangeType( this String value, Type type ) => value.ChangeType( type, CultureInfo.InvariantCulture );
+        [Pure]
+        [PublicAPI]
+        public static Object ChangeType( [CanBeNull] this String value, [NotNull] Type type )
+            => value.ChangeType( type, CultureInfo.InvariantCulture );
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -49,7 +53,9 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static Object ChangeType( this String value, Type type, IFormatProvider formatProvider )
+        [Pure]
+        [PublicAPI]
+        public static Object ChangeType( [CanBeNull] this String value, [NotNull] Type type, [NotNull] IFormatProvider formatProvider )
         {
             type.ThrowIfNull( nameof( type ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
@@ -62,7 +68,6 @@ namespace Extend
         ///     the specified object.
         /// </summary>
         /// <typeparam name="T">The target type.</typeparam>
-        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <exception cref="OverflowException">value represents a number that is out of the range of conversionType.</exception>
         /// <exception cref="FormatException">value is not in a format recognized by conversionType.</exception>
         /// <exception cref="InvalidCastException">
@@ -75,7 +80,10 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static T ChangeType<T>( this String value ) => (T) Convert.ChangeType( value, typeof (T) );
+        [Pure]
+        [PublicAPI]
+        public static T ChangeType<T>( [CanBeNull] this String value )
+            => (T) Convert.ChangeType( value, typeof(T) );
 
         /// <summary>
         ///     Returns an object of the specified type and whose value is equivalent to
@@ -97,11 +105,13 @@ namespace Extend
         ///     null reference (Nothing in Visual Basic), if value is null and conversionType
         ///     is not a value type.
         /// </returns>
-        public static T ChangeType<T>( this String value, IFormatProvider formatProvider )
+        [Pure]
+        [PublicAPI]
+        public static T ChangeType<T>( [CanBeNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            return (T) Convert.ChangeType( value, typeof (T), formatProvider );
+            return (T) Convert.ChangeType( value, typeof(T), formatProvider );
         }
     }
 }

@@ -13,24 +13,51 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsCharTestCase()
+        public void TryParsCharInvalidValueTest()
         {
-            var expected = 'b';
-            var result = 'a';
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsChar( out result );
+            Char result;
+            var actual = "InvalidValue".TryParsChar( out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            result
+                .Should()
+                .Be( default(Char) );
+
+            actual
+                .Should()
+                .BeFalse();
         }
 
         [Test]
-        public void TryParsCharTestCaseNullCheck()
+        public void TryParsCharNullTest()
         {
-            var outValue = 's';
-            Action test = () => StringEx.TryParsChar( null, out outValue );
+            String value = null;
+            Char result;
+            var actual = value.TryParsChar( out result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            result
+                .Should()
+                .Be( default(Char) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsCharTest()
+        {
+            const Char expected = 'b';
+            Char result;
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .TryParsChar( out result );
+
+            result
+                .Should()
+                .Be( expected );
+
+            actual
+                .Should()
+                .BeTrue();
         }
     }
 }

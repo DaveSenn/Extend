@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -22,7 +23,10 @@ namespace Extend
         /// <param name="random">The random to use.</param>
         /// <param name="values">A list of values.</param>
         /// <returns>Returns randomly one of the given values.</returns>
-        public static T RandomOne<T>( this Random random, params T[] values )
+        [CanBeNull]
+        [Pure]
+        [PublicAPI]
+        public static T RandomOne<T>( [NotNull] this Random random, [NotNull] params T[] values )
         {
             random.ThrowIfNull( nameof( random ) );
             values.ThrowIfNull( nameof( values ) );
@@ -39,12 +43,16 @@ namespace Extend
         /// <param name="random">The random to use.</param>
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <returns>Returns randomly one of the given values.</returns>
-        public static T RandomOne<T>( this Random random, IEnumerable<T> values )
+        [CanBeNull]
+        [Pure]
+        [PublicAPI]
+        public static T RandomOne<T>( [NotNull] this Random random, [NotNull] IEnumerable<T> values )
         {
             random.ThrowIfNull( nameof( random ) );
             values.ThrowIfNull( nameof( values ) );
 
-            return values.ElementAt( random.Next( values.Count() ) );
+            var enumerable = values as T[] ?? values.ToArray();
+            return enumerable.ElementAt( random.Next( enumerable.Length ) );
         }
     }
 }

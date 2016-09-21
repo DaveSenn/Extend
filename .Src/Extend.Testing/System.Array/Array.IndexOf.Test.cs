@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void IndexOfTestCase()
+        public void IndexOfTest()
         {
             Array array = new[]
             {
@@ -26,7 +26,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IndexOfTestCase1()
+        public void IndexOfTest1()
         {
             Array array = new[]
             {
@@ -40,16 +40,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IndexOfTestCase1NullCheck()
+        public void IndexOfTest1NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test", 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IndexOfTestCase2()
+        public void IndexOfTest2()
         {
             Array array = new[]
             {
@@ -66,18 +68,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IndexOfTestCase2NullCheck()
+        public void IndexOfTest2NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test", 10, 12 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IndexOfTestCaseNullCheck()
+        public void IndexOfTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test" );
 
             test.ShouldThrow<ArgumentNullException>();

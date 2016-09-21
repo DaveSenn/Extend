@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ReferenceEqualsTestCase()
+        public void ReferenceEqualsTest()
         {
             var list = new List<String>();
             var list1 = new List<String>();
@@ -26,16 +26,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ReferenceEqualsTestCaseNullCheck()
+        public void ReferenceEqualsTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.RefEquals( null, "" );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ReferenceEqualsTestCaseNullCheck1()
+        public void ReferenceEqualsTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".RefEquals( null );
 
             test.ShouldThrow<ArgumentNullException>();

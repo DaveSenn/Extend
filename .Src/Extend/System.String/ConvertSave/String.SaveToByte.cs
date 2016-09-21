@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -10,42 +11,60 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the given string to a byte.
+        ///     Tries to convert the string representation of a number to its <see cref="Byte" />
+        ///     equivalent.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">
+        ///     A string that contains a number to convert. The string is interpreted using
+        ///     the <see cref="NumberStyles.Integer" /> numberStyle.
+        ///     The string to pars.
+        /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The byte.</returns>
-        public static Byte SaveToByte( this String value, Byte? defaultValue = null )
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Byte SaveToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             Byte outValue;
-            return value.TryParsByte( out outValue ) ? outValue : ( defaultValue ?? outValue );
+            return value.TryParsByte( out outValue ) ? outValue : defaultValue;
         }
 
         /// <summary>
-        ///     Converts the given string to a byte.
+        ///     Tries to convert the string representation of a number to its <see cref="Byte" />
+        ///     equivalent.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The format formatProvider can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
-        /// <param name="numberStyle">The number format.</param>
-        /// <param name="formatProvider">The format formatProvider.</param>
+        /// <exception cref="ArgumentNullException">formatProvider can not be null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     numberStyle is not a <see cref="NumberStyles" /> value. -or-style is not a
+        ///     combination of <see cref="NumberStyles.AllowHexSpecifier" /> and
+        ///     <see cref="NumberStyles.HexNumber" /> values.
+        /// </exception>
+        /// <param name="value">
+        ///     A string that contains a number to convert. The string is interpreted using
+        ///     the <see cref="NumberStyles.Integer" /> numberStyle.
+        ///     The string to pars.
+        /// </param>
+        /// <param name="numberStyle">
+        ///     A bitwise combination of enumeration values that indicates the numberStyle elements
+        ///     that can be present in s. A typical value to specify is <see cref="NumberStyles.Integer" />.
+        /// </param>
+        /// <param name="formatProvider">
+        ///     An object that supplies culture-specific formatting information about s.
+        ///     If formatProvider is null, the thread current culture is used.
+        /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The byte.</returns>
-        public static Byte SaveToByte( this String value,
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Byte SaveToByte( [CanBeNull] this String value,
                                        NumberStyles numberStyle,
-                                       IFormatProvider formatProvider,
-                                       Byte? defaultValue = null )
+                                       [NotNull] IFormatProvider formatProvider,
+                                       Byte defaultValue = default(Byte) )
         {
-            value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             Byte outValue;
-            return value.TryParsByte( numberStyle, formatProvider, out outValue )
-                ? outValue
-                : ( defaultValue ?? outValue );
+            return value.TryParsByte( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void ToShortTimeStringTestCase()
+        public void ToShortTimeStringTest()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "t" );
@@ -21,16 +21,17 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToShortTimeStringTestCase1()
+        public void ToShortTimeStringTest1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "t", DateTimeFormatInfo.CurrentInfo );
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = dateTime.ToShortTimeString( DateTimeFormatInfo.CurrentInfo );
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void ToShortTimeStringTestCase2()
+        public void ToShortTimeStringTest2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "t", CultureInfo.InvariantCulture );

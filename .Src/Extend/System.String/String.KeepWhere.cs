@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,7 +18,10 @@ namespace Extend
         /// <param name="str">The input string.</param>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns a string which only contains the characters matching the given predicate.</returns>
-        public static String KeepWhere( this String str, Func<Char, Boolean> predicate )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static String KeepWhere( [NotNull] this String str, [NotNull] Func<Char, Boolean> predicate )
         {
             str.ThrowIfNull( nameof( str ) );
             predicate.ThrowIfNull( nameof( predicate ) );

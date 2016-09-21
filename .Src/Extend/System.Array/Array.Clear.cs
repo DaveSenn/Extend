@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -14,11 +15,12 @@ namespace Extend
         /// <summary>
         ///     Sets a range of elements in the array to zero, to false, or to null, depending on the element type.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The array can not be null.</exception>
+        /// <exception cref="ArgumentNullException">array can not be null.</exception>
         /// <param name="array">The array whose elements need to be cleared.</param>
         /// <param name="index">The starting index of the range of elements to clear.</param>
         /// <param name="length">The number of elements to clear.</param>
-        public static void Clear( this Array array, Int32 index, Int32 length )
+        [PublicAPI]
+        public static void Clear( [NotNull] this Array array, Int32 index, Int32 length )
         {
             array.ThrowIfNull( nameof( array ) );
 

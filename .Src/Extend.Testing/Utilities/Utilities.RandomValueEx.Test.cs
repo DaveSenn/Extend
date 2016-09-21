@@ -12,7 +12,7 @@ namespace Extend.Testing
     public class RandomValueExTest
     {
         [Test]
-        public void GetRandomBooleanTestCase() => RandomValueEx.GetRandomBoolean();
+        public void GetRandomBooleanTest() => RandomValueEx.GetRandomBoolean();
 
         [Test]
         public void GetRandomByteTest()
@@ -30,7 +30,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase()
+        public void GetRandomDateTimeTest()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
 
@@ -44,7 +44,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase2()
+        public void GetRandomDateTimeTest2()
         {
             for ( var i = 0; i < 1000; i++ )
             {
@@ -54,7 +54,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase3()
+        public void GetRandomDateTimeTest3()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
             for ( var i = 0; i < 10000; i++ )
@@ -65,7 +65,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomDateTimeTestCase4()
+        public void GetRandomDateTimeTest4()
         {
             var max = DateTime.Now.AddDays( 100 );
             for ( var i = 0; i < 10000; i++ )
@@ -93,10 +93,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomEnumTestCase() => RandomValueEx.GetRandomEnum<DayOfWeek>();
+        public void GetRandomEnumINvalidTypeTest()
+        {
+            Action test = () => RandomValueEx.GetRandomEnum<Int32>();
+
+            test.ShouldThrow<ArgumentException>();
+        }
 
         [Test]
-        public void GetRandomInt16TestCase()
+        public void GetRandomEnumTest() => RandomValueEx.GetRandomEnum<DayOfWeek>();
+
+        [Test]
+        public void GetRandomInt16Test()
         {
             var actual = RandomValueEx.GetRandomInt16( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -104,7 +112,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomInt16TestCaseArgumentOutOfRangeException()
+        public void GetRandomInt16TestArgumentOutOfRangeException()
         {
             Action test = () => RandomValueEx.GetRandomInt16( 30, 20 );
 
@@ -112,7 +120,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomInt32TestCase()
+        public void GetRandomInt32Test()
         {
             var actual = RandomValueEx.GetRandomInt32( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -120,7 +128,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomInt32TestCaseArgumentOutOfRangeException()
+        public void GetRandomInt32TestArgumentOutOfRangeException()
         {
             Action test = () => RandomValueEx.GetRandomInt32( 30, 20 );
 
@@ -128,7 +136,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomInt64TestCase()
+        public void GetRandomInt64Test()
         {
             var actual = RandomValueEx.GetRandomInt64( 10, 20 );
             Assert.IsTrue( actual >= 10, "To small" );
@@ -136,7 +144,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomInt64TestCaseArgumentOutOfRangeException()
+        public void GetRandomInt64TestArgumentOutOfRangeException()
         {
             Action test = () => RandomValueEx.GetRandomInt64( 20, 10 );
 
@@ -144,7 +152,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomStringsTestCase()
+        public void GetRandomStringsTest()
         {
             var actual = RandomValueEx.GetRandomStrings( 100 );
             Assert.AreEqual( 100, actual.Count );
@@ -152,7 +160,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetRandomStringTestCase()
+        public void GetRandomStringTest()
         {
             var actual = RandomValueEx.GetRandomString();
             Assert.IsTrue( actual.Length > 0 );

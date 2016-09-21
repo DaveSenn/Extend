@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,9 @@ namespace Extend
         /// <param name="append">The string to append.</param>
         /// <param name="newLine">The new line string to use.</param>
         /// <returns>Returns the concatenated string.</returns>
-        public static String AppendWithNewLineIfNotEmpty( this String target, String append, String newLine = null )
+        [Pure]
+        [PublicAPI]
+        public static String AppendWithNewLineIfNotEmpty( [CanBeNull] this String target, [CanBeNull] String append, String newLine = null )
         {
             newLine = newLine ?? Environment.NewLine;
 

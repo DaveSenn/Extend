@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -23,7 +24,9 @@ namespace Extend
         ///     Returns true if the value is smaller or equals to the given compare value,
         ///     otherwise false.
         /// </returns>
-        public static Boolean SmallerOrEquals<T>( this T value, T compareValue ) where T : IComparable<T>
+        [Pure]
+        [PublicAPI]
+        public static Boolean SmallerOrEquals<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
         {
             value.ThrowIfNull( nameof( value ) );
             compareValue.ThrowIfNull( nameof( compareValue ) );

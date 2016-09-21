@@ -1,7 +1,7 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -9,60 +9,6 @@ namespace Extend
 {
     public static partial class StringEx
     {
-        /// <summary>
-        ///     Replaces one or more format items in a specified string with the string representation of a specified object.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The format string can not be null.</exception>
-        /// <param name="format">The <see cref="String" /> containing the format items.</param>
-        /// <param name="arg0">The first argument.</param>
-        /// <returns>
-        ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
-        ///     representation of the corresponding argument.
-        /// </returns>
-        public static String F( this String format, Object arg0 )
-        {
-            format.ThrowIfNull( nameof( format ) );
-
-            return String.Format( format, arg0 );
-        }
-
-        /// <summary>
-        ///     Replaces one or more format items in a specified string with the string representation of a specified object.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The format string can not be null.</exception>
-        /// <param name="format">The <see cref="String" /> containing the format items.</param>
-        /// <param name="arg0">The first argument.</param>
-        /// <param name="arg1">The second argument.</param>
-        /// <returns>
-        ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
-        ///     representation of the corresponding argument.
-        /// </returns>
-        public static String F( this String format, Object arg0, Object arg1 )
-        {
-            format.ThrowIfNull( nameof( format ) );
-
-            return String.Format( format, arg0, arg1 );
-        }
-
-        /// <summary>
-        ///     Replaces one or more format items in a specified string with the string representation of a specified object.
-        /// </summary>
-        /// <exception cref="ArgumentNullException">The format string can not be null.</exception>
-        /// <param name="format">The <see cref="String" /> containing the format items.</param>
-        /// <param name="arg0">The first argument.</param>
-        /// <param name="arg1">The second argument.</param>
-        /// <param name="arg2">The third argument.</param>
-        /// <returns>
-        ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
-        ///     representation of the corresponding argument.
-        /// </returns>
-        public static String F( this String format, Object arg0, Object arg1, Object arg2 )
-        {
-            format.ThrowIfNull( nameof( format ) );
-
-            return String.Format( format, arg0, arg1, arg2 );
-        }
-
         /// <summary>
         ///     Replaces the format item in a specified <see cref="String" /> with the <see cref="String" /> representation of a
         ///     corresponding <see cref="Object" /> in a specified array.
@@ -79,12 +25,16 @@ namespace Extend
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        public static String F( this String format, params Object[] args )
+        [StringFormatMethod( "format" )]
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String F( [NotNull] this String format, [NotNull] params Object[] args )
         {
             format.ThrowIfNull( nameof( format ) );
             args.ThrowIfNull( nameof( args ) );
 
-            return String.Format( CultureInfo.InvariantCulture, format, args );
+            return String.Format( format, args );
         }
 
         /// <summary>
@@ -104,7 +54,11 @@ namespace Extend
         ///     A copy of format in which the format items have been replaced by the <see cref="String"></see>
         ///     representation of the corresponding objects in <paramref name="args" />.
         /// </returns>
-        public static String F( this String format, IFormatProvider formatProvider, params Object[] args )
+        [StringFormatMethod( "format" )]
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String F( [NotNull] this String format, [NotNull] IFormatProvider formatProvider, [NotNull] params Object[] args )
         {
             format.ThrowIfNull( nameof( format ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );

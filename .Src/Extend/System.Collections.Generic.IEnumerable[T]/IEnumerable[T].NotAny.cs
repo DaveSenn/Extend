@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,9 @@ namespace Extend
         /// <param name="enumerable">The IEnumerable to check.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        public static Boolean NotAny<T>( this IEnumerable<T> enumerable )
+        [Pure]
+        [PublicAPI]
+        public static Boolean NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
 
@@ -37,7 +40,9 @@ namespace Extend
         /// <param name="predicate">The predicate.</param>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <returns>Returns true if the IEnumerable doesn't contain any items, otherwise false.</returns>
-        public static Boolean NotAny<T>( this IEnumerable<T> enumerable, Func<T, Boolean> predicate )
+        [Pure]
+        [PublicAPI]
+        public static Boolean NotAny<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
             predicate.ThrowIfNull( nameof( predicate ) );

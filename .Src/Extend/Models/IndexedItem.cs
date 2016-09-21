@@ -27,6 +27,8 @@ namespace Extend
 
         #endregion
 
+        #region Implementation of IIndexedItem<T>
+
         /// <summary>
         ///     Gets the index of the item.
         /// </summary>
@@ -38,5 +40,7 @@ namespace Extend
         /// </summary>
         /// <value>The item.</value>
         public T Item { get; }
+
+        #endregion
     }
 }

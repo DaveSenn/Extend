@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The date time to increase.</param>
         /// <returns>Tomorrow date at same time.</returns>
-        public static DateTime Tomorrow( this DateTime dateTime ) => dateTime.AddDays( 1 );
+        [Pure]
+        [PublicAPI]
+        public static DateTime Tomorrow( this DateTime dateTime )
+            => dateTime.AddDays( 1 );
     }
 }

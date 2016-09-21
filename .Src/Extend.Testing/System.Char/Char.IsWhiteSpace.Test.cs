@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void IsWhiteSpaceTestCase()
+        public void IsWhiteSpaceTest()
         {
             Assert.IsFalse( 'a'.IsWhiteSpace() );
             Assert.IsFalse( 'A'.IsWhiteSpace() );

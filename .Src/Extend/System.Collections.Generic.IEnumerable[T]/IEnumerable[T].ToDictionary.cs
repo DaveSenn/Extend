@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -25,8 +26,11 @@ namespace Extend
         ///     Returns a dictionary of groupings such that the key of the dictionary is TKey type and the value is List of
         ///     TValue type.
         /// </returns>
+        [Pure]
+        [PublicAPI]
+        [NotNull]
         public static Dictionary<TKey, List<TValue>> ToDictionary<TKey, TValue>(
-            this IEnumerable<IGrouping<TKey, TValue>> groupings )
+            [NotNull] [ItemNotNull] this IEnumerable<IGrouping<TKey, TValue>> groupings )
         {
             groupings.ThrowIfNull( nameof( groupings ) );
 

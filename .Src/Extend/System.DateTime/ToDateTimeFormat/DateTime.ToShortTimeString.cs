@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,6 +18,9 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <returns>The given value converted to a short time string.</returns>
+        [PublicAPI]
+        [Pure]
+        [NotNull]
         public static String ToShortTimeString( this DateTime dateTime ) => dateTime.ToString( "t", DateTimeFormatInfo.CurrentInfo );
 
         /// <summary>
@@ -26,7 +30,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="formatInfo">The date time format info.</param>
         /// <returns>The given value converted to a short time string.</returns>
-        public static String ToShortTimeString( this DateTime dateTime, DateTimeFormatInfo formatInfo )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToShortTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
         {
             formatInfo.ThrowIfNull( nameof( formatInfo ) );
 
@@ -40,7 +47,10 @@ namespace Extend
         /// <param name="dateTime">The DateTime value to convert.</param>
         /// <param name="culture">The culture.</param>
         /// <returns>The given value converted to a short time string.</returns>
-        public static String ToShortTimeString( this DateTime dateTime, CultureInfo culture )
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String ToShortTimeString( this DateTime dateTime, [NotNull] CultureInfo culture )
         {
             culture.ThrowIfNull( nameof( culture ) );
 

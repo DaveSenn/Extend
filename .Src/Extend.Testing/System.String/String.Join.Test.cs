@@ -13,30 +13,32 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void JoinTestCase()
+        public void JoinTest()
         {
             var actual = ",".Join( new[]
-            {
-                "1",
-                "2"
-            } );
+                                   {
+                                       "1",
+                                       "2"
+                                   } );
             Assert.AreEqual( "1,2", actual );
         }
 
         [Test]
-        public void JoinTestCase1()
+        public void JoinTest1()
         {
             var actual = ",".Join( new Object[]
-            {
-                "1",
-                "2"
-            } );
+                                   {
+                                       "1",
+                                       "2"
+                                   } );
             Assert.AreEqual( "1,2", actual );
         }
 
         [Test]
-        public void JoinTestCase1NullCheck()
+        public void JoinTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -46,24 +48,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void JoinTestCase1NullCheck1()
+        public void JoinTest1NullCheck1()
         {
             Object[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( array );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void JoinTestCase2()
+        public void JoinTest2()
         {
             var actual = ",".Join( new List<String> { "1", "2" } );
             Assert.AreEqual( "1,2", actual );
         }
 
         [Test]
-        public void JoinTestCase2NullCheck()
+        public void JoinTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -73,24 +79,28 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void JoinTestCase2NullCheck1()
+        public void JoinTest2NullCheck1()
         {
             List<String> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( list );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void JoinTestCase3()
+        public void JoinTest3()
         {
             var actual = ",".Join( new List<Object> { "1", "2" } );
             Assert.AreEqual( "1,2", actual );
         }
 
         [Test]
-        public void JoinTestCase3NullCheck()
+        public void JoinTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new Object[]
                                                {
@@ -100,16 +110,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void JoinTestCase3NullCheck1()
+        public void JoinTest3NullCheck1()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( list );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void JoinTestCase4()
+        public void JoinTest4()
         {
             var array = new[]
             {
@@ -123,7 +135,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void JoinTestCase4NullCheck()
+        public void JoinTest4NullCheck()
         {
             String seperator = null;
             var array = new[]
@@ -133,24 +145,30 @@ namespace Extend.Testing
                 "3"
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => seperator.Join( array, 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void JoinTestCase4NullCheck1()
+        public void JoinTest4NullCheck1()
         {
             String[] array = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ",".Join( array, 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void JoinTestCaseNullCheck()
+        public void JoinTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.Join( null,
                                                new String[]
                                                {
@@ -160,9 +178,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void JoinTestCaseNullCheck1()
+        public void JoinTestNullCheck1()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Join( array );
 
             test.ShouldThrow<ArgumentNullException>();

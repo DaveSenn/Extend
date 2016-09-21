@@ -12,39 +12,52 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsGuidTestCase()
+        public void TryParsGuidInvalidValueTest()
+        {
+            Guid result;
+            var actual = "InvalidValue".TryParsGuid( out result );
+
+            result
+                .Should()
+                .Be( default(Guid) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsGuidNullTest()
+        {
+            Guid result;
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsGuid( out result );
+
+            result
+                .Should()
+                .Be( default(Guid) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsGuidTest()
         {
             var expected = Guid.NewGuid();
             Guid result;
             var actual = expected.ToString()
                                  .TryParsGuid( out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
-        }
+            result
+                .Should()
+                .Be( expected );
 
-        [Test]
-        public void TryParsGuidTestCase1()
-        {
-            var expected = Guid.NewGuid();
-            const String input = "NotAGuid";
-            Guid result;
-            var actual = input
-                .TryParsGuid( out result );
-
-            Assert.AreEqual( Guid.Empty, result );
-            Assert.IsFalse( actual );
-        }
-
-        [Test]
-        public void TryParsGuidTestCaseNullCheck()
-        {
-            const String input = null;
-            Guid result;
-            Action test = () => input
-                .TryParsGuid( out result );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeTrue();
         }
     }
 }

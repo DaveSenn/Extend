@@ -12,33 +12,35 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void CoalesceOrDefault1TestCase()
+        public void CoalesceOrDefault1Test()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
-            var actual = expected.CoalesceOrDefault( s, null, null, "expected", "Test2" );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => expected.CoalesceOrDefault( s, null, null, "expected", "Test2" );
 
-            Assert.AreEqual( expected, actual );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase()
+        public void CoalesceOrDefaultTest()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
-            var actual = ObjectEx.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => ObjectEx.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
 
-            Assert.AreEqual( expected, actual );
-
-            actual = ObjectEx.CoalesceOrDefault( null, expected, null, null );
-            Assert.AreEqual( expected, actual );
+            test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase2()
+        public void CoalesceOrDefaultTest2()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = ObjectEx.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
 
             Assert.AreEqual( expected, actual );
@@ -48,30 +50,37 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase2NullCheck()
+        public void CoalesceOrDefaultTest2NullCheck()
         {
             String s = null;
             Func<String> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.CoalesceOrDefault( func, null, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCase3()
+        public void CoalesceOrDefaultTest3()
         {
             var expected = RandomValueEx.GetRandomString();
             String s = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = expected.CoalesceOrDefault( () => s, null, null, "Test2" );
 
             Assert.AreEqual( expected, actual );
         }
 
         [Test]
-        public void CoalesceOrDefaultTestCaseNullCheck()
+        public void CoalesceOrDefaultTestNullCheck()
         {
             String s = null;
             String s1 = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.CoalesceOrDefault( s1, null, null );
 
             test.ShouldThrow<ArgumentNullException>();

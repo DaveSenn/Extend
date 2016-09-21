@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -29,25 +30,27 @@ namespace Extend
         ///     Returns an <see cref="IDictionary{TKey,TValue}" /> that contains the concatenated elements of the given
         ///     sequences.
         /// </returns>
+        [PublicAPI]
+        [NotNull]
         public static IDictionary<TValue, TKey> ConcatAllToDictionarySafe<TValue, TKey>(
-            this IDictionary<TValue, TKey> dictionary,
-            params IDictionary<TValue, TKey>[] dictionaries )
+            [NotNull] this IDictionary<TValue, TKey> dictionary,
+            [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             dictionaries.ThrowIfNull( nameof( dictionaries ) );
 
             var result = dictionary;
             dictionaries.ForEach( x =>
-            {
-                if ( x == null )
-                    return;
+                                  {
+                                      if ( x == null )
+                                          return;
 
-                x.ForEach( y =>
-                {
-                    if ( !result.ContainsKey( y.Key ) )
-                        result.Add( y.Key, y.Value );
-                } );
-            } );
+                                      x.ForEach( y =>
+                                                 {
+                                                     if ( !result.ContainsKey( y.Key ) )
+                                                         result.Add( y.Key, y.Value );
+                                                 } );
+                                  } );
 
             return result;
         }

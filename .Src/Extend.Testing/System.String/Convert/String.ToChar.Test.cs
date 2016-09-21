@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -13,47 +12,40 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToCharTestCase()
+        public void ToCharInvalidLengthTest()
         {
-            var value = 'a';
-            var actual = value.ToString()
-                              .ToChar();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "aa".ToChar();
 
-            Assert.AreEqual( value, actual );
+            test.ShouldThrow<FormatException>();
         }
 
         [Test]
-        public void ToCharTestCase1()
+        public void ToCharInvalidLengthTest1()
         {
-            var value = 'a';
-            var actual = value.ToString( CultureInfo.InvariantCulture )
-                              .ToChar( CultureInfo.InvariantCulture );
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => String.Empty.ToChar();
 
-            Assert.AreEqual( value, actual );
+            test.ShouldThrow<FormatException>();
         }
 
         [Test]
-        public void ToCharTestCase1NullCheck()
+        public void ToCharNullTest()
         {
-            Action test = () => StringEx.ToChar( null, CultureInfo.InvariantCulture );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToCharTestCase1NullCheck1()
-        {
-            Action test = () => "".ToChar( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToCharTestCaseNullCheck()
-        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringEx.ToChar( null );
 
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToCharTest()
+        {
+            var actual = "a".ToChar();
+            actual
+                .Should()
+                .Be( 'a' );
         }
     }
 }

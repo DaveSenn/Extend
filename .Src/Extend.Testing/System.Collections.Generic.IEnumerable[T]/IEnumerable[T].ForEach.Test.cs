@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ForEachTestCase()
+        public void ForEachTest()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -26,35 +27,40 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase1()
+        public void ForEachTest1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
 
             test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
-        public void ForEachTestCase1NullCheck()
+        public void ForEachTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => { } );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ForEachTestCase1NullCheck1()
+        public void ForEachTest1NullCheck1()
         {
             Action<Object, Int32> action = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ForEach( action );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ForEachTestCase2()
+        public void ForEachTest2()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
@@ -66,17 +72,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCase3()
+        public void ForEachTest3()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
 
             test.ShouldThrow<InvalidOperationException>();
         }
 
         [Test]
-        public void ForEachTestCase4()
+        public void ForEachTest4()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var total = 0;
@@ -87,18 +94,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ForEachTestCaseNullCheck()
+        public void ForEachTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ForEachTestCaseNullCheck1()
+        public void ForEachTestNullCheck1()
         {
             Action<Object> action = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );
 
             test.ShouldThrow<ArgumentNullException>();

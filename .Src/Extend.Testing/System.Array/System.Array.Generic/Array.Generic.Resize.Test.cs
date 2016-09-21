@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericResizeTestCase()
+        public void GenericResizeTest()
         {
             var array = new[]
             {
@@ -24,9 +24,10 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericResizeTestCaseNullCheck()
+        public void GenericResizeTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Resize( 10 );
 
             test.ShouldThrow<ArgumentNullException>();

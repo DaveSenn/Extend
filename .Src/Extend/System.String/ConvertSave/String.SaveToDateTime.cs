@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -10,42 +11,52 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the given string to a date time value.
+        ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
+        /// <param name="value">A <see cref="String" /> containing a date and time to convert.</param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value, DateTime? defaultValue = null )
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static DateTime SaveToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             DateTime outValue;
-            return value.TryParsDateTime( out outValue ) ? outValue : ( defaultValue ?? outValue );
+            return value.TryParsDateTime( out outValue ) ? outValue : defaultValue;
         }
 
         /// <summary>
-        ///     Converts the given string to a date time value.
+        ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent using the
+        ///     specified culture-specific format information and formatting style.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
         /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
-        /// <param name="formatProvider">The format provider.</param>
-        /// <param name="dateTimeStyle">The date time style.</param>
+        /// <exception cref="ArgumentException">
+        ///     dateTimeStyle is not a valid <see cref="DateTimeStyles" /> value.-or-styles contains
+        ///     an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
+        ///     <see cref="DateTimeStyles.AssumeLocal" /> and <see cref="DateTimeStyles.AssumeUniversal" />).
+        /// </exception>
+        /// <param name="value">A <see cref="String" />containing a date and time to convert.</param>
+        /// <param name="formatProvider">
+        ///     An object that supplies culture-specific formatting information about
+        ///     <paramref name="value" />.
+        /// </param>
+        /// <param name="dateTimeStyle">
+        ///     A bitwise combination of enumeration values that defines how to interpret the parsed date in relation to the
+        ///     current time zone or the current date.
+        ///     A typical value to specify is <see cref="DateTimeStyles.None" />.
+        /// </param>
         /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The date time value.</returns>
-        public static DateTime SaveToDateTime( this String value,
-                                               IFormatProvider formatProvider,
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static DateTime SaveToDateTime( [CanBeNull] this String value,
+                                               [NotNull] IFormatProvider formatProvider,
                                                DateTimeStyles dateTimeStyle,
-                                               DateTime? defaultValue = null )
+                                               DateTime defaultValue = default(DateTime) )
         {
-            value.ThrowIfNull( nameof( value ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
             DateTime outValue;
-            return value.TryParsDateTime( formatProvider, dateTimeStyle, out outValue )
-                ? outValue
-                : ( defaultValue ?? outValue );
+            return value.TryParsDateTime( formatProvider, dateTimeStyle, out outValue ) ? outValue : defaultValue;
         }
     }
 }

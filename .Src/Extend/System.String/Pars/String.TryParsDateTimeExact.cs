@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,12 +14,16 @@ namespace Extend
         ///     Converts the specified string representation of a date and time to its DateTime equivalent using the specified
         ///     format,
         ///     culture-specific format information, and style.
-        ///     The format of the string representatiomust match the specified format exactly.
+        ///     The format of the string representation must match the specified format exactly.
         ///     The method returns a value that indicates whether the conversion succeeded.
         /// </summary>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentNullException">format can not be null.</exception>
         /// <exception cref="ArgumentNullException">format provider can not be null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     dateTimeStyle is not a valid <see cref="DateTimeStyles" /> value.-or-styles
+        ///     contains an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
+        ///     <see cref="DateTimeStyles.AssumeLocal" /> and <see cref="DateTimeStyles.AssumeUniversal" />).
+        /// </exception>
         /// <param name="value">A <see cref="String" /> containing a date and time to convert.</param>
         /// <param name="format">The required format of s. See the Remarks section for more information.</param>
         /// <param name="formatProvider">
@@ -38,13 +43,14 @@ namespace Extend
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact( this String value,
-                                                    String format,
-                                                    IFormatProvider formatProvider,
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsDateTimeExact( [CanBeNull] this String value,
+                                                    [NotNull] String format,
+                                                    [NotNull] IFormatProvider formatProvider,
                                                     DateTimeStyles dateTimeStyle,
                                                     out DateTime outValue )
         {
-            value.ThrowIfNull( nameof( value ) );
             format.ThrowIfNull( nameof( format ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
@@ -65,9 +71,13 @@ namespace Extend
         ///     It is like the DateTime.ParseExact(String, String[], IFormatProvider, DateTimeStyles) method, except the
         ///     TryParseExact method does not throw an exception if the conversion fails.
         /// </remarks>
-        /// <exception cref="ArgumentNullException">value can not be null.</exception>
         /// <exception cref="ArgumentNullException">formats can not be null.</exception>
         /// <exception cref="ArgumentNullException">format provider can not be null.</exception>
+        /// <exception cref="ArgumentException">
+        ///     dateTimeStyle is not a valid <see cref="DateTimeStyles" /> value.-or-styles
+        ///     contains an invalid combination of <see cref="DateTimeStyles" /> values (for example, both
+        ///     <see cref="DateTimeStyles.AssumeLocal" /> and <see cref="DateTimeStyles.AssumeUniversal" />).
+        /// </exception>
         /// <param name="value">A <see cref="String" /> containing a date and time to convert.</param>
         /// <param name="formats">An array of allowable formats of s. See the Remarks section for more information.</param>
         /// <param name="formatProvider">
@@ -87,13 +97,14 @@ namespace Extend
         ///     This parameter is passed uninitialized.
         /// </param>
         /// <returns>Returns true if the parsing was successful, otherwise false.</returns>
-        public static Boolean TryParsDateTimeExact( this String value,
-                                                    String[] formats,
-                                                    IFormatProvider formatProvider,
+        [Pure]
+        [PublicAPI]
+        public static Boolean TryParsDateTimeExact( [CanBeNull] this String value,
+                                                    [NotNull] String[] formats,
+                                                    [NotNull] IFormatProvider formatProvider,
                                                     DateTimeStyles dateTimeStyle,
                                                     out DateTime outValue )
         {
-            value.ThrowIfNull( nameof( value ) );
             formats.ThrowIfNull( nameof( formats ) );
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 

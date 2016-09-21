@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void WhereIfTestCase()
+        public void WhereIfTest()
         {
             var list = new List<String>();
 
@@ -40,7 +41,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCase1()
+        public void WhereIfTest1()
         {
             var list = new List<String>();
 
@@ -66,36 +67,44 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void WhereIfTestCase1NullCheck()
+        public void WhereIfTest1NullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.WhereIf( true, ( x, i ) => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void WhereIfTestCase1NullCheck1()
+        public void WhereIfTest1NullCheck1()
         {
             Func<Object, Int32, Boolean> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().WhereIf( true, func );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void WhereIfTestCaseNullCheck()
+        public void WhereIfTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.WhereIf( true, x => true );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void WhereIfTestCaseNullCheck1()
+        public void WhereIfTestNullCheck1()
         {
             Func<Object, Boolean> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().WhereIf( true, func );
 
             test.ShouldThrow<ArgumentNullException>();

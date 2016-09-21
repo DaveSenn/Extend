@@ -10,7 +10,7 @@ namespace Extend.Testing
     public partial class CharExTest
     {
         [Test]
-        public void RepeatTestCase()
+        public void RepeatTest()
         {
             var actual = 'a'.Repeat( 3 );
             Assert.AreEqual( "aaa", actual );

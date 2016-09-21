@@ -13,58 +13,103 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToDateTimeTestCase()
+        public void ToDateTimeFormatProviderNullTest()
+        {
+            var expected = DateTime.Now;
+            var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
+            var actual = value.ToDateTime( null );
+
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
+        }
+
+        [Test]
+        public void ToDateTimeFormatProviderTest()
+        {
+            var expected = DateTime.Now;
+            var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
+            var actual = value.ToDateTime( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
+        }
+
+        [Test]
+        public void ToDateTimeInvalidCastFormatProviderTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDateTime( CultureInfo.CurrentCulture );
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToDateTimeInvalidCastTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToDateTime();
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToDateTimeInvalidFormatFormatProviderTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToDateTime( value, CultureInfo.CurrentCulture );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDateTimeInvalidFormatTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToDateTime( value );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDateTimeNullValueFormatProviderTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToDateTime( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .Be( DateTime.MinValue );
+        }
+
+        [Test]
+        public void ToDateTimeNullValueTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToDateTime();
+
+            actual
+                .Should()
+                .Be( DateTime.MinValue );
+        }
+
+        [Test]
+        public void ToDateTimeTest()
         {
             var expected = DateTime.Now;
             var value = expected.ToString( CultureInfo.CurrentCulture ) as Object;
             var actual = value.ToDateTime();
 
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1()
-        {
-            var expected = DateTime.Now;
-            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
-            var actual = value.ToDateTime( CultureInfo.InvariantCulture );
-
-            Assert.AreEqual( expected.Year, actual.Year );
-            Assert.AreEqual( expected.Month, actual.Month );
-            Assert.AreEqual( expected.Day, actual.Day );
-            Assert.AreEqual( expected.Hour, actual.Hour );
-            Assert.AreEqual( expected.Minute, actual.Minute );
-            Assert.AreEqual( expected.Second, actual.Second );
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1NullCheck()
-        {
-            Action test = () => ObjectEx.ToDateTime( null, CultureInfo.InvariantCulture );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1NullCheck1()
-        {
-            var dateTime = DateTime.Now.ToString( CultureInfo.InvariantCulture ) as Object;
-            Action test = () => dateTime.ToDateTime( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToDateTimeTestCaseNullCheck()
-        {
-            Action test = () => ObjectEx.ToDateTime( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeCloseTo( expected, 999 );
         }
     }
 }

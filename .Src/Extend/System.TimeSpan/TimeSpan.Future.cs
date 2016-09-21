@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="timeSpan">The time span to add.</param>
         /// <returns>Returns the current date time with the specified time span added to it.</returns>
-        public static DateTime Future( this TimeSpan timeSpan ) => DateTime.Now.Add( timeSpan );
+        [Pure]
+        [PublicAPI]
+        public static DateTime Future( this TimeSpan timeSpan )
+            => DateTime.Now.Add( timeSpan );
     }
 }

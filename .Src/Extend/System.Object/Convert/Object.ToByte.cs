@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -13,32 +14,43 @@ namespace Extend
     public static partial class ObjectEx
     {
         /// <summary>
-        ///     Converts the given object to a byte.
+        ///     Converts the value of the specified object to an 8-bit unsigned integer.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
-        /// <returns>The byte.</returns>
-        public static Byte ToByte( this Object obj )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-
-            return Convert.ToByte( obj, CultureInfo.CurrentCulture );
-        }
+        /// <exception cref="FormatException">value is not in the property format for a <see cref="Byte" /> value.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement System.IConvertible. -or-Conversion from value to the
+        ///     <see cref="Byte" /> type is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Byte.MinValue" /> or
+        ///     greater than <see cref="Byte.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface.</param>
+        /// <returns>An 8-bit unsigned integer that is equivalent to value, or zero if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Byte ToByte( [CanBeNull] this Object obj )
+            => Convert.ToByte( obj, CultureInfo.CurrentCulture );
 
         /// <summary>
-        ///     Converts the given object to a byte.
+        ///     Converts the value of the specified object to an 8-bit unsigned integer, using the specified culture-specific
+        ///     formatting information.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The object can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The format provider can not be null.</exception>
-        /// <param name="obj">The object to convert.</param>
+        /// <exception cref="FormatException">value is not in the property format for a <see cref="Byte" /> value.</exception>
+        /// <exception cref="InvalidCastException">
+        ///     value does not implement System.IConvertible. -or-Conversion from value to the
+        ///     <see cref="Byte" /> type is not supported.
+        /// </exception>
+        /// <exception cref="OverflowException">
+        ///     value represents a number that is less than <see cref="Byte.MinValue" /> or
+        ///     greater than <see cref="Byte.MaxValue" />.
+        /// </exception>
+        /// <param name="obj">An object that implements the System.IConvertible interface.</param>
         /// <param name="formatProvider">The format provider.</param>
-        /// <returns>The byte.</returns>
-        public static Byte ToByte( this Object obj, IFormatProvider formatProvider )
-        {
-            obj.ThrowIfNull( nameof( obj ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
-
-            return Convert.ToByte( obj, formatProvider );
-        }
+        /// <returns>An 8-bit unsigned integer that is equivalent to value, or zero if value is null.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Byte ToByte( [CanBeNull] this Object obj, [CanBeNull] IFormatProvider formatProvider )
+            => Convert.ToByte( obj, formatProvider );
     }
 }

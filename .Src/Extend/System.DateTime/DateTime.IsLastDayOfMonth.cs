@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -17,6 +18,9 @@ namespace Extend
         /// </summary>
         /// <param name="dateTime">The date-time value.</param>
         /// <returns>Returns a value of true if the given date-time value is the last day of the month.</returns>
-        public static Boolean IsLastDayOfMonth( this DateTime dateTime ) => DateTime.DaysInMonth( dateTime.Year, dateTime.Month ) == dateTime.Day;
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsLastDayOfMonth( this DateTime dateTime )
+            => DateTime.DaysInMonth( dateTime.Year, dateTime.Month ) == dateTime.Day;
     }
 }

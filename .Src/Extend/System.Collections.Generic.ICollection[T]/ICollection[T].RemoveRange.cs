@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,9 @@ namespace Extend
         /// <param name="collection">The collection, from which the values should get removed.</param>
         /// <param name="values">The values to remove.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, params T[] values )
+        [PublicAPI]
+        [NotNull]
+        public static ICollection<T> RemoveRange<T>( [NotNull] this ICollection<T> collection, [NotNull] params T[] values )
         {
             collection.ThrowIfNull( nameof( collection ) );
             values.ThrowIfNull( nameof( values ) );
@@ -39,7 +42,9 @@ namespace Extend
         /// <param name="collection">The collection, from which the values should get removed.</param>
         /// <param name="enumerable">A IEnumerable containing the items to remove from the collection.</param>
         /// <returns>Returns the given collection.</returns>
-        public static ICollection<T> RemoveRange<T>( this ICollection<T> collection, IEnumerable<T> enumerable )
+        [PublicAPI]
+        [NotNull]
+        public static ICollection<T> RemoveRange<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
         {
             collection.ThrowIfNull( nameof( collection ) );
             enumerable.ThrowIfNull( nameof( enumerable ) );

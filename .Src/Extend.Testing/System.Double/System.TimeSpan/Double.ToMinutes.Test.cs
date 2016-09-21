@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void ToMinutesTestCase()
+        public void ToMinutesTest()
         {
             var number = 10.5;
             var expected = TimeSpan.FromMinutes( number );

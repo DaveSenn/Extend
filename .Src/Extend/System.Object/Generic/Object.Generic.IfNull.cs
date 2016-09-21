@@ -1,4 +1,10 @@
-﻿namespace Extend
+﻿#region Usings
+
+using JetBrains.Annotations;
+
+#endregion
+
+namespace Extend
 {
     /// <summary>
     ///     Class containing some extension methods for <see cref="object" />.
@@ -12,6 +18,10 @@
         /// <param name="alternativeValue">The alternative value.</param>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <returns>Returns the value or the alternative value.</returns>
-        public static T IfNull<T>( this T value, T alternativeValue ) where T : class => value ?? alternativeValue;
+        [CanBeNull]
+        [Pure]
+        [PublicAPI]
+        public static T IfNull<T>( [CanBeNull] this T value, [CanBeNull] T alternativeValue ) where T : class
+        => value ?? alternativeValue;
     }
 }

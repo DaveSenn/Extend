@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -18,8 +19,10 @@ namespace Extend
         /// <exception cref="ArgumentNullException">The second object can not be null.</exception>
         /// <param name="obj0">The first object to compare.</param>
         /// <param name="obj1">The second object  to compare.</param>
-        /// <returns>Returns true if if the objects are the same instance.</returns>
-        public static Boolean RefEquals( this Object obj0, Object obj1 )
+        /// <returns>Returns true if the objects are the same instance.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Boolean RefEquals( [NotNull] this Object obj0, [NotNull] Object obj1 )
         {
             obj0.ThrowIfNull( nameof( obj0 ) );
             obj1.ThrowIfNull( nameof( obj1 ) );

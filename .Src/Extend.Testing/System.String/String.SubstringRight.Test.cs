@@ -12,15 +12,17 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SubstringRightTestCase()
+        public void SubstringRightTest()
         {
             var actual = "testabc".SubstringRight( 3 );
             Assert.AreEqual( "abc", actual );
         }
 
         [Test]
-        public void SubstringRightTestCaseNullCheck()
+        public void SubstringRightTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.SubstringRight( null, 5 );
 
             test.ShouldThrow<ArgumentNullException>();

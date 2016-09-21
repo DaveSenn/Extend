@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,7 +22,9 @@ namespace Extend
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>>Returns true if the value is present in the array.</returns>
-        public static Boolean IsIn<T>( this T value, params T[] values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -36,7 +39,9 @@ namespace Extend
         /// <param name="values">A IEnumerable containing the values.</param>
         /// <typeparam name="T">The type of the value.</typeparam>
         /// <returns>>Returns true if the value is present in the IEnumerable.</returns>
-        public static Boolean IsIn<T>( this T value, IEnumerable<T> values )
+        [Pure]
+        [PublicAPI]
+        public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] IEnumerable<T> values )
         {
             values.ThrowIfNull( nameof( values ) );
 

@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ToDictionaryTestCase()
+        public void ToDictionaryTest()
         {
             var list = new List<Tuple<Int32, String>>
             {
@@ -40,9 +41,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToDictionaryTestCaseNullCheck()
+        public void ToDictionaryTestNullCheck()
         {
             IEnumerable<IGrouping<Object, Object>> groupings = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => groupings.ToDictionary();
 
             test.ShouldThrow<ArgumentNullException>();

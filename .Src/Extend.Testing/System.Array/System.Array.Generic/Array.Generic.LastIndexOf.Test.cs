@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void GenericLastIndexOfTestCase()
+        public void GenericLastIndexOfTest()
         {
             var array = new[]
             {
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericLastIndexOfTestCase1()
+        public void GenericLastIndexOfTest1()
         {
             var array = new[]
             {
@@ -38,16 +38,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericLastIndexOfTestCase1NullCheck()
+        public void GenericLastIndexOfTest1NullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 1 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GenericLastIndexOfTestCase2()
+        public void GenericLastIndexOfTest2()
         {
             var array = new[]
             {
@@ -61,18 +63,22 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GenericLastIndexOfTestCase2NullCheck()
+        public void GenericLastIndexOfTest2NullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 0, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void GenericLastIndexOfTestCaseNullCheck()
+        public void GenericLastIndexOfTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2" );
 
             test.ShouldThrow<ArgumentNullException>();

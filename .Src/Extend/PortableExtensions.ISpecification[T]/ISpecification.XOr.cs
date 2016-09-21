@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -21,9 +22,11 @@ namespace Extend
         /// <param name="expression">The expression to add.</param>
         /// <param name="message">The validation error message.</param>
         /// <returns>Returns the combined specifications.</returns>
-        public static ISpecification<T> XOr<T>( this ISpecification<T> specification,
-                                                Func<T, Boolean> expression,
-                                                String message = null )
+        [NotNull]
+        [PublicAPI]
+        public static ISpecification<T> XOr<T>( [NotNull] this ISpecification<T> specification,
+                                                [NotNull] Func<T, Boolean> expression,
+                                                [CanBeNull] String message = null )
         {
             specification.ThrowIfNull( nameof( specification ) );
             expression.ThrowIfNull( nameof( expression ) );

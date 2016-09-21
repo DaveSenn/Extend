@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -11,10 +12,14 @@ namespace Extend
         /// <summary>
         ///     Concatenates all given strings.
         /// </summary>
+        /// <exception cref="ArgumentNullException">strings can not be null.</exception>
         /// <param name="str">The first string to concatenate.</param>
         /// <param name="strings">All strings to concatenate.</param>
         /// <returns>The concatenation of all strings.</returns>
-        public static String ConcatAll( this String str, params String[] strings )
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String ConcatAll( this String str, [NotNull] params String[] strings )
         {
             strings.ThrowIfNull( nameof( strings ) );
 
@@ -24,9 +29,13 @@ namespace Extend
         /// <summary>
         ///     Concatenates all given strings.
         /// </summary>
+        /// <exception cref="ArgumentNullException">strings can not be null.</exception>
         /// <param name="strings">All strings to concatenate.</param>
         /// <returns>The concatenation of all strings.</returns>
-        public static String ConcatAll( this String[] strings )
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String ConcatAll( [NotNull] this String[] strings )
         {
             strings.ThrowIfNull( nameof( strings ) );
 
@@ -36,10 +45,14 @@ namespace Extend
         /// <summary>
         ///     Concatenates all given values.
         /// </summary>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="str">The first string to concatenate.</param>
         /// <param name="values">All values to concatenate.</param>
         /// <returns>The concatenation of all values.</returns>
-        public static String ConcatAll( this String str, params Object[] values )
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String ConcatAll( this String str, [NotNull] params Object[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -49,9 +62,13 @@ namespace Extend
         /// <summary>
         ///     Concatenates all given values.
         /// </summary>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="values">All values to concatenate.</param>
         /// <returns>The concatenation of all values.</returns>
-        public static String ConcatAll( this Object[] values )
+        [Pure]
+        [NotNull]
+        [PublicAPI]
+        public static String ConcatAll( [NotNull] this Object[] values )
         {
             values.ThrowIfNull( nameof( values ) );
 

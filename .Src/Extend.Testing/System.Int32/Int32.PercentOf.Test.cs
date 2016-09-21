@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class Int32ExTest
     {
         [Test]
-        public void PercentOfTestCase()
+        public void PercentOfTest()
         {
             var number = 1000;
             var expected = 50;
@@ -22,7 +22,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTestCase1()
+        public void PercentOfTest1()
         {
             var number = 1000;
             var expected = 50;
@@ -32,7 +32,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTestCase1DivideByZero()
+        public void PercentOfTest1DivideByZero()
         {
             Action test = () => 0.PercentOf( (Double) 100 );
 
@@ -40,7 +40,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTestCase2()
+        public void PercentOfTest2()
         {
             var number = 1000;
             var expected = 50;
@@ -50,7 +50,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTestCase2DivideByZero()
+        public void PercentOfTest2DivideByZero()
         {
             Action test = () => 0.PercentOf( (Int64) 100 );
 
@@ -58,7 +58,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void PercentOfTestCaseDivideByZero()
+        public void PercentOfTestDivideByZero()
         {
             Action test = () => 0.PercentOf( 100 );
 

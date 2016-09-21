@@ -10,10 +10,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
-        public void ToObservableCollectionTestCase()
+        public void ToObservableCollectionTest()
         {
             var list = RandomValueEx.GetRandomStrings();
             var actual = list.ToObservableCollection();
@@ -24,9 +25,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToObservableCollectionTestCaseNullCheck()
+        public void ToObservableCollectionTestNullCheck()
         {
             List<Object> list = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ToObservableCollection();
 
             test.ShouldThrow<ArgumentNullException>();

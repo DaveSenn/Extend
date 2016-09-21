@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,6 +17,9 @@ namespace Extend
         /// </summary>
         /// <param name="c">The Unicode character to evaluate.</param>
         /// <returns>True if the given char is a letter, otherwise false.</returns>
-        public static Boolean IsLetter( this Char c ) => Char.IsLetter( c );
+        [PublicAPI]
+        [Pure]
+        public static Boolean IsLetter( this Char c )
+            => Char.IsLetter( c );
     }
 }

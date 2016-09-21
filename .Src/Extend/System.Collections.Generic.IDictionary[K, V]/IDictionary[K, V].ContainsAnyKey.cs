@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -24,8 +25,10 @@ namespace Extend
         /// <param name="dictionary">The dictionary to act on.</param>
         /// <param name="keys">A list of keys.</param>
         /// <returns>Returns true if the dictionary contains any of the given keys, otherwise false.</returns>
-        public static Boolean ContainsAnyKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                            params TKey[] keys )
+        [PublicAPI]
+        [Pure]
+        public static Boolean ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                            [NotNull] [ItemNotNull] params TKey[] keys )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             keys.ThrowIfNull( nameof( keys ) );
@@ -43,8 +46,10 @@ namespace Extend
         /// <param name="dictionary">The dictionary to act on.</param>
         /// <param name="keys">A list of keys.</param>
         /// <returns>Returns true if the dictionary contains any of the given keys, otherwise false.</returns>
-        public static Boolean ContainsAnyKey<TKey, TValue>( this IDictionary<TKey, TValue> dictionary,
-                                                            IEnumerable<TKey> keys )
+        [PublicAPI]
+        [Pure]
+        public static Boolean ContainsAnyKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
+                                                            [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
         {
             dictionary.ThrowIfNull( nameof( dictionary ) );
             keys.ThrowIfNull( nameof( keys ) );

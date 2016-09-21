@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -15,9 +16,12 @@ namespace Extend
         /// <summary>
         ///     Returns a list containing all values of the given range.
         /// </summary>
+        /// <exception cref="ArgumentException">The start value can not be greater than the end value.</exception>
         /// <param name="startValue">The start of the range.</param>
         /// <param name="endValue">The end of the range.</param>
         /// <returns>Returns a list containing the specified range.</returns>
+        [Pure]
+        [PublicAPI]
         public static List<Int64> RangeTo( this Int64 startValue, Int64 endValue )
         {
             if ( startValue > endValue )

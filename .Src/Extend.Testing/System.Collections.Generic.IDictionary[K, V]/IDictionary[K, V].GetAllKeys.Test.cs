@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void GetAllKeysTestCase()
+        public void GetAllKeysTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -28,9 +29,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void GetAllKeysTestCaseNullCheck()
+        public void GetAllKeysTestNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => dictionary.GetAllKeys();
 
             test.ShouldThrow<ArgumentNullException>();

@@ -13,45 +13,143 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToInt16TestCase()
+        public void ToInt16FormatProviderNullTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
-            var value = expected.ToString();
-            var actual = ObjectEx.ToInt16( value );
-            Assert.AreEqual( expected, actual );
+            const Int16 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt16( null );
+
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToInt16TestCase1()
+        public void ToInt16FormatProviderTest()
         {
-            var expected = RandomValueEx.GetRandomInt16();
-            var value = expected.ToString();
-            var actual = ObjectEx.ToInt16( value, CultureInfo.InvariantCulture );
-            Assert.AreEqual( expected, actual );
+            const Int16 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt16( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToInt16TestCase1NullCheck()
+        public void ToInt16InvalidCastFormatProviderTest()
         {
-            Action test = () => ObjectEx.ToInt16( null, CultureInfo.InvariantCulture );
+            var value = new TestModel();
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            test.ShouldThrow<InvalidCastException>();
         }
 
         [Test]
-        public void ToInt16TestCase1NullCheck1()
+        public void ToInt16InvalidCastTest()
         {
-            Action test = () => ObjectEx.ToInt16( "false", null );
+            var value = new TestModel();
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16();
+            test.ShouldThrow<InvalidCastException>();
         }
 
         [Test]
-        public void ToInt16TestCaseNullCheck()
+        public void ToInt16InvalidFormatFormatProviderTest()
         {
-            Action test = () => ObjectEx.ToInt16( null );
+            const String value = "invalidFormat";
 
-            test.ShouldThrow<ArgumentNullException>();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToInt16( value, CultureInfo.CurrentCulture );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToInt16InvalidFormatTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToInt16( value );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToInt16NullValueFormatProviderTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToInt16( CultureInfo.CurrentCulture );
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void ToInt16NullValueTest()
+        {
+            Object value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.ToInt16();
+
+            actual
+                .Should()
+                .Be( 0 );
+        }
+
+        [Test]
+        public void ToInt16Test()
+        {
+            const Int16 expected = 666;
+            var value = expected.ToString( CultureInfo.InvariantCulture ) as Object;
+            var actual = value.ToInt16();
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void ToInt16TooLargeFormatProviderTest()
+        {
+            var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt16TooLargeTest()
+        {
+            var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16();
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt16TooSmallFormatProviderTest()
+        {
+            var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16( CultureInfo.CurrentCulture );
+            test.ShouldThrow<OverflowException>();
+        }
+
+        [Test]
+        public void ToInt16TooSmallTest()
+        {
+            var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToInt16();
+            test.ShouldThrow<OverflowException>();
         }
     }
 }

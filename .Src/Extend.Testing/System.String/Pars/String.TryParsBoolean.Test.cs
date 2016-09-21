@@ -13,24 +13,44 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsBooleanTestCase()
+        public void TryParsBooleanInvalidValueTest()
         {
-            var expected = RandomValueEx.GetRandomBoolean();
-            var result = !expected;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsBoolean( out result );
+            Boolean outValue;
+            var actual = "InvalidValue".TryParsBoolean( out outValue );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            actual
+                .Should()
+                .BeFalse();
         }
 
         [Test]
-        public void TryParsBooleanTestCaseNullCheck()
+        public void TryParsBooleanNullTest()
         {
-            var outValue = false;
-            Action test = () => StringEx.TryParsBoolean( null, out outValue );
+            Boolean outValue;
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsBoolean( out outValue );
 
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsBooleanTest()
+        {
+            var expected = RandomValueEx.GetRandomBoolean();
+            var outValue = !expected;
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .TryParsBoolean( out outValue );
+
+            actual
+                .Should()
+                .BeTrue();
+
+            outValue
+                .Should()
+                .Be( expected );
         }
     }
 }

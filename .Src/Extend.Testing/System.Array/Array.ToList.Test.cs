@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ArrayExTest
     {
         [Test]
-        public void ToListTestCase()
+        public void ToListTest()
         {
             Array array = new[]
             {
@@ -28,16 +28,18 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ToListTestCaseNullCheck()
+        public void ToListTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.ToList( x => "test" + x );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ToListTestCaseNullCheck1()
+        public void ToListTestNullCheck1()
         {
             Array array = new[]
             {
@@ -46,6 +48,8 @@ namespace Extend.Testing
                 "2"
             };
             Func<Object, String> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.ToList( func );
 
             test.ShouldThrow<ArgumentNullException>();

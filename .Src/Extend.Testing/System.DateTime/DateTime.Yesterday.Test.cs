@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void YesterdayTestCase()
+        public void YesterdayTest()
         {
             var dateTime = DateTime.Today;
             var expected = dateTime.AddDays( -1 );

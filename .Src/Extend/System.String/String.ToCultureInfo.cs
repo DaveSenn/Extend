@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,7 +17,10 @@ namespace Extend
         /// <exception cref="CultureNotFoundException">Culture is not supported.</exception>
         /// <param name="name">The name of the culture.</param>
         /// <returns>Returns the <see cref="CultureInfo" /> with the given name.</returns>
-        public static CultureInfo ToCultureInfo( this String name )
+        [NotNull]
+        [Pure]
+        [PublicAPI]
+        public static CultureInfo ToCultureInfo( [NotNull] this String name )
         {
             name.ThrowIfNull( nameof( name ) );
 

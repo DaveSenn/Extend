@@ -13,27 +13,6 @@ namespace Extend.Testing
     [TestFixture]
     public class ExpressionExTest
     {
-        private event PropertyChangedEventHandler PropertyChanged;
-
-        private class TestModel
-        {
-            #region Properties
-
-            public Int32 Age { get; set; }
-            public SubModel SubModel { get; set; }
-
-            #endregion
-        }
-
-        private class SubModel
-        {
-            #region Properties
-
-            public String Foo { get; set; }
-
-            #endregion
-        }
-
         [Test]
         public void TryGetMemberExpressioInvalidTypeTest()
         {
@@ -110,7 +89,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase()
+        public void TryGetMemberExpressionTest()
         {
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
@@ -122,7 +101,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase1()
+        public void TryGetMemberExpressionTest1()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Int32>> expression = x => x.Age;
@@ -133,7 +112,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase2()
+        public void TryGetMemberExpressionTest2()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, String>> expression = x => x.SubModel.Foo;
@@ -144,7 +123,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase3()
+        public void TryGetMemberExpressionTest3()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.Age;
@@ -155,7 +134,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCase4()
+        public void TryGetMemberExpressionTest4()
         {
             MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.SubModel.Foo;
@@ -166,7 +145,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCaseNotSupportedException()
+        public void TryGetMemberExpressionTestNotSupportedException()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
@@ -180,7 +159,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCaseNotSupportedException1()
+        public void TryGetMemberExpressionTestNotSupportedException1()
         {
             MemberExpression outResult;
             const Int32 myInt = 100;
@@ -194,12 +173,34 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void TryGetMemberExpressionTestCaseNullCheck()
+        public void TryGetMemberExpressionTestNullCheck()
         {
             MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expression.TryGetMemberExpression( out outResult );
             test.ShouldThrow<ArgumentNullException>();
+        }
+
+        private event PropertyChangedEventHandler PropertyChanged;
+
+        private class TestModel
+        {
+            #region Properties
+
+            public Int32 Age { get; set; }
+            public SubModel SubModel { get; set; }
+
+            #endregion
+        }
+
+        private class SubModel
+        {
+            #region Properties
+
+            public String Foo { get; set; }
+
+            #endregion
         }
     }
 }

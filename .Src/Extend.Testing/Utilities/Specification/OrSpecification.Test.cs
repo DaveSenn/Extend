@@ -13,7 +13,7 @@ namespace Extend.Testing
     public class OrSpecificationTest
     {
         [Test]
-        public void AndTestCase()
+        public void AndTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -25,7 +25,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase1()
+        public void AndTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -37,7 +37,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase2()
+        public void AndTest2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
@@ -49,7 +49,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase3()
+        public void AndTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -61,7 +61,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCase4()
+        public void AndTest4()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -73,36 +73,41 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AndTestCaseNullCheck()
+        public void AndTestNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
             var target = new OrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.And( other );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CtorTestCaseNulLCheck()
+        public void CtorTestNulLCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new OrSpecification<String>( new ExpressionSpecification<String>( x => true ), null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void CtorTestCaseNulLCheck1()
+        public void CtorTestNulLCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new OrSpecification<String>( null, new ExpressionSpecification<String>( x => true ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void IsSatisfiedByTestCase()
+        public void IsSatisfiedByTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -113,7 +118,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase1()
+        public void IsSatisfiedByTest1()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => true );
@@ -124,7 +129,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase2()
+        public void IsSatisfiedByTest2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
@@ -135,7 +140,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByTestCase3()
+        public void IsSatisfiedByTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -143,6 +148,94 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedBy( String.Empty );
             Assert.IsFalse( actual );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => true );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest1()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => true );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest2()
+        {
+            var left = new ExpressionSpecification<String>( x => true );
+            var right = new ExpressionSpecification<String>( x => false );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest3()
+        {
+            var left = new ExpressionSpecification<String>( x => false );
+            var right = new ExpressionSpecification<String>( x => false );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.IsNull( actual[0] );
+            Assert.IsNull( actual[1] );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest5()
+        {
+            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
+            var right = new ExpressionSpecification<String>( x => true, "msgRight" );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest6()
+        {
+            var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
+            var right = new ExpressionSpecification<String>( x => false, "msgRight" );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 0, actual.Count );
+        }
+
+        [Test]
+        public void IsSatisfiedByWithMessagesTest7()
+        {
+            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
+            var right = new ExpressionSpecification<String>( x => false, "msgRight" );
+
+            var target = new OrSpecification<String>( left, right );
+            var actual = target.IsSatisfiedByWithMessages( String.Empty )
+                               .ToList();
+            Assert.AreEqual( 2, actual.Count );
+            Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
+            Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
         }
 
         [Test]
@@ -158,95 +251,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void IsSatisfiedByWithMessagesTestCase()
-        {
-            var left = new ExpressionSpecification<String>( x => true );
-            var right = new ExpressionSpecification<String>( x => true );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase1()
-        {
-            var left = new ExpressionSpecification<String>( x => false );
-            var right = new ExpressionSpecification<String>( x => true );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase2()
-        {
-            var left = new ExpressionSpecification<String>( x => true );
-            var right = new ExpressionSpecification<String>( x => false );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase3()
-        {
-            var left = new ExpressionSpecification<String>( x => false );
-            var right = new ExpressionSpecification<String>( x => false );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.IsNull( actual[0] );
-            Assert.IsNull( actual[1] );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase5()
-        {
-            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
-            var right = new ExpressionSpecification<String>( x => true, "msgRight" );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase6()
-        {
-            var left = new ExpressionSpecification<String>( x => true, "msgLeft" );
-            var right = new ExpressionSpecification<String>( x => false, "msgRight" );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 0, actual.Count );
-        }
-
-        [Test]
-        public void IsSatisfiedByWithMessagesTestCase7()
-        {
-            var left = new ExpressionSpecification<String>( x => false, "msgLeft" );
-            var right = new ExpressionSpecification<String>( x => false, "msgRight" );
-
-            var target = new OrSpecification<String>( left, right );
-            var actual = target.IsSatisfiedByWithMessages( String.Empty )
-                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
-            Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
-        }
-
-        [Test]
-        public void OrTestCase()
+        public void OrTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -258,7 +263,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase1()
+        public void OrTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -270,7 +275,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase2()
+        public void OrTest2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
@@ -282,7 +287,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase3()
+        public void OrTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -294,7 +299,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCase4()
+        public void OrTest4()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -306,20 +311,21 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void OrTestCaseNullCheck()
+        public void OrTestNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
             var target = new OrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Or( other );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void XOrTestCase()
+        public void XOrTest()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -331,7 +337,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase1()
+        public void XOrTest1()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => true );
@@ -343,7 +349,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase2()
+        public void XOrTest2()
         {
             var left = new ExpressionSpecification<String>( x => true );
             var right = new ExpressionSpecification<String>( x => false );
@@ -355,7 +361,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase3()
+        public void XOrTest3()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -367,7 +373,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCase4()
+        public void XOrTest4()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
@@ -379,13 +385,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void XOrTestCaseNullCheck()
+        public void XOrTestNullCheck()
         {
             var left = new ExpressionSpecification<String>( x => false );
             var right = new ExpressionSpecification<String>( x => false );
             var target = new XOrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.XOr( other );
 
             test.ShouldThrow<ArgumentNullException>();

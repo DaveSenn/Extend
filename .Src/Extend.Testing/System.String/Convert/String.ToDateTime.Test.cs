@@ -2,6 +2,7 @@
 
 using System;
 using System.Globalization;
+using System.Threading;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -13,57 +14,109 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToDateTimeTestCase()
+        public void ToDateTimeInvalidFormatTest()
         {
-            var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.InvariantCulture )
-                              .ToDateTime();
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "invalidFormat".ToDateTime();
 
-            Assert.AreEqual( value.Year, actual.Year );
-            Assert.AreEqual( value.Month, actual.Month );
-            Assert.AreEqual( value.Day, actual.Day );
-            Assert.AreEqual( value.Hour, actual.Hour );
-            Assert.AreEqual( value.Minute, actual.Minute );
-            Assert.AreEqual( value.Second, actual.Second );
+            test.ShouldThrow<FormatException>();
         }
 
         [Test]
-        public void ToDateTimeTestCase1()
+        public void ToDateTimeNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ToDateTime( null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDateTimeOtherCultureTest()
+        {
+            var culture = CultureInfo.CurrentCulture;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo( "de-CH" );
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo( "de-CH" );
+
+            var value = DateTime.Now;
+            var actual = value.ToString( CultureInfo.CurrentCulture )
+                              .ToDateTime();
+
+            actual
+                .Should()
+                .BeCloseTo( value, 999 );
+
+            Thread.CurrentThread.CurrentCulture = culture;
+            Thread.CurrentThread.CurrentUICulture = culture;
+        }
+
+        [Test]
+        public void ToDateTimeOverloadFormatNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
+                                        .ToDateTime( null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDateTimeOverloadInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "invalidFormat".ToDateTime( CultureInfo.CurrentCulture );
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToDateTimeOverloadNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ToDateTime( null, CultureInfo.CurrentCulture );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToDateTimeOverloadOtherCultureTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+
+            var value = DateTime.Now;
+            var actual = value.ToString( culture )
+                              .ToDateTime( culture );
+
+            actual
+                .Should()
+                .BeCloseTo( value, 999 );
+        }
+
+        [Test]
+        public void ToDateTimeOverloadTest()
         {
             var value = DateTime.Now;
             var actual = value.ToString( CultureInfo.CurrentCulture )
                               .ToDateTime( CultureInfo.CurrentCulture );
 
-            Assert.AreEqual( value.Year, actual.Year );
-            Assert.AreEqual( value.Month, actual.Month );
-            Assert.AreEqual( value.Day, actual.Day );
-            Assert.AreEqual( value.Hour, actual.Hour );
-            Assert.AreEqual( value.Minute, actual.Minute );
-            Assert.AreEqual( value.Second, actual.Second );
+            actual
+                .Should()
+                .BeCloseTo( value, 999 );
         }
 
         [Test]
-        public void ToDateTimeTestCase1NullCheck()
+        public void ToDateTimeTest()
         {
-            Action test = () => StringEx.ToDateTime( null, CultureInfo.InvariantCulture );
+            var value = DateTime.Now;
+            var actual = value.ToString( CultureInfo.CurrentCulture )
+                              .ToDateTime();
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToDateTimeTestCase1NullCheck1()
-        {
-            Action test = () => "".ToDateTime( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToDateTimeTestCaseNullCheck()
-        {
-            Action test = () => StringEx.ToDateTime( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeCloseTo( value, 999 );
         }
     }
 }

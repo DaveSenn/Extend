@@ -24,6 +24,7 @@ namespace Extend.Testing
         public void AddMemberSelectionRuleTestArgumentNullException()
         {
             var target = new ExpressionInstanceFactory( x => String.Empty );
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -35,10 +36,10 @@ namespace Extend.Testing
             var expectedMemberInformation = new MemberInformation();
             IMemberInformation actualParameter = null;
             var target = new ExpressionInstanceFactory( x =>
-            {
-                actualParameter = x;
-                return expectedValue;
-            } );
+                                                        {
+                                                            actualParameter = x;
+                                                            return expectedValue;
+                                                        } );
 
             var actual = target.CreateValue( expectedMemberInformation );
             actual.Should()
@@ -63,6 +64,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTestArgumentNullException()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionInstanceFactory( null );
             test.ShouldThrow<ArgumentNullException>();
         }

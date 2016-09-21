@@ -13,7 +13,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ExecuteSafeTestCase()
+        public void ExecuteSafeTest()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x => { throw new InvalidOperationException( expectedValue ); } );
@@ -32,15 +32,15 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteSafeTestCase1()
+        public void ExecuteSafeTest1()
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
-            {
-                if ( expectedValue.Length > 0 )
-                    throw new InvalidOperationException( expectedValue );
-                return expectedValue;
-            } );
+                                                    {
+                                                        if ( expectedValue.Length > 0 )
+                                                            throw new InvalidOperationException( expectedValue );
+                                                        return expectedValue;
+                                                    } );
 
             Assert.IsNull( actual.Result );
             Assert.IsNotNull( actual.Exception );
@@ -53,18 +53,23 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ExecuteSafeTestCase1NullCheck()
+        public void ExecuteSafeTest1NullCheck()
         {
             Func<String, String> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once ExpressionIsAlwaysNull
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".ExecuteSafe( func );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ExecuteSafeTestCaseNullCheck()
+        public void ExecuteSafeTestNullCheck()
         {
             Action<String> action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".ExecuteSafe( action );
 
             test.ShouldThrow<ArgumentNullException>();

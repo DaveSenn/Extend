@@ -13,55 +13,132 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void TryParsDoubleTestCase()
+        public void TryParsDoubleInvalidValueTest()
         {
-            var expected = 100.123d;
-            var result = 100d;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsDouble( out result );
+            Double result;
+            var actual = "InvalidValue".ToString( CultureInfo.CurrentCulture )
+                                       .TryParsDouble( out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            result
+                .Should()
+                .Be( default(Double) );
+
+            actual
+                .Should()
+                .BeFalse();
         }
 
         [Test]
-        public void TryParsDoubleTestCase1()
+        public void TryParsDoubleNullTest()
         {
-            var culture = new CultureInfo( "en-US" );
-            var expected = 100.123d;
-            var result = 100d;
+            String value = null;
+            Double result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsDouble( out result );
+
+            result
+                .Should()
+                .Be( default(Double) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsDoubleOverloadFormatProviderNullTest()
+        {
+            CultureInfo culture = null;
+            const Double expected = 100.123d;
+            Double result;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .TryParsDouble( NumberStyles.Any, culture, out result );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void TryParsDoubleOverloadInvalidNumberStyleTest()
+        {
+            CultureInfo culture = null;
+            const Double expected = 100.123d;
+            Double result;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+                                        .TryParsDouble( NumberStyles.AllowHexSpecifier, culture, out result );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void TryParsDoubleOverloadInvalidValueTest()
+        {
+            Double result;
+            var actual = "InvalidValue".ToString( CultureInfo.InvariantCulture )
+                                       .TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out result );
+
+            result
+                .Should()
+                .Be( default(Double) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsDoubleOverloadNullTest()
+        {
+            String value = null;
+            Double result;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out result );
+
+            result
+                .Should()
+                .Be( default(Double) );
+
+            actual
+                .Should()
+                .BeFalse();
+        }
+
+        [Test]
+        public void TryParsDoubleOverloadTest()
+        {
+            var culture = new CultureInfo( "de-CH" );
+            const Double expected = 100.123d;
+            Double result;
             var actual = expected.ToString( culture )
                                  .TryParsDouble( NumberStyles.Any, culture, out result );
 
-            Assert.AreEqual( expected, result );
-            Assert.IsTrue( actual );
+            result
+                .Should()
+                .Be( expected );
+
+            actual
+                .Should()
+                .BeTrue();
         }
 
         [Test]
-        public void TryParsDoubleTestCase1NullCheck()
+        public void TryParsDoubleTest()
         {
-            var outValue = 100d;
-            Action test = () => StringEx.TryParsDouble( null, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue );
+            const Double expected = 100.123d;
+            Double result;
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .TryParsDouble( out result );
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
+            result
+                .Should()
+                .Be( expected );
 
-        [Test]
-        public void TryParsDoubleTestCase1NullCheck1()
-        {
-            var outValue = 100d;
-            Action test = () => "100".TryParsDouble( NumberStyles.Any, null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void TryParsDoubleTestCaseNullCheck()
-        {
-            var outValue = 100d;
-            Action test = () => StringEx.TryParsDouble( null, out outValue );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .BeTrue();
         }
     }
 }

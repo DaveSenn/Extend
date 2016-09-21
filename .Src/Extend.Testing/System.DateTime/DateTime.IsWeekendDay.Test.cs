@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DateTimeExTest
     {
         [Test]
-        public void IsWeekendDayTestCase()
+        public void IsWeekendDayTest()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var actual = dateTime.IsWeekendDay();

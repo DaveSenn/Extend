@@ -20,7 +20,7 @@ using System.Resources;
 [assembly:
     AssemblyDescription(
         "Extend is a set of .Net extension methods build as PCL or .Net40 DLL. Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity."
-        )]
+    )]
 
 #if DEBUG
 

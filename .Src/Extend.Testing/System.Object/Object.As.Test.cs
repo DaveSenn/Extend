@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void AsTestCase()
+        public void AsTest()
         {
             Object value = 10;
             var actual = value.As<Int32>();
@@ -21,11 +21,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void AsTestCaseNullCheck()
+        public void AsTestNullValue()
         {
-            Action test = () => ObjectEx.As<String>( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            var res = ObjectEx.As<String>( null );
+            res.Should()
+               .BeNull();
         }
     }
 }

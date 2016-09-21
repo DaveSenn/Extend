@@ -13,93 +13,162 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void SaveToInt16TestCase()
-        {
-            var expected = RandomValueEx.GetRandomInt16();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt16();
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt16TestCase1()
+        public void SaveToInt16InvalidValueDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var actual = "InvalidValue".SaveToInt16( expected );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt16TestCase2()
+        public void SaveToInt16InvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToInt16();
+
+            actual
+                .Should()
+                .Be( default(Int16) );
+        }
+
+        [Test]
+        public void SaveToInt16NullDefaultTest()
+        {
+            String value = null;
+            var expected = RandomValueEx.GetRandomInt16();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt16( expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt16NullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt16();
+
+            actual
+                .Should()
+                .Be( default(Int16) );
+        }
+
+        [Test]
+        public void SaveToInt16OverloadFormatProviderNullTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => "12".SaveToInt16( NumberStyles.AllowExponent, null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void SaveToInt16OverloadInvalidNumberStyleTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "12".SaveToInt16( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.CurrentCulture );
+
+            test.ShouldThrow<ArgumentException>();
+        }
+
+        [Test]
+        public void SaveToInt16OverloadInvalidValueTest()
+        {
+            var actual = "InvalidValue".SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Int16) );
+        }
+
+        [Test]
+        public void SaveToInt16OverloadInvalidValueWithDefaultTest()
+        {
+            var expected = RandomValueEx.GetRandomInt16();
+            var actual = "InvalidValue".SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt16OverloadNullTest()
+        {
+            String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
+
+            actual
+                .Should()
+                .Be( default(Int16) );
+        }
+
+        [Test]
+        public void SaveToInt16OverloadNullWithDefaultTest()
+        {
+            String value = null;
+            var expected = RandomValueEx.GetRandomInt16();
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+
+            actual
+                .Should()
+                .Be( expected );
+        }
+
+        [Test]
+        public void SaveToInt16OverloadTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt16TestCase3()
-        {
-            var expected = RandomValueEx.GetRandomInt16();
-            var actual = "InvalidValue".SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt16TestCase4()
-        {
-            var expected = RandomValueEx.GetRandomInt16();
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt16( RandomValueEx.GetRandomInt16() );
-
-            Assert.AreEqual( expected, actual );
-        }
-
-        [Test]
-        public void SaveToInt16TestCase5()
-        {
-            var actual = "InvalidValue".SaveToInt16();
-
-            Assert.AreEqual( default(Int16), actual );
-        }
-
-        [Test]
-        public void SaveToInt16TestCase6()
+        public void SaveToInt16OverloadWitDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt16() );
 
-            Assert.AreEqual( expected, actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt16TestCase7()
+        public void SaveToInt16Test()
         {
-            var actual = "InvalidValue".SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var expected = RandomValueEx.GetRandomInt16();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt16();
 
-            Assert.AreEqual( default(Int16), actual );
+            actual
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void SaveToInt16TestCaseNullCheck()
+        public void SaveToInt16WithDefaultTest()
         {
-            Action test = () => StringEx.SaveToInt16( null );
+            var expected = RandomValueEx.GetRandomInt16();
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .SaveToInt16( RandomValueEx.GetRandomInt16() );
 
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void SaveToInt16TestCaseNullCheck1()
-        {
-            Action test = () => "".SaveToInt16( NumberStyles.AllowExponent, null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( expected );
         }
     }
 }

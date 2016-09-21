@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void SwapTestCase()
+        public void SwapTest()
         {
             var value0 = new List<String>();
             var value1 = new List<String> { RandomValueEx.GetRandomString() };
@@ -23,7 +23,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void SwapTestCase1()
+        public void SwapTest1()
         {
             var value0 = 10;
             var value1 = 100;

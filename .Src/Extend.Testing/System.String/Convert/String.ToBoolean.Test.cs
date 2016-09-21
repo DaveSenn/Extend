@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
 using FluentAssertions;
 using NUnit.Framework;
 
@@ -13,47 +12,34 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToBooleanTestCase()
+        public void ToBooleanInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "invalidValue".ToBoolean();
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToBooleanNullTest()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.ToBoolean( null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToBooleanTest()
         {
             var value = RandomValueEx.GetRandomBoolean();
             var actual = value.ToString()
                               .ToBoolean();
 
-            Assert.AreEqual( value, actual );
-        }
-
-        [Test]
-        public void ToBooleanTestCase1()
-        {
-            var value = RandomValueEx.GetRandomBoolean();
-            var actual = value.ToString()
-                              .ToBoolean( CultureInfo.InvariantCulture );
-
-            Assert.AreEqual( value, actual );
-        }
-
-        [Test]
-        public void ToBooleanTestCase1NullCheck()
-        {
-            Action test = () => StringEx.ToBoolean( null, CultureInfo.InvariantCulture );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToBooleanTestCase1NullCheck1()
-        {
-            Action test = () => "".ToBoolean( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToBooleanTestCaseNullCheck()
-        {
-            Action test = () => StringEx.ToBoolean( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( value );
         }
     }
 }

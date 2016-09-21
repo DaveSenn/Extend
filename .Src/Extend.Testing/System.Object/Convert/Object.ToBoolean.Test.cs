@@ -13,47 +13,93 @@ namespace Extend.Testing
     public partial class ObjectExTest
     {
         [Test]
-        public void ToBooleanTestCase()
+        public void ToBooleanFormatNullTest()
+        {
+            var actual = "true".ToBoolean( null );
+            actual
+                .Should()
+                .Be( true );
+        }
+
+        [Test]
+        public void ToBooleanInvalidCastFormatProviderTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToBoolean( CultureInfo.CurrentCulture );
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToBooleanInvalidCastTest()
+        {
+            var value = new TestModel();
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToBoolean();
+            test.ShouldThrow<InvalidCastException>();
+        }
+
+        [Test]
+        public void ToBooleanInvalidFormatFormatProviderTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToBoolean( CultureInfo.CurrentCulture );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToBooleanInvalidFormatTest()
+        {
+            const String value = "invalidFormat";
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => ObjectEx.ToBoolean( value );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToBooleanTest()
         {
             var value = "false";
-            Assert.IsFalse( ObjectEx.ToBoolean( value ) );
+            var actual = ObjectEx.ToBoolean( value );
+            actual
+                .Should()
+                .BeFalse();
 
             value = "true";
-            Assert.IsTrue( ObjectEx.ToBoolean( value ) );
+            actual = ObjectEx.ToBoolean( value );
+            actual
+                .Should()
+                .BeTrue();
         }
 
         [Test]
-        public void ToBooleanTestCase1()
+        public void ToBooleanTest1()
         {
             var value = "false";
-            Assert.IsFalse( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
+            var actual = value.ToBoolean( CultureInfo.InvariantCulture );
+            actual
+                .Should()
+                .BeFalse();
 
             value = "true";
-            Assert.IsTrue( ObjectEx.ToBoolean( value, CultureInfo.InvariantCulture ) );
+            actual = value.ToBoolean( CultureInfo.InvariantCulture );
+            actual
+                .Should()
+                .BeTrue();
         }
 
         [Test]
-        public void ToBooleanTestCase1NullCheck()
+        public void ToBooleanValueNullTest()
         {
-            Action test = () => ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToBooleanTestCase1NullCheck1()
-        {
-            Action test = () => ObjectEx.ToBoolean( "false", null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Test]
-        public void ToBooleanTestCaseNullCheck()
-        {
-            Action test = () => ObjectEx.ToBoolean( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            var actual = ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );
+            actual
+                .Should()
+                .Be( false );
         }
     }
 }

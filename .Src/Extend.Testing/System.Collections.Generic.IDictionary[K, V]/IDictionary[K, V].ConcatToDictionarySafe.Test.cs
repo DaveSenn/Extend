@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ConcatToDictionarySafeTestCase()
+        public void ConcatToDictionarySafeTest()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -36,13 +37,14 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase1()
+        public void ConcatToDictionarySafeTest1()
         {
             var first = new Dictionary<Int32, Int32>
             {
                 { 0, 1 },
                 { 1, 2 }
             };
+            // ReSharper disable once CollectionNeverUpdated.Local
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionarySafe( second );
@@ -52,9 +54,11 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase2()
+        public void ConcatToDictionarySafeTest2()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var first = new Dictionary<Int32, Int32>();
+            // ReSharper disable once CollectionNeverUpdated.Local
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionarySafe( second );
@@ -62,7 +66,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCase3()
+        public void ConcatToDictionarySafeTest3()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -86,7 +90,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCaseNullCheck()
+        public void ConcatToDictionarySafeTestNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
             {
@@ -95,13 +99,15 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32> second = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.ConcatToDictionarySafe( second );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ConcatToDictionarySafeTestCaseNullCheck1()
+        public void ConcatToDictionarySafeTestNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;
             var second = new Dictionary<Int32, Int32>
@@ -110,6 +116,8 @@ namespace Extend.Testing
                 { 1, 2 }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.ConcatToDictionarySafe( second );
 
             test.ShouldThrow<ArgumentNullException>();

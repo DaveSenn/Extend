@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -54,20 +55,30 @@ namespace Extend
         ///     Gets random string.
         /// </summary>
         /// <returns>A random string.</returns>
-        public static String GetRandomString() => Guid.NewGuid()
-                                                      .ToString();
+        [PublicAPI]
+        [Pure]
+        [NotNull]
+        public static String GetRandomString()
+            => Guid.NewGuid()
+                   .ToString();
 
         /// <summary>
         ///     Gets random char.
         /// </summary>
         /// <returns>A random char.</returns>
-        public static Char GetRandomChar() => Chars[GetRandomInt32( 0, Chars.Length )];
+        [PublicAPI]
+        [Pure]
+        public static Char GetRandomChar()
+            => Chars[GetRandomInt32( 0, Chars.Length )];
 
         /// <summary>
         ///     Gets a list of random strings.
         /// </summary>
         /// <param name="numberOfItems">The number of items to generate.</param>
         /// <returns>A list of random strings.</returns>
+        [PublicAPI]
+        [Pure]
+        [NotNull]
         public static List<String> GetRandomStrings( Int32? numberOfItems = null )
         {
             var list = new List<String>();
@@ -90,6 +101,8 @@ namespace Extend
         ///     <value>Int32.MaxValue</value>
         /// </param>
         /// <returns>A random integer value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Int32 GetRandomInt32( Int32 min = Int32.MinValue, Int32 max = Int32.MaxValue )
         {
             if ( max < min )
@@ -111,6 +124,8 @@ namespace Extend
         ///     <value>Int16.MaxValue</value>
         /// </param>
         /// <returns>A random integer value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Int16 GetRandomInt16( Int16 min = Int16.MinValue, Int16 max = Int16.MaxValue )
         {
             if ( max < min )
@@ -123,7 +138,10 @@ namespace Extend
         ///     Gets a random Boolean value.
         /// </summary>
         /// <returns>A random Boolean value.</returns>
-        public static Boolean GetRandomBoolean() => GetRandomInt32() % 2 == 0;
+        [PublicAPI]
+        [Pure]
+        public static Boolean GetRandomBoolean()
+            => GetRandomInt32() % 2 == 0;
 
         /// <summary>
         ///     Gets a random date-time value between the given minimum and maximum.
@@ -135,6 +153,8 @@ namespace Extend
         /// <param name="min">The minimum value.</param>
         /// <param name="max">The maximum value.</param>
         /// <returns>Returns the generated random date-time value.</returns>
+        [PublicAPI]
+        [Pure]
         public static DateTime GetRandomDateTime( DateTime? min = null, DateTime? max = null )
         {
             min = min ?? new DateTime( 1753, 01, 01 );
@@ -155,14 +175,15 @@ namespace Extend
         /// </summary>
         /// <typeparam name="T">The type of the enumeration.</typeparam>
         /// <returns>A random value of the enumeration of the specified type.</returns>
+        [PublicAPI]
+        [Pure]
         public static T GetRandomEnum<T>() where T : struct
         {
-            var values = Enum.GetValues( typeof (T) )
+            var values = Enum.GetValues( typeof(T) )
                              .Cast<T>();
+
             var enumerable = values as T[];
-            if ( enumerable == null )
-                throw new ArgumentException( "Given type is not a valid enum type.", nameof( T ) );
-            return enumerable.ElementAt( Rnd.Next( 0, enumerable.Length ) );
+            return enumerable?.ElementAt( Rnd.Next( 0, enumerable.Length ) ) ?? default(T);
         }
 
         /// <summary>
@@ -200,7 +221,10 @@ namespace Extend
         ///     Gets a random <see cref="Byte" /> value.
         /// </summary>
         /// <returns>A random <see cref="Byte" /> value.</returns>
-        public static Byte GetRandomByte() => (Byte) GetRandomInt32();
+        [PublicAPI]
+        [Pure]
+        public static Byte GetRandomByte()
+            => (Byte) GetRandomInt32();
 
         /// <summary>
         ///     Gets a random <see cref="Double" /> value which is in the specified range.
@@ -215,6 +239,8 @@ namespace Extend
         ///     <value>Double.MaxValue</value>
         /// </param>
         /// <returns>A random <see cref="Double" /> value.</returns>
+        [PublicAPI]
+        [Pure]
         public static Double GetRandomDouble( Double min = Double.MinValue, Double max = Double.MaxValue )
         {
             if ( max < min )

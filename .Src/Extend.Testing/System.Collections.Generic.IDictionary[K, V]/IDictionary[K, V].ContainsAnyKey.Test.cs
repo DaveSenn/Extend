@@ -11,10 +11,11 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
-        public void ContainsAnyKeyTestCase()
+        public void ContainsAnyKeyTest()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -35,7 +36,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyKeyTestCase1()
+        public void ContainsAnyKeyTest1()
         {
             var dictionary = new Dictionary<String, String>
             {
@@ -54,35 +55,43 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void ContainsAnyKeyTestCase1NullCheck()
+        public void ContainsAnyKeyTest1NullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => dictionary.ContainsAnyKey( new List<Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAnyKeyTestCase1NullCheck1()
+        public void ContainsAnyKeyTest1NullCheck1()
         {
             IEnumerable<Object> keys = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( keys );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAnyKeyTestCaseNullCheck()
+        public void ContainsAnyKeyTestNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void ContainsAnyKeyTestCaseNullCheck1()
+        public void ContainsAnyKeyTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( null );
 
             test.ShouldThrow<ArgumentNullException>();

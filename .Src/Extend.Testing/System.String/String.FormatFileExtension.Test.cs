@@ -12,7 +12,7 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void FormatFileExtensionTestCase()
+        public void FormatFileExtensionTest()
         {
             var actual = "xml".FormatFileExtension();
             Assert.AreEqual( ".xml", actual );
@@ -22,16 +22,20 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void FormatFileExtensionTestCaseNullCheck()
+        public void FormatFileExtensionTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.FormatFileExtension( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Test]
-        public void FormatFileExtensionTestCaseNullCheckArgumentException()
+        public void FormatFileExtensionTestNullCheckArgumentException()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => String.Empty.FormatFileExtension();
 
             test.ShouldThrow<ArgumentException>();

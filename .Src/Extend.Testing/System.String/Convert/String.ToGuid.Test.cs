@@ -12,21 +12,36 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToGuidTestCase()
+        public void ToGuidInvalidFormatTest()
+        {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "InvalidFormat".ToGuid();
+
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void ToGuidNullTest()
+        {
+            String value = null;
+
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => value.ToGuid();
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
+        public void ToGuidTest()
         {
             var value = Guid.NewGuid();
             var actual = value.ToString()
                               .ToGuid();
 
-            Assert.AreEqual( value, actual );
-        }
-
-        [Test]
-        public void ToGuidTestCase1NullCheck()
-        {
-            Action test = () => StringEx.ToGuid( null );
-
-            test.ShouldThrow<ArgumentNullException>();
+            actual
+                .Should()
+                .Be( value );
         }
     }
 }

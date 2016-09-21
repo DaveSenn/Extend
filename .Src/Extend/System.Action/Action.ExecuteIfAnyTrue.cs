@@ -2,6 +2,7 @@
 
 using System;
 using System.Linq;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -16,17 +17,21 @@ namespace Extend
         ///     Executes the specified action if one of the given Boolean values is true,
         ///     otherwise it executes the specified false action, if one is specified.
         /// </summary>
-        /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
+        /// <exception cref="ArgumentNullException">trueAction can not be null.</exception>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue( this Action trueAction, Action falseAction = null, params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction,
+                                             [CanBeNull] Action falseAction = null,
+                                             [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => x ) )
-            {
-                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction();
-            }
             else
                 falseAction?.Invoke();
         }
@@ -41,16 +46,17 @@ namespace Extend
         /// <param name="falseAction">The action to execute if any of the given values is false.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T>( this Action<T> trueAction,
-                                                T parameter,
-                                                Action<T> falseAction = null,
-                                                params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T>( [NotNull] this Action<T> trueAction,
+                                                [CanBeNull] T parameter,
+                                                [CanBeNull] Action<T> falseAction = null,
+                                                [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => x ) )
-            {
-                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter );
-            }
             else
                 falseAction?.Invoke( parameter );
         }
@@ -67,17 +73,18 @@ namespace Extend
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2>( this Action<T1, T2> trueAction,
-                                                     T1 parameter1,
-                                                     T2 parameter2,
-                                                     Action<T1, T2> falseAction = null,
-                                                     params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2>( [NotNull] this Action<T1, T2> trueAction,
+                                                     [CanBeNull] T1 parameter1,
+                                                     [CanBeNull] T2 parameter2,
+                                                     [CanBeNull] Action<T1, T2> falseAction = null,
+                                                     [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => x ) )
-            {
-                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2 );
-            }
             else
                 falseAction?.Invoke( parameter1, parameter2 );
         }
@@ -96,18 +103,19 @@ namespace Extend
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2, T3>( this Action<T1, T2, T3> trueAction,
-                                                         T1 parameter1,
-                                                         T2 parameter2,
-                                                         T3 parameter3,
-                                                         Action<T1, T2, T3> falseAction = null,
-                                                         params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2, T3>( [NotNull] this Action<T1, T2, T3> trueAction,
+                                                         [CanBeNull] T1 parameter1,
+                                                         [CanBeNull] T2 parameter2,
+                                                         [CanBeNull] T3 parameter3,
+                                                         [CanBeNull] Action<T1, T2, T3> falseAction = null,
+                                                         [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => x ) )
-            {
-                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3 );
-            }
             else
                 falseAction?.Invoke( parameter1, parameter2, parameter3 );
         }
@@ -128,19 +136,20 @@ namespace Extend
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> trueAction,
-                                                             T1 parameter1,
-                                                             T2 parameter2,
-                                                             T3 parameter3,
-                                                             T4 parameter4,
-                                                             Action<T1, T2, T3, T4> falseAction = null,
-                                                             params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2, T3, T4>( [NotNull] this Action<T1, T2, T3, T4> trueAction,
+                                                             [CanBeNull] T1 parameter1,
+                                                             [CanBeNull] T2 parameter2,
+                                                             [CanBeNull] T3 parameter3,
+                                                             [CanBeNull] T4 parameter4,
+                                                             [CanBeNull] Action<T1, T2, T3, T4> falseAction = null,
+                                                             [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( values.Any( x => x ) )
-            {
-                trueAction.ThrowIfNull( nameof( trueAction ) );
                 trueAction( parameter1, parameter2, parameter3, parameter4 );
-            }
             else
                 falseAction?.Invoke( parameter1, parameter2, parameter3, parameter4 );
         }
@@ -151,11 +160,14 @@ namespace Extend
         /// <exception cref="ArgumentNullException">True action can not be null, if any value is true.</exception>
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue( this Action trueAction, params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction, [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction();
         }
@@ -168,13 +180,16 @@ namespace Extend
         /// <param name="trueAction">The action to execute if one of the values is true.</param>
         /// <param name="parameter">The parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T>( this Action<T> trueAction,
-                                                T parameter,
-                                                params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T>( [NotNull] this Action<T> trueAction,
+                                                [CanBeNull] T parameter,
+                                                [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter );
         }
@@ -189,14 +204,17 @@ namespace Extend
         /// <param name="parameter1">The first parameter to pass to the action with gets executed.</param>
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2>( this Action<T1, T2> trueAction,
-                                                     T1 parameter1,
-                                                     T2 parameter2,
-                                                     params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2>( [NotNull] this Action<T1, T2> trueAction,
+                                                     [CanBeNull] T1 parameter1,
+                                                     [CanBeNull] T2 parameter2,
+                                                     [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2 );
         }
@@ -213,15 +231,18 @@ namespace Extend
         /// <param name="parameter2">The second parameter to pass to the action with gets executed.</param>
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2, T3>( this Action<T1, T2, T3> trueAction,
-                                                         T1 parameter1,
-                                                         T2 parameter2,
-                                                         T3 parameter3,
-                                                         params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2, T3>( [NotNull] this Action<T1, T2, T3> trueAction,
+                                                         [CanBeNull] T1 parameter1,
+                                                         [CanBeNull] T2 parameter2,
+                                                         [CanBeNull] T3 parameter3,
+                                                         [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2, parameter3 );
         }
@@ -240,16 +261,19 @@ namespace Extend
         /// <param name="parameter3">The third parameter to pass to the action with gets executed.</param>
         /// <param name="parameter4">The fourth parameter to pass to the action with gets executed.</param>
         /// <param name="values">The Boolean values to check.</param>
-        public static void ExecuteIfAnyTrue<T1, T2, T3, T4>( this Action<T1, T2, T3, T4> trueAction,
-                                                             T1 parameter1,
-                                                             T2 parameter2,
-                                                             T3 parameter3,
-                                                             T4 parameter4,
-                                                             params Boolean[] values )
+        [PublicAPI]
+        public static void ExecuteIfAnyTrue<T1, T2, T3, T4>( [NotNull] this Action<T1, T2, T3, T4> trueAction,
+                                                             [CanBeNull] T1 parameter1,
+                                                             [CanBeNull] T2 parameter2,
+                                                             [CanBeNull] T3 parameter3,
+                                                             [CanBeNull] T4 parameter4,
+                                                             [NotNull] params Boolean[] values )
         {
+            trueAction.ThrowIfNull( nameof( trueAction ) );
+            values.ThrowIfNull( nameof( values ) );
+
             if ( !values.Any( x => x ) )
                 return;
-            trueAction.ThrowIfNull( nameof( trueAction ) );
 
             trueAction( parameter1, parameter2, parameter3, parameter4 );
         }

@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -9,18 +10,18 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the given string to a boolean.
+        ///     Tries to convert the specified string representation of a logical value to
+        ///     its <see cref="Boolean" /> equivalent.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The value can not be null.</exception>
-        /// <param name="value">The string to convert.</param>
-        /// <param name="defaultValue">The default value, returned if the parsing fails.</param>
-        /// <returns>The boolean.</returns>
-        public static Boolean SaveToBoolean( this String value, Boolean? defaultValue = null )
+        /// <param name="value">A string containing the value to convert.</param>
+        /// <param name="defaultValue">The default value, returned if the conversion fails.</param>
+        /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
+        [Pure]
+        [PublicAPI]
+        public static Boolean SaveToBoolean( [CanBeNull] this String value, Boolean defaultValue = default(Boolean) )
         {
-            value.ThrowIfNull( nameof( value ) );
-
             Boolean outValue;
-            return value.TryParsBoolean( out outValue ) ? outValue : ( defaultValue ?? outValue );
+            return value.TryParsBoolean( out outValue ) ? outValue : defaultValue;
         }
     }
 }

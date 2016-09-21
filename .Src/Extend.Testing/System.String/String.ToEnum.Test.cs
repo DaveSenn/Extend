@@ -12,18 +12,22 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Test]
-        public void ToEnumTestCase()
+        public void ToEnumTest()
         {
-            var expected = DayOfWeek.Monday;
+            const DayOfWeek expected = DayOfWeek.Monday;
             var actual = expected.ToString()
                                  .ToEnum<DayOfWeek>();
 
-            Assert.AreEqual( expected, actual );
+            expected
+                .Should()
+                .Be( expected );
         }
 
         [Test]
-        public void ToEnumTestCaseNullCheck()
+        public void ToEnumTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ToEnum<DayOfWeek>( null );
 
             test.ShouldThrow<ArgumentNullException>();

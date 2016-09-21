@@ -11,7 +11,7 @@ namespace Extend.Testing
     public partial class DoubleExTest
     {
         [Test]
-        public void IsNegativeInfinityTestCase()
+        public void IsNegativeInfinityTest()
         {
             var number = 10.5;
             var expected = false;
