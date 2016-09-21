@@ -23,7 +23,6 @@ namespace Extend
         /// <remarks>It's save to remove items from the IEnumerable within the loop.</remarks>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="action">The action to execute for each item in the IEnumerable.</param>
-        [Pure]
         [PublicAPI]
         [NotNull]
         public static IEnumerable<T> ForEachReverse<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
