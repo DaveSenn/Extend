@@ -10,7 +10,7 @@
 	<iconUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/.Art/logo.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extend is a set of .Net extension methods build as portable class library. Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</description>
-    <copyright>Copyright © Dave Senn 2015</copyright>
+    <copyright>Copyright © Dave Senn 2016</copyright>
     <tags>C# Extensions Extend Portable Extension Methods .Net Library PCL</tags>
   </metadata>
 </package>
