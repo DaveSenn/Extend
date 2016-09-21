@@ -31,6 +31,7 @@ namespace Extend.Testing
         public void ClearTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Clear( 0, 0 );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class ISpecificationExTest
     {
         [Test]
@@ -102,7 +103,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.IsNull( actual[0] );
         }
 
@@ -114,7 +115,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.IsNull( actual[0] );
         }
 
@@ -126,7 +127,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count() );
+            Assert.AreEqual( 2, actual.Count );
             Assert.IsNull( actual[0] );
             Assert.IsNull( actual[1] );
         }
@@ -149,7 +150,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count() );
+            Assert.AreEqual( 1, actual.Count );
             Assert.AreEqual( "msgRight", actual[0] );
         }
 
@@ -157,6 +158,7 @@ namespace Extend.Testing
         public void AndTestNullCheck()
         {
             ISpecification<String> left = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( x => true );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -166,6 +168,7 @@ namespace Extend.Testing
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( expression );
             test.ShouldThrow<ArgumentNullException>();
         }

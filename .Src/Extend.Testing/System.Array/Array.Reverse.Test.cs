@@ -47,6 +47,7 @@ namespace Extend.Testing
         public void ReverseTest1NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Reverse( 1, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -56,6 +57,7 @@ namespace Extend.Testing
         public void ReverseTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Reverse();
 
             test.ShouldThrow<ArgumentNullException>();

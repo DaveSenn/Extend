@@ -43,6 +43,7 @@ namespace Extend.Testing
         public void SafeExecuteTest1NullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -78,6 +79,7 @@ namespace Extend.Testing
         public void SafeExecuteTest2NullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -120,6 +122,7 @@ namespace Extend.Testing
         public void SafeExecuteTest3NullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -179,6 +182,7 @@ namespace Extend.Testing
         public void SafeExecuteTest4NullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
             test.ShouldThrow<ArgumentNullException>();
@@ -261,6 +265,7 @@ namespace Extend.Testing
         public void SafeExecuteTest5NullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute( typeof(Exception), typeof(ArgumentException) );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -271,6 +276,7 @@ namespace Extend.Testing
         {
             Action action = () => { };
             Type[] types = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute( types );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -280,6 +286,7 @@ namespace Extend.Testing
         public void SafeExecuteTestNullCheck()
         {
             Action action = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
             test.ShouldThrow<ArgumentNullException>();

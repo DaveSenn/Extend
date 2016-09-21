@@ -30,6 +30,7 @@ namespace Extend.Testing
         public void PopulateTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Populate( RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();

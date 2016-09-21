@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public class IEnumerableStringExTest
     {
         [Test]
@@ -25,6 +26,8 @@ namespace Extend.Testing
         [Test]
         public void PathCombineTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEnumerableStringEx.PathCombine( null );
 
             test.ShouldThrow<ArgumentNullException>();

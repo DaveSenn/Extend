@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class ISpecificationExTest
     {
         [Test]
@@ -40,7 +41,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
@@ -51,7 +52,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count() );
+            Assert.AreEqual( 2, actual.Count );
             Assert.AreEqual( 1, actual.Count( x => x == "msgLeft" ) );
             Assert.AreEqual( 1, actual.Count( x => x == "msgRight" ) );
         }
@@ -96,7 +97,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
@@ -107,7 +108,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
@@ -118,7 +119,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count() );
+            Assert.AreEqual( 2, actual.Count );
             Assert.IsNull( actual[0] );
             Assert.IsNull( actual[1] );
         }
@@ -143,13 +144,14 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count() );
+            Assert.AreEqual( 0, actual.Count );
         }
 
         [Test]
         public void XOrTestNullCheck()
         {
             ISpecification<String> left = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.XOr( x => true );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -159,6 +161,7 @@ namespace Extend.Testing
         {
             var left = new ExpressionSpecification<String>( x => true );
             Func<String, Boolean> expression = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.XOr( expression );
             test.ShouldThrow<ArgumentNullException>();
         }

@@ -31,6 +31,8 @@ namespace Extend.Testing
         public void GenericToListTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.ToGenericList( x => x + "Test" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -46,6 +48,8 @@ namespace Extend.Testing
                 3
             };
             Func<Int32, Int32> selector = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.ToGenericList( selector );
 
             test.ShouldThrow<ArgumentNullException>();

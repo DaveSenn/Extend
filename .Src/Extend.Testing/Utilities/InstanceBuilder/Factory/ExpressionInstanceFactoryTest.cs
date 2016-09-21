@@ -24,6 +24,7 @@ namespace Extend.Testing
         public void AddMemberSelectionRuleTestArgumentNullException()
         {
             var target = new ExpressionInstanceFactory( x => String.Empty );
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -63,6 +64,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTestArgumentNullException()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionInstanceFactory( null );
             test.ShouldThrow<ArgumentNullException>();
         }

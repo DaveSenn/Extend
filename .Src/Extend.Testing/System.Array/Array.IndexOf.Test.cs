@@ -43,6 +43,8 @@ namespace Extend.Testing
         public void IndexOfTest1NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test", 10 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -69,6 +71,8 @@ namespace Extend.Testing
         public void IndexOfTest2NullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test", 10, 12 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -78,6 +82,8 @@ namespace Extend.Testing
         public void IndexOfTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test" );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -134,6 +135,7 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32>[] others = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionarySafe( others );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -154,6 +156,7 @@ namespace Extend.Testing
                 { 5, 6 }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionarySafe( other1, other2 );
 
             test.ShouldThrow<ArgumentNullException>();

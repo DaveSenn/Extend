@@ -35,6 +35,8 @@ namespace Extend.Testing
         public void WithinIndexTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.WithinIndex( 10 );
 
             test.ShouldThrow<ArgumentNullException>();

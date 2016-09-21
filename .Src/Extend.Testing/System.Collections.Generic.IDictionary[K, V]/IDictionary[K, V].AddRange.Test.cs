@@ -40,6 +40,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddRange( null, new Dictionary<Object, Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -48,6 +49,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddRange( null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -41,6 +41,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.AddRangeIf( null, x => true, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -49,6 +50,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().AddRangeIf( x => true, null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -57,6 +59,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTest1NullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().AddRangeIf( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -65,6 +68,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.AddRangeIf( null, x => true, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -73,6 +77,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().AddRangeIf( x => true, null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -81,6 +86,7 @@ namespace Extend.Testing
         [Test]
         public void AddRangeIfTestNullCheck2()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().AddRangeIf( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();

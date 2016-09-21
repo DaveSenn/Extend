@@ -31,6 +31,8 @@ namespace Extend.Testing
         public void ToListTestNullCheck()
         {
             Array array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.ToList( x => "test" + x );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -46,6 +48,8 @@ namespace Extend.Testing
                 "2"
             };
             Func<Object, String> func = null;
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.ToList( func );
 
             test.ShouldThrow<ArgumentNullException>();

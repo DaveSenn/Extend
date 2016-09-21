@@ -10,6 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -49,6 +50,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddOrUpdate( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -69,6 +71,7 @@ namespace Extend.Testing
             var dic = new Dictionary<String, String>();
 
             var valueToAdd = RandomValueEx.GetRandomString();
+            // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, () => valueToAdd );
             Assert.AreEqual( 1, dic.Count );
             Assert.AreEqual( valueToAdd, result );
@@ -82,6 +85,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -90,6 +94,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTest2NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -99,6 +104,7 @@ namespace Extend.Testing
         public void AddOrUpdateTest2NullCheck2()
         {
             Func<String> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( new Object(), func );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -111,6 +117,7 @@ namespace Extend.Testing
             var dic = new Dictionary<String, String>();
 
             var valueToAdd = RandomValueEx.GetRandomString();
+            // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, x => valueToAdd );
             Assert.AreEqual( 1, dic.Count );
             Assert.AreEqual( valueToAdd, result );
@@ -124,6 +131,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -132,6 +140,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTest3NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -140,6 +149,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddOrUpdate( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -148,6 +158,7 @@ namespace Extend.Testing
         [Test]
         public void AddOrUpdateTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddOrUpdate( null, new Object() );
 
             test.ShouldThrow<ArgumentNullException>();

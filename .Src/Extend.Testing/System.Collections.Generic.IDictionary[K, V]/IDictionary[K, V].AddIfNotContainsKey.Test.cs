@@ -24,6 +24,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKey1TestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new KeyValuePair<Object, Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -78,6 +79,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -86,6 +88,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTest2NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, () => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -95,6 +98,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTest2NullCheck2()
         {
             Func<Object> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -118,6 +122,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -126,6 +131,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTest3NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, x => new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -135,6 +141,7 @@ namespace Extend.Testing
         public void AddIfNotContainsKeyTest3NullCheck2()
         {
             Func<Object, Object> func = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( new Object(), func );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -143,6 +150,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IDictionaryEx.AddIfNotContainsKey( null, new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -151,6 +159,7 @@ namespace Extend.Testing
         [Test]
         public void AddIfNotContainsKeyTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new Dictionary<Object, Object>().AddIfNotContainsKey( null, new Object() );
 
             test.ShouldThrow<ArgumentNullException>();

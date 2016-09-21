@@ -29,6 +29,7 @@ namespace Extend.Testing
         public void GenericClearAllTest1()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.ClearAll();
 
             test.ShouldThrow<ArgumentNullException>();

@@ -80,6 +80,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.And( other );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -88,6 +89,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTestNulLCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new OrSpecification<String>( new ExpressionSpecification<String>( x => true ), null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -96,6 +99,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTestNulLCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new OrSpecification<String>( null, new ExpressionSpecification<String>( x => true ) );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -313,6 +318,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Or( other );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -386,6 +392,7 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
 
             ExpressionSpecification<String> other = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.XOr( other );
 
             test.ShouldThrow<ArgumentNullException>();

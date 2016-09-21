@@ -127,6 +127,7 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32>[] others = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionary( others );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -147,6 +148,7 @@ namespace Extend.Testing
                 { 5, 6 }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionary( other1, other2 );
 
             test.ShouldThrow<ArgumentNullException>();

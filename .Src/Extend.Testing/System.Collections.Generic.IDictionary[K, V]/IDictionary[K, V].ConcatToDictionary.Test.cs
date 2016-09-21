@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -45,6 +46,7 @@ namespace Extend.Testing
                 { 0, 1 },
                 { 1, 2 }
             };
+            // ReSharper disable once CollectionNeverUpdated.Local
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionary( second );
@@ -56,7 +58,9 @@ namespace Extend.Testing
         [Test]
         public void ConcatToDictionaryTest2()
         {
+            // ReSharper disable once CollectionNeverUpdated.Local
             var first = new Dictionary<Int32, Int32>();
+            // ReSharper disable once CollectionNeverUpdated.Local
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionary( second );
@@ -79,6 +83,7 @@ namespace Extend.Testing
                 { 3, 4 }
             };
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.ConcatToDictionary( second );
 
             test.ShouldThrow<ArgumentException>();
@@ -94,6 +99,8 @@ namespace Extend.Testing
             };
             Dictionary<Int32, Int32> second = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.ConcatToDictionary( second );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -109,6 +116,8 @@ namespace Extend.Testing
                 { 1, 2 }
             };
 
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.ConcatToDictionary( second );
 
             test.ShouldThrow<ArgumentNullException>();

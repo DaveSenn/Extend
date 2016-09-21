@@ -30,6 +30,7 @@ namespace Extend.Testing
         public void AddIfTestNullCheck()
         {
             List<String> c = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => c.AddIf( x => true, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -39,6 +40,7 @@ namespace Extend.Testing
         public void AddIfTestNullCheck1()
         {
             var c = new List<String>();
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => c.AddIf( null, RandomValueEx.GetRandomString() );
 
             test.ShouldThrow<ArgumentNullException>();

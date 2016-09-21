@@ -62,6 +62,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.And( other );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -70,6 +71,8 @@ namespace Extend.Testing
         [Test]
         public void CtorTestNulLCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionSpecification<String>( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -160,6 +163,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Or( other );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -215,6 +219,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => false );
             ExpressionSpecification<String> other = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.XOr( other );
 
             test.ShouldThrow<ArgumentNullException>();

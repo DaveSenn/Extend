@@ -41,6 +41,8 @@ namespace Extend.Testing
         public void GenericLastIndexOfTest1NullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 1 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -64,6 +66,8 @@ namespace Extend.Testing
         public void GenericLastIndexOfTest2NullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2", 0, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -73,6 +77,8 @@ namespace Extend.Testing
         public void GenericLastIndexOfTestNullCheck()
         {
             String[] array = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.LastIndexOf( "test2" );
 
             test.ShouldThrow<ArgumentNullException>();

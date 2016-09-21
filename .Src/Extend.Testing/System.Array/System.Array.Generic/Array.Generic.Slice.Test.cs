@@ -84,6 +84,7 @@ namespace Extend.Testing
         public void SliceTest1NullCheck()
         {
             Int32[] sourceArray = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, new Int32[2] );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -97,6 +98,7 @@ namespace Extend.Testing
                 1,
                 2
             };
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -170,6 +172,7 @@ namespace Extend.Testing
         {
             Int32[] sourceArray = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2 );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -279,6 +282,7 @@ namespace Extend.Testing
         public void SliceTest3NullCheck()
         {
             Int32[] sourceArray = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, new Int32[2] );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -294,6 +298,7 @@ namespace Extend.Testing
                 3,
                 4
             };
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -320,6 +325,7 @@ namespace Extend.Testing
         {
             Int32[] sourceArray = null;
 
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2 );
 
             test.ShouldThrow<ArgumentNullException>();

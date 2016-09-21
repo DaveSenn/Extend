@@ -11,6 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
         [Test]
@@ -57,6 +58,8 @@ namespace Extend.Testing
         public void ContainsAnyKeyTest1NullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => dictionary.ContainsAnyKey( new List<Object>() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -66,6 +69,8 @@ namespace Extend.Testing
         public void ContainsAnyKeyTest1NullCheck1()
         {
             IEnumerable<Object> keys = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( keys );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -75,6 +80,8 @@ namespace Extend.Testing
         public void ContainsAnyKeyTestNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => dictionary.ContainsAnyKey( new Object(), new Object(), new Object() );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -83,6 +90,8 @@ namespace Extend.Testing
         [Test]
         public void ContainsAnyKeyTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Dictionary<Object, Object>().ContainsAnyKey( null );
 
             test.ShouldThrow<ArgumentNullException>();

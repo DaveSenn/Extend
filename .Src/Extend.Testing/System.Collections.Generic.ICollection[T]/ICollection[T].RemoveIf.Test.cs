@@ -32,6 +32,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveIfTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveIf( null, "", x => true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -40,6 +41,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveIfTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveIf( "", null );
 
             test.ShouldThrow<ArgumentNullException>();

@@ -16,6 +16,7 @@ namespace Extend.Testing
         public void AddSelectionRuleArgumentNullExceptionTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
             test.ShouldThrow<ArgumentNullException>();
         }

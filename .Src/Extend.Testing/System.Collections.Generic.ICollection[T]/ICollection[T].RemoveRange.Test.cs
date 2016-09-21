@@ -41,6 +41,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveRangeTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRange( null, new List<String> { "test0", "test1", "test2" } );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -49,6 +50,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveRangeTest1NullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRange( null );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -57,6 +59,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveRangeTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.RemoveRange( null, "test0", "test1", "test2" );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -65,6 +68,7 @@ namespace Extend.Testing
         [Test]
         public void RemoveRangeTestNullCheck1()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<String>().RemoveRange( null );
 
             test.ShouldThrow<ArgumentNullException>();

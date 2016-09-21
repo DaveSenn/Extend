@@ -24,7 +24,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue( () => trueActionExecuted = true, () => falseActionExecuted = true, true, true );
 
             Assert.IsTrue( trueActionExecuted );
@@ -70,7 +69,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue( x => trueActionExecuted = x == parameter,
                                     parameter,
                                     x => falseActionExecuted = x == parameter,
@@ -112,6 +110,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfTrueTest1NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, RandomValueEx.GetRandomString(), null, true, true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -139,7 +138,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2,
                 parameter1,
@@ -191,6 +189,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfTrueTest2NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -225,7 +224,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3 ) => trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
                 parameter1,
@@ -286,6 +284,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfTrueTest3NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -324,7 +323,6 @@ namespace Extend.Testing
 
             //Case 2
             trueActionExecuted = false;
-            falseActionExecuted = false;
             ActionEx.ExecuteIfTrue(
                 ( p1, p2, p3, p4 ) =>
                         trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
@@ -395,6 +393,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfTrueTest4NullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null,
                                                         RandomValueEx.GetRandomString(),
                                                         RandomValueEx.GetRandomString(),
@@ -446,6 +445,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest5NullCheck()
         {
             Action trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( true, true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -492,6 +492,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest6NullCheck()
         {
             Action<String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -559,6 +560,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest7NullCheck()
         {
             Action<String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -631,6 +633,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest8NullCheck()
         {
             Action<String, String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
@@ -717,6 +720,7 @@ namespace Extend.Testing
         public void ExecuteIfTrueTest9NullCheck()
         {
             Action<String, String, String, String> trueAction = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
                                                           RandomValueEx.GetRandomString(),
@@ -730,6 +734,7 @@ namespace Extend.Testing
         [Test]
         public void ExecuteIfTrueTestNullCheck()
         {
+            // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, null, true, true );
 
             test.ShouldThrow<ArgumentNullException>();
