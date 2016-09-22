@@ -34,5 +34,5 @@ using System.Resources;
 [assembly: AssemblyCopyright( "Copyright © Dave Senn 2015" )]
 [assembly: AssemblyCulture( "" )]
 [assembly: NeutralResourcesLanguage( "en" )]
-[assembly: AssemblyVersion( "1.1.4.0" )]
-[assembly: AssemblyFileVersion( "1.1.4.0" )]
+[assembly: AssemblyVersion("1.1.9.0")]
+[assembly: AssemblyFileVersion("1.1.9.0")]
