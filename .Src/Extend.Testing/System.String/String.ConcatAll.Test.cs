@@ -15,6 +15,7 @@ namespace Extend.Testing
         public void ConcatAllNullTest()
         {
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.ConcatAll( "0", "1", "2" );
 
             actual
@@ -26,6 +27,7 @@ namespace Extend.Testing
         public void ConcatAllNullTest1()
         {
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.ConcatAll( null, "1", "2" );
 
             actual

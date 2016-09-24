@@ -18,7 +18,7 @@ namespace Extend.Testing
             var actual = expected.ToString()
                                  .ToEnum<DayOfWeek>();
 
-            expected
+            actual
                 .Should()
                 .Be( expected );
         }

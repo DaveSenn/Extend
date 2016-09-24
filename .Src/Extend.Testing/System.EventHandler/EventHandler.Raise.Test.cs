@@ -14,7 +14,7 @@ namespace Extend.Testing
         public void RaiseTest()
         {
             var helperClass = new HelperClass();
-            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
+            var eventArgs = new SampleEventArgs();
             helperClass.RaiseEvent( eventArgs );
 
             EventArgs actual = null;
@@ -27,7 +27,7 @@ namespace Extend.Testing
         public void RaiseTest1()
         {
             var helperClass = new HelperClass();
-            var eventArgs = new SampleEventArgs( RandomValueEx.GetRandomString() );
+            var eventArgs = new SampleEventArgs();
             helperClass.RaiseGenericEvent( eventArgs );
 
             SampleEventArgs actual = null;
@@ -41,27 +41,15 @@ namespace Extend.Testing
             public event EventHandler MyEvent;
             public event EventHandler<SampleEventArgs> MyGenericEvent;
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             public void RaiseEvent( EventArgs args ) => MyEvent.Raise( this, args );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             public void RaiseGenericEvent( SampleEventArgs args ) => MyGenericEvent.Raise( this, args );
         }
 
         private class SampleEventArgs : EventArgs
         {
-            #region Properties
-
-            public String Message { get; private set; }
-
-            #endregion
-
-            #region Ctor
-
-            public SampleEventArgs( String message )
-            {
-                Message = message;
-            }
-
-            #endregion
         }
     }
 }

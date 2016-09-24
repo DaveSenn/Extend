@@ -25,6 +25,7 @@ namespace Extend.Testing
         [Test]
         public void CharAtArgumentOutOfRangeExceptionTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".CharAt( 0 );
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -32,6 +33,7 @@ namespace Extend.Testing
         [Test]
         public void CharAtArgumentOutOfRangeExceptionTest1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".CharAt( -1 );
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -39,6 +41,7 @@ namespace Extend.Testing
         [Test]
         public void CharAtArgumentOutOfRangeExceptionTest2()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".CharAt( 4 );
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }

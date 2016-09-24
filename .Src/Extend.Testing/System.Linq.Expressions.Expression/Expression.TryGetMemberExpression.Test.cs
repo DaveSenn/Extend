@@ -80,7 +80,6 @@ namespace Extend.Testing
         public void TryGetMemberExpression9()
         {
             MemberExpression outResult;
-            var model = new TestModel();
             Expression<Func<Object>> expression = () => PropertyChanged;
             var actual = expression.TryGetMemberExpression( out outResult );
 
@@ -188,8 +187,8 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public Int32 Age { get; set; }
-            public SubModel SubModel { get; set; }
+            public Int32 Age { get; } = 100;
+            public SubModel SubModel { get; } = new SubModel();
 
             #endregion
         }
@@ -198,7 +197,7 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public String Foo { get; set; }
+            public String Foo { get; } = String.Empty;
 
             #endregion
         }

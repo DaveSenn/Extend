@@ -23,12 +23,14 @@ namespace Extend.Testing
             factorNumer = 100;
             expected = true;
             actual = value.FactorOf( factorNumer );
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             Assert.AreEqual( expected, actual );
 
             value = 11;
             factorNumer = 100;
             expected = false;
             actual = value.FactorOf( factorNumer );
+            // ReSharper disable once ConditionIsAlwaysTrueOrFalse
             Assert.AreEqual( expected, actual );
         }
     }

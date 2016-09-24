@@ -85,6 +85,7 @@ namespace Extend.Testing
         public void GetValuesExpectTestArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValuesExpect( 0, 4, 5 )
+                                      // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 
             test.ShouldThrow<ArgumentException>();
@@ -93,6 +94,7 @@ namespace Extend.Testing
         [Test]
         public void GetValuesExpectTestArgumentExceptionCheck1()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => EnumEx.GetValuesExpect( typeof(Int32), 2, 3, 4, 5 );
 
             test.ShouldThrow<ArgumentException>();

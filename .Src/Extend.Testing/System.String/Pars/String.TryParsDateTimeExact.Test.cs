@@ -104,6 +104,7 @@ namespace Extend.Testing
         {
             String value = null;
             DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.TryParsDateTimeExact( "M/dd/yyyy hh:mm",
                                                      new CultureInfo( "en-US" ),
                                                      DateTimeStyles.None,
@@ -210,6 +211,7 @@ namespace Extend.Testing
         {
             String value = null;
             DateTime result;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.TryParsDateTimeExact( new[] { "asdasd", "123" },
                                                      new CultureInfo( "en-US" ),
                                                      DateTimeStyles.None,

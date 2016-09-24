@@ -12,11 +12,13 @@ namespace Extend.Testing
     public class RandomValueExTest
     {
         [Test]
+        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         public void GetRandomBooleanTest() => RandomValueEx.GetRandomBoolean();
 
         [Test]
         public void GetRandomByteTest()
         {
+            // ReSharper disable once UnusedVariable
             var actual = RandomValueEx.GetRandomByte();
             Assert.IsTrue( true );
         }
@@ -88,6 +90,7 @@ namespace Extend.Testing
         [Test]
         public void GetRandomDoubleTestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomDouble( 30, 20 );
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -95,12 +98,14 @@ namespace Extend.Testing
         [Test]
         public void GetRandomEnumINvalidTypeTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomEnum<Int32>();
 
             test.ShouldThrow<ArgumentException>();
         }
 
         [Test]
+        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         public void GetRandomEnumTest() => RandomValueEx.GetRandomEnum<DayOfWeek>();
 
         [Test]
@@ -114,6 +119,7 @@ namespace Extend.Testing
         [Test]
         public void GetRandomInt16TestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomInt16( 30, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();
@@ -130,6 +136,7 @@ namespace Extend.Testing
         [Test]
         public void GetRandomInt32TestArgumentOutOfRangeException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomInt32( 30, 20 );
 
             test.ShouldThrow<ArgumentOutOfRangeException>();

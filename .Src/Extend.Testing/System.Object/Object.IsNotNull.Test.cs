@@ -18,6 +18,7 @@ namespace Extend.Testing
             Assert.IsTrue( actual );
 
             value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             actual = value.IsNotNull();
 
             Assert.IsFalse( actual );

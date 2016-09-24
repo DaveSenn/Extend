@@ -93,9 +93,11 @@ namespace Extend.Testing
         public void AddTestNullCheck()
         {
             var parent = new TreeNode<String>();
+            // ReSharper disable once CollectionNeverQueried.Local
             var target = new TreeNodeCollection<String>( parent );
 
             ITreeNode<String> item = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => target.Add( item );
 
             test.ShouldThrow<ArgumentNullException>();
@@ -125,11 +127,13 @@ namespace Extend.Testing
             var target = new TreeNodeCollection<String>( parent );
 
             String expected = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = target.Add( expected );
 
             Assert.IsTrue( target.Contains( actual ) );
             Assert.AreEqual( 1, target.Count );
 
+            // ReSharper disable once ExpressionIsAlwaysNull
             Assert.AreEqual( actual.Value, expected );
             Assert.AreSame( parent, actual.Parent );
             Assert.AreEqual( 1, actual.Depth );
@@ -314,9 +318,12 @@ namespace Extend.Testing
             target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
 
             ITreeNode<String> newParent = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             target.Parent = newParent;
 
+            // ReSharper disable once ExpressionIsAlwaysNull
             Assert.AreSame( newParent, target.Parent );
+            // ReSharper disable once ExpressionIsAlwaysNull
             target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
         }
 
@@ -324,8 +331,7 @@ namespace Extend.Testing
         public void ParentTest6()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>( parent );
-            target.Parent = null;
+            var target = new TreeNodeCollection<String>( parent ) { Parent = null };
 
             Assert.AreEqual( null, target.Parent );
         }
@@ -417,9 +423,11 @@ namespace Extend.Testing
         public void RemoveNodeTestNullCheck()
         {
             var parent = new TreeNode<String>();
+            // ReSharper disable once CollectionNeverQueried.Local
             var target = new TreeNodeCollection<String>( parent );
 
             ITreeNode<String> item = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => target.Remove( item );
 
             test.ShouldThrow<ArgumentNullException>();

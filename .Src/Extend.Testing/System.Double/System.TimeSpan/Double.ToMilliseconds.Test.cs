@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Test]
         public void ToMillisecondsTest()
         {
-            var number = 10.5;
+            const Double number = 10.5;
             var expected = TimeSpan.FromMilliseconds( number );
             var actual = number.ToMilliseconds();
 

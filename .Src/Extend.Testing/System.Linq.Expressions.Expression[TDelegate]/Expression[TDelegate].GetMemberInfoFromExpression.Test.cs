@@ -26,7 +26,6 @@ namespace Extend.Testing
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual( typeof(Int32), ( actual as PropertyInfo ).PropertyType );
 
-            Expression<Func<TestModel, Int32>> memberExpression2 = x => x.Age;
             actual = memberExpression1.GetMemberInfoFromExpression();
             // ReSharper disable once PossibleNullReferenceException
             Assert.AreEqual( typeof(Int32), ( actual as PropertyInfo ).PropertyType );
@@ -47,8 +46,8 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public String Name { get; set; }
-            public Int32 Age { get; set; }
+            public String Name { get; } = String.Empty;
+            public Int32 Age { get; } = 100;
 
             #endregion
         }

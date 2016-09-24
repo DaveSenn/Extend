@@ -149,8 +149,7 @@ namespace Extend.Testing
 
             Assert.AreEqual( 2, node2.Children.Count );
             node2.Children.ForEach( x => Assert.AreSame( node2, x.Parent ) );
-
-            var node1Children = node1.Children;
+            
             var node2Children = node2.Children;
 
             //Add children from 2 to 1
@@ -521,6 +520,7 @@ namespace Extend.Testing
 
             Action test = () =>
             {
+                // ReSharper disable once UnusedVariable
                 var actual = target.Descendants;
             };
             test.ShouldThrow<NotSupportedException>();
@@ -1149,6 +1149,9 @@ namespace Extend.Testing
                 "6"
             };
             var actual = target.GetEnumerator();
+            actual.Should()
+                  .NotBe( null );
+            actual.Dispose();
         }
 
         [Test]
@@ -1157,7 +1160,7 @@ namespace Extend.Testing
             var target = new TreeNode<String>( "root" ) { "1", "2", "3" };
             var actual = new List<ITreeNode<String>>();
 
-            var enumerator = ( target as IEnumerable ).GetEnumerator();
+            var enumerator = ( (IEnumerable) target ).GetEnumerator();
             while ( enumerator.MoveNext() )
                 actual.Add( enumerator.Current as ITreeNode<String> );
 
@@ -1173,6 +1176,7 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
             target.TraversalDirection = TreeTraversalDirection.TopDown;
+            // ReSharper disable once CollectionNeverQueried.Local
             var actual = new List<ITreeNode<String>>();
 
             // ReSharper disable once LoopCanBeConvertedToQuery
@@ -1190,6 +1194,7 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" ) { "1", "2", "3", new AlternativeTreeNode<String>() };
             target.TraversalDirection = TreeTraversalDirection.BottomUp;
+            // ReSharper disable once CollectionNeverQueried.Local
             var actual = new List<ITreeNode<String>>();
 
             // ReSharper disable once LoopCanBeConvertedToQuery
@@ -1566,7 +1571,7 @@ namespace Extend.Testing
 
             #endregion
         }
-
+        
         private class AlternativeTreeNode<T> : ITreeNode<T>
         {
             #region Implementation of IDisposable
@@ -1662,31 +1667,31 @@ namespace Extend.Testing
             ///     Gets the root of the tree.
             /// </summary>
             /// <value>The root of the tree.</value>
-            public ITreeNode<T> Root { get; private set; }
+            public ITreeNode<T> Root { get;  } = new TreeNode<T>();
 
             /// <summary>
             ///     Gets the depth of the node.
             /// </summary>
             /// <value>The depth of the node.</value>
-            public Int32 Depth { get; private set; }
+            public Int32 Depth { get; } = 0;
 
             /// <summary>
             ///     Gets a value indicating whether the node has any children or not.
             /// </summary>
             /// <value>A value indicating whether the node has any children or not.</value>
-            public Boolean HasChildren { get; private set; }
+            public Boolean HasChildren { get; } = false;
 
             /// <summary>
             ///     Gets a value indicating whether the node has a parent or not.
             /// </summary>
             /// <value>A value indicating whether the node has a parent or not.</value>
-            public Boolean HasParent { get; private set; }
+            public Boolean HasParent { get;  } = false;
 
             /// <summary>
             ///     Gets an enumeration of all tree nodes which are below the current node in the tree.
             /// </summary>
             /// <value>An enumeration of all tree nodes which are below the current node in the tree.</value>
-            public IEnumerable<ITreeNode<T>> Descendants { get; private set; }
+            public IEnumerable<ITreeNode<T>> Descendants { get;  } = new List<ITreeNode<T>>();
 
             /// <summary>
             ///     Gets the values which matches the given predicate.
