@@ -32,6 +32,7 @@ namespace Extend.Testing
         {
             String value = null;
             Char result;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.TryParsChar( out result );
 
             result

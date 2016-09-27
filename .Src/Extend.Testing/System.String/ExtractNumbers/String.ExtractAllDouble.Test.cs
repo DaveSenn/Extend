@@ -21,7 +21,7 @@ namespace Extend.Testing
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
                                 .Replace( ",", "." );
-            var actual = stringValue.ExtractAllDouble( 0 );
+            var actual = stringValue.ExtractAllDouble();
 
             Assert.AreEqual( 4, actual.Count );
             Assert.AreEqual( value0, actual[0] );
@@ -63,7 +63,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ExtractAllDouble( null, 0 );
+            Action test = () => StringEx.ExtractAllDouble( null, 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

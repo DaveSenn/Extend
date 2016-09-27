@@ -84,9 +84,9 @@ namespace Extend.Testing
         [Test]
         public void IsMatchTest2()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "dave.senn@myDomain.com";
+            const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.IsMatch( emaiLpattern, RegexOptions.Compiled, 10.ToSeconds() );
             Assert.IsTrue( actual );

@@ -23,6 +23,7 @@ namespace Extend.Testing
         {
             var varName = RandomValueEx.GetRandomString();
 #pragma warning disable CS0618 // Type or member is obsolete
+            // ReSharper disable once AccessToModifiedClosure
             varName.ThrowIfNull( () => varName );
 #pragma warning restore CS0618 // Type or member is obsolete
 
@@ -31,6 +32,7 @@ namespace Extend.Testing
             try
             {
 #pragma warning disable CS0618 // Type or member is obsolete
+                // ReSharper disable once ExpressionIsAlwaysNull
                 varName.ThrowIfNull( () => varName );
 #pragma warning restore CS0618 // Type or member is obsolete
             }
@@ -47,6 +49,7 @@ namespace Extend.Testing
         {
             var varName = RandomValueEx.GetRandomString();
 #pragma warning disable CS0618 // Type or member is obsolete
+            // ReSharper disable once AccessToModifiedClosure
             varName.ThrowIfNull( () => varName );
 #pragma warning restore CS0618 // Type or member is obsolete
 
@@ -56,6 +59,7 @@ namespace Extend.Testing
             try
             {
 #pragma warning disable CS0618 // Type or member is obsolete
+                // ReSharper disable once ExpressionIsAlwaysNull
                 varName.ThrowIfNull( () => varName, expectedErrorMessage );
 #pragma warning restore CS0618 // Type or member is obsolete
             }
@@ -77,6 +81,7 @@ namespace Extend.Testing
             var errorMessage = String.Empty;
             try
             {
+                // ReSharper disable once ExpressionIsAlwaysNull
                 varName.ThrowIfNull( "varName" );
             }
             catch ( ArgumentNullException ex )
@@ -98,6 +103,7 @@ namespace Extend.Testing
             var errorMessage = String.Empty;
             try
             {
+                // ReSharper disable once ExpressionIsAlwaysNull
                 varName.ThrowIfNull( "varName", expectedErrorMessage );
             }
             catch ( ArgumentNullException ex )
@@ -113,6 +119,7 @@ namespace Extend.Testing
         {
             String value = null;
 #pragma warning disable CS0618 // Type or member is obsolete
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => value.ThrowIfNull( () => value );
 #pragma warning restore CS0618 // Type or member is obsolete
 
@@ -125,7 +132,9 @@ namespace Extend.Testing
             String value = null;
             Expression<Func<String>> expression = null;
 #pragma warning disable CS0618 // Type or member is obsolete
+            // ReSharper disable ExpressionIsAlwaysNull
             Action test = () => value.ThrowIfNull( expression );
+            // ReSharper restore ExpressionIsAlwaysNull
 #pragma warning restore CS0618 // Type or member is obsolete
 
             test.ShouldThrow<ArgumentNullException>();
@@ -135,6 +144,7 @@ namespace Extend.Testing
         public void ThrowIfNullTestNullCheck2()
         {
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => value.ThrowIfNull( "varName" );
 
             test.ShouldThrow<ArgumentNullException>();

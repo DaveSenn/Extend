@@ -67,6 +67,7 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedMember.Local
             public String MyString { get; set; }
 
             #endregion

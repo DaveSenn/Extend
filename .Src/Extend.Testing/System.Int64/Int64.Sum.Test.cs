@@ -37,6 +37,7 @@ namespace Extend.Testing
         {
             Int64?[] values = null;
             // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ( (Int64?) 10 ).Sum( values );
 
             test.ShouldThrow<ArgumentNullException>();

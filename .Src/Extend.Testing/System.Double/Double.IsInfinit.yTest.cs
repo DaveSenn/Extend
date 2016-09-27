@@ -14,22 +14,19 @@ namespace Extend.Testing
         public void IsInfinityTest()
         {
             var number = 10.5;
-            var expected = false;
             var actual = number.IsInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( false, actual );
 
             number = Double.NegativeInfinity;
-            expected = true;
             actual = number.IsInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( true, actual );
 
             number = Double.PositiveInfinity;
-            expected = true;
             actual = number.IsInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( true, actual );
         }
     }
 }

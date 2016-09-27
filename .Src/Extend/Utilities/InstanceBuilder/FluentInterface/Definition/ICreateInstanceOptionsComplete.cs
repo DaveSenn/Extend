@@ -11,6 +11,7 @@ namespace Extend
     ///     Interface representing a complete create instance options object.
     /// </summary>
     /// <typeparam name="T">The type of the object to create.</typeparam>
+    // ReSharper disable once UnusedTypeParameter
     public interface ICreateInstanceOptionsComplete<T>
     {
         #region Properties

@@ -132,7 +132,7 @@ namespace Extend.Testing
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToByte( Byte.MinValue );
+                                 .SaveToByte( 12 );
 
             actual
                 .Should()

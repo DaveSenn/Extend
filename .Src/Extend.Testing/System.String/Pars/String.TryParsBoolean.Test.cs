@@ -40,6 +40,7 @@ namespace Extend.Testing
         public void TryParsBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
+            // ReSharper disable once RedundantAssignment
             var outValue = !expected;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .TryParsBoolean( out outValue );

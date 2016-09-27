@@ -42,7 +42,9 @@ namespace Extend.Testing
         public void TruncateTest4()
         {
             String value = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.Truncate( 7, "_-_" );
+            // ReSharper disable once ExpressionIsAlwaysNull
             Assert.AreEqual( value, actual );
         }
     }
