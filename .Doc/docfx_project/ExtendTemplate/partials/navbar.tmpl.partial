@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="{{_rel}}index.html">
-		<img id="logo" src="{{_rel}}images/logo.png" height="46" width="46" alt="{{_appName}}" >
+		<img id="logo" src="{{_rel}}images/logo.png" height="50" alt="{{_appName}}" >
       </a>
     </div>
     <div class="collapse navbar-collapse" id="navbar">
