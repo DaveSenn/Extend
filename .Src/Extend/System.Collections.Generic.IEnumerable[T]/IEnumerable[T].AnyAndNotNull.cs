@@ -19,14 +19,14 @@ namespace Extend
         ///     Checks if the given IEnumerable is not null and contains some items.
         /// </summary>
         /// <example>
-        ///     <code> 
-        ///         List&lt;String&gt; strings = null;
-        ///         Console.WriteLine( strings.AnyAndNotNull() ); // False
-        ///         strings = new List&lt;String&gt;();
-        ///         Console.WriteLine( strings.AnyAndNotNull() ); // False
-        ///         strings.AddRange( "1", "2", "3" );
-        ///         Console.WriteLine( strings.AnyAndNotNull() ); // True
-        ///     </code>
+        /// <code> 
+        /// List&lt;String&gt; strings = null;
+        /// Console.WriteLine( strings.AnyAndNotNull() ); // False
+        /// strings = new List&lt;String&gt;();
+        /// Console.WriteLine( strings.AnyAndNotNull() ); // False
+        /// strings.AddRange( "1", "2", "3" );
+        /// Console.WriteLine( strings.AnyAndNotNull() ); // True
+        /// </code>
         /// </example>
         /// <typeparam name="T">The type of the items in the IEnumerable.</typeparam>
         /// <param name="enumerable">The IEnumerable to act on.</param>
