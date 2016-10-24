@@ -299,10 +299,24 @@ namespace Extend
             if ( value != null )
                 return value;
 
-            //Create value (first try IEnumerable than anything else)
-            value = TryCreateIEnumerableValue( memberInformation ) ?? CreateValueUsingAcrivator( memberInformation );
+            // Create value (first try IEnumerable than anything else)
+            value = TryCreateCollectionValue( memberInformation );
+            // ReSharper disable once InvertIf
+            if ( value == null )
+                try
+                {
+                    value = CreateValueUsingAcrivator( memberInformation );
+                }
+                catch ( Exception ex )
+                {
+                    throw new CreateInstanceException( $"Failed to create instance due to missing or invalid factory for type '{memberInformation.MemberType}'.",
+                                                       ex,
+                                                       null,
+                                                       null,
+                                                       memberInformation );
+                }
 
-            //Populate collection if collection (could be ICollection)
+            // Populate collection if collection (could be ICollection)
             return TryPopulateCollection( options, memberInformation, value );
         }
 
@@ -311,10 +325,10 @@ namespace Extend
         /// </summary>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static Object TryCreateIEnumerableValue( IMemberInformation memberInformation )
+        private static Object TryCreateCollectionValue( IMemberInformation memberInformation )
         {
-            //Check if member implements IEnumerable{T}
-            if ( !memberInformation.MemberType.IsIEnumerableT() )
+            //Check if member implements IEnumerable{T} or IList{T} or IColelction{T}
+            if ( !memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() && !memberInformation.MemberType.IsICollectionT() )
                 return null;
 
             //Get a List{T} of the IEnumerable{T}'s item type as type
@@ -383,16 +397,17 @@ namespace Extend
         {
             try
             {
-                //Create type using activator class
+                // Create type using activator class
                 return Activator.CreateInstance( memberInformation.MemberType );
             }
             catch ( Exception ex )
             {
-                throw new CreateInstanceException( $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator.",
-                                                   ex,
-                                                   null,
-                                                   null,
-                                                   memberInformation );
+                throw new CreateInstanceException(
+                    $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator (Consider writing a custom factory for this type).",
+                    ex,
+                    null,
+                    null,
+                    memberInformation );
             }
         }
 

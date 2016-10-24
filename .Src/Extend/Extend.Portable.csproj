@@ -51,6 +51,7 @@
     <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="System.Exception\Exception.FormatException.cs" />
     <Compile Include="Models\AttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IIndexedItem.cs" />
@@ -93,6 +94,8 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
+    <Compile Include="System.Type\Type.IsICollectionT.cs" />
+    <Compile Include="System.Type\Type.IsIListT.cs" />
     <Compile Include="Utilities\Compare\KeyEqualityComparer.cs" />
     <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />

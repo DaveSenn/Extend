@@ -70,6 +70,7 @@
     <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.Test.cs" />
     <Compile Include="System.DateTime\DateTime.IsLastDayOfMonth.Test.cs" />
     <Compile Include="System.DateTime\DateTime.GetWeekOfYear.Test.cs" />
+    <Compile Include="System.Exception\Exception.FormatException.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.Test.cs" />
     <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.Test.cs" />
@@ -426,6 +427,8 @@
     <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.Test.cs" />
+    <Compile Include="System.Type\Type.IsICollectionT.Test.cs" />
+    <Compile Include="System.Type\Type.IsIListT.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />

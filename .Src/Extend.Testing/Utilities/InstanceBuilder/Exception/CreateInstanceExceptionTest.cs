@@ -52,5 +52,26 @@ namespace Extend.Testing
             target.SelectionRuleRuleInformation.Should()
                   .Be( "info2" );
         }
+
+        [Test]
+        public void ToStringTest()
+        {
+            var target = new CreateInstanceException( "message",
+                                                      new Exception( "Inner Exception" ),
+                                                      "Factory Info",
+                                                      "Selection Rule",
+                                                      new MemberInformation
+                                                      {
+                                                          MemberType = typeof(String),
+                                                          MemberName = "Name",
+                                                          MemberPath = "Path",
+                                                          MemberObject = "test"
+                                                      } );
+
+            var actual = target.ToString();
+            actual.Should()
+                  .Be(
+                      "CreateInstanceException: message\r\nMember Information='Name: 'Name' Path 'Path' Type 'System.String''\r\n\r\n\r\n ---> System.Exception: Inner Exception\r\n   --- End of inner exception stack trace ---\r\n" );
+        }
     }
 }
