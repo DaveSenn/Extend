@@ -34,7 +34,7 @@ namespace Extend.Testing
         {
             const String format = "Test: {0}";
             var value = RandomValueEx.GetRandomString();
-            
+
             var expected = $"Test: {value}";
             var actual = format.F( value );
 

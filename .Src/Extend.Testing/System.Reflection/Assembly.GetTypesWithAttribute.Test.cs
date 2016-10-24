@@ -28,7 +28,8 @@ namespace Extend.Testing
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
                                                                          typeof(BaseTestClass),
                                                                          GetType()
-                                                                             .Assembly ).ToList();
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 3 );
@@ -70,7 +71,8 @@ namespace Extend.Testing
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
                                                                          GetType()
-                                                                             .Assembly ).ToList();
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 5 );
@@ -128,7 +130,8 @@ namespace Extend.Testing
         public void GetTypesWithAttributeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( GetType()
-                                                                             .Assembly ).ToList();
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 4 );

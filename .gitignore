@@ -202,3 +202,4 @@ FakesAssemblies/
 # Sphinx build directory
 /Docs/_build
 Output
+/.Doc/docfx_project/_exported_templates

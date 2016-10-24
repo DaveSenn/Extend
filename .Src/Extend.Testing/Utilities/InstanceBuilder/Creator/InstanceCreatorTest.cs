@@ -22,12 +22,13 @@ namespace Extend.Testing
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Failed to create an instance of the following type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor' using Activator." );
+                .WithMessage( "Failed to create instance due to missing or invalid factory for type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor'." );
         }
 
         [Test]
-        public void AnonymousItemNameDefaultValueTest() => InstanceCreator.AnonymousItemName.Should()
-                                                                          .Be( "[AnonymousItem]" );
+        public void AnonymousItemNameDefaultValueTest()
+            => InstanceCreator.AnonymousItemName.Should()
+                              .Be( "[AnonymousItem]" );
 
         [Test]
         public void AnonymousItemNameTest()
@@ -38,6 +39,27 @@ namespace Extend.Testing
                            .Be( expected );
 
             InstanceCreator.AnonymousItemName = "[AnonymousItem]";
+        }
+
+        [Test]
+        public void CreateInstanceIColelctionTest()
+        {
+            var actual = InstanceCreator
+                .CreateInstance<ModelWithCollection>();
+
+            actual.Should()
+                  .NotBeNull();
+
+            actual.MyArray.Should()
+                  .NotBeEmpty();
+            actual.MyList.Should()
+                  .NotBeEmpty();
+            actual.MyEnumerable.Should()
+                  .NotBeEmpty();
+            actual.MyListInterface.Should()
+                  .NotBeEmpty();
+            actual.MyCollection.Should()
+                  .NotBeEmpty();
         }
 
         [Test]
@@ -463,6 +485,21 @@ namespace Extend.Testing
                   .BeTrue();
             actual.MySubModel.MyString.Should()
                   .NotBeEmpty();
+        }
+
+        private class ModelWithCollection
+        {
+            // ReSharper disable UnusedMember.Local
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            public String[] MyArray { get; set; }
+            public List<String> MyList { get; set; }
+            public IEnumerable<String> MyEnumerable { get; set; }
+            public IList<String> MyListInterface { get; set; }
+            public ICollection<String> MyCollection { get; set; }
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
+            // ReSharper restore UnusedMember.Local
         }
 
         private class TestModel

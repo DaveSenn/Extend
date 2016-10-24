@@ -21,7 +21,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo( expected, 1000 );
         }
 
         [Test]
@@ -33,7 +33,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo( expected, 1000 );
         }
 
         [Test]
@@ -109,7 +109,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .BeCloseTo( expected, 999 );
+                .BeCloseTo( expected, 1000 );
         }
     }
 }

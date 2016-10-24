@@ -44,8 +44,6 @@ namespace Extend.Testing
 
         private class TestModel
         {
-            #region Properties
-
             // ReSharper disable UnusedMember.Local
             public String MyString { get; set; }
             public Int32 MyInt32 { get; set; }
@@ -54,8 +52,6 @@ namespace Extend.Testing
             public String ReadonlyString { get; }
             private String PrivateString { get; set; }
             // ReSharper restore UnusedMember.Local
-
-            #endregion
         }
 
         private class TestModelNoProperties

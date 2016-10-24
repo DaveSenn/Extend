@@ -19,7 +19,8 @@ namespace Extend.Testing
             var value2 = new Decimal( -1100.2231232 );
             var value3 = new Decimal( 12300 );
 
-            var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 ).Replace( ",", "." );
+            var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
+                                .Replace( ",", "." );
             // ReSharper disable once RedundantArgumentDefaultValue
             var actual = stringValue.ExtractAllDecimal( 0 );
 

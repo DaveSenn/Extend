@@ -75,5 +75,16 @@ namespace Extend
         }
 
         #endregion
+
+        #region Overrides of Exception
+
+        /// <summary>
+        ///     Creates and returns a string representation of the current exception.
+        /// </summary>
+        /// <returns>A string representation of the current exception.</returns>
+        public override String ToString()
+            => this.FormatException( description => description.AppendFormat( "Member Information='{1}'{0}{0}", Environment.NewLine, MemberInformation ) );
+
+        #endregion
     }
 }

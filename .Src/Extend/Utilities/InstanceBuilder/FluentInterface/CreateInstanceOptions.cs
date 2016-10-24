@@ -22,7 +22,7 @@ namespace Extend
         ///     Gets or sets the current factory.
         /// </summary>
         /// <value>The current factory.</value>
-        private IInstanceFactory _currentFactoriy;
+        private IInstanceFactory _currentFactory;
 
         /// <summary>
         ///     Gets or sets the current member selection mode (include or exclude).
@@ -56,7 +56,7 @@ namespace Extend
                     MemberChildrenSelectionRules.Add( memberSelectionRule );
                     break;
                 case MemberSelectionRuleTarget.Factory:
-                    _currentFactoriy?.AddSelectionRule( memberSelectionRule );
+                    _currentFactory?.AddSelectionRule( memberSelectionRule );
                     break;
                 default:
                     throw new ArgumentOutOfRangeException( nameof( _currentMemberSelectionTarget ),
@@ -233,7 +233,7 @@ namespace Extend
         /// <summary>
         ///     Configures the name of anonymous items.
         /// </summary>
-        /// <param name="anonymousItemName">The name used for anonymouns items, or null to use global configuration.</param>
+        /// <param name="anonymousItemName">The name used for anonymous items, or null to use global configuration.</param>
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> SetAnonymousItemName( String anonymousItemName )
         {
@@ -251,11 +251,11 @@ namespace Extend
         {
             factory.ThrowIfNull( nameof( factory ) );
 
-            //Create and add factory
-            _currentFactoriy = new ExpressionInstanceFactory( factory );
-            Factories.Add( _currentFactoriy );
+            // Create and add factory
+            _currentFactory = new ExpressionInstanceFactory( factory );
+            Factories.Add( _currentFactory );
 
-            //Set target to factory
+            // Set target to factory
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Factory;
 
             return this;
