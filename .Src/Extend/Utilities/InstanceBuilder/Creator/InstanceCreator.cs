@@ -327,21 +327,21 @@ namespace Extend
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
         private static Object TryCreateCollectionValue( IMemberInformation memberInformation )
         {
-            //Check if member implements IEnumerable{T} or IList{T} or IColelction{T}
+            // Check if member implements IEnumerable{T} or IList{T} or ICollection{T}
             if ( !memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() && !memberInformation.MemberType.IsICollectionT() )
                 return null;
 
-            //Get a List{T} of the IEnumerable{T}'s item type as type
+            // Get a List{T} of the IEnumerable{T}'s item type as type
 #if PORTABLE45
 
             var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
 #elif NET40
             var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
 #endif
-            //Create an instance of the constructed type
+            // Create an instance of the constructed type
             var instnace = Activator.CreateInstance( concreteType );
 
-            //Update the type of the member in the member information
+            // Update the type of the member in the member information
             var currentMember = memberInformation as MemberInformation;
             if ( currentMember != null )
                 currentMember.MemberType = concreteType;
@@ -358,15 +358,15 @@ namespace Extend
         /// <returns>Returns the created value, or null if the given type is not an array type.</returns>
         private static Object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Check if member is an array type
+            // Check if member is an array type
             if ( !memberInformation.MemberType.IsArray )
                 return null;
 
-            //Create the array
+            // Create the array
             var elementType = memberInformation.MemberType.GetElementType();
             var array = Array.CreateInstance( elementType, GetCollectionItemCount( options ) );
 
-            //Add items
+            // Add items
             var anonymousItemName = GetAnonymousItemName( options );
             for ( var i = 0; i < array.Length; i++ )
             {
@@ -377,7 +377,7 @@ namespace Extend
                     MemberName = anonymousItemName
                 };
 
-                //Get the value of the current array item.
+                // Get the value of the current array item.
                 var arrayItemValue = GetValue( options, currentMember );
                 currentMember.MemberObject = arrayItemValue;
                 SetAllMembers( options, currentMember );
@@ -421,7 +421,7 @@ namespace Extend
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
         private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Get matching factory
+            // Get matching factory
             var factory = GetExactlymatchingFactory( options, memberInformation );
             if ( factory != null )
                 return factory;
@@ -449,13 +449,13 @@ namespace Extend
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
         private static IInstanceFactory GetExactlymatchingFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Get factory from options
+            // Get factory from options
             var matchingFactories = options.Factories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
                                            .ToList();
             if ( matchingFactories.Count == 1 )
                 return matchingFactories.Single();
 
-            //Check if multiple factories have matched
+            // Check if multiple factories have matched
             if ( matchingFactories.Any() )
                 throw new CreateInstanceException(
                     $"Found multiple matching factories for member (in options). Type is '{memberInformation.MemberType}'. Please make sure only one factory matches the member.",
@@ -464,7 +464,7 @@ namespace Extend
                     null,
                     memberInformation );
 
-            //Get factory from default factories
+            // Get factory from default factories
             matchingFactories = DefaultFactories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
                                                 .ToList();
             if ( matchingFactories.Count == 1 )
@@ -479,7 +479,7 @@ namespace Extend
                     null,
                     memberInformation );
 
-            //No factory found
+            // No factory found
             return null;
         }
 
@@ -515,7 +515,7 @@ namespace Extend
         /// <returns>Returns the populated or unmodified instance.</returns>
         private static Object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, Object collectionInstance ) where T : class
         {
-            //Check if collection should get populated or not
+            // Check if collection should get populated or not
             if ( !PopulateCollection( options ) || collectionInstance == null )
                 return collectionInstance;
 

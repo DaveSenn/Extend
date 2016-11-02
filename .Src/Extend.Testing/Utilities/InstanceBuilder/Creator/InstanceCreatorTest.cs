@@ -42,7 +42,7 @@ namespace Extend.Testing
         }
 
         [Test]
-        public void CreateInstanceIColelctionTest()
+        public void CreateInstanceICollectionTest()
         {
             var actual = InstanceCreator
                 .CreateInstance<ModelWithCollection>();
