@@ -45,7 +45,10 @@ namespace Extend
 
         #region Properties
 
-        // Global overrride switch to enable old behavior.
+        /// <summary>
+        ///     Gets or sets a value determining whether property information will be cached or not.
+        /// </summary>
+        /// <value>A value determining whether property information will be cached or not.</value>
         public static Boolean EnableCaching
         {
             get { return _enableCaching; }
@@ -88,7 +91,7 @@ namespace Extend
         /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
         private static Object GetIndexedPropertyValue( Object source, String expression )
         {
-            Object propertyValue = null;
+            Object propertyValue;
             var intIndex = false;
 
             // Get the index expression and validate it
@@ -236,6 +239,10 @@ namespace Extend
             properties = containerType.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly )
                                       .ToList();
 #endif
+
+            // Update the cache
+            PropertyCache.TryAdd( containerType, properties );
+
             return properties;
         }
 
