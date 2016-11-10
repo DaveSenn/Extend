@@ -340,8 +340,10 @@ namespace Extend.Testing
         public void ParentTest7()
         {
             var parent = new TreeNode<String>();
-            var target = new TreeNodeCollection<String>( parent );
-            target.Parent = parent;
+            var target = new TreeNodeCollection<String>( parent )
+            {
+                Parent = parent
+            };
 
             Assert.AreEqual( parent, target.Parent );
         }
