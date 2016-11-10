@@ -464,6 +464,13 @@
     <Compile Include="Utilities\Specification\OrSpecification.cs" />
     <Compile Include="Utilities\Specification\Specification.cs" />
     <Compile Include="Utilities\Specification\XOrSpecification.cs" />
+    <Compile Include="Utilities\StringTemplate\ExpressionExecutor.cs" />
+    <Compile Include="Utilities\StringTemplate\FormatInformation.cs" />
+    <Compile Include="Utilities\StringTemplate\IValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\LookuptValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\ObjectValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\StringTemplate.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProviderBase.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNode.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeAware.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeCollection.cs" />
