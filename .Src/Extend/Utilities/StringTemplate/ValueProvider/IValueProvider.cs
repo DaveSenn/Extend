@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace Extend
+namespace Extend.Internal
 {
     /// <summary>
     ///     Class representing a value provider for string formating.
     /// </summary>
-    internal interface IValueProvider
+    public interface IValueProvider
     {
         /// <summary>
         ///     Gets the value represented by the given expression.

@@ -1,11 +1,16 @@
-﻿using System;
+﻿#region Usings
 
-namespace Extend
+using System;
+using Extend.Internal;
+
+#endregion
+
+namespace Extend.Internal
 {
     /// <summary>
     ///     Base class for value providers.
     /// </summary>
-    internal abstract class ValueProviderBase : IValueProvider
+    public abstract class ValueProviderBase : IValueProvider
     {
         #region Constants
 
@@ -36,14 +41,9 @@ namespace Extend
         {
             var colonIndex = expression.IndexOf( FormatSeperator );
 
-            if ( colonIndex <= 0 )
-                return new FormatInformation { ValueName = expression };
-
-            return new FormatInformation
-            {
-                Format = "{0:" + expression.Substring( colonIndex + 1 ) + "}",
-                ValueName = expression.Substring( 0, colonIndex )
-            };
+            return colonIndex <= 0
+                ? new FormatInformation( expression, null )
+                : new FormatInformation( expression.Substring( 0, colonIndex ), "{0:" + expression.Substring( colonIndex + 1 ) + "}" );
         }
     }
 }

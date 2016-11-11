@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿#region Usings
 
-namespace Extend
+using System;
+using System.Collections.Generic;
+using JetBrains.Annotations;
+
+#endregion
+
+namespace Extend.Internal
 {
     /// <summary>
     ///     Value provider for looking up known values.
     /// </summary>
-    internal class LookuptValueProvider : ValueProviderBase
+    public class LookuptValueProvider : ValueProviderBase
     {
         #region Fields
 
@@ -24,7 +29,7 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <param name="values">The value to use.</param>
-        public LookuptValueProvider( IDictionary<String, Object> values )
+        public LookuptValueProvider( [NotNull] IDictionary<String, Object> values )
         {
             values.ThrowIfNull( nameof( values ) );
 
@@ -53,7 +58,7 @@ namespace Extend
             {
                 // Check if value was present in the dictionary
                 if ( ex is KeyNotFoundException )
-                    throw new FormatException( $"Could not found value for expression: '{expression}'." );
+                    throw new FormatException( $"Could not found value for expression: '{expression}'.", ex );
 
                 throw new FormatException( $"Invalid format, invalid formatted expression: '{expression}'", ex );
             }

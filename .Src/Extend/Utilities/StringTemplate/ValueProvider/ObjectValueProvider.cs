@@ -1,8 +1,12 @@
-﻿using System;
+﻿#region Usings
 
-namespace Extend
+using System;
+
+#endregion
+
+namespace Extend.Internal
 {
-    internal class ObjectValueProvider : ValueProviderBase
+    public class ObjectValueProvider : ValueProviderBase
     {
         #region Fields
 
