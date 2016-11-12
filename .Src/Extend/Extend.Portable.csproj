@@ -96,7 +96,10 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
-    <Compile Include="System.Type\GetPublicProperties.cs" />
+    <Compile Include="System.Type\Type.GetPublicProperties.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArguments.cs" />
+    <Compile Include="System.Type\Type.IsGenericType.cs" />
+    <Compile Include="System.Type\Type.GetTypeFromNullable.cs" />
     <Compile Include="System.Type\Type.IsEnum.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIListT.cs" />

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+
 #if PORTABLE45
 using System.Reflection;
 
@@ -46,11 +47,11 @@ namespace Extend
 #elif NET40
             return t.GetProperties()
                     .Select( x => new AttributeDefinitionProperty<TAttribute>
-                    {
-                        Property = x,
-                        Attributes = x.GetCustomAttributes( typeof (TAttribute), true )
-                                      .Cast<TAttribute>()
-                    } )
+                             {
+                                 Property = x,
+                                 Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
+                                               .Cast<TAttribute>()
+                             } )
                     .Where( x => x.Attributes.Any() );
 #endif
         }

@@ -427,7 +427,7 @@ namespace Extend
                 return factory;
 
             // Try get inner type of null-able
-            var nullableType = GetTypeFromNullable( memberInformation.MemberType );
+            var nullableType = memberInformation.MemberType.GetTypeFromNullable();
             if ( nullableType == null )
                 return null;
 
@@ -481,28 +481,6 @@ namespace Extend
 
             // No factory found
             return null;
-        }
-
-        /// <summary>
-        ///     Gets the 'inner' type from a nullable type.
-        /// </summary>
-        /// <param name="possibleNullableType">The possible nullable type.</param>
-        /// <returns>Returns the inner type, or null if the given type is not a nullable.</returns>
-        private static Type GetTypeFromNullable( Type possibleNullableType )
-        {
-#if PORTABLE45
-            var typeInfo = possibleNullableType.GetTypeInfo();
-            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof(Nullable<>) ) )
-                return null;
-
-            return typeInfo.GenericTypeArguments.FirstOrDefault();
-#elif NET40
-            if ( !( possibleNullableType.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
-                return null;
-
-            return possibleNullableType.GetGenericArguments()
-                                       .FirstOrDefault();
-#endif
         }
 
         /// <summary>

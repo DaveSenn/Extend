@@ -18,21 +18,19 @@ namespace Extend
     public static partial class TypeEx
     {
         /// <summary>
-        ///     Checks if the given type is an enumeration.
+        ///     Gets a value indicating whether the current type is a generic type.
         /// </summary>
-        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">The type to check.</param>
-        /// <returns>Returns a value of true if the given type is an enumeration; otherwise, false.</returns>
+        /// <returns>Returns a value of true if the given type is a generic type; otherwise, false.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean IsEnum( [NotNull] this Type type )
+        public static Boolean IsGenericType( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
-
 #if PORTABLE45
-            return type.GetTypeInfo().IsEnum;
+            return type.GetTypeInfo()
+                       .IsGenericType;
 #elif NET40
-            return type.IsEnum;
+            return type.IsGenericType;
 #endif
         }
     }

@@ -30,7 +30,7 @@ namespace Extend
             var attributes = type.GetTypeInfo()
                                  .Assembly.GetCustomAttributes<AssemblyCompanyAttribute>();
 #elif NET40
-            var attributes = type.Assembly.GetCustomAttributes( typeof (AssemblyCompanyAttribute), false )
+            var attributes = type.Assembly.GetCustomAttributes( typeof(AssemblyCompanyAttribute), false )
                                  .OfType<AssemblyCompanyAttribute>();
 #endif
             return attributes.Any( x => x.Company == "Microsoft Corporation" );

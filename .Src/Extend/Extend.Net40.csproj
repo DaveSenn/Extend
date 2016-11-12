@@ -423,11 +423,14 @@
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArguments.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.cs" />
     <Compile Include="System.Type\Type.GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
+    <Compile Include="System.Type\Type.GetTypeFromNullable.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsEnum.cs" />
+    <Compile Include="System.Type\Type.IsGenericType.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.cs" />
     <Compile Include="System.Type\Type.IsIListT.cs" />

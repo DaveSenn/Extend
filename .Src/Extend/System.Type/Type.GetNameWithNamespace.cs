@@ -3,6 +3,7 @@
 using System;
 using System.Linq;
 using JetBrains.Annotations;
+
 #if PORTABLE45
 using System.Reflection;
 

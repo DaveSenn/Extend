@@ -3,8 +3,8 @@
 using System;
 using System.Linq;
 using JetBrains.Annotations;
+
 #if PORTABLE45
-using System.Reflection;
 
 #endif
 
@@ -30,13 +30,8 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            return type.GetTypeInfo()
-                       .GenericTypeArguments.FirstOrDefault();
-#elif NET40
-            return type.GetGenericArguments()
+            return type.GetGenericTypeArguments()
                        .FirstOrDefault();
-#endif
         }
     }
 }
