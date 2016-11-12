@@ -54,13 +54,9 @@ namespace Extend.Internal
                     ? _values[formatInformation.ValueName]?.ToString()
                     : formatInformation.Format.F( _values[formatInformation.ValueName] );
             }
-            catch ( Exception ex )
+            catch ( KeyNotFoundException ex )
             {
-                // Check if value was present in the dictionary
-                if ( ex is KeyNotFoundException )
-                    throw new FormatException( $"Could not found value for expression: '{expression}'.", ex );
-
-                throw new FormatException( $"Invalid format, invalid formatted expression: '{expression}'", ex );
+                throw new FormatException( $"Could not found value for expression: '{expression}'.", ex );
             }
         }
 

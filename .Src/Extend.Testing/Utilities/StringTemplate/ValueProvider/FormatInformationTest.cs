@@ -23,6 +23,48 @@ namespace Extend.Internal.Testing
         }
 
         [Test]
+        public void GetValueFalseFormatTest()
+        {
+            var values = new Dictionary<String, Object>
+            {
+                { "MyInt", DateTime.Now }
+            };
+            var target = new LookuptValueProvider( values );
+
+            var actual = target.GetValue( "MyInt:DD" );
+            actual.Should()
+                  .Be( "DD" );
+        }
+
+        [Test]
+        public void GetValueMissingKeyTest()
+        {
+            var values = new Dictionary<String, Object>
+            {
+                { "MyString", "asdf" }
+            };
+            var target = new LookuptValueProvider( values );
+
+            Action test = () => target.GetValue( "MyInt" );
+            test.ShouldThrow<FormatException>()
+                .WithInnerException<KeyNotFoundException>();
+        }
+
+        [Test]
+        public void GetValueMissingKeyWithFormatTest()
+        {
+            var values = new Dictionary<String, Object>
+            {
+                { "MyString", "asdf" }
+            };
+            var target = new LookuptValueProvider( values );
+
+            Action test = () => target.GetValue( "MyInt:000" );
+            test.ShouldThrow<FormatException>()
+                .WithInnerException<KeyNotFoundException>();
+        }
+
+        [Test]
         public void GetValueNoneStringTest()
         {
             var values = new Dictionary<String, Object>
@@ -35,6 +77,34 @@ namespace Extend.Internal.Testing
             var value = target.GetValue( "MyInt" );
             value.Should()
                  .Be( "1234" );
+        }
+
+        [Test]
+        public void GetValueNullValueTest()
+        {
+            var values = new Dictionary<String, Object>
+            {
+                { "MyString", null }
+            };
+            var target = new LookuptValueProvider( values );
+
+            var value = target.GetValue( "MyString" );
+            value.Should()
+                 .BeNull();
+        }
+
+        [Test]
+        public void GetValueNullValueWithFormatTest()
+        {
+            var values = new Dictionary<String, Object>
+            {
+                { "MyString", null }
+            };
+            var target = new LookuptValueProvider( values );
+
+            var value = target.GetValue( "MyString:00000" );
+            value.Should()
+                 .BeEmpty();
         }
 
         [Test]
@@ -52,34 +122,6 @@ namespace Extend.Internal.Testing
         }
 
         [Test]
-        public void GetValueNullValueTest()
-        {
-            var values = new Dictionary<String, Object>
-            {
-                { "MyString", null }
-            };
-            var target = new LookuptValueProvider(values);
-
-            var value = target.GetValue("MyString");
-            value.Should()
-                 .BeNull();
-        }
-
-        [Test]
-        public void GetValueNullValueWithFormatTest()
-        {
-            var values = new Dictionary<String, Object>
-            {
-                { "MyString", null }
-            };
-            var target = new LookuptValueProvider(values);
-
-            var value = target.GetValue("MyString:00000");
-            value.Should()
-                 .BeEmpty();
-        }
-
-        [Test]
         public void GetValueWithFormatTest()
         {
             var values = new Dictionary<String, Object>
@@ -92,20 +134,6 @@ namespace Extend.Internal.Testing
             var value = target.GetValue( "MyInt:000000" );
             value.Should()
                  .Be( "001234" );
-        }
-
-        [Test]
-        public void GetValueMissingKeyTest()
-        {
-            var values = new Dictionary<String, Object>
-            {
-                { "MyString", "asdf" }
-            };
-            var target = new LookuptValueProvider(values);
-
-            Action test = () => target.GetValue("MyInt");
-            test.ShouldThrow<FormatException>()
-                .WithInnerException<KeyNotFoundException>();
         }
     }
 }
