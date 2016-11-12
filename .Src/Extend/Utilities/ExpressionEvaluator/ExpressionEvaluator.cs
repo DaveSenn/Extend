@@ -28,10 +28,13 @@ namespace Extend
         /// </summary>
         private static readonly Char[] ExpressionPartSeparator = { '.' };
 
+        /// <summary>
+        ///     Characters used to mark the end of an index.
+        /// </summary>
         private static readonly Char[] IndexExprEndChars = { ']', ')' };
 
         /// <summary>
-        ///     Characters used to specify indexes.
+        ///     Characters used to mark the start of an index.
         /// </summary>
         private static readonly Char[] IndexExprStartChars = { '[', '(' };
 
