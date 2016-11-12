@@ -6,7 +6,6 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Extend.Internal;
 
 #endregion
 
@@ -236,7 +235,8 @@ namespace Extend
             if ( PropertyCache.TryGetValue( containerType, out properties ) )
                 return properties;
 
-            properties = containerType.GetPublicProperties().ToList();
+            properties = containerType.GetPublicProperties()
+                                      .ToList();
 
             // Update the cache
             PropertyCache.TryAdd( containerType, properties );
@@ -261,11 +261,7 @@ namespace Extend
 
             // Get the value of the property
             if ( propertyInfo != null )
-#if PORTABLE45
-                property = propertyInfo.GetValue( source );
-#elif NET40
-                property = propertyInfo.GetValue( source, null );
-#endif
+                property = propertyInfo.GetValueWithoutIndex( source );
             else
                 throw new ArgumentException( $"Could not find a property with name '{propertyName}'.", nameof( propertyInfo ) );
 

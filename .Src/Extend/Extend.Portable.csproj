@@ -95,6 +95,7 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Where.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
+    <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
     <Compile Include="System.Type\GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIListT.cs" />
@@ -260,7 +261,7 @@
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
     <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.cs" />
-    <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.cs" />
+    <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.ToMemberInformation.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToChar.cs" />
