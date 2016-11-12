@@ -421,10 +421,10 @@
     <Compile Include="System.Int16\Int16.RangeTo.cs" />
     <Compile Include="System.Int32\Int32.RangeTo.cs" />
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
-    <Compile Include="System.Type\GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.cs" />
+    <Compile Include="System.Type\Type.GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsEnum.cs" />

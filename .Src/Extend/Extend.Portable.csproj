@@ -97,6 +97,7 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
     <Compile Include="System.Type\GetPublicProperties.cs" />
+    <Compile Include="System.Type\Type.IsEnum.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIListT.cs" />
     <Compile Include="Utilities\Compare\KeyEqualityComparer.cs" />
