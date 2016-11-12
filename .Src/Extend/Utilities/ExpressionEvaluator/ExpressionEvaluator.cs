@@ -12,7 +12,7 @@ using System.Reflection;
 namespace Extend
 {
     /// <summary>
-    ///     Class containing the logic to get values from objects based on property expressions.  
+    ///     Class containing the logic to get values from objects based on property expressions.
     /// </summary>
     public class ExpressionEvaluator
     {
