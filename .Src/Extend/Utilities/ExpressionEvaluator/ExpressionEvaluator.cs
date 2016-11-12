@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using JetBrains.Annotations;
 
 #endregion
 
@@ -52,6 +53,7 @@ namespace Extend
         ///     Gets or sets a value determining whether property information will be cached or not.
         /// </summary>
         /// <value>A value determining whether property information will be cached or not.</value>
+        [PublicAPI]
         public static Boolean EnableCaching
         {
             get { return _enableCaching; }
@@ -223,13 +225,8 @@ namespace Extend
 
             // Check if we should cache the properties or not
             if ( !EnableCaching )
-#if PORTABLE45
-                return containerType.GetRuntimeProperties()
+                return containerType.GetPublicProperties()
                                     .ToList();
-#elif NET40
-                return containerType.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly )
-                                    .ToList();
-#endif
 
             List<PropertyInfo> properties;
             if ( PropertyCache.TryGetValue( containerType, out properties ) )
