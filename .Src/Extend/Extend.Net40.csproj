@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Net40\Extend.XML</DocumentationFile>
+    <WarningsAsErrors>1591 1570 1571 1572 1573 1574</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -419,6 +420,7 @@
     <Compile Include="System.Int16\Int16.RangeTo.cs" />
     <Compile Include="System.Int32\Int32.RangeTo.cs" />
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
+    <Compile Include="System.Type\GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.cs" />

@@ -6,6 +6,9 @@ using System;
 
 namespace Extend.Internal
 {
+    /// <summary>
+    ///     Value provider for objects.
+    /// </summary>
     public class ObjectValueProvider : ValueProviderBase
     {
         #region Fields

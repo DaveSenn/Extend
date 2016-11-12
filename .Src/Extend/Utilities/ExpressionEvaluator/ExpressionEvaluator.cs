@@ -6,6 +6,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Extend.Internal;
 
 #endregion
 
@@ -235,13 +236,7 @@ namespace Extend
             if ( PropertyCache.TryGetValue( containerType, out properties ) )
                 return properties;
 
-#if PORTABLE45
-            properties = containerType.GetRuntimeProperties()
-                                      .ToList();
-#elif NET40
-            properties = containerType.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly )
-                                      .ToList();
-#endif
+            properties = containerType.GetPublicProperties().ToList();
 
             // Update the cache
             PropertyCache.TryAdd( containerType, properties );
