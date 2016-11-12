@@ -45,7 +45,7 @@ namespace Extend.Internal
             try
             {
                 var formatInformation = ParsExpression( expression );
-                var value = ExpressionExecutor.GetValue( formatInformation.ValueName, _source );
+                var value = ExpressionEvaluator.GetValue( formatInformation.ValueName, _source );
 
                 return formatInformation.Format.IsEmpty()
                     ? value?.ToString()

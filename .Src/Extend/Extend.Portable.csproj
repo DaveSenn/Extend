@@ -467,7 +467,7 @@
     <Compile Include="Utilities\Specification\OrSpecification.cs" />
     <Compile Include="Utilities\Specification\Specification.cs" />
     <Compile Include="Utilities\Specification\XOrSpecification.cs" />
-    <Compile Include="Utilities\StringTemplate\ExpressionExecutor.cs" />
+    <Compile Include="Utilities\ExpressionEvaluator\ExpressionEvaluator.cs" />
     <Compile Include="Utilities\StringTemplate\Model\FormatInformation.cs" />
     <Compile Include="Utilities\StringTemplate\ValueProvider\IValueProvider.cs" />
     <Compile Include="Utilities\StringTemplate\ValueProvider\LookuptValueProvider.cs" />
