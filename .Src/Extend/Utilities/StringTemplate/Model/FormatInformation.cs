@@ -33,10 +33,13 @@ namespace Extend.Internal
         /// <summary>
         ///     Initializes a new instance of the <see cref="FormatInformation" /> class.
         /// </summary>
+        /// <exception cref="ArgumentNullException">valueName can not be null.</exception>
         /// <param name="valueName">The name of the value.</param>
         /// <param name="format">The format.</param>
         public FormatInformation( [NotNull] String valueName, [CanBeNull] String format )
         {
+            valueName.ThrowIfNull( nameof( valueName ) );
+
             Format = format;
             ValueName = valueName;
         }

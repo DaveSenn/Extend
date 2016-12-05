@@ -19,7 +19,7 @@ namespace Extend
         ///     Checks if the given IEnumerable is not null and contains some items.
         /// </summary>
         /// <example>
-        /// <code> 
+        ///     <code> 
         /// List&lt;String&gt; strings = null;
         /// Console.WriteLine( strings.AnyAndNotNull() ); // False
         /// strings = new List&lt;String&gt;();

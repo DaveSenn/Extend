@@ -477,8 +477,6 @@ namespace Extend.Testing
         [Test]
         public void SubModelTest()
         {
-           var temp = InstanceCreator.CreateInstance<SubModel>();
-
             var actual = InstanceCreator.CreateInstance<TestModel>();
 
             actual.MySubModel.MyDateTime.HasValue.Should()

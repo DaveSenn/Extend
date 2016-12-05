@@ -2,6 +2,7 @@
 
 using System;
 using JetBrains.Annotations;
+
 #if PORTABLE45
 using System.Reflection;
 
