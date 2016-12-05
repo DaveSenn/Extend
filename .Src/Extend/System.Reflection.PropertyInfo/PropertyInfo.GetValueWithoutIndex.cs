@@ -30,6 +30,7 @@ namespace Extend
         public static Object GetValueWithoutIndex( [NotNull] this PropertyInfo propertyInfo, [NotNull] Object source )
         {
             propertyInfo.ThrowIfNull( nameof( propertyInfo ) );
+            source.ThrowIfNull( nameof( source ) );
 
 #if PORTABLE45
             return propertyInfo.GetValue( source );

@@ -13,7 +13,7 @@ namespace Extend
     /// <summary>
     ///     Class containing some extension methods for <see cref="Assembly" />.
     /// </summary>
-    public static class AssemblyEx
+    public static partial class AssemblyEx
     {
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -92,8 +92,9 @@ namespace Extend
 #elif NET40
                                                              Type = y,
 #endif
-                                                             Attributes = attributes.Cast<T>()
-                                                                                    .ToList()
+                                                             Attributes = attributes
+                                                                 .Cast<T>()
+                                                                 .ToList()
                                                          } );
                                          } );
                           } );

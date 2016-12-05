@@ -268,7 +268,7 @@
     <Compile Include="System.Object\Generic\Object.Generic.Satisfies.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
-    <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.cs" />
+    <Compile Include="System.Assembly\Assembly.GetTypesWithAttribute.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.ToMemberInformation.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />

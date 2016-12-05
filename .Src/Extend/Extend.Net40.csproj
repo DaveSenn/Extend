@@ -77,6 +77,7 @@
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.cs" />
     <Compile Include="System.Assembly\Assembly.GetDefinedTypes.cs" />
+    <Compile Include="System.Assembly\Assembly.GetTypesWithAttribute.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
@@ -257,7 +258,6 @@
     <Compile Include="System.Random\Random.OneOf.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.ToMemberInformation.cs" />
-    <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToChar.cs" />

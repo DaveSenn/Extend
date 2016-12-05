@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class AssemblyExTest
+    public partial class AssemblyExTest
     {
         [Test]
         public void GetTypesWithAttributeArgumentNullExceptionTest()

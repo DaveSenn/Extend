@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
-
 #if PORTABLE45
 using System.Linq;
 
@@ -15,9 +14,9 @@ using System.Linq;
 namespace Extend
 {
     /// <summary>
-    ///     Class containing some extension methods for <see cref="Type" />.
+    ///     Class containing some extension methods for <see cref="Assembly" />.
     /// </summary>
-    public static partial class TypeEx
+    public static partial class AssemblyEx
     {
         /// <summary>
         ///     Gets the types defined in the given assembly.
