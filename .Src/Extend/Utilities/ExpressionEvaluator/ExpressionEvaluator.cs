@@ -178,7 +178,7 @@ namespace Extend
                 if ( propertyInfo != null )
                     propertyValue = propertyInfo.GetValue( collectionProperty, new[] { indexValue } );
                 else
-                    throw new ArgumentException( $"Unable to access index represented by '{expression}', could not find a 'Item' metod." );
+                    throw new ArgumentException( $"Unable to access index represented by '{expression}', could not find a 'Item' method." );
             }
 
             return propertyValue;

@@ -332,12 +332,8 @@ namespace Extend
                 return null;
 
             // Get a List{T} of the IEnumerable{T}'s item type as type
-#if PORTABLE45
+            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GetGenericTypeArguments() );
 
-            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
-#elif NET40
-            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
-#endif
             // Create an instance of the constructed type
             var instnace = Activator.CreateInstance( concreteType );
 
@@ -497,14 +493,14 @@ namespace Extend
             if ( !PopulateCollection( options ) || collectionInstance == null )
                 return collectionInstance;
 
-            //Check if type is collection type
+            // Check if type is collection type
             if ( !memberInformation.MemberType.ImplementsICollectionT() )
                 return collectionInstance;
 
-            //Get generic parameter type
+            // Get generic parameter type
             var genericArgumentType = memberInformation.MemberType.GetGenericTypeArgument();
 
-            //Get the add method
+            // Get the add method
 #if PORTABLE45
             var addMethod = memberInformation.MemberType
                                              .GetRuntimeMethod( "Add", new[] { genericArgumentType } );
@@ -512,7 +508,7 @@ namespace Extend
             var addMethod = memberInformation.MemberType.GetMethod( "Add" );
 #endif
 
-            //Add items
+            // Add items
             var anonymousItemName = GetAnonymousItemName( options );
             var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
@@ -524,7 +520,7 @@ namespace Extend
                     MemberName = anonymousItemName
                 };
 
-                //Get the value for the current collection item.
+                // Get the value for the current collection item.
                 var collectionItemValue = GetValue( options, currentMember );
                 currentMember.MemberObject = collectionItemValue;
                 SetAllMembers( options, currentMember );
