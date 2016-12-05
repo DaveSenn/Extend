@@ -52,6 +52,7 @@
     <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="System.Assembly\Assembly.GetDefinedTypes.cs" />
     <Compile Include="System.Exception\Exception.FormatException.cs" />
     <Compile Include="Models\AttributeDefinitionType.cs" />
     <Compile Include="Models\Definitions\IAttributeDefinitionType.cs" />
@@ -96,6 +97,8 @@
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].SpecificationForItems.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].EnsureNotNull.cs" />
     <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
+    <Compile Include="System.Type\Type.GetImplementedInterfaces.cs" />
+    <Compile Include="System.Type\Type.GetDeclaringAssembly.cs" />
     <Compile Include="System.Type\Type.GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArguments.cs" />
     <Compile Include="System.Type\Type.IsGenericType.cs" />
@@ -103,6 +106,7 @@
     <Compile Include="System.Type\Type.IsEnum.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIListT.cs" />
+    <Compile Include="System.Type\Type.GetAttributes.cs" />
     <Compile Include="Utilities\Compare\KeyEqualityComparer.cs" />
     <Compile Include="System.Collections.Generic.IEqualityComparer[T]\IEqualityComparer[T].By.cs" />
     <Compile Include="System.DateTime\DateTime.IsSameDay.cs" />

@@ -2,7 +2,6 @@
 
 using System;
 using JetBrains.Annotations;
-
 #if PORTABLE45
 using System.Reflection;
 
@@ -27,8 +26,9 @@ namespace Extend
         public static Boolean IsGenericType( [NotNull] this Type type )
         {
 #if PORTABLE45
-            return type.GetTypeInfo()
-                       .IsGenericType;
+            return type
+                .GetTypeInfo()
+                .IsGenericType;
 #elif NET40
             return type.IsGenericType;
 #endif

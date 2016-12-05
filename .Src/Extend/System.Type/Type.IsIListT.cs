@@ -4,11 +4,6 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-#if PORTABLE45
-using System.Reflection;
-
-#endif
-
 #endregion
 
 namespace Extend
@@ -30,13 +25,7 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            var isGenericType = type.GetTypeInfo()
-                                    .IsGenericType;
-#elif NET40
-            var isGenericType = type.IsGenericType;
-#endif
-            return isGenericType && type.GetGenericTypeDefinition() == typeof(IList<>);
+            return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(IList<>);
         }
     }
 }

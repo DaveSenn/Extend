@@ -2,7 +2,6 @@
 
 using System;
 using JetBrains.Annotations;
-
 #if PORTABLE45
 using System.Reflection;
 
@@ -21,6 +20,7 @@ namespace Extend
         ///     Returns an array of <see cref="Type" /> objects that represent the type arguments of a generic type or the type
         ///     parameters of a generic type definition.
         /// </summary>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <param name="type">Thy type to get the generic arguments of.</param>
         /// <returns>
         ///     Returns an array of <see cref="Type" /> objects that represent the type arguments of a generic type. Returns
@@ -30,6 +30,8 @@ namespace Extend
         [PublicAPI]
         public static Type[] GetGenericTypeArguments( [NotNull] this Type type )
         {
+            type.ThrowIfNull( nameof( type ) );
+
 #if PORTABLE45
             return type.GetTypeInfo()
                        .GenericTypeArguments;

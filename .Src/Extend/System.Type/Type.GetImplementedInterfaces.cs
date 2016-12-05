@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 #if PORTABLE45
+using System.Reflection;
 
 #endif
 
@@ -17,18 +18,25 @@ namespace Extend
     public static partial class TypeEx
     {
         /// <summary>
-        ///     Checks if the given type implements <see cref="ICollection{T}" />
+        ///     Gets a collection of the interfaces implemented by the given type.
         /// </summary>
         /// <exception cref="ArgumentNullException">type can not be null.</exception>
-        /// <param name="type">The type to check.</param>
-        /// <returns>Returns a value of true if the given type implements <see cref="ICollection{T}" />; otherwise, false.</returns>
+        /// <param name="type">The type to get the interface of.</param>
+        /// <returns>Returns the interfaces implemented by the given type.</returns>
+        [NotNull]
         [Pure]
         [PublicAPI]
-        public static Boolean IsICollectionT( [NotNull] this Type type )
+        public static IEnumerable<Type> GetImplementedInterfaces( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
 
-            return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(ICollection<>);
+#if PORTABLE45
+            return type
+                .GetTypeInfo()
+                .ImplementedInterfaces;
+#elif NET40
+            return type.GetInterfaces();
+#endif
         }
     }
 }

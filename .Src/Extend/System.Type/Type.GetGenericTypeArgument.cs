@@ -4,10 +4,6 @@ using System;
 using System.Linq;
 using JetBrains.Annotations;
 
-#if PORTABLE45
-
-#endif
-
 #endregion
 
 namespace Extend
