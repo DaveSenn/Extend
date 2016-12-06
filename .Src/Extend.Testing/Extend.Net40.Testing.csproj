@@ -60,6 +60,7 @@
     <Compile Include="Models\AttributeDefinitionPropertyTest.cs" />
     <Compile Include="Models\AttributeDefinitionTypeTest.cs" />
     <Compile Include="Models\IndexedItemTest.cs" />
+    <Compile Include="System.Assembly\Assembly.GetAttributes.Test.cs" />
     <Compile Include="System.Assembly\Assembly.GetDefinedTypes.Test.cs" />
     <Compile Include="System.Assembly\Assembly.GetTypesWithAttribute.Test.cs" />
     <Compile Include="System.Collections.Generic.IEnumerable[T]\IEnumerable[T].Append.Test.cs" />
@@ -430,7 +431,10 @@
     <Compile Include="System.TimeSpan\TimeSpan.Future.Test.cs" />
     <Compile Include="System.TimeSpan\TimeSpan.Past.Test.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.Test.cs" />
+    <Compile Include="System.Type\Type.GetDeclaringAssembly.Test.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.Test.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArguments.Test.cs" />
+    <Compile Include="System.Type\Type.GetImplementedInterfaces.Test.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.Test.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />

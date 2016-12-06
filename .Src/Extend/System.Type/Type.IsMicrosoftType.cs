@@ -26,8 +26,9 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-            var attributes = type.GetDeclaringAssembly()
-                                 .GetAttributes<AssemblyCompanyAttribute>();
+            var attributes = type
+                .GetDeclaringAssembly()
+                .GetAttributes<AssemblyCompanyAttribute>();
             return attributes.Any( x => x.Company == "Microsoft Corporation" );
         }
     }
