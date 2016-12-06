@@ -26,6 +26,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsGenericType( [NotNull] this Type type )
         {
+            type.ThrowIfNull( nameof( type ) );
+
 #if PORTABLE45
             return type
                 .GetTypeInfo()

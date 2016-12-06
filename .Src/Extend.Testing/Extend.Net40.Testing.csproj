@@ -439,7 +439,9 @@
     <Compile Include="System.Type\Type.GetPublicProperties.Test.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
     <Compile Include="System.Type\Type.GetTypeFromNullable.cs" />
-    <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
+    <Compile Include="System.Type\Type.ImplementsICollectionT.Test.cs" />
+    <Compile Include="System.Type\Type.IsEnum.Test.cs" />
+    <Compile Include="System.Type\Type.IsGenericType.Test.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />
     <Compile Include="System.Type\Type.IsIListT.Test.cs" />
