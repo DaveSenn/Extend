@@ -31,7 +31,7 @@ using System.Resources;
 #endif
 
 [assembly: AssemblyCompany( "Dave Senn" )]
-[assembly: AssemblyCopyright( "Copyright © Dave Senn 2015" )]
+[assembly: AssemblyCopyright("Copyright © Dave Senn 2016")]
 [assembly: AssemblyCulture( "" )]
 [assembly: NeutralResourcesLanguage( "en" )]
 
