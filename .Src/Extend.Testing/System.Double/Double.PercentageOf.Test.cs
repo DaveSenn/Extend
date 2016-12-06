@@ -13,8 +13,8 @@ namespace Extend.Testing
         [Test]
         public void PercentageOfTest()
         {
-            Double number = 1000;
-            var expected = 500;
+            const Double number = 1000;
+            const Int32 expected = 500;
             var actual = number.PercentageOf( 50 );
 
             Assert.AreEqual( expected, actual );
@@ -23,8 +23,8 @@ namespace Extend.Testing
         [Test]
         public void PercentageOfTest1()
         {
-            Double number = 1000;
-            var expected = 500;
+            const Double number = 1000;
+            const Int32 expected = 500;
             var actual = number.PercentageOf( (Double) 50 );
 
             Assert.AreEqual( expected, actual );
@@ -33,8 +33,8 @@ namespace Extend.Testing
         [Test]
         public void PercentageOfTest2()
         {
-            Double number = 1000;
-            var expected = 500;
+            const Double number = 1000;
+            const Int32 expected = 500;
             var actual = number.PercentageOf( (Int64) 50 );
 
             Assert.AreEqual( expected, actual );

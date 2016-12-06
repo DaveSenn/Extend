@@ -17,7 +17,7 @@ namespace Extend
         ///     Return the first not null value (including <paramref name="value" />).
         ///     If all values are null, returns a default value.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <exception cref="ArgumentNullException">defaultValue can not be null.</exception>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <param name="value">The first value.</param>
@@ -30,15 +30,15 @@ namespace Extend
         public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] T defaultValue, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
         {
             defaultValue.ThrowIfNull( nameof( defaultValue ) );
+            values.ThrowIfNull( nameof( values ) );
 
             if ( value != null )
                 return value;
 
-            values.ThrowIfNull( nameof( values ) );
-
             var notNullValues = values
                 .Where( x => x != null )
                 .ToList();
+
             return notNullValues.Any() ? notNullValues.First() : defaultValue;
         }
 
@@ -46,7 +46,7 @@ namespace Extend
         ///     Return the first not null value (including <paramref name="value" />).
         ///     If all values are null, returns a default value.
         /// </summary>
-        /// <exception cref="ArgumentNullException">The values can not be null.</exception>
+        /// <exception cref="ArgumentNullException">values can not be null.</exception>
         /// <exception cref="ArgumentNullException">defaultValueFactory can not be null.</exception>
         /// <typeparam name="T">The type of the values.</typeparam>
         /// <param name="value">The first value.</param>
@@ -60,11 +60,10 @@ namespace Extend
             where T : class
         {
             defaultValueFactory.ThrowIfNull( nameof( defaultValueFactory ) );
+            values.ThrowIfNull( nameof( values ) );
 
             if ( value != null )
                 return value;
-
-            values.ThrowIfNull( nameof( values ) );
 
             var notNullValues = values
                 .Where( x => x != null )

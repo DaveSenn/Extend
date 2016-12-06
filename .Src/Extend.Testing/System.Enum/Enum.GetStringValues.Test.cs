@@ -31,6 +31,7 @@ namespace Extend.Testing
         public void GetStringValuesTestArgumentExceptionCheck()
         {
             Action test = () => EnumEx.GetValues<Int32>()
+                                      // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 
             test.ShouldThrow<ArgumentException>();

@@ -22,6 +22,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>bin\Debug\Net40\Extend.XML</DocumentationFile>
+    <WarningsAsErrors>1591 1570 1571 1572 1573 1574</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -75,6 +76,9 @@
     <Compile Include="System.Array\Array.WithinIndex.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Populate.cs" />
     <Compile Include="System.Array\System.Array.Generic\Array.Generic.Slice.cs" />
+    <Compile Include="System.Assembly\Assembly.GetAttributes.cs" />
+    <Compile Include="System.Assembly\Assembly.GetDefinedTypes.cs" />
+    <Compile Include="System.Assembly\Assembly.GetTypesWithAttribute.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatToDictionary.cs" />
     <Compile Include="System.Collections.Generic.IDictionary[K, V]\IDictionary[K, V].ConcatAllToDictionarySafe.cs" />
@@ -100,6 +104,7 @@
     <Compile Include="System.DateTime\DateTime.NextWeekDay.cs" />
     <Compile Include="System.DateTime\DateTime.NextMonthStart.cs" />
     <Compile Include="System.Enum\GetValuesExpect.cs" />
+    <Compile Include="System.Exception\Exception.FormatException.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberInfoFromExpression.cs" />
     <Compile Include="System.Linq.Expressions.Expression[TDelegate]\Expression[TDelegate].GetMemberPath.cs" />
     <Compile Include="System.Linq.Expressions.Expression\Expression.TryGetMemberExpression.cs" />
@@ -252,8 +257,8 @@
     <Compile Include="System.Object\Generic\Object.Generic.Satisfies.cs" />
     <Compile Include="System.Random\Random.CoinToss.cs" />
     <Compile Include="System.Random\Random.OneOf.cs" />
-    <Compile Include="System.Reflection\Assembly.GetTypesWithAttribute.cs" />
-    <Compile Include="System.Reflection\PropertyInfo.ToMemberInformation.cs" />
+    <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.GetValueWithoutIndex.cs" />
+    <Compile Include="System.Reflection.PropertyInfo\PropertyInfo.ToMemberInformation.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToBoolean.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToByte.cs" />
     <Compile Include="System.String\ConvertSave\String.SaveToChar.cs" />
@@ -419,13 +424,23 @@
     <Compile Include="System.Int32\Int32.RangeTo.cs" />
     <Compile Include="System.Int64\Int64.RangeTo.cs" />
     <Compile Include="System.Type\Type.GetAttributeDefinitions.cs" />
+    <Compile Include="System.Type\Type.GetDeclaringAssembly.cs" />
     <Compile Include="System.Type\Type.GetGenericTypeArgument.cs" />
+    <Compile Include="System.Type\Type.GetGenericTypeArguments.cs" />
+    <Compile Include="System.Type\Type.GetImplementedInterfaces.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.cs" />
+    <Compile Include="System.Type\Type.GetPublicProperties.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.cs" />
+    <Compile Include="System.Type\Type.GetTypeFromNullable.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionT.cs" />
+    <Compile Include="System.Type\Type.IsEnum.cs" />
+    <Compile Include="System.Type\Type.IsGenericType.cs" />
+    <Compile Include="System.Type\Type.IsICollectionT.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.cs" />
+    <Compile Include="System.Type\Type.IsIListT.cs" />
     <Compile Include="System.Type\Type.IsMicrosoftType.cs" />
     <Compile Include="Utilities\Compare\KeyEqualityComparer.cs" />
+    <Compile Include="Utilities\ExpressionEvaluator\ExpressionEvaluator.cs" />
     <Compile Include="Utilities\InstanceBuilder\Creator\InstanceCreator.cs" />
     <Compile Include="Utilities\InstanceBuilder\Exception\CreateInstanceException.cs" />
     <Compile Include="Utilities\InstanceBuilder\Extension\MemberSelectionResultEx.cs" />
@@ -461,6 +476,12 @@
     <Compile Include="Utilities\Specification\OrSpecification.cs" />
     <Compile Include="Utilities\Specification\Specification.cs" />
     <Compile Include="Utilities\Specification\XOrSpecification.cs" />
+    <Compile Include="Utilities\StringTemplate\Model\FormatInformation.cs" />
+    <Compile Include="Utilities\StringTemplate\StringTemplate.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\IValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\LookuptValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\ObjectValueProvider.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\ValueProviderBase.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNode.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeAware.cs" />
     <Compile Include="Utilities\Tree\Definition\ITreeNodeCollection.cs" />

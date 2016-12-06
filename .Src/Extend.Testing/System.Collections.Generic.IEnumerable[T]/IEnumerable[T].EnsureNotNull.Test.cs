@@ -10,12 +10,14 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
+    // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
         [Test]
         public void EnsureNotNullTest()
         {
             List<String> list = null;
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = list.EnsureNotNull();
 
             Assert.IsNotNull( actual );
@@ -33,11 +35,12 @@ namespace Extend.Testing
                 "3"
             };
             var actual = list.EnsureNotNull();
+            var actualList = actual.ToList();
 
-            Assert.AreEqual( 3, actual.Count() );
-            Assert.AreEqual( "1", actual.ElementAt( 0 ) );
-            Assert.AreEqual( "2", actual.ElementAt( 1 ) );
-            Assert.AreEqual( "3", actual.ElementAt( 2 ) );
+            Assert.AreEqual( 3, actualList.Count );
+            Assert.AreEqual( "1", actualList.ElementAt( 0 ) );
+            Assert.AreEqual( "2", actualList.ElementAt( 1 ) );
+            Assert.AreEqual( "3", actualList.ElementAt( 2 ) );
             Assert.AreSame( list, actual );
         }
     }

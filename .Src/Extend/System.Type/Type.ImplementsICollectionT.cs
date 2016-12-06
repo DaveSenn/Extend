@@ -4,10 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-#if PORTABLE45
-using System.Reflection;
-
-#endif
 
 #endregion
 
@@ -30,16 +26,9 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            var typeInfo = type.GetTypeInfo();
-            var interfaces = type.GetTypeInfo()
-                                 .ImplementedInterfaces.ToList();
-            var isGenericType = typeInfo.IsGenericType;
-#elif NET40
-            var interfaces = type.GetInterfaces()
-                                 .ToList();
-            var isGenericType = type.IsGenericType;
-#endif
+            var isGenericType = type.IsGenericType();
+            var interfaces = type.GetImplementedInterfaces();
+
             return isGenericType && interfaces.Any( x => x.Name == "ICollection`1" );
         }
     }

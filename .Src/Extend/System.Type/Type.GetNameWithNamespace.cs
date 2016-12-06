@@ -3,10 +3,6 @@
 using System;
 using System.Linq;
 using JetBrains.Annotations;
-#if PORTABLE45
-using System.Reflection;
-
-#endif
 
 #endregion
 
@@ -30,25 +26,14 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            var isGeneric = type.GetTypeInfo()
-                                .IsGenericType;
-#elif NET40
-            var isGeneric = type.IsGenericType;
-#endif
-            if ( !isGeneric )
+            if ( !type.IsGenericType() )
                 return type.GetNameWithNamespaceSimpleType();
 
-            //Get the type of the generic class.
+            // Get the type of the generic class.
             var genericType = type.GetGenericTypeDefinition();
 
-            //Get the name of the generic class, add generic types and assembly name
-
-#if PORTABLE45
-            var genercArguments = type.GenericTypeArguments;
-#elif NET40
-            var genercArguments = type.GetGenericArguments();
-#endif
+            // Get the name of the generic class, add generic types and assembly name
+            var genercArguments = type.GetGenericTypeArguments();
             var genericArgumentNames = genercArguments.Select( x => $"[{x.GetNameWithNamespace()}]" )
                                                       .StringJoin( "," );
             var genericTypeFullName = $"{genericType.FullName}[{genericArgumentNames}]";
@@ -64,19 +49,13 @@ namespace Extend
         /// <returns>Returns the assembly name without version and key.</returns>
         [NotNull]
         [Pure]
-        [PublicAPI]
         private static String GetAssemblyName( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            var assembly = type.GetTypeInfo()
-                               .Assembly;
-#elif NET40
-            var assembly = type.Assembly;
-#endif
-
-            return assembly.FullName.Split( ',' )[0];
+            return type
+                .GetDeclaringAssembly()
+                .FullName.Split( ',' )[0];
         }
 
         /// <summary>
@@ -87,7 +66,6 @@ namespace Extend
         /// <returns>Returns the name and namespace of a simple type.</returns>
         [NotNull]
         [Pure]
-        [PublicAPI]
         private static String GetNameWithNamespaceSimpleType( [NotNull] this Type type )
             => $"{type.FullName}, {type.GetAssemblyName()}";
     }

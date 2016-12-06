@@ -21,15 +21,13 @@ namespace Extend.Testing
 
             value = 10;
             factorNumer = 100;
-            expected = true;
             actual = value.FactorOf( factorNumer );
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( true, actual );
 
             value = 11;
             factorNumer = 100;
-            expected = false;
             actual = value.FactorOf( factorNumer );
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( false, actual );
         }
     }
 }

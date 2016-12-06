@@ -22,16 +22,14 @@ namespace Extend.Testing
             value = 10;
             factor = 2;
 
-            expected = true;
             actual = value.IsMultipleOf( factor );
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( true, actual );
 
             value = 10;
             factor = 3;
 
-            expected = false;
             actual = value.IsMultipleOf( factor );
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( false, actual );
         }
     }
 }

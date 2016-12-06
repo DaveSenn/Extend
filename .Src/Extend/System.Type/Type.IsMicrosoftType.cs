@@ -26,13 +26,9 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            var attributes = type.GetTypeInfo()
-                                 .Assembly.GetCustomAttributes<AssemblyCompanyAttribute>();
-#elif NET40
-            var attributes = type.Assembly.GetCustomAttributes( typeof (AssemblyCompanyAttribute), false )
-                                 .OfType<AssemblyCompanyAttribute>();
-#endif
+            var attributes = type
+                .GetDeclaringAssembly()
+                .GetAttributes<AssemblyCompanyAttribute>();
             return attributes.Any( x => x.Company == "Microsoft Corporation" );
         }
     }

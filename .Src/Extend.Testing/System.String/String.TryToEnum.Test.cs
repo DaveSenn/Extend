@@ -15,7 +15,7 @@ namespace Extend.Testing
         public void TryToEnumTest()
         {
             const DayOfWeek expected = DayOfWeek.Monday;
-            var actual = DayOfWeek.Saturday;
+            DayOfWeek actual;
             var result = StringEx.TryToEnum( expected.ToString(), out actual );
 
             actual
@@ -29,7 +29,7 @@ namespace Extend.Testing
         [Test]
         public void TryToEnumTestNullCheck()
         {
-            var day = DayOfWeek.Saturday;
+            DayOfWeek day;
             var actual = StringEx.TryToEnum( null, out day );
 
             actual

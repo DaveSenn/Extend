@@ -14,6 +14,7 @@ namespace Extend.Testing
         [Test]
         public void FactorOfDivideByZeroTest()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.FactorOf( 0, 100 );
             test.ShouldThrow<DivideByZeroException>();
         }

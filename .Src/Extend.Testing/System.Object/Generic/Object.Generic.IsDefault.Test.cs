@@ -14,6 +14,7 @@ namespace Extend.Testing
         public void IsDefaultTest()
         {
             var value = default(String);
+            // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.IsDefault();
             Assert.IsTrue( actual );
 

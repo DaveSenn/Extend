@@ -10,7 +10,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class AssemblyExTest
+    public partial class AssemblyExTest
     {
         [Test]
         public void GetTypesWithAttributeArgumentNullExceptionTest()
@@ -28,14 +28,15 @@ namespace Extend.Testing
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
                                                                          typeof(BaseTestClass),
                                                                          GetType()
-                                                                             .Assembly );
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 3 );
 
             // TestClassA
             var attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                                   .Attributes;
+                                   .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 2 );
             attributes.Should()
@@ -45,7 +46,7 @@ namespace Extend.Testing
 
             // TestClassB
             attributes = actual.First( x => x.Type == typeof(TestClassB) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -54,7 +55,7 @@ namespace Extend.Testing
 
             // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 3 );
             attributes.Should()
@@ -70,14 +71,15 @@ namespace Extend.Testing
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
                                                                          GetType()
-                                                                             .Assembly );
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 5 );
 
             //BaseTextClass
             var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
-                                   .Attributes;
+                                   .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -86,7 +88,7 @@ namespace Extend.Testing
 
             // TestClassA
             attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 2 );
             attributes.Should()
@@ -96,7 +98,7 @@ namespace Extend.Testing
 
             // TestClassB
             attributes = actual.First( x => x.Type == typeof(TestClassB) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -105,7 +107,7 @@ namespace Extend.Testing
 
             // TestClassC
             attributes = actual.First( x => x.Type == typeof(TestClassC) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.Should()
@@ -113,7 +115,7 @@ namespace Extend.Testing
 
             // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 3 );
             attributes.Should()
@@ -128,14 +130,15 @@ namespace Extend.Testing
         public void GetTypesWithAttributeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( GetType()
-                                                                             .Assembly );
+                                                                             .Assembly )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 4 );
 
             //BaseTextClass
             var attributes = actual.First( x => x.Type == typeof(BaseTestClass) )
-                                   .Attributes;
+                                   .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -144,7 +147,7 @@ namespace Extend.Testing
 
             // TestClassA
             attributes = actual.First( x => x.Type == typeof(TestClassA) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -153,7 +156,7 @@ namespace Extend.Testing
 
             // TestClassC
             attributes = actual.First( x => x.Type == typeof(TestClassC) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 1 );
             attributes.First()
@@ -162,7 +165,7 @@ namespace Extend.Testing
 
             // TestClassD
             attributes = actual.First( x => x.Type == typeof(TestClassD) )
-                               .Attributes;
+                               .Attributes.ToList();
             attributes.Should()
                       .HaveCount( 2 );
             attributes.Should()

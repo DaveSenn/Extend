@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
+
 #if PORTABLE45
 using System.Reflection;
 
@@ -21,38 +22,27 @@ namespace Extend
         /// <summary>
         ///     Gets the attributes of the proprieties of the given type.
         /// </summary>
-        /// <exception cref="ArgumentNullException">t can not be null.</exception>
+        /// <exception cref="ArgumentNullException">type can not be null.</exception>
         /// <typeparam name="TAttribute">The type of attributes to return.</typeparam>
-        /// <param name="t">The type to get the attribute definitions from.</param>
+        /// <param name="type">The type to get the attribute definitions from.</param>
         /// <returns>Returns the attribute definitions of the given type.</returns>
         [NotNull]
         [Pure]
         [PublicAPI]
-        public static IEnumerable<AttributeDefinitionProperty<TAttribute>> GetAttributeDefinitions<TAttribute>( [NotNull] this Type t )
+        public static IEnumerable<AttributeDefinitionProperty<TAttribute>> GetAttributeDefinitions<TAttribute>( [NotNull] this Type type )
             where TAttribute : Attribute
         {
-            t.ThrowIfNull( nameof( t ) );
+            type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
-            return t.GetRuntimeProperties()
-                    .Select( x => new AttributeDefinitionProperty<TAttribute>
-                             {
-                                 Property = x,
-                                 Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
-                                               .Cast<TAttribute>()
-                             } )
-                    .Where( x => x.Attributes.Any() );
-
-#elif NET40
-            return t.GetProperties()
-                    .Select( x => new AttributeDefinitionProperty<TAttribute>
-                    {
-                        Property = x,
-                        Attributes = x.GetCustomAttributes( typeof (TAttribute), true )
-                                      .Cast<TAttribute>()
-                    } )
-                    .Where( x => x.Attributes.Any() );
-#endif
+            return type
+                .GetPublicProperties()
+                .Select( x => new AttributeDefinitionProperty<TAttribute>
+                         {
+                             Property = x,
+                             Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
+                                           .Cast<TAttribute>()
+                         } )
+                .Where( x => x.Attributes.Any() );
         }
     }
 }

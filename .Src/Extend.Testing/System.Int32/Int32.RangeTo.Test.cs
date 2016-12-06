@@ -35,6 +35,7 @@ namespace Extend.Testing
         [Test]
         public void RangeToTestArgumentException()
         {
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => 200.RangeTo( 100 );
 
             test.ShouldThrow<ArgumentException>();

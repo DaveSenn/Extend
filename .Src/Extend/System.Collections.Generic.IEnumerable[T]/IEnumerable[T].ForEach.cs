@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using JetBrains.Annotations;
 
@@ -25,6 +26,7 @@ namespace Extend
         /// <param name="action">The action to perform on each item of the given enumerable.</param>
         [PublicAPI]
         [NotNull]
+        [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );
@@ -50,6 +52,7 @@ namespace Extend
         /// </param>
         [PublicAPI]
         [NotNull]
+        [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T, Int32> action )
         {
             enumerable.ThrowIfNull( nameof( enumerable ) );

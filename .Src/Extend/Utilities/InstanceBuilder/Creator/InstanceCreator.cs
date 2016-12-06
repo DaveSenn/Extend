@@ -299,10 +299,24 @@ namespace Extend
             if ( value != null )
                 return value;
 
-            //Create value (first try IEnumerable than anything else)
-            value = TryCreateIEnumerableValue( memberInformation ) ?? CreateValueUsingAcrivator( memberInformation );
+            // Create value (first try IEnumerable than anything else)
+            value = TryCreateCollectionValue( memberInformation );
+            // ReSharper disable once InvertIf
+            if ( value == null )
+                try
+                {
+                    value = CreateValueUsingAcrivator( memberInformation );
+                }
+                catch ( Exception ex )
+                {
+                    throw new CreateInstanceException( $"Failed to create instance due to missing or invalid factory for type '{memberInformation.MemberType}'.",
+                                                       ex,
+                                                       null,
+                                                       null,
+                                                       memberInformation );
+                }
 
-            //Populate collection if collection (could be ICollection)
+            // Populate collection if collection (could be ICollection)
             return TryPopulateCollection( options, memberInformation, value );
         }
 
@@ -311,23 +325,19 @@ namespace Extend
         /// </summary>
         /// <param name="memberInformation">The member to check.</param>
         /// <returns>Returns the created value, or null if the given type is not an array type (IEnumerable).</returns>
-        private static Object TryCreateIEnumerableValue( IMemberInformation memberInformation )
+        private static Object TryCreateCollectionValue( IMemberInformation memberInformation )
         {
-            //Check if member implements IEnumerable{T}
-            if ( !memberInformation.MemberType.IsIEnumerableT() )
+            // Check if member implements IEnumerable{T} or IList{T} or ICollection{T}
+            if ( !memberInformation.MemberType.IsIEnumerableT() && !memberInformation.MemberType.IsIListT() && !memberInformation.MemberType.IsICollectionT() )
                 return null;
 
-            //Get a List{T} of the IEnumerable{T}'s item type as type
-#if PORTABLE45
+            // Get a List{T} of the IEnumerable{T}'s item type as type
+            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GetGenericTypeArguments() );
 
-            var concreteType = typeof(List<>).MakeGenericType( memberInformation.MemberType.GenericTypeArguments );
-#elif NET40
-            var concreteType = typeof (List<>).MakeGenericType( memberInformation.MemberType.GetGenericArguments() );
-#endif
-            //Create an instance of the constructed type
+            // Create an instance of the constructed type
             var instnace = Activator.CreateInstance( concreteType );
 
-            //Update the type of the member in the member information
+            // Update the type of the member in the member information
             var currentMember = memberInformation as MemberInformation;
             if ( currentMember != null )
                 currentMember.MemberType = concreteType;
@@ -344,15 +354,15 @@ namespace Extend
         /// <returns>Returns the created value, or null if the given type is not an array type.</returns>
         private static Object TryCreateArrayValue<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Check if member is an array type
+            // Check if member is an array type
             if ( !memberInformation.MemberType.IsArray )
                 return null;
 
-            //Create the array
+            // Create the array
             var elementType = memberInformation.MemberType.GetElementType();
             var array = Array.CreateInstance( elementType, GetCollectionItemCount( options ) );
 
-            //Add items
+            // Add items
             var anonymousItemName = GetAnonymousItemName( options );
             for ( var i = 0; i < array.Length; i++ )
             {
@@ -363,7 +373,7 @@ namespace Extend
                     MemberName = anonymousItemName
                 };
 
-                //Get the value of the current array item.
+                // Get the value of the current array item.
                 var arrayItemValue = GetValue( options, currentMember );
                 currentMember.MemberObject = arrayItemValue;
                 SetAllMembers( options, currentMember );
@@ -383,16 +393,17 @@ namespace Extend
         {
             try
             {
-                //Create type using activator class
+                // Create type using activator class
                 return Activator.CreateInstance( memberInformation.MemberType );
             }
             catch ( Exception ex )
             {
-                throw new CreateInstanceException( $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator.",
-                                                   ex,
-                                                   null,
-                                                   null,
-                                                   memberInformation );
+                throw new CreateInstanceException(
+                    $"Failed to create an instance of the following type '{memberInformation.MemberType}' using Activator (Consider writing a custom factory for this type).",
+                    ex,
+                    null,
+                    null,
+                    memberInformation );
             }
         }
 
@@ -406,13 +417,13 @@ namespace Extend
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
         private static IInstanceFactory GetFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Get matching factory
+            // Get matching factory
             var factory = GetExactlymatchingFactory( options, memberInformation );
             if ( factory != null )
                 return factory;
 
             // Try get inner type of null-able
-            var nullableType = GetTypeFromNullable( memberInformation.MemberType );
+            var nullableType = memberInformation.MemberType.GetTypeFromNullable();
             if ( nullableType == null )
                 return null;
 
@@ -434,13 +445,13 @@ namespace Extend
         /// <returns>Returns the matching factory, or null if no factory was found.</returns>
         private static IInstanceFactory GetExactlymatchingFactory<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation ) where T : class
         {
-            //Get factory from options
+            // Get factory from options
             var matchingFactories = options.Factories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
                                            .ToList();
             if ( matchingFactories.Count == 1 )
                 return matchingFactories.Single();
 
-            //Check if multiple factories have matched
+            // Check if multiple factories have matched
             if ( matchingFactories.Any() )
                 throw new CreateInstanceException(
                     $"Found multiple matching factories for member (in options). Type is '{memberInformation.MemberType}'. Please make sure only one factory matches the member.",
@@ -449,7 +460,7 @@ namespace Extend
                     null,
                     memberInformation );
 
-            //Get factory from default factories
+            // Get factory from default factories
             matchingFactories = DefaultFactories.Where( x => RuleInspector.Inspect( x.SelectionRules, memberInformation ) == MemberSelectionResult.IncludeMember )
                                                 .ToList();
             if ( matchingFactories.Count == 1 )
@@ -464,30 +475,8 @@ namespace Extend
                     null,
                     memberInformation );
 
-            //No factory found
+            // No factory found
             return null;
-        }
-
-        /// <summary>
-        ///     Gets the 'inner' type from a nullable type.
-        /// </summary>
-        /// <param name="possibleNullableType">The possible nullable type.</param>
-        /// <returns>Returns the inner type, or null if the given type is not a nullable.</returns>
-        private static Type GetTypeFromNullable( Type possibleNullableType )
-        {
-#if PORTABLE45
-            var typeInfo = possibleNullableType.GetTypeInfo();
-            if ( !( typeInfo.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof(Nullable<>) ) )
-                return null;
-
-            return typeInfo.GenericTypeArguments.FirstOrDefault();
-#elif NET40
-            if ( !( possibleNullableType.IsGenericType && possibleNullableType.GetGenericTypeDefinition() == typeof (Nullable<>) ) )
-                return null;
-
-            return possibleNullableType.GetGenericArguments()
-                                       .FirstOrDefault();
-#endif
         }
 
         /// <summary>
@@ -500,42 +489,53 @@ namespace Extend
         /// <returns>Returns the populated or unmodified instance.</returns>
         private static Object TryPopulateCollection<T>( ICreateInstanceOptionsComplete<T> options, IMemberInformation memberInformation, Object collectionInstance ) where T : class
         {
-            //Check if collection should get populated or not
+            // Check if collection should get populated or not
             if ( !PopulateCollection( options ) || collectionInstance == null )
                 return collectionInstance;
 
-            //Check if type is collection type
+            // Check if type is collection type
             if ( !memberInformation.MemberType.ImplementsICollectionT() )
                 return collectionInstance;
 
-            //Get generic parameter type
-            var genericArgumentType = memberInformation.MemberType.GetGenericTypeArgument();
+            // Get generic parameter type
+            var genericArgumentTypes = memberInformation
+                .MemberType
+                .GetGenericTypeArguments()
+                .ToArray();
 
-            //Get the add method
+            // Get the add method
 #if PORTABLE45
             var addMethod = memberInformation.MemberType
-                                             .GetRuntimeMethod( "Add", new[] { genericArgumentType } );
+                                             .GetRuntimeMethod( "Add", genericArgumentTypes );
 #elif NET40
             var addMethod = memberInformation.MemberType.GetMethod( "Add" );
 #endif
 
-            //Add items
+            // Add items
             var anonymousItemName = GetAnonymousItemName( options );
             var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
             {
-                var currentMember = new MemberInformation
-                {
-                    MemberType = genericArgumentType,
-                    MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
-                    MemberName = anonymousItemName
-                };
+                var addParameters = new List<Object>();
+                genericArgumentTypes
+                    .ForEach( x =>
+                              {
+                                  var currentMember = new MemberInformation
+                                  {
+                                      MemberType = x,
+                                      MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                                      MemberName = anonymousItemName
+                                  };
 
-                //Get the value for the current collection item.
-                var collectionItemValue = GetValue( options, currentMember );
-                currentMember.MemberObject = collectionItemValue;
-                SetAllMembers( options, currentMember );
-                addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
+                                  // Get the value for the current collection item.
+                                  var collectionItemValue = GetValue( options, currentMember );
+                                  currentMember.MemberObject = collectionItemValue;
+                                  SetAllMembers( options, currentMember );
+
+                                  addParameters.Add( collectionItemValue );
+                              } );
+
+                addMethod.Invoke( collectionInstance, addParameters.ToArray() );
             }
             return collectionInstance;
         }
@@ -586,20 +586,23 @@ namespace Extend
         /// <summary>
         ///     Creates the default factories.
         /// </summary>
-        private static void CreateDefaultFactories() => InstanceFactoryProvider.GetDefaultFactories()
-                                                                               .ForEach( x => DefaultFactories.Add( x ) );
+        private static void CreateDefaultFactories()
+            => InstanceFactoryProvider.GetDefaultFactories()
+                                      .ForEach( x => DefaultFactories.Add( x ) );
 
         /// <summary>
         ///     Creates the default member selection rules.
         /// </summary>
-        private static void CreateDefaultMemberSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
-                                                                                              .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
+        private static void CreateDefaultMemberSelectionRules()
+            => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
+                                          .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
 
         /// <summary>
         ///     Creates the default member children selection rules.
         /// </summary>
-        private static void CreateDefaultMemberChildreSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
-                                                                                                     .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
+        private static void CreateDefaultMemberChildreSelectionRules()
+            => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
+                                          .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
 
         #endregion
 

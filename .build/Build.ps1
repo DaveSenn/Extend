@@ -136,7 +136,7 @@ Task NuGetPack {
     # Get package version
     $version = GetVersionSecure
 	# alpha release:
-	# $version = $version.ToString()	+ "-alpha"
+	$version = $version.ToString()	+ "-alpha"
 	# Write-Host $version
     &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
 }

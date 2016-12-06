@@ -19,14 +19,16 @@ namespace Extend.Testing
             var options = InstanceCreator.CreateInstanceOptions<ModelNeedingFactory>();
 
             Action test = () => options.Complete()
+                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Failed to create an instance of the following type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor' using Activator." );
+                .WithMessage( "Failed to create instance due to missing or invalid factory for type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor'." );
         }
 
         [Test]
-        public void AnonymousItemNameDefaultValueTest() => InstanceCreator.AnonymousItemName.Should()
-                                                                          .Be( "[AnonymousItem]" );
+        public void AnonymousItemNameDefaultValueTest()
+            => InstanceCreator.AnonymousItemName.Should()
+                              .Be( "[AnonymousItem]" );
 
         [Test]
         public void AnonymousItemNameTest()
@@ -37,6 +39,27 @@ namespace Extend.Testing
                            .Be( expected );
 
             InstanceCreator.AnonymousItemName = "[AnonymousItem]";
+        }
+
+        [Test]
+        public void CreateInstanceICollectionTest()
+        {
+            var actual = InstanceCreator
+                .CreateInstance<ModelWithCollection>();
+
+            actual.Should()
+                  .NotBeNull();
+
+            actual.MyArray.Should()
+                  .NotBeEmpty();
+            actual.MyList.Should()
+                  .NotBeEmpty();
+            actual.MyEnumerable.Should()
+                  .NotBeEmpty();
+            actual.MyListInterface.Should()
+                  .NotBeEmpty();
+            actual.MyCollection.Should()
+                  .NotBeEmpty();
         }
 
         [Test]
@@ -307,6 +330,7 @@ namespace Extend.Testing
                                          .For( x => x.IsTypeOf<Double>() );
 
             Action test = () => options.Complete()
+                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
                 .WithMessage( "Factory has thrown exception." );
@@ -322,6 +346,7 @@ namespace Extend.Testing
             InstanceCreator.DefaultFactories.Add( factory );
 
             Action test = () => options.Complete()
+                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
                 .WithMessage(
@@ -343,6 +368,7 @@ namespace Extend.Testing
                                          .For( x => x.IsTypeOf<Double>() );
 
             Action test = () => options.Complete()
+                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
                 .WithMessage( "Found multiple matching factories for member (in options). Type is 'System.Double'. Please make sure only one factory matches the member." );
@@ -354,6 +380,7 @@ namespace Extend.Testing
             var rules = new List<IMemberSelectionRule>( InstanceCreator.DefaultMemberSelectionRules );
             InstanceCreator.DefaultMemberSelectionRules.Clear();
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => InstanceCreator.CreateInstance<TestModel>();
             test.ShouldThrow<CreateInstanceException>()
                 .WithMessage( "Found no selection rule targeting member." );
@@ -411,6 +438,7 @@ namespace Extend.Testing
                                          .For( x => x.IsTypeOf<TestModel>() );
 
             Action test = () => options.Complete()
+                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
             test.ShouldThrow<CreateInstanceException>()
                 .WithMessage( "Failed to create root object of type: TestModel." );
@@ -459,10 +487,61 @@ namespace Extend.Testing
                   .NotBeEmpty();
         }
 
+        [Test]
+        public void PopulateDitionaryTest()
+        {
+            var actual = InstanceCreator.CreateInstance<ModelWithDitionary>();
+            actual.MyStringDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32Ditionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyStringKeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32KeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.ComplexDictionary.Any( x => x.Value.MyInt32Enumerable.Any() )
+                  .Should()
+                  .BeTrue();
+        }
+
+        private class ModelWithDitionary : ModelWithCollection
+        {
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
+            public Dictionary<String, String> MyStringDitionary { get; set; }
+            public Dictionary<Int32, Int32> MyInt32Ditionary { get; set; }
+            public Dictionary<String, Int32> MyStringKeyDitionary { get; set; }
+            public Dictionary<Int32, String> MyInt32KeyDitionary { get; set; }
+            public Dictionary<Int32, TestModel> ComplexDictionary { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
+        }
+
+        private class ModelWithCollection
+        {
+            // ReSharper disable UnusedMember.Local
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            public String[] MyArray { get; set; }
+            public List<String> MyList { get; set; }
+            public IEnumerable<String> MyEnumerable { get; set; }
+            public IList<String> MyListInterface { get; set; }
+            public ICollection<String> MyCollection { get; set; }
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
+            // ReSharper restore UnusedMember.Local
+        }
+
         private class TestModel
         {
-            #region Properties
-
+            // ReSharper disable UnusedMember.Local
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
             public Int16 MyInt16 { get; set; }
             public Int32 MyInt32 { get; set; }
             public Int64 MyInt64 { get; set; }
@@ -471,16 +550,16 @@ namespace Extend.Testing
             public String MyString { get; set; }
             public Boolean MyBoolean { get; set; }
             public DateTime MyDateTime { get; set; }
+            // ReSharper disable once CollectionNeverUpdated.Local
             public List<String> MyStringList { get; set; }
             public List<Int32> MyIntList { get; set; }
             public IEnumerable<String> MyStringEnumerable { get; set; }
             public IEnumerable<Int32> MyInt32Enumerable { get; set; }
             public String[] MyStringArray { get; set; }
             public Int32[] MyIntArray { get; set; }
-
             public SubModel MySubModel { get; set; }
-
-            #endregion
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
+            // ReSharper restore UnusedMember.Local
         }
 
         public class SubModel
@@ -500,6 +579,7 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedMember.Local
             public ModelWithCtor MyProperty { get; set; }
 
             #endregion
@@ -509,6 +589,7 @@ namespace Extend.Testing
         {
             #region Ctor
 
+            // ReSharper disable once UnusedParameter.Local
             public ModelWithCtor( String arg )
             {
             }
@@ -518,12 +599,10 @@ namespace Extend.Testing
 
         private class SimpleTestModel
         {
-            #region Properties
-
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
             public String MyString { get; set; }
             public Int32 MyInt32 { get; set; }
-
-            #endregion
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
         }
     }
 }

@@ -17,7 +17,7 @@ namespace Extend.Testing
             var expected = DateTime.Now - dateTime;
             var actual = dateTime.Elapsed();
 
-            //remove milliseconds
+            // remove milliseconds
             expected = new TimeSpan( expected.Days, expected.Hours, expected.Minutes, expected.Seconds );
             actual = new TimeSpan( actual.Days, actual.Hours, actual.Minutes, actual.Seconds );
             Assert.AreEqual( expected, actual );

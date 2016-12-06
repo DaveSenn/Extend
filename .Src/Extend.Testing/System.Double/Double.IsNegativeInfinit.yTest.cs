@@ -14,22 +14,19 @@ namespace Extend.Testing
         public void IsNegativeInfinityTest()
         {
             var number = 10.5;
-            var expected = false;
             var actual = number.IsNegativeInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( false, actual );
 
             number = Double.NegativeInfinity;
-            expected = true;
             actual = number.IsNegativeInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( true, actual );
 
             number = Double.PositiveInfinity;
-            expected = false;
             actual = number.IsNegativeInfinity();
 
-            Assert.AreEqual( expected, actual );
+            Assert.AreEqual( false, actual );
         }
     }
 }

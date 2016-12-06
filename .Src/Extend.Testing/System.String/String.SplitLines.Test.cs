@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Test]
         public void SplitLinesTest()
         {
-            var value = "test";
+            const String value = "test";
 
             var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
             Assert.AreEqual( 1, actual.Length );
@@ -46,7 +46,7 @@ namespace Extend.Testing
         [Test]
         public void SplitLinesTest2()
         {
-            var value = "test";
+            const String value = "test";
 
             var actual = value.SplitLines();
             Assert.AreEqual( 1, actual.Length );

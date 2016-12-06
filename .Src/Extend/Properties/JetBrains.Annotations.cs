@@ -498,7 +498,7 @@ namespace JetBrains.Annotations
     }
 
     [Flags]
-    public enum ImplicitUseKindFlags
+    internal enum ImplicitUseKindFlags
     {
         Default = Access | Assign | InstantiatedWithFixedConstructorSignature,
 
@@ -523,7 +523,7 @@ namespace JetBrains.Annotations
     ///     with <see cref="MeansImplicitUseAttribute" /> or <see cref="UsedImplicitlyAttribute" />.
     /// </summary>
     [Flags]
-    public enum ImplicitUseTargetFlags
+    internal enum ImplicitUseTargetFlags
     {
         Default = Itself,
         Itself = 1,
@@ -1145,7 +1145,7 @@ namespace JetBrains.Annotations
     }
 
     [Flags]
-    public enum CollectionAccessType
+    internal enum CollectionAccessType
     {
         /// <summary>Method does not use or modify content of the collection.</summary>
         None = 0,
@@ -1198,7 +1198,7 @@ namespace JetBrains.Annotations
     ///     Specifies assertion type. If the assertion method argument satisfies the condition,
     ///     then the execution continues. Otherwise, execution is assumed to be halted.
     /// </summary>
-    public enum AssertionConditionType
+    internal enum AssertionConditionType
     {
         /// <summary>Marked parameter should be evaluated to true.</summary>
         IS_TRUE = 0,

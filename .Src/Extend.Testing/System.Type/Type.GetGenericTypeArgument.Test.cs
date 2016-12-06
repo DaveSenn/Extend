@@ -13,6 +13,17 @@ namespace Extend.Testing
     public partial class TypeExTest
     {
         [Test]
+        public void GetGenericTypeArgumentNullValueTest()
+        {
+            Type type = null;
+
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            // ReSharper disable once AssignNullToNotNullAttribute
+            Action test = () => type.GetGenericTypeArgument();
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Test]
         public void GetGenericTypeArgumentTest()
         {
             var actual = typeof(String).GetGenericTypeArgument();

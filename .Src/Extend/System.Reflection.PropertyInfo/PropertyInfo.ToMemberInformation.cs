@@ -11,7 +11,7 @@ namespace Extend
     /// <summary>
     ///     Class containing some extension methods for <see cref="PropertyInfo" />.
     /// </summary>
-    public static class PropertyInfoEx
+    public static partial class PropertyInfoEx
     {
         /// <summary>
         ///     Creates a <see cref="IMemberInformation" /> based on the given <see cref="PropertyInfo" /> and parent information.

@@ -5,10 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
-#if PORTABLE45
-using System.Reflection;
-
-#endif
 
 #endregion
 
@@ -31,14 +27,8 @@ namespace Extend
         public static IEnumerable<T> GetValues<T>() where T : struct
         {
             var type = typeof(T);
-#if PORTABLE45
-            if ( !type.GetTypeInfo()
-                      .IsEnum )
+            if ( !type.IsEnum() )
                 throw new ArgumentException( "T must be an enumerated type." );
-#elif NET40
-            if ( !type.IsEnum )
-                throw new ArgumentException( "T must be an enumerated type." );
-#endif
 
             return Enum.GetValues( type )
                        .OfType<T>();
@@ -62,15 +52,8 @@ namespace Extend
         public static IEnumerable GetValues( [NotNull] Type type )
         {
             type.ThrowIfNull( nameof( type ) );
-
-#if PORTABLE45
-            if ( !type.GetTypeInfo()
-                      .IsEnum )
+            if ( !type.IsEnum() )
                 throw new ArgumentException( "T must be an enumerated type." );
-#elif NET40
-            if ( !type.IsEnum )
-                throw new ArgumentException( "T must be an enumerated type." );
-#endif
 
             return Enum.GetValues( type );
         }

@@ -13,7 +13,7 @@ namespace Extend
     /// <summary>
     ///     Class containing some extension methods for <see cref="Assembly" />.
     /// </summary>
-    public static class AssemblyEx
+    public static partial class AssemblyEx
     {
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -69,33 +69,35 @@ namespace Extend
             var attributeType = typeof(T);
             var result = new List<AttributeDefinitionType<T>>();
 
-            assemblies.ForEach( x =>
-                                {
+            assemblies
+                .ForEach( x =>
+                          {
 #if PORTABLE45
-                                    x.DefinedTypes
+                              x.DefinedTypes
 #elif NET40
-                x.GetTypes()
+                              x.GetTypes()
 #endif
-                                     .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
-                                     .ForEach( y =>
-                                               {
-                                                   var attributes = y.GetCustomAttributes( attributeType, inherit )
-                                                                     .ToArray();
-                                                   if ( attributes.NotAny() )
-                                                       return;
+                               .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
+                               .ForEach( y =>
+                                         {
+                                             var attributes = y.GetCustomAttributes( attributeType, inherit )
+                                                               .ToArray();
+                                             if ( attributes.NotAny() )
+                                                 return;
 
-                                                   result.Add( new AttributeDefinitionType<T>
-                                                               {
+                                             result.Add( new AttributeDefinitionType<T>
+                                                         {
 #if PORTABLE45
-                                                                   Type = y.AsType(),
+                                                             Type = y.AsType(),
 #elif NET40
-                         Type = y,
+                                                             Type = y,
 #endif
-                                                                   Attributes = attributes.Cast<T>()
-                                                                                          .ToList()
-                                                               } );
-                                               } );
-                                } );
+                                                             Attributes = attributes
+                                                                 .Cast<T>()
+                                                                 .ToList()
+                                                         } );
+                                         } );
+                          } );
 
             return result;
         }

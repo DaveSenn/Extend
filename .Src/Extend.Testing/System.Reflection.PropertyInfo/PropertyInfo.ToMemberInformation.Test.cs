@@ -11,7 +11,7 @@ using NUnit.Framework;
 namespace Extend.Testing
 {
     [TestFixture]
-    public class PropertyInfoExTest
+    public partial class PropertyInfoExTest
     {
         [Test]
         public void ToMemberInformationNullTest()
@@ -67,6 +67,7 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedMember.Local
             public String MyString { get; set; }
 
             #endregion

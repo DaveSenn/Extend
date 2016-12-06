@@ -44,14 +44,18 @@ namespace Extend.Testing
 
         private class TestModel
         {
-            #region Properties
-
+            // ReSharper disable UnusedMember.Local
             public String MyString { get; set; }
             public Int32 MyInt32 { get; set; }
+            // ReSharper disable once UnusedMember.Local
+            // ReSharper disable once UnassignedGetOnlyAutoProperty
             public String ReadonlyString { get; }
             private String PrivateString { get; set; }
-
-            #endregion
+            // ReSharper disable once UnassignedGetOnlyAutoProperty
+            public Int32 MyReadonlyInt32 { get; }
+            // ReSharper disable once UnassignedGetOnlyAutoProperty
+            public String MyReadonlyString { get; }
+            // ReSharper restore UnusedMember.Local
         }
 
         private class TestModelNoProperties

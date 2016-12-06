@@ -12,6 +12,17 @@ namespace Extend
     /// </summary>
     public class MemberInformation : IMemberInformation
     {
+        #region Overrides of Object
+
+        /// <summary>
+        ///     Creates and returns a string representation of the current exception.
+        /// </summary>
+        /// <returns>A string representation of the current exception.</returns>
+        public override String ToString()
+            => $"Name: '{MemberName}' Path '{MemberPath}' Type '{MemberType?.Namespace}.{MemberType?.Name}'";
+
+        #endregion
+
         #region Implementation of IMemberInformation
 
         /// <summary>
@@ -35,7 +46,6 @@ namespace Extend
         /// <summary>
         ///     Gets or sets a reference to the member.
         /// </summary>
-        /// ///
         /// <remarks>
         ///     Can be null.
         /// </remarks>

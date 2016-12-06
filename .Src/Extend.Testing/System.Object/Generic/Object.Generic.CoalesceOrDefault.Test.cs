@@ -24,6 +24,40 @@ namespace Extend.Testing
         }
 
         [Test]
+        public void CoalesceOrDefault4Test()
+        {
+            var expected = RandomValueEx.GetRandomString();
+            var actual = expected.CoalesceOrDefault( "default", null, null );
+
+            actual.Should()
+                  .Be( expected );
+        }
+
+        [Test]
+        public void CoalesceOrDefault5Test()
+        {
+            String value = null;
+            const String expected = "expected";
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.CoalesceOrDefault( "default", null, null, expected );
+
+            actual.Should()
+                  .Be( expected );
+        }
+
+        [Test]
+        public void CoalesceOrDefault6Test()
+        {
+            String value = null;
+            const String expected = "expected";
+            // ReSharper disable once ExpressionIsAlwaysNull
+            var actual = value.CoalesceOrDefault( expected, null, null, null );
+
+            actual.Should()
+                  .Be( expected );
+        }
+
+        [Test]
         public void CoalesceOrDefaultTest()
         {
             var expected = RandomValueEx.GetRandomString();

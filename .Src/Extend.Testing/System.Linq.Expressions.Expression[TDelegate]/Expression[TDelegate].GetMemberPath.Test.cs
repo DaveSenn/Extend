@@ -125,6 +125,7 @@ namespace Extend.Testing
         {
             Expression<Func<A, String>> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => expression.GetMemberPath();
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -158,6 +159,7 @@ namespace Extend.Testing
             Expression<Func<String>> func1 = () => "test";
             Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
 
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => expression.GetMemberPath();
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
@@ -166,11 +168,11 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public Int32[] IntArray { get; set; }
+            public Int32[] IntArray { get; } = new Int32[0];
 
-            public B MyB { get; set; }
+            public B MyB { get; } = new B();
 
-            public Double MyDouble { get; set; }
+            public Double MyDouble { get; } = 100;
 
             #endregion
         }
@@ -179,9 +181,9 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public String[] BStrings { get; set; }
+            public String[] BStrings { get; } = new String[0];
 
-            public C MyC { get; set; }
+            public C MyC { get; } = new C();
 
             #endregion
         }
@@ -190,9 +192,9 @@ namespace Extend.Testing
         {
             #region Properties
 
-            public Int32 MyInt { get; set; }
+            public Int32 MyInt { get; } = 100;
 
-            public String[] CStrings { get; set; }
+            public String[] CStrings { get; } = new String[0];
 
             #endregion
         }

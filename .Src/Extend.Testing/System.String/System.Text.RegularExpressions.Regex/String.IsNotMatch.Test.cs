@@ -15,9 +15,9 @@ namespace Extend.Testing
         [Test]
         public void IsNotMatchTest()
         {
-            var emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
-            var validEmail = "dave.senn@myDomain.com";
-            var invalidEmail = "dave.senn-myDomain.com";
+            const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
+            const String validEmail = "dave.senn@myDomain.com";
+            const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.IsNotMatch( emaiLpattern );
             Assert.IsFalse( actual );

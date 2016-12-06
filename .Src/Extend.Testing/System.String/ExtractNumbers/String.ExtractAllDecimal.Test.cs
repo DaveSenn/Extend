@@ -21,6 +21,7 @@ namespace Extend.Testing
 
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 )
                                 .Replace( ",", "." );
+            // ReSharper disable once RedundantArgumentDefaultValue
             var actual = stringValue.ExtractAllDecimal( 0 );
 
             Assert.AreEqual( 4, actual.Count );
@@ -45,7 +46,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.ExtractAllDecimal( null, 0 );
+            Action test = () => StringEx.ExtractAllDecimal( null, 10 );
 
             test.ShouldThrow<ArgumentNullException>();
         }

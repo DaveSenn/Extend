@@ -33,6 +33,7 @@ namespace Extend.Testing
         public void SafeToCultureInfoTest2()
         {
             const String culture = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = culture.SafeToCultureInfo();
 
             Assert.IsNull( actual );
@@ -78,6 +79,7 @@ namespace Extend.Testing
         public void SafeToCultureInfoTest7()
         {
             const String culture = null;
+            // ReSharper disable once AssignNullToNotNullAttribute
             var actual = culture.SafeToCultureInfo( new CultureInfo( "de-CH" ) );
 
             Assert.AreEqual( "de-CH", actual.Name );
