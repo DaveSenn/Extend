@@ -17,9 +17,9 @@ namespace Extend.Testing
         public void GetAttributes()
         {
             var actual = typeof(String)
-                .Assembly.GetAttributes<AssemblyCompanyAttribute>();
+                .Assembly.GetAttributes<AssemblyCompanyAttribute>().ToList();
 
-            actual.Count()
+            actual.Count
                   .Should()
                   .Be( 1 );
             actual.First()

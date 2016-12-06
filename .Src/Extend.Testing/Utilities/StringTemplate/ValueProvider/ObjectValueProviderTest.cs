@@ -171,6 +171,9 @@ namespace Extend.Internal.Testing
         {
             #region Properties
 
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
             public String MyString { get; set; }
 
             public Int32 MyInt32 { get; set; }
@@ -188,6 +191,9 @@ namespace Extend.Internal.Testing
             public SubModel SubModel { get; set; }
 
             public Dictionary<String, String> MyDictionaryString { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
 
             #endregion
         }
@@ -196,6 +202,9 @@ namespace Extend.Internal.Testing
         {
             #region Properties
 
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
             public String MyStringSub { get; set; }
 
             public Int32 MyInt32Sub { get; set; }
@@ -211,6 +220,9 @@ namespace Extend.Internal.Testing
             public List<Int32> MyListIntSub { get; set; }
 
             public Dictionary<String, String> MyDictionaryStringSub { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
 
             #endregion
         }

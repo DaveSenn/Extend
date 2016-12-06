@@ -482,5 +482,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Compile Include="Utilities\StringTemplate\StringTemplate.Test.cs" />
   </ItemGroup>
 </Project>

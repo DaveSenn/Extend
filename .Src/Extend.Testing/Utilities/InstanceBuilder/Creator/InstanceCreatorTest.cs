@@ -510,11 +510,17 @@ namespace Extend.Testing
 
         private class ModelWithDitionary : ModelWithCollection
         {
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
             public Dictionary<String, String> MyStringDitionary { get; set; }
             public Dictionary<Int32, Int32> MyInt32Ditionary { get; set; }
             public Dictionary<String, Int32> MyStringKeyDitionary { get; set; }
             public Dictionary<Int32, String> MyInt32KeyDitionary { get; set; }
             public Dictionary<Int32, TestModel> ComplexDictionary { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
         }
 
         private class ModelWithCollection
