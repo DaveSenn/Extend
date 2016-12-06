@@ -498,12 +498,15 @@ namespace Extend
                 return collectionInstance;
 
             // Get generic parameter type
-            var genericArgumentType = memberInformation.MemberType.GetGenericTypeArgument();
+            var genericArgumentTypes = memberInformation
+                .MemberType
+                .GetGenericTypeArguments()
+                .ToArray();
 
             // Get the add method
 #if PORTABLE45
             var addMethod = memberInformation.MemberType
-                                             .GetRuntimeMethod( "Add", new[] { genericArgumentType } );
+                                             .GetRuntimeMethod( "Add", genericArgumentTypes );
 #elif NET40
             var addMethod = memberInformation.MemberType.GetMethod( "Add" );
 #endif
@@ -513,18 +516,26 @@ namespace Extend
             var collectionCount = GetCollectionItemCount( options );
             for ( var i = 0; i < collectionCount; i++ )
             {
-                var currentMember = new MemberInformation
-                {
-                    MemberType = genericArgumentType,
-                    MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
-                    MemberName = anonymousItemName
-                };
+                var addParameters = new List<Object>();
+                genericArgumentTypes
+                    .ForEach( x =>
+                              {
+                                  var currentMember = new MemberInformation
+                                  {
+                                      MemberType = x,
+                                      MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                                      MemberName = anonymousItemName
+                                  };
 
-                // Get the value for the current collection item.
-                var collectionItemValue = GetValue( options, currentMember );
-                currentMember.MemberObject = collectionItemValue;
-                SetAllMembers( options, currentMember );
-                addMethod.Invoke( collectionInstance, new[] { collectionItemValue } );
+                                  // Get the value for the current collection item.
+                                  var collectionItemValue = GetValue( options, currentMember );
+                                  currentMember.MemberObject = collectionItemValue;
+                                  SetAllMembers( options, currentMember );
+
+                                  addParameters.Add( collectionItemValue );
+                              } );
+
+                addMethod.Invoke( collectionInstance, addParameters.ToArray() );
             }
             return collectionInstance;
         }
@@ -575,20 +586,23 @@ namespace Extend
         /// <summary>
         ///     Creates the default factories.
         /// </summary>
-        private static void CreateDefaultFactories() => InstanceFactoryProvider.GetDefaultFactories()
-                                                                               .ForEach( x => DefaultFactories.Add( x ) );
+        private static void CreateDefaultFactories()
+            => InstanceFactoryProvider.GetDefaultFactories()
+                                      .ForEach( x => DefaultFactories.Add( x ) );
 
         /// <summary>
         ///     Creates the default member selection rules.
         /// </summary>
-        private static void CreateDefaultMemberSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
-                                                                                              .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
+        private static void CreateDefaultMemberSelectionRules()
+            => MemberSelectionRuleProvider.GetDefaultMemberSelectionRules()
+                                          .ForEach( x => DefaultMemberSelectionRules.Add( x ) );
 
         /// <summary>
         ///     Creates the default member children selection rules.
         /// </summary>
-        private static void CreateDefaultMemberChildreSelectionRules() => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
-                                                                                                     .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
+        private static void CreateDefaultMemberChildreSelectionRules()
+            => MemberSelectionRuleProvider.GetDefaultMemberChildreSelectionRules()
+                                          .ForEach( x => DefaultMemberChildreSelectionRules.Add( x ) );
 
         #endregion
 

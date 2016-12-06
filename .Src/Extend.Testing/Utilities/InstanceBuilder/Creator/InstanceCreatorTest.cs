@@ -487,6 +487,36 @@ namespace Extend.Testing
                   .NotBeEmpty();
         }
 
+        [Test]
+        public void PopulateDitionaryTest()
+        {
+            var actual = InstanceCreator.CreateInstance<ModelWithDitionary>();
+            actual.MyStringDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32Ditionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyStringKeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32KeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.ComplexDictionary.Any( x => x.Value.MyInt32Enumerable.Any() )
+                  .Should()
+                  .BeTrue();
+        }
+
+        private class ModelWithDitionary : ModelWithCollection
+        {
+            public Dictionary<String, String> MyStringDitionary { get; set; }
+            public Dictionary<Int32, Int32> MyInt32Ditionary { get; set; }
+            public Dictionary<String, Int32> MyStringKeyDitionary { get; set; }
+            public Dictionary<Int32, String> MyInt32KeyDitionary { get; set; }
+            public Dictionary<Int32, TestModel> ComplexDictionary { get; set; }
+        }
+
         private class ModelWithCollection
         {
             // ReSharper disable UnusedMember.Local

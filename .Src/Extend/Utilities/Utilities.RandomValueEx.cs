@@ -245,8 +245,9 @@ namespace Extend
         {
             if ( max < min )
                 throw new ArgumentOutOfRangeException( nameof( max ), max, $"{nameof( max )} must be greater than {nameof( min )}" );
-
-            return min + Rnd.NextDouble() * ( max - min );
+            
+            var part = Math.Min( Double.MaxValue, max - min );
+            return min + Rnd.NextDouble() * part;
         }
 
         #endregion Methods

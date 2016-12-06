@@ -49,7 +49,6 @@ namespace Extend
         /// <returns>Returns the assembly name without version and key.</returns>
         [NotNull]
         [Pure]
-        [PublicAPI]
         private static String GetAssemblyName( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
@@ -67,7 +66,6 @@ namespace Extend
         /// <returns>Returns the name and namespace of a simple type.</returns>
         [NotNull]
         [Pure]
-        [PublicAPI]
         private static String GetNameWithNamespaceSimpleType( [NotNull] this Type type )
             => $"{type.FullName}, {type.GetAssemblyName()}";
     }

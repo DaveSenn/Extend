@@ -465,7 +465,8 @@
     <Compile Include="Utilities\Specification\OrSpecification.Test.cs" />
     <Compile Include="Utilities\Specification\XOrSpecification.Test.cs" />
     <Compile Include="Utilities\StringTemplate\Model\FormatInformationTest.cs" />
-    <Compile Include="Utilities\StringTemplate\ValueProvider\FormatInformationTest.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\LookuptValueProviderTest.cs" />
+    <Compile Include="Utilities\StringTemplate\ValueProvider\ObjectValueProviderTest.cs" />
     <Compile Include="Utilities\Tree\TreeNodeCollectionTest.cs" />
     <Compile Include="Utilities\Tree\TreeNodeTest.cs" />
     <Compile Include="Utilities\Utilities.RandomValueEx.Test.cs" />
