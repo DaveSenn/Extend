@@ -436,7 +436,9 @@
     <Compile Include="System.Type\Type.GetGenericTypeArguments.Test.cs" />
     <Compile Include="System.Type\Type.GetImplementedInterfaces.Test.cs" />
     <Compile Include="System.Type\Type.GetNameWithNamespace.Test.cs" />
+    <Compile Include="System.Type\Type.GetPublicProperties.Test.cs" />
     <Compile Include="System.Type\Type.GetPublicSettableProperties.Test.cs" />
+    <Compile Include="System.Type\Type.GetTypeFromNullable.cs" />
     <Compile Include="System.Type\Type.ImplementsICollectionTTest.Test.cs" />
     <Compile Include="System.Type\Type.IsICollectionT.Test.cs" />
     <Compile Include="System.Type\Type.IsIEnumerableT.Test.cs" />

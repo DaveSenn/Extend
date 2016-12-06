@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
 
@@ -28,7 +29,8 @@ namespace Extend
             type.ThrowIfNull( nameof( type ) );
 
 #if PORTABLE45
-            return type.GetRuntimeProperties();
+            return type.GetRuntimeProperties()
+                       .Where( x => x.GetMethod.IsPublic );
 #elif NET40
             return type.GetProperties( BindingFlags.Public | BindingFlags.Instance );
 #endif

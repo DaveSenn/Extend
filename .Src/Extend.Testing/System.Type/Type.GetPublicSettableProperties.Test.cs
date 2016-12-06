@@ -51,6 +51,10 @@ namespace Extend.Testing
             // ReSharper disable once UnassignedGetOnlyAutoProperty
             public String ReadonlyString { get; }
             private String PrivateString { get; set; }
+            // ReSharper disable once UnassignedGetOnlyAutoProperty
+            public Int32 MyReadonlyInt32 { get; }
+            // ReSharper disable once UnassignedGetOnlyAutoProperty
+            public String MyReadonlyString { get; }
             // ReSharper restore UnusedMember.Local
         }
 
