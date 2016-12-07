@@ -12,6 +12,74 @@ namespace Extend.Testing
     [TestFixture]
     public class StringTemplate
     {
+        ///////////////////////////////////////////////////////////////////////////////////
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate()
+        {
+            String nullRef = null;
+            var actual =
+                "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                    .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            actual.Should()
+                  .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 CHF 12'345.99 | MyNull: " );
+        }
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate_InvalidFormat()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate_InvalidFormat1()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate_InvalidFormat2()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate_InvalidFormat3()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithObject_ComplexTemplate_InvalidFormat4()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+            test.ShouldThrow<FormatException>();
+        }
+
         [Test]
         public void FormatWithObject_FormatInvalid()
         {
@@ -238,6 +306,95 @@ namespace Extend.Testing
             var actual = "{foo.bar:#.#}ms".FormatWithObject( new { foo = new { bar = 123.45 } } );
             actual.Should()
                   .Be( "123.5ms" );
+        }
+
+        [Test]
+        public void FormatWithValues_ComplexTemplate()
+        {
+            String nullRef = null;
+            var actual = "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                .FormatWithValues( new Dictionary<String, Object>
+                                   {
+                                       { "MyInt", 1234 },
+                                       { "MyString", "asdf" },
+                                       { "MyDouble", 12345.987654 },
+                                       { "Ignore", "asd" },
+                                       { "MyNull", nullRef }
+                                   } );
+            actual.Should()
+                  .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 CHF 12'345.99 | MyNull: " );
+        }
+
+        [Test]
+        public void FormatWithValues_ComplexTemplate_InvalidFormat1()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithValues( new Dictionary<String, Object>
+                                           {
+                                               { "MyInt", 1234 },
+                                               { "MyString", "asdf" },
+                                               { "MyDouble", 12345.987654 },
+                                               { "Ignore", "asd" },
+                                               { "MyNull", nullRef }
+                                           } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithValues_ComplexTemplate_InvalidFormat2()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithValues( new Dictionary<String, Object>
+                                           {
+                                               { "MyInt", 1234 },
+                                               { "MyString", "asdf" },
+                                               { "MyDouble", 12345.987654 },
+                                               { "Ignore", "asd" },
+                                               { "MyNull", nullRef }
+                                           } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithValues_ComplexTemplate_InvalidFormat3()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithValues( new Dictionary<String, Object>
+                                           {
+                                               { "MyInt", 1234 },
+                                               { "MyString", "asdf" },
+                                               { "MyDouble", 12345.987654 },
+                                               { "Ignore", "asd" },
+                                               { "MyNull", nullRef }
+                                           } );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Test]
+        public void FormatWithValues_ComplexTemplate_InvalidFormat4()
+        {
+            String nullRef = null;
+            Action test =
+                () =>
+                    "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                        .FormatWithValues( new Dictionary<String, Object>
+                                           {
+                                               { "MyInt", 1234 },
+                                               { "MyString", "asdf" },
+                                               { "MyDouble", 12345.987654 },
+                                               { "Ignore", "asd" },
+                                               { "MyNull", nullRef }
+                                           } );
+            test.ShouldThrow<FormatException>();
         }
 
         [Test]
