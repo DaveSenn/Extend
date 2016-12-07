@@ -31,8 +31,9 @@ using System.Resources;
 #endif
 
 [assembly: AssemblyCompany( "Dave Senn" )]
-[assembly: AssemblyCopyright( "Copyright © Dave Senn 2015" )]
+[assembly: AssemblyCopyright("Copyright © Dave Senn 2016")]
 [assembly: AssemblyCulture( "" )]
 [assembly: NeutralResourcesLanguage( "en" )]
-[assembly: AssemblyVersion( "1.1.10.0" )]
-[assembly: AssemblyFileVersion( "1.1.10.0" )]
+
+[assembly: AssemblyVersion("1.1.11.0")]
+[assembly: AssemblyFileVersion("1.1.11.0")]
