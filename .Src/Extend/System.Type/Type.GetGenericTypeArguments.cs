@@ -1,12 +1,8 @@
 ﻿#region Usings
 
 using System;
-using JetBrains.Annotations;
-
-#if PORTABLE45
 using System.Reflection;
-
-#endif
+using JetBrains.Annotations;
 
 #endregion
 
@@ -31,14 +27,10 @@ namespace Extend
         [PublicAPI]
         public static Type[] GetGenericTypeArguments( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
-#if PORTABLE45
             return type.GetTypeInfo()
                        .GenericTypeArguments;
-#elif NET40
-            return type.GetGenericArguments();
-#endif
         }
     }
 }

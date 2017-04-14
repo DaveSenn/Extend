@@ -3,10 +3,8 @@
 using System;
 using JetBrains.Annotations;
 
-#if PORTABLE45
 using System.Reflection;
 
-#endif
 
 #endregion
 
@@ -27,14 +25,10 @@ namespace Extend
         public static Boolean IsGenericType( [NotNull] this Type type )
         {
             type.ThrowIfNull( nameof( type ) );
-
-#if PORTABLE45
+            
             return type
                 .GetTypeInfo()
                 .IsGenericType;
-#elif NET40
-            return type.IsGenericType;
-#endif
         }
     }
 }

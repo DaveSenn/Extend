@@ -107,10 +107,8 @@ namespace JetBrains.Annotations
         /// <param name="formatParameterName">
         ///     Specifies which parameter of an annotated method should be treated as format-string
         /// </param>
-        public StringFormatMethodAttribute( String formatParameterName )
-        {
-            FormatParameterName = formatParameterName;
-        }
+        public StringFormatMethodAttribute( String formatParameterName ) 
+            => FormatParameterName = formatParameterName;
 
         #endregion
     }
@@ -131,10 +129,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public ValueProviderAttribute( String name )
-        {
-            Name = name;
-        }
+        public ValueProviderAttribute( String name ) => Name = name;
 
         #endregion
     }
@@ -229,10 +224,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public NotifyPropertyChangedInvocatorAttribute( String parameterName )
-        {
-            ParameterName = parameterName;
-        }
+        public NotifyPropertyChangedInvocatorAttribute( String parameterName ) => ParameterName = parameterName;
 
         #endregion
     }
@@ -345,10 +337,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public LocalizationRequiredAttribute( Boolean required )
-        {
-            Required = required;
-        }
+        public LocalizationRequiredAttribute( Boolean required ) => Required = required;
 
         #endregion
     }
@@ -406,10 +395,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public BaseTypeRequiredAttribute( [NotNull] Type baseType )
-        {
-            BaseType = baseType;
-        }
+        public BaseTypeRequiredAttribute( [NotNull] Type baseType ) => BaseType = baseType;
 
         #endregion
     }
@@ -554,10 +540,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public PublicAPIAttribute( [NotNull] String comment )
-        {
-            Comment = comment;
-        }
+        public PublicAPIAttribute( [NotNull] String comment ) => Comment = comment;
 
         #endregion
     }
@@ -608,10 +591,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public MustUseReturnValueAttribute( [NotNull] String justification )
-        {
-            Justification = justification;
-        }
+        public MustUseReturnValueAttribute( [NotNull] String justification ) => Justification = justification;
 
         #endregion
     }
@@ -659,10 +639,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public PathReferenceAttribute( [PathReference] String basePath )
-        {
-            BasePath = basePath;
-        }
+        public PathReferenceAttribute( [PathReference] String basePath ) => BasePath = basePath;
 
         #endregion
     }
@@ -765,10 +742,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaMasterLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcAreaMasterLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -784,10 +758,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaPartialViewLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcAreaPartialViewLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -803,10 +774,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcAreaViewLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcAreaViewLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -822,10 +790,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcMasterLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcMasterLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -841,10 +806,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcPartialViewLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcPartialViewLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -860,10 +822,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspMvcViewLocationFormatAttribute( String format )
-        {
-            Format = format;
-        }
+        public AspMvcViewLocationFormatAttribute( String format ) => Format = format;
 
         #endregion
     }
@@ -889,10 +848,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcActionAttribute( String anonymousProperty )
-        {
-            AnonymousProperty = anonymousProperty;
-        }
+        public AspMvcActionAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -917,10 +873,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcAreaAttribute( String anonymousProperty )
-        {
-            AnonymousProperty = anonymousProperty;
-        }
+        public AspMvcAreaAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -946,10 +899,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public AspMvcControllerAttribute( String anonymousProperty )
-        {
-            AnonymousProperty = anonymousProperty;
-        }
+        public AspMvcControllerAttribute( String anonymousProperty ) => AnonymousProperty = anonymousProperty;
 
         #endregion
     }
@@ -1083,10 +1033,7 @@ namespace JetBrains.Annotations
         {
         }
 
-        public HtmlElementAttributesAttribute( String name )
-        {
-            Name = name;
-        }
+        public HtmlElementAttributesAttribute( String name ) => Name = name;
 
         #endregion
     }
@@ -1103,10 +1050,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public HtmlAttributeValueAttribute( [NotNull] String name )
-        {
-            Name = name;
-        }
+        public HtmlAttributeValueAttribute( [NotNull] String name ) => Name = name;
 
         #endregion
     }
@@ -1136,10 +1080,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public CollectionAccessAttribute( CollectionAccessType collectionAccessType )
-        {
-            CollectionAccessType = collectionAccessType;
-        }
+        public CollectionAccessAttribute( CollectionAccessType collectionAccessType ) => CollectionAccessType = collectionAccessType;
 
         #endregion
     }
@@ -1186,10 +1127,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AssertionConditionAttribute( AssertionConditionType conditionType )
-        {
-            ConditionType = conditionType;
-        }
+        public AssertionConditionAttribute( AssertionConditionType conditionType ) => ConditionType = conditionType;
 
         #endregion
     }
@@ -1319,10 +1257,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspRequiredAttributeAttribute( [NotNull] String attribute )
-        {
-            Attribute = attribute;
-        }
+        public AspRequiredAttributeAttribute( [NotNull] String attribute ) => Attribute = attribute;
 
         #endregion
     }
@@ -1338,10 +1273,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public AspTypePropertyAttribute( Boolean createConstructorReferences )
-        {
-            CreateConstructorReferences = createConstructorReferences;
-        }
+        public AspTypePropertyAttribute( Boolean createConstructorReferences ) => CreateConstructorReferences = createConstructorReferences;
 
         #endregion
     }
@@ -1357,10 +1289,7 @@ namespace JetBrains.Annotations
 
         #region Ctor
 
-        public RazorImportNamespaceAttribute( String name )
-        {
-            Name = name;
-        }
+        public RazorImportNamespaceAttribute( String name ) => Name = name;
 
         #endregion
     }

@@ -2,12 +2,8 @@
 
 using System;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-
-#if PORTABLE45
 using System.Reflection;
-
-#endif
+using JetBrains.Annotations;
 
 #endregion
 
@@ -29,15 +25,11 @@ namespace Extend
         [PublicAPI]
         public static IEnumerable<Type> GetImplementedInterfaces( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
-#if PORTABLE45
             return type
                 .GetTypeInfo()
                 .ImplementedInterfaces;
-#elif NET40
-            return type.GetInterfaces();
-#endif
         }
     }
 }

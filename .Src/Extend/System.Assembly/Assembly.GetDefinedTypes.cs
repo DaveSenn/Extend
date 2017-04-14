@@ -2,12 +2,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
-#if PORTABLE45
-using System.Linq;
-
-#endif
 
 #endregion
 
@@ -30,14 +27,10 @@ namespace Extend
         {
             assembly.ThrowIfNull( nameof( assembly ) );
 
-#if PORTABLE45
             return assembly
                 .DefinedTypes
                 .Select( x => x.AsType() )
                 .ToArray();
-#elif NET40
-            return assembly.GetTypes();
-#endif
         }
     }
 }

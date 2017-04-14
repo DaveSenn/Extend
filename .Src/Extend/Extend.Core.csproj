@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp1.1;net452;net461;netstandard1.3</TargetFrameworks>
+    <AssemblyName>Extend</AssemblyName>
+    <RootNamespace>Extend</RootNamespace>
+    <PackageId>Extend</PackageId>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
+    <DelaySign>False</DelaySign>
+    <Version>1.1.11.0</Version>
+    <Authors>Dave Senn</Authors>
+    <Company>Dave Senn</Company>
+    <Product>Extend</Product>
+    <Description>Extend is a set of .Net extension methods build as PCL or .Net40 DLL. Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</Description>
+    <Copyright>Copyright © Dave Senn 2017</Copyright>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp1.1|AnyCPU'">
+    <DocumentationFile>bin\Debug\netcoreapp1.1\Extend.xml</DocumentationFile>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <TreatSpecificWarningsAsErrors>1591 1570 1571 1572 1573 1574</TreatSpecificWarningsAsErrors>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+</Project>

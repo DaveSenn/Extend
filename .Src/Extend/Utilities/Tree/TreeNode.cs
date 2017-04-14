@@ -174,7 +174,7 @@ namespace Extend
         /// <value>The value of the node.</value>
         public T Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
                 var oldValue = _value;
@@ -201,8 +201,8 @@ namespace Extend
         /// <value>The parent of the node.</value>
         public ITreeNode<T> Parent
         {
-            get { return _parent; }
-            set { SetParent( value ); }
+            get => _parent;
+            set => SetParent( value );
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Extend
         /// <value>The children of the node.</value>
         public ITreeNodeCollection<T> Children
         {
-            get { return _children; }
+            get => _children;
             set
             {
                 if ( value == _children )
@@ -234,7 +234,7 @@ namespace Extend
         /// <value>The search traversal direction.</value>
         public TreeTraversalDirection SearchTraversalDirection
         {
-            get { return _searchTraversalDirection; }
+            get => _searchTraversalDirection;
             set
             {
                 _searchTraversalDirection = value;
@@ -248,7 +248,7 @@ namespace Extend
         /// <value>The dispose traversal direction.</value>
         public TreeTraversalDirection DisposeTraversalDirection
         {
-            get { return _disposeTraversalDirection; }
+            get => _disposeTraversalDirection;
             set
             {
                 _disposeTraversalDirection = value;
@@ -262,7 +262,7 @@ namespace Extend
         /// <value>The ancestors traversal direction.</value>
         public TreeTraversalDirection AncestorsTraversalDirection
         {
-            get { return _ancestorsTraversalDirection; }
+            get => _ancestorsTraversalDirection;
             set
             {
                 _ancestorsTraversalDirection = value;
@@ -276,7 +276,7 @@ namespace Extend
         /// <value>The descendants traversal direction.</value>
         public TreeTraversalDirection DescendantsTraversalDirection
         {
-            get { return _descendantsTraversalDirection; }
+            get => _descendantsTraversalDirection;
             set
             {
                 _descendantsTraversalDirection = value;
@@ -290,7 +290,7 @@ namespace Extend
         /// <value>The traversal direction used to enumerate the nodes.</value>
         public TreeTraversalDirection TraversalDirection
         {
-            get { return _traversalDirection; }
+            get => _traversalDirection;
             set
             {
                 _traversalDirection = value;
