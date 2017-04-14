@@ -36,8 +36,10 @@ namespace Extend.Testing
         public void ToDateTimeOtherCultureTest()
         {
             var culture = CultureInfo.CurrentCulture;
-            Thread.CurrentThread.CurrentCulture = new CultureInfo( "de-CH" );
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo( "de-CH" );
+            //Thread.CurrentThread.CurrentCulture = new CultureInfo( "de-CH" );
+            //Thread.CurrentThread.CurrentUICulture = new CultureInfo( "de-CH" );
+            CultureInfo.CurrentCulture = new CultureInfo("de-CH");
+            CultureInfo.CurrentUICulture = new CultureInfo("de-CH");
 
             var value = DateTime.Now;
             var actual = value.ToString( CultureInfo.CurrentCulture )
