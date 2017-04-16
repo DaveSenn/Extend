@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToInt64InvalidValueDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64InvalidValueTest()
         {
             var actual = "InvalidValue".SaveToInt64();
@@ -33,7 +33,7 @@ namespace Extend.Testing
                 .Be( default(Int64) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64NullDefaultTest()
         {
             String value = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64NullTest()
         {
             String value = null;
@@ -58,7 +58,7 @@ namespace Extend.Testing
                 .Be( default(Int64) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadFormatProviderNullTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -68,7 +68,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadInvalidNumberStyleTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -77,7 +77,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToInt64( NumberStyles.Any, CultureInfo.InvariantCulture );
@@ -87,7 +87,7 @@ namespace Extend.Testing
                 .Be( default(Int64) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadInvalidValueWithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
@@ -98,7 +98,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadNullTest()
         {
             String value = null;
@@ -110,7 +110,7 @@ namespace Extend.Testing
                 .Be( default(Int64) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadNullWithDefaultTest()
         {
             String value = null;
@@ -123,7 +123,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
@@ -135,7 +135,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64OverloadWitDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();
@@ -147,7 +147,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64Test()
         {
             var expected = RandomValueEx.GetRandomInt64();
@@ -159,7 +159,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt64WithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt64();

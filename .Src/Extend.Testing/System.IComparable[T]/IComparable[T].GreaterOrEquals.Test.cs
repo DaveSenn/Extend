@@ -2,38 +2,38 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ComparableTExTest
     {
-        [Test]
+        [Fact]
         public void GreaterOrEqualsTest()
         {
             var value = 1000;
             var value1 = 900;
 
             var actual = value.GreaterOrEquals( value1 );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             value = 10;
             value1 = 900;
 
             actual = value.GreaterOrEquals( value1 );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
 
             value = 10;
             value1 = 10;
 
             actual = value.GreaterOrEquals( value1 );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void GreaterOrEqualsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -43,7 +43,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GreaterOrEqualsTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

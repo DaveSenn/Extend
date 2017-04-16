@@ -2,58 +2,58 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SplitLinesTest()
         {
             const String value = "test";
 
             var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-            Assert.AreEqual( 1, actual.Length );
-            Assert.AreEqual( value, actual[0] );
+            Assert.Equal( 1, actual.Length );
+            Assert.Equal( value, actual[0] );
 
             actual = value.SplitLines( StringSplitOptions.None );
-            Assert.AreEqual( 1, actual.Length );
-            Assert.AreEqual( value, actual[0] );
+            Assert.Equal( 1, actual.Length );
+            Assert.Equal( value, actual[0] );
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTest1()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
 
             var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( "test", actual[0] );
-            Assert.AreEqual( "test", actual[1] );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( "test", actual[0] );
+            Assert.Equal( "test", actual[1] );
 
             actual = value.SplitLines( StringSplitOptions.None );
-            Assert.AreEqual( 4, actual.Length );
-            Assert.AreEqual( "test", actual[0] );
-            Assert.AreEqual( "test", actual[1] );
-            Assert.AreEqual( String.Empty, actual[2] );
-            Assert.AreEqual( String.Empty, actual[3] );
+            Assert.Equal( 4, actual.Length );
+            Assert.Equal( "test", actual[0] );
+            Assert.Equal( "test", actual[1] );
+            Assert.Equal( String.Empty, actual[2] );
+            Assert.Equal( String.Empty, actual[3] );
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTest2()
         {
             const String value = "test";
 
             var actual = value.SplitLines();
-            Assert.AreEqual( 1, actual.Length );
-            Assert.AreEqual( value, actual[0] );
+            Assert.Equal( 1, actual.Length );
+            Assert.Equal( value, actual[0] );
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTest2NullCheck()
         {
             String value = null;
@@ -64,18 +64,18 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTest3()
         {
             var value = "test{0}test{0}{0}".F( Environment.NewLine );
 
             var actual = value.SplitLines();
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( "test", actual[0] );
-            Assert.AreEqual( "test", actual[1] );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( "test", actual[0] );
+            Assert.Equal( "test", actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTestNullCheck()
         {
             String value = null;
@@ -86,7 +86,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SplitLinesTestNullCheck1()
         {
             String value = null;

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetDeclaringAssemblyNullTest()
         {
             Type type = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetDeclaringAssemblyTest()
         {
             var actual = typeof(String).GetDeclaringAssembly();

@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToByteFormatProviderNullTest()
         {
             const Byte expected = 1;
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToByteFormatProviderTest()
         {
             const Byte expected = 1;
@@ -36,7 +36,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToByteInvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteInvalidCastTest()
         {
             var value = new TestModel();
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteInvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteInvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteNullValueFormatProviderTest()
         {
             Object value = null;
@@ -88,7 +88,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToByteNullValueTest()
         {
             Object value = null;
@@ -100,7 +100,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToByteTest()
         {
             const Byte expected = 1;
@@ -112,7 +112,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToByteTooLargeFormatProviderTest()
         {
             const Int32 value = (Int32) Byte.MaxValue + 1;
@@ -122,7 +122,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteTooLargeTest()
         {
             const Int32 value = (Int32) Byte.MaxValue + 1;
@@ -132,7 +132,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteTooSmallFormatProviderTest()
         {
             const Int32 value = (Int32) Byte.MinValue - 1;
@@ -142,7 +142,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteTooSmallTest()
         {
             const Int32 value = (Int32) Byte.MinValue - 1;

@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceArgumentNullExceptionTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest()
         {
             var actual = typeof(List<TestClassGeneric<String>>).GetNameWithNamespace();
@@ -36,7 +36,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest1()
         {
             var actual = typeof(List<List<String>>).GetNameWithNamespace();
@@ -49,7 +49,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest2()
         {
             var actual = typeof(List<List<TypeExTest>>).GetNameWithNamespace();
@@ -62,7 +62,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest3()
         {
             var actual = typeof(List<List<TestClass>>).GetNameWithNamespace();
@@ -75,7 +75,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest4()
         {
             var actual = typeof(List<List<TestClassGeneric<String>>>).GetNameWithNamespace();
@@ -89,7 +89,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericNestedTest5()
         {
             var actual = typeof(List<List<Dictionary<String, TestClass>>>).GetNameWithNamespace();
@@ -103,7 +103,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericTest()
         {
             var actual = typeof(List<String>).GetNameWithNamespace();
@@ -116,7 +116,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericTest1()
         {
             var actual = typeof(List<DateTime>).GetNameWithNamespace();
@@ -129,7 +129,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericTest2()
         {
             var actual = typeof(List<TypeExTest>).GetNameWithNamespace();
@@ -142,7 +142,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceGenericTest3()
         {
             var actual = typeof(List<TestClass>).GetNameWithNamespace();
@@ -155,7 +155,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespacePrivateClassGenericTest()
         {
             var actual = typeof(TestClassGeneric<String>).GetNameWithNamespace();
@@ -168,7 +168,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespacePrivateClassTest()
         {
             var actual = typeof(TestClass).GetNameWithNamespace();
@@ -181,7 +181,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceSimpleTest()
         {
             var actual = typeof(String).GetNameWithNamespace();
@@ -194,7 +194,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceSimpleTest1()
         {
             var actual = typeof(Int32).GetNameWithNamespace();
@@ -207,7 +207,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetNameWithNamespaceSimpleTest2()
         {
             var actual = typeof(TypeExTest).GetNameWithNamespace();

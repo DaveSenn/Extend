@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class ExpressionMemberSelectionRuleTest
     {
-        [Test]
+        [Fact]
         public void CheckMemberInPredicateIsSame()
         {
             var expected = new MemberInformation();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeSameAs( expected );
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var expectedName = RandomValueEx.GetRandomString();
@@ -44,7 +44,7 @@ namespace Extend.Testing
                   .Be( expectedDescription );
         }
 
-        [Test]
+        [Fact]
         public void CtorTestPredicateNullTest()
         {
             Func<IMemberInformation, Boolean> predicate = null;
@@ -54,7 +54,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void PredicateFalseExcludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Exclude );
@@ -65,7 +65,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PredicateFalseIncludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => false, MemberSelectionMode.Include );
@@ -76,7 +76,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PredicateTrueExcludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude );
@@ -87,7 +87,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PredicateTrueIncludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include );
@@ -98,7 +98,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringExcludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Exclude );
@@ -109,7 +109,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringIncludeTest()
         {
             var target = new ExpressionMemberSelectionRule( x => true, MemberSelectionMode.Include, "A", "B" );

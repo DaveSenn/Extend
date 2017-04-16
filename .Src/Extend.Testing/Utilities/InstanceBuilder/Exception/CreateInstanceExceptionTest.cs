@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class CreateInstanceExceptionTest
     {
-        [Test]
+        [Fact]
         public void FactoryInformationTest()
         {
             var target = new CreateInstanceException( "msg", new Exception(), "info1", "info2", new MemberInformation() );
@@ -19,7 +19,7 @@ namespace Extend.Testing
                   .Be( "info1" );
         }
 
-        [Test]
+        [Fact]
         public void InnerExceptionTest()
         {
             var expected = new Exception();
@@ -28,7 +28,7 @@ namespace Extend.Testing
                   .BeSameAs( expected );
         }
 
-        [Test]
+        [Fact]
         public void MemberInformationTest()
         {
             var expected = new MemberInformation();
@@ -37,7 +37,7 @@ namespace Extend.Testing
                   .BeSameAs( expected );
         }
 
-        [Test]
+        [Fact]
         public void MessageTest()
         {
             var target = new CreateInstanceException( "msg" );
@@ -45,7 +45,7 @@ namespace Extend.Testing
                   .Be( "msg" );
         }
 
-        [Test]
+        [Fact]
         public void SelectionRuleRuleInformationTest()
         {
             var target = new CreateInstanceException( "msg", new Exception(), "info1", "info2", new MemberInformation() );
@@ -53,7 +53,7 @@ namespace Extend.Testing
                   .Be( "info2" );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest()
         {
             var target = new CreateInstanceException( "message",

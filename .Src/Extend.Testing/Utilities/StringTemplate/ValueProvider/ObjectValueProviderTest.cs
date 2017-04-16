@@ -5,16 +5,16 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Internal.Testing
 {
-    [TestFixture]
+    
     public class ObjectValueProviderTest
     {
-        [Test]
+        [Fact]
         public void CtorNullRefrenceTest()
         {
             // ReSharper disable once ObjectCreationAsStatement
@@ -24,7 +24,7 @@ namespace Extend.Internal.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var actual = new ObjectValueProvider( new TestModel() );
@@ -32,7 +32,7 @@ namespace Extend.Internal.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -43,7 +43,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyString );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest1()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -54,7 +54,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyInt32.ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest10()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -67,7 +67,7 @@ namespace Extend.Internal.Testing
                                                                  .Key] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest2()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -78,7 +78,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyDouble.ToString( CultureInfo.InvariantCulture ) );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest3()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -89,7 +89,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyStringArray[0] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest4()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -100,7 +100,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyInt32Array[0].ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest5()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -111,7 +111,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyListString[0] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest6()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -122,7 +122,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyListInt[0].ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest7()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -135,7 +135,7 @@ namespace Extend.Internal.Testing
                                                      .Key] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest8()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -146,7 +146,7 @@ namespace Extend.Internal.Testing
                   .Be( model.SubModel.MyStringSub );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest9()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -157,7 +157,7 @@ namespace Extend.Internal.Testing
                   .Be( model.SubModel.MyStringArraySub[0] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueInvalidExpressionTest()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -230,7 +230,7 @@ namespace Extend.Internal.Testing
         /*
 
 
-                        [Test]
+                        [Fact]
                         public void GetValueFalseFormatTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -244,7 +244,7 @@ namespace Extend.Internal.Testing
                                   .Be( "DD" );
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueMissingKeyTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -258,7 +258,7 @@ namespace Extend.Internal.Testing
                                 .WithInnerException<KeyNotFoundException>();
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueMissingKeyWithFormatTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -272,7 +272,7 @@ namespace Extend.Internal.Testing
                                 .WithInnerException<KeyNotFoundException>();
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueNoneStringTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -287,7 +287,7 @@ namespace Extend.Internal.Testing
                                  .Be( "1234" );
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueNullValueTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -301,7 +301,7 @@ namespace Extend.Internal.Testing
                                  .BeNull();
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueNullValueWithFormatTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -315,7 +315,7 @@ namespace Extend.Internal.Testing
                                  .BeEmpty();
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueTest()
                         {
                             var values = new Dictionary<String, Object>
@@ -329,7 +329,7 @@ namespace Extend.Internal.Testing
                                  .Be( "asdf" );
                         }
 
-                        [Test]
+                        [Fact]
                         public void GetValueWithFormatTest()
                         {
                             var values = new Dictionary<String, Object>

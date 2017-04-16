@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void CopyAllTestNullCheck()
         {
             Array array = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyAllTestNullCheck1()
         {
             Array array = new String[10];
@@ -33,7 +33,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest()
         {
             Array array = new[]
@@ -45,12 +45,12 @@ namespace Extend.Testing
             var destinationArray = new String[3];
             array.Copy( destinationArray, 3 );
 
-            Assert.AreEqual( "0", destinationArray[0] );
-            Assert.AreEqual( "1", destinationArray[1] );
-            Assert.AreEqual( "2", destinationArray[2] );
+            Assert.Equal( "0", destinationArray[0] );
+            Assert.Equal( "1", destinationArray[1] );
+            Assert.Equal( "2", destinationArray[2] );
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1()
         {
             Array array = new[]
@@ -63,11 +63,11 @@ namespace Extend.Testing
             var destinationArray = new String[2];
             array.Copy( 1, destinationArray, 0, 2 );
 
-            Assert.AreEqual( "1", destinationArray[0] );
-            Assert.AreEqual( "2", destinationArray[1] );
+            Assert.Equal( "1", destinationArray[0] );
+            Assert.Equal( "2", destinationArray[1] );
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1ArgumentException()
         {
             Array array = new[]
@@ -83,7 +83,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1ArgumentOutOfRangeException()
         {
             Array array = new[]
@@ -99,7 +99,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1ArgumentOutOfRangeException1()
         {
             Array array = new[]
@@ -115,7 +115,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1ArgumentOutOfRangeException2()
         {
             Array array = new[]
@@ -131,7 +131,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1NullCheck()
         {
             Array array = null;
@@ -142,7 +142,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTest1NullCheck1()
         {
             Array array = new[]
@@ -159,7 +159,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CopyTestArgumentException()
         {
             Array array = new[]

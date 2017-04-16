@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ConcatAllNullTest()
         {
             String value = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .Be( "012" );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllNullTest1()
         {
             String value = null;
@@ -35,7 +35,7 @@ namespace Extend.Testing
                 .Be( "12" );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllNullTest2()
         {
             String value = null;
@@ -48,7 +48,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllNullTest3()
         {
             String value = null;
@@ -60,7 +60,7 @@ namespace Extend.Testing
                 .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest()
         {
             var actual = "test".ConcatAll( "0", "1", "2" );
@@ -70,7 +70,7 @@ namespace Extend.Testing
                 .Be( "test012" );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest1()
         {
             var actual = new[]
@@ -80,10 +80,10 @@ namespace Extend.Testing
                 "1",
                 "2"
             }.ConcatAll();
-            Assert.AreEqual( "test012", actual );
+            Assert.Equal( "test012", actual );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest1NullCheck()
         {
             String[] values = null;
@@ -95,7 +95,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest2()
         {
             var actual = "test".ConcatAll( new Object[]
@@ -104,10 +104,10 @@ namespace Extend.Testing
                                                "1",
                                                "2"
                                            } );
-            Assert.AreEqual( "test012", actual );
+            Assert.Equal( "test012", actual );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest2NullCheck()
         {
             Object[] values = null;
@@ -119,7 +119,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest3()
         {
             var actual = new Object[]
@@ -129,10 +129,10 @@ namespace Extend.Testing
                 "1",
                 "2"
             }.ConcatAll();
-            Assert.AreEqual( "test012", actual );
+            Assert.Equal( "test012", actual );
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTest3NullCheck()
         {
             Object[] values = null;
@@ -144,7 +144,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatAllTestNullCheck()
         {
             String[] values = null;

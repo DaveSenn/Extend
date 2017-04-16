@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void IntersectFirstNullTest()
         {
             List<String> first = null;
@@ -27,7 +27,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IntersectSecondNullTest()
         {
             var first = new List<String> { "a", "d", "z" };
@@ -40,7 +40,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IntersectSelectorNullTest()
         {
             var first = new List<String> { "a", "b", "c" };
@@ -54,7 +54,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IntersectTest()
         {
             var first = new List<String> { "a", "b", "c" };
@@ -69,7 +69,7 @@ namespace Extend.Testing
                   .Contain( "a" );
         }
 
-        [Test]
+        [Fact]
         public void IntersectTest1()
         {
             var first = new List<TestModel>
@@ -101,7 +101,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void IntersectTest2()
         {
             var first = new List<TestModel>

@@ -3,16 +3,16 @@
 using System;
 using System.Linq.Expressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ExpressionTDelegateExTest
     {
-        [Test]
+        [Fact]
         public void GetMemberPathTestFirstLevel()
         {
             Expression<Func<A, B>> expression = x => x.MyB;
@@ -24,7 +24,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestFirstLevelArray()
         {
             Expression<Func<A, Int32[]>> expression = x => x.IntArray;
@@ -36,7 +36,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestFirstLevelArrayIndex()
         {
             Expression<Func<A, Int32>> expression = x => x.IntArray[2];
@@ -48,7 +48,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestSecondLevel()
         {
             Expression<Func<A, C>> expression = x => x.MyB.MyC;
@@ -60,7 +60,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestSecondLevelArray()
         {
             Expression<Func<A, String[]>> expression = x => x.MyB.BStrings;
@@ -72,7 +72,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestSecondLevelArrayIndex()
         {
             Expression<Func<A, String>> expression = x => x.MyB.BStrings[2];
@@ -84,7 +84,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestThirdLevel()
         {
             Expression<Func<A, Int32>> expression = x => x.MyB.MyC.MyInt;
@@ -96,7 +96,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestThirdLevelArray()
         {
             Expression<Func<A, String[]>> expression = x => x.MyB.MyC.CStrings;
@@ -108,7 +108,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetMemberPathTestThirdLevelArrayIndex()
         {
             Expression<Func<A, String>> expression = x => x.MyB.MyC.CStrings[21];
@@ -120,7 +120,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void NullExpression()
         {
             Expression<Func<A, String>> expression = null;
@@ -130,7 +130,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryGetMemberExpressionTestConvert()
         {
             Expression<Func<A, Object>> expression = x => x.IntArray;
@@ -141,7 +141,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void TryGetMemberExpressionTestConvert1()
         {
             Expression<Func<A, Int32>> expression = x => (Int32) x.MyDouble;
@@ -152,7 +152,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void UnsupportedExpression()
         {
             Expression<Func<String>> func = () => null;

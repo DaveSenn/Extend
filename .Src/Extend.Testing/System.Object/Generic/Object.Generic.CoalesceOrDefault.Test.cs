@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void CoalesceOrDefault1Test()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefault4Test()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -33,7 +33,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefault5Test()
         {
             String value = null;
@@ -45,7 +45,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefault6Test()
         {
             String value = null;
@@ -57,7 +57,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefaultTest()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -69,7 +69,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefaultTest2()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -77,13 +77,13 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = ObjectEx.CoalesceOrDefault( null, () => s, null, null, expected, "Test2" );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             actual = ObjectEx.CoalesceOrDefault( null, () => expected, null, null );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefaultTest2NullCheck()
         {
             String s = null;
@@ -96,7 +96,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefaultTest3()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -104,10 +104,10 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = expected.CoalesceOrDefault( () => s, null, null, "Test2" );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void CoalesceOrDefaultTestNullCheck()
         {
             String s = null;

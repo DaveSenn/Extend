@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ReplaceAtArgumentNullExceptionTest()
         {
             String value = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ReplaceAtArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -31,7 +31,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ReplaceAtArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -40,7 +40,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ReplaceAtTest()
         {
             var actual = "test".ReplaceAt( 1, 'X' );
@@ -49,7 +49,7 @@ namespace Extend.Testing
                   .Be( "tXst" );
         }
 
-        [Test]
+        [Fact]
         public void ReplaceAtTest1()
         {
             var actual = "test".ReplaceAt( 0, 'T' );
@@ -58,7 +58,7 @@ namespace Extend.Testing
                   .Be( "Test" );
         }
 
-        [Test]
+        [Fact]
         public void ReplaceAtTest2()
         {
             var actual = "test".ReplaceAt( 3, '1' );

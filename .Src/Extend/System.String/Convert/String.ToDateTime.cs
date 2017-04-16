@@ -23,7 +23,7 @@ namespace Extend
         {
             value.ThrowIfNull( nameof( value ) );
 
-            return DateTime.Parse( value, CultureInfo.CurrentCulture );
+            return DateTime.Parse( value, CultureInfo.InvariantCulture );
         }
 
         /// <summary>

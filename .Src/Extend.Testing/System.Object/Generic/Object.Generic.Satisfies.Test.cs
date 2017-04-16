@@ -2,32 +2,32 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void SatisfiesTest()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 );
             var actual = "1234".Satisfies( specification );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void SatisfiesTest1()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 );
             var actual = "123".Satisfies( specification );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void SatisfiesTestnullCheck()
         {
             ISpecification<String> specification = null;

@@ -1,29 +1,29 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void IsTimeEqualTest()
         {
             var dateTime = DateTime.Now;
             var dateTime1 = dateTime.AddDays( -2 );
 
             var actual = dateTime.IsTimeEquals( dateTime1 );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             dateTime1 = dateTime.AddDays( -2 )
                                 .AddHours( 1 );
 
             actual = dateTime.IsTimeEquals( dateTime1 );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

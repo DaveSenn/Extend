@@ -1,23 +1,23 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void EndOfMonthTest()
         {
             var dateTime = DateTime.Now;
             var expected = new DateTime( dateTime.Year, dateTime.Month, 1 ).AddMonths( 1 )
                                                                            .Subtract( 1.ToMilliseconds() );
             var actual = dateTime.EndOfMonth();
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

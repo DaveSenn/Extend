@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractFirstInt16Test()
         {
             const Int32 value0 = 100;
@@ -26,22 +26,22 @@ namespace Extend.Testing
             var actual =
                 stringValue.ExtractFirstInt16( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),
                                                                     StringComparison.Ordinal ) );
-            Assert.AreEqual( value1, actual );
+            Assert.Equal( value1, actual );
 
             actual = stringValue.ExtractFirstInt16();
-            Assert.AreEqual( value0, actual );
+            Assert.Equal( value0, actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstInt16Test1()
         {
             const String sValue = "asdf-100asdf";
             var actual = sValue.ExtractFirstInt16();
 
-            Assert.AreEqual( -100, actual );
+            Assert.Equal( -100, actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstInt16TestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -51,7 +51,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstInt16TestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

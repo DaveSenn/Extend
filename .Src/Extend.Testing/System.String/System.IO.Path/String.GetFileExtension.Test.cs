@@ -3,26 +3,26 @@
 using System;
 using System.IO;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void GetFileExtensionTest()
         {
             const String fielName = "test.txt";
             var expected = Path.GetExtension( fielName );
             var actual = fielName.GetFileExtension();
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void GetFileExtensionTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

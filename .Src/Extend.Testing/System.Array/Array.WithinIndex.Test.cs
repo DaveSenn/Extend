@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void WithinIndexTest()
         {
             Array array = new[]
@@ -22,16 +22,16 @@ namespace Extend.Testing
             };
 
             var actual = array.WithinIndex( 2 );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = array.WithinIndex( -1 );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
 
             actual = array.WithinIndex( 5 );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void WithinIndexTestNullCheck()
         {
             Array array = null;

@@ -1,51 +1,51 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TruncateTest()
         {
             var actual = "testtest".Truncate( 7 );
-            Assert.AreEqual( "test...", actual );
+            Assert.Equal( "test...", actual );
         }
 
-        [Test]
+        [Fact]
         public void TruncateTest1()
         {
             var actual = "testtest".Truncate( 7, "_-_" );
-            Assert.AreEqual( "test_-_", actual );
+            Assert.Equal( "test_-_", actual );
         }
 
-        [Test]
+        [Fact]
         public void TruncateTest2()
         {
             var actual = "abc".Truncate( 7, "_-_" );
-            Assert.AreEqual( "abc", actual );
+            Assert.Equal( "abc", actual );
         }
 
-        [Test]
+        [Fact]
         public void TruncateTest3()
         {
             var actual = String.Empty.Truncate( 7, "_-_" );
-            Assert.AreEqual( String.Empty, actual );
+            Assert.Equal( String.Empty, actual );
         }
 
-        [Test]
+        [Fact]
         public void TruncateTest4()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.Truncate( 7, "_-_" );
             // ReSharper disable once ExpressionIsAlwaysNull
-            Assert.AreEqual( value, actual );
+            Assert.Equal( value, actual );
         }
     }
 }

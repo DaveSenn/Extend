@@ -4,16 +4,16 @@ using System;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class AssemblyExTest
     {
-        [Test]
+        [Fact]
         public void GetDefinedTypesNullValueTest()
         {
             Assembly assembly = null;
@@ -28,15 +28,16 @@ namespace Extend.Testing
         /// <summary>
         ///     TODO: Find a clever way to test this method.
         /// </summary>
-        [Test]
+        [Fact]
         public void GetDefinedTypesTest()
         {
-            var actual = typeof(String)
-                .Assembly.GetDefinedTypes();
+            var actual = typeof(ActionEx)
+                .GetDeclaringAssembly()
+                .GetDefinedTypes();
 
             actual.Count()
                   .Should()
-                  .Be( 3244 );
+                  .Be(265);
         }
     }
 }

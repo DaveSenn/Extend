@@ -3,17 +3,17 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void AddRangeTest()
         {
             var dictionary = new Dictionary<String, String>
@@ -28,17 +28,17 @@ namespace Extend.Testing
                 { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
             };
 
-            Assert.AreEqual( 2, dictionary.Count );
+            Assert.Equal( 2, dictionary.Count );
 
             var actual = dictionary.AddRange( otherDictionary );
             actual
                 .Should()
                 .BeSameAs( dictionary );
-            Assert.AreEqual( 4, dictionary.Count );
-            Assert.IsTrue( dictionary.ContainsAll( otherDictionary ) );
+            Assert.Equal( 4, dictionary.Count );
+            Assert.True( dictionary.ContainsAll( otherDictionary ) );
         }
 
-        [Test]
+        [Fact]
         public void AddRangeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -47,7 +47,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddRangeTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

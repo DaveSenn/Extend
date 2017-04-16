@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ChainTest()
         {
             var list = new List<String>();
@@ -20,11 +20,11 @@ namespace Extend.Testing
                              .Chain( x => x.Add( "Test2" ) )
                              .Chain( x => x.Add( "Test3" ) );
 
-            Assert.AreSame( list, actual );
-            Assert.AreEqual( 3, list.Count );
+            Assert.Same( list, actual );
+            Assert.Equal( 3, list.Count );
         }
 
-        [Test]
+        [Fact]
         public void ChainTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

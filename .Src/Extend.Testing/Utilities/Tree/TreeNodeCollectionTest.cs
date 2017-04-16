@@ -2,19 +2,19 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class TreeNodeCollectionTest
     {
         /// <summary>
         ///     Update parent
         /// </summary>
-        [Test]
+        [Fact]
         public void AddNodeTest()
         {
             var parent = new TreeNode<String>();
@@ -23,17 +23,17 @@ namespace Extend.Testing
             var item = new TreeNode<String>();
             target.Add( item );
 
-            Assert.IsTrue( target.Contains( item ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( item ) );
+            Assert.Equal( 1, target.Count );
 
-            Assert.AreSame( parent, item.Parent );
-            Assert.AreEqual( 1, item.Depth );
+            Assert.Same( parent, item.Parent );
+            Assert.Equal( 1, item.Depth );
         }
 
         /// <summary>
         ///     Don't update parent
         /// </summary>
-        [Test]
+        [Fact]
         public void AddNodeTest1()
         {
             var parent = new TreeNode<String>();
@@ -42,17 +42,17 @@ namespace Extend.Testing
             var item = new TreeNode<String>();
             target.Add( item, false );
 
-            Assert.IsTrue( target.Contains( item ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( item ) );
+            Assert.Equal( 1, target.Count );
 
-            Assert.IsNull( item.Parent );
-            Assert.AreEqual( 0, item.Depth );
+            Assert.Null( item.Parent );
+            Assert.Equal( 0, item.Depth );
         }
 
         /// <summary>
         ///     Don't update parent, item has already a parent
         /// </summary>
-        [Test]
+        [Fact]
         public void AddNodeTest2()
         {
             var itemParent = new TreeNode<String>();
@@ -62,17 +62,17 @@ namespace Extend.Testing
             var item = new TreeNode<String>( itemParent );
             target.Add( item, false );
 
-            Assert.IsTrue( target.Contains( item ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( item ) );
+            Assert.Equal( 1, target.Count );
 
-            Assert.AreSame( itemParent, item.Parent );
-            Assert.AreEqual( 1, item.Depth );
+            Assert.Same( itemParent, item.Parent );
+            Assert.Equal( 1, item.Depth );
         }
 
         /// <summary>
         ///     Try add same item twice.
         /// </summary>
-        [Test]
+        [Fact]
         public void AddNodeTest3()
         {
             var parent = new TreeNode<String>();
@@ -82,14 +82,14 @@ namespace Extend.Testing
             target.Add( item );
             target.Add( item );
 
-            Assert.IsTrue( target.Contains( item ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( item ) );
+            Assert.Equal( 1, target.Count );
 
-            Assert.AreSame( parent, item.Parent );
-            Assert.AreEqual( 1, item.Depth );
+            Assert.Same( parent, item.Parent );
+            Assert.Equal( 1, item.Depth );
         }
 
-        [Test]
+        [Fact]
         public void AddTestNullCheck()
         {
             var parent = new TreeNode<String>();
@@ -103,7 +103,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddValueTest()
         {
             var parent = new TreeNode<String>();
@@ -112,15 +112,15 @@ namespace Extend.Testing
             var expected = RandomValueEx.GetRandomString();
             var actual = target.Add( expected );
 
-            Assert.IsTrue( target.Contains( actual ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( actual ) );
+            Assert.Equal( 1, target.Count );
 
-            Assert.AreSame( parent, actual.Parent );
-            Assert.AreEqual( actual.Value, expected );
-            Assert.AreEqual( 1, actual.Depth );
+            Assert.Same( parent, actual.Parent );
+            Assert.Equal( actual.Value, expected );
+            Assert.Equal( 1, actual.Depth );
         }
 
-        [Test]
+        [Fact]
         public void AddValueTest1()
         {
             var parent = new TreeNode<String>();
@@ -130,19 +130,19 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = target.Add( expected );
 
-            Assert.IsTrue( target.Contains( actual ) );
-            Assert.AreEqual( 1, target.Count );
+            Assert.True( target.Contains( actual ) );
+            Assert.Equal( 1, target.Count );
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            Assert.AreEqual( actual.Value, expected );
-            Assert.AreSame( parent, actual.Parent );
-            Assert.AreEqual( 1, actual.Depth );
+            Assert.Equal( actual.Value, expected );
+            Assert.Same( parent, actual.Parent );
+            Assert.Equal( 1, actual.Depth );
         }
 
         /// <summary>
         ///     Add same value twice
         /// </summary>
-        [Test]
+        [Fact]
         public void AddValueTest2()
         {
             var parent = new TreeNode<String>();
@@ -152,20 +152,20 @@ namespace Extend.Testing
             var actual = target.Add( expected );
             var actual1 = target.Add( expected );
 
-            Assert.AreEqual( 2, target.Count );
-            Assert.IsTrue( target.Contains( actual ) );
-            Assert.IsTrue( target.Contains( actual1 ) );
+            Assert.Equal( 2, target.Count );
+            Assert.True( target.Contains( actual ) );
+            Assert.True( target.Contains( actual1 ) );
 
-            Assert.AreSame( parent, actual.Parent );
-            Assert.AreEqual( actual.Value, expected );
-            Assert.AreEqual( 1, actual.Depth );
+            Assert.Same( parent, actual.Parent );
+            Assert.Equal( actual.Value, expected );
+            Assert.Equal( 1, actual.Depth );
 
-            Assert.AreSame( parent, actual1.Parent );
-            Assert.AreEqual( actual1.Value, expected );
-            Assert.AreEqual( 1, actual1.Depth );
+            Assert.Same( parent, actual1.Parent );
+            Assert.Equal( actual1.Value, expected );
+            Assert.Equal( 1, actual1.Depth );
         }
 
-        [Test]
+        [Fact]
         public void CollectionInitTest()
         {
             var parent = new TreeNode<String>();
@@ -177,52 +177,52 @@ namespace Extend.Testing
                 new TreeNode<String>( "test4" )
             };
 
-            Assert.AreSame( parent, target.Parent );
-            Assert.AreSame( parent, target[0].Parent );
-            Assert.AreSame( parent, target[1].Parent );
-            Assert.AreSame( parent, target[2].Parent );
-            Assert.AreSame( parent, target[3].Parent );
+            Assert.Same( parent, target.Parent );
+            Assert.Same( parent, target[0].Parent );
+            Assert.Same( parent, target[1].Parent );
+            Assert.Same( parent, target[2].Parent );
+            Assert.Same( parent, target[3].Parent );
 
-            Assert.AreSame( "test1", target[0].Value );
-            Assert.AreSame( "test2", target[1].Value );
-            Assert.AreSame( "test3", target[2].Value );
-            Assert.AreSame( "test4", target[3].Value );
+            Assert.Same( "test1", target[0].Value );
+            Assert.Same( "test2", target[1].Value );
+            Assert.Same( "test3", target[2].Value );
+            Assert.Same( "test4", target[3].Value );
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var parent = new TreeNode<String>();
 
             var target = new TreeNodeCollection<String>( parent );
-            Assert.AreSame( parent, target.Parent );
+            Assert.Same( parent, target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void DetachFromParentTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
             target.DetachFromParent();
-            Assert.IsNull( target.Parent );
+            Assert.Null( target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void DetachFromParentTest1()
         {
             var parent = new TreeNode<String>();
 
             var target = new TreeNodeCollection<String>( parent ) { "1", "2", "3" };
-            Assert.AreEqual( 3, target.Count );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            Assert.Equal( 3, target.Count );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
 
             target.DetachFromParent();
-            Assert.IsNull( target.Parent );
-            target.ForEach( x => Assert.IsNull( x.Parent ) );
+            Assert.Null( target.Parent );
+            target.ForEach( x => Assert.Null( x.Parent ) );
         }
 
-        [Test]
+        [Fact]
         public void IterationTest()
         {
             var parent = new TreeNode<String>();
@@ -234,109 +234,109 @@ namespace Extend.Testing
                 new TreeNode<String>( "test4" )
             };
 
-            target.ForEach( ( x, i ) => Assert.AreEqual( "test" + ( i + 1 ), x.Value ) );
+            target.ForEach( ( x, i ) => Assert.Equal( "test" + ( i + 1 ), x.Value ) );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
-            Assert.AreEqual( parent, target.Parent );
+            Assert.Equal( parent, target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest1()
         {
             var target = new TreeNodeCollection<String>( null );
 
-            Assert.IsNull( target.Parent );
+            Assert.Null( target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest2()
         {
             var target = new TreeNodeCollection<String>( null );
-            Assert.IsNull( target.Parent );
+            Assert.Null( target.Parent );
 
             var parent = new TreeNode<String>();
             target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
+            Assert.Same( parent, target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest3()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
-            Assert.IsNull( target.Parent );
-            target.ForEach( x => Assert.IsNull( x.Parent ) );
+            Assert.Null( target.Parent );
+            target.ForEach( x => Assert.Null( x.Parent ) );
 
             var parent = new TreeNode<String>();
             target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            Assert.Same( parent, target.Parent );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest4()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
-            Assert.IsNull( target.Parent );
-            target.ForEach( x => Assert.IsNull( x.Parent ) );
+            Assert.Null( target.Parent );
+            target.ForEach( x => Assert.Null( x.Parent ) );
 
             var parent = new TreeNode<String>();
             target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            Assert.Same( parent, target.Parent );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
 
             target.Add( "3" );
             target.Add( "4" );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
 
             var newParent = new TreeNode<String>();
             target.Parent = newParent;
 
-            Assert.AreSame( newParent, target.Parent );
-            target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
+            Assert.Same( newParent, target.Parent );
+            target.ForEach( x => Assert.Same( newParent, x.Parent ) );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest5()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2" };
-            Assert.IsNull( target.Parent );
-            target.ForEach( x => Assert.IsNull( x.Parent ) );
+            Assert.Null( target.Parent );
+            target.ForEach( x => Assert.Null( x.Parent ) );
 
             var parent = new TreeNode<String>();
             target.Parent = parent;
-            Assert.AreSame( parent, target.Parent );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            Assert.Same( parent, target.Parent );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
 
             target.Add( "3" );
             target.Add( "4" );
-            target.ForEach( x => Assert.AreSame( parent, x.Parent ) );
+            target.ForEach( x => Assert.Same( parent, x.Parent ) );
 
             ITreeNode<String> newParent = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             target.Parent = newParent;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            Assert.AreSame( newParent, target.Parent );
+            Assert.Same( newParent, target.Parent );
             // ReSharper disable once ExpressionIsAlwaysNull
-            target.ForEach( x => Assert.AreSame( newParent, x.Parent ) );
+            target.ForEach( x => Assert.Same( newParent, x.Parent ) );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest6()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent ) { Parent = null };
 
-            Assert.AreEqual( null, target.Parent );
+            Assert.Equal( null, target.Parent );
         }
 
-        [Test]
+        [Fact]
         public void ParentTest7()
         {
             var parent = new TreeNode<String>();
@@ -345,13 +345,13 @@ namespace Extend.Testing
                 Parent = parent
             };
 
-            Assert.AreEqual( parent, target.Parent );
+            Assert.Equal( parent, target.Parent );
         }
 
         /// <summary>
         ///     Set parent.
         /// </summary>
-        [Test]
+        [Fact]
         public void RemoveNodeTest()
         {
             var parent = new TreeNode<String>();
@@ -364,22 +364,22 @@ namespace Extend.Testing
             target.Add( item1 );
 
             var result = target.Remove( item );
-            Assert.IsTrue( result );
-            Assert.IsNull( item.Parent );
-            Assert.IsFalse( target.Contains( item ) );
+            Assert.True( result );
+            Assert.Null( item.Parent );
+            Assert.False( target.Contains( item ) );
 
             result = target.Remove( item1 );
-            Assert.IsTrue( result );
-            Assert.IsNull( item1.Parent );
-            Assert.IsFalse( target.Contains( item1 ) );
+            Assert.True( result );
+            Assert.Null( item1.Parent );
+            Assert.False( target.Contains( item1 ) );
 
-            Assert.AreEqual( 0, target.Count );
+            Assert.Equal( 0, target.Count );
         }
 
         /// <summary>
         ///     Item is not in collection
         /// </summary>
-        [Test]
+        [Fact]
         public void RemoveNodeTest1()
         {
             var parent = new TreeNode<String>();
@@ -388,15 +388,15 @@ namespace Extend.Testing
             var item = new TreeNode<String> { Parent = parent };
 
             var result = target.Remove( item );
-            Assert.IsFalse( result );
-            Assert.AreSame( parent, item.Parent );
-            Assert.IsFalse( target.Contains( item ) );
+            Assert.False( result );
+            Assert.Same( parent, item.Parent );
+            Assert.False( target.Contains( item ) );
         }
 
         /// <summary>
         ///     Don't set parent.
         /// </summary>
-        [Test]
+        [Fact]
         public void RemoveNodeTest2()
         {
             var parent = new TreeNode<String>();
@@ -409,19 +409,19 @@ namespace Extend.Testing
             target.Add( item1 );
 
             var result = target.Remove( item, false );
-            Assert.IsTrue( result );
-            Assert.AreSame( parent, item.Parent );
-            Assert.IsFalse( target.Contains( item ) );
+            Assert.True( result );
+            Assert.Same( parent, item.Parent );
+            Assert.False( target.Contains( item ) );
 
             result = target.Remove( item1, false );
-            Assert.IsTrue( result );
-            Assert.AreSame( parent, item1.Parent );
-            Assert.IsFalse( target.Contains( item1 ) );
+            Assert.True( result );
+            Assert.Same( parent, item1.Parent );
+            Assert.False( target.Contains( item1 ) );
 
-            Assert.AreEqual( 0, target.Count );
+            Assert.Equal( 0, target.Count );
         }
 
-        [Test]
+        [Fact]
         public void RemoveNodeTestNullCheck()
         {
             var parent = new TreeNode<String>();
@@ -435,45 +435,45 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
             var actual = target.ToString();
-            Assert.AreEqual( "[Depth: 0 - Value: '[NULL]', Children: 0]", actual );
+            Assert.Equal( "[Depth: 0 - Value: '[NULL]', Children: 0]", actual );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest1()
         {
             var target = new TreeNodeCollection<String>( null );
 
             var actual = target.ToString();
-            Assert.AreEqual( "[Items Count: 0]", actual );
+            Assert.Equal( "[Items Count: 0]", actual );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest2()
         {
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent ) { "1", "2" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "[Depth: 0 - Value: '[NULL]', Children: 2]\r\n    [Depth: 1 - Value: '1', Children: 0]\r\n    [Depth: 1 - Value: '2', Children: 0]", actual );
+            Assert.Equal( "[Depth: 0 - Value: '[NULL]', Children: 2]\r\n    [Depth: 1 - Value: '1', Children: 0]\r\n    [Depth: 1 - Value: '2', Children: 0]", actual );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest3()
         {
             var target = new TreeNodeCollection<String>( null ) { "1", "2", "3" };
 
             var actual = target.ToString();
-            Assert.AreEqual( "[Items Count: 3]", actual );
+            Assert.Equal( "[Items Count: 3]", actual );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest4()
         {
             var target = new TreeNodeCollection<String>( new TreeNode<String>( "Root" ) )
@@ -509,7 +509,7 @@ namespace Extend.Testing
             };
 
             var actual = target.ToString();
-            Assert.AreEqual(
+            Assert.Equal(
                 "[Depth: 0 - Value: 'Root', Children: 3]\r\n    [Depth: 1 - Value: '1', Children: 1]\r\n        [Depth: 2 - Value: 'A', Children: 3]\r\n            [Depth: 3 - Value: 'a', Children: 0]\r\n            [Depth: 3 - Value: 'b', Children: 0]\r\n            [Depth: 3 - Value: 'c', Children: 0]\r\n    [Depth: 1 - Value: '2', Children: 0]\r\n    [Depth: 1 - Value: '3', Children: 1]\r\n        [Depth: 2 - Value: 'B', Children: 3]\r\n            [Depth: 3 - Value: 'aa', Children: 0]\r\n            [Depth: 3 - Value: 'bb', Children: 0]\r\n            [Depth: 3 - Value: 'cc', Children: 0]",
                 actual );
         }

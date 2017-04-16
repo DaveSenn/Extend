@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void DistinctTest()
         {
             var list = new List<KeyValuePair<String, String>>
@@ -29,13 +29,13 @@ namespace Extend.Testing
 
             var actual = list.Distinct( x => x.Value )
                              .ToList();
-            Assert.AreEqual( 3, actual.Count );
-            Assert.AreEqual( 1, actual.Count( x => x.Value == "Test" ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Value == "Test1" ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Value == "Test2" ) );
+            Assert.Equal( 3, actual.Count );
+            Assert.Equal( 1, actual.Count( x => x.Value == "Test" ) );
+            Assert.Equal( 1, actual.Count( x => x.Value == "Test1" ) );
+            Assert.Equal( 1, actual.Count( x => x.Value == "Test2" ) );
         }
 
-        [Test]
+        [Fact]
         public void DistinctTestNullCheck()
         {
             List<KeyValuePair<Object, Object>> list = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void DistinctTestNullCheck1()
         {
             Func<Object, Boolean> func = null;

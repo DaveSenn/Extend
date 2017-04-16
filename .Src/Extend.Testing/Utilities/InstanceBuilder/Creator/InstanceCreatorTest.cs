@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class InstanceCreatorTest
     {
-        [Test]
+        [Fact]
         public void ActivatorFailTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<ModelNeedingFactory>();
@@ -25,12 +25,12 @@ namespace Extend.Testing
                 .WithMessage( "Failed to create instance due to missing or invalid factory for type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor'." );
         }
 
-        [Test]
+        [Fact]
         public void AnonymousItemNameDefaultValueTest()
             => InstanceCreator.AnonymousItemName.Should()
                               .Be( "[AnonymousItem]" );
 
-        [Test]
+        [Fact]
         public void AnonymousItemNameTest()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -41,7 +41,7 @@ namespace Extend.Testing
             InstanceCreator.AnonymousItemName = "[AnonymousItem]";
         }
 
-        [Test]
+        [Fact]
         public void CreateInstanceICollectionTest()
         {
             var actual = InstanceCreator
@@ -62,7 +62,7 @@ namespace Extend.Testing
                   .NotBeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void CreateInstanceOptionsTest()
         {
             var actual = InstanceCreator.CreateInstanceOptions<TestModel>();
@@ -70,7 +70,7 @@ namespace Extend.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void CreateInstanceTest()
         {
             var actual = InstanceCreator.CreateInstance<TestModel>();
@@ -78,7 +78,7 @@ namespace Extend.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void DefaultFactoriesDefaultTest()
         {
             var actual = InstanceCreator.DefaultFactories;
@@ -111,7 +111,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void DefaultFactoriesTest()
         {
             var factory = new ExpressionInstanceFactory( x => "" );
@@ -127,7 +127,7 @@ namespace Extend.Testing
                            .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void DefaultMemberChildreSelectionRulesDefaultValueTest()
         {
             var actual = InstanceCreator.DefaultMemberChildreSelectionRules;
@@ -142,7 +142,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void DefaultMemberSelectionRulesDefaultTest()
         {
             var actual = InstanceCreator.DefaultMemberSelectionRules;
@@ -154,7 +154,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void DefaultMemberSelectionRulesTest()
         {
             var rule = new AllMemberSelectionRule( MemberSelectionMode.Include );
@@ -165,7 +165,7 @@ namespace Extend.Testing
                            .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void DoNotPopulateCollectionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
@@ -189,7 +189,7 @@ namespace Extend.Testing
                   .BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void ExcludeMemberTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>();
@@ -201,7 +201,7 @@ namespace Extend.Testing
                   .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest1()
         {
             var actual = InstanceCreator
@@ -221,7 +221,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest2()
         {
             var actual = InstanceCreator
@@ -241,7 +241,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest3()
         {
             var actual = InstanceCreator
@@ -261,7 +261,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest4()
         {
             var actual = InstanceCreator
@@ -281,7 +281,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest5()
         {
             var actual = InstanceCreator
@@ -302,7 +302,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void FactoryTest6()
         {
             var actual = InstanceCreator
@@ -322,7 +322,7 @@ namespace Extend.Testing
                   .Be( "test" );
         }
 
-        [Test]
+        [Fact]
         public void FactoryThrowsExceptionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
@@ -336,7 +336,7 @@ namespace Extend.Testing
                 .WithMessage( "Factory has thrown exception." );
         }
 
-        [Test]
+        [Fact]
         public void MultipleMatchingFactoriesInGlobalConfigTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>();
@@ -358,7 +358,7 @@ namespace Extend.Testing
                            .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void MultipleMatchingFactoriesInOptionsTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
@@ -374,7 +374,7 @@ namespace Extend.Testing
                 .WithMessage( "Found multiple matching factories for member (in options). Type is 'System.Double'. Please make sure only one factory matches the member." );
         }
 
-        [Test]
+        [Fact]
         public void NoMatchingSelectionRuleTest()
         {
             var rules = new List<IMemberSelectionRule>( InstanceCreator.DefaultMemberSelectionRules );
@@ -388,15 +388,15 @@ namespace Extend.Testing
             rules.ForEach( x => InstanceCreator.DefaultMemberSelectionRules.Add( x ) );
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsDefaultValueTest() => InstanceCreator.PopulateCollections.Should()
                                                                             .BeTrue();
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsMaxCountDefaultValueTest() => InstanceCreator.PopulateCollectionsMaxCount.Should()
                                                                                     .Be( 10 );
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsMaxCountTest()
         {
             var expeted = RandomValueEx.GetRandomInt32();
@@ -406,11 +406,11 @@ namespace Extend.Testing
             InstanceCreator.PopulateCollectionsMaxCount = 10;
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsMinCountDefaultValueTest() => InstanceCreator.PopulateCollectionsMinCount.Should()
                                                                                     .Be( 2 );
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsMinCountTest()
         {
             var expeted = RandomValueEx.GetRandomInt32();
@@ -420,7 +420,7 @@ namespace Extend.Testing
             InstanceCreator.PopulateCollectionsMinCount = 2;
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionsTest()
         {
             var expeted = RandomValueEx.GetRandomBoolean();
@@ -430,7 +430,7 @@ namespace Extend.Testing
             InstanceCreator.PopulateCollections = true;
         }
 
-        [Test]
+        [Fact]
         public void RootFactoryThrowExceptionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
@@ -444,11 +444,11 @@ namespace Extend.Testing
                 .WithMessage( "Failed to create root object of type: TestModel." );
         }
 
-        [Test]
+        [Fact]
         public void RuleInspectorDefaultValueTest() => InstanceCreator.RuleInspector.Should()
                                                                       .BeOfType<MemberSelectionRuleInspector>();
 
-        [Test]
+        [Fact]
         public void RuleInspectorTest()
         {
             var expeted = new MemberSelectionRuleInspector();
@@ -457,7 +457,7 @@ namespace Extend.Testing
                            .BeSameAs( expeted );
         }
 
-        [Test]
+        [Fact]
         public void SelectionRuleTest()
         {
             var actual = InstanceCreator
@@ -474,7 +474,7 @@ namespace Extend.Testing
                   .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void SubModelTest()
         {
             var actual = InstanceCreator.CreateInstance<TestModel>();
@@ -487,7 +487,7 @@ namespace Extend.Testing
                   .NotBeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void PopulateDitionaryTest()
         {
             var actual = InstanceCreator.CreateInstance<ModelWithDitionary>();

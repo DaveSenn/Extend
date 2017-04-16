@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void GenericToListTest()
         {
             var array = new[]
@@ -22,12 +22,12 @@ namespace Extend.Testing
             };
             var list = array.ToGenericList( x => 10 + x );
 
-            Assert.AreEqual( 11, list[0] );
-            Assert.AreEqual( 12, list[1] );
-            Assert.AreEqual( 13, list[2] );
+            Assert.Equal( 11, list[0] );
+            Assert.Equal( 12, list[1] );
+            Assert.Equal( 13, list[2] );
         }
 
-        [Test]
+        [Fact]
         public void GenericToListTestNullCheck()
         {
             String[] array = null;
@@ -38,7 +38,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GenericToListTestNullCheck1()
         {
             var array = new[]

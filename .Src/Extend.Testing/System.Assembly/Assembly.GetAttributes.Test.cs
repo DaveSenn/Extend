@@ -4,20 +4,22 @@ using System;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class AssemblyExTest
     {
-        [Test]
+        [Fact]
         public void GetAttributes()
         {
             var actual = typeof(String)
-                .Assembly.GetAttributes<AssemblyCompanyAttribute>().ToList();
+                .GetDeclaringAssembly()
+                .GetAttributes<AssemblyCompanyAttribute>()
+                .ToList();
 
             actual.Count
                   .Should()
@@ -27,7 +29,7 @@ namespace Extend.Testing
                   .Be( "Microsoft Corporation" );
         }
 
-        [Test]
+        [Fact]
         public void GetAttributesNullValueTest()
         {
             Assembly assembly = null;

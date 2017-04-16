@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToDoubleFormatProviderNullTest()
         {
             const Double expected = 100.12;
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleFormatProviderTest()
         {
             const Double expected = 100.12;
@@ -36,7 +36,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleInvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleInvalidCastTest()
         {
             var value = new TestModel();
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleInvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleInvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleNullValueFormatProviderTest()
         {
             Object value = null;
@@ -88,7 +88,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleNullValueTest()
         {
             Object value = null;
@@ -100,7 +100,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTest()
         {
             const Double expected = 100.12;
@@ -112,7 +112,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTooLargeFormatProviderTest()
         {
             var value = Double.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -122,7 +122,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTooLargeTest()
         {
             var value = Double.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -132,7 +132,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTooSmallFormatProviderTest()
         {
             var value = Double.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -142,7 +142,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTooSmallTest()
         {
             var value = Double.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";

@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CollectionTExTest
     {
-        [Test]
+        [Fact]
         public void AddRangeIfNotContains1TestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -21,7 +21,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddRangeIfNotContains1TestNullCheck1()
         {
             List<String> list = null;
@@ -31,33 +31,33 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddRangeIfNotContainsTest()
         {
             var c = new List<String>();
 
             var result = c.AddRangeIfNotContains( "test0", "test1", "test2" );
-            Assert.AreEqual( 3, c.Count );
-            Assert.AreSame( c, result );
+            Assert.Equal( 3, c.Count );
+            Assert.Same( c, result );
 
             c.AddRangeIfNotContains( "test0", "test1", "test2" );
-            Assert.AreEqual( 3, c.Count );
+            Assert.Equal( 3, c.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddRangeIfNotContainsTest1()
         {
             var c = new List<String>();
 
             var result = c.AddRangeIfNotContains( new List<String> { "test0", "test1", "test2" } );
-            Assert.AreEqual( 3, c.Count );
-            Assert.AreSame( c, result );
+            Assert.Equal( 3, c.Count );
+            Assert.Same( c, result );
 
             c.AddRangeIfNotContains( new List<String> { "test0", "test1", "test2" } );
-            Assert.AreEqual( 3, c.Count );
+            Assert.Equal( 3, c.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddRangeIfNotContainsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddRangeIfNotContainsTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

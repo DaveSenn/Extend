@@ -1,26 +1,26 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void IsDefaultTest()
         {
             var value = default(String);
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.IsDefault();
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             value = RandomValueEx.GetRandomString();
             actual = value.IsDefault();
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

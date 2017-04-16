@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToBooleanFormatNullTest()
         {
             var actual = "true".ToBoolean( null );
@@ -21,7 +21,7 @@ namespace Extend.Testing
                 .Be( true );
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanInvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -31,7 +31,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanInvalidCastTest()
         {
             var value = new TestModel();
@@ -41,7 +41,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanInvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -51,7 +51,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanInvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -61,7 +61,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanTest()
         {
             var value = "false";
@@ -77,7 +77,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanTest1()
         {
             var value = "false";
@@ -93,7 +93,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanValueNullTest()
         {
             var actual = ObjectEx.ToBoolean( null, CultureInfo.InvariantCulture );

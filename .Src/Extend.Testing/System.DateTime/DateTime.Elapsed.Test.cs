@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void ElapsedTest()
         {
             var dateTime = new DateTime( 1980, 1, 1 );
@@ -20,7 +20,7 @@ namespace Extend.Testing
             // remove milliseconds
             expected = new TimeSpan( expected.Days, expected.Hours, expected.Minutes, expected.Seconds );
             actual = new TimeSpan( actual.Days, actual.Hours, actual.Minutes, actual.Seconds );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

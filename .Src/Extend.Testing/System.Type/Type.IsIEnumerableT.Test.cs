@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void IsIEnumerableTNullTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsIEnumerableTTest()
         {
             var actual = typeof(String).IsIEnumerableT();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsIEnumerableTTest1()
         {
             var actual = typeof(List<String>).IsIEnumerableT();
@@ -39,7 +39,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsIEnumerableTTest2()
         {
             var actual = typeof(Dictionary<Int32, String>).IsIEnumerableT();
@@ -47,7 +47,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsIEnumerableTTest3()
         {
             var actual = typeof(Tuple<Int32>).IsIEnumerableT();
@@ -55,7 +55,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsIEnumerableTTest4()
         {
             var actual = typeof(IEnumerable<String>).IsIEnumerableT();

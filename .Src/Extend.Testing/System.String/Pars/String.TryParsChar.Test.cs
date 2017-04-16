@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsCharInvalidValueTest()
         {
             Char result;
@@ -27,7 +27,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsCharNullTest()
         {
             String value = null;
@@ -44,12 +44,12 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsCharTest()
         {
             const Char expected = 'b';
             Char result;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
+            var actual = expected.ToString( )
                                  .TryParsChar( out result );
 
             result

@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsDateTimeInvalidValueTest()
         {
             DateTime result;
@@ -28,7 +28,7 @@ namespace Extend.Testing
                 .Be( default(DateTime) );
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeNullTest()
         {
             String value = null;
@@ -45,7 +45,7 @@ namespace Extend.Testing
                 .Be( default(DateTime) );
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeOverloadFormatProviderTest()
         {
             CultureInfo culture = null;
@@ -59,7 +59,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeOverloadInvalidValueTest()
         {
             DateTime result;
@@ -75,7 +75,7 @@ namespace Extend.Testing
                 .Be( default(DateTime) );
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeOverloadNeutralFormatProviderTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -88,7 +88,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeOverloadNullTest()
         {
             String value = null;
@@ -105,7 +105,7 @@ namespace Extend.Testing
                 .Be( default(DateTime) );
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -123,7 +123,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeTest()
         {
             var expected = DateTime.Now;

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void IndexOfTest()
         {
             Array array = new[]
@@ -22,10 +22,10 @@ namespace Extend.Testing
             };
             var actual = array.IndexOf( "1" );
 
-            Assert.AreEqual( 1, actual );
+            Assert.Equal( 1, actual );
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTest1()
         {
             Array array = new[]
@@ -36,10 +36,10 @@ namespace Extend.Testing
             };
             var actual = array.IndexOf( "1", 2 );
 
-            Assert.AreEqual( -1, actual );
+            Assert.Equal( -1, actual );
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTest1NullCheck()
         {
             Array array = null;
@@ -50,7 +50,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTest2()
         {
             Array array = new[]
@@ -61,13 +61,13 @@ namespace Extend.Testing
             };
 
             var actual = array.IndexOf( "1", 0, 2 );
-            Assert.AreEqual( 1, actual );
+            Assert.Equal( 1, actual );
 
             actual = array.IndexOf( "2", 0, 2 );
-            Assert.AreEqual( -1, actual );
+            Assert.Equal( -1, actual );
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTest2NullCheck()
         {
             Array array = null;
@@ -78,7 +78,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IndexOfTestNullCheck()
         {
             Array array = null;

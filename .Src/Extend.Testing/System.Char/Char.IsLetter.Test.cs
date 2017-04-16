@@ -1,26 +1,26 @@
 ﻿#region Usings
 
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CharExTest
     {
-        [Test]
+        [Fact]
         public void IsLetterTest()
         {
             var range = 0.RangeTo( 9 );
             foreach ( var c in range.Select( x => x.ToChar() ) )
-                Assert.IsFalse( c.IsLetter() );
+                Assert.False( c.IsLetter() );
 
-            Assert.IsTrue( 'a'.IsLetter() );
-            Assert.IsTrue( 'A'.IsLetter() );
-            Assert.IsTrue( 'z'.IsLetter() );
-            Assert.IsFalse( '-'.IsLetter() );
+            Assert.True( 'a'.IsLetter() );
+            Assert.True( 'A'.IsLetter() );
+            Assert.True( 'z'.IsLetter() );
+            Assert.False( '-'.IsLetter() );
         }
     }
 }

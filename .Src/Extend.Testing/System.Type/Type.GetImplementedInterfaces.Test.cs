@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetImplementedInterfaces()
         {
             var actual = typeof(Dictionary<Int32, String>).GetImplementedInterfaces();
@@ -21,7 +21,7 @@ namespace Extend.Testing
                   .HaveCount( 10 );
         }
 
-        [Test]
+        [Fact]
         public void GetImplementedInterfaces1()
         {
             var actual = typeof(TestType).GetImplementedInterfaces()
@@ -32,7 +32,7 @@ namespace Extend.Testing
                      .Be( typeof(ITest) );
         }
 
-        [Test]
+        [Fact]
         public void GetImplementedInterfaces2()
         {
             var actual = typeof(SecondTest).GetImplementedInterfaces()
@@ -45,7 +45,7 @@ namespace Extend.Testing
                      .Be( typeof(ITest) );
         }
 
-        [Test]
+        [Fact]
         public void GetImplementedInterfaces3()
         {
             var actual = typeof(ThirdTest).GetImplementedInterfaces()
@@ -63,7 +63,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void GetImplementedInterfacesNullValueTest()
         {
             Type type = null;

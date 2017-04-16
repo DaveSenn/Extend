@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class InstanceFactoryBaseTest
     {
-        [Test]
+        [Fact]
         public void AddSelectionRuleArgumentNullExceptionTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -21,7 +21,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddSelectionRuleTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -36,7 +36,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void CreateValueTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -44,7 +44,7 @@ namespace Extend.Testing
             test.ShouldThrow<NotImplementedException>();
         }
 
-        [Test]
+        [Fact]
         public void FactoryDescriptionTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -52,7 +52,7 @@ namespace Extend.Testing
                   .Be( "2" );
         }
 
-        [Test]
+        [Fact]
         public void FactoryNameTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -60,7 +60,7 @@ namespace Extend.Testing
                   .Be( "1" );
         }
 
-        [Test]
+        [Fact]
         public void SelectionRulesTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
@@ -68,7 +68,7 @@ namespace Extend.Testing
                   .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest()
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );

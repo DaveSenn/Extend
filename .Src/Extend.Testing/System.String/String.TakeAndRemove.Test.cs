@@ -2,46 +2,46 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TakeAndRemoveTest()
         {
             var value = "Test";
             var actual = 2.TakeAndRemove( ref value );
 
-            Assert.AreEqual( "Te", actual );
-            Assert.AreEqual( "st", value );
+            Assert.Equal( "Te", actual );
+            Assert.Equal( "st", value );
         }
 
-        [Test]
+        [Fact]
         public void TakeAndRemoveTest1()
         {
             var value = "Test";
             var actual = 4.TakeAndRemove( ref value );
 
-            Assert.AreEqual( "Test", actual );
-            Assert.AreEqual( String.Empty, value );
+            Assert.Equal( "Test", actual );
+            Assert.Equal( String.Empty, value );
         }
 
-        [Test]
+        [Fact]
         public void TakeAndRemoveTest2()
         {
             var value = "    ";
             var actual = 2.TakeAndRemove( ref value );
 
-            Assert.AreEqual( "  ", actual );
-            Assert.AreEqual( "  ", value );
+            Assert.Equal( "  ", actual );
+            Assert.Equal( "  ", value );
         }
 
-        [Test]
+        [Fact]
         public void TakeAndRemoveTestArgumentOutOfRangeException()
         {
             var value = "Test";
@@ -50,7 +50,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void TakeAndRemoveTestNullCheck()
         {
             String value = null;

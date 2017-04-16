@@ -2,36 +2,36 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DecimalExTest
     {
-        [Test]
+        [Fact]
         public void PercentOfTest()
         {
             var number = new Decimal( 1000 );
             const Int32 expected = 50;
             var actual = number.PercentOf( 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest1()
         {
             var number = new Decimal( 1000 );
             const Int32 expected = 50;
             var actual = number.PercentOf( new Decimal( 500 ) );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest1DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -40,17 +40,17 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest2()
         {
             var number = new Decimal( 1000 );
             const Int32 expected = 50;
             var actual = number.PercentOf( (Int64) 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest2DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -59,7 +59,7 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTestDivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

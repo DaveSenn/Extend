@@ -1,19 +1,19 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CharExTest
     {
-        [Test]
+        [Fact]
         public void RepeatTest()
         {
             var actual = 'a'.Repeat( 3 );
-            Assert.AreEqual( "aaa", actual );
+            Assert.Equal( "aaa", actual );
         }
     }
 }

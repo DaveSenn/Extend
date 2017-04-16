@@ -2,26 +2,26 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void PercentageOfTest()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
             var actual = number.PercentageOf( (Int64) 50 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest0ValueTest()
         {
             const Int64 number = 0;
@@ -31,7 +31,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest0ValueTest1()
         {
             const Int64 number = 0;
@@ -41,7 +41,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest0ValueTest2()
         {
             const Int64 number = 0;
@@ -51,7 +51,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest0ValueTest3()
         {
             const Int64 number = 0;
@@ -61,7 +61,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest0ValueTest4()
         {
             const Int64 number = 0;
@@ -71,17 +71,17 @@ namespace Extend.Testing
                   .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest1()
         {
             const Int64 number = 1000;
             const Int32 expected = 500;
             var actual = number.PercentageOf( (Double) 50 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest2()
         {
             const Int64 number = 1000;
@@ -92,7 +92,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest3()
         {
             const Int64 number = 1000;
@@ -103,7 +103,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PercentageOfTest4()
         {
             const Int64 number = 1000;

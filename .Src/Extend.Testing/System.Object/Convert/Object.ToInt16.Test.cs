@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToInt16FormatProviderNullTest()
         {
             const Int16 expected = 666;
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToInt16FormatProviderTest()
         {
             const Int16 expected = 666;
@@ -36,7 +36,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToInt16InvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16InvalidCastTest()
         {
             var value = new TestModel();
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16InvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16InvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16NullValueFormatProviderTest()
         {
             Object value = null;
@@ -88,7 +88,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToInt16NullValueTest()
         {
             Object value = null;
@@ -100,7 +100,7 @@ namespace Extend.Testing
                 .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToInt16Test()
         {
             const Int16 expected = 666;
@@ -112,7 +112,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToInt16TooLargeFormatProviderTest()
         {
             var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -122,7 +122,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16TooLargeTest()
         {
             var value = Int16.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -132,7 +132,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16TooSmallFormatProviderTest()
         {
             var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
@@ -142,7 +142,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToInt16TooSmallTest()
         {
             var value = Int16.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";

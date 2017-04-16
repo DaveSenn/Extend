@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToDoubleInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -21,7 +21,7 @@ namespace Extend.Testing
             text.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleNullTest()
         {
             String value = null;
@@ -32,7 +32,7 @@ namespace Extend.Testing
             text.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadFormatNullTest()
         {
             CultureInfo formatProvider = null;
@@ -43,7 +43,7 @@ namespace Extend.Testing
             text.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -52,7 +52,7 @@ namespace Extend.Testing
             text.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadNullTest()
         {
             String value = null;
@@ -63,7 +63,7 @@ namespace Extend.Testing
             text.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -76,7 +76,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -85,7 +85,7 @@ namespace Extend.Testing
             text.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleOverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -94,7 +94,7 @@ namespace Extend.Testing
             text.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleTest()
         {
             const Double value = 123.456;
@@ -106,7 +106,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -115,7 +115,7 @@ namespace Extend.Testing
             text.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDoubleValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

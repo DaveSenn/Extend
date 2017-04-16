@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class PathMemberSelectionRuleTest
     {
-        [Test]
+        [Fact]
         public void CtorPathNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -20,7 +20,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var expectedName = RandomValueEx.GetRandomString();
@@ -33,7 +33,7 @@ namespace Extend.Testing
                   .Be( expectedDescription );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest()
         {
             var target = new PathMemberSelectionRule( "A.B.C.MyString", MemberSelectionMode.Include );
@@ -47,7 +47,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest1()
         {
             var target = new PathMemberSelectionRule( "A.B.C.MyString", MemberSelectionMode.Exclude );
@@ -61,7 +61,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest2()
         {
             var target = new PathMemberSelectionRule( "A.B.C", MemberSelectionMode.Include );
@@ -75,7 +75,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest3()
         {
             var target = new PathMemberSelectionRule( "A.B.C", MemberSelectionMode.Exclude );
@@ -89,7 +89,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest()
         {
             var target = new PathMemberSelectionRule( "A.B.C", MemberSelectionMode.Include );
@@ -100,7 +100,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest1()
         {
             var target = new PathMemberSelectionRule( "A.B", MemberSelectionMode.Exclude, "N", "D" );

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void ReverseTest()
         {
             Array array = new[]
@@ -22,12 +22,12 @@ namespace Extend.Testing
             };
             array.Reverse();
 
-            Assert.AreEqual( "2", array.GetValue( 0 ) );
-            Assert.AreEqual( "1", array.GetValue( 1 ) );
-            Assert.AreEqual( "0", array.GetValue( 2 ) );
+            Assert.Equal( "2", array.GetValue( 0 ) );
+            Assert.Equal( "1", array.GetValue( 1 ) );
+            Assert.Equal( "0", array.GetValue( 2 ) );
         }
 
-        [Test]
+        [Fact]
         public void ReverseTest1()
         {
             Array array = new[]
@@ -38,12 +38,12 @@ namespace Extend.Testing
             };
             array.Reverse( 1, 2 );
 
-            Assert.AreEqual( "0", array.GetValue( 0 ) );
-            Assert.AreEqual( "2", array.GetValue( 1 ) );
-            Assert.AreEqual( "1", array.GetValue( 2 ) );
+            Assert.Equal( "0", array.GetValue( 0 ) );
+            Assert.Equal( "2", array.GetValue( 1 ) );
+            Assert.Equal( "1", array.GetValue( 2 ) );
         }
 
-        [Test]
+        [Fact]
         public void ReverseTest1NullCheck()
         {
             Array array = null;
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ReverseTestNullCheck()
         {
             Array array = null;

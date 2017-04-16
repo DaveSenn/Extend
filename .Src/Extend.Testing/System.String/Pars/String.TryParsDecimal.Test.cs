@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsDecimalInvalidValueTest()
         {
             Decimal result;
@@ -28,7 +28,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalNullTest()
         {
             String value = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalOverloadFormatProviderNullTest()
         {
             CultureInfo culture = null;
@@ -60,7 +60,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalOverloadInvalidNumberStyleTest()
         {
             var expected = new Decimal( 123.123 );
@@ -73,7 +73,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalOverloadInvalidValueTest()
         {
             Decimal result;
@@ -89,7 +89,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalOverloadNullTest()
         {
             String value = null;
@@ -107,7 +107,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -126,7 +126,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDecimalTest()
         {
             var expected = new Decimal( 100.123123 );

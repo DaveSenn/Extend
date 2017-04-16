@@ -2,37 +2,37 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void SumTest()
         {
             var actual = ( (Int64) 10 ).Sum( 20, 30, 40, 50 );
-            Assert.AreEqual( 150, actual );
+            Assert.Equal( 150, actual );
         }
 
-        [Test]
+        [Fact]
         public void SumTest1()
         {
             var actual = ( (Int64?) 10 ).Sum( 20, null, 40, null );
-            Assert.AreEqual( 70, actual );
+            Assert.Equal( 70, actual );
 
             actual = ( null as Int64? ).Sum( new Int64?[]
                                              {
                                                  null,
                                                  null
                                              } );
-            Assert.AreEqual( 0, actual );
+            Assert.Equal( 0, actual );
         }
 
-        [Test]
+        [Fact]
         public void SumTest1NullCheck()
         {
             Int64?[] values = null;
@@ -43,17 +43,17 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SumTest2()
         {
             var actual = "test".Sum( x => (Int64) x.Length, "a", "b", "c", "d" );
-            Assert.AreEqual( 8, actual );
+            Assert.Equal( 8, actual );
 
             actual = "".Sum( x => (Int64) x.Length, "a", "b", "c", "d" );
-            Assert.AreEqual( 4, actual );
+            Assert.Equal( 4, actual );
         }
 
-        [Test]
+        [Fact]
         public void SumTest2NullCheck()
         {
             String[] values = null;
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SumTest2NullCheck2()
         {
             Func<String, Int64> func = null;
@@ -75,17 +75,17 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SumTest3()
         {
             var actual = "test".Sum( x => x.Length > 1 ? (Int64?) x.Length : null, "a", "b", "c", "d" );
-            Assert.AreEqual( 4, actual );
+            Assert.Equal( 4, actual );
 
             actual = "test".Sum( x => x.Length > 1 ? (Int64?) x.Length : null, "aaaa", "b", "c", "d" );
-            Assert.AreEqual( 8, actual );
+            Assert.Equal( 8, actual );
         }
 
-        [Test]
+        [Fact]
         public void SumTest3NullCheck()
         {
             String[] values = null;
@@ -96,7 +96,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SumTest3NullCheck2()
         {
             Func<String, Int64?> func = null;
@@ -107,7 +107,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SumTestNullCheck()
         {
             Int64[] values = null;

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractAllDoubleTest()
         {
             const Double value0 = 100.2d;
@@ -23,14 +23,14 @@ namespace Extend.Testing
                                 .Replace( ",", "." );
             var actual = stringValue.ExtractAllDouble();
 
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( value0, actual[0] );
-            Assert.AreEqual( value1, actual[1] );
-            Assert.AreEqual( value2, actual[2] );
-            Assert.AreEqual( value3, actual[3] );
+            Assert.Equal( 4, actual.Count );
+            Assert.Equal( value0, actual[0] );
+            Assert.Equal( value1, actual[1] );
+            Assert.Equal( value2, actual[2] );
+            Assert.Equal( value3, actual[3] );
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllDoubleTestArgumentOutOfRangeException()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -39,7 +39,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllDoubleTestArgumentOutOfRangeException1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -48,7 +48,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllDoubleTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -58,7 +58,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllDoubleTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -1,22 +1,22 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CharExTest
     {
-        [Test]
+        [Fact]
         public void IsWhiteSpaceTest()
         {
-            Assert.IsFalse( 'a'.IsWhiteSpace() );
-            Assert.IsFalse( 'A'.IsWhiteSpace() );
-            Assert.IsFalse( 'z'.IsWhiteSpace() );
-            Assert.IsFalse( '-'.IsWhiteSpace() );
-            Assert.IsTrue( ' '.IsWhiteSpace() );
+            Assert.False( 'a'.IsWhiteSpace() );
+            Assert.False( 'A'.IsWhiteSpace() );
+            Assert.False( 'z'.IsWhiteSpace() );
+            Assert.False( '-'.IsWhiteSpace() );
+            Assert.True( ' '.IsWhiteSpace() );
         }
     }
 }

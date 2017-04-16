@@ -2,18 +2,17 @@
 
 using System;
 using System.Globalization;
-using System.Threading;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToDateTimeInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -22,7 +21,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -32,28 +31,19 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOtherCultureTest()
         {
-            var culture = CultureInfo.CurrentCulture;
-            //Thread.CurrentThread.CurrentCulture = new CultureInfo( "de-CH" );
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo( "de-CH" );
-            CultureInfo.CurrentCulture = new CultureInfo("de-CH");
-            CultureInfo.CurrentUICulture = new CultureInfo("de-CH");
-
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.CurrentCulture )
+            var actual = value.ToString(CultureInfo.InvariantCulture)
                               .ToDateTime();
 
             actual
                 .Should()
                 .BeCloseTo( value, 999 );
-
-            Thread.CurrentThread.CurrentCulture = culture;
-            Thread.CurrentThread.CurrentUICulture = culture;
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOverloadFormatNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -64,7 +54,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -73,7 +63,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOverloadNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -83,7 +73,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOverloadOtherCultureTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -97,7 +87,7 @@ namespace Extend.Testing
                 .BeCloseTo( value, 999 );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeOverloadTest()
         {
             var value = DateTime.Now;
@@ -109,7 +99,7 @@ namespace Extend.Testing
                 .BeCloseTo( value, 999 );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeTest()
         {
             var value = DateTime.Now;

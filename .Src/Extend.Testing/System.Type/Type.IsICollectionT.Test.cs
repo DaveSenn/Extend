@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void IsICollectionTNullTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsICollectionTTest()
         {
             var actual = typeof(String).IsICollectionT();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsICollectionTTest1()
         {
             var actual = typeof(List<String>).IsICollectionT();
@@ -39,7 +39,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsICollectionTTest2()
         {
             var actual = typeof(Dictionary<Int32, String>).IsICollectionT();
@@ -47,7 +47,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsICollectionTTest3()
         {
             var actual = typeof(Tuple<Int32>).IsICollectionT();
@@ -55,7 +55,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsICollectionTTest4()
         {
             var actual = typeof(ICollection<String>).IsICollectionT();

@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Internal.Testing
 {
-    [TestFixture]
+    
     public class FormatInformationTest
     {
-        [Test]
+        [Fact]
         public void FormatTest()
         {
             var expected = RandomValueEx.GetRandomString();
@@ -20,7 +20,7 @@ namespace Extend.Internal.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ValueNameTest()
         {
             var expected = RandomValueEx.GetRandomString();

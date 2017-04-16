@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetTypeFromNullableNullValueTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetTypeFromNullableTest()
         {
             var type = typeof(Int32?);
@@ -33,7 +33,7 @@ namespace Extend.Testing
                   .Be( typeof(Int32) );
         }
 
-        [Test]
+        [Fact]
         public void GetTypeFromNullableTest1()
         {
             var type = typeof(Double?);
@@ -43,7 +43,7 @@ namespace Extend.Testing
                   .Be( typeof(Double) );
         }
 
-        [Test]
+        [Fact]
         public void GetTypeFromNullableTest2()
         {
             var type = typeof(String);
@@ -53,7 +53,7 @@ namespace Extend.Testing
                   .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetTypeFromNullableTest3()
         {
             var type = typeof(List<String>);

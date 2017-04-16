@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class MemberSelectionRuleInspectorTest
     {
-        [Test]
+        [Fact]
         public void InspectExcludeOnlyTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -27,7 +27,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectExcludeOverwriteTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -44,7 +44,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectIncludeOnlyTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -59,7 +59,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectIncludeOverwriteTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -76,7 +76,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectMemberInfoNullTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -84,7 +84,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void InspectNoMatchingRulesTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -100,7 +100,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectNoRulesTest()
         {
             var target = new MemberSelectionRuleInspector();
@@ -111,7 +111,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void InspectRulesNullTest()
         {
             var target = new MemberSelectionRuleInspector();

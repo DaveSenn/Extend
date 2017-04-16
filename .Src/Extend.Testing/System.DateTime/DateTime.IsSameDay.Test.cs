@@ -1,40 +1,40 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void IsSameDayTest()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
 
-            Assert.IsTrue( dateTime.IsSameDay( otherDateTime ) );
+            Assert.True( dateTime.IsSameDay( otherDateTime ) );
         }
 
-        [Test]
+        [Fact]
         public void IsSameDayTest1()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Tomorrow();
 
-            Assert.IsFalse( dateTime.IsSameDay( otherDateTime ) );
+            Assert.False( dateTime.IsSameDay( otherDateTime ) );
         }
 
-        [Test]
+        [Fact]
         public void IsSameDayTest2()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now.Yesterday();
 
-            Assert.IsFalse( dateTime.IsSameDay( otherDateTime ) );
+            Assert.False( dateTime.IsSameDay( otherDateTime ) );
         }
     }
 }

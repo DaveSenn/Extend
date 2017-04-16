@@ -1,23 +1,23 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DoubleExTest
     {
-        [Test]
+        [Fact]
         public void ToDaysTest()
         {
             const Double number = 10.5;
             var expected = TimeSpan.FromDays( number );
             var actual = number.ToDays();
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class AssemblyExTest
     {
-        [Test]
+        [Fact]
         public void GetTypesWithAttributeArgumentNullExceptionTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -22,14 +22,14 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetTypesWithAttributeBaseTypeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
-                                                                         typeof(BaseTestClass),
-                                                                         GetType()
-                                                                             .Assembly )
-                                   .ToList();
+                                                            typeof(BaseTestClass),
+                                                            GetType()
+                                                                .GetDeclaringAssembly() )
+                      .ToList();
 
             actual.Should()
                   .HaveCount( 3 );
@@ -66,12 +66,12 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "D2" );
         }
 
-        [Test]
+        [Fact]
         public void GetTypesWithAttributeInheriteTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
                                                                          GetType()
-                                                                             .Assembly )
+                                                                             .GetDeclaringAssembly() )
                                    .ToList();
 
             actual.Should()
@@ -126,11 +126,11 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "D2" );
         }
 
-        [Test]
+        [Fact]
         public void GetTypesWithAttributeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( GetType()
-                                                                             .Assembly )
+                                                                             .GetDeclaringAssembly() )
                                    .ToList();
 
             actual.Should()

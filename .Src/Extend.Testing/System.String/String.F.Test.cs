@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void FManyArgumentsTest()
         {
             const String arg0 = "0";
@@ -26,10 +26,10 @@ namespace Extend.Testing
             const String arg8 = "8";
 
             var actual = "{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}".F( arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8 );
-            Assert.AreEqual( "0-1-2-3-4-5-6-7-8", actual );
+            Assert.Equal( "0-1-2-3-4-5-6-7-8", actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest()
         {
             const String format = "Test: {0}";
@@ -38,10 +38,10 @@ namespace Extend.Testing
             var expected = $"Test: {value}";
             var actual = format.F( value );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest1()
         {
             const String format = "Test: {0}, {1}";
@@ -51,10 +51,10 @@ namespace Extend.Testing
             var expected = $"Test: {value}, {value1}";
             var actual = format.F( value, value1 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FTest2()
         {
             const String format = "Test: {0}, {1}, {2}";
@@ -75,10 +75,10 @@ namespace Extend.Testing
             var expected = String.Format( format, value, value1, value2 );
             var actual = format.F( value, value1, value2 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -88,7 +88,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FTest3()
         {
             const String format = "Test: {0}, {1}, {2}, {3}";
@@ -100,10 +100,10 @@ namespace Extend.Testing
             var expected = String.Format( format, value, value1, value2, value3 );
             var actual = format.F( value, value1, value2, value3 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -113,7 +113,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FTest4()
         {
             const String format = "Test: {0}, {1}, {2}";
@@ -130,10 +130,10 @@ namespace Extend.Testing
             // ReSharper disable once FormatStringProblem
             var actual = format.F( CultureInfo.InvariantCulture, value, value1, value2, value3 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void FTest4NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -143,7 +143,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

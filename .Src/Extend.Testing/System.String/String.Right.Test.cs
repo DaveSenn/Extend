@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void RightArgumentNullExceptionTest()
         {
             String value = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RightArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -31,7 +31,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void RightArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -40,7 +40,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void RightTest()
         {
             var actual = "this".Right( 0 );
@@ -49,7 +49,7 @@ namespace Extend.Testing
                   .Be( String.Empty );
         }
 
-        [Test]
+        [Fact]
         public void RightTest1()
         {
             var actual = "this".Right( 1 );
@@ -58,7 +58,7 @@ namespace Extend.Testing
                   .Be( "s" );
         }
 
-        [Test]
+        [Fact]
         public void RightTest2()
         {
             var actual = "this".Right( 2 );
@@ -67,7 +67,7 @@ namespace Extend.Testing
                   .Be( "is" );
         }
 
-        [Test]
+        [Fact]
         public void RightTest3()
         {
             var actual = "".Right( 0 );

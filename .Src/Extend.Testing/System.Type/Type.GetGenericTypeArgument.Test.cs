@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentNullValueTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentTest()
         {
             var actual = typeof(String).GetGenericTypeArgument();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentTest1()
         {
             var actual = typeof(List<String>).GetGenericTypeArgument();
@@ -39,7 +39,7 @@ namespace Extend.Testing
                   .Be( typeof(String) );
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentTest2()
         {
             var actual = typeof(Dictionary<Int32, String>).GetGenericTypeArgument();

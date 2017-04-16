@@ -1,31 +1,31 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void StartOfWeekTest()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var expected = new DateTime( 2014, 3, 24 );
             var actual = dateTime.StartOfWeek();
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             expected = new DateTime( 2014, 3, 26 );
             actual = dateTime.StartOfWeek( DayOfWeek.Wednesday );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void StartOfWeekTest1()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
@@ -33,17 +33,17 @@ namespace Extend.Testing
             var expected = new DateTime( 2014, 3, 26 );
             var actual = dateTime.StartOfWeek( DayOfWeek.Wednesday );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void StartOfWeekTest2()
         {
             var week = new DateTime( 2014, 09, 21 );
             var expected = new DateTime( 2014, 09, 20 );
             var actual = week.StartOfWeek( DayOfWeek.Saturday );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

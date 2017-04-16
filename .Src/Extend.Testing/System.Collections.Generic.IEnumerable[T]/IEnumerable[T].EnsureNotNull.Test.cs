@@ -3,29 +3,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void EnsureNotNullTest()
         {
             List<String> list = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = list.EnsureNotNull();
 
-            Assert.IsNotNull( actual );
-            Assert.AreEqual( 0, actual.Count() );
-            Assert.IsNull( list );
+            Assert.NotNull( actual );
+            Assert.Equal( 0, actual.Count() );
+            Assert.Null( list );
         }
 
-        [Test]
+        [Fact]
         public void EnsureNotNullTest1()
         {
             var list = new List<String>
@@ -37,11 +37,11 @@ namespace Extend.Testing
             var actual = list.EnsureNotNull();
             var actualList = actual.ToList();
 
-            Assert.AreEqual( 3, actualList.Count );
-            Assert.AreEqual( "1", actualList.ElementAt( 0 ) );
-            Assert.AreEqual( "2", actualList.ElementAt( 1 ) );
-            Assert.AreEqual( "3", actualList.ElementAt( 2 ) );
-            Assert.AreSame( list, actual );
+            Assert.Equal( 3, actualList.Count );
+            Assert.Equal( "1", actualList.ElementAt( 0 ) );
+            Assert.Equal( "2", actualList.ElementAt( 1 ) );
+            Assert.Equal( "3", actualList.ElementAt( 2 ) );
+            Assert.Same( list, actual );
         }
     }
 }

@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ForEachReverseTest()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -22,21 +22,21 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( otherList.Add );
-            Assert.AreEqual( list.Count, otherList.Count );
-            Assert.IsTrue( list.All( x => otherList.Contains( x ) ) );
+            Assert.Equal( list.Count, otherList.Count );
+            Assert.True( list.All( x => otherList.Contains( x ) ) );
         }
 
-        [Test]
+        [Fact]
         public void ForEachReverseTest1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( x => list.Remove( x ) );
-            Assert.AreEqual( 0, list.Count );
+            Assert.Equal( 0, list.Count );
         }
 
-        [Test]
+        [Fact]
         public void ForEachReverseTestNullCheck()
         {
             List<Object> list = null;
@@ -47,7 +47,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachReverseTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

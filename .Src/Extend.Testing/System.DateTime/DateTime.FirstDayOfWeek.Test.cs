@@ -1,23 +1,23 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void FirstDayOfWeekTest()
         {
             var dateTime = RandomValueEx.GetRandomDateTime();
             var expected =
                 new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( -(Int32) dateTime.DayOfWeek );
             var actual = dateTime.FirstDayOfWeek();
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

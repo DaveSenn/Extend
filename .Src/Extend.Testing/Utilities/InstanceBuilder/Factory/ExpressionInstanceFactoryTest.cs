@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class ExpressionInstanceFactoryTest
     {
-        [Test]
+        [Fact]
         public void AddMemberSelectionRuleTest()
         {
             var target = new ExpressionInstanceFactory( x => String.Empty );
@@ -20,7 +20,7 @@ namespace Extend.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void AddMemberSelectionRuleTestArgumentNullException()
         {
             var target = new ExpressionInstanceFactory( x => String.Empty );
@@ -29,7 +29,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CreateValueTest()
         {
             var expectedValue = RandomValueEx.GetRandomInt32();
@@ -48,7 +48,7 @@ namespace Extend.Testing
                            .BeSameAs( expectedMemberInformation );
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var expectedName = RandomValueEx.GetRandomString();
@@ -61,7 +61,7 @@ namespace Extend.Testing
                   .Be( expectedDescription );
         }
 
-        [Test]
+        [Fact]
         public void CtorTestArgumentNullException()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -70,7 +70,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToStringIncludeAllTest()
         {
             var target = new ExpressionInstanceFactory( x => "", "name", "description" );

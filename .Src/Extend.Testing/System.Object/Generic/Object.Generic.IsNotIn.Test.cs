@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void IsNotInTest()
         {
             var array = RandomValueEx.GetRandomStrings()
@@ -20,28 +20,28 @@ namespace Extend.Testing
             var value = array[0];
 
             var actual = value.IsNotIn( array );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
 
             value = RandomValueEx.GetRandomString();
             actual = value.IsNotIn( array );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsNotInTest1()
         {
             var list = RandomValueEx.GetRandomStrings();
             var value = list[0];
 
             var actual = value.IsNotIn( list );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
 
             value = RandomValueEx.GetRandomString();
             actual = value.IsNotIn( list );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsNotInTest1NullCheck()
         {
             IEnumerable<String> enumerable = null;
@@ -52,7 +52,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsNotInTestNullCheck()
         {
             String[] array = null;

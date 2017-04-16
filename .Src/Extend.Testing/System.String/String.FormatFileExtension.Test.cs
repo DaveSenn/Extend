@@ -2,26 +2,26 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void FormatFileExtensionTest()
         {
             var actual = "xml".FormatFileExtension();
-            Assert.AreEqual( ".xml", actual );
+            Assert.Equal( ".xml", actual );
 
             actual = ".xml".FormatFileExtension();
-            Assert.AreEqual( ".xml", actual );
+            Assert.Equal( ".xml", actual );
         }
 
-        [Test]
+        [Fact]
         public void FormatFileExtensionTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -31,7 +31,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatFileExtensionTestNullCheckArgumentException()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

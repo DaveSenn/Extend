@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsByteInvalidValueTest()
         {
             Byte result;
@@ -27,7 +27,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteNullTest()
         {
             Byte result;
@@ -44,7 +44,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteOverloadFormatProviderNullTest()
         {
             var outValue = (Byte) 1;
@@ -55,7 +55,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteOverloadInvalidNumberStyleNullTest()
         {
             const Byte expected = (Byte) 10;
@@ -67,7 +67,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteOverloadInvalidValueTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -83,7 +83,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteOverloadNullTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -101,7 +101,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -119,7 +119,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsByteTest()
         {
             const Byte expected = (Byte) 1;

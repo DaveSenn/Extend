@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactFormatNullTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -28,7 +28,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactFormatProviderNullTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -44,7 +44,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactInvalidDateTimeStyleTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -59,7 +59,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactInvalidFormatTest()
         {
             const String dateString = "5/01/ 09:00 2009";
@@ -79,7 +79,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactInvalidValueTest()
         {
             const String dateString = "asdasd";
@@ -99,7 +99,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactNullValueTest()
         {
             String value = null;
@@ -119,7 +119,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadFormatNullTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -135,7 +135,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadFormatProviderNullTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -151,7 +151,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadInvalidDateTimeStyleTest()
         {
             const String dateString = "5/01/2009 09:00";
@@ -166,7 +166,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadInvalidFormatTest()
         {
             const String dateString = "5/01/ 09:00 2009";
@@ -186,7 +186,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadInvalidValueTest()
         {
             const String dateString = "asdasd";
@@ -206,7 +206,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadNullValueTest()
         {
             String value = null;
@@ -226,7 +226,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadTest()
         {
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
@@ -247,7 +247,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactOverloadTest1()
         {
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
@@ -268,7 +268,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactTest()
         {
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
@@ -289,7 +289,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDateTimeExactTest1()
         {
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );

@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ToDictionaryTest()
         {
             var list = new List<Tuple<Int32, String>>
@@ -33,14 +33,14 @@ namespace Extend.Testing
             var groups = list.GroupBy( x => x.Item1 );
             var actual = groups.ToDictionary();
 
-            Assert.AreEqual( 3, actual.Count );
+            Assert.Equal( 3, actual.Count );
 
-            Assert.AreEqual( 3, actual[1].Count );
-            Assert.AreEqual( 3, actual[2].Count );
-            Assert.AreEqual( 3, actual[3].Count );
+            Assert.Equal( 3, actual[1].Count );
+            Assert.Equal( 3, actual[2].Count );
+            Assert.Equal( 3, actual[3].Count );
         }
 
-        [Test]
+        [Fact]
         public void ToDictionaryTestNullCheck()
         {
             IEnumerable<IGrouping<Object, Object>> groupings = null;

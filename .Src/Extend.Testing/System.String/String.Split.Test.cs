@@ -2,37 +2,37 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SplitTest()
         {
             var actual = "1,2,3".Split( "," );
-            Assert.AreEqual( 3, actual.Length );
-            Assert.AreEqual( "1", actual[0] );
-            Assert.AreEqual( "2", actual[1] );
-            Assert.AreEqual( "3", actual[2] );
+            Assert.Equal( 3, actual.Length );
+            Assert.Equal( "1", actual[0] );
+            Assert.Equal( "2", actual[1] );
+            Assert.Equal( "3", actual[2] );
         }
 
-        [Test]
+        [Fact]
         public void SplitTest1()
         {
             var actual = "1,2,,3.4".Split( StringSplitOptions.RemoveEmptyEntries, ",", "." );
-            Assert.AreEqual( 4, actual.Length );
-            Assert.AreEqual( "1", actual[0] );
-            Assert.AreEqual( "2", actual[1] );
-            Assert.AreEqual( "3", actual[2] );
-            Assert.AreEqual( "4", actual[3] );
+            Assert.Equal( 4, actual.Length );
+            Assert.Equal( "1", actual[0] );
+            Assert.Equal( "2", actual[1] );
+            Assert.Equal( "3", actual[2] );
+            Assert.Equal( "4", actual[3] );
         }
 
-        [Test]
+        [Fact]
         public void SplitTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -42,7 +42,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SplitTest1NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -52,7 +52,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SplitTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -62,7 +62,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SplitTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

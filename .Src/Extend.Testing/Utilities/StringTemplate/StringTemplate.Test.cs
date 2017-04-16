@@ -3,18 +3,18 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class StringTemplate
     {
         ///////////////////////////////////////////////////////////////////////////////////
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate()
         {
             String nullRef = null;
@@ -25,7 +25,7 @@ namespace Extend.Testing
                   .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 CHF 12'345.99 | MyNull: " );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat()
         {
             String nullRef = null;
@@ -36,7 +36,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat1()
         {
             String nullRef = null;
@@ -47,7 +47,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat2()
         {
             String nullRef = null;
@@ -58,7 +58,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat3()
         {
             String nullRef = null;
@@ -69,7 +69,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat4()
         {
             String nullRef = null;
@@ -80,35 +80,35 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_FormatInvalid()
         {
             Action test = () => "{{[]}}{{bar}{foo}}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_FormatInvalid1()
         {
             Action test = () => "{{[]}}{bar}{foo}}{MyInt:0000}{".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_FormatInvalid2()
         {
             Action test = () => "}{{[]}}{bar}{foo}}{MyInt:0000}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_FormatInvalid3()
         {
             Action test = () => "{{[]}}{bar}{foo}{MyInt:0000}{{}{bar}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithDoubleEscapedCurlyBraces_DoesNotFormatString()
         {
             var actual = "{{{{foo}}}}".FormatWithObject( new { foo = 123.45 } );
@@ -116,21 +116,21 @@ namespace Extend.Testing
                   .Be( "{{foo}}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithDoubleEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}}}bar".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithDoubleEscapedEndFormatBraceWhichTerminatesString()
         {
             Action test = () => "{foo}}}}".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEmptyString_ReturnsEmptyString()
         {
             var actual = "".FormatWithObject( new { foo = 123.45 } );
@@ -138,7 +138,7 @@ namespace Extend.Testing
                   .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEndBraceFollowedByDoubleEscapedEndFormatBrace_FormatsCorrectly()
         {
             var actual = "{foo}}}}}bar".FormatWithObject( new { foo = 123.45 } );
@@ -146,7 +146,7 @@ namespace Extend.Testing
                   .Be( "123.45}}bar" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEndBraceFollowedByEscapedEndFormatBrace_FormatsCorrectly()
         {
             var actual = "{foo}}}bar".FormatWithObject( new { foo = 123.45 } );
@@ -154,7 +154,7 @@ namespace Extend.Testing
                   .Be( "123.45}bar" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEndBraceFollowedByEscapedEndFormatBraceWhichTerminatesString_FormatsCorrectly()
         {
             var actual = "{foo}}}".FormatWithObject( new { foo = 123.45 } );
@@ -162,7 +162,7 @@ namespace Extend.Testing
                   .Be( "123.45}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEscapedCloseBraces_CollapsesDoubleBraces()
         {
             var actual = "hello}}world".FormatWithObject( new Object() );
@@ -170,14 +170,14 @@ namespace Extend.Testing
                   .Be( "hello}world" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEscapedOpenBraces_CollapsesDoubleBraces()
         {
             var actual = "hello{{world".FormatWithObject( new Object() );
@@ -185,7 +185,7 @@ namespace Extend.Testing
                   .Be( "hello{world" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithEscapeSequence_EscapesInnerCurlyBraces()
         {
             var actual = "{{{foo}}}".FormatWithObject( new { foo = 123.45 } );
@@ -193,7 +193,7 @@ namespace Extend.Testing
                   .Be( "{123.45}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithExpressionReturningNull()
         {
             var actual = "{foo}".FormatWithObject( new { foo = (Object) null } );
@@ -201,42 +201,42 @@ namespace Extend.Testing
                   .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatExpressionNotComplete()
         {
             Action test = () => "{bar".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatExpressionNotComplete1()
         {
             Action test = () => "{".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatExpressionNotStarted()
         {
             Action test = () => "foo}".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatExpressionNotStarted1()
         {
             Action test = () => "}".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatNameNotInObject()
         {
             Action test = () => "{bar}".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatSurroundedByDoubleEscapedBraces_FormatsString()
         {
             var actual = "{{{{{foo}}}}}".FormatWithObject( new { foo = 123.45 } );
@@ -244,7 +244,7 @@ namespace Extend.Testing
                   .Be( "{{123.45}}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithFormatType_ReturnsFormattedExpression()
         {
             var actual = "{foo:#.#}".FormatWithObject( new { foo = 123.45 } );
@@ -252,7 +252,7 @@ namespace Extend.Testing
                   .Be( "123.5" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithMultipleExpressions_FormatsThemAll()
         {
             var actual = "{foo} {foo} {bar}{baz}".FormatWithObject( new { foo = 123.45, bar = 42, baz = "hello" } );
@@ -260,7 +260,7 @@ namespace Extend.Testing
                   .Be( "123.45 123.45 42hello" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithNamedExpression_EvalsPropertyOfExpression()
         {
             var actual = "{foo}".FormatWithObject( new { foo = 123 } );
@@ -268,7 +268,7 @@ namespace Extend.Testing
                   .Be( "123" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithNamedExpressionAndFormatWithObject_EvalsPropertyOfExpression()
         {
             var actual = "{foo:#.##}".FormatWithObject( new { foo = 1.23456 } );
@@ -276,14 +276,14 @@ namespace Extend.Testing
                   .Be( "1.23" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithNoEndFormatBrace()
         {
             Action test = () => "{bar".FormatWithObject( new { foo = 123.45 } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithNoFormats_ReturnsFormatStringAsIs()
         {
             var actual = "a b c".FormatWithObject( new { foo = 123.45 } );
@@ -291,7 +291,7 @@ namespace Extend.Testing
                   .Be( "a b c" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithNullFormatString_ThrowsArgumentNullException()
         {
             String format = null;
@@ -300,7 +300,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithObject_WithSubProperty_ReturnsValueOfSubProperty()
         {
             var actual = "{foo.bar:#.#}ms".FormatWithObject( new { foo = new { bar = 123.45 } } );
@@ -308,7 +308,7 @@ namespace Extend.Testing
                   .Be( "123.5ms" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_ComplexTemplate()
         {
             String nullRef = null;
@@ -325,7 +325,7 @@ namespace Extend.Testing
                   .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 CHF 12'345.99 | MyNull: " );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat1()
         {
             String nullRef = null;
@@ -343,7 +343,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat2()
         {
             String nullRef = null;
@@ -361,7 +361,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat3()
         {
             String nullRef = null;
@@ -379,7 +379,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat4()
         {
             String nullRef = null;
@@ -397,28 +397,28 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_FormatInvalid()
         {
             Action test = () => "{{[]}}{{bar}{foo}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_FormatInvalid1()
         {
             Action test = () => "{{[]}}{bar}{foo}}{MyInt:0000}{".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_FormatInvalid2()
         {
             Action test = () => "}{{[]}}{bar}{foo}}{MyInt:0000}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_FormatInvalid3()
         {
             Action test =
@@ -426,7 +426,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithDoubleEscapedCurlyBraces_DoesNotFormatString()
         {
             var actual = "{{{{foo}}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -434,21 +434,21 @@ namespace Extend.Testing
                   .Be( "{{foo}}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithDoubleEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}}}bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithDoubleEscapedEndFormatBraceWhichTerminatesString()
         {
             Action test = () => "{foo}}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEmptyString_ReturnsEmptyString()
         {
             var actual = "".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -456,7 +456,7 @@ namespace Extend.Testing
                   .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEndBraceFollowedByDoubleEscapedEndFormatBrace_FormatsCorrectly()
         {
             var actual = "{foo}}}}}bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -464,7 +464,7 @@ namespace Extend.Testing
                   .Be( "123.45}}bar" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEndBraceFollowedByEscapedEndFormatBrace_FormatsCorrectly()
         {
             var actual = "{foo}}}bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -472,7 +472,7 @@ namespace Extend.Testing
                   .Be( "123.45}bar" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEndBraceFollowedByEscapedEndFormatBraceWhichTerminatesString_FormatsCorrectly()
         {
             var actual = "{foo}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -480,7 +480,7 @@ namespace Extend.Testing
                   .Be( "123.45}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEscapedCloseBraces_CollapsesDoubleBraces()
         {
             var actual = "hello}}world".FormatWithValues( new Dictionary<String, Object>() );
@@ -488,14 +488,14 @@ namespace Extend.Testing
                   .Be( "hello}world" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEscapedOpenBraces_CollapsesDoubleBraces()
         {
             var actual = "hello{{world".FormatWithValues( new Dictionary<String, Object>() );
@@ -503,7 +503,7 @@ namespace Extend.Testing
                   .Be( "hello{world" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithEscapeSequence_EscapesInnerCurlyBraces()
         {
             var actual = "{{{foo}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -511,7 +511,7 @@ namespace Extend.Testing
                   .Be( "{123.45}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithExpressionReturningNull()
         {
             var actual = "{foo}".FormatWithValues( new Dictionary<String, Object> { { "foo", null } } );
@@ -519,42 +519,42 @@ namespace Extend.Testing
                   .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatExpressionNotComplete()
         {
             Action test = () => "{bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatExpressionNotComplete1()
         {
             Action test = () => "{".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatExpressionNotStarted()
         {
             Action test = () => "foo}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatExpressionNotStarted1()
         {
             Action test = () => "}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatNameNotInObject()
         {
             Action test = () => "{bar}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatSurroundedByDoubleEscapedBraces_FormatsString()
         {
             var actual = "{{{{{foo}}}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -562,7 +562,7 @@ namespace Extend.Testing
                   .Be( "{{123.45}}" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithFormatType_ReturnsFormattedExpression()
         {
             var actual = "{foo:#.#}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -570,7 +570,7 @@ namespace Extend.Testing
                   .Be( "123.5" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithMultipleExpressions_FormatsThemAll()
         {
             var actual = "{foo} {foo} {bar}{baz}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", 42 }, { "baz", "hello" } } );
@@ -578,7 +578,7 @@ namespace Extend.Testing
                   .Be( "123.45 123.45 42hello" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithNamedExpression_EvalsPropertyOfExpression()
         {
             var actual = "{foo}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123 } } );
@@ -586,7 +586,7 @@ namespace Extend.Testing
                   .Be( "123" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithNamedExpressionAndFormatWithValues_EvalsPropertyOfExpression()
         {
             var actual = "{foo:#.##}".FormatWithValues( new Dictionary<String, Object> { { "foo", 1.23456 } } );
@@ -594,14 +594,14 @@ namespace Extend.Testing
                   .Be( "1.23" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithNoEndFormatBrace()
         {
             Action test = () => "{bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithNoFormats_ReturnsFormatStringAsIs()
         {
             var actual = "a b c".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
@@ -609,7 +609,7 @@ namespace Extend.Testing
                   .Be( "a b c" );
         }
 
-        [Test]
+        [Fact]
         public void FormatWithValues_WithNullFormatString_ThrowsArgumentNullException()
         {
             String format = null;

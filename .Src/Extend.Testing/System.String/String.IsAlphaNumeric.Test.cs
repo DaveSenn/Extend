@@ -2,29 +2,29 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void IsAlphaNumericTest()
         {
             var actual = "test".IsAlphaNumeric();
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = "1test".IsAlphaNumeric();
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = "1te-st".IsAlphaNumeric();
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsAlphaNumericTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

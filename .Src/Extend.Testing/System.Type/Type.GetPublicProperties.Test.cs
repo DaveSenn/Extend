@@ -2,16 +2,16 @@
 
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetPublicPropertiesTest()
         {
             var type = typeof(TestModel);
@@ -42,7 +42,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void GetPublicPropertiesTest1()
         {
             var type = typeof(TestModelNoProperties);
