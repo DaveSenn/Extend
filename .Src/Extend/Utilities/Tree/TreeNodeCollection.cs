@@ -29,7 +29,10 @@ namespace Extend
         ///     Initialize a new instance of the <see cref="TreeNodeCollection{T}" /> class.
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNodeCollection( [CanBeNull] ITreeNode<T> parent ) => _parent = parent;
+        public TreeNodeCollection([CanBeNull] ITreeNode<T> parent)
+        {
+            _parent = parent;
+        }
 
         #endregion
 
@@ -57,21 +60,21 @@ namespace Extend
         /// <value>The parent of the collection.</value>
         public ITreeNode<T> Parent
         {
-            get => _parent;
+            get { return _parent; }
             set
             {
-                if ( _parent == value )
+                if (_parent == value)
                     return;
 
-                if ( _parent != null )
-                    _parent.Children = new TreeNodeCollection<T>( _parent );
+                if (_parent != null)
+                    _parent.Children = new TreeNodeCollection<T>(_parent);
                 _parent = value;
-                if ( _parent != null )
+                if (_parent != null)
                 {
                     _parent.Children.DetachFromParent();
                     _parent.Children = this;
                 }
-                this.ForEach( x => x.SetParent( _parent, false ) );
+                this.ForEach(x => x.SetParent(_parent, false));
             }
         }
 
@@ -84,10 +87,10 @@ namespace Extend
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the new created node.</returns>
-        public ITreeNode<T> Add( T value )
+        public ITreeNode<T> Add(T value)
         {
-            var node = new TreeNode<T>( value );
-            Add( node );
+            var node = new TreeNode<T>(value);
+            Add(node);
 
             return node;
         }
@@ -98,7 +101,7 @@ namespace Extend
         public void DetachFromParent()
         {
             _parent = null;
-            this.ForEach( x => x.Parent = null );
+            this.ForEach(x => x.Parent = null);
         }
 
         /// <summary>
@@ -110,15 +113,15 @@ namespace Extend
         ///     A value indicating weather the parent of the given item should be set to the parent of the
         ///     collection or not.
         /// </param>
-        public void Add( ITreeNode<T> item, Boolean setParent )
+        public void Add(ITreeNode<T> item, Boolean setParent)
         {
-            item.ThrowIfNull( nameof( item ) );
+            item.ThrowIfNull(nameof(item));
 
-            if ( Contains( item ) )
+            if (Contains(item))
                 return;
 
-            base.Add( item );
-            if ( setParent )
+            base.Add(item);
+            if (setParent)
                 item.Parent = Parent;
         }
 
@@ -132,12 +135,12 @@ namespace Extend
         ///     true if item is successfully removed; otherwise, false. This method also
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
-        public Boolean Remove( ITreeNode<T> item, Boolean setParent )
+        public Boolean Remove(ITreeNode<T> item, Boolean setParent)
         {
-            item.ThrowIfNull( nameof( item ) );
+            item.ThrowIfNull(nameof(item));
 
-            var result = base.Remove( item );
-            if ( result && setParent )
+            var result = base.Remove(item);
+            if (result && setParent)
                 item.Parent = null;
 
             return result;
@@ -154,7 +157,7 @@ namespace Extend
         /// </summary>
         /// <exception cref="ArgumentNullException">item can not be null.</exception>
         /// <param name="item">The item to add.</param>
-        public new void Add( ITreeNode<T> item ) => Add( item, true );
+        public new void Add(ITreeNode<T> item) => Add(item, true);
 
         /// <summary>
         ///     Removes the given item form the list and sets it's parent to null.
@@ -165,7 +168,7 @@ namespace Extend
         ///     true if item is successfully removed; otherwise, false. This method also
         ///     returns false if item was not found in the original <see cref="System.Collections.ObjectModel.Collection{T}" />.
         /// </returns>
-        public new Boolean Remove( ITreeNode<T> item ) => Remove( item, true );
+        public new Boolean Remove(ITreeNode<T> item) => Remove(item, true);
 
         #endregion
     }

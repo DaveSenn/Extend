@@ -146,9 +146,9 @@ namespace Extend.Testing
         public void DefaultMemberSelectionRulesDefaultTest()
         {
             var actual = InstanceCreator.DefaultMemberSelectionRules;
-
+            
             actual.Count.Should()
-                  .Be( 1 );
+                  .Be( 1, actual.Select( x => x.RuleName ).StringJoin( ", " ) );
             actual.Count( x => x.RuleName == "Include all members" )
                   .Should()
                   .Be( 1 );
@@ -163,6 +163,8 @@ namespace Extend.Testing
             InstanceCreator.DefaultMemberSelectionRules.Contains( rule )
                            .Should()
                            .BeTrue();
+
+            InstanceCreator.DefaultMemberSelectionRules.Remove( rule );
         }
 
         [Fact]

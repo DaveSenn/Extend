@@ -243,7 +243,7 @@ namespace Extend.Testing
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent );
 
-            Assert.Equal( parent, target.Parent );
+            Assert.Same( parent, target.Parent );
         }
 
         [Fact]
@@ -345,7 +345,7 @@ namespace Extend.Testing
                 Parent = parent
             };
 
-            Assert.Equal( parent, target.Parent );
+            Assert.Same( parent, target.Parent );
         }
 
         /// <summary>
