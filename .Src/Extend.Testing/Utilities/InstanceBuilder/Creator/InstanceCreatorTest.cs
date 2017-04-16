@@ -328,7 +328,7 @@ namespace Extend.Testing
         public void FactoryThrowsExceptionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
-                                         .WithFactory( x => { throw new Exception( "Factory Failed" ); } )
+                                         .WithFactory( x => throw new Exception( "Factory Failed" ) )
                                          .For( x => x.IsTypeOf<Double>() );
 
             Action test = () => options.Complete()
@@ -436,7 +436,7 @@ namespace Extend.Testing
         public void RootFactoryThrowExceptionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
-                                         .WithFactory( x => { throw new Exception( "22" ); } )
+                                         .WithFactory( x => throw new Exception( "22" ) )
                                          .For( x => x.IsTypeOf<TestModel>() );
 
             Action test = () => options.Complete()

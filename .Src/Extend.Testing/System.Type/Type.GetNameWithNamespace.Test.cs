@@ -76,11 +76,11 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceGenericNestedTest4()
         {
-            var actual = typeof(TreeNode<TreeNode<TestClassGeneric<String>>>).GetNameWithNamespace();
+            var actual = typeof(TreeNode<TreeNode<TestClassGeneric<TestClass>>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be(
-                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric`1[[System.String, System.Private.CoreLib]], Extend.Testing]], Extend]], Extend" );
+                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing]], Extend]], Extend" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -90,11 +90,11 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceGenericNestedTest5()
         {
-            var actual = typeof(TreeNode<TreeNode<TestClassGeneric2<String, TestClass>>>).GetNameWithNamespace();
+            var actual = typeof(TreeNode<TreeNode<TestClassGeneric2<TestClassGeneric2<TestClass, TestClass>, TestClass>>>).GetNameWithNamespace();
 
             actual.Should()
                   .Be(
-                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[System.String, System.Private.CoreLib],[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing]], Extend]], Extend" );
+                      "Extend.TreeNode`1[[Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClassGeneric2`2[[Extend.Testing.TypeExTest+TestClass, Extend.Testing],[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing],[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing]], Extend]], Extend" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -104,10 +104,10 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceGenericTest()
         {
-            var actual = typeof(TreeNode<String>).GetNameWithNamespace();
+            var actual = typeof(TreeNode<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[System.String, System.Private.CoreLib]], Extend" );
+                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -117,10 +117,10 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespaceGenericTest1()
         {
-            var actual = typeof(TreeNode<DateTime>).GetNameWithNamespace();
+            var actual = typeof(TreeNode<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.TreeNode`1[[System.DateTime, System.Private.CoreLib]], Extend" );
+                  .Be( "Extend.TreeNode`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
@@ -156,10 +156,10 @@ namespace Extend.Testing
         [Fact]
         public void GetNameWithNamespacePrivateClassGenericTest()
         {
-            var actual = typeof(TestClassGeneric<String>).GetNameWithNamespace();
+            var actual = typeof(TestClassGeneric<TestClass>).GetNameWithNamespace();
 
             actual.Should()
-                  .Be( "Extend.Testing.TypeExTest+TestClassGeneric`1[[System.String, System.Private.CoreLib]], Extend.Testing" );
+                  .Be( "Extend.Testing.TypeExTest+TestClassGeneric`1[[Extend.Testing.TypeExTest+TestClass, Extend.Testing]], Extend.Testing" );
 
             var actualType = Type.GetType( actual );
             actualType.Should()
