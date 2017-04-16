@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -35,7 +34,7 @@ namespace Extend.Testing
         public void ToDateTimeOtherCultureTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString(CultureInfo.InvariantCulture)
+            var actual = value.ToString( CultureInfo.InvariantCulture )
                               .ToDateTime();
 
             actual
@@ -91,8 +90,8 @@ namespace Extend.Testing
         public void ToDateTimeOverloadTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.CurrentCulture )
-                              .ToDateTime( CultureInfo.CurrentCulture );
+            var actual = value.ToString( CultureInfo.InvariantCulture )
+                              .ToDateTime( CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -103,7 +102,7 @@ namespace Extend.Testing
         public void ToDateTimeTest()
         {
             var value = DateTime.Now;
-            var actual = value.ToString( CultureInfo.CurrentCulture )
+            var actual = value.ToString( CultureInfo.InvariantCulture )
                               .ToDateTime();
 
             actual
