@@ -131,6 +131,7 @@ namespace Extend.Testing
         public void SaveToDateTimeTest()
         {
             var expected = DateTime.Now;
+            expected = new DateTime( expected.Year, expected.Month, expected.Day, expected.Hour, expected.Second, 10 );
             var actual = expected.ToString( CultureInfo.CurrentCulture )
                                  .SaveToDateTime();
 

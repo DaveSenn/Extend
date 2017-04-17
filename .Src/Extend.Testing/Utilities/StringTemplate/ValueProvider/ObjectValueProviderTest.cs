@@ -11,7 +11,6 @@ using Xunit;
 
 namespace Extend.Internal.Testing
 {
-    
     public class ObjectValueProviderTest
     {
         [Fact]
@@ -30,6 +29,16 @@ namespace Extend.Internal.Testing
             var actual = new ObjectValueProvider( new TestModel() );
             actual.Should()
                   .NotBeNull();
+        }
+
+        [Fact]
+        public void GetValueInvalidExpressionTest()
+        {
+            var model = InstanceCreator.CreateInstance<TestModel>();
+            var target = new ObjectValueProvider( model );
+
+            Action test = () => target.GetValue( "DOESNotExist" );
+            test.ShouldThrow<FormatException>();
         }
 
         [Fact]
@@ -97,7 +106,8 @@ namespace Extend.Internal.Testing
 
             var actual = target.GetValue( "MyInt32Array[0]" );
             actual.Should()
-                  .Be( model.MyInt32Array[0].ToString() );
+                  .Be( model.MyInt32Array[0]
+                            .ToString() );
         }
 
         [Fact]
@@ -114,12 +124,21 @@ namespace Extend.Internal.Testing
         [Fact]
         public void GetValueTest6()
         {
-            var model = InstanceCreator.CreateInstance<TestModel>();
+            var model = new TestModel
+            {
+                MyListInt = new List<Int32>
+                {
+                    RandomValueEx.GetRandomInt32(),
+                    RandomValueEx.GetRandomInt32(),
+                    RandomValueEx.GetRandomInt32()
+                }
+            };
             var target = new ObjectValueProvider( model );
 
             var actual = target.GetValue( "MyListInt[0]" );
             actual.Should()
-                  .Be( model.MyListInt[0].ToString() );
+                  .Be( model.MyListInt[0]
+                            .ToString() );
         }
 
         [Fact]
@@ -157,20 +176,35 @@ namespace Extend.Internal.Testing
                   .Be( model.SubModel.MyStringArraySub[0] );
         }
 
-        [Fact]
-        public void GetValueInvalidExpressionTest()
-        {
-            var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider(model);
+        #region Nested Types
 
-            Action test = () => target.GetValue("DOESNotExist");
-            test.ShouldThrow<FormatException>();
+        private class SubModel
+        {
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
+            public String MyStringSub { get; set; }
+
+            public Int32 MyInt32Sub { get; set; }
+
+            public Double MyDoubleSub { get; set; }
+
+            public String[] MyStringArraySub { get; set; }
+
+            public Int32[] MyInt32ArraySub { get; set; }
+
+            public List<String> MyListStringSub { get; set; }
+
+            public List<Int32> MyListIntSub { get; set; }
+
+            public Dictionary<String, String> MyDictionaryStringSub { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
         }
 
         private class TestModel
         {
-            #region Properties
-
             // ReSharper disable UnusedAutoPropertyAccessor.Local
             // ReSharper disable CollectionNeverUpdated.Local
             // ReSharper disable UnusedMember.Local
@@ -194,38 +228,9 @@ namespace Extend.Internal.Testing
             // ReSharper restore UnusedMember.Local
             // ReSharper restore CollectionNeverUpdated.Local
             // ReSharper restore UnusedAutoPropertyAccessor.Local
-
-            #endregion
         }
 
-        private class SubModel
-        {
-            #region Properties
-
-            // ReSharper disable UnusedAutoPropertyAccessor.Local
-            // ReSharper disable CollectionNeverUpdated.Local
-            // ReSharper disable UnusedMember.Local
-            public String MyStringSub { get; set; }
-
-            public Int32 MyInt32Sub { get; set; }
-
-            public Double MyDoubleSub { get; set; }
-
-            public String[] MyStringArraySub { get; set; }
-
-            public Int32[] MyInt32ArraySub { get; set; }
-
-            public List<String> MyListStringSub { get; set; }
-
-            public List<Int32> MyListIntSub { get; set; }
-
-            public Dictionary<String, String> MyDictionaryStringSub { get; set; }
-            // ReSharper restore UnusedMember.Local
-            // ReSharper restore CollectionNeverUpdated.Local
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
-
-            #endregion
-        }
+        #endregion
 
         /*
 
