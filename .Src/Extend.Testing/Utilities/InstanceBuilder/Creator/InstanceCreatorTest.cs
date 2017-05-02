@@ -10,7 +10,8 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
+    [Collection("InstanceCreator")]
+
     public class InstanceCreatorTest
     {
         [Fact]

@@ -27,7 +27,7 @@ namespace Extend.Testing
         {
             var actual = typeof(ActionEx).GetDeclaringAssembly();
             actual.FullName.Should()
-                  .Be( "Extend, Version=1.1.11.0, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
+                  .Be( "Extend, Version=1.2.0.0, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
         }
     }
 }
