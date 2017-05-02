@@ -86,8 +86,8 @@ test: off
 
 # Define artifacts
 artifacts:
-  - path: Output
-  - path: 'Output\**\*.nupkg'
+  - path: .Output
+  - path: '.Output\**\*.nupkg'
     name: NuGetPackage.nupkg
 
 # Deploy to NuGet
@@ -100,6 +100,4 @@ artifacts:
 #    # Only publish from the master branch
 #    branch: master
 #    # Only publish if the trigger was a Git tag
-#    # git tag v0.1.0-beta
-#    # git push origin --tags
 #    appveyor_repo_tag: true
