@@ -53,10 +53,11 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    Information(testDirectory);
+    Information("!!!  Start running tests !!!");
     var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
     foreach(var project in projects)
     {
+        Information("!!!  Project: " + project + " !!!");
         DotNetCoreTest(
                 project.ToString(),
                 new DotNetCoreTestSettings()
