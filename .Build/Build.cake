@@ -53,11 +53,10 @@ Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    Information("!!!  Start running tests !!!");
-    var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
+    //var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
+    /*
     foreach(var project in projects)
     {
-        Information("!!!  Project: " + project + " !!!");
         DotNetCoreTest(
                 project.ToString(),
                 new DotNetCoreTestSettings()
@@ -66,6 +65,7 @@ Task("Test")
                     NoBuild = true
                 });
     }    
+    */
 });
 
 Task("Pack")
