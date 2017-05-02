@@ -46,5 +46,17 @@ Task("Build")
             .SetVerbosity( Verbosity.Minimal ) );
 });
 
+// Run the unit tests
+Task("RunTests")
+    .IsDependentOn("Build")
+    .Does(() =>
+{
+    NUnit3( sourceDirectory.ToString() + "/**/bin/Release/*.Test.dll", new NUnit3Settings
+        { 
+            NoResults = true,
+            ToolPath = nUnit
+        });
+});
+
 
 RunTarget(target);
