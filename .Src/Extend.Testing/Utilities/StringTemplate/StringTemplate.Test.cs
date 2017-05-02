@@ -2,6 +2,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using FluentAssertions;
 using Xunit;
 
@@ -12,7 +13,11 @@ namespace Extend.Testing
     
     public class StringTemplate
     {
-        ///////////////////////////////////////////////////////////////////////////////////
+        public StringTemplate()
+        {
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-CH");
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-CH");
+        }
 
         [Fact]
         public void FormatWithObject_ComplexTemplate()
@@ -312,6 +317,7 @@ namespace Extend.Testing
         public void FormatWithValues_ComplexTemplate()
         {
             String nullRef = null;
+
             var actual = "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                 .FormatWithValues( new Dictionary<String, Object>
                                    {
