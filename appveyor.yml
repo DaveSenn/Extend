@@ -19,6 +19,11 @@ skip_commits:
 # version: '{build}'
 version: 1.2.0.{build}
 
+# Set the build worker image
+image: Visual Studio 2017
+build:
+  verbosity: minimal
+
 pull_requests:
   # Do not increment build number for pull requests
   do_not_increment_build_number: true
