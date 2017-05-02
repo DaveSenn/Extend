@@ -12,6 +12,8 @@ var outputNuGetDirectory = Directory("../.Output/NuGet");
 
 // The path to the solution file
 var solution = sourceDirectory + File("Extend.sln");
+var testDirectory = sourceDirectory + Directory("Extend.Testing");
+var libDirectory = sourceDirectory + Directory("Extend");
 
 // Executables
 var nuGet = toolDirectory + File("NuGet/nuget.exe");
@@ -26,37 +28,92 @@ Task("Clean")
 });
 
 // Restore all NuGet packages
-Task("RestorePackages")
+Task("Restore")
     .IsDependentOn("Clean")
     .Does(() =>
 {
-    NuGetRestore(solution, new NuGetRestoreSettings
-        { 
-            ToolPath = nuGet
-        } );
+    DotNetCoreRestore(solution);
 });
 
 // Build the solution
 Task("Build")
-    .IsDependentOn("RestorePackages")
+    .IsDependentOn("Restore")
     .Does(() =>
 {	
-    MSBuild(solution, settings => 
-        settings.SetConfiguration(configuration)
-            .SetVerbosity( Verbosity.Minimal ) );
+    DotNetCoreBuild(
+                solution,
+                new DotNetCoreBuildSettings()
+                {
+                    Configuration = configuration
+                });
 });
 
 // Run the unit tests
-Task("RunTests")
+Task("Test")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit3( sourceDirectory.ToString() + "/**/bin/Release/*.Test.dll", new NUnit3Settings
-        { 
-            NoResults = true,
-            ToolPath = nUnit
-        });
+    Information(testDirectory);
+    var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
+    foreach(var project in projects)
+    {
+        DotNetCoreTest(
+                project.ToString(),
+                new DotNetCoreTestSettings()
+                {                    
+                    Configuration = configuration,
+                    NoBuild = true
+                });
+    }    
 });
 
+Task("Pack")
+    .IsDependentOn("Test")
+    .Does(() =>
+    {
+        foreach (var project in GetFiles(libDirectory.ToString() + "/**/*.csproj"))
+        {
+            DotNetCorePack(
+                project.ToString(),
+                new DotNetCorePackSettings()
+                {
+                    Configuration = configuration,
+                    OutputDirectory = outputDirectory
+                });
+        }
+    });
 
+// Default task
+Task("Default")
+  .IsDependentOn("Pack")
+  .Does(() =>
+{
+    Information("Default task started");
+});
+
+// Run the target task
 RunTarget(target);
+
+/// <summary>
+///     Gets the version of the current build.
+/// </summary>
+/// <returns>Returns the version of the current build.</returns>
+private String GetBuildVersion()
+{
+	var version = String.Empty;
+	
+    // Try to get the version from AppVeyor
+    var appVeyorProvider = BuildSystem.AppVeyor;
+    if( appVeyorProvider.IsRunningOnAppVeyor )
+        version = appVeyorProvider.Environment.Build.Version;
+	else
+	{
+	    // Get the version from the built DLL
+		var outputDll = System.IO.Directory.EnumerateFiles( outputNuGetDirectory, "*", System.IO.SearchOption.AllDirectories).First( x => x.Contains( ".dll" ) );
+		var assembly = System.Reflection.Assembly.LoadFile(  MakeAbsolute( File( outputDll ) ).ToString() );
+		version = assembly.GetName().Version.ToString();
+	}
+	
+	return version;
+	// return version + "-alpha";
+}
