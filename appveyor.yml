@@ -19,11 +19,6 @@ skip_commits:
 # version: '{build}'
 version: 1.2.0.{build}
 
-# Set the build worker image
-image: Visual Studio 2017
-build:
-  verbosity: minimal
-
 pull_requests:
   # Do not increment build number for pull requests
   do_not_increment_build_number: true
@@ -33,12 +28,12 @@ nuget:
   disable_publish_on_pr: true
 
 # Patch assembly info
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+#assembly_info:
+#  patch: true
+#  file: AssemblyInfo.*
+#  assembly_version: '{version}'
+#  assembly_file_version: '{version}'
+#  assembly_informational_version: '{version}'
 
 # Cache configuration
 #cache:
@@ -49,9 +44,11 @@ assembly_info:
 # Build configuration
 #---------------------------------
 
-# Build OS
-os: Visual Studio 2015
-
+# Set the build worker image
+image: Visual Studio 2017
+build:
+  verbosity: minimal
+  
 # Build configuration
 configuration: Release
 
