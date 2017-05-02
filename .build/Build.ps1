@@ -1,184 +1,37 @@
-<#
-Main build script
-#>
-properties { 
-    $srcDir = "$root\.Src\"
-    $toolsDir = "$root\.Tools\"
-    $nuget = "$toolsDir\NuGet\nuget.exe"
-    # $nunit = "$toolsDir\NUnit\nunit-console.exe"
-	$nunit = "$toolsDir\NUnit\nunit3-console.exe"
-    $7zip = "$toolsDir\7zip\7za.exe"
-    $curl = "$toolsDir\Curl\curl.exe"
-    $git = "git"
-    $msBuild = "MSBuild"
-    $buildConfiguration = "Release"
-    $msBuildTargets = "Clean;Rebuild"
-    $msBuildVerbosity = "minimal"
-    $treatWarningsAsErrors = $true
-    $binDir = "bin"
-    $outputDirectory = "$root\Output"
-    $nugetPackDirectory = "$outputDirectory\NuGet"
-    $coverityBuildTool = "cov-build"
-    $coverityDir = "$outputDirectory\cov-int"
-    $coveritySolution = "$root\.Src\Extend.sln"
-}
-$root = Resolve-Path ..
-
-# Load additional scripts
-."$root\.Build\Projects.ps1"
-."$root\.Build\BuildHelpers.ps1"
-
-# Get projects to build
-$allProjects = Get-Projects
-
-# Default task
-Task default -Depends Clean, RestorePackages, Build, Test, CopyBuildOutput, NuGetPack
-
-# CI task
-#Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack, CoverityScan, CoverityUpload
-Task CI -Depends RestorePackages, Build, CopyBuildOutput, NuGetPack
-
-# Dirty build task
-Task Dirty -Depends Build, Test
-
-# Cleans the output directory
-Task Clean {
-    Write-Host "Clean repository" -fore Magenta
+[CmdletBinding()]
+Param(
+    [string]$Script = "build.cake",
+	
+    [string]$Target = "Default",
     
-    ExecInDir $root {
-        exec { &$git clean -xdf  } "Git clean failed"
-    }
+    [ValidateSet("Release", "Debug")]
+    [string]$Configuration = "Release",
+
+    [ValidateSet("Quiet", "Minimal", "Normal", "Verbose", "Diagnostic")]
+    [string]$Verbosity = "Verbose",
+	
+    # [switch]$Experimental,
+    # [Alias("DryRun","Noop")]
+    # [switch]$WhatIf,
+    # [switch]$Mono,
+    # [switch]$SkipToolPackageRestore,
+    [Parameter(Position=0, Mandatory=$false, ValueFromRemainingArguments=$true)]
+    [string[]]$ScriptArgs
+)
+
+# Get path of script
+if(!$PSScriptRoot){
+    $PSScriptRoot = Split-Path $MyInvocation.MyCommand.Path -Parent
 }
 
-# Restores all NuGet packages
-Task RestorePackages {
-    Write-Host "Restore NuGet packages" -fore Magenta
+# Get the full path to the script file
+$Script = [System.IO.Path]::Combine($PSScriptRoot, $Script)
 
-    # For each project with enabled NuGet restore
-    foreach($project in $allProjects | where { $_.RestoreNuGetPackages } ) {
-        $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
-        exec {
-            &$nuget restore $projectPath
-        } "NuGet restore failed for: '$projectPath'"
-    }
-}
+# Get the path to the cake executable
+$CAKE_EXE = [System.IO.Path]::Combine($PSScriptRoot, "..\", ".Tools\Cake\Cake.exe")
+# Store the path to the NuGet executable
+$ENV:NUGET_EXE = "C:\Tools\NuGet\nuget.exe"
 
-# Build all projects
-Task Build {
-    Write-Host "Build projects" -fore Magenta
-    
-    # For each project
-    foreach($project in $allProjects) {
-        $projectPath = [System.IO.Path]::Combine($srcDir, $project.Name)
-        $outDir = $project.OutputDirectory
-        exec {
-            &$msBuild $projectPath "/t:$msBuildTargets" "/p:Configuration=$buildConfiguration" "/p:Platform=Any CPU" "/verbosity:$msBuildVerbosity" "/p:TreatWarningsAsErrors=$treatWarningsAsErrors" "/p:OutputPath=$binDir\$buildConfiguration\$outDir\"
-        } "Failed to build: '$projectPath'"
-    }
-}
-
-# Run all unit tests
-Task CopyBuildOutput {
-    Write-Host "Copy build output" -fore Magenta
-
-    # Create output directory if not exists
-    if(!(Test-Path -Path $outputDirectory )) {
-        New-Item -ItemType directory -Path $outputDirectory | Out-Null
-    }
-
-    # Copy each build output to the output directory
-    foreach($project in $allProjects) {
-        $buildOutput = [System.IO.Path]::Combine($srcDir, $project.ProjectDirectory, $binDir, $buildConfiguration, $project.OutputDirectory)
-        
-        # Get the files top copy
-        Get-ChildItem -Path $buildOutput  -Recurse -Include @("*.xml", "*.dll") | Foreach ($_) { 
-
-            foreach($nugetDir in  $project.NuGetDir) {
-                $destination = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $nugetDir)
-                # Create output directory (NuGet dir) if not exists
-                if(!(Test-Path -Path $destination )) {
-                    New-Item -ItemType directory -Path $destination | Out-Null
-                }
-                # Copy the file
-                Copy-Item $_.FullName -Destination "$destination"
-            }
-        }
-    }
-
-    Get-Childitem $outputDirectory -Include *.pdb -Recurse | Foreach ($_) { Remove-Item $_.fullname }
-}
-
-# Run all unit tests
-Task Test {
-    Write-Host "Run unit tests" -fore Magenta
-    
-    # For each project
-    foreach($project in $allProjects | where { $_.TestRunner -ne $null } ) {
-		
-        $buildOutput = [System.IO.Path]::Combine($srcDir, $project.TestDirectory, $binDir, $buildConfiguration, $project.OutputDirectory, $project.TestProjectName) + ".dll"
-        Write-Host $buildOutput
-        
-        switch ($project.TestRunner) { 
-            "NUnit" { RunNUnitTest $project $buildOutput } 
-            default { throw "Test-runner '{0}' is not supported" -f $project.TestRunner }
-        }
-    }
-}
-
-# Create all NuGet packages
-Task NuGetPack {
-    Write-Host "Create NuGet packages" -fore Magenta
-    
-    # Copy NuGet spec file to NuGet directory
-    $nuspec = [System.IO.Path]::Combine($root, ".Build", "NuGet") + "\Extend.nuspec"
-    Copy-Item $nuspec -Destination $nugetPackDirectory
-
-    # Get package version
-    $version = GetVersionSecure
-	# alpha release:
-	# $version = $version.ToString()	+ "-alpha"
-	# Write-Host $version
-    &$nuget pack "$nugetPackDirectory\Extend.nuspec" -Properties "version=$version;" -OutputDirectory $nugetPackDirectory
-}
-
-# Run Coverity scan
-Task CoverityScan {
-    Write-Host "Run Coverity scan" -fore Magenta
-
-    &$coverityBuildTool --dir $coverityDir "C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" $coveritySolution "/t:Clean,Build" "/p:Configuration=Release" | Out-Null
-
-    Write-Host "Create zip from coverity result"
-    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
-    $coverityOutDir = $coverityDir
-    &$7zip a $zipPath $coverityOutDir | Out-Null 
-}
-
-# Upload the Coverity scan results
-Task CoverityUpload {
-    Write-Host "Upload Coverity scan result" -fore Magenta
-    
-    # Get needed values
-    $version = GetVersionSecure
-    $zipPath =[System.IO.Path]::Combine($outputDirectory) + "\cov-int.zip"
-    $token = $env:coverity_token
-    $email = $env:email
-    $message = $env:APPVEYOR_REPO_COMMIT_MESSAGE
-    
-    # Upload the Coverity result
-    UploadCoverityScanResult $token $email $message $version $zipPath "https://scan.coverity.com/builds?project=DaveSenn%2FExtend"
-}
-
-# Run NUnit tests for the given project
-function RunNUnitTest($project, $testDll) {
-    Write-Host "Run NUnit tests: '$testDll' => '$nunit'"
-    exec { 
-        &$nunit $testDll 
-    } "Running NUnit tests '$testDll' failed"
-}
-
-# Gets the version of the built DLL
-function GetVersionSecure(){
-    # Get version
-    $dllPath = [System.IO.Path]::Combine($nugetPackDirectory, "lib", $allProjects[0].NuGetDir[0]) + "\Extend.dll"
-    return GetVersion $dllPath
-}
+# Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" -target=`"$Target`" -configuration=`"$Configuration`" -verbosity=`"$Verbosity`" $UseMono $UseDryRun $UseExperimental $ScriptArgs"
+Invoke-Expression "& `"$CAKE_EXE`" `"$Script`" -target=`"$Target`" -configuration=`"$Configuration`" -verbosity=`"$Verbosity`""
+exit $LASTEXITCODE

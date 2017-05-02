@@ -13,7 +13,7 @@
     <Product>Extend</Product>
     <Description>Extend is a set of .Net extension methods build as PCL or .Net40 DLL. Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.</Description>
     <Copyright>Copyright © Dave Senn 2017</Copyright>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageLicenseUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/License.txt</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/DaveSenn/Extend</PackageProjectUrl>
     <PackageIconUrl>https://raw.githubusercontent.com/DaveSenn/Extend/master/.Art/logo.png</PackageIconUrl>
