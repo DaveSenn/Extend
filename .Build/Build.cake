@@ -24,3 +24,27 @@ Task("Clean")
     CleanDirectory( sourceDirectory + Directory("Extend.Testing/bin") );
     CleanDirectory( outputDirectory );
 });
+
+// Restore all NuGet packages
+Task("RestorePackages")
+    .IsDependentOn("Clean")
+    .Does(() =>
+{
+    NuGetRestore(solution, new NuGetRestoreSettings
+        { 
+            ToolPath = nuGet
+        } );
+});
+
+// Build the solution
+Task("Build")
+    .IsDependentOn("RestorePackages")
+    .Does(() =>
+{	
+    MSBuild(solution, settings => 
+        settings.SetConfiguration(configuration)
+            .SetVerbosity( Verbosity.Minimal ) );
+});
+
+
+RunTarget(target);
