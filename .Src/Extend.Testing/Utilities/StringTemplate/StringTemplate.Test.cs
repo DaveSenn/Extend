@@ -24,10 +24,10 @@ namespace Extend.Testing
         {
             String nullRef = null;
             var actual =
-                "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
+                "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} | MyNull: {MyNull}"
                     .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
             actual.Should()
-                  .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 CHF 12'345.99 | MyNull: " );
+                  .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 | MyNull: " );
         }
 
         [Fact]
