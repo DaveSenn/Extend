@@ -93,8 +93,8 @@ deploy:
   api_key:
     secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
   artifact: /.*\.nupkg/
-#  on:
-#    # Only publish from the master branch
-#    branch: master
-#    # Only publish if the trigger was a Git tag
-#    appveyor_repo_tag: true
+  on:
+    # Only publish from the master branch
+    branch: master
+    # Only publish if the trigger was a Git tag
+    appveyor_repo_tag: true
