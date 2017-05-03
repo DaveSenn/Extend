@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class EventHandlerExTest
     {
-        [Test]
+        [Fact]
         public void RaiseTest()
         {
             var helperClass = new HelperClass();
@@ -20,10 +20,10 @@ namespace Extend.Testing
             EventArgs actual = null;
             helperClass.MyEvent += ( sender, e ) => actual = e;
             helperClass.RaiseEvent( eventArgs );
-            Assert.AreSame( eventArgs, actual );
+            Assert.Same( eventArgs, actual );
         }
 
-        [Test]
+        [Fact]
         public void RaiseTest1()
         {
             var helperClass = new HelperClass();
@@ -33,7 +33,7 @@ namespace Extend.Testing
             SampleEventArgs actual = null;
             helperClass.MyGenericEvent += ( sender, e ) => actual = e;
             helperClass.RaiseGenericEvent( eventArgs );
-            Assert.AreSame( eventArgs, actual );
+            Assert.Same( eventArgs, actual );
         }
 
         private class HelperClass

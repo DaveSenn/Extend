@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsBooleanInvalidValueTest()
         {
             Boolean outValue;
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsBooleanNullTest()
         {
             Boolean outValue;
@@ -36,13 +36,13 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             // ReSharper disable once RedundantAssignment
             var outValue = !expected;
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
+            var actual = expected.ToString(  )
                                  .TryParsBoolean( out outValue );
 
             actual

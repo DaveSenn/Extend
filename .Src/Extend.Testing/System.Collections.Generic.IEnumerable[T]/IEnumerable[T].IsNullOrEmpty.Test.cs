@@ -2,27 +2,27 @@
 
 using System;
 using System.Collections.Generic;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void IsNullOrEmptyTest()
         {
             List<String> list = null;
-            Assert.IsTrue( list.IsNullOrEmpty() );
+            Assert.True( list.IsNullOrEmpty() );
 
             list = new List<String>();
-            Assert.IsTrue( list.IsNullOrEmpty() );
+            Assert.True( list.IsNullOrEmpty() );
 
             list.Add( RandomValueEx.GetRandomString() );
-            Assert.IsFalse( list.IsNullOrEmpty() );
+            Assert.False( list.IsNullOrEmpty() );
         }
     }
 }

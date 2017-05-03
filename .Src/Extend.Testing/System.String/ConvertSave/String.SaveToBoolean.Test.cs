@@ -2,25 +2,25 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToBooleanInvalidValueTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = "InvalidValue".SaveToBoolean( expected );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void SaveToBooleanNullTest()
         {
             String value = null;
@@ -32,7 +32,7 @@ namespace Extend.Testing
                 .Be( default(Boolean) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToBooleanNullTest1()
         {
             String value = null;
@@ -44,7 +44,7 @@ namespace Extend.Testing
                 .Be( !default(Boolean) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();

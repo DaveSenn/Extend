@@ -1,90 +1,110 @@
 ﻿#region Usings
 
 using System;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetAttributeDefinitionsNullTest()
         {
             Type t = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => t.GetAttributeDefinitions<DisplayAttribute>();
+            Action test = () => t.GetAttributeDefinitions<MyDisplayAttribute>();
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetAttributeDefinitionsTest()
         {
-            var actual = typeof(TestPerson).GetAttributeDefinitions<DisplayAttribute>()
+            var actual = typeof(TestPerson).GetAttributeDefinitions<MyDisplayAttribute>()
                                            .ToList();
-            Assert.AreEqual( 2, actual.Count );
+            Assert.Equal( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "FirstName" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
-            Assert.AreEqual( "FirstName-DisplayName",
-                             actualItem.Attributes.Single()
-                                       .Name );
+            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Equal( "FirstName-DisplayName",
+                          actualItem.Attributes.Single()
+                                    .Name );
 
             actualItem = actual.Single( x => x.Property.Name == "LastName" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
-            Assert.AreEqual( "LastName-DisplayName",
-                             actualItem.Attributes.Single()
-                                       .Name );
+            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Equal( "LastName-DisplayName",
+                          actualItem.Attributes.Single()
+                                    .Name );
         }
 
-        [Test]
+        [Fact]
         public void GetAttributeDefinitionsTest1()
         {
             var actual = typeof(TestPerson).GetAttributeDefinitions<MyTestAttribute>()
                                            .ToList();
-            Assert.AreEqual( 1, actual.Count );
+            Assert.Equal( 1, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.AreEqual( 2, actualItem.Attributes.Count() );
-            Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
-            Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
+            Assert.Equal( 2, actualItem.Attributes.Count() );
+            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
+            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
         }
 
-        [Test]
+        [Fact]
         public void GetAttributeDefinitionsTest2()
         {
             var actual = typeof(TestPersonInherit).GetAttributeDefinitions<MyTestAttribute>()
                                                   .ToList();
-            Assert.AreEqual( 2, actual.Count );
+            Assert.Equal( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
-            Assert.AreEqual( 2, actualItem.Attributes.Count() );
-            Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
-            Assert.AreEqual( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
+            Assert.Equal( 2, actualItem.Attributes.Count() );
+            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "1" ) );
+            Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
 
             actualItem = actual.Single( x => x.Property.Name == "Weight" );
-            Assert.AreEqual( 1, actualItem.Attributes.Count() );
-            Assert.AreEqual( "10000",
-                             actualItem.Attributes.Single()
-                                       .Value );
+            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Equal( "10000",
+                          actualItem.Attributes.Single()
+                                    .Value );
+        }
+
+        #region Nested Types
+
+        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        private class MyDisplayAttribute : Attribute
+        {
+            #region Properties
+
+            public String Name { get; set; }
+
+            #endregion
+        }
+
+        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
+        private class MyTestAttribute : Attribute
+        {
+            #region Properties
+
+            public String Value { get; set; }
+
+            #endregion
         }
 
         private class TestPerson
         {
             #region Properties
 
-            [Display( Name = "FirstName-DisplayName" )]
+            [MyDisplay( Name = "FirstName-DisplayName" )]
             // ReSharper disable once UnusedMember.Local
             public String FirstName { get; set; } = "Name";
 
-            [Display( Name = "LastName-DisplayName" )]
+            [MyDisplay( Name = "LastName-DisplayName" )]
             // ReSharper disable once UnusedMember.Local
             public String LastName { get; set; } = "LastName";
 
@@ -107,14 +127,6 @@ namespace Extend.Testing
             #endregion
         }
 
-        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
-        private class MyTestAttribute : Attribute
-        {
-            #region Properties
-
-            public String Value { get; set; }
-
-            #endregion
-        }
+        #endregion
     }
 }

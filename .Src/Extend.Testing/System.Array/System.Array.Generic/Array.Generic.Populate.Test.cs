@@ -2,31 +2,31 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void PopulateTest()
         {
             var array = new Int32[10];
             var actual = array.Populate( 100 );
 
-            Assert.AreSame( array, actual );
-            Assert.AreEqual( 10, array.Length );
+            Assert.Same( array, actual );
+            Assert.Equal( 10, array.Length );
             for ( var i = 0; i < array.Length; i++ )
             {
-                Assert.AreEqual( 100, array[i] );
-                Assert.AreEqual( 100, actual[i] );
+                Assert.Equal( 100, array[i] );
+                Assert.Equal( 100, actual[i] );
             }
         }
 
-        [Test]
+        [Fact]
         public void PopulateTestNullCheck()
         {
             String[] array = null;

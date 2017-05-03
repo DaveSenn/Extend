@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void GenericReverseTest()
         {
             var array = new[]
@@ -21,11 +21,11 @@ namespace Extend.Testing
             };
             array.Reverse();
 
-            Assert.AreEqual( "test2", array[0] );
-            Assert.AreEqual( "test", array[1] );
+            Assert.Equal( "test2", array[0] );
+            Assert.Equal( "test", array[1] );
         }
 
-        [Test]
+        [Fact]
         public void GenericReverseTest1()
         {
             var array = new[]
@@ -36,12 +36,12 @@ namespace Extend.Testing
             };
             array.Reverse( 0, 2 );
 
-            Assert.AreEqual( "test2", array[0] );
-            Assert.AreEqual( "test", array[1] );
-            Assert.AreEqual( "test3", array[2] );
+            Assert.Equal( "test2", array[0] );
+            Assert.Equal( "test", array[1] );
+            Assert.Equal( "test3", array[2] );
         }
 
-        [Test]
+        [Fact]
         public void GenericReverseTest1NullCheck()
         {
             String[] array = null;
@@ -51,7 +51,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GenericReverseTestNullCheck()
         {
             String[] array = null;

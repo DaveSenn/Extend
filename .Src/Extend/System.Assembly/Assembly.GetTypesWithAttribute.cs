@@ -70,34 +70,23 @@ namespace Extend
             var result = new List<AttributeDefinitionType<T>>();
 
             assemblies
-                .ForEach( x =>
-                          {
-#if PORTABLE45
-                              x.DefinedTypes
-#elif NET40
-                              x.GetTypes()
-#endif
-                               .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
-                               .ForEach( y =>
-                                         {
-                                             var attributes = y.GetCustomAttributes( attributeType, inherit )
-                                                               .ToArray();
-                                             if ( attributes.NotAny() )
-                                                 return;
+                .ForEach( x => x.DefinedTypes
+                                .Where( y => baseType == null || y.IsSubclassOf( baseType ) )
+                                .ForEach( y =>
+                                {
+                                    var attributes = y.GetCustomAttributes( attributeType, inherit )
+                                                      .ToArray();
+                                    if ( attributes.NotAny() )
+                                        return;
 
-                                             result.Add( new AttributeDefinitionType<T>
-                                                         {
-#if PORTABLE45
-                                                             Type = y.AsType(),
-#elif NET40
-                                                             Type = y,
-#endif
-                                                             Attributes = attributes
-                                                                 .Cast<T>()
-                                                                 .ToList()
-                                                         } );
-                                         } );
-                          } );
+                                    result.Add( new AttributeDefinitionType<T>
+                                    {
+                                        Type = y.AsType(),
+                                        Attributes = attributes
+                                            .Cast<T>()
+                                            .ToList()
+                                    } );
+                                } ) );
 
             return result;
         }

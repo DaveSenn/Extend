@@ -2,23 +2,23 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void RemoveWhereTest()
         {
             var actual = "a1-b2.c3".RemoveWhere( x => x.IsNumber() );
-            Assert.AreEqual( "a-b.c", actual );
+            Assert.Equal( "a-b.c", actual );
         }
 
-        [Test]
+        [Fact]
         public void RemoveWhereTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -28,7 +28,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveWhereTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

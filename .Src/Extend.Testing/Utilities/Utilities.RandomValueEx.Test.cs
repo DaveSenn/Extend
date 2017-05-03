@@ -2,28 +2,28 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class RandomValueExTest
     {
-        [Test]
+        [Fact]
         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         public void GetRandomBooleanTest() => RandomValueEx.GetRandomBoolean();
 
-        [Test]
+        [Fact]
         public void GetRandomByteTest()
         {
             // ReSharper disable once UnusedVariable
             var actual = RandomValueEx.GetRandomByte();
-            Assert.IsTrue( true );
+            Assert.True( true );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomCharTest()
         {
             var actual = RandomValueEx.GetRandomChar();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDateTimeTest()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
@@ -41,43 +41,43 @@ namespace Extend.Testing
                 var max = DateTime.Now.AddDays( i );
 
                 var actual = RandomValueEx.GetRandomDateTime( min, max );
-                Assert.IsTrue( actual >= min && actual <= max );
+                Assert.True( actual >= min && actual <= max );
             }
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDateTimeTest2()
         {
             for ( var i = 0; i < 1000; i++ )
             {
                 var actual = RandomValueEx.GetRandomDateTime();
-                Assert.IsTrue( actual >= new DateTime( 1753, 01, 01 ) && actual <= new DateTime( 9999, 12, 31 ) );
+                Assert.True( actual >= new DateTime( 1753, 01, 01 ) && actual <= new DateTime( 9999, 12, 31 ) );
             }
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDateTimeTest3()
         {
             var min = DateTime.Now.Subtract( 1.ToDays() );
             for ( var i = 0; i < 10000; i++ )
             {
                 var actual = RandomValueEx.GetRandomDateTime( min );
-                Assert.IsTrue( actual >= min && actual <= new DateTime( 9999, 12, 31 ) );
+                Assert.True( actual >= min && actual <= new DateTime( 9999, 12, 31 ) );
             }
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDateTimeTest4()
         {
             var max = DateTime.Now.AddDays( 100 );
             for ( var i = 0; i < 10000; i++ )
             {
                 var actual = RandomValueEx.GetRandomDateTime( max: max );
-                Assert.IsTrue( actual >= new DateTime( 1753, 01, 01 ) && actual <= max );
+                Assert.True( actual >= new DateTime( 1753, 01, 01 ) && actual <= max );
             }
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDoubleTest()
         {
             var actual = RandomValueEx.GetRandomDouble( -100, 300 );
@@ -87,7 +87,7 @@ namespace Extend.Testing
                   .BeLessThan( 300 );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomDoubleTestArgumentOutOfRangeException()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -95,7 +95,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void GetRandomEnumINvalidTypeTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -104,19 +104,19 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
         public void GetRandomEnumTest() => RandomValueEx.GetRandomEnum<DayOfWeek>();
 
-        [Test]
+        [Fact]
         public void GetRandomInt16Test()
         {
             var actual = RandomValueEx.GetRandomInt16( 10, 20 );
-            Assert.IsTrue( actual >= 10, "To small" );
-            Assert.IsTrue( actual < 20, "To big" );
+            Assert.True( actual >= 10, "To small" );
+            Assert.True( actual < 20, "To big" );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomInt16TestArgumentOutOfRangeException()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -125,15 +125,15 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void GetRandomInt32Test()
         {
             var actual = RandomValueEx.GetRandomInt32( 10, 20 );
-            Assert.IsTrue( actual >= 10, "To small" );
-            Assert.IsTrue( actual < 20, "To big" );
+            Assert.True( actual >= 10, "To small" );
+            Assert.True( actual < 20, "To big" );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomInt32TestArgumentOutOfRangeException()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -142,15 +142,15 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void GetRandomInt64Test()
         {
             var actual = RandomValueEx.GetRandomInt64( 10, 20 );
-            Assert.IsTrue( actual >= 10, "To small" );
-            Assert.IsTrue( actual < 20, "To big" );
+            Assert.True( actual >= 10, "To small" );
+            Assert.True( actual < 20, "To big" );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomInt64TestArgumentOutOfRangeException()
         {
             Action test = () => RandomValueEx.GetRandomInt64( 20, 10 );
@@ -158,19 +158,19 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void GetRandomStringsTest()
         {
             var actual = RandomValueEx.GetRandomStrings( 100 );
-            Assert.AreEqual( 100, actual.Count );
-            actual.ForEach( x => Assert.IsTrue( x.Length > 0 ) );
+            Assert.Equal( 100, actual.Count );
+            actual.ForEach( x => Assert.True( x.Length > 0 ) );
         }
 
-        [Test]
+        [Fact]
         public void GetRandomStringTest()
         {
             var actual = RandomValueEx.GetRandomString();
-            Assert.IsTrue( actual.Length > 0 );
+            Assert.True( actual.Length > 0 );
         }
     }
 }

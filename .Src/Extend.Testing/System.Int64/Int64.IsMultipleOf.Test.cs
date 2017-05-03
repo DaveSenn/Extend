@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void IsMultipleFactorOf0Test()
         {
             const Int64 value = 10;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void IsMultipleOfTest()
         {
             Int64 value = RandomValueEx.GetRandomInt32();
@@ -30,22 +30,22 @@ namespace Extend.Testing
 
             var expected = value % factor == 0;
             var actual = value.IsMultipleOf( factor );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             value = 10;
             factor = 2;
 
             actual = value.IsMultipleOf( factor );
-            Assert.AreEqual( true, actual );
+            Assert.Equal( true, actual );
 
             value = 10;
             factor = 3;
 
             actual = value.IsMultipleOf( factor );
-            Assert.AreEqual( false, actual );
+            Assert.Equal( false, actual );
         }
 
-        [Test]
+        [Fact]
         public void IsMultipleValueOf0Test()
         {
             const Int64 value = 0;

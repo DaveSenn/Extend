@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class RandomExTest
     {
-        [Test]
+        [Fact]
         public void CoinTossTest()
         {
             var random = new Random();
@@ -21,7 +21,7 @@ namespace Extend.Testing
                   .Be( actual );
         }
 
-        [Test]
+        [Fact]
         public void CoinTossTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToCharInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToChar();
@@ -22,7 +22,7 @@ namespace Extend.Testing
                 .Be( default(Char) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToCharInvalidValueWithDefaultTest()
         {
             const Char expected = 'a';
@@ -33,7 +33,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToCharNullTest()
         {
             String value = null;
@@ -46,11 +46,11 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToCharTest()
         {
             const Char expected = 'c';
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
+            var actual = expected.ToString(  )
                                  .SaveToChar();
 
             actual
@@ -58,11 +58,11 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToCharTest1()
         {
             const Char expected = 'c';
-            var actual = expected.ToString( CultureInfo.InvariantCulture )
+            var actual = expected.ToString(  )
                                  .SaveToChar( 'e' );
 
             actual

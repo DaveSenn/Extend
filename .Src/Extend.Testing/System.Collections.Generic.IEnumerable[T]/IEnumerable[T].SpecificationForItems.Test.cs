@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void SpecificationForItemsTest()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -22,10 +22,10 @@ namespace Extend.Testing
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
 
             var result = actual.IsSatisfiedBy( "1234" );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void SpecificationForItemsTest1()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -33,10 +33,10 @@ namespace Extend.Testing
             var actual = targets.SpecificationForItems( x => x.Length > 3 );
 
             var result = actual.IsSatisfiedBy( "123" );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void SpecificationForItemsTest2()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -45,10 +45,10 @@ namespace Extend.Testing
 
             var result = actual.IsSatisfiedByWithMessages( "1234" )
                                .ToList();
-            Assert.AreEqual( 0, result.Count );
+            Assert.Equal( 0, result.Count );
         }
 
-        [Test]
+        [Fact]
         public void SpecificationForItemsTest3()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -57,11 +57,11 @@ namespace Extend.Testing
 
             var result = actual.IsSatisfiedByWithMessages( "123" )
                                .ToList();
-            Assert.AreEqual( 1, result.Count );
-            Assert.AreEqual( 1, result.Count( x => x == "msg" ) );
+            Assert.Equal( 1, result.Count );
+            Assert.Equal( 1, result.Count( x => x == "msg" ) );
         }
 
-        [Test]
+        [Fact]
         public void SpecificationForItemsTestNullCheck()
         {
             // ReSharper disable once CollectionNeverUpdated.Local

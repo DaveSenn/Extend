@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class IndexedItemTest
     {
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var index = RandomValueEx.GetRandomInt32();

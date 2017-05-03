@@ -1,25 +1,25 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void IsWeekdDayTest()
         {
             var dateTime = new DateTime( 2014, 3, 27 );
             var actual = dateTime.IsWeekdDay();
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             dateTime = new DateTime( 2014, 3, 29 );
             actual = dateTime.IsWeekdDay();
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

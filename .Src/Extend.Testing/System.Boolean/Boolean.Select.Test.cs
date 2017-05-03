@@ -1,26 +1,26 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class BooleanExTest
     {
-        [Test]
+        [Fact]
         public void SelectValueTest()
         {
             const String trueValue = "true";
             const String falseValue = "false";
 
             var actual = false.SelectValue( trueValue, falseValue );
-            Assert.AreEqual( falseValue, actual );
+            Assert.Equal( falseValue, actual );
 
             actual = true.SelectValue( trueValue, falseValue );
-            Assert.AreEqual( trueValue, actual );
+            Assert.Equal( trueValue, actual );
         }
     }
 }

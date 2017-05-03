@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTest()
         {
             var first = new Dictionary<Int32, Int32>
@@ -29,16 +29,16 @@ namespace Extend.Testing
             };
 
             var actual = first.ConcatToDictionary( second );
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( 2, first.Count );
-            Assert.AreEqual( 2, second.Count );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 0 && x.Value == 1 ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 1 && x.Value == 2 ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 2 && x.Value == 3 ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 3 && x.Value == 4 ) );
+            Assert.Equal( 4, actual.Count );
+            Assert.Equal( 2, first.Count );
+            Assert.Equal( 2, second.Count );
+            Assert.Equal( 1, actual.Count( x => x.Key == 0 && x.Value == 1 ) );
+            Assert.Equal( 1, actual.Count( x => x.Key == 1 && x.Value == 2 ) );
+            Assert.Equal( 1, actual.Count( x => x.Key == 2 && x.Value == 3 ) );
+            Assert.Equal( 1, actual.Count( x => x.Key == 3 && x.Value == 4 ) );
         }
 
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTest1()
         {
             var first = new Dictionary<Int32, Int32>
@@ -50,12 +50,12 @@ namespace Extend.Testing
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionary( second );
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 0 && x.Value == 1 ) );
-            Assert.AreEqual( 1, actual.Count( x => x.Key == 1 && x.Value == 2 ) );
+            Assert.Equal( 2, actual.Count );
+            Assert.Equal( 1, actual.Count( x => x.Key == 0 && x.Value == 1 ) );
+            Assert.Equal( 1, actual.Count( x => x.Key == 1 && x.Value == 2 ) );
         }
 
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTest2()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -64,10 +64,10 @@ namespace Extend.Testing
             var second = new Dictionary<Int32, Int32>();
 
             var actual = first.ConcatToDictionary( second );
-            Assert.AreEqual( 0, actual.Count );
+            Assert.Equal( 0, actual.Count );
         }
 
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTestDuplicatedKeys()
         {
             var first = new Dictionary<Int32, Int32>
@@ -89,7 +89,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTestNullCheck()
         {
             var first = new Dictionary<Int32, Int32>
@@ -106,7 +106,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ConcatToDictionaryTestNullCheck1()
         {
             Dictionary<Int32, Int32> first = null;

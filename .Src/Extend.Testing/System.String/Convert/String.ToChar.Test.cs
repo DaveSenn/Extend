@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToCharInvalidLengthTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -20,7 +20,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharInvalidLengthTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -29,7 +29,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharNullTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -39,7 +39,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharTest()
         {
             var actual = "a".ToChar();

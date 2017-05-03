@@ -3,31 +3,30 @@
 using System;
 using System.Security;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class ExceptionExTest
     {
-        [Test]
+        [Fact]
         public void FormatExceptionInnerExceptionTest()
         {
-            var exception = new Exception( "some exception message", new SecurityException( "inner exception" ) );
+            var exception = new Exception( "some exception message", new InvalidOperationException( "inner exception" ) );
             var actual = exception.FormatException( x =>
-                                                    {
-                                                        x.AppendLine( "A new line" );
-                                                        x.AppendLine( "Another line" );
-                                                    } );
+            {
+                x.AppendLine( "A new line" );
+                x.AppendLine( "Another line" );
+            } );
 
             actual.Should()
-                  .Be(
-                      "Exception: some exception message\r\nA new line\r\nAnother line\r\n\r\n ---> System.Security.SecurityException: inner exception\r\nThe Zone of the assembly that failed was:\r\nMyComputer\r\n   --- End of inner exception stack trace ---\r\n" );
+                  .Be( "Exception: some exception message\r\nA new line\r\nAnother line\r\n\r\n ---> System.InvalidOperationException: inner exception\r\n   --- End of inner exception stack trace ---\r\n" );
         }
 
-        [Test]
+        [Fact]
         public void FormatExceptionNoActionTest()
         {
             var exception = new InvalidOperationException( "some exception message" );
@@ -37,7 +36,7 @@ namespace Extend.Testing
                   .Be( "InvalidOperationException: some exception message\r\n" );
         }
 
-        [Test]
+        [Fact]
         public void FormatExceptionNullTest()
         {
             Exception exception = null;
@@ -48,7 +47,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void FormatExceptionTest()
         {
             var exception = new InvalidOperationException( "some exception message" );

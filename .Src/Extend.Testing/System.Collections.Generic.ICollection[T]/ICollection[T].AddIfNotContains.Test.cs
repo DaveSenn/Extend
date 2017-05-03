@@ -3,32 +3,32 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CollectionTExTest
     {
-        [Test]
+        [Fact]
         public void AddIfNotContainsTest()
         {
             var c = new List<String>();
 
             var result = c.AddIfNotContains( RandomValueEx.GetRandomString() );
-            Assert.AreEqual( 1, c.Count );
-            Assert.IsTrue( result );
+            Assert.Equal( 1, c.Count );
+            Assert.True( result );
 
             var valueToAdd = RandomValueEx.GetRandomString();
             c.Add( valueToAdd );
             result = c.AddIfNotContains( valueToAdd );
-            Assert.AreEqual( 2, c.Count );
-            Assert.IsFalse( result );
+            Assert.Equal( 2, c.Count );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class MemberInformationTest
     {
-        [Test]
+        [Fact]
         public void MemberNameTest()
         {
             var target = new MemberInformation();
@@ -22,7 +22,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void MemberObjectTest()
         {
             var target = new MemberInformation();
@@ -32,7 +32,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void MemberPathTest()
         {
             var target = new MemberInformation();
@@ -42,7 +42,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void MemberTypeTest()
         {
             var target = new MemberInformation();
@@ -52,7 +52,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void PropertyInfoTest()
         {
             var target = new MemberInformation();

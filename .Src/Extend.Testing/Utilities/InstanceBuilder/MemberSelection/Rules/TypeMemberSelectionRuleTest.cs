@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class TypeMemberSelectionRuleTest
     {
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var expectedName = RandomValueEx.GetRandomString();
@@ -24,7 +24,7 @@ namespace Extend.Testing
                   .Be( expectedDescription );
         }
 
-        [Test]
+        [Fact]
         public void CtorTypeNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -33,7 +33,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.Is );
@@ -44,7 +44,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest1()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.Is );
@@ -55,7 +55,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest2()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.IsNot );
@@ -66,7 +66,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest3()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.IsNot );
@@ -77,7 +77,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest4()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Exclude, CompareMode.Is );
@@ -88,7 +88,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest5()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Exclude, CompareMode.Is );
@@ -99,7 +99,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest6()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Exclude, CompareMode.IsNot );
@@ -110,7 +110,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest7()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Exclude, CompareMode.IsNot );
@@ -121,7 +121,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest()
         {
             var target = new TypeMemberSelectionRule( typeof(String), MemberSelectionMode.Include, CompareMode.Is );
@@ -132,7 +132,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest1()
         {
             var target = new TypeMemberSelectionRule( typeof(Int32), MemberSelectionMode.Exclude, CompareMode.Is, "X", "Y" );
@@ -143,7 +143,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest2()
         {
             var target = new TypeMemberSelectionRule( typeof(Double), MemberSelectionMode.Include, CompareMode.IsNot, "1", "2" );
@@ -154,7 +154,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringTest3()
         {
             var target = new TypeMemberSelectionRule( typeof(Char), MemberSelectionMode.Exclude, CompareMode.IsNot, "10", "100" );

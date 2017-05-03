@@ -1,15 +1,15 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int32ExTest
     {
-        [Test]
+        [Fact]
         public void FactorOfTest()
         {
             var value = RandomValueEx.GetRandomInt32();
@@ -17,17 +17,17 @@ namespace Extend.Testing
 
             var expected = factorNumer % value == 0;
             var actual = value.FactorOf( factorNumer );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             value = 10;
             factorNumer = 100;
             actual = value.FactorOf( factorNumer );
-            Assert.AreEqual( true, actual );
+            Assert.Equal( true, actual );
 
             value = 11;
             factorNumer = 100;
             actual = value.FactorOf( factorNumer );
-            Assert.AreEqual( false, actual );
+            Assert.Equal( false, actual );
         }
     }
 }

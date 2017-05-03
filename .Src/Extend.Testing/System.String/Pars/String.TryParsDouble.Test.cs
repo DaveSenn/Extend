@@ -3,21 +3,19 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsDoubleInvalidValueTest()
         {
-            Double result;
-            var actual = "InvalidValue".ToString( CultureInfo.CurrentCulture )
-                                       .TryParsDouble( out result );
+            var actual = "InvalidValue".TryParsDouble( out Double result );
 
             result
                 .Should()
@@ -28,13 +26,12 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleNullTest()
         {
             String value = null;
-            Double result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDouble( out result );
+            var actual = value.TryParsDouble(out Double result);
 
             result
                 .Should()
@@ -45,7 +42,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleOverloadFormatProviderNullTest()
         {
             CultureInfo culture = null;
@@ -59,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleOverloadInvalidNumberStyleTest()
         {
             CultureInfo culture = null;
@@ -73,12 +70,11 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleOverloadInvalidValueTest()
         {
             Double result;
-            var actual = "InvalidValue".ToString( CultureInfo.InvariantCulture )
-                                       .TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out result );
+            var actual = "InvalidValue".TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out result );
 
             result
                 .Should()
@@ -89,7 +85,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleOverloadNullTest()
         {
             String value = null;
@@ -106,7 +102,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -124,7 +120,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsDoubleTest()
         {
             const Double expected = 100.123d;

@@ -3,16 +3,16 @@
 using System;
 using System.Text.RegularExpressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void MatchTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -20,13 +20,13 @@ namespace Extend.Testing
             const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Match( emaiLpattern );
-            Assert.IsTrue( actual.Success );
+            Assert.True( actual.Success );
 
             actual = invalidEmail.Match( emaiLpattern );
-            Assert.IsFalse( actual.Success );
+            Assert.False( actual.Success );
         }
 
-        [Test]
+        [Fact]
         public void MatchTest1()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -34,13 +34,13 @@ namespace Extend.Testing
             const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Match( emaiLpattern, RegexOptions.Compiled );
-            Assert.IsTrue( actual.Success );
+            Assert.True( actual.Success );
 
             actual = invalidEmail.Match( emaiLpattern, RegexOptions.Compiled );
-            Assert.IsFalse( actual.Success );
+            Assert.False( actual.Success );
         }
 
-        [Test]
+        [Fact]
         public void MatchTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -50,7 +50,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MatchTest1NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -60,7 +60,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MatchTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -70,7 +70,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MatchTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -81,7 +81,7 @@ namespace Extend.Testing
         }
 
 #if PORTABLE45
-        [Test]
+        [Fact]
         public void MatchTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -89,13 +89,13 @@ namespace Extend.Testing
             const String invalidEmail = "firstname.lastname-myDomain.com";
 
             var actual = validEmail.Match( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.IsTrue( actual.Success );
+            Assert.True( actual.Success );
 
             actual = invalidEmail.Match( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.IsFalse( actual.Success );
+            Assert.False( actual.Success );
         }
 
-        [Test]
+        [Fact]
         public void MatchTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -105,7 +105,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MatchTest2NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -115,7 +115,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MatchTimeoutTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";

@@ -28,12 +28,9 @@ namespace Extend
         {
             type.ThrowIfNull( nameof( type ) );
 
-#if PORTABLE45
+
             return type.GetRuntimeProperties()
                        .Where( x => x.GetMethod.IsPublic );
-#elif NET40
-            return type.GetProperties( BindingFlags.Public | BindingFlags.Instance );
-#endif
         }
     }
 }

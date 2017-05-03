@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void PartitionArgumentNullExceptionTest()
         {
             List<String> target = null;
@@ -25,7 +25,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void PartitionInvalidSizeTest()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -36,7 +36,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void PartitionNoItemsTest()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
@@ -48,7 +48,7 @@ namespace Extend.Testing
                   .HaveCount( 0 );
         }
 
-        [Test]
+        [Fact]
         public void PartitionTest()
         {
             var target = new List<String> { "a", "b", "c", "d", "e" };
@@ -78,7 +78,7 @@ namespace Extend.Testing
                      .Be( "e" );
         }
 
-        [Test]
+        [Fact]
         public void PartitionTest1()
         {
             var target = new List<String> { "a", "b", "c" };
@@ -100,7 +100,7 @@ namespace Extend.Testing
                      .Be( "c" );
         }
 
-        [Test]
+        [Fact]
         public void PartitionTest2()
         {
             var target = new List<String> { "a", "b", "c", "d", "e", "f" };
@@ -133,7 +133,7 @@ namespace Extend.Testing
                      .Be( "f" );
         }
 
-        [Test]
+        [Fact]
         public void PartitionTest3()
         {
             var target = new List<String> { "a", "b", "c", "d", "e", "f" };

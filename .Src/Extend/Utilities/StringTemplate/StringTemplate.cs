@@ -78,7 +78,7 @@ namespace Extend
             {
                 // Read the string to the end
                 var unprocessed = reader.ReadToEnd();
-                String errorMessage = $"Invalid format, expression is not closed; before: '{unprocessed}'";
+                var errorMessage = $"Invalid format, expression is not closed; before: '{unprocessed}'";
                 if ( unprocessed.Length <= 0 )
                     return errorMessage;
 

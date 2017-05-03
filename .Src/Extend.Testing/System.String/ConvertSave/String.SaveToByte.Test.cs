@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToByteInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToByte();
@@ -22,7 +22,7 @@ namespace Extend.Testing
                 .Be( default(Byte) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteInvalidValueWithDefaultValueTest()
         {
             const Byte expected = (Byte) 10;
@@ -33,7 +33,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteNullTest()
         {
             String value = null;
@@ -45,7 +45,7 @@ namespace Extend.Testing
                 .Be( default(Byte) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteOverloadInvalidNumberFormatTest()
         {
             const Byte expected = (Byte) 10;
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteOverloadInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToByte( NumberStyles.AllowDecimalPoint,
@@ -67,7 +67,7 @@ namespace Extend.Testing
                 .Be( default(Byte) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteOverloadInvalidValueWithDefaultValueTest()
         {
             const Byte expected = (Byte) 10;
@@ -80,17 +80,17 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteOverloadTest()
         {
             const Byte expected = (Byte) 10;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
                                  .SaveToByte( NumberStyles.Any, CultureInfo.InvariantCulture );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteOverloadTest1()
         {
             const Byte expected = (Byte) 10;
@@ -102,7 +102,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteTest()
         {
             const Byte expected = (Byte) 10;
@@ -114,7 +114,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteTestNullCheck1()
         {
             const Byte value = (Byte) 10;
@@ -127,7 +127,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToByteWithDefaultValueTest()
         {
             const Byte expected = (Byte) 10;

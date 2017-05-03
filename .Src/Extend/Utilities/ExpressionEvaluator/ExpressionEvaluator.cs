@@ -56,7 +56,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean EnableCaching
         {
-            get { return _enableCaching; }
+            get => _enableCaching;
             set
             {
                 _enableCaching = value;
@@ -175,8 +175,7 @@ namespace Extend
             Object indexValue = null;
             var parsedIndex = -1;
             if ( index.Length != 0 )
-                if ( ( index[0] == '"' && index[index.Length - 1] == '"' )
-                     || ( index[0] == '\'' && index[index.Length - 1] == '\'' ) )
+                if ( index[0] == '"' && index[index.Length - 1] == '"' || index[0] == '\'' && index[index.Length - 1] == '\'' )
                     // Must be a string value => remove the quotes
                     indexValue = index.Substring( 1, index.Length - 2 );
                 else
@@ -215,13 +214,8 @@ namespace Extend
                 // TODO: In which case do we enter this block?
 
                 // Get the Item property
-#if PORTABLE45
                 var propertyInfo = collectionProperty.GetType()
                                                      .GetRuntimeProperty( "Item" );
-#elif NET40
-                var propertyInfo = collectionProperty.GetType()
-                                                     .GetProperty( "Item", BindingFlags.Public | BindingFlags.Instance, null, null, new[] { indexValue.GetType() }, null );
-#endif
 
                 // Get the value from the property
                 if ( propertyInfo != null )
@@ -252,8 +246,7 @@ namespace Extend
                     .GetPublicProperties()
                     .ToList();
 
-            List<PropertyInfo> properties;
-            if ( PropertyCache.TryGetValue( containerType, out properties ) )
+            if (PropertyCache.TryGetValue(containerType, out List<PropertyInfo> properties))
                 return properties;
 
             properties = containerType.GetPublicProperties()

@@ -30,10 +30,7 @@ namespace Extend
         /// <param name="name">The name of the rule.</param>
         /// <param name="description">The description of the rule.</param>
         public AllMemberSelectionRule( MemberSelectionMode selectionMode, String name = null, String description = null )
-            : base( name, description )
-        {
-            _selectionMode = selectionMode;
-        }
+            : base( name, description ) => _selectionMode = selectionMode;
 
         #endregion
 

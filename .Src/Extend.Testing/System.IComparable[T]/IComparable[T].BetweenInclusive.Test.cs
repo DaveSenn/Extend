@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ComparableTExTest
     {
-        [Test]
+        [Fact]
         public void BetweenInclusiveTest()
         {
             const Int32 value = 100;
@@ -19,10 +19,10 @@ namespace Extend.Testing
             const Int32 max = 300;
 
             var actual = value.BetweenInclusive( min, max );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTest1()
         {
             const Int32 value = 100;
@@ -30,10 +30,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.BetweenInclusive( min, max );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTest2()
         {
             const Int32 value = 100;
@@ -41,10 +41,10 @@ namespace Extend.Testing
             const Int32 max = 99;
 
             var actual = value.BetweenInclusive( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTest3()
         {
             const Int32 value = 200;
@@ -52,10 +52,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.BetweenInclusive( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTest4()
         {
             const Int32 value = 2;
@@ -63,10 +63,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.BetweenInclusive( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -86,7 +86,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void BetweenInclusiveTestNullCheck2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

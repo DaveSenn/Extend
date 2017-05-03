@@ -4,10 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using JetBrains.Annotations;
-#if NET40
-using System.Linq;
-
-#endif
 
 #endregion
 
@@ -34,15 +30,9 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> GetAttributes<T>( [NotNull] this Assembly assembly ) where T : Attribute
         {
-            assembly.ThrowIfNull( nameof( assembly ) );
+            assembly.ThrowIfNull( nameof(assembly) );
 
-#if PORTABLE45
             return assembly.GetCustomAttributes<T>();
-#elif NET40
-            return assembly
-                .GetCustomAttributes( typeof(T), false )
-                .OfType<T>();
-#endif
         }
     }
 }

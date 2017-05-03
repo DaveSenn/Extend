@@ -2,105 +2,105 @@
 
 using System;
 using System.Globalization;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest()
         {
             const String culture = "en";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest1()
         {
             const String culture = "de-CH";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest2()
         {
             const String culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             var actual = culture.SafeToCultureInfo();
 
-            Assert.IsNull( actual );
+            Assert.Null( actual );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest3()
         {
             var culture = String.Empty;
             var actual = culture.SafeToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest4()
         {
             const String culture = "invalidCultureName";
             var actual = culture.SafeToCultureInfo();
 
-            Assert.IsNull( actual );
+            Assert.Null( actual );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest5()
         {
             const String culture = "en";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "it-CH" ) );
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest6()
         {
             const String culture = "de-CH";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "fr-CH" ) );
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest7()
         {
             const String culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             var actual = culture.SafeToCultureInfo( new CultureInfo( "de-CH" ) );
 
-            Assert.AreEqual( "de-CH", actual.Name );
+            Assert.Equal( "de-CH", actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest8()
         {
             var culture = String.Empty;
             var actual = culture.SafeToCultureInfo( new CultureInfo( "en-GB" ) );
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void SafeToCultureInfoTest9()
         {
             const String culture = "invalidCultureName";
             var actual = culture.SafeToCultureInfo( new CultureInfo( "es" ) );
 
-            Assert.AreEqual( "es", actual.Name );
+            Assert.Equal( "es", actual.Name );
         }
     }
 }

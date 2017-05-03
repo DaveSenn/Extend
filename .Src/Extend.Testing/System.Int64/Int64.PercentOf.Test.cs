@@ -2,36 +2,36 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void PercentOfTest()
         {
             const Int64 number = 1000;
             const Int32 expected = 50;
             var actual = number.PercentOf( (Int64) 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest1()
         {
             const Int64 number = 1000;
             const Int32 expected = 50;
             var actual = number.PercentOf( (Double) 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest1DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -40,17 +40,17 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest2()
         {
             const Int64 number = 1000;
             const Int32 expected = 50;
             var actual = number.PercentOf( (Int64) 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest2DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -59,17 +59,17 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest3()
         {
             const Int64 number = 1000;
             const Int32 expected = 50;
             var actual = number.PercentOf( 500 );
 
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTest3DivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -78,7 +78,7 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void PercentOfTestDivideByZero()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

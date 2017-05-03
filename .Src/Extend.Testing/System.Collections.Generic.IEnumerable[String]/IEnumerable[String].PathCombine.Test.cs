@@ -4,26 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public class IEnumerableStringExTest
     {
-        [Test]
+        [Fact]
         public void PathCombineTest()
         {
             var list = new List<String> { @"C:\", "Temp", "Test", "test.xml" };
             var expected = Path.Combine( list.ToArray() );
             var actual = list.PathCombine();
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void PathCombineTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

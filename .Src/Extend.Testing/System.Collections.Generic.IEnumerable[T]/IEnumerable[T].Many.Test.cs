@@ -3,44 +3,44 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ManyTest()
         {
             var list = new List<String>();
-            Assert.IsFalse( list.Many() );
+            Assert.False( list.Many() );
 
             list = RandomValueEx.GetRandomStrings( 1 );
-            Assert.IsFalse( list.Many() );
+            Assert.False( list.Many() );
 
             list = RandomValueEx.GetRandomStrings( 10 );
-            Assert.IsTrue( list.Many() );
+            Assert.True( list.Many() );
         }
 
-        [Test]
+        [Fact]
         public void ManyTest1()
         {
             var list = new List<String>();
-            Assert.IsFalse( list.Many( x => true ) );
+            Assert.False( list.Many( x => true ) );
 
             list = RandomValueEx.GetRandomStrings( 1 );
-            Assert.IsFalse( list.Many( x => true ) );
+            Assert.False( list.Many( x => true ) );
 
             list = RandomValueEx.GetRandomStrings( 10 );
-            Assert.IsFalse( list.Many( x => false ) );
-            Assert.IsTrue( list.Many( x => true ) );
+            Assert.False( list.Many( x => false ) );
+            Assert.True( list.Many( x => true ) );
         }
 
-        [Test]
+        [Fact]
         public void ManyTest1NullCheck()
         {
             List<Object> list = null;
@@ -51,7 +51,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ManyTest1NullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -61,7 +61,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ManyTestNullCheck()
         {
             List<Object> list = null;

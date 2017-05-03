@@ -2,30 +2,30 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void SpecificationTest()
         {
             var target = 11;
             var actual = target.Specification( x => x > 10 && x < 200 );
 
             var result = actual.IsSatisfiedBy( target );
-            Assert.IsTrue( result );
+            Assert.True( result );
 
             target = 200;
             result = actual.IsSatisfiedBy( target );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void SpecificationTestNullCheck()
         {
             Func<Int32, Boolean> expression = null;

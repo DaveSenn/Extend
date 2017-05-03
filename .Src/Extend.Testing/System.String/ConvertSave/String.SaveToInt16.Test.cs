@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToInt16InvalidValueDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16InvalidValueTest()
         {
             var actual = "InvalidValue".SaveToInt16();
@@ -33,7 +33,7 @@ namespace Extend.Testing
                 .Be( default(Int16) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16NullDefaultTest()
         {
             String value = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16NullTest()
         {
             String value = null;
@@ -58,7 +58,7 @@ namespace Extend.Testing
                 .Be( default(Int16) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadFormatProviderNullTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -68,7 +68,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadInvalidNumberStyleTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -77,7 +77,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToInt16( NumberStyles.Any, CultureInfo.InvariantCulture );
@@ -87,7 +87,7 @@ namespace Extend.Testing
                 .Be( default(Int16) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadInvalidValueWithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -98,7 +98,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadNullTest()
         {
             String value = null;
@@ -110,7 +110,7 @@ namespace Extend.Testing
                 .Be( default(Int16) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadNullWithDefaultTest()
         {
             String value = null;
@@ -123,7 +123,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -135,7 +135,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16OverloadWitDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -147,7 +147,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16Test()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -159,7 +159,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToInt16WithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt16();

@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void GetLinesArgumentNullExceptionTest()
         {
             String value = null;
@@ -24,7 +24,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetLinesTest()
         {
             var text = "Line1" + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" + Environment.NewLine + "Line4" + Environment.NewLine;
@@ -44,7 +44,7 @@ namespace Extend.Testing
                      .Be( "Line4" );
         }
 
-        [Test]
+        [Fact]
         public void GetLinesTest1()
         {
             var text = "Line1" + Environment.NewLine + Environment.NewLine + "Line2" + Environment.NewLine + "Line3" + Environment.NewLine + "Line4" + Environment.NewLine;
@@ -66,7 +66,7 @@ namespace Extend.Testing
                      .Be( "Line4" );
         }
 
-        [Test]
+        [Fact]
         public void GetLinesTest2()
         {
             var actual = "".GetLines()

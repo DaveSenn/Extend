@@ -3,31 +3,31 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class EnumExTest
     {
-        [Test]
+        [Fact]
         public void GetValuesTest()
         {
             var actual = EnumEx.GetValues<DayOfWeek>()
                                .ToList();
-            Assert.AreEqual( 7, actual.Count );
-            Assert.AreEqual( DayOfWeek.Sunday, actual[0] );
-            Assert.AreEqual( DayOfWeek.Monday, actual[1] );
-            Assert.AreEqual( DayOfWeek.Tuesday, actual[2] );
-            Assert.AreEqual( DayOfWeek.Wednesday, actual[3] );
-            Assert.AreEqual( DayOfWeek.Thursday, actual[4] );
-            Assert.AreEqual( DayOfWeek.Friday, actual[5] );
-            Assert.AreEqual( DayOfWeek.Saturday, actual[6] );
+            Assert.Equal( 7, actual.Count );
+            Assert.Equal( DayOfWeek.Sunday, actual[0] );
+            Assert.Equal( DayOfWeek.Monday, actual[1] );
+            Assert.Equal( DayOfWeek.Tuesday, actual[2] );
+            Assert.Equal( DayOfWeek.Wednesday, actual[3] );
+            Assert.Equal( DayOfWeek.Thursday, actual[4] );
+            Assert.Equal( DayOfWeek.Friday, actual[5] );
+            Assert.Equal( DayOfWeek.Saturday, actual[6] );
         }
 
-        [Test]
+        [Fact]
         public void GetValuesTest1()
         {
             var type = typeof(DayOfWeek);
@@ -37,17 +37,17 @@ namespace Extend.Testing
             var list = casted.Select( x => Convert.ChangeType( x, type ) )
                              .ToList();
 
-            Assert.AreEqual( 7, list.Count );
-            Assert.AreEqual( DayOfWeek.Sunday, list[0] );
-            Assert.AreEqual( DayOfWeek.Monday, list[1] );
-            Assert.AreEqual( DayOfWeek.Tuesday, list[2] );
-            Assert.AreEqual( DayOfWeek.Wednesday, list[3] );
-            Assert.AreEqual( DayOfWeek.Thursday, list[4] );
-            Assert.AreEqual( DayOfWeek.Friday, list[5] );
-            Assert.AreEqual( DayOfWeek.Saturday, list[6] );
+            Assert.Equal( 7, list.Count );
+            Assert.Equal( DayOfWeek.Sunday, list[0] );
+            Assert.Equal( DayOfWeek.Monday, list[1] );
+            Assert.Equal( DayOfWeek.Tuesday, list[2] );
+            Assert.Equal( DayOfWeek.Wednesday, list[3] );
+            Assert.Equal( DayOfWeek.Thursday, list[4] );
+            Assert.Equal( DayOfWeek.Friday, list[5] );
+            Assert.Equal( DayOfWeek.Saturday, list[6] );
         }
 
-        [Test]
+        [Fact]
         public void GetValuesTestArgumentExceptionCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValuesTestArgumentExceptionCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -65,7 +65,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValuesTestArgumentNullException()
         {
             Type t = null;

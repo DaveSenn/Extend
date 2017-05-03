@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void WhereNotCollectionNullTest()
         {
             List<Int32> target = null;
@@ -27,7 +27,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void WhereNotSpecificationNullTest()
         {
             var target = new List<Int32> { 1, 10, 100, 1000 };
@@ -40,7 +40,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void WhereNotTest()
         {
             var target = new List<Int32> { 1, 10, 100, 1000 };
@@ -48,9 +48,9 @@ namespace Extend.Testing
 
             var actual = target.WhereNot( specification )
                                .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 1, actual.Count( x => x == 1 ) );
-            Assert.AreEqual( 1, actual.Count( x => x == 10 ) );
+            Assert.Equal( 2, actual.Count );
+            Assert.Equal( 1, actual.Count( x => x == 1 ) );
+            Assert.Equal( 1, actual.Count( x => x == 10 ) );
         }
     }
 }

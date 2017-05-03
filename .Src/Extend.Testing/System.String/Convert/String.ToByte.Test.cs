@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToByteInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -21,7 +21,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteNullTest()
         {
             String value = null;
@@ -33,7 +33,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteOverflowTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -42,7 +42,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteTest()
         {
             const Byte value = (Byte) 1;
@@ -54,7 +54,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToByteWithFormatFormatNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteWithFormatInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -73,7 +73,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteWithFormatOverflowTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -82,7 +82,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToByteWithFormatTest()
         {
             const Byte value = (Byte) 1;
@@ -94,7 +94,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToByteWithFormatValueNullTest()
         {
             String value = null;

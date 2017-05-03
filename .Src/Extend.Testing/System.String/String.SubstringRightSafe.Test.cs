@@ -2,29 +2,29 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SubstringRightSafeTest()
         {
             var actual = "testabc".SubstringRightSafe( 3 );
-            Assert.AreEqual( "abc", actual );
+            Assert.Equal( "abc", actual );
 
             actual = "testabc".SubstringRightSafe( 300 );
-            Assert.AreEqual( "testabc", actual );
+            Assert.Equal( "testabc", actual );
 
             actual = "".SubstringRightSafe( 300 );
-            Assert.AreEqual( "", actual );
+            Assert.Equal( "", actual );
         }
 
-        [Test]
+        [Fact]
         public void SubstringRightSafeTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

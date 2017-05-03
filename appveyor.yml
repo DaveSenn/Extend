@@ -16,33 +16,44 @@ skip_commits:
 #---------------------------------
 
 # Version format
-version: 1.1.11.{build}
+# version: '{build}'
+version: 1.2.0.{build}
+
+pull_requests:
+  # Do not increment build number for pull requests
+  do_not_increment_build_number: true
+
+nuget:
+  # Do not publish NuGet packages for pull requests
+  disable_publish_on_pr: true
 
 # Patch assembly info
-assembly_info:
-  patch: true
-  file: AssemblyInfo.*
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+#assembly_info:
+#  patch: true
+#  file: AssemblyInfo.*
+#  assembly_version: '{version}'
+#  assembly_file_version: '{version}'
+#  assembly_informational_version: '{version}'
 
 # Cache configuration
-cache:
-  # Cache NuGet packages until packages.config changes
-  - .Src\packages -> **\packages.config
+#cache:
+#  # Cache NuGet packages until packages.config changes
+#  - .Src\packages -> **\packages.config
 
 #---------------------------------
 # Build configuration
 #---------------------------------
 
-# Build OS
-os: Visual Studio 2015
-
+# Set the build worker image
+image: Visual Studio 2017
+build:
+  verbosity: minimal
+  
 # Build configuration
 configuration: Release
 
 # Build platform
-platform: Any CPU
+# platform: Any CPU
 
 # Environment variables
 environment:
@@ -57,16 +68,14 @@ environment:
 
 # Script to build all the solution
 build_script:
-- ps: .Build\RunBuild.ps1 CI
+- ps: .Build\Build.ps1
 
 #---------------------------------
 # Testing
 #---------------------------------
 
-test:
-  assemblies:
-    - .Src\Extend.Testing\bin\$(configuration)\Portable\Extend.Testing.dll
-    - .Src\Extend.Testing\bin\$(configuration)\Net40\Extend.Testing.dll
+# Disable tests (Test are getting started by the build script)
+test: off
 
 #---------------------------------
 # After build
@@ -74,13 +83,18 @@ test:
 
 # Define artifacts
 artifacts:
-  - path: Output
-  - path: 'Output\NuGet\*.nupkg'
+  - path: .Output
+  - path: '.Output\**\*.nupkg'
     name: NuGetPackage.nupkg
 
 # Deploy to NuGet
-#deploy:
-#  provider: NuGet
-#  api_key:
-#    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
-#  artifact: /.*\.nupkg/
+deploy:
+  provider: NuGet
+  api_key:
+    secure: EuMTEOZnx2khhY8a77sGO/tC4STC3rZe2eABB2Bq33dXoIHnATxMnMnMoOohn7eQ
+  artifact: /.*\.nupkg/
+#  on:
+#    # Only publish from the master branch
+#    branch: master
+#    # Only publish if the trigger was a Git tag
+#    appveyor_repo_tag: true

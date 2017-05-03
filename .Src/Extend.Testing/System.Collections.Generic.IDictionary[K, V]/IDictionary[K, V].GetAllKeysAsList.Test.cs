@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void GetAllKeysAsListCaseNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
@@ -25,7 +25,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetAllKeysAsListTest()
         {
             var dictionary = new Dictionary<String, String>
@@ -35,7 +35,7 @@ namespace Extend.Testing
             };
 
             var allKeys = dictionary.GetAllKeysAsList();
-            Assert.IsTrue( dictionary.All( x => allKeys.Contains( x.Key ) ) );
+            Assert.True( dictionary.All( x => allKeys.Contains( x.Key ) ) );
         }
     }
 }

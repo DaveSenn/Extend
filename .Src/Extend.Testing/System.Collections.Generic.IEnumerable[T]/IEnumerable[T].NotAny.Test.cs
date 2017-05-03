@@ -3,39 +3,39 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void NotAnyTest()
         {
             var list = new List<String>();
-            Assert.IsTrue( list.NotAny() );
+            Assert.True( list.NotAny() );
 
             list.Add( RandomValueEx.GetRandomString() );
-            Assert.IsFalse( list.NotAny() );
+            Assert.False( list.NotAny() );
         }
 
-        [Test]
+        [Fact]
         public void NotAnyTest1()
         {
             var list = new List<String>();
-            Assert.IsTrue( list.NotAny( x => true ) );
-            Assert.IsTrue( list.NotAny( x => false ) );
+            Assert.True( list.NotAny( x => true ) );
+            Assert.True( list.NotAny( x => false ) );
 
             list.Add( RandomValueEx.GetRandomString() );
-            Assert.IsFalse( list.NotAny( x => true ) );
-            Assert.IsTrue( list.NotAny( x => false ) );
+            Assert.False( list.NotAny( x => true ) );
+            Assert.True( list.NotAny( x => false ) );
         }
 
-        [Test]
+        [Fact]
         public void NotAnyTest1NullCheck()
         {
             List<Object> list = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void NotAnyTest1NullCheck1()
         {
             Func<Object, Boolean> func = null;
@@ -57,7 +57,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void NotAnyTestNullCheck()
         {
             List<Object> list = null;

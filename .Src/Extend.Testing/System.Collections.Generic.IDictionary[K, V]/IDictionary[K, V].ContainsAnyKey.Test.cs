@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTest()
         {
             var dictionary = new Dictionary<String, String>
@@ -23,19 +23,19 @@ namespace Extend.Testing
                 { RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString() }
             };
 
-            Assert.IsTrue( dictionary.ContainsAnyKey( dictionary.First()
+            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
                                                                 .Key,
                                                       dictionary.Last()
                                                                 .Key ) );
-            Assert.IsTrue( dictionary.ContainsAnyKey( dictionary.First()
+            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
                                                                 .Key ) );
-            Assert.IsTrue( dictionary.ContainsAnyKey( dictionary.First()
+            Assert.True( dictionary.ContainsAnyKey( dictionary.First()
                                                                 .Key,
                                                       "test" ) );
-            Assert.IsFalse( dictionary.ContainsAnyKey( "test" ) );
+            Assert.False( dictionary.ContainsAnyKey( "test" ) );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTest1()
         {
             var dictionary = new Dictionary<String, String>
@@ -45,16 +45,16 @@ namespace Extend.Testing
             };
 
             var keys = dictionary.GetAllKeysAsList();
-            Assert.IsTrue( dictionary.ContainsAnyKey( keys ) );
+            Assert.True( dictionary.ContainsAnyKey( keys ) );
 
             keys.RemoveAt( 0 );
             keys.Add( "test" );
-            Assert.IsTrue( dictionary.ContainsAnyKey( keys ) );
+            Assert.True( dictionary.ContainsAnyKey( keys ) );
 
-            Assert.IsFalse( dictionary.ContainsAnyKey( new List<String> { "test", "test2" } ) );
+            Assert.False( dictionary.ContainsAnyKey( new List<String> { "test", "test2" } ) );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTest1NullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
@@ -65,7 +65,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTest1NullCheck1()
         {
             IEnumerable<Object> keys = null;
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTestNullCheck()
         {
             Dictionary<Object, Object> dictionary = null;
@@ -87,7 +87,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyKeyTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

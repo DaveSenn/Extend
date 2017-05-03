@@ -5,16 +5,17 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Internal.Testing
 {
-    [TestFixture]
+    [Collection("InstanceCreator")]
+
     public class ObjectValueProviderTest
     {
-        [Test]
+        [Fact]
         public void CtorNullRefrenceTest()
         {
             // ReSharper disable once ObjectCreationAsStatement
@@ -24,7 +25,7 @@ namespace Extend.Internal.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var actual = new ObjectValueProvider( new TestModel() );
@@ -32,7 +33,17 @@ namespace Extend.Internal.Testing
                   .NotBeNull();
         }
 
-        [Test]
+        [Fact]
+        public void GetValueInvalidExpressionTest()
+        {
+            var model = InstanceCreator.CreateInstance<TestModel>();
+            var target = new ObjectValueProvider( model );
+
+            Action test = () => target.GetValue( "DOESNotExist" );
+            test.ShouldThrow<FormatException>();
+        }
+
+        [Fact]
         public void GetValueTest()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -43,7 +54,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyString );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest1()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -54,7 +65,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyInt32.ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest10()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -67,7 +78,7 @@ namespace Extend.Internal.Testing
                                                                  .Key] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest2()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -78,7 +89,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyDouble.ToString( CultureInfo.InvariantCulture ) );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest3()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -89,7 +100,7 @@ namespace Extend.Internal.Testing
                   .Be( model.MyStringArray[0] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest4()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -97,10 +108,11 @@ namespace Extend.Internal.Testing
 
             var actual = target.GetValue( "MyInt32Array[0]" );
             actual.Should()
-                  .Be( model.MyInt32Array[0].ToString() );
+                  .Be( model.MyInt32Array[0]
+                            .ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest5()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -111,18 +123,27 @@ namespace Extend.Internal.Testing
                   .Be( model.MyListString[0] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest6()
         {
-            var model = InstanceCreator.CreateInstance<TestModel>();
+            var model = new TestModel
+            {
+                MyListInt = new List<Int32>
+                {
+                    RandomValueEx.GetRandomInt32(),
+                    RandomValueEx.GetRandomInt32(),
+                    RandomValueEx.GetRandomInt32()
+                }
+            };
             var target = new ObjectValueProvider( model );
 
             var actual = target.GetValue( "MyListInt[0]" );
             actual.Should()
-                  .Be( model.MyListInt[0].ToString() );
+                  .Be( model.MyListInt[0]
+                            .ToString() );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest7()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -135,7 +156,7 @@ namespace Extend.Internal.Testing
                                                      .Key] );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest8()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -146,7 +167,7 @@ namespace Extend.Internal.Testing
                   .Be( model.SubModel.MyStringSub );
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest9()
         {
             var model = InstanceCreator.CreateInstance<TestModel>();
@@ -157,20 +178,35 @@ namespace Extend.Internal.Testing
                   .Be( model.SubModel.MyStringArraySub[0] );
         }
 
-        [Test]
-        public void GetValueInvalidExpressionTest()
-        {
-            var model = InstanceCreator.CreateInstance<TestModel>();
-            var target = new ObjectValueProvider(model);
+        #region Nested Types
 
-            Action test = () => target.GetValue("DOESNotExist");
-            test.ShouldThrow<FormatException>();
+        private class SubModel
+        {
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
+            public String MyStringSub { get; set; }
+
+            public Int32 MyInt32Sub { get; set; }
+
+            public Double MyDoubleSub { get; set; }
+
+            public String[] MyStringArraySub { get; set; }
+
+            public Int32[] MyInt32ArraySub { get; set; }
+
+            public List<String> MyListStringSub { get; set; }
+
+            public List<Int32> MyListIntSub { get; set; }
+
+            public Dictionary<String, String> MyDictionaryStringSub { get; set; }
+            // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
         }
 
         private class TestModel
         {
-            #region Properties
-
             // ReSharper disable UnusedAutoPropertyAccessor.Local
             // ReSharper disable CollectionNeverUpdated.Local
             // ReSharper disable UnusedMember.Local
@@ -194,156 +230,8 @@ namespace Extend.Internal.Testing
             // ReSharper restore UnusedMember.Local
             // ReSharper restore CollectionNeverUpdated.Local
             // ReSharper restore UnusedAutoPropertyAccessor.Local
-
-            #endregion
         }
 
-        private class SubModel
-        {
-            #region Properties
-
-            // ReSharper disable UnusedAutoPropertyAccessor.Local
-            // ReSharper disable CollectionNeverUpdated.Local
-            // ReSharper disable UnusedMember.Local
-            public String MyStringSub { get; set; }
-
-            public Int32 MyInt32Sub { get; set; }
-
-            public Double MyDoubleSub { get; set; }
-
-            public String[] MyStringArraySub { get; set; }
-
-            public Int32[] MyInt32ArraySub { get; set; }
-
-            public List<String> MyListStringSub { get; set; }
-
-            public List<Int32> MyListIntSub { get; set; }
-
-            public Dictionary<String, String> MyDictionaryStringSub { get; set; }
-            // ReSharper restore UnusedMember.Local
-            // ReSharper restore CollectionNeverUpdated.Local
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
-
-            #endregion
-        }
-
-        /*
-
-
-                        [Test]
-                        public void GetValueFalseFormatTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyInt", DateTime.Now }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var actual = target.GetValue( "MyInt:DD" );
-                            actual.Should()
-                                  .Be( "DD" );
-                        }
-
-                        [Test]
-                        public void GetValueMissingKeyTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", "asdf" }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            Action test = () => target.GetValue( "MyInt" );
-                            test.ShouldThrow<FormatException>()
-                                .WithInnerException<KeyNotFoundException>();
-                        }
-
-                        [Test]
-                        public void GetValueMissingKeyWithFormatTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", "asdf" }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            Action test = () => target.GetValue( "MyInt:000" );
-                            test.ShouldThrow<FormatException>()
-                                .WithInnerException<KeyNotFoundException>();
-                        }
-
-                        [Test]
-                        public void GetValueNoneStringTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", "asdf" },
-                                { "MyInt", 1234 }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var value = target.GetValue( "MyInt" );
-                            value.Should()
-                                 .Be( "1234" );
-                        }
-
-                        [Test]
-                        public void GetValueNullValueTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", null }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var value = target.GetValue( "MyString" );
-                            value.Should()
-                                 .BeNull();
-                        }
-
-                        [Test]
-                        public void GetValueNullValueWithFormatTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", null }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var value = target.GetValue( "MyString:00000" );
-                            value.Should()
-                                 .BeEmpty();
-                        }
-
-                        [Test]
-                        public void GetValueTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", "asdf" }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var value = target.GetValue( "MyString" );
-                            value.Should()
-                                 .Be( "asdf" );
-                        }
-
-                        [Test]
-                        public void GetValueWithFormatTest()
-                        {
-                            var values = new Dictionary<String, Object>
-                            {
-                                { "MyString", "asdf" },
-                                { "MyInt", 1234 }
-                            };
-                            var target = new ObjectValueProvider( values );
-
-                            var value = target.GetValue( "MyInt:000000" );
-                            value.Should()
-                                 .Be( "001234" );
-                        }
-
-                        */
+        #endregion
     }
 }

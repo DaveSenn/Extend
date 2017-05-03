@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int32ExTest
     {
-        [Test]
+        [Fact]
         public void DaysInMonthTest()
         {
             var year = RandomValueEx.GetRandomInt32( 1990, 2015 );
@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             var expected = DateTime.DaysInMonth( year, month );
             var actual = year.DaysInMonth( month );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

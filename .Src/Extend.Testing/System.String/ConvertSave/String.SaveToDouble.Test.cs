@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToDoubleInvalidNullTest()
         {
             String value = null;
@@ -25,7 +25,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToDouble();
@@ -35,7 +35,7 @@ namespace Extend.Testing
                 .Be( default(Double) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleInvalidValueWithDefaultTest()
         {
             const Double expected = 123.12334d;
@@ -46,7 +46,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadInvalidNumberStyleTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -65,7 +65,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToDouble( NumberStyles.Any, CultureInfo.InvariantCulture );
@@ -75,7 +75,7 @@ namespace Extend.Testing
                 .Be( default(Double) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadInvalidValueWithDefaultTest()
         {
             const Double expected = 12345234.1321d;
@@ -86,7 +86,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadNullTest()
         {
             String value = null;
@@ -98,7 +98,7 @@ namespace Extend.Testing
                 .Be( default(Double) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleOverloadTest()
         {
             const Double expected = 12345234.1321d;
@@ -110,7 +110,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleTest()
         {
             const Double expected = 100.1d;
@@ -122,7 +122,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDoubleWithDefaultTest()
         {
             const Double expected = 100.1d;

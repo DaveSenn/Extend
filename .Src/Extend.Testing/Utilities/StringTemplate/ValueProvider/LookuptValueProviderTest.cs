@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Internal.Testing
 {
-    [TestFixture]
+    
     public class LookuptValueProviderTest
     {
-        [Test]
+        [Fact]
         public void CtorNullRefrenceTest()
         {
             // ReSharper disable once ObjectCreationAsStatement
@@ -22,7 +22,7 @@ namespace Extend.Internal.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValueFalseFormatTest()
         {
             var values = new Dictionary<String, Object>
@@ -36,7 +36,7 @@ namespace Extend.Internal.Testing
                   .Be( "DD" );
         }
 
-        [Test]
+        [Fact]
         public void GetValueMissingKeyTest()
         {
             var values = new Dictionary<String, Object>
@@ -50,7 +50,7 @@ namespace Extend.Internal.Testing
                 .WithInnerException<KeyNotFoundException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValueMissingKeyWithFormatTest()
         {
             var values = new Dictionary<String, Object>
@@ -64,7 +64,7 @@ namespace Extend.Internal.Testing
                 .WithInnerException<KeyNotFoundException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValueNoneStringTest()
         {
             var values = new Dictionary<String, Object>
@@ -79,7 +79,7 @@ namespace Extend.Internal.Testing
                  .Be( "1234" );
         }
 
-        [Test]
+        [Fact]
         public void GetValueNullValueTest()
         {
             var values = new Dictionary<String, Object>
@@ -93,7 +93,7 @@ namespace Extend.Internal.Testing
                  .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void GetValueNullValueWithFormatTest()
         {
             var values = new Dictionary<String, Object>
@@ -107,7 +107,7 @@ namespace Extend.Internal.Testing
                  .BeEmpty();
         }
 
-        [Test]
+        [Fact]
         public void GetValueTest()
         {
             var values = new Dictionary<String, Object>
@@ -121,7 +121,7 @@ namespace Extend.Internal.Testing
                  .Be( "asdf" );
         }
 
-        [Test]
+        [Fact]
         public void GetValueWithFormatTest()
         {
             var values = new Dictionary<String, Object>

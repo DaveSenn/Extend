@@ -3,35 +3,35 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ExecuteSafeTest()
         {
             var expectedValue = RandomValueEx.GetRandomString();
-            var actual = expectedValue.ExecuteSafe( x => { throw new InvalidOperationException( expectedValue ); } );
+            var actual = expectedValue.ExecuteSafe( x => throw new InvalidOperationException( expectedValue ) );
 
-            Assert.IsNull( actual.Result );
-            Assert.IsNotNull( actual.Exception );
-            Assert.AreEqual( expectedValue, actual.Exception.Message );
+            Assert.Null( actual.Result );
+            Assert.NotNull( actual.Exception );
+            Assert.Equal( expectedValue, actual.Exception.Message );
 
             var list = new List<String>();
-            Assert.IsTrue( list.NotAny() );
+            Assert.True( list.NotAny() );
             actual = expectedValue.ExecuteSafe( list.Add );
 
-            Assert.IsNull( actual.Exception );
-            Assert.AreEqual( expectedValue, actual.Result );
-            Assert.AreEqual( list[0], expectedValue );
+            Assert.Null( actual.Exception );
+            Assert.Equal( expectedValue, actual.Result );
+            Assert.Equal( list[0], expectedValue );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteSafeTest1()
         {
             var expectedValue = RandomValueEx.GetRandomString();
@@ -42,17 +42,17 @@ namespace Extend.Testing
                                                         return expectedValue;
                                                     } );
 
-            Assert.IsNull( actual.Result );
-            Assert.IsNotNull( actual.Exception );
-            Assert.AreEqual( expectedValue, actual.Exception.Message );
+            Assert.Null( actual.Result );
+            Assert.NotNull( actual.Exception );
+            Assert.Equal( expectedValue, actual.Exception.Message );
 
             actual = expectedValue.ExecuteSafe( x => expectedValue );
 
-            Assert.IsNull( actual.Exception );
-            Assert.AreEqual( actual.Result, expectedValue );
+            Assert.Null( actual.Exception );
+            Assert.Equal( actual.Result, expectedValue );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteSafeTest1NullCheck()
         {
             Func<String, String> func = null;
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteSafeTestNullCheck()
         {
             Action<String> action = null;

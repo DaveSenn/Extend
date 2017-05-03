@@ -2,23 +2,23 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractTest()
         {
             var actual = "abcabc".Extract( x => x == 'a' );
-            Assert.AreEqual( "aa", actual );
+            Assert.Equal( "aa", actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -28,7 +28,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

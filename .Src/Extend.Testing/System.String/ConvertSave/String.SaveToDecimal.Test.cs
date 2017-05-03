@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToDecimalFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalInvalidNumberStyleTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -34,7 +34,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToDecimal();
@@ -44,7 +44,7 @@ namespace Extend.Testing
                 .Be( default(Decimal) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalInvalidValueWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -55,7 +55,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalNullTest()
         {
             String value = null;
@@ -68,7 +68,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalOverloadInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
@@ -78,7 +78,7 @@ namespace Extend.Testing
                 .Be( default(Decimal) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalOverloadInvalidValueWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -89,7 +89,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalOverloadNullTest()
         {
             String value = null;
@@ -101,7 +101,7 @@ namespace Extend.Testing
                 .Be( default(Decimal) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalOverloadTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -113,7 +113,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalOverloadWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.1523 );
@@ -125,7 +125,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
@@ -137,7 +137,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDecimalWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );

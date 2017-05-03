@@ -4,29 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ForEachTest()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
             var actual = IEnumerableTEx.ForEach( list, otherList.Add );
-            Assert.AreSame( list, actual );
-            Assert.AreEqual( list.Count, otherList.Count );
-            Assert.IsTrue( list.All( otherList.Contains ) );
+            Assert.Same( list, actual );
+            Assert.Equal( list.Count, otherList.Count );
+            Assert.True( list.All( otherList.Contains ) );
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest1()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -37,7 +37,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest1NullCheck()
         {
             List<Object> list = null;
@@ -48,7 +48,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest1NullCheck1()
         {
             Action<Object, Int32> action = null;
@@ -59,19 +59,19 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest2()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var otherList = new List<String>();
 
             var actual = IEnumerableTEx.ForEach( list, otherList.Add );
-            Assert.AreSame( list, actual );
-            Assert.AreEqual( list.Count, otherList.Count );
-            Assert.IsTrue( list.All( otherList.Contains ) );
+            Assert.Same( list, actual );
+            Assert.Equal( list.Count, otherList.Count );
+            Assert.True( list.All( otherList.Contains ) );
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest3()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
@@ -82,18 +82,18 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachTest4()
         {
             var list = RandomValueEx.GetRandomStrings( 10 );
             var total = 0;
             var actual = list.ForEach( ( x, i ) => total += i );
 
-            Assert.AreSame( list, actual );
-            Assert.AreEqual( 45, total );
+            Assert.Same( list, actual );
+            Assert.Equal( 45, total );
         }
 
-        [Test]
+        [Fact]
         public void ForEachTestNullCheck()
         {
             List<Object> list = null;
@@ -104,7 +104,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForEachTestNullCheck1()
         {
             Action<Object> action = null;

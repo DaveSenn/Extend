@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void StringJoinTest()
         {
             var dictionary = new Dictionary<String, String>
@@ -32,7 +32,7 @@ namespace Extend.Testing
                                                          .Key,
                                                dictionary.Last()
                                                          .Value );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             actual = dictionary.StringJoin( ",", ";" );
             expected = "{0},{1};{2},{3}".F( dictionary.First()
@@ -43,10 +43,10 @@ namespace Extend.Testing
                                                       .Key,
                                             dictionary.Last()
                                                       .Value );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void StringJoinTestNullCheck()
         {
             Dictionary<String, String> dictionary = null;

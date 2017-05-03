@@ -3,30 +3,30 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CollectionTExTest
     {
-        [Test]
+        [Fact]
         public void AddIfTest()
         {
             var c = new List<String>();
 
             var result = c.AddIf( x => true, RandomValueEx.GetRandomString() );
-            Assert.AreEqual( 1, c.Count );
-            Assert.IsTrue( result );
+            Assert.Equal( 1, c.Count );
+            Assert.True( result );
 
             result = c.AddIf( x => false, RandomValueEx.GetRandomString() );
-            Assert.AreEqual( 1, c.Count );
-            Assert.IsFalse( result );
+            Assert.Equal( 1, c.Count );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void AddIfTestNullCheck()
         {
             List<String> c = null;
@@ -36,7 +36,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfTestNullCheck1()
         {
             var c = new List<String>();

@@ -3,48 +3,48 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CollectionTExTest
     {
-        [Test]
+        [Fact]
         public void RemoveRangeIfTest()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
             list.AddRange( values );
-            Assert.AreEqual( values.Count, list.Count );
+            Assert.Equal( values.Count, list.Count );
 
             var result = list.RemoveRangeIf( x => false, values.ToArray() );
-            Assert.AreEqual( values.Count, list.Count );
-            Assert.AreSame( list, result );
+            Assert.Equal( values.Count, list.Count );
+            Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values.ToArray() );
-            Assert.AreEqual( 0, list.Count );
+            Assert.Equal( 0, list.Count );
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTest1()
         {
             var list = new List<String>();
             var values = RandomValueEx.GetRandomStrings( 10 );
             list.AddRange( values );
-            Assert.AreEqual( values.Count, list.Count );
+            Assert.Equal( values.Count, list.Count );
 
             var result = list.RemoveRangeIf( x => false, values );
-            Assert.AreEqual( values.Count, list.Count );
-            Assert.AreSame( list, result );
+            Assert.Equal( values.Count, list.Count );
+            Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values );
-            Assert.AreEqual( 0, list.Count );
+            Assert.Equal( 0, list.Count );
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTest1NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTest1NullCheck2()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -62,7 +62,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -71,7 +71,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -80,7 +80,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeIfTestNullCheck2()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -89,7 +89,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveRangeTestIfCase1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

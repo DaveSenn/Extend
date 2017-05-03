@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class MemberSelectionResultExTest
     {
-        [Test]
+        [Fact]
         public void AsBooleanTest()
         {
             MemberSelectionResult.IncludeMember.AsBoolean()

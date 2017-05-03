@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class RandomExTest
     {
-        [Test]
+        [Fact]
         public void RandomOneTest()
         {
             var random = new Random();
@@ -21,20 +21,20 @@ namespace Extend.Testing
                                     .ToArray();
 
             var actual = random.RandomOne( list );
-            Assert.IsTrue( list.Contains( actual ) );
+            Assert.True( list.Contains( actual ) );
         }
 
-        [Test]
+        [Fact]
         public void RandomOneTest1()
         {
             var random = new Random();
             var list = RandomValueEx.GetRandomStrings();
 
             var actual = random.RandomOne<String>( list );
-            Assert.IsTrue( list.Contains( actual ) );
+            Assert.True( list.Contains( actual ) );
         }
 
-        [Test]
+        [Fact]
         public void RandomOneTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -44,7 +44,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RandomOneTest1NullCheck1()
         {
             List<String> list = null;
@@ -55,7 +55,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RandomOneTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -65,7 +65,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RandomOneTestNullCheck1()
         {
             String[] array = null;

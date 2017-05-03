@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void CompareOrdinalCaseNullTest()
         {
             var left = RandomValueEx.GetRandomString();
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void CompareOrdinalCaseNullTest1()
         {
             String left = null;
@@ -37,17 +37,17 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void CompareOrdinalCaseTest()
         {
             var actual = "Test".CompareOrdinal( "Test" );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = "Test".CompareOrdinal( "test" );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
 
             actual = "Test".CompareOrdinal( "asdasd" );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

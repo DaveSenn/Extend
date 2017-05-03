@@ -2,26 +2,26 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void IsAlphaTest()
         {
             var actual = "test".IsAlpha();
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = "1test".IsAlpha();
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsAlphaTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

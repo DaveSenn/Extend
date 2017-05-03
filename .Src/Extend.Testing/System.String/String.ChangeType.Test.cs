@@ -3,30 +3,30 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ChangeTypeTest()
         {
             var actual = "100".ChangeType( typeof(Int32) );
-            Assert.AreEqual( 100, actual );
+            Assert.Equal( 100, actual );
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest1()
         {
             var actual = "100".ChangeType( typeof(Int32), CultureInfo.InvariantCulture );
-            Assert.AreEqual( 100, actual );
+            Assert.Equal( 100, actual );
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest1NullCkeck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -36,7 +36,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest1NullCkeck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -46,21 +46,21 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest2()
         {
             var actual = "100".ChangeType<Int32>();
-            Assert.AreEqual( 100, actual );
+            Assert.Equal( 100, actual );
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest3()
         {
             var actual = "100".ChangeType<Int32>( CultureInfo.InvariantCulture );
-            Assert.AreEqual( 100, actual );
+            Assert.Equal( 100, actual );
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTest3NullCkeck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -70,7 +70,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ChangeTypeTestNullCkeck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

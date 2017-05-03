@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetDeclaringAssemblyNullTest()
         {
             Type type = null;
@@ -22,12 +22,12 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetDeclaringAssemblyTest()
         {
-            var actual = typeof(String).GetDeclaringAssembly();
+            var actual = typeof(ActionEx).GetDeclaringAssembly();
             actual.FullName.Should()
-                  .Be( "mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" );
+                  .Be( "Extend, Version=1.2.0.0, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
         }
     }
 }

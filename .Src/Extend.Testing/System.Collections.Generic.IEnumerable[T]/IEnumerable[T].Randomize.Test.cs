@@ -4,39 +4,39 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void RandomizeTest()
         {
             var list = new List<String>();
             var result = list.Randomize();
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.Equal( list.Count, result.Count() );
 
             list = RandomValueEx.GetRandomStrings( 100 );
             result = list.Randomize();
             // ReSharper disable once PossibleMultipleEnumeration
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.Equal( list.Count, result.Count() );
             // ReSharper disable once PossibleMultipleEnumeration
-            Assert.IsTrue( list.All( x => result.Contains( x ) ) );
+            Assert.True( list.All( x => result.Contains( x ) ) );
 
             // ReSharper disable once PossibleMultipleEnumeration
             var resultList = result.ToList();
             if ( list.Where( ( t, i ) => t != resultList[i] )
                      .Any() )
                 return;
-            Assert.IsTrue( false, "The items are in the same order in both collections." );
+            Assert.True( false, "The items are in the same order in both collections." );
         }
 
-        [Test]
+        [Fact]
         public void RandomizeTestNullCheck()
         {
             List<Object> list = null;

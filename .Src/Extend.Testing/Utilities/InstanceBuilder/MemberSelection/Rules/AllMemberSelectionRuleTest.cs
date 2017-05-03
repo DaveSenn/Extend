@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class AllMemberSelectionRuleTest
     {
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var expected = RandomValueEx.GetRandomEnum<MemberSelectionMode>();
@@ -25,7 +25,7 @@ namespace Extend.Testing
                   .Be( expectedDescription );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest()
         {
             var target = new AllMemberSelectionRule( MemberSelectionMode.Include );
@@ -36,7 +36,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void GetSelectionResultTest1()
         {
             var target = new AllMemberSelectionRule( MemberSelectionMode.Exclude );
@@ -47,7 +47,7 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringExcludeAllTest()
         {
             var target = new AllMemberSelectionRule( MemberSelectionMode.Exclude );
@@ -59,7 +59,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToStringIncludeAllTest()
         {
             var target = new AllMemberSelectionRule( MemberSelectionMode.Include, "Name", "Description" );

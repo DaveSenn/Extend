@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void KeepWhereCaseNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -21,14 +21,14 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void KeepWhereTest()
         {
             var actual = "a1-b2.c3".KeepWhere( x => x.IsLetter() || x.IsNumber() );
-            Assert.AreEqual( "a1b2c3", actual );
+            Assert.Equal( "a1b2c3", actual );
         }
 
-        [Test]
+        [Fact]
         public void KeepWhereTEstCaseNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -26,14 +26,10 @@ namespace Extend
         [PublicAPI]
         public static IEnumerable<PropertyInfo> GetPublicSettableProperties( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
-#if PORTABLE45
             var propertyInfos = type.GetRuntimeProperties()
                                     .Where( x => x.SetMethod?.IsPublic ?? false );
-#elif NET40
-            var propertyInfos = type.GetProperties( BindingFlags.Public | BindingFlags.Instance | BindingFlags.DeclaredOnly );
-#endif
 
             return propertyInfos.Where( x => x.CanWrite );
         }

@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToDateTimeInvalidValueTest()
         {
             var expected = DateTime.Now;
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeInvalidValueTest1()
         {
             var expected = default(DateTime);
@@ -34,7 +34,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeNullTest()
         {
             String value = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
                 .Be( default(DateTime) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -57,7 +57,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadInvalidDateTimeStyleTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -68,7 +68,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadInvalidValueTest()
         {
             var expected = DateTime.Now;
@@ -79,7 +79,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadInvalidValueTest1()
         {
             var expected = default(DateTime);
@@ -90,7 +90,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadNullTest()
         {
             String value = null;
@@ -103,7 +103,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadTest()
         {
             var expected = DateTime.Now;
@@ -115,7 +115,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeOverloadTest1()
         {
             var expected = DateTime.Now;
@@ -127,10 +127,11 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeTest()
         {
             var expected = DateTime.Now;
+            expected = new DateTime( expected.Year, expected.Month, expected.Day, expected.Hour, expected.Second, 10 );
             var actual = expected.ToString( CultureInfo.CurrentCulture )
                                  .SaveToDateTime();
 
@@ -139,7 +140,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 999 );
         }
 
-        [Test]
+        [Fact]
         public void SaveToDateTimeWithDefaultTest()
         {
             var expected = DateTime.Now;

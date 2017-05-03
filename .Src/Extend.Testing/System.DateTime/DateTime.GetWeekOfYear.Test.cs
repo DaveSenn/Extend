@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void GetWeekOfYearTest()
         {
             var dateTime = new DateTime( 2014, 12, 29 );
@@ -21,7 +21,7 @@ namespace Extend.Testing
                   .Be( 1 );
         }
 
-        [Test]
+        [Fact]
         public void GetWeekOfYearTest1()
         {
             var dateTime = new DateTime( 2015, 11, 10 );
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .Be( 46 );
         }
 
-        [Test]
+        [Fact]
         public void GetWeekOfYearTest2()
         {
             var dateTime = new DateTime( 2015, 12, 31 );
@@ -41,7 +41,7 @@ namespace Extend.Testing
                   .Be( 53 );
         }
 
-        [Test]
+        [Fact]
         public void GetWeekOfYearTest3()
         {
             var dateTime = new DateTime( 2015, 12, 27 );
@@ -51,7 +51,7 @@ namespace Extend.Testing
                   .Be( 52 );
         }
 
-        [Test]
+        [Fact]
         public void GetWeekOfYearTest4()
         {
             var dateTime = new DateTime( 2015, 04, 18 );
