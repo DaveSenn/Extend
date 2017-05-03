@@ -26,8 +26,11 @@ namespace Extend.Testing
         public void GetDeclaringAssemblyTest()
         {
             var actual = typeof(ActionEx).GetDeclaringAssembly();
+            var expectedVersion = typeof(ActionEx).GetDeclaringAssembly()
+                                          .GetName()
+                                          .Version.ToString();
             actual.FullName.Should()
-                  .Be( "Extend, Version=1.2.0.0, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
+                  .Be( $"Extend, Version={expectedVersion}, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
         }
     }
 }
