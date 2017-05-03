@@ -35,9 +35,41 @@ Task("Restore")
     DotNetCoreRestore(solution);
 });
 
+// Patches the version of the library
+Task("PatchVersion")
+    .IsDependentOn("Restore")
+    .Does(() =>
+{
+    // Get the current version => null on local system
+    var currentVersion = GetBuildVersion();
+    Information("Current version is: '" + currentVersion + "'");
+
+    var projects = GetFiles(libDirectory.ToString() + "/**/*.csproj");
+    foreach (var project in GetFiles(libDirectory.ToString() + "/**/*.csproj"))
+    {
+        var x = new System.Xml.XmlDocument();
+        using ( var fs = System.IO.File.OpenRead( project.ToString() ) )
+            x.Load( fs );
+        
+        var fileVersion = x.GetElementsByTagName( "FileVersion" );
+        if(currentVersion == null)
+            currentVersion = fileVersion[0].InnerText;
+        fileVersion[0].InnerText = currentVersion;
+
+        var version = x.GetElementsByTagName( "Version" );
+        version[0].InnerText = currentVersion;
+
+        var assemblyVersion = x.GetElementsByTagName( "AssemblyVersion" );
+        assemblyVersion[0].InnerText = currentVersion;       
+
+        using ( var fs = System.IO.File.Open( project.ToString(), FileMode.Create) )
+            x.Save( fs );
+    }
+});
+
 // Build the solution
 Task("Build")
-    .IsDependentOn("Restore")
+    .IsDependentOn("PatchVersion")
     .Does(() =>
 {	
     DotNetCoreBuild(
@@ -104,15 +136,7 @@ private String GetBuildVersion()
     // Try to get the version from AppVeyor
     var appVeyorProvider = BuildSystem.AppVeyor;
     if( appVeyorProvider.IsRunningOnAppVeyor )
-        version = appVeyorProvider.Environment.Build.Version;
-	else
-	{
-	    // Get the version from the built DLL
-		var outputDll = System.IO.Directory.EnumerateFiles( outputNuGetDirectory, "*", System.IO.SearchOption.AllDirectories).First( x => x.Contains( ".dll" ) );
-		var assembly = System.Reflection.Assembly.LoadFile(  MakeAbsolute( File( outputDll ) ).ToString() );
-		version = assembly.GetName().Version.ToString();
-	}
+        return appVeyorProvider.Environment.Build.Version; //+ "-alpha";
 	
-	return version;
-	// return version + "-alpha";
+    return null;
 }
