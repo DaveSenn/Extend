@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryToEnumTest()
         {
             const DayOfWeek expected = DayOfWeek.Monday;
@@ -26,7 +26,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryToEnumTestNullCheck()
         {
             DayOfWeek day;

@@ -92,7 +92,7 @@ namespace Extend
         /// <typeparam name="T">The type to create an instance of.</typeparam>
         /// <returns>Returns the new created create instance options.</returns>
         public static ICreateInstanceOptions<T> CreateInstanceOptions<T>() where T : class, new()
-        => new CreateInstanceOptions<T>();
+            => new CreateInstanceOptions<T>();
 
         /// <summary>
         ///     Creates an instance of the specified type without any special configuration.
@@ -103,9 +103,9 @@ namespace Extend
         [PublicAPI]
         [Pure]
         public static T CreateInstance<T>() where T : class, new()
-        => CreateInstanceOptions<T>()
-            .Complete()
-            .CreateInstance();
+            => CreateInstanceOptions<T>()
+                .Complete()
+                .CreateInstance();
 
         /// <summary>
         ///     Creates an instance of the specified type based on the given options.
@@ -119,7 +119,7 @@ namespace Extend
         [Pure]
         public static T CreateInstance<T>( [NotNull] this ICreateInstanceOptionsComplete<T> options ) where T : class
         {
-            options.ThrowIfNull( nameof( options ) );
+            options.ThrowIfNull( nameof(options) );
 
             //Create instance
             var rootMemberInformation = new MemberInformation
@@ -235,7 +235,7 @@ namespace Extend
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns a value of true if collections should get populated or not.</returns>
         private static Boolean PopulateCollection<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
-        => options.PopulateCollections ?? PopulateCollections;
+            => options.PopulateCollections ?? PopulateCollections;
 
         /// <summary>
         ///     Gets the name for anonymous items.
@@ -244,7 +244,7 @@ namespace Extend
         /// <param name="options">Some create instance options.</param>
         /// <returns>Returns the name to use.</returns>
         private static String GetAnonymousItemName<T>( ICreateInstanceOptionsComplete<T> options ) where T : class
-        => options.AnonymousItemName ?? AnonymousItemName;
+            => options.AnonymousItemName ?? AnonymousItemName;
 
         /// <summary>
         ///     Creates the root instance.
@@ -504,12 +504,9 @@ namespace Extend
                 .ToArray();
 
             // Get the add method
-#if PORTABLE45
+
             var addMethod = memberInformation.MemberType
                                              .GetRuntimeMethod( "Add", genericArgumentTypes );
-#elif NET40
-            var addMethod = memberInformation.MemberType.GetMethod( "Add" );
-#endif
 
             // Add items
             var anonymousItemName = GetAnonymousItemName( options );
@@ -519,21 +516,21 @@ namespace Extend
                 var addParameters = new List<Object>();
                 genericArgumentTypes
                     .ForEach( x =>
-                              {
-                                  var currentMember = new MemberInformation
-                                  {
-                                      MemberType = x,
-                                      MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
-                                      MemberName = anonymousItemName
-                                  };
+                    {
+                        var currentMember = new MemberInformation
+                        {
+                            MemberType = x,
+                            MemberPath = $"{memberInformation.MemberPath}.{anonymousItemName}",
+                            MemberName = anonymousItemName
+                        };
 
-                                  // Get the value for the current collection item.
-                                  var collectionItemValue = GetValue( options, currentMember );
-                                  currentMember.MemberObject = collectionItemValue;
-                                  SetAllMembers( options, currentMember );
+                        // Get the value for the current collection item.
+                        var collectionItemValue = GetValue( options, currentMember );
+                        currentMember.MemberObject = collectionItemValue;
+                        SetAllMembers( options, currentMember );
 
-                                  addParameters.Add( collectionItemValue );
-                              } );
+                        addParameters.Add( collectionItemValue );
+                    } );
 
                 addMethod.Invoke( collectionInstance, addParameters.ToArray() );
             }
@@ -561,22 +558,22 @@ namespace Extend
                                                  .GetMemberInformation( memberInformation );
 
             propertyInfos.ForEach( x =>
-                                   {
-                                       // Check if member should be set or not
-                                       if ( !IncludeMember( options, x ) )
-                                           return;
+            {
+                // Check if member should be set or not
+                if ( !IncludeMember( options, x ) )
+                    return;
 
-                                       // Create member value
-                                       var value = GetValue( options, x );
-                                       x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
+                // Create member value
+                var value = GetValue( options, x );
+                x.PropertyInfo.SetValue( memberInformation.MemberObject, value, null );
 
-                                       // Set children of value (recursive call)
-                                       var currentMember = x as MemberInformation;
-                                       if ( currentMember != null )
-                                           currentMember.MemberObject = value;
+                // Set children of value (recursive call)
+                var currentMember = x as MemberInformation;
+                if ( currentMember != null )
+                    currentMember.MemberObject = value;
 
-                                       SetAllMembers( options, currentMember );
-                                   } );
+                SetAllMembers( options, currentMember );
+            } );
         }
 
         #endregion

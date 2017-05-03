@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyNullAppendTest3()
         {
             const String target = "test";
@@ -24,7 +24,7 @@ namespace Extend.Testing
                   .Be( target + newLine );
         }
 
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyNullTargetTest3()
         {
             const String target = null;
@@ -37,7 +37,7 @@ namespace Extend.Testing
                   .Be( append );
         }
 
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyTest()
         {
             const String target = "test-";
@@ -49,7 +49,7 @@ namespace Extend.Testing
                   .Be( target + Environment.NewLine + append );
         }
 
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyTest1()
         {
             const String target = "test-";
@@ -62,7 +62,7 @@ namespace Extend.Testing
                   .Be( target + newLine + append );
         }
 
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyTest2()
         {
             const String target = "";
@@ -74,7 +74,7 @@ namespace Extend.Testing
                   .Be( append );
         }
 
-        [Test]
+        [Fact]
         public void AppendWithNewLineIfNotEmptyTest3()
         {
             const String target = "";

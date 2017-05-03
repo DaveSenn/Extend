@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToDecimalInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -21,7 +21,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalNullTest()
         {
             String value = null;
@@ -32,7 +32,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadFormatNullTest()
         {
             CultureInfo formatProvider = null;
@@ -43,7 +43,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -52,7 +52,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadNullTest()
         {
             String value = null;
@@ -63,7 +63,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -76,7 +76,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -84,7 +84,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalOverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -92,7 +92,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalTest()
         {
             var value = new Decimal( 100.123 );
@@ -104,7 +104,7 @@ namespace Extend.Testing
                 .Be( value );
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -112,7 +112,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDecimalValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

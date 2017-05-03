@@ -5,7 +5,7 @@
 using System;
 using System.Linq.Expressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
@@ -15,10 +15,10 @@ using NUnit.Framework;
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ThrowIfNullTest()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -41,10 +41,10 @@ namespace Extend.Testing
                 errorMessage = ex.Message;
             }
 
-            Assert.IsTrue( errorMessage.Contains( "varName" ) );
+            Assert.True( errorMessage.Contains( "varName" ) );
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTest1()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -68,10 +68,10 @@ namespace Extend.Testing
                 errorMessage = ex.Message;
             }
 
-            Assert.IsTrue( errorMessage.Contains( expectedErrorMessage ) );
+            Assert.True( errorMessage.Contains( expectedErrorMessage ) );
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTest2()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -89,10 +89,10 @@ namespace Extend.Testing
                 errorMessage = ex.Message;
             }
 
-            Assert.IsTrue( errorMessage.Contains( "varName" ) );
+            Assert.True( errorMessage.Contains( "varName" ) );
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTest3()
         {
             var varName = RandomValueEx.GetRandomString();
@@ -111,10 +111,10 @@ namespace Extend.Testing
                 errorMessage = ex.Message;
             }
 
-            Assert.IsTrue( errorMessage.Contains( expectedErrorMessage ) );
+            Assert.True( errorMessage.Contains( expectedErrorMessage ) );
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTestNullCheck()
         {
             String value = null;
@@ -126,7 +126,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTestNullCheck1()
         {
             String value = null;
@@ -140,7 +140,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ThrowIfNullTestNullCheck2()
         {
             String value = null;

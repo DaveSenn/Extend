@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void IsMicrosoftTypeNullTest()
         {
             Type type = null;
@@ -22,22 +22,22 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsMicrosoftTypeTest()
         {
             var type = typeof(String);
             var actual = type.IsMicrosoftType();
 
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsMicrosoftTypeTest1()
         {
             var type = typeof(TypeExTest);
             var actual = type.IsMicrosoftType();
 
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

@@ -1,49 +1,49 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void IsSameMonthAndYearTest()
         {
             var dateTime = DateTime.Now;
             var otherDateTime = DateTime.Now;
 
-            Assert.IsTrue( dateTime.IsSameMonthAndYear( otherDateTime ) );
+            Assert.True( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [Test]
+        [Fact]
         public void IsSameMonthAndYearTest1()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2014, 08, 1 );
 
-            Assert.IsTrue( dateTime.IsSameMonthAndYear( otherDateTime ) );
+            Assert.True( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [Test]
+        [Fact]
         public void IsSameMonthAndYearTest2()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2014, 09, 1 );
 
-            Assert.IsFalse( dateTime.IsSameMonthAndYear( otherDateTime ) );
+            Assert.False( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
 
-        [Test]
+        [Fact]
         public void IsSameMonthAndYearTest3()
         {
             var dateTime = new DateTime( 2014, 08, 10 );
             var otherDateTime = new DateTime( 2013, 08, 1 );
 
-            Assert.IsFalse( dateTime.IsSameMonthAndYear( otherDateTime ) );
+            Assert.False( dateTime.IsSameMonthAndYear( otherDateTime ) );
         }
     }
 }

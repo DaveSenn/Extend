@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void SatisfiesWithMessagesTest()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
@@ -20,10 +20,10 @@ namespace Extend.Testing
 
             var actual = "1234".SatisfiesWithMessages( specification )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count );
+            Assert.Equal( 0, actual.Count );
         }
 
-        [Test]
+        [Fact]
         public void SatisfiesWithMessagesTest1()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3 )
@@ -31,12 +31,12 @@ namespace Extend.Testing
 
             var actual = "234".SatisfiesWithMessages( specification )
                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.IsNull( actual[0] );
-            Assert.IsNull( actual[1] );
+            Assert.Equal( 2, actual.Count );
+            Assert.Null( actual[0] );
+            Assert.Null( actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SatisfiesWithMessagesTest2()
         {
             var specification = new ExpressionSpecification<String>( x => x.Length > 3, "msg1" )
@@ -44,12 +44,12 @@ namespace Extend.Testing
 
             var actual = "234".SatisfiesWithMessages( specification )
                               .ToList();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 1, actual.Count( x => x == "msg1" ) );
-            Assert.AreEqual( 1, actual.Count( x => x == "msg2" ) );
+            Assert.Equal( 2, actual.Count );
+            Assert.Equal( 1, actual.Count( x => x == "msg1" ) );
+            Assert.Equal( 1, actual.Count( x => x == "msg2" ) );
         }
 
-        [Test]
+        [Fact]
         public void SatisfiesWithMessagesTestnullCheck()
         {
             ISpecification<String> specification = null;

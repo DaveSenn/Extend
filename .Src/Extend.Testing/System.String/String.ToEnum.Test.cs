@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToEnumTest()
         {
             const DayOfWeek expected = DayOfWeek.Monday;
@@ -23,7 +23,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToEnumTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

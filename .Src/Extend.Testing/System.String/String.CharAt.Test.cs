@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void CharAtArgumentNullExceptionTest()
         {
             String value = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CharAtArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -30,7 +30,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CharAtArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -38,7 +38,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CharAtArgumentOutOfRangeExceptionTest2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void CharAtTest()
         {
             var actual = "test".CharAt( 0 );
@@ -55,7 +55,7 @@ namespace Extend.Testing
                   .Be( 't' );
         }
 
-        [Test]
+        [Fact]
         public void CharAtTest1()
         {
             var actual = "bar".CharAt( 1 );
@@ -64,7 +64,7 @@ namespace Extend.Testing
                   .Be( 'a' );
         }
 
-        [Test]
+        [Fact]
         public void CharAtTest2()
         {
             var actual = "bar".CharAt( 2 );

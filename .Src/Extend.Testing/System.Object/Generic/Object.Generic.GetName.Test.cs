@@ -4,34 +4,34 @@ using System;
 using System.ComponentModel;
 using System.Linq.Expressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void GetNameOverloadTest()
         {
             var model = new TestModel();
             var actual = model.Age.GetName( () => model.Age );
 
-            Assert.AreEqual( "Age", actual );
+            Assert.Equal( "Age", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameOverloadTest1()
         {
             var model = new TestModel();
             var actual = model.Name.GetName( () => model.Name );
 
-            Assert.AreEqual( "Name", actual );
+            Assert.Equal( "Name", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameOverloadTest2()
         {
             var actual = PropertyChanged.GetName( () => PropertyChanged );
@@ -40,7 +40,7 @@ namespace Extend.Testing
                   .Be( "PropertyChanged" );
         }
 
-        [Test]
+        [Fact]
         public void GetNameOverloadTest3()
         {
             const String myString = "";
@@ -49,7 +49,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void GetNameOverloadTest4()
         {
             var model = new TestModel
@@ -58,10 +58,10 @@ namespace Extend.Testing
             };
             var actual = model.SubModel.Foo.GetName( () => model.SubModel.Foo );
 
-            Assert.AreEqual( "Foo", actual );
+            Assert.Equal( "Foo", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameOverloadTestNullCheck()
         {
             Expression<Func<Object>> fieldName = null;
@@ -72,25 +72,25 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetNameTest()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Age );
 
-            Assert.AreEqual( "Age", actual );
+            Assert.Equal( "Age", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameTest1()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.Name );
 
-            Assert.AreEqual( "Name", actual );
+            Assert.Equal( "Name", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameTest2()
         {
             var actual = this.GetName( x => x.PropertyChanged );
@@ -99,26 +99,26 @@ namespace Extend.Testing
                   .Be( "PropertyChanged" );
         }
 
-        [Test]
+        [Fact]
         public void GetNameTest3()
         {
             var model = new TestModel();
             Expression<Func<TestModel, Object>> expression1 = x => x.Age;
             var actual = model.GetName( expression1 );
 
-            Assert.AreEqual( "Age", actual );
+            Assert.Equal( "Age", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameTest4()
         {
             var model = new TestModel();
             var actual = model.GetName( x => x.SubModel.Foo );
 
-            Assert.AreEqual( "Foo", actual );
+            Assert.Equal( "Foo", actual );
         }
 
-        [Test]
+        [Fact]
         public void GetNameTestNotSupportedException()
         {
             const String myString = "";
@@ -127,7 +127,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void GetNameTestNullCheck()
         {
             Expression<Func<Object, Object>> fieldName = null;

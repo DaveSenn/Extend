@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartArgumentNullException()
         {
             Action test = () =>
@@ -27,7 +27,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartArgumentNullException1()
         {
             Action test = () =>
@@ -41,7 +41,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartTest()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 };
@@ -51,7 +51,7 @@ namespace Extend.Testing
                   .Equal( 4, 8, 15 );
         }
 
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartTest1()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 };
@@ -63,7 +63,7 @@ namespace Extend.Testing
                   .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartTest2()
         {
             var source = new Int32[] { };
@@ -75,7 +75,7 @@ namespace Extend.Testing
                   .Be( 0 );
         }
 
-        [Test]
+        [Fact]
         public void GetEqualItemsFromStartTest3()
         {
             var source = new[] { 4, 8, 15, 16, 23, 42 };

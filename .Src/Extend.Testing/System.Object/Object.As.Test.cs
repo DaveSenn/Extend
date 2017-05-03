@@ -2,25 +2,25 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void AsTest()
         {
             Object value = 10;
             var actual = value.As<Int32>();
 
-            Assert.AreEqual( value, actual );
+            Assert.Equal( value, actual );
         }
 
-        [Test]
+        [Fact]
         public void AsTestNullValue()
         {
             var res = ObjectEx.As<String>( null );

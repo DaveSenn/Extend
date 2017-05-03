@@ -4,16 +4,16 @@ using System;
 using System.Linq;
 using System.Reflection;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class PropertyInfoExTest
     {
-        [Test]
+        [Fact]
         public void GetValueWithoutIndexPropertyNullTest()
         {
             PropertyInfo propertyInfo = null;
@@ -24,7 +24,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValueWithoutIndexSourceNullTest()
         {
             var property = typeof(TestModel).GetPublicSettableProperties()
@@ -36,7 +36,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetValueWithoutIndexTest()
         {
             var actualModel = new TestModel

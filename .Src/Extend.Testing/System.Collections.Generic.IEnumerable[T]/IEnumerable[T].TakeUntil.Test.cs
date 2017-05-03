@@ -4,26 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void TakeUntilTest()
         {
             var list = new List<String>();
             var result = list.TakeUntil( x => true );
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.Equal( list.Count, result.Count() );
 
             list = RandomValueEx.GetRandomStrings( 10 );
             result = list.TakeUntil( x => false );
-            Assert.AreEqual( list.Count, result.Count() );
+            Assert.Equal( list.Count, result.Count() );
 
             var counter = 0;
             var resultList = list.TakeUntil( x =>
@@ -32,13 +32,13 @@ namespace Extend.Testing
                                                  return counter > 5;
                                              } )
                                  .ToList();
-            Assert.AreEqual( 5, resultList.Count );
+            Assert.Equal( 5, resultList.Count );
 
             for ( var i = 0; i < resultList.Count; i++ )
-                Assert.AreEqual( list[i], resultList[i] );
+                Assert.Equal( list[i], resultList[i] );
         }
 
-        [Test]
+        [Fact]
         public void TakeUntilTestNullCheck()
         {
             List<Object> list = null;
@@ -49,7 +49,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TakeUntilTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

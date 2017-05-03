@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void PrependArgumentNullExceptionTest()
         {
             List<String> list = null;
@@ -25,7 +25,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void PrependTest()
         {
             var list = new List<String> { "a", "b", "c" };

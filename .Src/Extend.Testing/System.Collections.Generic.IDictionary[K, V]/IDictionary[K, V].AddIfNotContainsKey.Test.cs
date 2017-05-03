@@ -3,17 +3,17 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void AddIfNotContainsKey1TestNullCheck()
         {
             var keyValuePair = new KeyValuePair<Object, Object>();
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKey1TestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -31,22 +31,22 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
-            Assert.IsTrue( result );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.True( result );
+            Assert.Equal( 1, dic.Count );
 
             dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
-            Assert.IsFalse( false );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.False( false );
+            Assert.Equal( 1, dic.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest1()
         {
             var dic = new Dictionary<String, String>();
@@ -54,30 +54,30 @@ namespace Extend.Testing
             var keyValuePair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
 
             var result = dic.AddIfNotContainsKey( keyValuePair );
-            Assert.IsTrue( result );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.True( result );
+            Assert.Equal( 1, dic.Count );
 
             result = dic.AddIfNotContainsKey( keyValuePair );
-            Assert.IsFalse( result );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.False( result );
+            Assert.Equal( 1, dic.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest2()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
-            Assert.IsTrue( result );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.True( result );
+            Assert.Equal( 1, dic.Count );
 
             dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
-            Assert.IsFalse( false );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.False( false );
+            Assert.Equal( 1, dic.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -86,7 +86,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest2NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -95,7 +95,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest2NullCheck2()
         {
             Func<Object> func = null;
@@ -105,22 +105,22 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest3()
         {
             var key = RandomValueEx.GetRandomString();
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
-            Assert.IsTrue( result );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.True( result );
+            Assert.Equal( 1, dic.Count );
 
             dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
-            Assert.IsFalse( false );
-            Assert.AreEqual( 1, dic.Count );
+            Assert.False( false );
+            Assert.Equal( 1, dic.Count );
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -129,7 +129,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest3NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -138,7 +138,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTest3NullCheck2()
         {
             Func<Object, Object> func = null;
@@ -148,7 +148,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -157,7 +157,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void AddIfNotContainsKeyTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ExceptTest()
         {
             var first = new List<Int32> { 1, 3, 5, 7 };
@@ -28,7 +28,7 @@ namespace Extend.Testing
                   .ContainInOrder( new List<Int32> { 1, 3, 5, 7 } );
         }
 
-        [Test]
+        [Fact]
         public void ExceptTest1()
         {
             var first = new List<Int32> { 1, 2, 3, 4, 5, 6, 7, 8 };
@@ -42,7 +42,7 @@ namespace Extend.Testing
                   .ContainInOrder( new List<Int32> { 1, 3, 5, 7 } );
         }
 
-        [Test]
+        [Fact]
         public void ExceptTest2()
         {
             var first = new List<String> { "a", "bb", "ccc" };
@@ -56,7 +56,7 @@ namespace Extend.Testing
                   .Contain( "a", "ccc" );
         }
 
-        [Test]
+        [Fact]
         public void ExceptTest3()
         {
             var first = new List<TestModel>
@@ -87,7 +87,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ExpectFirstNullTest()
         {
             List<Int32> first = null;
@@ -101,7 +101,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExpectSecondNullTest()
         {
             var first = new List<Int32> { 2, 4, 6, 8 };
@@ -115,7 +115,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExpectSelectorNullTest()
         {
             var first = new List<Int32> { 1, 2, 3, 4, 5, 6, 7, 8 };

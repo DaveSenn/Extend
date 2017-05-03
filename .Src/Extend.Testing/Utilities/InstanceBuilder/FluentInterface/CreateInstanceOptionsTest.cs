@@ -4,16 +4,16 @@ using System;
 using System.Linq;
 using System.Linq.Expressions;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class CreateInstanceOptionsTest
     {
-        [Test]
+        [Fact]
         public void AllMembersTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -29,7 +29,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ByPathExpressionArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -39,7 +39,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ByPathExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -55,7 +55,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ByPathStringArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -65,7 +65,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ByPathStringTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -81,7 +81,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void CompleteTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -91,7 +91,7 @@ namespace Extend.Testing
                   .BeSameAs( target );
         }
 
-        [Test]
+        [Fact]
         public void ExcludingAllMembersTest()
         {
             var functionCalled = false;
@@ -114,7 +114,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfAllMembersTest()
         {
             var functionCalled = false;
@@ -137,7 +137,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -152,7 +152,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -162,7 +162,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfIsNotTypeOfTest()
         {
             var functionCalled = false;
@@ -185,7 +185,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfIsTypeOfTest()
         {
             var functionCalled = false;
@@ -208,7 +208,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfPathExpressionTest()
         {
             var functionCalled = false;
@@ -231,7 +231,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfPathStringTest()
         {
             var functionCalled = false;
@@ -254,7 +254,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingChildrenOfPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -264,7 +264,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -279,7 +279,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -289,7 +289,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingIsNotTypeOfTest()
         {
             var functionCalled = false;
@@ -312,7 +312,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingIsTypeOfTest()
         {
             var functionCalled = false;
@@ -335,7 +335,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingPathExpressionTest()
         {
             var functionCalled = false;
@@ -358,7 +358,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingPathStringTest()
         {
             var functionCalled = false;
@@ -381,7 +381,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExcludingPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -391,7 +391,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -402,7 +402,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForFuncInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -411,7 +411,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void ForFuncTest()
         {
             var funcCalled = false;
@@ -437,7 +437,7 @@ namespace Extend.Testing
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void ForPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -448,7 +448,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ForPredicateInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -457,7 +457,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void ForPredicateTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -475,7 +475,7 @@ namespace Extend.Testing
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingAllMembersTest()
         {
             var functionCalled = false;
@@ -498,7 +498,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfAllMembersTest()
         {
             var functionCalled = false;
@@ -521,7 +521,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -536,7 +536,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -546,7 +546,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfIsNotTypeOfTest()
         {
             var functionCalled = false;
@@ -569,7 +569,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfIsTypeOfTest()
         {
             var functionCalled = false;
@@ -592,7 +592,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfPathExpressionTest()
         {
             var functionCalled = false;
@@ -615,7 +615,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfPathStringTest()
         {
             var functionCalled = false;
@@ -638,7 +638,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingChildrenOfPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -648,7 +648,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IncludingExpressionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -663,7 +663,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -673,7 +673,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IncludingIsNotTypeOfTest()
         {
             var functionCalled = false;
@@ -696,7 +696,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingIsTypeOfTest()
         {
             var functionCalled = false;
@@ -719,7 +719,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingPathExpressionTest()
         {
             var functionCalled = false;
@@ -742,7 +742,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingPathStringTest()
         {
             var functionCalled = false;
@@ -765,7 +765,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IncludingPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -775,7 +775,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsNotTypeOfTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -791,7 +791,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void IsTypeOfTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -807,7 +807,7 @@ namespace Extend.Testing
                       .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void NotForFuncArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -818,7 +818,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void NotForFuncInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -827,7 +827,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void NotForFuncTest()
         {
             var funcCalled = false;
@@ -853,7 +853,7 @@ namespace Extend.Testing
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void NotForPredicateArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -864,7 +864,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void NotForPredicateInvalidOperationExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -873,7 +873,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidOperationException>();
         }
 
-        [Test]
+        [Fact]
         public void NotForPredicateTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -891,7 +891,7 @@ namespace Extend.Testing
                 .NotBeNull();
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionItemCountArgumentExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -899,7 +899,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionItemCountTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -912,7 +912,7 @@ namespace Extend.Testing
                   .Be( 200 );
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionItemCountTest1()
         {
             var target = new CreateInstanceOptions<String>();
@@ -925,7 +925,7 @@ namespace Extend.Testing
                   .Be( null );
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionItemCountTest2()
         {
             var target = new CreateInstanceOptions<String>();
@@ -938,7 +938,7 @@ namespace Extend.Testing
                   .Be( 200 );
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionMembersTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -949,7 +949,7 @@ namespace Extend.Testing
                   .Be( false );
         }
 
-        [Test]
+        [Fact]
         public void PopulateCollectionMembersTest1()
         {
             var target = new CreateInstanceOptions<String>();
@@ -960,7 +960,7 @@ namespace Extend.Testing
                   .Be( null );
         }
 
-        [Test]
+        [Fact]
         public void SetAnonymousItemNameTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -971,7 +971,7 @@ namespace Extend.Testing
                   .Be( null );
         }
 
-        [Test]
+        [Fact]
         public void SetAnonymousItemNameTest1()
         {
             var target = new CreateInstanceOptions<String>();
@@ -982,7 +982,7 @@ namespace Extend.Testing
                   .Be( "name" );
         }
 
-        [Test]
+        [Fact]
         public void WithFactoryArgumentNullExceptionTest()
         {
             var target = new CreateInstanceOptions<String>();
@@ -992,7 +992,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void WithFactoryTest()
         {
             var target = new CreateInstanceOptions<String>();

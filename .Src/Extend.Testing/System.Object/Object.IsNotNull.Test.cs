@@ -1,27 +1,27 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void IsNotNullTest()
         {
             var value = RandomValueEx.GetRandomString();
             var actual = value.IsNotNull();
 
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             actual = value.IsNotNull();
 
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
     }
 }

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractAllInt16Test()
         {
             const Int32 value0 = 100;
@@ -22,19 +22,19 @@ namespace Extend.Testing
             var stringValue = "".ConcatAll( value0, "asdasd.)(/)(=+", value1, "a", value2, "asd", value3 );
             var actual = stringValue.ExtractAllInt16();
 
-            Assert.AreEqual( 4, actual.Count );
-            Assert.AreEqual( value0, actual[0] );
-            Assert.AreEqual( value1, actual[1] );
-            Assert.AreEqual( value2, actual[2] );
-            Assert.AreEqual( value3, actual[3] );
+            Assert.Equal( 4, actual.Count );
+            Assert.Equal( value0, actual[0] );
+            Assert.Equal( value1, actual[1] );
+            Assert.Equal( value2, actual[2] );
+            Assert.Equal( value3, actual[3] );
 
             actual = "10.10".ExtractAllInt16();
-            Assert.AreEqual( 2, actual.Count );
-            Assert.AreEqual( 10, actual[0] );
-            Assert.AreEqual( 10, actual[1] );
+            Assert.Equal( 2, actual.Count );
+            Assert.Equal( 10, actual[0] );
+            Assert.Equal( 10, actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllInt16TestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -44,7 +44,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractAllInt16TestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ComparableTExTest
     {
-        [Test]
+        [Fact]
         public void BetweenTest()
         {
             var value = 100;
@@ -19,17 +19,17 @@ namespace Extend.Testing
             var max = 300;
 
             var actual = value.Between( min, max );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             value = 100;
             min = 50;
             max = 100;
 
             actual = value.Between( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenTest1()
         {
             const Int32 value = 100;
@@ -37,10 +37,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.Between( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenTest3()
         {
             const Int32 value = 200;
@@ -48,10 +48,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.Between( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenTest4()
         {
             const Int32 value = 4;
@@ -59,10 +59,10 @@ namespace Extend.Testing
             const Int32 max = 100;
 
             var actual = value.Between( min, max );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void BetweenTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -72,7 +72,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void BetweenTestNullCheck1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -82,7 +82,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void BetweenTestNullCheck2()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed

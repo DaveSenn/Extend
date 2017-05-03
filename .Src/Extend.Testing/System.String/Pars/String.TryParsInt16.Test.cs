@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void TryParsInt16InvalidValueTest()
         {
             Int16 result;
@@ -27,7 +27,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16NullTest()
         {
             Int16 result;
@@ -44,7 +44,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16OverloadFormatProviderNullTest()
         {
             var expected = RandomValueEx.GetRandomInt16();
@@ -57,7 +57,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16OverloadInvalidNumberFormatTest()
         {
             Int16 result;
@@ -69,7 +69,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentException>();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16OverloadInvalidValueTest()
         {
             Int16 result;
@@ -84,7 +84,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16OverloadNullTest()
         {
             Int16 result;
@@ -101,7 +101,7 @@ namespace Extend.Testing
                 .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16OverloadTest()
         {
             var culture = new CultureInfo( "de-CH" );
@@ -119,7 +119,7 @@ namespace Extend.Testing
                 .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void TryParsInt16Test()
         {
             var expected = RandomValueEx.GetRandomInt16();

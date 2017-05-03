@@ -3,39 +3,39 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ContainsAnyTest()
         {
             var list = new List<String> { "test", "test1" };
 
-            Assert.IsTrue( list.ContainsAny( "test" ) );
-            Assert.IsTrue( list.ContainsAny( "test", "test1" ) );
-            Assert.IsTrue( list.ContainsAny( "test", "test1", "test2" ) );
-            Assert.IsFalse( list.ContainsAny( "asdasd" ) );
+            Assert.True( list.ContainsAny( "test" ) );
+            Assert.True( list.ContainsAny( "test", "test1" ) );
+            Assert.True( list.ContainsAny( "test", "test1", "test2" ) );
+            Assert.False( list.ContainsAny( "asdasd" ) );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyTest1()
         {
             var list = new List<String> { "test", "test1" };
 
-            Assert.IsTrue( list.ContainsAny( new List<String> { "test" } ) );
-            Assert.IsTrue( list.ContainsAny( new List<String> { "test", "test1" } ) );
-            Assert.IsTrue( list.ContainsAny( new List<String> { "test", "test1", "test2" } ) );
-            Assert.IsFalse( list.ContainsAny( new List<String> { "asdasd" } ) );
+            Assert.True( list.ContainsAny( new List<String> { "test" } ) );
+            Assert.True( list.ContainsAny( new List<String> { "test", "test1" } ) );
+            Assert.True( list.ContainsAny( new List<String> { "test", "test1", "test2" } ) );
+            Assert.False( list.ContainsAny( new List<String> { "asdasd" } ) );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyTest1NullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -45,7 +45,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyTest1NullCheck1()
         {
             IEnumerable<Object> enumerable = null;
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyTestNullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAnyTestNullCheck1()
         {
             Object[] array = null;

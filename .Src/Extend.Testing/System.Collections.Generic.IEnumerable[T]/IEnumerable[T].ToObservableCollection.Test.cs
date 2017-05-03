@@ -3,28 +3,28 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void ToObservableCollectionTest()
         {
             var list = RandomValueEx.GetRandomStrings();
             var actual = list.ToObservableCollection();
 
-            Assert.AreEqual( list.Count, actual.Count );
+            Assert.Equal( list.Count, actual.Count );
             for ( var i = 0; i < list.Count; i++ )
-                Assert.AreEqual( list[i], actual[i] );
+                Assert.Equal( list[i], actual[i] );
         }
 
-        [Test]
+        [Fact]
         public void ToObservableCollectionTestNullCheck()
         {
             List<Object> list = null;

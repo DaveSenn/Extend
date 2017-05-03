@@ -3,36 +3,36 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void MaximumTest()
         {
             var actual = 1.Maximum( 2, 3, 4, 5, 6 );
-            Assert.AreEqual( 6, actual );
+            Assert.Equal( 6, actual );
 
             actual = 100.Maximum( 2, 3, 4, 5, 6 );
-            Assert.AreEqual( 100, actual );
+            Assert.Equal( 100, actual );
         }
 
-        [Test]
+        [Fact]
         public void MaximumTest1()
         {
             var actual = 1.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.AreEqual( "6", actual );
+            Assert.Equal( "6", actual );
 
             actual = 100.Maximum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.AreEqual( "6", actual );
+            Assert.Equal( "6", actual );
         }
 
-        [Test]
+        [Fact]
         public void MaximumTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -42,7 +42,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MaximumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MaximumTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

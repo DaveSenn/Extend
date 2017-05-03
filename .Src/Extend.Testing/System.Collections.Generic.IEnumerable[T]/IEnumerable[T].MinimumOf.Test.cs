@@ -3,45 +3,45 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void MinimumOfTest()
         {
             var list = new List<String>();
-            Assert.IsFalse( list.MinimumOf( 1, x => true ) );
-            Assert.IsTrue( list.MinimumOf( 0, x => false ) );
-            Assert.IsTrue( list.MinimumOf( 0, x => true ) );
+            Assert.False( list.MinimumOf( 1, x => true ) );
+            Assert.True( list.MinimumOf( 0, x => false ) );
+            Assert.True( list.MinimumOf( 0, x => true ) );
 
             list = RandomValueEx.GetRandomStrings( 10 );
-            Assert.IsTrue( list.MinimumOf( 9, x => true ) );
-            Assert.IsTrue( list.MinimumOf( 10, x => true ) );
-            Assert.IsFalse( list.MinimumOf( 10, x => false ) );
-            Assert.IsFalse( list.MinimumOf( 11, x => true ) );
+            Assert.True( list.MinimumOf( 9, x => true ) );
+            Assert.True( list.MinimumOf( 10, x => true ) );
+            Assert.False( list.MinimumOf( 10, x => false ) );
+            Assert.False( list.MinimumOf( 11, x => true ) );
         }
 
-        [Test]
+        [Fact]
         public void MinimumOfTest1()
         {
             var list = new List<String>();
-            Assert.IsFalse( list.MinimumOf( 1 ) );
-            Assert.IsTrue( list.MinimumOf( 0 ) );
+            Assert.False( list.MinimumOf( 1 ) );
+            Assert.True( list.MinimumOf( 0 ) );
 
             list = RandomValueEx.GetRandomStrings( 10 );
-            Assert.IsTrue( list.MinimumOf( 9 ) );
-            Assert.IsTrue( list.MinimumOf( 10 ) );
-            Assert.IsFalse( list.MinimumOf( 11 ) );
+            Assert.True( list.MinimumOf( 9 ) );
+            Assert.True( list.MinimumOf( 10 ) );
+            Assert.False( list.MinimumOf( 11 ) );
         }
 
-        [Test]
+        [Fact]
         public void MinimumOfTest1NullCheck()
         {
             List<Object> list = null;
@@ -52,7 +52,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MinimumOfTestNullCheck()
         {
             List<Object> list = null;
@@ -63,7 +63,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MinimumOfTestNullCheck1()
         {
             List<Object> list = null;

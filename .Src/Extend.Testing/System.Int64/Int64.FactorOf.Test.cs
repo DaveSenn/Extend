@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void FactorOfDivideByZeroTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -19,7 +19,7 @@ namespace Extend.Testing
             test.ShouldThrow<DivideByZeroException>();
         }
 
-        [Test]
+        [Fact]
         public void FactorOfTest()
         {
             var value = RandomValueEx.GetRandomInt32();

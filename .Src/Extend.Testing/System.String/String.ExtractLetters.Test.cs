@@ -2,23 +2,23 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractLettersTest()
         {
             var actual = "1a2b3c4".ExtractLetters();
-            Assert.AreEqual( "abc", actual );
+            Assert.Equal( "abc", actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractLettersTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

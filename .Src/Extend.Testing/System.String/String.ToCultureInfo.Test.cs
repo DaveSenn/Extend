@@ -3,34 +3,34 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToCultureInfoTest()
         {
             const String culture = "en";
             var actual = culture.ToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void ToCultureInfoTest1()
         {
             const String culture = "de-CH";
             var actual = culture.ToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void ToCultureInfoTest1NullCheck()
         {
             const String culture = null;
@@ -41,16 +41,16 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCultureInfoTest2()
         {
             var culture = String.Empty;
             var actual = culture.ToCultureInfo();
 
-            Assert.AreEqual( culture, actual.Name );
+            Assert.Equal( culture, actual.Name );
         }
 
-        [Test]
+        [Fact]
         public void ToCultureInfoTest3()
         {
             const String culture = "invalidCultureName";

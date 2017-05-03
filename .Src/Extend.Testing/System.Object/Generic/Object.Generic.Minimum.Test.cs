@@ -3,36 +3,36 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void MinimumTest()
         {
             var actual = 1.Minimum( 2, 3, 4, 5, 6 );
-            Assert.AreEqual( 1, actual );
+            Assert.Equal( 1, actual );
 
             actual = 100.Minimum( 2, 3, 4, 5, 6 );
-            Assert.AreEqual( 2, actual );
+            Assert.Equal( 2, actual );
         }
 
-        [Test]
+        [Fact]
         public void MinimumTest1()
         {
             var actual = 1.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.AreEqual( "1", actual );
+            Assert.Equal( "1", actual );
 
             actual = 100.Minimum( x => x.ToString( CultureInfo.InvariantCulture ), 2, 3, 4, 5, 6 );
-            Assert.AreEqual( "100", actual );
+            Assert.Equal( "100", actual );
         }
 
-        [Test]
+        [Fact]
         public void MinimumTest1NullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -42,7 +42,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MinimumTest1NullCheck1()
         {
             Func<Int32, Object> func = null;
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void MinimumTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

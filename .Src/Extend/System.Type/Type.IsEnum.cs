@@ -1,12 +1,8 @@
 ﻿#region Usings
 
 using System;
-using JetBrains.Annotations;
-
-#if PORTABLE45
 using System.Reflection;
-
-#endif
+using JetBrains.Annotations;
 
 #endregion
 
@@ -27,13 +23,10 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsEnum( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
-#if PORTABLE45
-            return type.GetTypeInfo().IsEnum;
-#elif NET40
-            return type.IsEnum;
-#endif
+            return type.GetTypeInfo()
+                       .IsEnum;
         }
     }
 }

@@ -2,30 +2,30 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ContainsAllTest()
         {
             var actual = "test012".ContainsAll( "0", "1", "2" );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAllTest1()
         {
             var actual = "ABC".ContainsAll( StringComparison.OrdinalIgnoreCase, "a", "b", "c" );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void ContainsAllTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -35,7 +35,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAllTest1NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -45,7 +45,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAllTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -55,7 +55,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsAllTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

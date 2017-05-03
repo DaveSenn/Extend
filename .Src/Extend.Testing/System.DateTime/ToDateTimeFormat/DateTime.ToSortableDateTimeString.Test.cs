@@ -2,41 +2,41 @@
 
 using System;
 using System.Globalization;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void ToSortableDateTimeStringTest()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "s" );
             var actual = dateTime.ToSortableDateTimeString();
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void ToSortableDateTimeStringTest1()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "s", DateTimeFormatInfo.CurrentInfo );
             // ReSharper disable once AssignNullToNotNullAttribute
             var actual = dateTime.ToSortableDateTimeString( DateTimeFormatInfo.CurrentInfo );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
 
-        [Test]
+        [Fact]
         public void ToSortableDateTimeStringTest2()
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "s", CultureInfo.InvariantCulture );
             var actual = dateTime.ToSortableDateTimeString( CultureInfo.InvariantCulture );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

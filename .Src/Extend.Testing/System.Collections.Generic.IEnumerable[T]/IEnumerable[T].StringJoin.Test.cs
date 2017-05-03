@@ -3,17 +3,17 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
-        [Test]
+        [Fact]
         public void StringJoinCollectionNull()
         {
             List<Object> list = null;
@@ -24,7 +24,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void StringJoinNullSeperatorTest()
         {
             var list = new List<String> { "1", "2", "3" };
@@ -35,7 +35,7 @@ namespace Extend.Testing
                 .Be( "123" );
         }
 
-        [Test]
+        [Fact]
         public void StringJoinSelectorCollectionNullTEst()
         {
             List<Object> list = null;
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void StringJoinSelectorNullSeperatorTest()
         {
             var list = new List<Int32> { 1, 2, 3 };
@@ -57,7 +57,7 @@ namespace Extend.Testing
                 .Be( "1!2!3!" );
         }
 
-        [Test]
+        [Fact]
         public void StringJoinSelectorNullTest()
         {
             var list = new List<Int32> { 1, 2, 3 };
@@ -68,7 +68,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void StringJoinSelectorTest()
         {
             var list = new List<Int32> { 1, 2, 3 };
@@ -79,24 +79,24 @@ namespace Extend.Testing
                 .Be( "1!,2!,3!" );
         }
 
-        [Test]
+        [Fact]
         public void StringJoinTest()
         {
             var list = new List<String>();
             var actual = list.StringJoin( "," );
-            Assert.AreEqual( String.Empty, actual );
+            Assert.Equal( String.Empty, actual );
 
             actual = list.StringJoin();
-            Assert.AreEqual( String.Empty, actual );
+            Assert.Equal( String.Empty, actual );
 
             list = RandomValueEx.GetRandomStrings();
             actual = list.StringJoin( "," );
             var expected = String.Join( ",", list );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
 
             actual = list.StringJoin();
             expected = String.Join( "", list );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

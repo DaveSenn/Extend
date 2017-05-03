@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class ExecutionResultTest
     {
-        [Test]
+        [Fact]
         public void CtorTest()
         {
             var target = new ExecutionResult<String>();
@@ -22,7 +22,7 @@ namespace Extend.Testing
                   .BeNull();
         }
 
-        [Test]
+        [Fact]
         public void ExceptionTest()
         {
             var target = new ExecutionResult<String>();
@@ -33,7 +33,7 @@ namespace Extend.Testing
                   .BeSameAs( expected );
         }
 
-        [Test]
+        [Fact]
         public void ResultTest()
         {
             var target = new ExecutionResult<String>();

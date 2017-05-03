@@ -4,16 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentsNullValueTest()
         {
             Type type = null;
@@ -24,7 +24,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentsTest()
         {
             var actual = typeof(String).GetGenericTypeArguments();
@@ -32,7 +32,7 @@ namespace Extend.Testing
                   .HaveCount( 0 );
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentsTest1()
         {
             var actual = typeof(List<String>).GetGenericTypeArguments();
@@ -43,7 +43,7 @@ namespace Extend.Testing
                   .Be( typeof(String) );
         }
 
-        [Test]
+        [Fact]
         public void GetGenericTypeArgumentsTest2()
         {
             var actual = typeof(Dictionary<Int32, String>).GetGenericTypeArguments();

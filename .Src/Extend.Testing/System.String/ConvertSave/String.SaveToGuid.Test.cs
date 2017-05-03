@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void SaveToGuidInvalidValueTest()
         {
             var actual = "InvalidValue".SaveToGuid();
@@ -21,7 +21,7 @@ namespace Extend.Testing
                 .Be( default(Guid) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToGuidInvalidValueWithDefaultTest()
         {
             var expected = Guid.NewGuid();
@@ -32,7 +32,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToGuidNullTest()
         {
             String value = null;
@@ -44,7 +44,7 @@ namespace Extend.Testing
                 .Be( default(Guid) );
         }
 
-        [Test]
+        [Fact]
         public void SaveToGuidNullWitDefaultTest()
         {
             var expected = Guid.NewGuid();
@@ -57,7 +57,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToGuidTest()
         {
             var expected = Guid.NewGuid();
@@ -69,7 +69,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void SaveToGuidWithDefaultTest()
         {
             var expected = Guid.NewGuid();

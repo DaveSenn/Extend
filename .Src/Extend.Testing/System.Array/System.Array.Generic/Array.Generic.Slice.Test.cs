@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void SliceTest()
         {
             var sourceArray = new[]
@@ -24,12 +24,12 @@ namespace Extend.Testing
 
             var actual = sourceArray.Slice( 2 );
 
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( 1, actual[0] );
-            Assert.AreEqual( 2, actual[1] );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( 1, actual[0] );
+            Assert.Equal( 2, actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SliceTest1()
         {
             var sourceArray = new[]
@@ -43,13 +43,13 @@ namespace Extend.Testing
 
             var actual = sourceArray.Slice( 2, targetArray );
 
-            Assert.AreSame( targetArray, actual );
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( 1, actual[0] );
-            Assert.AreEqual( 2, actual[1] );
+            Assert.Same( targetArray, actual );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( 1, actual[0] );
+            Assert.Equal( 2, actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SliceTest1ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -63,7 +63,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest1ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -80,7 +80,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest1NullCheck()
         {
             Int32[] sourceArray = null;
@@ -90,7 +90,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest1NullCheck1()
         {
             var sourceArray = new[]
@@ -104,7 +104,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest2()
         {
             var sourceArray = new[]
@@ -117,12 +117,12 @@ namespace Extend.Testing
 
             var actual = sourceArray.Slice( 1, 2 );
 
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( 2, actual[0] );
-            Assert.AreEqual( 3, actual[1] );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( 2, actual[0] );
+            Assert.Equal( 3, actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SliceTest2ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -137,7 +137,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest2ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -152,7 +152,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest2ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
@@ -167,7 +167,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest2NullCheck()
         {
             Int32[] sourceArray = null;
@@ -178,7 +178,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3()
         {
             var sourceArray = new[]
@@ -192,13 +192,13 @@ namespace Extend.Testing
 
             var actual = sourceArray.Slice( 1, 2, targetArray );
 
-            Assert.AreSame( targetArray, actual );
-            Assert.AreEqual( 2, actual.Length );
-            Assert.AreEqual( 2, actual[0] );
-            Assert.AreEqual( 3, actual[1] );
+            Assert.Same( targetArray, actual );
+            Assert.Equal( 2, actual.Length );
+            Assert.Equal( 2, actual[0] );
+            Assert.Equal( 3, actual[1] );
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3ArgumentOutOfRangeException()
         {
             var sourceArray = new[]
@@ -214,7 +214,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3ArgumentOutOfRangeException1()
         {
             var sourceArray = new[]
@@ -230,7 +230,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3ArgumentOutOfRangeException2()
         {
             var sourceArray = new[]
@@ -246,7 +246,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3ArgumentOutOfRangeException3()
         {
             var sourceArray = new[]
@@ -262,7 +262,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3ArgumentOutOfRangeException4()
         {
             var sourceArray = new[]
@@ -278,7 +278,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3NullCheck()
         {
             Int32[] sourceArray = null;
@@ -288,7 +288,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTest3NullCheck1()
         {
             var sourceArray = new[]
@@ -304,7 +304,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTestArgumentOutOfRangeExceptio()
         {
             var sourceArray = new[]
@@ -320,7 +320,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void SliceTestNullCheck()
         {
             Int32[] sourceArray = null;

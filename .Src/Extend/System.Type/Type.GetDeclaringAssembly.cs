@@ -25,14 +25,10 @@ namespace Extend
         [PublicAPI]
         public static Assembly GetDeclaringAssembly( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
-#if PORTABLE45
             return type.GetTypeInfo()
                        .Assembly;
-#elif NET40
-            return type.Assembly;
-#endif
         }
     }
 }

@@ -1,20 +1,20 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CharExTest
     {
-        [Test]
+        [Fact]
         public void IsLowerTest()
         {
-            Assert.IsTrue( 'a'.IsLower() );
-            Assert.IsFalse( 'A'.IsLower() );
-            Assert.IsFalse( '1'.IsLower() );
+            Assert.True( 'a'.IsLower() );
+            Assert.False( 'A'.IsLower() );
+            Assert.False( '1'.IsLower() );
         }
     }
 }

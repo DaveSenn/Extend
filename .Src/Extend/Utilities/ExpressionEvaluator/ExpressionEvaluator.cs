@@ -56,7 +56,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean EnableCaching
         {
-            get { return _enableCaching; }
+            get => _enableCaching;
             set
             {
                 _enableCaching = value;
@@ -93,7 +93,64 @@ namespace Extend
 
         #region Private Members
 
+        /// <summary>
+        ///     Evaluates the specified expression against the given object.
+        /// </summary>
         /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
+        /// <param name="source">The source object.</param>
+        /// <param name="expressionParts">The expression parts to evaluate.</param>
+        /// <returns>Returns the value represented by the specified expression.</returns>
+        private static Object Evaluate(Object source, IList<String> expressionParts)
+        {
+            Object value;
+            Int32 i;
+
+            // Iterate through all expression parts
+            for (value = source, i = 0; i < expressionParts.Count && value != null; i++)
+            {
+                var expression = expressionParts[i];
+                var indexExpression = expression.IndexOfAny(IndexExprStartChars) >= 0;
+
+                // Get the value represented by the current expression
+                value = indexExpression == false
+                    ? GetPropertyValue(value, expression)
+                    : GetIndexedPropertyValue(value, expression);
+            }
+
+            return value;
+        }
+
+        /// <summary>
+        ///     Gets the value of the property with the given name.
+        /// </summary>
+        /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
+        /// <param name="source">The source object.</param>
+        /// <param name="propertyName">Returns the property name.</param>
+        /// <returns>Returns the value of the property with the given name.</returns>
+        private static Object GetPropertyValue(Object source, String propertyName)
+        {
+            Object property;
+
+            // Find the matching property information
+            var propertyInfo = GetPropertiesFromCache(source)
+                .Find(x => x.Name.CompareOrdinalIgnoreCase(propertyName));
+
+            // Get the value of the property
+            if (propertyInfo != null)
+                property = propertyInfo.GetValueWithoutIndex(source);
+            else
+                throw new ArgumentException($"Could not find a property with name '{propertyName}'.", nameof(propertyInfo));
+
+            return property;
+        }
+
+        /// <summary>
+        /// Gets the value of the property represented by the given index expression.
+        /// </summary>
+        /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
+        /// <param name="source">The source object.</param>
+        /// <param name="expression">The expression to evaluate.</param>
+        /// <returns>Returns the value of the property represented by the given expression.</returns>
         private static Object GetIndexedPropertyValue( Object source, String expression )
         {
             Object propertyValue;
@@ -118,8 +175,7 @@ namespace Extend
             Object indexValue = null;
             var parsedIndex = -1;
             if ( index.Length != 0 )
-                if ( ( index[0] == '"' && index[index.Length - 1] == '"' )
-                     || ( index[0] == '\'' && index[index.Length - 1] == '\'' ) )
+                if ( index[0] == '"' && index[index.Length - 1] == '"' || index[0] == '\'' && index[index.Length - 1] == '\'' )
                     // Must be a string value => remove the quotes
                     indexValue = index.Substring( 1, index.Length - 2 );
                 else
@@ -140,20 +196,12 @@ namespace Extend
                         indexValue = index;
                     }
                 }
-
-            // Check if we have a index
-            if ( indexValue == null )
-                throw new ArgumentException( $"Expression contains invalid index '{expression}'." );
-
+            
             // Get the collection of which we should access the index
             var collectionProperty = propertyName.IsNotEmpty()
                 ? GetPropertyValue( source, propertyName )
                 : source;
-
-            // In case we do not find anything matching
-            if ( collectionProperty == null )
-                return null;
-
+            
             // Check if we are working with an array or a list
             IList listProperty;
             var arrayProperty = collectionProperty as Array;
@@ -166,13 +214,8 @@ namespace Extend
                 // TODO: In which case do we enter this block?
 
                 // Get the Item property
-#if PORTABLE45
                 var propertyInfo = collectionProperty.GetType()
                                                      .GetRuntimeProperty( "Item" );
-#elif NET40
-                var propertyInfo = collectionProperty.GetType()
-                                                     .GetProperty( "Item", BindingFlags.Public | BindingFlags.Instance, null, null, new[] { indexValue.GetType() }, null );
-#endif
 
                 // Get the value from the property
                 if ( propertyInfo != null )
@@ -184,32 +227,6 @@ namespace Extend
             return propertyValue;
         }
 
-        /// <summary>
-        ///     Evaluates the specified expression against the given object.
-        /// </summary>
-        /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
-        /// <param name="source">The source object.</param>
-        /// <param name="expressionParts">The expression parts to evaluate.</param>
-        /// <returns>Returns the value represented by the specified expression.</returns>
-        private static Object Evaluate( Object source, IList<String> expressionParts )
-        {
-            Object value;
-            Int32 i;
-
-            // Iterate through all expression parts
-            for ( value = source, i = 0; i < expressionParts.Count && value != null; i++ )
-            {
-                var expression = expressionParts[i];
-                var indexExpression = expression.IndexOfAny( IndexExprStartChars ) >= 0;
-
-                // Get the value represented by the current expression
-                value = indexExpression == false
-                    ? GetPropertyValue( value, expression )
-                    : GetIndexedPropertyValue( value, expression );
-            }
-
-            return value;
-        }
 
         /// <summary>
         ///     Gets the properties of the given object from the cache.
@@ -225,11 +242,11 @@ namespace Extend
 
             // Check if we should cache the properties or not
             if ( !EnableCaching )
-                return containerType.GetPublicProperties()
-                                    .ToList();
+                return containerType
+                    .GetPublicProperties()
+                    .ToList();
 
-            List<PropertyInfo> properties;
-            if ( PropertyCache.TryGetValue( containerType, out properties ) )
+            if (PropertyCache.TryGetValue(containerType, out List<PropertyInfo> properties))
                 return properties;
 
             properties = containerType.GetPublicProperties()
@@ -241,29 +258,7 @@ namespace Extend
             return properties;
         }
 
-        /// <summary>
-        ///     Gets the value of the property with the given name.
-        /// </summary>
-        /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
-        /// <param name="source">The source object.</param>
-        /// <param name="propertyName">Returns the property name.</param>
-        /// <returns>Returns the value of the property with the given name.</returns>
-        private static Object GetPropertyValue( Object source, String propertyName )
-        {
-            Object property;
-
-            // Find the matching property information
-            var propertyInfo = GetPropertiesFromCache( source )
-                .Find( x => x.Name.CompareOrdinalIgnoreCase( propertyName ) );
-
-            // Get the value of the property
-            if ( propertyInfo != null )
-                property = propertyInfo.GetValueWithoutIndex( source );
-            else
-                throw new ArgumentException( $"Could not find a property with name '{propertyName}'.", nameof( propertyInfo ) );
-
-            return property;
-        }
+        
 
         #endregion
     }

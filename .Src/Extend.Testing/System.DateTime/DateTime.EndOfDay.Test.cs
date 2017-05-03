@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class DateTimeExTest
     {
-        [Test]
+        [Fact]
         public void EndOfDayTest()
         {
             var dateTime = DateTime.Now;
@@ -18,7 +18,7 @@ namespace Extend.Testing
                 new DateTime( dateTime.Year, dateTime.Month, dateTime.Day ).AddDays( 1 )
                                                                            .Subtract( 1.ToMilliseconds() );
             var actual = dateTime.EndOfDay();
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

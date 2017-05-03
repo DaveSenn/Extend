@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTest()
         {
             const Double value0 = 100.2;
@@ -26,22 +26,22 @@ namespace Extend.Testing
             var actual =
                 stringValue.ExtractFirstDouble( stringValue.IndexOf( value1.ToString( CultureInfo.InvariantCulture ),
                                                                      StringComparison.Ordinal ) );
-            Assert.AreEqual( value1, actual );
+            Assert.Equal( value1, actual );
 
             actual = stringValue.ExtractFirstDouble();
-            Assert.AreEqual( value0, actual );
+            Assert.Equal( value0, actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTest1()
         {
             const String sValue = "asdf-100.1234asdf";
             var actual = sValue.ExtractFirstDouble();
 
-            Assert.AreEqual( -100.1234d, actual );
+            Assert.Equal( -100.1234d, actual );
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTest1ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
@@ -51,7 +51,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTest2ArgumentOutOfRangeException()
         {
             var sValue = RandomValueEx.GetRandomString();
@@ -61,7 +61,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -71,7 +71,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExtractFirstDoubleTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

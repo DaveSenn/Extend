@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TypeExTest
     {
-        [Test]
+        [Fact]
         public void IsEnumNullTest()
         {
             Type type = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsEnumTest()
         {
             var actual = typeof(String).IsEnum();
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsEnumTest1()
         {
             var actual = typeof(List<String>).IsEnum();
@@ -39,7 +39,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsEnumTest2()
         {
             var actual = typeof(Dictionary<Int32, String>).IsEnum();
@@ -47,7 +47,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsEnumTest3()
         {
             var actual = typeof(Tuple<Int32>).IsEnum();
@@ -55,7 +55,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsEnumTest4()
         {
             var actual = typeof(DayOfWeek).IsEnum();

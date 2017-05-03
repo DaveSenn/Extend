@@ -4,9 +4,6 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-#if PORTABLE45
-
-#endif
 
 #endregion
 

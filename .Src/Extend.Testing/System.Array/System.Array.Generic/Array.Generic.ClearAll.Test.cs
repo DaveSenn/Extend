@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void GenericClearAllTest()
         {
             var array = new[]
@@ -21,11 +21,11 @@ namespace Extend.Testing
             };
             array.ClearAll();
 
-            Assert.AreEqual( null, array[0] );
-            Assert.AreEqual( null, array[1] );
+            Assert.Equal( null, array[0] );
+            Assert.Equal( null, array[1] );
         }
 
-        [Test]
+        [Fact]
         public void GenericClearAllTest1()
         {
             String[] array = null;

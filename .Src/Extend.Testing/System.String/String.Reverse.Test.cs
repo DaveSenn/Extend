@@ -2,37 +2,37 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ReverseTest()
         {
             var actual = "abc".Reverse();
-            Assert.AreEqual( "cba", actual );
+            Assert.Equal( "cba", actual );
         }
 
-        [Test]
+        [Fact]
         public void ReverseTest1()
         {
             var actual = "a".Reverse();
-            Assert.AreEqual( "a", actual );
+            Assert.Equal( "a", actual );
         }
 
-        [Test]
+        [Fact]
         public void ReverseTest2()
         {
             var actual = "".Reverse();
-            Assert.AreEqual( "", actual );
+            Assert.Equal( "", actual );
         }
 
-        [Test]
+        [Fact]
         public void ReverseTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

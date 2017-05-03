@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void IsOdd0Test()
         {
             const Int64 value = 0;
@@ -21,14 +21,14 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void IsOddTest()
         {
             var value = RandomValueEx.GetRandomInt32();
 
             var expected = value % 2 != 0;
             var actual = Int64Ex.IsOdd( value );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

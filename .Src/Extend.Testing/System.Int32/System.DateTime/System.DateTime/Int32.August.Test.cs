@@ -1,21 +1,21 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int32ExTest
     {
-        [Test]
+        [Fact]
         public void AugustTest()
         {
             var expected = new DateTime( 2000, 8, 10 );
             var actual = 10.August( 2000 );
-            Assert.AreEqual( expected, actual );
+            Assert.Equal( expected, actual );
         }
     }
 }

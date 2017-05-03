@@ -3,12 +3,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
-
-#if PORTABLE45
 using System.Reflection;
-
-#endif
+using JetBrains.Annotations;
 
 #endregion
 
@@ -32,16 +28,16 @@ namespace Extend
         public static IEnumerable<AttributeDefinitionProperty<TAttribute>> GetAttributeDefinitions<TAttribute>( [NotNull] this Type type )
             where TAttribute : Attribute
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             return type
                 .GetPublicProperties()
                 .Select( x => new AttributeDefinitionProperty<TAttribute>
-                         {
-                             Property = x,
-                             Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
-                                           .Cast<TAttribute>()
-                         } )
+                {
+                    Property = x,
+                    Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
+                                  .Cast<TAttribute>()
+                } )
                 .Where( x => x.Attributes.Any() );
         }
     }

@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void IsEvenOTest()
         {
             var actual = Int64Ex.IsEven( 0 );
@@ -18,7 +18,7 @@ namespace Extend.Testing
                   .Be( true );
         }
 
-        [Test]
+        [Fact]
         public void IsEvenTest()
         {
             var value = RandomValueEx.GetRandomInt32();

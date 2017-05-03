@@ -1,16 +1,16 @@
 ﻿#region Usings
 
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CharExTest
     {
-        [Test]
+        [Fact]
         public void IsNumberTest()
         {
             '0'.IsNumber()

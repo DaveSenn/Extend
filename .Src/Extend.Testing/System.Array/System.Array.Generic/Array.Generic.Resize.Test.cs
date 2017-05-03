@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void GenericResizeTest()
         {
             var array = new[]
@@ -20,10 +20,10 @@ namespace Extend.Testing
                 "test2"
             };
             array = array.Resize( 10 );
-            Assert.AreEqual( 10, array.Length );
+            Assert.Equal( 10, array.Length );
         }
 
-        [Test]
+        [Fact]
         public void GenericResizeTestNullCheck()
         {
             String[] array = null;

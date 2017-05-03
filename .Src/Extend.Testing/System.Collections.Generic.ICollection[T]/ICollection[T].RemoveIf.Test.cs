@@ -3,33 +3,33 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class CollectionTExTest
     {
-        [Test]
+        [Fact]
         public void RemoveIfTest()
         {
             var list = new List<String>();
             var valueToRemove = RandomValueEx.GetRandomString();
             list.Add( valueToRemove );
 
-            Assert.AreEqual( 1, list.Count );
+            Assert.Equal( 1, list.Count );
 
             var result = list.RemoveIf( valueToRemove, x => false );
-            Assert.AreEqual( 1, list.Count );
-            Assert.AreSame( list, result );
+            Assert.Equal( 1, list.Count );
+            Assert.Same( list, result );
 
             list.RemoveIf( valueToRemove, x => true );
-            Assert.AreEqual( 0, list.Count );
+            Assert.Equal( 0, list.Count );
         }
 
-        [Test]
+        [Fact]
         public void RemoveIfTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -38,7 +38,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void RemoveIfTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

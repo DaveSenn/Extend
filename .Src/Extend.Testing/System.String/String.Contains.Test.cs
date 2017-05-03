@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ContainsTest()
         {
             const String target = "this is my string";
@@ -21,7 +21,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ContainsTest1()
         {
             const String target = "this is my string";
@@ -31,7 +31,7 @@ namespace Extend.Testing
                   .BeFalse();
         }
 
-        [Test]
+        [Fact]
         public void ContainsTest2()
         {
             const String target = "this is my String";
@@ -41,7 +41,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ContainsTestArgumentNullException()
         {
             const String target = null;
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ContainsTestArgumentNullException1()
         {
             const String target = "my string";

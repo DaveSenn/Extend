@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void ToBooleanInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -20,7 +20,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -30,7 +30,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ToBooleanTest()
         {
             var value = RandomValueEx.GetRandomBoolean();

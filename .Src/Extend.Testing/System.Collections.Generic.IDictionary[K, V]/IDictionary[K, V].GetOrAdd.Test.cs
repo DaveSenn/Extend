@@ -4,17 +4,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
-        [Test]
+        [Fact]
         public void GetOrAddCase1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -24,7 +24,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase1NullCheck1()
         {
             // ReSharper disable once MustUseReturnValue
@@ -33,7 +33,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -43,7 +43,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase2NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -53,7 +53,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase2NullCheck2()
         {
             Func<Object> func = null;
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -74,7 +74,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase3NullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -84,7 +84,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCase3NullCheck2()
         {
             Func<Object, Object> func = null;
@@ -95,7 +95,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCaseNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -105,7 +105,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddCaseNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -115,7 +115,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddTest()
         {
             var dictionary = new Dictionary<String, String>();
@@ -123,17 +123,17 @@ namespace Extend.Testing
             var value = RandomValueEx.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
 
             actual = dictionary.GetOrAdd( key, value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddTest1()
         {
             var dictionary = new Dictionary<String, String>();
@@ -141,17 +141,17 @@ namespace Extend.Testing
                                                                  RandomValueEx.GetRandomString() );
 
             var actual = dictionary.GetOrAdd( keyValuePair );
-            Assert.AreEqual( keyValuePair.Value, actual );
-            Assert.IsTrue( dictionary.Contains( keyValuePair ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( keyValuePair.Value, actual );
+            Assert.True( dictionary.Contains( keyValuePair ) );
+            Assert.Equal( 1, dictionary.Count );
 
             actual = dictionary.GetOrAdd( keyValuePair );
-            Assert.AreEqual( keyValuePair.Value, actual );
-            Assert.IsTrue( dictionary.Contains( keyValuePair ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( keyValuePair.Value, actual );
+            Assert.True( dictionary.Contains( keyValuePair ) );
+            Assert.Equal( 1, dictionary.Count );
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddTest2()
         {
             var dictionary = new Dictionary<String, String>();
@@ -159,17 +159,17 @@ namespace Extend.Testing
             var value = RandomValueEx.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, () => value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
 
             actual = dictionary.GetOrAdd( key, () => value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
         }
 
-        [Test]
+        [Fact]
         public void GetOrAddTest3()
         {
             var dictionary = new Dictionary<String, String>();
@@ -177,14 +177,14 @@ namespace Extend.Testing
             var value = RandomValueEx.GetRandomString();
 
             var actual = dictionary.GetOrAdd( key, x => value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
 
             actual = dictionary.GetOrAdd( key, x => value );
-            Assert.AreEqual( value, actual );
-            Assert.IsTrue( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
-            Assert.AreEqual( 1, dictionary.Count );
+            Assert.Equal( value, actual );
+            Assert.True( dictionary.Contains( new KeyValuePair<String, String>( key, value ) ) );
+            Assert.Equal( 1, dictionary.Count );
         }
     }
 }

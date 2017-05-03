@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void JoinTest()
         {
             var actual = ",".Join( new[]
@@ -20,10 +20,10 @@ namespace Extend.Testing
                                        "1",
                                        "2"
                                    } );
-            Assert.AreEqual( "1,2", actual );
+            Assert.Equal( "1,2", actual );
         }
 
-        [Test]
+        [Fact]
         public void JoinTest1()
         {
             var actual = ",".Join( new Object[]
@@ -31,10 +31,10 @@ namespace Extend.Testing
                                        "1",
                                        "2"
                                    } );
-            Assert.AreEqual( "1,2", actual );
+            Assert.Equal( "1,2", actual );
         }
 
-        [Test]
+        [Fact]
         public void JoinTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -47,7 +47,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest1NullCheck1()
         {
             Object[] array = null;
@@ -58,14 +58,14 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest2()
         {
             var actual = ",".Join( new List<String> { "1", "2" } );
-            Assert.AreEqual( "1,2", actual );
+            Assert.Equal( "1,2", actual );
         }
 
-        [Test]
+        [Fact]
         public void JoinTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -78,7 +78,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest2NullCheck1()
         {
             List<String> list = null;
@@ -89,14 +89,14 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest3()
         {
             var actual = ",".Join( new List<Object> { "1", "2" } );
-            Assert.AreEqual( "1,2", actual );
+            Assert.Equal( "1,2", actual );
         }
 
-        [Test]
+        [Fact]
         public void JoinTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -109,7 +109,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest3NullCheck1()
         {
             List<Object> list = null;
@@ -120,7 +120,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest4()
         {
             var array = new[]
@@ -131,10 +131,10 @@ namespace Extend.Testing
             };
 
             var actual = ",".Join( array, 1, 2 );
-            Assert.AreEqual( "2,3", actual );
+            Assert.Equal( "2,3", actual );
         }
 
-        [Test]
+        [Fact]
         public void JoinTest4NullCheck()
         {
             String seperator = null;
@@ -152,7 +152,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTest4NullCheck1()
         {
             String[] array = null;
@@ -164,7 +164,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -177,7 +177,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void JoinTestNullCheck1()
         {
             String[] array = null;

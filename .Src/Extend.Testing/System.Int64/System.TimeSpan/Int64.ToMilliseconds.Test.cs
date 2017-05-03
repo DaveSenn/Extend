@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void ToMillisecondsTest()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToMillisecondsTooLargeTest()
         {
             const Int64 value = Int64.MaxValue;
@@ -34,7 +34,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToMillisecondsTooSmallTest()
         {
             const Int64 value = Int64.MinValue;

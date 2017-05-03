@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToDateTimeFormatProviderNullTest()
         {
             var expected = DateTime.Now;
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 1000 );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeFormatProviderTest()
         {
             var expected = DateTime.Now;
@@ -36,7 +36,7 @@ namespace Extend.Testing
                 .BeCloseTo( expected, 1000 );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeInvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -46,7 +46,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeInvalidCastTest()
         {
             var value = new TestModel();
@@ -56,7 +56,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeInvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -66,7 +66,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeInvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -76,7 +76,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeNullValueFormatProviderTest()
         {
             Object value = null;
@@ -88,7 +88,7 @@ namespace Extend.Testing
                 .Be( DateTime.MinValue );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeNullValueTest()
         {
             Object value = null;
@@ -100,7 +100,7 @@ namespace Extend.Testing
                 .Be( DateTime.MinValue );
         }
 
-        [Test]
+        [Fact]
         public void ToDateTimeTest()
         {
             var expected = DateTime.Now;

@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class Int64ExTest
     {
-        [Test]
+        [Fact]
         public void ToDaysTest()
         {
             var value = RandomValueEx.GetRandomInt32( 1, 100 );
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToDaysTooLargeTest()
         {
             var value = (Int64) ( TimeSpan.MaxValue.Days + 1 );
@@ -34,7 +34,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToDaysTooSmallTest()
         {
             var value = (Int64) ( TimeSpan.MinValue.Days - 1 );

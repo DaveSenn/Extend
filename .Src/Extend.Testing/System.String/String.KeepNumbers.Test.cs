@@ -2,23 +2,23 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void KeepNumbersTest()
         {
             var actual = "a1b2c3".KeepNumbers();
-            Assert.AreEqual( "123", actual );
+            Assert.Equal( "123", actual );
         }
 
-        [Test]
+        [Fact]
         public void KeepNumbersTEstCaseNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

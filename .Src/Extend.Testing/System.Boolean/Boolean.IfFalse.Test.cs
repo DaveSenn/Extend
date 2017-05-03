@@ -2,78 +2,78 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class BooleanExTest
     {
-        [Test]
+        [Fact]
         public void IfFalseTest()
         {
             var actual = String.Empty;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             false.IfFalse( () => actual = "0", () => actual = "1" );
-            Assert.AreEqual( "0", actual );
+            Assert.Equal( "0", actual );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             true.IfFalse( () => actual = "0", () => actual = "1" );
-            Assert.AreEqual( "1", actual );
+            Assert.Equal( "1", actual );
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest1()
         {
             var actual = String.Empty;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             false.IfFalse( "test", x => actual = x + "0", x => actual = x + "1" );
-            Assert.AreEqual( "test0", actual );
+            Assert.Equal( "test0", actual );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             true.IfFalse( "test", x => actual = x + "0", x => actual = x + "1" );
-            Assert.AreEqual( "test1", actual );
+            Assert.Equal( "test1", actual );
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => false.IfFalse( "", null, x => Assert.Fail() );
-
+            Action test = () => false.IfFalse( "", null, x => Assert.True( false, "This should not happen." ) );
+            
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest2()
         {
             var actual = String.Empty;
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             false.IfFalse( "test", "P2", ( x, y ) => actual = x + y + "0", ( x, y ) => actual = x + y + "1" );
-            Assert.AreEqual( "testP20", actual );
+            Assert.Equal( "testP20", actual );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             true.IfFalse( "test", "P2", ( x, y ) => actual = x + y + "0", ( x, y ) => actual = x + y + "1" );
-            Assert.AreEqual( "testP21", actual );
+            Assert.Equal( "testP21", actual );
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest2NullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => false.IfFalse( "", "", null, ( x, y ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", null, ( x, y ) => Assert.True( false, "This should not happen." ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest3()
         {
             var actual = String.Empty;
@@ -84,7 +84,7 @@ namespace Extend.Testing
                            "P3",
                            ( x, y, z ) => actual = x + y + z + "0",
                            ( x, y, z ) => actual = x + y + z + "1" );
-            Assert.AreEqual( "testP2P30", actual );
+            Assert.Equal( "testP2P30", actual );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             true.IfFalse( "test",
@@ -92,20 +92,20 @@ namespace Extend.Testing
                           "P3",
                           ( x, y, z ) => actual = x + y + z + "0",
                           ( x, y, z ) => actual = x + y + z + "1" );
-            Assert.AreEqual( "testP2P31", actual );
+            Assert.Equal( "testP2P31", actual );
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest3NullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", "", null, ( x, y, z ) => Assert.True( false, "This should not happen." ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest4()
         {
             var actual = String.Empty;
@@ -117,7 +117,7 @@ namespace Extend.Testing
                            "P4",
                            ( x, y, z, a ) => actual = x + y + z + a + "0",
                            ( x, y, z, a ) => actual = x + y + z + a + "1" );
-            Assert.AreEqual( "testP2P3P40", actual );
+            Assert.Equal( "testP2P3P40", actual );
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             true.IfFalse( "test",
@@ -126,25 +126,25 @@ namespace Extend.Testing
                           "P4",
                           ( x, y, z, a ) => actual = x + y + z + a + "0",
                           ( x, y, z, a ) => actual = x + y + z + a + "1" );
-            Assert.AreEqual( "testP2P3P41", actual );
+            Assert.Equal( "testP2P3P41", actual );
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTest4NullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.Fail() );
+            Action test = () => false.IfFalse( "", "", "", "", null, ( x, y, z, a ) => Assert.True( false, "This should not happen." ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IfFalseTestNullCheck()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => false.IfFalse( null, Assert.Fail );
+            Action test = () => false.IfFalse( null, () => Assert.True( false, "This should not happen." ) );
 
             test.ShouldThrow<ArgumentNullException>();
         }

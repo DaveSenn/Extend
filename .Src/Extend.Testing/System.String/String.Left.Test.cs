@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void LeftArgumentNullExceptionTest()
         {
             String value = null;
@@ -22,7 +22,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void LeftArgumentOutOfRangeExceptionTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -31,7 +31,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void LeftArgumentOutOfRangeExceptionTest1()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -40,7 +40,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
-        [Test]
+        [Fact]
         public void LeftTest()
         {
             var actual = "This is a test".Left( 6 );
@@ -49,7 +49,7 @@ namespace Extend.Testing
                   .Be( "This i" );
         }
 
-        [Test]
+        [Fact]
         public void LeftTest1()
         {
             var actual = "".Left( 0 );
@@ -58,7 +58,7 @@ namespace Extend.Testing
                   .Be( String.Empty );
         }
 
-        [Test]
+        [Fact]
         public void LeftTest2()
         {
             var actual = "This is a test".Left( 0 );
@@ -67,7 +67,7 @@ namespace Extend.Testing
                   .Be( "" );
         }
 
-        [Test]
+        [Fact]
         public void LeftTest3()
         {
             var actual = "this is a test".Left( 2 );

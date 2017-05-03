@@ -1,28 +1,28 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class StringExTest
     {
-        [Test]
+        [Fact]
         public void IsEmptyTest()
         {
             var value = "";
-            Assert.IsTrue( value.IsEmpty() );
+            Assert.True( value.IsEmpty() );
 
             value = null;
-            Assert.IsTrue( value.IsEmpty() );
+            Assert.True( value.IsEmpty() );
 
             value = "   ";
-            Assert.IsTrue( value.IsEmpty() );
+            Assert.True( value.IsEmpty() );
 
             value = RandomValueEx.GetRandomString();
-            Assert.IsFalse( value.IsEmpty() );
+            Assert.False( value.IsEmpty() );
         }
     }
 }

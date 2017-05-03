@@ -1,37 +1,37 @@
 ﻿#region Usings
 
+using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class AttributeDefinitionTypeTest
     {
-        [Test]
+        [Fact]
         public void AttributesTest()
         {
-            var target = new AttributeDefinitionType<DisplayAttribute>();
+            var target = new AttributeDefinitionType<ObsoleteAttribute>();
 
             target.Attributes.Should()
                   .BeNull();
 
-            var expected = new List<DisplayAttribute>();
+            var expected = new List<ObsoleteAttribute>();
             target.Attributes = expected;
 
             target.Attributes.Should()
                   .BeSameAs( expected );
         }
 
-        [Test]
+        [Fact]
         public void TypeTest()
         {
-            var target = new AttributeDefinitionType<DisplayAttribute>();
-
+            var target = new AttributeDefinitionType<ObsoleteAttribute>();
+            
             target.Type.Should()
                   .BeNull();
 

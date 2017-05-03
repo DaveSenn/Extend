@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class MemberSelectionRuleBaseTest
     {
-        [Test]
+        [Fact]
         public void GetSelectionResultTest()
         {
             var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
@@ -19,7 +19,7 @@ namespace Extend.Testing
             test.ShouldThrow<NotImplementedException>();
         }
 
-        [Test]
+        [Fact]
         public void RuleDescriptionNameTest()
         {
             var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
@@ -27,7 +27,7 @@ namespace Extend.Testing
                   .Be( "Description" );
         }
 
-        [Test]
+        [Fact]
         public void RuleNameTest()
         {
             var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );

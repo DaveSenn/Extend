@@ -3,16 +3,16 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class KeyEqualityComparerTest
     {
-        [Test]
+        [Fact]
         public void BySelectorNullTest()
         {
             Func<String, String> keySelector = null;
@@ -23,7 +23,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ByTest()
         {
             var actual = new KeyEqualityComparer<String, Int32>( x => x.Length, null );
@@ -32,7 +32,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        [Test]
+        [Fact]
         public void ByTest1()
         {
             var actual = new KeyEqualityComparer<String, String>( x => x, new StringLengthComparer() );

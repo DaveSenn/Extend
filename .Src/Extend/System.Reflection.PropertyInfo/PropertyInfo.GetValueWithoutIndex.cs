@@ -32,11 +32,7 @@ namespace Extend
             propertyInfo.ThrowIfNull( nameof( propertyInfo ) );
             source.ThrowIfNull( nameof( source ) );
 
-#if PORTABLE45
-            return propertyInfo.GetValue( source );
-#elif NET40
-            return propertyInfo.GetValue( source, null );
-#endif
+            return propertyInfo.GetValue(source);
         }
     }
 }

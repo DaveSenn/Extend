@@ -3,16 +3,16 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public class ExpressionSpecificationTest
     {
-        [Test]
+        [Fact]
         public void AndTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -20,10 +20,10 @@ namespace Extend.Testing
 
             var actual = target.And( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void AndTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -31,10 +31,10 @@ namespace Extend.Testing
 
             var actual = target.And( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void AndTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -42,10 +42,10 @@ namespace Extend.Testing
 
             var actual = target.And( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void AndTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -53,10 +53,10 @@ namespace Extend.Testing
 
             var actual = target.And( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void AndTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -68,7 +68,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void CtorTestNulLCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -78,42 +78,42 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void IsSatisfiedByTest()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedBy( "123" );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsSatisfiedByTest1()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedBy( "123456" );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
         }
 
-        [Test]
+        [Fact]
         public void IsSatisfiedByWithMessagesTest()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123" )
                                .ToList();
-            Assert.AreEqual( 1, actual.Count );
-            Assert.IsNull( actual[0] );
+            Assert.Equal( 1, actual.Count );
+            Assert.Null( actual[0] );
         }
 
-        [Test]
+        [Fact]
         public void IsSatisfiedByWithMessagesTest1()
         {
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123456" )
                                .ToList();
-            Assert.AreEqual( 0, actual.Count );
+            Assert.Equal( 0, actual.Count );
         }
 
-        [Test]
+        [Fact]
         public void OrTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -121,10 +121,10 @@ namespace Extend.Testing
 
             var actual = target.Or( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void OrTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -132,10 +132,10 @@ namespace Extend.Testing
 
             var actual = target.Or( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void OrTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -143,10 +143,10 @@ namespace Extend.Testing
 
             var actual = target.Or( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void OrTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -154,10 +154,10 @@ namespace Extend.Testing
 
             var actual = target.Or( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void OrTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -169,7 +169,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void XOrTest()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -177,10 +177,10 @@ namespace Extend.Testing
 
             var actual = target.XOr( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void XOrTest1()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -188,10 +188,10 @@ namespace Extend.Testing
 
             var actual = target.XOr( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void XOrTest2()
         {
             var target = new ExpressionSpecification<String>( x => true );
@@ -199,10 +199,10 @@ namespace Extend.Testing
 
             var actual = target.XOr( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsTrue( result );
+            Assert.True( result );
         }
 
-        [Test]
+        [Fact]
         public void XOrTest3()
         {
             var target = new ExpressionSpecification<String>( x => false );
@@ -210,10 +210,10 @@ namespace Extend.Testing
 
             var actual = target.XOr( other );
             var result = actual.IsSatisfiedBy( String.Empty );
-            Assert.IsFalse( result );
+            Assert.False( result );
         }
 
-        [Test]
+        [Fact]
         public void XOrTestNullCheck()
         {
             var target = new ExpressionSpecification<String>( x => false );

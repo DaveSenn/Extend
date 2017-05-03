@@ -1,23 +1,23 @@
 ﻿#region Usings
 
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToSingleItemArrayTest()
         {
             var item = RandomValueEx.GetRandomString();
 
             var actual = item.ToSingleItemArray();
 
-            Assert.AreEqual( 1, actual.Length );
-            Assert.AreEqual( item, actual[0] );
+            Assert.Equal( 1, actual.Length );
+            Assert.Equal( item, actual[0] );
         }
     }
 }

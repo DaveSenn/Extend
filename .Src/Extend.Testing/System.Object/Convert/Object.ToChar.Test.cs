@@ -3,16 +3,16 @@
 using System;
 using System.Globalization;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ToCharFormatProviderNullTest()
         {
             const Char expected = 'a';
@@ -24,7 +24,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToCharInvalidCastFormatProviderTest()
         {
             var value = new TestModel();
@@ -34,7 +34,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharInvalidCastTest()
         {
             var value = new TestModel();
@@ -44,7 +44,7 @@ namespace Extend.Testing
             test.ShouldThrow<InvalidCastException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharInvalidFormatFormatProviderTest()
         {
             const String value = "invalidFormat";
@@ -54,7 +54,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharInvalidFormatTest()
         {
             const String value = "invalidFormat";
@@ -64,7 +64,7 @@ namespace Extend.Testing
             test.ShouldThrow<FormatException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharNullValueFormatProviderTest()
         {
             Object value = null;
@@ -77,7 +77,7 @@ namespace Extend.Testing
                 .Be( (Char) 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToCharNullValueTest()
         {
             Object value = null;
@@ -90,7 +90,7 @@ namespace Extend.Testing
                 .Be( (Char) 0 );
         }
 
-        [Test]
+        [Fact]
         public void ToCharTest()
         {
             const Char expected = 'a';
@@ -102,7 +102,7 @@ namespace Extend.Testing
                 .Be( expected );
         }
 
-        [Test]
+        [Fact]
         public void ToCharTooLargeFormatProviderTest()
         {
             const Int32 value = (Int32) Char.MaxValue + 1;
@@ -112,7 +112,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharTooLargeTest()
         {
             const Int32 value = (Int32) Char.MaxValue + 1;
@@ -122,7 +122,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharTooSmallFormatProviderTest()
         {
             const Int32 value = (Int32) Char.MinValue - 1;
@@ -132,7 +132,7 @@ namespace Extend.Testing
             test.ShouldThrow<OverflowException>();
         }
 
-        [Test]
+        [Fact]
         public void ToCharTooSmallTest()
         {
             const Int32 value = (Int32) Char.MinValue - 1;

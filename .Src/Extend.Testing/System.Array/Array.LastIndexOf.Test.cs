@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ArrayExTest
     {
-        [Test]
+        [Fact]
         public void LastIndexOfTest()
         {
             Array array = new[]
@@ -21,10 +21,10 @@ namespace Extend.Testing
                 "test2"
             };
             var actual = array.LastIndexOf( "test2" );
-            Assert.AreEqual( 2, actual );
+            Assert.Equal( 2, actual );
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOfTest1()
         {
             Array array = new[]
@@ -34,10 +34,10 @@ namespace Extend.Testing
                 "test2"
             };
             var actual = array.LastIndexOf( "test2", 2 );
-            Assert.AreEqual( 2, actual );
+            Assert.Equal( 2, actual );
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOfTest1NullCheck()
         {
             Array array = null;
@@ -48,7 +48,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOfTest2()
         {
             Array array = new[]
@@ -58,10 +58,10 @@ namespace Extend.Testing
                 "test2"
             };
             var actual = array.LastIndexOf( "test2", 1, 2 );
-            Assert.AreEqual( 1, actual );
+            Assert.Equal( 1, actual );
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOfTest2NullCheck()
         {
             Array array = null;
@@ -72,7 +72,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void LastIndexOfTestNullCheck()
         {
             Array array = null;

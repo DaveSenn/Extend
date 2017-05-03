@@ -3,29 +3,29 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ObjectExTest
     {
-        [Test]
+        [Fact]
         public void ReferenceEqualsTest()
         {
             var list = new List<String>();
             var list1 = new List<String>();
 
             var actual = list.RefEquals( list );
-            Assert.IsTrue( actual );
+            Assert.True( actual );
 
             actual = list.RefEquals( list1 );
-            Assert.IsFalse( actual );
+            Assert.False( actual );
         }
 
-        [Test]
+        [Fact]
         public void ReferenceEqualsTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -35,7 +35,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ReferenceEqualsTestNullCheck1()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

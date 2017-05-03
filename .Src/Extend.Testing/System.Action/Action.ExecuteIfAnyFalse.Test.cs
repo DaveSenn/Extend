@@ -2,16 +2,16 @@
 
 using System;
 using FluentAssertions;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class ActionExTest
     {
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest()
         {
             //Case 1
@@ -23,8 +23,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -34,8 +34,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -46,8 +46,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsTrue( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.True( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -58,8 +58,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -70,11 +70,11 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest1()
         {
             var parameter = RandomValueEx.GetRandomString();
@@ -89,8 +89,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -101,8 +101,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -114,8 +114,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsTrue( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.True( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -127,8 +127,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -140,11 +140,11 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest1NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -152,7 +152,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest2()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -169,8 +169,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -182,8 +182,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -196,8 +196,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsTrue( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.True( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -210,8 +210,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -224,11 +224,11 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest2NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -242,7 +242,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest3()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -261,8 +261,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -275,8 +275,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -290,8 +290,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsTrue( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.True( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -305,8 +305,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -320,11 +320,11 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest3NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -339,7 +339,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest4()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -360,8 +360,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -377,8 +377,8 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.True( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -395,8 +395,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsTrue( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.True( trueActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -412,8 +412,8 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -428,11 +428,11 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
-            Assert.IsFalse( trueActionExecuted );
+            Assert.False( falseActionExecuted );
+            Assert.False( trueActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest4NullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
@@ -448,7 +448,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest5()
         {
             //Case 1
@@ -458,7 +458,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -467,7 +467,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -476,7 +476,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -485,7 +485,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
@@ -493,10 +493,10 @@ namespace Extend.Testing
             falseActionExecuted = false;
             action.ExecuteIfAnyFalse( true, true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest5NullCheck()
         {
             Action action = null;
@@ -506,7 +506,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest6()
         {
             var parameter = RandomValueEx.GetRandomString();
@@ -519,7 +519,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -529,7 +529,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -539,7 +539,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -549,17 +549,17 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String> action = x => { };
             action.ExecuteIfAnyFalse( parameter, true, true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest6NullCheck()
         {
             Action<String> action = null;
@@ -569,7 +569,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest7()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -584,7 +584,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -595,7 +595,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -606,7 +606,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -617,17 +617,17 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String> action = ( x, y ) => { };
             action.ExecuteIfAnyFalse( parameter1, parameter2, true, true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest7NullCheck()
         {
             Action<String, String> action = null;
@@ -636,7 +636,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest8()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -653,7 +653,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -665,7 +665,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -677,7 +677,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -689,17 +689,17 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String, String> action = ( x, y, z ) => { };
             action.ExecuteIfAnyFalse( parameter1, parameter2, parameter3, true, true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest8NullCheck()
         {
             Action<String, String, String> action = null;
@@ -713,7 +713,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest9()
         {
             var parameter1 = RandomValueEx.GetRandomString();
@@ -733,7 +733,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 2
             falseActionExecuted = false;
@@ -747,7 +747,7 @@ namespace Extend.Testing
                 false,
                 true );
 
-            Assert.IsTrue( falseActionExecuted );
+            Assert.True( falseActionExecuted );
 
             //Case 3
             falseActionExecuted = false;
@@ -761,7 +761,7 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 4
             falseActionExecuted = false;
@@ -775,17 +775,17 @@ namespace Extend.Testing
                 true,
                 true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
 
             //Case 5
             falseActionExecuted = false;
             Action<String, String, String, String> action = ( x, y, z, a ) => { };
             action.ExecuteIfAnyFalse( parameter1, parameter2, parameter3, parameter4, true, true );
 
-            Assert.IsFalse( falseActionExecuted );
+            Assert.False( falseActionExecuted );
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTest9NullCheck()
         {
             Action<String, String, String, String> action = null;
@@ -800,7 +800,7 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        [Test]
+        [Fact]
         public void ExecuteIfAnyFalseTestNullCheck()
         {
             // ReSharper disable once AssignNullToNotNullAttribute

@@ -1,23 +1,23 @@
 ﻿#region Usings
 
 using System;
-using NUnit.Framework;
+using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    [TestFixture]
+    
     public partial class TimeSpanExTest
     {
-        [Test]
+        [Fact]
         public void FPastTest()
         {
             var expected = DateTime.Now.Subtract( TimeSpan.FromDays( 1 ) );
             var actual = TimeSpan.FromDays( 1 )
                                  .Past();
 
-            Assert.AreEqual( expected.Day, actual.Day );
+            Assert.Equal( expected.Day, actual.Day );
         }
     }
 }
