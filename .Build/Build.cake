@@ -8,12 +8,12 @@ var sourceDirectory = Directory("../.Src");
 var toolDirectory = Directory("../.Tools");
 var buildDirectory = Directory("../.Build");
 var outputDirectory = Directory("../.Output");
-var outputNuGetDirectory = Directory("../.Output/NuGet");
 
 // The path to the solution file
 var solution = sourceDirectory + File("Extend.sln");
 var testDirectory = sourceDirectory + Directory("Extend.Testing");
 var libDirectory = sourceDirectory + Directory("Extend");
+var libBinDirectory = libDirectory + Directory("bin") + Directory(configuration);
 
 // Executables
 var nuGet = toolDirectory + File("NuGet/nuget.exe");
@@ -86,6 +86,7 @@ Task("Test")
     .Does(() =>
 {
     var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
+    /*
     foreach(var project in projects)
     {
         DotNetCoreTest(
@@ -95,7 +96,7 @@ Task("Test")
                     Configuration = configuration,
                     NoBuild = true
                 });
-    }
+    }*/
 });
 
 Task("Pack")
@@ -112,6 +113,8 @@ Task("Pack")
                     OutputDirectory = outputDirectory
                 });
         }
+
+        CopyDirectory(libBinDirectory, outputDirectory);
     });
 
 // Default task
