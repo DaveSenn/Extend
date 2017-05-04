@@ -97,4 +97,4 @@ deploy:
     # Only publish from the master branch
     branch: master
     # Only publish if the trigger was a Git tag
-    appveyor_repo_tag: true
+    # appveyor_repo_tag: true
