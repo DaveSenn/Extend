@@ -20,6 +20,7 @@ You can use it in every .Net application or library targeting one of the followi
 * Windows 8
 * Windows Phone 8
 * Windows Phone 8.1
+* .NET Core
 
 ### How do I use it?
 1. Install ["Extend"](http://www.nuget.org/packages/Extend/) via [NuGet](http://nuget.org)
