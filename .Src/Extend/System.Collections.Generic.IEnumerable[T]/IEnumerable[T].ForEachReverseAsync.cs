@@ -20,7 +20,7 @@ namespace Extend
         ///     Executes the given action for each item in the IEnumerable in a reversed order.
         /// </summary>
         /// <exception cref="ArgumentNullException">The enumerable can not be null.</exception>
-        /// <exception cref="ArgumentNullException">The action can not be null.</exception>
+        /// <exception cref="NullReferenceException">The action can not be null.</exception>
         /// <remarks>It's save to remove items from the IEnumerable within the loop.</remarks>
         /// <param name="enumerable">The IEnumerable to act on.</param>
         /// <param name="action">The action to execute for each item in the IEnumerable.</param>
