@@ -29,10 +29,7 @@ namespace Extend
         ///     Initialize a new instance of the <see cref="TreeNodeCollection{T}" /> class.
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNodeCollection([CanBeNull] ITreeNode<T> parent)
-        {
-            _parent = parent;
-        }
+        public TreeNodeCollection([CanBeNull] ITreeNode<T> parent) => _parent = parent;
 
         #endregion
 
@@ -60,7 +57,7 @@ namespace Extend
         /// <value>The parent of the collection.</value>
         public ITreeNode<T> Parent
         {
-            get { return _parent; }
+            get => _parent;
             set
             {
                 if (_parent == value)

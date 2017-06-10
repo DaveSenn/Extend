@@ -191,10 +191,8 @@ namespace Extend
                             indexValue = index;
                     }
                     else
-                    {
                         // Treat as a string
                         indexValue = index;
-                    }
                 }
             
             // Get the collection of which we should access the index

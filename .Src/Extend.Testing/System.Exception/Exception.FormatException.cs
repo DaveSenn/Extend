@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Security;
 using FluentAssertions;
 using Xunit;
 

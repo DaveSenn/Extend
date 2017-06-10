@@ -101,10 +101,8 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="memberInformation">Information about the member to create a value for.</param>
             /// <returns>Returns the created value.</returns>
-            public override Object CreateValue( IMemberInformation memberInformation )
-            {
-                throw new NotImplementedException();
-            }
+            public override Object CreateValue( IMemberInformation memberInformation ) 
+                => throw new NotImplementedException();
 
             #endregion
         }
