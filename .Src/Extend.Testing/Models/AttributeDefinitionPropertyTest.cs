@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
+// ReSharper disable once RedundantUsingDirective
 using System.Reflection;
 using Xunit;
 
@@ -11,7 +12,7 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
+
     public class AttributeDefinitionPropertyTest
     {
         [Fact]

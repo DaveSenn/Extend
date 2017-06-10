@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+// ReSharper disable once RedundantUsingDirective
 using System.Reflection;
 using JetBrains.Annotations;
 
