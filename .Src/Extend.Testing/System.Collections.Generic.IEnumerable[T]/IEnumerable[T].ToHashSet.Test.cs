@@ -26,6 +26,15 @@ namespace Extend.Testing
         }
 
         [Fact]
+        public void ToHashSetEmptyCollectionTest()
+        {
+            var actual = new List<Int32>().ToHashSet();
+
+            actual.Should()
+                  .HaveCount( 0 );
+        }
+
+        [Fact]
         public void ToHashSetTest()
         {
             var collection = new List<Int32> { 1, 3, 5, 7 };
