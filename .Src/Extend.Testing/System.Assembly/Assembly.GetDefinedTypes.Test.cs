@@ -37,7 +37,7 @@ namespace Extend.Testing
 
             actual.Count()
                   .Should()
-                  .Be(265);
+                  .Be(267);
         }
     }
 }

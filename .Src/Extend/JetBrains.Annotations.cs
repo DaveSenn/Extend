@@ -97,7 +97,7 @@ namespace JetBrains.Annotations
     internal sealed class StringFormatMethodAttribute : Attribute
     {
         #region Properties
-
+        
         public String FormatParameterName { get; private set; }
 
         #endregion
