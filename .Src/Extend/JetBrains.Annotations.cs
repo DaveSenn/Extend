@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+// ReSharper disable AutoPropertyCanBeMadeGetOnly.Local
 
 #endregion
 

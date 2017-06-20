@@ -68,12 +68,9 @@ namespace Extend.Testing
         public void FTest2()
         {
             const String format = "Test: {0}, {1}, {2}";
-            var value = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
-            var value2 = RandomValueEx.GetRandomString();
 
-            var expected = String.Format( format, value, value1, value2 );
-            var actual = format.F( value, value1, value2 );
+            const String expected = "Test: 1, test, 99.9999";
+            var actual = format.F( 1, "test", 99.9999 );
 
             Assert.Equal( expected, actual );
         }
@@ -92,13 +89,9 @@ namespace Extend.Testing
         public void FTest3()
         {
             const String format = "Test: {0}, {1}, {2}, {3}";
-            var value = RandomValueEx.GetRandomString();
-            var value1 = RandomValueEx.GetRandomString();
-            var value2 = RandomValueEx.GetRandomString();
-            var value3 = RandomValueEx.GetRandomString();
 
-            var expected = String.Format( format, value, value1, value2, value3 );
-            var actual = format.F( value, value1, value2, value3 );
+            const String expected = "Test: string, 666, string2, 123";
+            var actual = format.F( "string", 666, "string2", 123 );
 
             Assert.Equal( expected, actual );
         }

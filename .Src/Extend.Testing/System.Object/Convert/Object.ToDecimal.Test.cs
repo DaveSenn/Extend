@@ -115,6 +115,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDecimalTooLargeFormatProviderTest()
         {
+            // ReSharper disable once ImpureMethodCallOnReadonlyValueField
             var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -125,6 +126,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDecimalTooLargeTest()
         {
+            // ReSharper disable once ImpureMethodCallOnReadonlyValueField
             var value = Decimal.MaxValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -135,6 +137,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDecimalTooSmallFormatProviderTest()
         {
+            // ReSharper disable once ImpureMethodCallOnReadonlyValueField
             var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
@@ -145,6 +148,7 @@ namespace Extend.Testing
         [Fact]
         public void ToDecimalTooSmallTest()
         {
+            // ReSharper disable once ImpureMethodCallOnReadonlyValueField
             var value = Decimal.MinValue.ToString( CultureInfo.InvariantCulture ) + "1";
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
