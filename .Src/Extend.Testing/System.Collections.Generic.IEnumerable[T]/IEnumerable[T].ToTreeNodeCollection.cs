@@ -477,6 +477,7 @@ namespace Extend.Testing
             #region Properties
 
             public Int32 Id { get; set; }
+
             public HierarchicItem Parent { get; set; }
 
             public String Value { get; set; }
