@@ -51,6 +51,7 @@ namespace Extend.Testing
 
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                                        // ReSharper disable once UnusedVariable
                                         .TryParsDateTime(culture, DateTimeStyles.None, out DateTime result);
 
             test.ShouldThrow<ArgumentNullException>();
@@ -78,6 +79,7 @@ namespace Extend.Testing
             var expected = DateTime.Now;
 
             Action test = () => expected.ToString(culture)
+                                        // ReSharper disable once UnusedVariable
                                         .TryParsDateTime(culture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal, out DateTime result);
 
             test.ShouldThrow<ArgumentException>();

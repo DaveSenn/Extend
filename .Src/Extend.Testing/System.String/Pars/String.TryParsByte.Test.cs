@@ -59,6 +59,7 @@ namespace Extend.Testing
             const Byte expected = (Byte) 10;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString()
+                                        // ReSharper disable once UnusedVariable
                                         .TryParsByte(NumberStyles.AllowLeadingWhite, null, out Byte outValue);
 
             test.ShouldThrow<ArgumentException>();

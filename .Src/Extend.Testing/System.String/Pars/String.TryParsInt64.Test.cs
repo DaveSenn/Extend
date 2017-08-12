@@ -49,6 +49,7 @@ namespace Extend.Testing
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                                        // ReSharper disable once UnusedVariable
                                         .TryParsInt64(NumberStyles.Any, culture, out Int64 result);
 
             test.ShouldThrow<ArgumentNullException>();
@@ -59,7 +60,8 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomInt64();
 
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture)
+                                        // ReSharper disable once UnusedVariable
                                         .TryParsInt64( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out Int64 result );
 
             test.ShouldThrow<ArgumentException>();
