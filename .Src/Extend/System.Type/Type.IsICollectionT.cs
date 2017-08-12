@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-
 #endregion
 
 namespace Extend
@@ -24,7 +23,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsICollectionT( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(ICollection<>);
         }

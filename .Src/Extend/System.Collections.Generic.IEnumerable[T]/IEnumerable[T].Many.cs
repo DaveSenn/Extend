@@ -28,8 +28,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable.Count( predicate ) > 1;
         }
@@ -45,7 +45,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean Many<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             return enumerable.Count() > 1;
         }

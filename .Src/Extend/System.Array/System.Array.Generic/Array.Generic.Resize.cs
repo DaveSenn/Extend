@@ -24,7 +24,7 @@ namespace Extend
         public static T[] Resize<T>( [NotNull] this T[] array, Int32 newSize )
         {
             // ReSharper disable once AccessToModifiedClosure
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Resize( ref array, newSize );
             return array;

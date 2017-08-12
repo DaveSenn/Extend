@@ -29,9 +29,9 @@ namespace Extend
         [NotNull]
         public static IEnumerable<IEnumerable<T>> Partition<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, Int32 size )
         {
-            source.ThrowIfNull( nameof( source ) );
+            source.ThrowIfNull( nameof(source) );
             if ( size < 1 )
-                throw new ArgumentOutOfRangeException( nameof( size ), size, $"{nameof( size )} is out of range. Size must be > 1." );
+                throw new ArgumentOutOfRangeException( nameof(size), size, $"{nameof(size)} is out of range. Size must be > 1." );
 
             return source
                 .WithIndex()

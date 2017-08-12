@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static String GetFileExtension( [NotNull] this String fileName )
         {
-            fileName.ThrowIfNull( nameof( fileName ) );
+            fileName.ThrowIfNull( nameof(fileName) );
 
             return Path.GetExtension( fileName );
         }

@@ -18,8 +18,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Decimal SaveToDecimal( [CanBeNull] this String value, Decimal defaultValue = default(Decimal) ) 
-            => value.TryParsDecimal(out Decimal outValue) ? outValue : defaultValue;
+        public static Decimal SaveToDecimal( [CanBeNull] this String value, Decimal defaultValue = default(Decimal) )
+            => value.TryParsDecimal( out Decimal outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number to its System.Decimal equivalent
@@ -45,9 +45,9 @@ namespace Extend
                                              [NotNull] IFormatProvider formatProvider,
                                              Decimal defaultValue = default(Decimal) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsDecimal(numberStyle, formatProvider, out Decimal outValue) ? outValue : defaultValue;
+            return value.TryParsDecimal( numberStyle, formatProvider, out Decimal outValue ) ? outValue : defaultValue;
         }
     }
 }

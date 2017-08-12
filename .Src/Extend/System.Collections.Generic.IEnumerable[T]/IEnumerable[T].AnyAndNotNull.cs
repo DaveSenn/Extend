@@ -50,7 +50,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean AnyAndNotNull<T>( [CanBeNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable != null && enumerable.Any( predicate );
         }

@@ -29,8 +29,8 @@ namespace Extend
         [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            action.ThrowIfNull( nameof( action ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            action.ThrowIfNull( nameof(action) );
 
             var forEach = enumerable as IList<T> ?? enumerable.ToList();
             foreach ( var x in forEach )
@@ -55,8 +55,8 @@ namespace Extend
         [DebuggerStepThrough]
         public static IEnumerable<T> ForEach<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T, Int32> action )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            action.ThrowIfNull( nameof( action ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            action.ThrowIfNull( nameof(action) );
 
             var counter = 0;
             var forEach = enumerable as IList<T> ?? enumerable.ToList();

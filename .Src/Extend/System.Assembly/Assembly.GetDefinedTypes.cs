@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static IEnumerable<Type> GetDefinedTypes( [NotNull] this Assembly assembly )
         {
-            assembly.ThrowIfNull( nameof( assembly ) );
+            assembly.ThrowIfNull( nameof(assembly) );
 
             return assembly
                 .DefinedTypes

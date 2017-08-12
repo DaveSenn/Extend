@@ -20,7 +20,7 @@ namespace Extend
         [PublicAPI]
         public static String Reverse( [NotNull] this String s )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.Length <= 1
                 ? s

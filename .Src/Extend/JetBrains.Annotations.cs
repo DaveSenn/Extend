@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+
 // ReSharper disable AutoPropertyCanBeMadeGetOnly.Local
 
 #endregion
@@ -30,8 +31,8 @@ namespace JetBrains.Annotations
     /// </code>
     /// </example>
     [AttributeUsage(
-         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-         AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
+        AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
     internal sealed class CanBeNullAttribute : Attribute
     {
     }
@@ -47,8 +48,8 @@ namespace JetBrains.Annotations
     /// </code>
     /// </example>
     [AttributeUsage(
-         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-         AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
+        AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+        AttributeTargets.Delegate | AttributeTargets.Field | AttributeTargets.Event )]
     internal sealed class NotNullAttribute : Attribute
     {
     }
@@ -59,8 +60,8 @@ namespace JetBrains.Annotations
     ///     or of the Lazy.Value property can never be null.
     /// </summary>
     [AttributeUsage(
-         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-         AttributeTargets.Delegate | AttributeTargets.Field )]
+        AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+        AttributeTargets.Delegate | AttributeTargets.Field )]
     internal sealed class ItemNotNullAttribute : Attribute
     {
     }
@@ -71,8 +72,8 @@ namespace JetBrains.Annotations
     ///     or of the Lazy.Value property can be null.
     /// </summary>
     [AttributeUsage(
-         AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
-         AttributeTargets.Delegate | AttributeTargets.Field )]
+        AttributeTargets.Method | AttributeTargets.Parameter | AttributeTargets.Property |
+        AttributeTargets.Delegate | AttributeTargets.Field )]
     internal sealed class ItemCanBeNullAttribute : Attribute
     {
     }
@@ -93,12 +94,12 @@ namespace JetBrains.Annotations
     /// </code>
     /// </example>
     [AttributeUsage(
-         AttributeTargets.Constructor | AttributeTargets.Method |
-         AttributeTargets.Property | AttributeTargets.Delegate )]
+        AttributeTargets.Constructor | AttributeTargets.Method |
+        AttributeTargets.Property | AttributeTargets.Delegate )]
     internal sealed class StringFormatMethodAttribute : Attribute
     {
         #region Properties
-        
+
         public String FormatParameterName { get; private set; }
 
         #endregion
@@ -108,7 +109,7 @@ namespace JetBrains.Annotations
         /// <param name="formatParameterName">
         ///     Specifies which parameter of an annotated method should be treated as format-string
         /// </param>
-        public StringFormatMethodAttribute( String formatParameterName ) 
+        public StringFormatMethodAttribute( String formatParameterName )
             => FormatParameterName = formatParameterName;
 
         #endregion
@@ -615,8 +616,8 @@ namespace JetBrains.Annotations
     /// </code>
     /// </example>
     [AttributeUsage(
-         AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter |
-         AttributeTargets.Method )]
+        AttributeTargets.Field | AttributeTargets.Property | AttributeTargets.Parameter |
+        AttributeTargets.Method )]
     internal sealed class ProvidesContextAttribute : Attribute
     {
     }

@@ -29,8 +29,8 @@ namespace Extend
         [Pure]
         public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] T defaultValue, [NotNull] [ItemCanBeNull] params T[] values ) where T : class
         {
-            defaultValue.ThrowIfNull( nameof( defaultValue ) );
-            values.ThrowIfNull( nameof( values ) );
+            defaultValue.ThrowIfNull( nameof(defaultValue) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( value != null )
                 return value;
@@ -59,8 +59,8 @@ namespace Extend
         public static T CoalesceOrDefault<T>( [CanBeNull] this T value, [NotNull] Func<T> defaultValueFactory, [NotNull] [ItemCanBeNull] params T[] values )
             where T : class
         {
-            defaultValueFactory.ThrowIfNull( nameof( defaultValueFactory ) );
-            values.ThrowIfNull( nameof( values ) );
+            defaultValueFactory.ThrowIfNull( nameof(defaultValueFactory) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( value != null )
                 return value;

@@ -26,7 +26,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] params T[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             return Array.IndexOf( values, value ) != -1;
         }
@@ -43,7 +43,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsIn<T>( [CanBeNull] this T value, [NotNull] IEnumerable<T> values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             return values.Contains( value );
         }

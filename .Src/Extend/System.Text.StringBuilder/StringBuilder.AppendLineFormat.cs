@@ -27,9 +27,9 @@ namespace Extend
         [PublicAPI]
         public static StringBuilder AppendLineFormat( [NotNull] this StringBuilder sb, [NotNull] String format, [NotNull] params Object[] args )
         {
-            sb.ThrowIfNull( nameof( sb ) );
-            format.ThrowIfNull( nameof( format ) );
-            args.ThrowIfNull( nameof( args ) );
+            sb.ThrowIfNull( nameof(sb) );
+            format.ThrowIfNull( nameof(format) );
+            args.ThrowIfNull( nameof(args) );
 
             return sb.AppendLine( format.F( args ) );
         }

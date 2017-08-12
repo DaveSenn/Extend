@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static IEnumerable<String> GetLines( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             using ( var reader = new StringReader( value ) )
             {

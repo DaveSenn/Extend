@@ -38,8 +38,8 @@ namespace Extend
         [NotNull]
         public static T[] Slice<T>( [NotNull] this T[] array, Int32 startIndex, Int32 itemsToCpoy, [NotNull] T[] targetArray )
         {
-            array.ThrowIfNull( nameof( array ) );
-            targetArray.ThrowIfNull( nameof( targetArray ) );
+            array.ThrowIfNull( nameof(array) );
+            targetArray.ThrowIfNull( nameof(targetArray) );
 
             if ( startIndex < 0 )
                 throw new ArgumentOutOfRangeException( array.GetName( x => startIndex ),

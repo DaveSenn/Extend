@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static String GetMemberPath<TDeclaringType, TMember>( [NotNull] this Expression<Func<TDeclaringType, TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             var result = new List<String>();
             Expression node = expression;
@@ -61,7 +61,7 @@ namespace Extend
                         break;
 
                     default:
-                        throw new ArgumentOutOfRangeException( nameof( expression.Body ),
+                        throw new ArgumentOutOfRangeException( nameof(expression.Body),
                                                                expression.Body,
                                                                $"Expression '{expression.Body}' cannot be used to select a member." );
                 }

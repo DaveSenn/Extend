@@ -26,7 +26,7 @@ namespace Extend
         [PublicAPI]
         public static TSource Maximum<TSource>( [CanBeNull] this TSource value, [NotNull] params TSource[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -51,8 +51,8 @@ namespace Extend
                                                          [NotNull] Func<TSource, TResult> selector,
                                                          [NotNull] params TSource[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
-            selector.ThrowIfNull( nameof( selector ) );
+            values.ThrowIfNull( nameof(values) );
+            selector.ThrowIfNull( nameof(selector) );
 
             var list = values.ToList();
             list.Add( value );

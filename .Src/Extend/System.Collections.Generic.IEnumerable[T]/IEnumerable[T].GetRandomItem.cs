@@ -27,7 +27,7 @@ namespace Extend
         [CanBeNull]
         public static T GetRandomItem<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             var list = enumerable as IList<T> ?? enumerable.ToList();
             var index = RandomValueEx.GetRandomInt32( 0, list.Count );

@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static IExecutionResult<T> ExecuteSafe<T>( [CanBeNull] this T value, [NotNull] Action<T> action )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             var result = new ExecutionResult<T>();
             try
@@ -54,7 +54,7 @@ namespace Extend
         [PublicAPI]
         public static IExecutionResult<TResult> ExecuteSafe<T, TResult>( [CanBeNull] this T value, [NotNull] Func<T, TResult> func )
         {
-            func.ThrowIfNull( nameof( func ) );
+            func.ThrowIfNull( nameof(func) );
 
             var result = new ExecutionResult<TResult>();
             try

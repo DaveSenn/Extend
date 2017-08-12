@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static T[] Reverse<T>( [NotNull] this T[] array )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Reverse( array );
             return array;
@@ -40,7 +40,7 @@ namespace Extend
         [PublicAPI]
         public static T[] Reverse<T>( [NotNull] this T[] array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Reverse( array, index, length );
             return array;

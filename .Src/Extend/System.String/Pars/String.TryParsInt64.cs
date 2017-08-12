@@ -62,7 +62,7 @@ namespace Extend
                                             [NotNull] IFormatProvider formatProvider,
                                             out Int64 outValue )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Int64.TryParse( value, numberStyle, formatProvider, out outValue );
         }

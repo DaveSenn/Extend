@@ -26,14 +26,14 @@ namespace Extend
         [NotNull]
         public static ICollection<T> AddRangeIfNotContains<T>( [NotNull] this ICollection<T> collection, [NotNull] params T[] values )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            values.ThrowIfNull( nameof( values ) );
+            collection.ThrowIfNull( nameof(collection) );
+            values.ThrowIfNull( nameof(values) );
 
             values.ForEach( x =>
-                            {
-                                if ( !collection.Contains( x ) )
-                                    collection.Add( x );
-                            } );
+            {
+                if ( !collection.Contains( x ) )
+                    collection.Add( x );
+            } );
             return collection;
         }
 
@@ -50,14 +50,14 @@ namespace Extend
         [NotNull]
         public static ICollection<T> AddRangeIfNotContains<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            collection.ThrowIfNull( nameof(collection) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             enumerable.ForEach( x =>
-                                {
-                                    if ( !collection.Contains( x ) )
-                                        collection.Add( x );
-                                } );
+            {
+                if ( !collection.Contains( x ) )
+                    collection.Add( x );
+            } );
             return collection;
         }
     }

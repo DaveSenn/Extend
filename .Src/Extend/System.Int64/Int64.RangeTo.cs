@@ -25,7 +25,7 @@ namespace Extend
         public static List<Int64> RangeTo( this Int64 startValue, Int64 endValue )
         {
             if ( startValue > endValue )
-                throw new ArgumentException( "The start value can not be greater than the end value.", nameof( startValue ) );
+                throw new ArgumentException( "The start value can not be greater than the end value.", nameof(startValue) );
 
             var list = new List<Int64>( (Int32) ( endValue - startValue ) );
             for ( var i = startValue; i <= endValue; i++ )

@@ -32,9 +32,9 @@ namespace Extend
         public static MemberInfo GetMemberInfoFromExpression<TDeclairingType, TMember>(
             [NotNull] this Expression<Func<TDeclairingType, TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
-            expression.TryGetMemberExpression(out MemberExpression memberExpression);
+            expression.TryGetMemberExpression( out MemberExpression memberExpression );
             return memberExpression.Member;
         }
     }

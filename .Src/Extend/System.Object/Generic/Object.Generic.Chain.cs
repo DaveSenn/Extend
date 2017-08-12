@@ -27,7 +27,7 @@ namespace Extend
         [Pure]
         public static T Chain<T>( [CanBeNull] this T obj, [NotNull] Action<T> action )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             action( obj );
             return obj;

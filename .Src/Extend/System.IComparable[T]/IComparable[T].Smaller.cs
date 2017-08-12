@@ -28,8 +28,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean Smaller<T>( [NotNull] this T value, [NotNull] T compareValue ) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof( value ) );
-            compareValue.ThrowIfNull( nameof( compareValue ) );
+            value.ThrowIfNull( nameof(value) );
+            compareValue.ThrowIfNull( nameof(compareValue) );
 
             return value.CompareTo( compareValue ) == -1;
         }

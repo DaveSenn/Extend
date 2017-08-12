@@ -27,7 +27,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean ToBoolean( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Boolean.Parse( value );
         }

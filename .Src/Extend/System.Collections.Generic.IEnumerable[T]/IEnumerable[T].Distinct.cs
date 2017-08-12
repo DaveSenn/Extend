@@ -29,8 +29,8 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> Distinct<T, TKey>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, TKey> predicate )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable.GroupBy( predicate )
                              .Select( g => g )

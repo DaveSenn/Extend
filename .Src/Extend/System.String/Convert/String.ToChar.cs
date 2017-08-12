@@ -23,7 +23,7 @@ namespace Extend
         [PublicAPI]
         public static Char ToChar( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Convert.ToChar( value );
         }

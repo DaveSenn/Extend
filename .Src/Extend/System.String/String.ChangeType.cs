@@ -57,8 +57,8 @@ namespace Extend
         [PublicAPI]
         public static Object ChangeType( [CanBeNull] this String value, [NotNull] Type type, [NotNull] IFormatProvider formatProvider )
         {
-            type.ThrowIfNull( nameof( type ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            type.ThrowIfNull( nameof(type) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Convert.ChangeType( value, type, formatProvider );
         }
@@ -109,7 +109,7 @@ namespace Extend
         [PublicAPI]
         public static T ChangeType<T>( [CanBeNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return (T) Convert.ChangeType( value, typeof(T), formatProvider );
         }

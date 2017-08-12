@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static String RemoveLettersAndNumbers( [NotNull] this String s )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return new String( s.ToCharArray()
                                 .Where( x => !x.IsNumber() && !x.IsLetter() )

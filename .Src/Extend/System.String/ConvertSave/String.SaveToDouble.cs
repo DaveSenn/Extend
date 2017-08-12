@@ -19,8 +19,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Double SaveToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) ) 
-            => value.TryParsDouble(out Double outValue) ? outValue : defaultValue;
+        public static Double SaveToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
+            => value.TryParsDouble( out Double outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -49,9 +49,9 @@ namespace Extend
                                            [NotNull] IFormatProvider formatProvider,
                                            Double defaultValue = default(Double) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsDouble(numberStyle, formatProvider, out Double outValue) ? outValue : defaultValue;
+            return value.TryParsDouble( numberStyle, formatProvider, out Double outValue ) ? outValue : defaultValue;
         }
     }
 }

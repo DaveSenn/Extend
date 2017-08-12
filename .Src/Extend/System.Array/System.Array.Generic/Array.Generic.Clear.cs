@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static T[] Clear<T>( [NotNull] this T[] array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, index, length );
             return array;

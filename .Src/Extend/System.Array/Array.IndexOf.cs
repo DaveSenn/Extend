@@ -25,7 +25,7 @@ namespace Extend
         [Pure]
         public static Int32 IndexOf( [NotNull] this Array array, [CanBeNull] Object value )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.IndexOf( array, value );
         }
@@ -46,7 +46,7 @@ namespace Extend
         [Pure]
         public static Int32 IndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.IndexOf( array, value, startIndex );
         }
@@ -68,7 +68,7 @@ namespace Extend
         [Pure]
         public static Int32 IndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex, Int32 count )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.IndexOf( array, value, startIndex, count );
         }

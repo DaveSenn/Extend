@@ -28,9 +28,9 @@ namespace Extend
         [PublicAPI]
         public static Boolean BetweenInclusive<T>( [NotNull] this T value, [NotNull] T minValue, [NotNull] T maxValue ) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof( value ) );
-            minValue.ThrowIfNull( nameof( minValue ) );
-            maxValue.ThrowIfNull( nameof( maxValue ) );
+            value.ThrowIfNull( nameof(value) );
+            minValue.ThrowIfNull( nameof(minValue) );
+            maxValue.ThrowIfNull( nameof(maxValue) );
 
             return value.CompareTo( minValue ) >= 0 && value.CompareTo( maxValue ) <= 0;
         }

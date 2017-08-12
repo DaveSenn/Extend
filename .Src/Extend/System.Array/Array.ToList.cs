@@ -27,8 +27,8 @@ namespace Extend
         [Pure]
         public static List<T> ToList<T>( [NotNull] this Array items, [NotNull] Func<Object, T> selector )
         {
-            items.ThrowIfNull( nameof( items ) );
-            selector.ThrowIfNull( nameof( selector ) );
+            items.ThrowIfNull( nameof(items) );
+            selector.ThrowIfNull( nameof(selector) );
 
             return ( from Object item in items
                      select selector( item ) ).ToList();

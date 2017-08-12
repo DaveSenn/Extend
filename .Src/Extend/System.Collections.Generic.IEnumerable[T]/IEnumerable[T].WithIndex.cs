@@ -27,7 +27,7 @@ namespace Extend
         [NotNull]
         public static IEnumerable<IIndexedItem<T>> WithIndex<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source )
         {
-            source.ThrowIfNull( nameof( source ) );
+            source.ThrowIfNull( nameof(source) );
 
             return source.Select( ( item, index ) => new IndexedItem<T>( index, item ) );
         }

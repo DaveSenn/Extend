@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Decimal ToDecimal( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Decimal.Parse( value );
         }
@@ -46,8 +46,8 @@ namespace Extend
         [PublicAPI]
         public static Decimal ToDecimal( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( nameof( value ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            value.ThrowIfNull( nameof(value) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Decimal.Parse( value, formatProvider );
         }

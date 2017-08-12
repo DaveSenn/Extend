@@ -25,7 +25,7 @@ namespace Extend
         [Pure]
         public static Decimal Sum( this Decimal value, [NotNull] params Decimal[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -45,7 +45,7 @@ namespace Extend
         [CanBeNull]
         public static Decimal? Sum( [CanBeNull] this Decimal? value, [NotNull] params Decimal?[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -67,8 +67,8 @@ namespace Extend
         [Pure]
         public static Decimal Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Decimal> selector, [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -93,8 +93,8 @@ namespace Extend
                                              [NotNull] Func<TSource, Decimal?> selector,
                                              [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );

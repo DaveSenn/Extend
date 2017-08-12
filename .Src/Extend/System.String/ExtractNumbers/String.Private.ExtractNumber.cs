@@ -23,17 +23,18 @@ namespace Extend
         [PublicAPI]
         private static String ExtractNumber( [NotNull] this String value, Int32 startIndex = 0 )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             if ( startIndex >= value.Length || startIndex < 0 )
-                throw new ArgumentOutOfRangeException( nameof( value ), "Invalid start index." );
+                throw new ArgumentOutOfRangeException( nameof(value), "Invalid start index." );
 
             var chars = value.Substring( startIndex )
                              .ToCharArray();
             var sb = new StringBuilder();
 
             for ( var i = 0; i < chars.Length; i++ )
-                if ( chars[i].IsDigit() )
+                if ( chars[i]
+                    .IsDigit() )
                 {
                     if ( sb.Length == 0 && i > 0 && chars[i - 1] == '-' )
                         sb.Append( '-' );

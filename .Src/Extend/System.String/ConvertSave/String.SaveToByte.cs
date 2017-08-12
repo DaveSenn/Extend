@@ -23,8 +23,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Byte SaveToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) ) 
-            => value.TryParsByte(out Byte outValue) ? outValue : defaultValue;
+        public static Byte SaveToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) )
+            => value.TryParsByte( out Byte outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
@@ -58,9 +58,9 @@ namespace Extend
                                        [NotNull] IFormatProvider formatProvider,
                                        Byte defaultValue = default(Byte) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsByte(numberStyle, formatProvider, out Byte outValue) ? outValue : defaultValue;
+            return value.TryParsByte( numberStyle, formatProvider, out Byte outValue ) ? outValue : defaultValue;
         }
     }
 }

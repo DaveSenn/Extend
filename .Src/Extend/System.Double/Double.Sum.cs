@@ -25,7 +25,7 @@ namespace Extend
         [Pure]
         public static Double Sum( this Double value, [NotNull] params Double[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -45,7 +45,7 @@ namespace Extend
         [CanBeNull]
         public static Double? Sum( [CanBeNull] this Double? value, [NotNull] params Double?[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -67,8 +67,8 @@ namespace Extend
         [Pure]
         public static Double Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double> selector, [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -91,8 +91,8 @@ namespace Extend
         [CanBeNull]
         public static Double? Sum<TSource>( [CanBeNull] this TSource value, [NotNull] Func<TSource, Double?> selector, [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );

@@ -33,8 +33,8 @@ namespace Extend
                                                                 [NotNull] [ItemCanBeNull] IEnumerable<T> right,
                                                                 [CanBeNull] IEqualityComparer<T> comparer = null )
         {
-            left.ThrowIfNull( nameof( left ) );
-            right.ThrowIfNull( nameof( right ) );
+            left.ThrowIfNull( nameof(left) );
+            right.ThrowIfNull( nameof(right) );
 
             comparer = comparer ?? EqualityComparer<T>.Default;
 

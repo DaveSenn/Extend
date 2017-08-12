@@ -32,8 +32,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count, [NotNull] Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable.Count( predicate ) >= count;
         }
@@ -50,7 +50,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean MinimumOf<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, Int32 count )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             return enumerable.Count() >= count;
         }

@@ -1,10 +1,8 @@
 ﻿#region Usings
 
 using System;
-using JetBrains.Annotations;
-
 using System.Reflection;
-
+using JetBrains.Annotations;
 
 #endregion
 
@@ -24,8 +22,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsGenericType( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
-            
+            type.ThrowIfNull( nameof(type) );
+
             return type
                 .GetTypeInfo()
                 .IsGenericType;

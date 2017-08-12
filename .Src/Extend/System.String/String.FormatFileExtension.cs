@@ -24,10 +24,10 @@ namespace Extend
         [PublicAPI]
         public static String FormatFileExtension( [NotNull] this String fileExtension )
         {
-            fileExtension.ThrowIfNull( nameof( fileExtension ) );
+            fileExtension.ThrowIfNull( nameof(fileExtension) );
 
             if ( fileExtension.IsEmpty() )
-                throw new ArgumentException( "Can not format a empty string to a file extension.", nameof( fileExtension ) );
+                throw new ArgumentException( "Can not format a empty string to a file extension.", nameof(fileExtension) );
 
             if ( !fileExtension.StartsWith( ".", StringComparison.Ordinal ) )
                 fileExtension = fileExtension.Insert( 0, "." );

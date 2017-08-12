@@ -29,8 +29,8 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> Where<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] ISpecification<T> specification )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            specification.ThrowIfNull( nameof( specification ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            specification.ThrowIfNull( nameof(specification) );
 
             return enumerable.Where( specification.IsSatisfiedBy );
         }

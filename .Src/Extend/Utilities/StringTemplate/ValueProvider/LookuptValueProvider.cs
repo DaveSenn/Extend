@@ -31,7 +31,7 @@ namespace Extend.Internal
         /// <param name="values">The value to use.</param>
         public LookuptValueProvider( [NotNull] IDictionary<String, Object> values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             _values = values;
         }
@@ -51,7 +51,8 @@ namespace Extend.Internal
             {
                 var formatInformation = ParsExpression( expression );
                 return formatInformation.Format.IsEmpty()
-                    ? _values[formatInformation.ValueName]?.ToString()
+                    ? _values[formatInformation.ValueName]
+                        ?.ToString()
                     : formatInformation.Format.F( _values[formatInformation.ValueName] );
             }
             catch ( KeyNotFoundException ex )

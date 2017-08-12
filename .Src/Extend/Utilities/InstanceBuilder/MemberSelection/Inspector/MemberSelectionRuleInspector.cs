@@ -22,17 +22,17 @@ namespace Extend
         /// <returns>Returns the inspection result.</returns>
         public MemberSelectionResult Inspect( IEnumerable<IMemberSelectionRule> rules, IMemberInformation memberInformation )
         {
-            rules.ThrowIfNull( nameof( rules ) );
-            memberInformation.ThrowIfNull( nameof( memberInformation ) );
+            rules.ThrowIfNull( nameof(rules) );
+            memberInformation.ThrowIfNull( nameof(memberInformation) );
 
             var result = MemberSelectionResult.Neutral;
             rules.ForEach( x =>
-                           {
-                               //Check if rule targets member and set result to rule result
-                               var selectionReult = x.GetSelectionResult( memberInformation );
-                               if ( selectionReult != MemberSelectionResult.Neutral )
-                                   result = selectionReult;
-                           } );
+            {
+                //Check if rule targets member and set result to rule result
+                var selectionReult = x.GetSelectionResult( memberInformation );
+                if ( selectionReult != MemberSelectionResult.Neutral )
+                    result = selectionReult;
+            } );
 
             return result;
         }

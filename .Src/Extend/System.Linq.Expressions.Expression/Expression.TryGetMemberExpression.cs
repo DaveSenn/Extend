@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean TryGetMemberExpression( [NotNull] this Expression expression, out MemberExpression memberExpression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             while ( true )
                 // ReSharper disable once SwitchStatementMissingSomeCases

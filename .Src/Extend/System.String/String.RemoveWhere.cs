@@ -23,8 +23,8 @@ namespace Extend
         [PublicAPI]
         public static String RemoveWhere( [NotNull] this String s, [NotNull] Func<Char, Boolean> predicate )
         {
-            s.ThrowIfNull( nameof( s ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            s.ThrowIfNull( nameof(s) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return new String( s.ToCharArray()
                                 .Where( x => !predicate( x ) )

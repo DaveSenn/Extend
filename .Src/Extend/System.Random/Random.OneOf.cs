@@ -28,8 +28,8 @@ namespace Extend
         [PublicAPI]
         public static T RandomOne<T>( [NotNull] this Random random, [NotNull] params T[] values )
         {
-            random.ThrowIfNull( nameof( random ) );
-            values.ThrowIfNull( nameof( values ) );
+            random.ThrowIfNull( nameof(random) );
+            values.ThrowIfNull( nameof(values) );
 
             return values[random.Next( values.Length )];
         }
@@ -48,8 +48,8 @@ namespace Extend
         [PublicAPI]
         public static T RandomOne<T>( [NotNull] this Random random, [NotNull] IEnumerable<T> values )
         {
-            random.ThrowIfNull( nameof( random ) );
-            values.ThrowIfNull( nameof( values ) );
+            random.ThrowIfNull( nameof(random) );
+            values.ThrowIfNull( nameof(values) );
 
             var enumerable = values as T[] ?? values.ToArray();
             return enumerable.ElementAt( random.Next( enumerable.Length ) );

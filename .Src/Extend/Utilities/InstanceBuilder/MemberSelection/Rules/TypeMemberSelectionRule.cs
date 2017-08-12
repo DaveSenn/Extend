@@ -47,7 +47,7 @@ namespace Extend
         public TypeMemberSelectionRule( [NotNull] Type type, MemberSelectionMode selectionMode, CompareMode compareMode, String name = null, String description = null )
             : base( name, description )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             _type = type;
             _selectionMode = selectionMode;
@@ -65,7 +65,7 @@ namespace Extend
         /// <returns>Returns the selection result for the given member.</returns>
         public override MemberSelectionResult GetSelectionResult( [NotNull] IMemberInformation member )
         {
-            member.ThrowIfNull( nameof( member ) );
+            member.ThrowIfNull( nameof(member) );
 
             var matchesType = member.MemberType == _type;
             if ( _compareMode == CompareMode.IsNot )

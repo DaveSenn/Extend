@@ -25,8 +25,8 @@ namespace Extend
         [PublicAPI]
         public static ICollection<T> AddRange<T>( [NotNull] this ICollection<T> collection, [NotNull] params T[] values )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            values.ThrowIfNull( nameof( values ) );
+            collection.ThrowIfNull( nameof(collection) );
+            values.ThrowIfNull( nameof(values) );
 
             values.ForEach( collection.Add );
             return collection;
@@ -44,8 +44,8 @@ namespace Extend
         [PublicAPI]
         public static ICollection<T> AddRange<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            collection.ThrowIfNull( nameof(collection) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             enumerable.ForEach( collection.Add );
             return collection;

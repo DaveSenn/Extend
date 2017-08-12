@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static String SubstringRightSafe( [NotNull] this String str, Int32 length )
         {
-            str.ThrowIfNull( nameof( str ) );
+            str.ThrowIfNull( nameof(str) );
 
             return str.Substring( Math.Max( 0, str.Length - length ) );
         }

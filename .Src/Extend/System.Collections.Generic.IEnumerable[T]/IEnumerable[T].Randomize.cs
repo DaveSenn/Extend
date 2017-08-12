@@ -26,7 +26,7 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> Randomize<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             var rnd = new Random();
             return enumerable.OrderBy( x => rnd.Next() );

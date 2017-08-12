@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean AddIfNotContains<T>( [NotNull] this ICollection<T> collection, T value )
         {
-            collection.ThrowIfNull( nameof( collection ) );
+            collection.ThrowIfNull( nameof(collection) );
 
             if ( collection.Contains( value ) )
                 return false;

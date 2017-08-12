@@ -83,7 +83,7 @@ namespace Extend
                 return null;
 
             if ( expression.IsEmpty() )
-                throw new ArgumentNullException( nameof( expression ), $"{nameof( expression )} can not be null." );
+                throw new ArgumentNullException( nameof(expression), $"{nameof(expression)} can not be null." );
 
             // Evaluate the expression
             return Evaluate( source, expression.Split( ExpressionPartSeparator ) );
@@ -100,21 +100,21 @@ namespace Extend
         /// <param name="source">The source object.</param>
         /// <param name="expressionParts">The expression parts to evaluate.</param>
         /// <returns>Returns the value represented by the specified expression.</returns>
-        private static Object Evaluate(Object source, IList<String> expressionParts)
+        private static Object Evaluate( Object source, IList<String> expressionParts )
         {
             Object value;
             Int32 i;
 
             // Iterate through all expression parts
-            for (value = source, i = 0; i < expressionParts.Count && value != null; i++)
+            for ( value = source, i = 0; i < expressionParts.Count && value != null; i++ )
             {
                 var expression = expressionParts[i];
-                var indexExpression = expression.IndexOfAny(IndexExprStartChars) >= 0;
+                var indexExpression = expression.IndexOfAny( IndexExprStartChars ) >= 0;
 
                 // Get the value represented by the current expression
                 value = indexExpression == false
-                    ? GetPropertyValue(value, expression)
-                    : GetIndexedPropertyValue(value, expression);
+                    ? GetPropertyValue( value, expression )
+                    : GetIndexedPropertyValue( value, expression );
             }
 
             return value;
@@ -127,25 +127,25 @@ namespace Extend
         /// <param name="source">The source object.</param>
         /// <param name="propertyName">Returns the property name.</param>
         /// <returns>Returns the value of the property with the given name.</returns>
-        private static Object GetPropertyValue(Object source, String propertyName)
+        private static Object GetPropertyValue( Object source, String propertyName )
         {
             Object property;
 
             // Find the matching property information
-            var propertyInfo = GetPropertiesFromCache(source)
-                .Find(x => x.Name.CompareOrdinalIgnoreCase(propertyName));
+            var propertyInfo = GetPropertiesFromCache( source )
+                .Find( x => x.Name.CompareOrdinalIgnoreCase( propertyName ) );
 
             // Get the value of the property
-            if (propertyInfo != null)
-                property = propertyInfo.GetValueWithoutIndex(source);
+            if ( propertyInfo != null )
+                property = propertyInfo.GetValueWithoutIndex( source );
             else
-                throw new ArgumentException($"Could not find a property with name '{propertyName}'.", nameof(propertyInfo));
+                throw new ArgumentException( $"Could not find a property with name '{propertyName}'.", nameof(propertyInfo) );
 
             return property;
         }
 
         /// <summary>
-        /// Gets the value of the property represented by the given index expression.
+        ///     Gets the value of the property represented by the given index expression.
         /// </summary>
         /// <exception cref="ArgumentException">Could not find a property with the given name.</exception>
         /// <param name="source">The source object.</param>
@@ -194,12 +194,12 @@ namespace Extend
                         // Treat as a string
                         indexValue = index;
                 }
-            
+
             // Get the collection of which we should access the index
             var collectionProperty = propertyName.IsNotEmpty()
                 ? GetPropertyValue( source, propertyName )
                 : source;
-            
+
             // Check if we are working with an array or a list
             IList listProperty;
             var arrayProperty = collectionProperty as Array;
@@ -225,7 +225,6 @@ namespace Extend
             return propertyValue;
         }
 
-
         /// <summary>
         ///     Gets the properties of the given object from the cache.
         /// </summary>
@@ -244,7 +243,7 @@ namespace Extend
                     .GetPublicProperties()
                     .ToList();
 
-            if (PropertyCache.TryGetValue(containerType, out List<PropertyInfo> properties))
+            if ( PropertyCache.TryGetValue( containerType, out List<PropertyInfo> properties ) )
                 return properties;
 
             properties = containerType.GetPublicProperties()
@@ -255,8 +254,6 @@ namespace Extend
 
             return properties;
         }
-
-        
 
         #endregion
     }

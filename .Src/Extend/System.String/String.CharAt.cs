@@ -21,10 +21,10 @@ namespace Extend
         [PublicAPI]
         public static Char CharAt( [NotNull] this String value, Int32 index )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             if ( index < 0 || value.Length <= index )
-                throw new ArgumentOutOfRangeException( nameof( index ), index, "The given index is out of range." );
+                throw new ArgumentOutOfRangeException( nameof(index), index, "The given index is out of range." );
 
             return value[index];
         }

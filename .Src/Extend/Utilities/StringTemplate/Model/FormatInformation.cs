@@ -38,7 +38,7 @@ namespace Extend.Internal
         /// <param name="format">The format.</param>
         public FormatInformation( [NotNull] String valueName, [CanBeNull] String format )
         {
-            valueName.ThrowIfNull( nameof( valueName ) );
+            valueName.ThrowIfNull( nameof(valueName) );
 
             Format = format;
             ValueName = valueName;

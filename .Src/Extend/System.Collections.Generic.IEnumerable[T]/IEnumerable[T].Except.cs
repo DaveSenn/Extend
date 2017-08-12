@@ -46,9 +46,9 @@ namespace Extend
                                                                   [NotNull] Func<TSource, TKey> keySelector,
                                                                   [CanBeNull] IEqualityComparer<TKey> comparer = null )
         {
-            first.ThrowIfNull( nameof( first ) );
-            second.ThrowIfNull( nameof( second ) );
-            keySelector.ThrowIfNull( nameof( keySelector ) );
+            first.ThrowIfNull( nameof(first) );
+            second.ThrowIfNull( nameof(second) );
+            keySelector.ThrowIfNull( nameof(keySelector) );
 
             var internalComparer = IEqualityComparerEx.By( keySelector, comparer );
 

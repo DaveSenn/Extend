@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static Byte ToByte( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Byte.Parse( value, CultureInfo.CurrentCulture );
         }
@@ -47,8 +47,8 @@ namespace Extend
         [PublicAPI]
         public static Byte ToByte( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( nameof( value ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            value.ThrowIfNull( nameof(value) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Byte.Parse( value, formatProvider );
         }

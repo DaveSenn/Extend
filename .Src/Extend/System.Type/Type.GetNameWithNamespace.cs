@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static String GetNameWithNamespace( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             if ( !type.IsGenericType() )
                 return type.GetNameWithNamespaceSimpleType();
@@ -51,7 +51,7 @@ namespace Extend
         [Pure]
         private static String GetAssemblyName( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             return type
                 .GetDeclaringAssembly()
