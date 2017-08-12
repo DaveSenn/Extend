@@ -59,7 +59,7 @@ namespace Extend
                     _currentFactory?.AddSelectionRule( memberSelectionRule );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException( nameof( _currentMemberSelectionTarget ),
+                    throw new ArgumentOutOfRangeException( nameof(_currentMemberSelectionTarget),
                                                            _currentMemberSelectionTarget,
                                                            $"The member selection target '{_currentMemberSelectionTarget}' is not supported." );
             }
@@ -79,7 +79,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Including( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
@@ -96,7 +96,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Including( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
@@ -110,7 +110,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Excluding( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
@@ -127,7 +127,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> Excluding( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.Member;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
@@ -141,7 +141,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Include ) );
@@ -155,7 +155,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> IncludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Include;
@@ -173,7 +173,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             _currentMemberSelectionMode = MemberSelectionMode.Exclude;
@@ -191,7 +191,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public ICreateInstanceOptions<T> ExcludingChildrenOf( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             _currentMemberSelectionTarget = MemberSelectionRuleTarget.MemberChildren;
             return AddMemberSlectionRule( new ExpressionMemberSelectionRule( predicate, MemberSelectionMode.Exclude ) );
@@ -207,7 +207,7 @@ namespace Extend
         public ICreateInstanceOptions<T> PopulateCollectionItemCount( Int32? min, Int32? max )
         {
             if ( min.HasValue && max.HasValue && min > max )
-                throw new ArgumentException( "Maximum must be greater than the minimum count.", nameof( max ) );
+                throw new ArgumentException( "Maximum must be greater than the minimum count.", nameof(max) );
 
             PopulateCollectionsMinCount = min;
             PopulateCollectionsMaxCount = max;
@@ -249,7 +249,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsInconsistent<T> WithFactory( Func<IMemberInformation, Object> factory )
         {
-            factory.ThrowIfNull( nameof( factory ) );
+            factory.ThrowIfNull( nameof(factory) );
 
             // Create and add factory
             _currentFactory = new ExpressionInstanceFactory( factory );
@@ -288,7 +288,7 @@ namespace Extend
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> ByPath( Expression<Func<T, Object>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return AddMemberSlectionRule( new PathMemberSelectionRule( expression.GetMemberPath(), _currentMemberSelectionMode ) );
         }
@@ -301,7 +301,7 @@ namespace Extend
         /// <returns>Returns the modified options.</returns>
         public IIncludeExcludeOptions<T> ByPath( String path )
         {
-            path.ThrowIfNull( nameof( path ) );
+            path.ThrowIfNull( nameof(path) );
 
             return AddMemberSlectionRule( new PathMemberSelectionRule( path, _currentMemberSelectionMode ) );
         }
@@ -333,7 +333,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
@@ -353,7 +353,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> For( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
@@ -370,7 +370,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IIncludeExcludeOptions<T>, IIncludeExcludeOptions<T>> configurationFunc )
         {
-            configurationFunc.ThrowIfNull( nameof( configurationFunc ) );
+            configurationFunc.ThrowIfNull( nameof(configurationFunc) );
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )
@@ -390,7 +390,7 @@ namespace Extend
         /// <returns>Returns the modified create instance options.</returns>
         public IFactoryOptionsConstistent<T> NotFor( Func<IMemberInformation, Boolean> predicate )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             //Check if target is factory.
             if ( _currentMemberSelectionTarget != MemberSelectionRuleTarget.Factory )

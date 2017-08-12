@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsMicrosoftType( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             var attributes = type
                 .GetDeclaringAssembly()

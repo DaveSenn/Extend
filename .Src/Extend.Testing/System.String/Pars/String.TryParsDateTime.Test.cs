@@ -15,9 +15,8 @@ namespace Extend.Testing
         [Fact]
         public void TryParsDateTimeInvalidValueTest()
         {
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = "InvalidValue".TryParsDateTime( out result );
+            var actual = "InvalidValue".TryParsDateTime(out DateTime result);
 
             actual
                 .Should()
@@ -32,9 +31,8 @@ namespace Extend.Testing
         public void TryParsDateTimeNullTest()
         {
             String value = null;
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDateTime( out result );
+            var actual = value.TryParsDateTime(out DateTime result);
 
             actual
                 .Should()
@@ -50,11 +48,11 @@ namespace Extend.Testing
         {
             CultureInfo culture = null;
             var expected = DateTime.Now;
-            DateTime result;
 
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        .TryParsDateTime( culture, DateTimeStyles.None, out result );
+            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                                        // ReSharper disable once UnusedVariable
+                                        .TryParsDateTime(culture, DateTimeStyles.None, out DateTime result);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -62,9 +60,8 @@ namespace Extend.Testing
         [Fact]
         public void TryParsDateTimeOverloadInvalidValueTest()
         {
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = "InvalidValue".TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
+            var actual = "InvalidValue".TryParsDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result);
 
             actual
                 .Should()
@@ -80,10 +77,10 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             var expected = DateTime.Now;
-            DateTime result;
 
-            Action test = () => expected.ToString( culture )
-                                        .TryParsDateTime( culture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal, out result );
+            Action test = () => expected.ToString(culture)
+                                        // ReSharper disable once UnusedVariable
+                                        .TryParsDateTime(culture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal, out DateTime result);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -92,9 +89,8 @@ namespace Extend.Testing
         public void TryParsDateTimeOverloadNullTest()
         {
             String value = null;
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, out result );
+            var actual = value.TryParsDateTime(CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime result);
 
             actual
                 .Should()
@@ -110,9 +106,8 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             var expected = DateTime.Now;
-            DateTime result;
-            var actual = expected.ToString( culture )
-                                 .TryParsDateTime( culture, DateTimeStyles.None, out result );
+            var actual = expected.ToString(culture)
+                     .TryParsDateTime(culture, DateTimeStyles.None, out DateTime result);
 
             actual
                 .Should()
@@ -127,9 +122,8 @@ namespace Extend.Testing
         public void TryParsDateTimeTest()
         {
             var expected = DateTime.Now;
-            DateTime result;
-            var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .TryParsDateTime( out result );
+            var actual = expected.ToString(CultureInfo.CurrentCulture)
+                     .TryParsDateTime(out DateTime result);
 
             actual
                 .Should()

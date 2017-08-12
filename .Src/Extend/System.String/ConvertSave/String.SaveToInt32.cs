@@ -20,10 +20,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Int32 SaveToInt32( [CanBeNull] this String value, Int32 defaultValue = default(Int32) )
-        {
-            Int32 outValue;
-            return value.TryParsInt32( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsInt32( out Int32 outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -50,10 +47,9 @@ namespace Extend
                                          [NotNull] IFormatProvider formatProvider,
                                          Int32 defaultValue = default(Int32) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            Int32 outValue;
-            return value.TryParsInt32( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsInt32( numberStyle, formatProvider, out Int32 outValue ) ? outValue : defaultValue;
         }
     }
 }

@@ -36,7 +36,7 @@ namespace Extend
         [NotNull]
         public static String ToFullDateTimeString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
         {
-            formatInfo.ThrowIfNull( nameof( formatInfo ) );
+            formatInfo.ThrowIfNull( nameof(formatInfo) );
 
             return dateTime.ToString( "F", formatInfo );
         }
@@ -53,7 +53,7 @@ namespace Extend
         [NotNull]
         public static String ToFullDateTimeString( this DateTime dateTime, [NotNull] CultureInfo culture )
         {
-            culture.ThrowIfNull( nameof( culture ) );
+            culture.ThrowIfNull( nameof(culture) );
 
             return dateTime.ToString( "F", culture );
         }

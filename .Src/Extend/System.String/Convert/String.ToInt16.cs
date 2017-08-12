@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Int16 ToInt16( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Int16.Parse( value );
         }
@@ -46,8 +46,8 @@ namespace Extend
         [PublicAPI]
         public static Int16 ToInt16( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( nameof( value ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            value.ThrowIfNull( nameof(value) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Int16.Parse( value, formatProvider );
         }

@@ -24,10 +24,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Byte SaveToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) )
-        {
-            Byte outValue;
-            return value.TryParsByte( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsByte( out Byte outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Tries to convert the string representation of a number to its <see cref="Byte" />
@@ -61,10 +58,9 @@ namespace Extend
                                        [NotNull] IFormatProvider formatProvider,
                                        Byte defaultValue = default(Byte) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            Byte outValue;
-            return value.TryParsByte( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsByte( numberStyle, formatProvider, out Byte outValue ) ? outValue : defaultValue;
         }
     }
 }

@@ -34,16 +34,16 @@ namespace Extend
             [NotNull] this IDictionary<TValue, TKey> dictionary,
             [NotNull] [ItemCanBeNull] params IDictionary<TValue, TKey>[] dictionaries )
         {
-            dictionary.ThrowIfNull( nameof( dictionary ) );
-            dictionaries.ThrowIfNull( nameof( dictionaries ) );
+            dictionary.ThrowIfNull( nameof(dictionary) );
+            dictionaries.ThrowIfNull( nameof(dictionaries) );
 
             var result = dictionary;
             dictionaries.ForEach( x =>
-                                  {
-                                      if ( x == null )
-                                          return;
-                                      x.ForEach( y => result.Add( y.Key, y.Value ) );
-                                  } );
+            {
+                if ( x == null )
+                    return;
+                x.ForEach( y => result.Add( y.Key, y.Value ) );
+            } );
 
             return result;
         }

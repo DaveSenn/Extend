@@ -25,7 +25,7 @@ namespace Extend
         [Pure]
         public static Boolean IfTrue( this Boolean value, [NotNull] Action action, [CanBeNull] Action alternativeAction = null )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             if ( value )
                 action();
@@ -53,7 +53,7 @@ namespace Extend
                                          [NotNull] Action<T> action,
                                          [CanBeNull] Action<T> alternativeAction = null )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             if ( value )
                 action( parameter );
@@ -84,7 +84,7 @@ namespace Extend
                                               [NotNull] Action<T1, T2> action,
                                               [CanBeNull] Action<T1, T2> alternativeAction = null )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             if ( value )
                 action( parameter1, parameter2 );
@@ -118,7 +118,7 @@ namespace Extend
                                                   [NotNull] Action<T1, T2, T3> action,
                                                   [CanBeNull] Action<T1, T2, T3> alternativeAction = null )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             if ( value )
                 action( parameter1, parameter2, parameter3 );
@@ -155,7 +155,7 @@ namespace Extend
                                                       [NotNull] Action<T1, T2, T3, T4> action,
                                                       [CanBeNull] Action<T1, T2, T3, T4> alternativeAction = null )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             if ( value )
                 action( parameter1, parameter2, parameter3, parameter4 );

@@ -20,7 +20,7 @@ namespace Extend
         [PublicAPI]
         public static Guid ToGuid( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return Guid.Parse( value );
         }

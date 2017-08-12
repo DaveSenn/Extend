@@ -27,7 +27,7 @@ namespace Extend
         [Pure]
         public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.LastIndexOf( array, value );
         }
@@ -48,7 +48,7 @@ namespace Extend
         [Pure]
         public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.LastIndexOf( array, value, startIndex );
         }
@@ -71,7 +71,7 @@ namespace Extend
         [Pure]
         public static Int32 LastIndexOf( [NotNull] this Array array, [CanBeNull] Object value, Int32 startIndex, Int32 count )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return Array.LastIndexOf( array, value, startIndex, count );
         }

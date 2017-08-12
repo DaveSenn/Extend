@@ -120,7 +120,7 @@ namespace Extend
         /// </returns>
         private static String FormatWithValueProvider( this String format, IValueProvider valueProvider )
         {
-            format.ThrowIfNull( nameof( format ) );
+            format.ThrowIfNull( nameof(format) );
 
             var result = new StringBuilder( format.Length * 2 );
             using ( var reader = new StringReader( format ) )
@@ -211,7 +211,7 @@ namespace Extend
                             }
                             break;
                         default:
-                            throw new ArgumentOutOfRangeException( nameof( currentState ), currentState, $"Invalid state: '{format}'." );
+                            throw new ArgumentOutOfRangeException( nameof(currentState), currentState, $"Invalid state: '{format}'." );
                     } while ( currentState != StringFormatState.End );
             }
 

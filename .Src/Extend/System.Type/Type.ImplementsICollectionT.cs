@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean ImplementsICollectionT( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             var isGenericType = type.IsGenericType();
             var interfaces = type.GetImplementedInterfaces();

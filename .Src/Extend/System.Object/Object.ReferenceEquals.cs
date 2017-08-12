@@ -24,8 +24,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean RefEquals( [NotNull] this Object obj0, [NotNull] Object obj1 )
         {
-            obj0.ThrowIfNull( nameof( obj0 ) );
-            obj1.ThrowIfNull( nameof( obj1 ) );
+            obj0.ThrowIfNull( nameof(obj0) );
+            obj1.ThrowIfNull( nameof(obj1) );
 
             return ReferenceEquals( obj0, obj1 );
         }

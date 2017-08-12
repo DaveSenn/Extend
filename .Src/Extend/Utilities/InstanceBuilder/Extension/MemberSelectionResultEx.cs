@@ -28,7 +28,7 @@ namespace Extend
                     return null;
                 default:
                     // This line can not be unit tested
-                    throw new ArgumentOutOfRangeException( nameof( memberSelectionResult ),
+                    throw new ArgumentOutOfRangeException( nameof(memberSelectionResult),
                                                            memberSelectionResult,
                                                            $"The member selection result '{memberSelectionResult}' is not supported." );
             }

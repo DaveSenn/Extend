@@ -30,7 +30,7 @@ namespace Extend
                                                                   [NotNull] Func<T, Boolean> expression,
                                                                   [CanBeNull] String message = null )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return new ExpressionSpecification<T>( expression, message );
         }

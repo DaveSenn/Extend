@@ -22,10 +22,9 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithObject_ComplexTemplate()
         {
-            String nullRef = null;
             var actual =
                 "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} | MyNull: {MyNull}"
-                    .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                    .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             actual.Should()
                   .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 | MyNull: " );
         }
@@ -33,55 +32,50 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
-                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             test.ShouldThrow<FormatException>();
         }
 
         [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat1()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
-                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             test.ShouldThrow<FormatException>();
         }
 
         [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat2()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
-                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             test.ShouldThrow<FormatException>();
         }
 
         [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat3()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
-                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             test.ShouldThrow<FormatException>();
         }
 
         [Fact]
         public void FormatWithObject_ComplexTemplate_InvalidFormat4()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
-                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = nullRef } );
+                        .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
             test.ShouldThrow<FormatException>();
         }
 
@@ -316,8 +310,6 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithValues_ComplexTemplate()
         {
-            String nullRef = null;
-
             var actual = "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} | MyNull: {MyNull}"
                 .FormatWithValues( new Dictionary<String, Object>
                                    {
@@ -325,7 +317,8 @@ namespace Extend.Testing
                                        { "MyString", "asdf" },
                                        { "MyDouble", 12345.987654 },
                                        { "Ignore", "asd" },
-                                       { "MyNull", nullRef }
+                                       // ReSharper disable once RedundantCast
+                                       { "MyNull", (String) null }
                                    } );
             actual.Should()
                   .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 | MyNull: " );
@@ -334,25 +327,24 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat1()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithValues( new Dictionary<String, Object>
-                                           {
-                                               { "MyInt", 1234 },
-                                               { "MyString", "asdf" },
-                                               { "MyDouble", 12345.987654 },
-                                               { "Ignore", "asd" },
-                                               { "MyNull", nullRef }
-                                           } );
+                        {
+                            { "MyInt", 1234 },
+                            { "MyString", "asdf" },
+                            { "MyDouble", 12345.987654 },
+                            { "Ignore", "asd" },
+                            // ReSharper disable once RedundantCast
+                            { "MyNull", (String) null }
+                        } );
             test.ShouldThrow<FormatException>();
         }
 
         [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat2()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
@@ -362,7 +354,8 @@ namespace Extend.Testing
                                                { "MyString", "asdf" },
                                                { "MyDouble", 12345.987654 },
                                                { "Ignore", "asd" },
-                                               { "MyNull", nullRef }
+                                               // ReSharper disable once RedundantCast
+                                               { "MyNull", (String) null }
                                            } );
             test.ShouldThrow<FormatException>();
         }
@@ -370,7 +363,6 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat3()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
@@ -380,7 +372,8 @@ namespace Extend.Testing
                                                { "MyString", "asdf" },
                                                { "MyDouble", 12345.987654 },
                                                { "Ignore", "asd" },
-                                               { "MyNull", nullRef }
+                                               // ReSharper disable once RedundantCast
+                                               { "MyNull", (String) null }
                                            } );
             test.ShouldThrow<FormatException>();
         }
@@ -388,7 +381,6 @@ namespace Extend.Testing
         [Fact]
         public void FormatWithValues_ComplexTemplate_InvalidFormat4()
         {
-            String nullRef = null;
             Action test =
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
@@ -398,7 +390,8 @@ namespace Extend.Testing
                                                { "MyString", "asdf" },
                                                { "MyDouble", 12345.987654 },
                                                { "Ignore", "asd" },
-                                               { "MyNull", nullRef }
+                                               // ReSharper disable once RedundantCast
+                                               { "MyNull", (String) null }
                                            } );
             test.ShouldThrow<FormatException>();
         }

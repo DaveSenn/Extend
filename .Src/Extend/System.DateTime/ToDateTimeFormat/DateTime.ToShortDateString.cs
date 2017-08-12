@@ -36,8 +36,8 @@ namespace Extend
         [NotNull]
         public static String ToShortDateString( this DateTime dateTime, [NotNull] DateTimeFormatInfo formatInfo )
         {
-            dateTime.ThrowIfNull( nameof( dateTime ) );
-            formatInfo.ThrowIfNull( nameof( formatInfo ) );
+            dateTime.ThrowIfNull( nameof(dateTime) );
+            formatInfo.ThrowIfNull( nameof(formatInfo) );
 
             return dateTime.ToString( "d", formatInfo );
         }
@@ -54,7 +54,7 @@ namespace Extend
         [NotNull]
         public static String ToShortDateString( this DateTime dateTime, [NotNull] CultureInfo culture )
         {
-            culture.ThrowIfNull( nameof( culture ) );
+            culture.ThrowIfNull( nameof(culture) );
 
             return dateTime.ToString( "d", culture );
         }

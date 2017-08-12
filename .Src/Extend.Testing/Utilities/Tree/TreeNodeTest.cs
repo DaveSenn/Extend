@@ -1767,30 +1767,35 @@ namespace Extend.Testing
             #endregion
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.AncestorsTraversalDirection );
             node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.SearchTraversalDirection );
             node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.DisposeTraversalDirection );
             node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.DescendantsTraversalDirection );
             node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
         }
 
+        // ReSharper disable once UnusedParameter.Local
         private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.TraversalDirection );

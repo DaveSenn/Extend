@@ -27,8 +27,8 @@ namespace Extend
         [NotNull]
         public static ICollection<T> RemoveIf<T>( [NotNull] this ICollection<T> collection, [CanBeNull] T value, [NotNull] Func<T, Boolean> predicate )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            collection.ThrowIfNull( nameof(collection) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             if ( predicate( value ) )
                 collection.Remove( value );

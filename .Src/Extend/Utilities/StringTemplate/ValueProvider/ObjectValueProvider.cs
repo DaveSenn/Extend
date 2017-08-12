@@ -29,7 +29,7 @@ namespace Extend.Internal
         /// <param name="source">The source object.</param>
         public ObjectValueProvider( Object source )
         {
-            source.ThrowIfNull( nameof( source ) );
+            source.ThrowIfNull( nameof(source) );
 
             _source = source;
         }

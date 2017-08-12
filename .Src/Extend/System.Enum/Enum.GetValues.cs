@@ -51,7 +51,7 @@ namespace Extend
         [NotNull]
         public static IEnumerable GetValues( [NotNull] Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
             if ( !type.IsEnum() )
                 throw new ArgumentException( "T must be an enumerated type." );
 

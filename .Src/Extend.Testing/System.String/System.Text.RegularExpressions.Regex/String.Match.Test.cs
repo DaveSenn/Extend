@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -79,8 +78,7 @@ namespace Extend.Testing
 
             test.ShouldThrow<ArgumentNullException>();
         }
-
-#if PORTABLE45
+        
         [Fact]
         public void MatchTest2()
         {
@@ -127,6 +125,5 @@ namespace Extend.Testing
 
             test.ShouldThrow<RegexMatchTimeoutException>();
         }
-#endif
     }
 }

@@ -38,8 +38,8 @@ namespace Extend
         /// <param name="right">The right specification.</param>
         protected OperatorSpecification( [NotNull] ISpecification<T> left, [NotNull] ISpecification<T> right )
         {
-            left.ThrowIfNull( nameof( left ) );
-            right.ThrowIfNull( nameof( right ) );
+            left.ThrowIfNull( nameof(left) );
+            right.ThrowIfNull( nameof(right) );
 
             Left = left;
             Right = right;

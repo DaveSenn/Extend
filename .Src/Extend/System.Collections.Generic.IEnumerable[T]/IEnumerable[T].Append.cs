@@ -28,7 +28,7 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> Append<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> source, [CanBeNull] T item )
         {
-            source.ThrowIfNull( nameof( source ) );
+            source.ThrowIfNull( nameof(source) );
 
             source = source.Concat( new[] { item } );
             return source;

@@ -29,8 +29,8 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> TakeUntil<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, Boolean> predicate )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return enumerable.TakeWhile( x => !predicate( x ) );
         }

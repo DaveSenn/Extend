@@ -28,8 +28,8 @@ namespace Extend
         ///     The text used as exception message if <paramref name="obj" /> is null.
         /// </param>
         [Obsolete(
-             "This method will be removed in future releases. Please use the overload accepting the argument name as string together with the new nameof keyword (value.ThrowIfNull( nameof( value ) );)"
-         )]
+            "This method will be removed in future releases. Please use the overload accepting the argument name as string together with the new nameof keyword (value.ThrowIfNull( nameof( value ) );)"
+        )]
         [DebuggerStepThrough]
         public static void ThrowIfNull<TObject>( this TObject obj,
                                                  Expression<Func<TObject>> expression,

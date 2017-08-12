@@ -29,8 +29,8 @@ namespace Extend
         [Pure]
         public static List<TResult> ToGenericList<TArray, TResult>( [NotNull] this TArray[] items, [NotNull] Func<TArray, TResult> selector )
         {
-            items.ThrowIfNull( nameof( items ) );
-            selector.ThrowIfNull( nameof( selector ) );
+            items.ThrowIfNull( nameof(items) );
+            selector.ThrowIfNull( nameof(selector) );
 
             return items
                 .Select( selector )

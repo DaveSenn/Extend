@@ -39,7 +39,7 @@ namespace Extend
         /// <param name="comparer">An optional comparer, used to compare the keys.</param>
         public KeyEqualityComparer( [NotNull] Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer )
         {
-            keySelector.ThrowIfNull( nameof( keySelector ) );
+            keySelector.ThrowIfNull( nameof(keySelector) );
 
             _keySelector = keySelector;
             _comparer = comparer ?? EqualityComparer<TKey>.Default;

@@ -44,7 +44,7 @@ namespace Extend
                                               String description = null )
             : base( name, description )
         {
-            predicate.ThrowIfNull( nameof( predicate ) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             _predicate = predicate;
             _selectionMode = selectionMode;

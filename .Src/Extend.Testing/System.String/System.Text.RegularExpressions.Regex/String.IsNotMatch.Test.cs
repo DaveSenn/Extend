@@ -79,8 +79,7 @@ namespace Extend.Testing
 
             test.ShouldThrow<ArgumentNullException>();
         }
-
-#if PORTABLE45
+        
         [Fact]
         public void IsNotMatchTest2()
         {
@@ -127,6 +126,5 @@ namespace Extend.Testing
 
             test.ShouldThrow<RegexMatchTimeoutException>();
         }
-#endif
     }
 }

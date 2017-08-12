@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Type GetGenericTypeArgument( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             return type.GetGenericTypeArguments()
                        .FirstOrDefault();

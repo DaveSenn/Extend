@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex = 0 )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.GetBetween( before, after, startIndex, s.Length - startIndex );
         }
@@ -48,12 +48,12 @@ namespace Extend
         [PublicAPI]
         public static String GetBetween( [NotNull] this String s, [NotNull] String before, [NotNull] String after, Int32 startIndex, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
-            before.ThrowIfNull( nameof( before ) );
-            after.ThrowIfNull( nameof( after ) );
+            s.ThrowIfNull( nameof(s) );
+            before.ThrowIfNull( nameof(before) );
+            after.ThrowIfNull( nameof(after) );
 
             if ( startIndex < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
 
             s = s.Substring( startIndex, length );
 
@@ -82,7 +82,7 @@ namespace Extend
         [PublicAPI]
         public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex = 0 )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.GetBetween( before, after, startIndex, s.Length - startIndex );
         }
@@ -105,10 +105,10 @@ namespace Extend
         [PublicAPI]
         public static String GetBetween( [NotNull] this String s, Char before, Char after, Int32 startIndex, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
 
             s = s.Substring( startIndex, length );
 

@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static String GetAfter( [NotNull] this String s, [NotNull] String value, Int32 startIndex = 0 )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.GetAfter( value, startIndex, s.Length - startIndex );
         }
@@ -46,11 +46,11 @@ namespace Extend
         [PublicAPI]
         public static String GetAfter( [NotNull] this String s, [NotNull] String value, Int32 startIndex, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
-            value.ThrowIfNull( nameof( value ) );
+            s.ThrowIfNull( nameof(s) );
+            value.ThrowIfNull( nameof(value) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
 
             s = s.Substring( startIndex, length );
             return !s.Contains( value )
@@ -72,7 +72,7 @@ namespace Extend
         [PublicAPI]
         public static String GetAfter( [NotNull] this String s, Char value, Int32 startIndex = 0 )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.GetAfter( value, startIndex, s.Length - startIndex );
         }
@@ -93,10 +93,10 @@ namespace Extend
         [PublicAPI]
         public static String GetAfter( [NotNull] this String s, Char value, Int32 startIndex, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             if ( startIndex < 0 || length < 0 || startIndex + length > s.Length )
-                throw new ArgumentOutOfRangeException( nameof( length ), "The specified range is invalid." );
+                throw new ArgumentOutOfRangeException( nameof(length), "The specified range is invalid." );
 
             s = s.Substring( startIndex, length );
             var valueIndex = s.IndexOf( value );

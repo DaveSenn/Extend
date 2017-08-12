@@ -86,7 +86,6 @@ Task("Test")
     .Does(() =>
 {
     var projects = GetFiles(testDirectory.ToString() + "/**/*.csproj");
-    /*
     foreach(var project in projects)
     {
         DotNetCoreTest(
@@ -96,7 +95,7 @@ Task("Test")
                     Configuration = configuration,
                     NoBuild = true
                 });
-    }*/
+    }
 });
 
 Task("Pack")

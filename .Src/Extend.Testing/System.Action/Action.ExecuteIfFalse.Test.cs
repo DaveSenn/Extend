@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfFalseTest()
         {
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, null, false, false );
@@ -22,14 +22,15 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 2
+            // Case 2
+            // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, () => trueActionExecuted = true, false, false );
 
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, () => trueActionExecuted = true, true, false );
@@ -37,7 +38,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.True( trueActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, null, true, false );
@@ -45,7 +46,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, null, true, false );
@@ -59,7 +60,7 @@ namespace Extend.Testing
         {
             var parameter = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -72,7 +73,8 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 2
+            // Case 2
+            // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
@@ -84,7 +86,7 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -97,7 +99,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.True( trueActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -110,7 +112,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( x => falseActionExecuted = x == parameter, parameter, null, true, false );
@@ -134,7 +136,7 @@ namespace Extend.Testing
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -148,7 +150,8 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 2
+            // Case 2
+            // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -161,7 +164,7 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -175,7 +178,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.True( trueActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -189,7 +192,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -224,7 +227,7 @@ namespace Extend.Testing
             var parameter2 = RandomValueEx.GetRandomString();
             var parameter3 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -239,7 +242,8 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 2
+            // Case 2
+            // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -253,7 +257,7 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -268,7 +272,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.True( trueActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -283,7 +287,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -321,7 +325,7 @@ namespace Extend.Testing
             var parameter3 = RandomValueEx.GetRandomString();
             var parameter4 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -338,7 +342,8 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 2
+            // Case 2
+            // ReSharper disable once HeuristicUnreachableCode
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
@@ -355,7 +360,7 @@ namespace Extend.Testing
             Assert.True( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -373,7 +378,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.True( trueActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
@@ -389,7 +394,7 @@ namespace Extend.Testing
             Assert.False( falseActionExecuted );
             Assert.False( trueActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse( ( p1, p2, p3, p4 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
@@ -424,31 +429,31 @@ namespace Extend.Testing
         [Fact]
         public void ExecuteIfFalseTest5()
         {
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, false, false );
 
             Assert.True( falseActionExecuted );
 
-            //Case 2
+            // Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, false, false );
 
             Assert.True( falseActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, true, false );
 
             Assert.False( falseActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse( () => falseActionExecuted = true, true, false );
 
             Assert.False( falseActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             Action action = () => { };
             action.ExecuteIfFalse( true, false );
@@ -471,7 +476,7 @@ namespace Extend.Testing
         {
             var parameter = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
@@ -481,7 +486,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 2
+            // Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
@@ -491,7 +496,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
@@ -501,7 +506,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 x => falseActionExecuted = x == parameter,
@@ -511,7 +516,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             Action<String> action = x => { };
             action.ExecuteIfFalse( parameter, true, false );
@@ -535,7 +540,7 @@ namespace Extend.Testing
             var parameter1 = RandomValueEx.GetRandomString();
             var parameter2 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -546,7 +551,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 2
+            // Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -557,7 +562,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -568,7 +573,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2,
@@ -579,7 +584,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             Action<String, String> action = ( x, y ) => { };
             action.ExecuteIfFalse( parameter1, parameter2, true, false );
@@ -604,7 +609,7 @@ namespace Extend.Testing
             var parameter2 = RandomValueEx.GetRandomString();
             var parameter3 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -616,7 +621,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 2
+            // Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -628,7 +633,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -640,7 +645,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3,
@@ -652,7 +657,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             Action<String, String, String> action = ( p1, p2, p3 ) => falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3;
             action.ExecuteIfFalse( parameter1, parameter2, parameter3, true, false );
@@ -683,7 +688,7 @@ namespace Extend.Testing
             var parameter3 = RandomValueEx.GetRandomString();
             var parameter4 = RandomValueEx.GetRandomString();
 
-            //Case 1
+            // Case 1
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
@@ -697,7 +702,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 2
+            // Case 2
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
@@ -711,7 +716,7 @@ namespace Extend.Testing
 
             Assert.True( falseActionExecuted );
 
-            //Case 3
+            // Case 3
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
@@ -725,7 +730,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 4
+            // Case 4
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
@@ -739,7 +744,7 @@ namespace Extend.Testing
 
             Assert.False( falseActionExecuted );
 
-            //Case 5
+            // Case 5
             falseActionExecuted = false;
             Action<String, String, String, String> action = ( p1, p2, p3, p4 ) =>
                     falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4;

@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
 using FluentAssertions;
 using Xunit;
 
@@ -15,8 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsBooleanInvalidValueTest()
         {
-            Boolean outValue;
-            var actual = "InvalidValue".TryParsBoolean( out outValue );
+            var actual = "InvalidValue".TryParsBoolean(out Boolean _);
 
             actual
                 .Should()
@@ -26,10 +24,9 @@ namespace Extend.Testing
         [Fact]
         public void TryParsBooleanNullTest()
         {
-            Boolean outValue;
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsBoolean( out outValue );
+            var actual = value.TryParsBoolean( out Boolean _ );
 
             actual
                 .Should()

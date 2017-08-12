@@ -20,7 +20,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsAlphaNumeric( [NotNull] this String str )
         {
-            str.ThrowIfNull( nameof( str ) );
+            str.ThrowIfNull( nameof(str) );
 
             return str.ToCharArray()
                       .All( x => x.IsLetter() || x.IsNumber() );

@@ -26,7 +26,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( [NotNull] params Assembly[] assemblies ) where T : Attribute
-        => GetTypesWithAttribute<T>( false, null, assemblies );
+            => GetTypesWithAttribute<T>( false, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type.
@@ -43,7 +43,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, [NotNull] params Assembly[] assemblies ) where T : Attribute
-        => GetTypesWithAttribute<T>( inherit, null, assemblies );
+            => GetTypesWithAttribute<T>( inherit, null, assemblies );
 
         /// <summary>
         ///     Gets all types of the given assemblies which is decorated with an attribute of the specified type and are sub
@@ -64,7 +64,7 @@ namespace Extend
         public static IEnumerable<IAttributeDefinitionType<T>> GetTypesWithAttribute<T>( Boolean inherit, Type baseType, [NotNull] params Assembly[] assemblies )
             where T : Attribute
         {
-            assemblies.ThrowIfNull( nameof( assemblies ) );
+            assemblies.ThrowIfNull( nameof(assemblies) );
 
             var attributeType = typeof(T);
             var result = new List<AttributeDefinitionType<T>>();

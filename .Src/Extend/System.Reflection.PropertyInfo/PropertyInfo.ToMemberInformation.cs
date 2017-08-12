@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static IMemberInformation ToMemberInformation( [NotNull] this PropertyInfo propertyInfo, [CanBeNull] IMemberInformation parentMemberInformation )
         {
-            propertyInfo.ThrowIfNull( nameof( propertyInfo ) );
+            propertyInfo.ThrowIfNull( nameof(propertyInfo) );
 
             var path = parentMemberInformation?.MemberPath ?? parentMemberInformation?.MemberName;
 

@@ -22,10 +22,10 @@ namespace Extend
         [PublicAPI]
         public static String Left( [NotNull] this String value, Int32 count )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             if ( count < 0 || value.Length < count )
-                throw new ArgumentOutOfRangeException( nameof( count ), count, "The specified amount of characters is out of range." );
+                throw new ArgumentOutOfRangeException( nameof(count), count, "The specified amount of characters is out of range." );
 
             return value.Substring( 0, count );
         }

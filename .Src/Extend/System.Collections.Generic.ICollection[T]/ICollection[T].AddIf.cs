@@ -26,8 +26,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean AddIf<T>( [NotNull] [ItemCanBeNull] this ICollection<T> collection, [NotNull] Func<T, Boolean> predicate, T value )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            collection.ThrowIfNull( nameof(collection) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             if ( !predicate( value ) )
                 return false;

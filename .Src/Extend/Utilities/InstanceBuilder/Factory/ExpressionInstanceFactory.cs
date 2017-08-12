@@ -33,7 +33,7 @@ namespace Extend
         public ExpressionInstanceFactory( [NotNull] Func<IMemberInformation, Object> factory, String name = null, String description = null )
             : base( name, description )
         {
-            factory.ThrowIfNull( nameof( factory ) );
+            factory.ThrowIfNull( nameof(factory) );
 
             _factory = factory;
         }

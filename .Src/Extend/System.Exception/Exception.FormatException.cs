@@ -25,7 +25,7 @@ namespace Extend
         [Pure]
         public static String FormatException( this Exception ex, [CanBeNull] Action<StringBuilder> action = null )
         {
-            ex.ThrowIfNull( nameof( ex ) );
+            ex.ThrowIfNull( nameof(ex) );
 
             var sb = new StringBuilder();
             sb.AppendLineFormat( "{0}: {1}",

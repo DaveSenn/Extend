@@ -28,9 +28,9 @@ namespace Extend
         [PublicAPI]
         public static Boolean Between<T>( [NotNull] this T value, [NotNull] T minValue, [NotNull] T maxValue ) where T : IComparable<T>
         {
-            value.ThrowIfNull( nameof( value ) );
-            minValue.ThrowIfNull( nameof( minValue ) );
-            maxValue.ThrowIfNull( nameof( maxValue ) );
+            value.ThrowIfNull( nameof(value) );
+            minValue.ThrowIfNull( nameof(minValue) );
+            maxValue.ThrowIfNull( nameof(maxValue) );
 
             return minValue.CompareTo( value ) == -1 && value.CompareTo( maxValue ) == -1;
         }

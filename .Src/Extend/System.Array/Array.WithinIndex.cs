@@ -23,7 +23,7 @@ namespace Extend
         [Pure]
         public static Boolean WithinIndex( [NotNull] this Array array, Int32 index )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             return index >= 0 && index < array.Length;
         }

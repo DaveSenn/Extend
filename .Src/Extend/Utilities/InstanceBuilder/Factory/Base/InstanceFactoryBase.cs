@@ -50,7 +50,7 @@ namespace Extend
         /// <returns>Returns the modified factory.</returns>
         public IInstanceFactory AddSelectionRule( IMemberSelectionRule memberSelectionRule )
         {
-            memberSelectionRule.ThrowIfNull( nameof( memberSelectionRule ) );
+            memberSelectionRule.ThrowIfNull( nameof(memberSelectionRule) );
 
             SelectionRules.Add( memberSelectionRule );
             return this;

@@ -65,7 +65,7 @@ namespace Extend
                                                DateTimeStyles dateTimeStyle,
                                                out DateTime result )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return DateTime.TryParse( value, formatProvider, dateTimeStyle, out result );
         }

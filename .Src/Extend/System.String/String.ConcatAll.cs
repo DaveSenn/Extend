@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static String ConcatAll( this String str, [NotNull] params String[] strings )
         {
-            strings.ThrowIfNull( nameof( strings ) );
+            strings.ThrowIfNull( nameof(strings) );
 
             return String.Concat( str, String.Concat( strings ) );
         }
@@ -37,7 +37,7 @@ namespace Extend
         [PublicAPI]
         public static String ConcatAll( [NotNull] this String[] strings )
         {
-            strings.ThrowIfNull( nameof( strings ) );
+            strings.ThrowIfNull( nameof(strings) );
 
             return String.Concat( strings );
         }
@@ -54,7 +54,7 @@ namespace Extend
         [PublicAPI]
         public static String ConcatAll( this String str, [NotNull] params Object[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             return String.Concat( str, String.Concat( values ) );
         }
@@ -70,7 +70,7 @@ namespace Extend
         [PublicAPI]
         public static String ConcatAll( [NotNull] this Object[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             return String.Concat( values );
         }

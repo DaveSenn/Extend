@@ -18,9 +18,6 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Char SaveToChar( [CanBeNull] this String value, Char defaultValue = default(Char) )
-        {
-            Char outValue;
-            return value.TryParsChar( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsChar( out Char outValue ) ? outValue : defaultValue;
     }
 }

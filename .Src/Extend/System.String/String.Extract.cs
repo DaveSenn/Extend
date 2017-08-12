@@ -22,8 +22,8 @@ namespace Extend
         [PublicAPI]
         public static String Extract( [NotNull] this String str, [NotNull] Func<Char, Boolean> predicate )
         {
-            str.ThrowIfNull( nameof( str ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            str.ThrowIfNull( nameof(str) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return new String( str.ToCharArray()
                                   .Where( predicate )

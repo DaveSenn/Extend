@@ -20,8 +20,7 @@ namespace Extend.Testing
             Expression<Func<String>> func1 = () => "test";
             Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
 
-            MemberExpression outResult;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out MemberExpression outResult);
             actual.Should()
                   .BeFalse();
             outResult.Should()
@@ -31,10 +30,9 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression5()
         {
-            MemberExpression outResult;
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( outResult.Member.Name, "myInt" );
@@ -43,10 +41,9 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression6()
         {
-            MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<Int32>> expression = () => model.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Age", outResult.Member.Name );
@@ -55,10 +52,9 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression7()
         {
-            MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<String>> expression = () => model.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Foo", outResult.Member.Name );
@@ -67,10 +63,9 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression8()
         {
-            MemberExpression outResult;
             var model = new TestModel();
             Expression<Func<Object>> expression = () => model.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Foo", outResult.Member.Name );
@@ -79,9 +74,8 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpression9()
         {
-            MemberExpression outResult;
             Expression<Func<Object>> expression = () => PropertyChanged;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "PropertyChanged", outResult.Member.Name );
@@ -92,8 +86,7 @@ namespace Extend.Testing
         {
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
-            MemberExpression outResult;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression(out MemberExpression outResult);
 
             Assert.True( actual );
             Assert.Equal( outResult.Member.Name, "myInt" );
@@ -102,9 +95,8 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTest1()
         {
-            MemberExpression outResult;
             Expression<Func<TestModel, Int32>> expression = x => x.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( outResult.Member.Name, "Age" );
@@ -113,9 +105,8 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTest2()
         {
-            MemberExpression outResult;
             Expression<Func<TestModel, String>> expression = x => x.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Foo", outResult.Member.Name );
@@ -124,9 +115,8 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTest3()
         {
-            MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.Age;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Age", outResult.Member.Name );
@@ -135,9 +125,8 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTest4()
         {
-            MemberExpression outResult;
             Expression<Func<TestModel, Object>> expression = x => x.SubModel.Foo;
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
 
             Assert.True( actual );
             Assert.Equal( "Foo", outResult.Member.Name );
@@ -146,11 +135,10 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTestNotSupportedException()
         {
-            MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object, Object>> expression = x => myInt;
 
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
             actual.Should()
                   .BeFalse();
             outResult.Should()
@@ -160,11 +148,10 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTestNotSupportedException1()
         {
-            MemberExpression outResult;
             const Int32 myInt = 100;
             Expression<Func<Object>> expression = () => myInt;
 
-            var actual = expression.TryGetMemberExpression( out outResult );
+            var actual = expression.TryGetMemberExpression( out MemberExpression outResult );
             actual.Should()
                   .BeFalse();
             outResult.Should()
@@ -174,10 +161,10 @@ namespace Extend.Testing
         [Fact]
         public void TryGetMemberExpressionTestNullCheck()
         {
-            MemberExpression outResult;
             Expression<Func<Object, Object>> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expression.TryGetMemberExpression( out outResult );
+            // ReSharper disable once UnusedVariable
+            Action test = () => expression.TryGetMemberExpression( out MemberExpression outResult );
             test.ShouldThrow<ArgumentNullException>();
         }
 

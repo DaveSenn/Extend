@@ -3,15 +3,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using FluentAssertions;
+// ReSharper disable once RedundantUsingDirective
+using System.Reflection;
 using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    
+
     public class AttributeDefinitionPropertyTest
     {
         [Fact]
@@ -51,6 +52,7 @@ namespace Extend.Testing
         {
             #region Properties
 
+            // ReSharper disable once UnusedMember.Local
             public String Name { get; set; }
 
             #endregion
