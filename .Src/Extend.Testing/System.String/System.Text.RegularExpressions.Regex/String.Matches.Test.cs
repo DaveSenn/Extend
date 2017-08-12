@@ -80,7 +80,6 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-#if PORTABLE45
         [Fact]
         public void MatchesTest2()
         {
@@ -114,6 +113,16 @@ namespace Extend.Testing
 
             test.ShouldThrow<ArgumentNullException>();
         }
-#endif
     }
 }
+
+/*
+ public static MatchCollection Matches( [NotNull] this String input, [NotNull] String pattern, RegexOptions options, TimeSpan timeOut )
+        {
+            input.ThrowIfNull( nameof(input) );
+            pattern.ThrowIfNull( nameof(pattern) );
+            timeOut.ThrowIfNull( nameof(timeOut) );
+
+            return Regex.Matches( input, pattern, options, timeOut );
+        }
+     */
