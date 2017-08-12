@@ -19,11 +19,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int16 SaveToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) )
-        {
-            Int16 outValue;
-            return value.TryParsInt16( out outValue ) ? outValue : defaultValue;
-        }
+        public static Int16 SaveToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) ) 
+            => value.TryParsInt16(out Int16 outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -52,8 +49,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            Int16 outValue;
-            return value.TryParsInt16( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsInt16(numberStyle, formatProvider, out Int16 outValue) ? outValue : defaultValue;
         }
     }
 }

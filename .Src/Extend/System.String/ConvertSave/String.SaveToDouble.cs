@@ -21,8 +21,7 @@ namespace Extend
         [PublicAPI]
         public static Double SaveToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
         {
-            Double outValue;
-            return value.TryParsDouble( out outValue ) ? outValue : defaultValue;
+            return value.TryParsDouble(out Double outValue) ? outValue : defaultValue;
         }
 
         /// <summary>
@@ -54,8 +53,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            Double outValue;
-            return value.TryParsDouble( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsDouble(numberStyle, formatProvider, out Double outValue) ? outValue : defaultValue;
         }
     }
 }

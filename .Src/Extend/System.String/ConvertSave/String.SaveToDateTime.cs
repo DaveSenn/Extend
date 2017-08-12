@@ -18,11 +18,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime SaveToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) )
-        {
-            DateTime outValue;
-            return value.TryParsDateTime( out outValue ) ? outValue : defaultValue;
-        }
+        public static DateTime SaveToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) ) 
+            => value.TryParsDateTime(out DateTime outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent using the
@@ -55,8 +52,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            DateTime outValue;
-            return value.TryParsDateTime( formatProvider, dateTimeStyle, out outValue ) ? outValue : defaultValue;
+            return value.TryParsDateTime(formatProvider, dateTimeStyle, out DateTime outValue) ? outValue : defaultValue;
         }
     }
 }

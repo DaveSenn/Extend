@@ -20,10 +20,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Guid SaveToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
-        {
-            Guid outValue;
-            return value.TryParsGuid( out outValue ) ? outValue : defaultValue;
-        }
+        public static Guid SaveToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) ) 
+            => value.TryParsGuid(out Guid outValue) ? outValue : defaultValue;
     }
 }

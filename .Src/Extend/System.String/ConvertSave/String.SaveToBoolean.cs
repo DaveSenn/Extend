@@ -18,10 +18,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Boolean SaveToBoolean( [CanBeNull] this String value, Boolean defaultValue = default(Boolean) )
-        {
-            Boolean outValue;
-            return value.TryParsBoolean( out outValue ) ? outValue : defaultValue;
-        }
+        public static Boolean SaveToBoolean( [CanBeNull] this String value, Boolean defaultValue = default(Boolean) ) 
+            => value.TryParsBoolean(out Boolean outValue) ? outValue : defaultValue;
     }
 }

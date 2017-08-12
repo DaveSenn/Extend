@@ -73,9 +73,8 @@ namespace Extend
         [PublicAPI]
         private static String GetName( [NotNull] Expression expression )
         {
-            MemberExpression memberExpression;
-            if ( !expression.TryGetMemberExpression( out memberExpression ) )
-                throw new ArgumentException( "The given expression was not valid." );
+            if (!expression.TryGetMemberExpression(out MemberExpression memberExpression))
+                throw new ArgumentException("The given expression was not valid.");
 
             return memberExpression.Member.Name;
         }

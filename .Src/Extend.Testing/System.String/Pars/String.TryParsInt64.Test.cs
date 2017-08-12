@@ -15,8 +15,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64InvalidValueTest()
         {
-            Int64 result;
-            var actual = "InvalidValue".TryParsInt64( out result );
+            var actual = "InvalidValue".TryParsInt64(out Int64 result);
 
             result
                 .Should()
@@ -30,10 +29,9 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64NullTest()
         {
-            Int64 result;
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsInt64( out result );
+            var actual = value.TryParsInt64( out Int64 result );
 
             result
                 .Should()
@@ -49,10 +47,9 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomInt64();
             CultureInfo culture = null;
-            Int64 result;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        .TryParsInt64( NumberStyles.Any, culture, out result );
+            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+                                        .TryParsInt64(NumberStyles.Any, culture, out Int64 result);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,11 +57,10 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64OverloadInvalidNumberFormatTest()
         {
-            Int64 result;
             var expected = RandomValueEx.GetRandomInt64();
 
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        .TryParsInt64( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out result );
+                                        .TryParsInt64( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out Int64 result );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -72,8 +68,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64OverloadInvalidValueTest()
         {
-            Int64 result;
-            var actual = "InvalidValue".TryParsInt64( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+            var actual = "InvalidValue".TryParsInt64(NumberStyles.Any, new CultureInfo("de-CH"), out Int64 result);
 
             result
                 .Should()
@@ -87,10 +82,9 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64OverloadNullTest()
         {
-            Int64 result;
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsInt64( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+            var actual = value.TryParsInt64( NumberStyles.Any, new CultureInfo( "de-CH" ), out Int64 result );
 
             result
                 .Should()
@@ -106,9 +100,8 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             var expected = RandomValueEx.GetRandomInt64();
-            Int64 result;
-            var actual = expected.ToString( culture )
-                                 .TryParsInt64( NumberStyles.Any, culture, out result );
+            var actual = expected.ToString(culture)
+                     .TryParsInt64(NumberStyles.Any, culture, out Int64 result);
 
             result
                 .Should()
@@ -123,9 +116,8 @@ namespace Extend.Testing
         public void TryParsInt64Test()
         {
             var expected = RandomValueEx.GetRandomInt64();
-            Int64 result;
-            var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .TryParsInt64( out result );
+            var actual = expected.ToString(CultureInfo.CurrentCulture)
+                     .TryParsInt64(out Int64 result);
 
             result
                 .Should()

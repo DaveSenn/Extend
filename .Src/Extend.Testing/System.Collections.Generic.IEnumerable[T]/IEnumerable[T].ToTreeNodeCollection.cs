@@ -482,6 +482,7 @@ namespace Extend.Testing
 
             public String Value { get; set; }
 
+            // ReSharper disable once CollectionNeverQueried.Local
             public List<HierarchicItem> Children { get; } = new List<HierarchicItem>();
 
             #endregion

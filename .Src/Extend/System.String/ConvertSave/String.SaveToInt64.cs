@@ -19,11 +19,8 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int64 SaveToInt64( [CanBeNull] this String value, Int64 defaultValue = default(Int64) )
-        {
-            Int64 outValue;
-            return value.TryParsInt64( out outValue ) ? outValue : defaultValue;
-        }
+        public static Int64 SaveToInt64( [CanBeNull] this String value, Int64 defaultValue = default(Int64) ) 
+            => value.TryParsInt64(out Int64 outValue) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -52,8 +49,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof( formatProvider ) );
 
-            Int64 outValue;
-            return value.TryParsInt64( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsInt64(numberStyle, formatProvider, out Int64 outValue) ? outValue : defaultValue;
         }
     }
 }
