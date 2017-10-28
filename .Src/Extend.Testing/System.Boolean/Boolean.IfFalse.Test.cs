@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class BooleanExTest
     {
         [Fact]
@@ -45,7 +44,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => false.IfFalse( "", null, x => Assert.True( false, "This should not happen." ) );
-            
+
             test.ShouldThrow<ArgumentNullException>();
         }
 

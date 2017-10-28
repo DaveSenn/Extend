@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing.Internal
 {
-    
     public class LookuptValueProviderTest
     {
         [Fact]

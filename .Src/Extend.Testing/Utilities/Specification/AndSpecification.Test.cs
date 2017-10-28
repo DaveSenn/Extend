@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class AndSpecificationTest
     {
         [Fact]
@@ -145,7 +144,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -157,7 +156,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -169,7 +168,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Null( actual[0] );
         }
 
@@ -182,7 +181,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Null( actual[0] );
         }
 
@@ -209,7 +208,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Equal( "msgLeft", actual[0] );
         }
 
@@ -222,7 +221,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Equal( "msgRight", actual[0] );
         }
 

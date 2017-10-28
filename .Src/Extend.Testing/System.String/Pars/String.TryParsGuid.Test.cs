@@ -8,13 +8,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsGuidInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsGuid(out var result);
+            var actual = "InvalidValue".TryParsGuid( out var result );
 
             result
                 .Should()
@@ -46,7 +45,7 @@ namespace Extend.Testing
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                     .TryParsGuid(out var result);
+                                 .TryParsGuid( out var result );
 
             result
                 .Should()

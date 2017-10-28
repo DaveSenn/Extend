@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -33,7 +32,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( x => list.Remove( x ) );
-            Assert.Empty( list);
+            Assert.Empty( list );
         }
 
         [Fact]

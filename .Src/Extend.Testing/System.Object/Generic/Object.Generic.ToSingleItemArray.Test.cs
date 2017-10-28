@@ -6,7 +6,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ObjectExTest
     {
         [Fact]
@@ -16,7 +15,7 @@ namespace Extend.Testing
 
             var actual = item.ToSingleItemArray();
 
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Equal( item, actual[0] );
         }
     }

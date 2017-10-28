@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ExpressionTDelegateExTest
     {
         [Fact]
@@ -42,6 +41,8 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
+        #region Nested Types
+
         private class TestModel
         {
             #region Properties
@@ -51,5 +52,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

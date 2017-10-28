@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class CreateInstanceOptionsTest
     {
         [Fact]
@@ -97,10 +96,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Excluding( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.AllMembers();
-                              } );
+            {
+                functionCalled = true;
+                return x.AllMembers();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -120,10 +119,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.ExcludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.AllMembers();
-                                        } );
+            {
+                functionCalled = true;
+                return x.AllMembers();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -168,10 +167,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.ExcludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.IsNotTypeOf<String>();
-                                        } );
+            {
+                functionCalled = true;
+                return x.IsNotTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -191,10 +190,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.ExcludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.IsTypeOf<String>();
-                                        } );
+            {
+                functionCalled = true;
+                return x.IsTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -214,10 +213,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.ExcludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.ByPath( y => y.Length );
-                                        } );
+            {
+                functionCalled = true;
+                return x.ByPath( y => y.Length );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -237,10 +236,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.ExcludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.ByPath( "Test" );
-                                        } );
+            {
+                functionCalled = true;
+                return x.ByPath( "Test" );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -295,10 +294,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Excluding( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.IsNotTypeOf<String>();
-                              } );
+            {
+                functionCalled = true;
+                return x.IsNotTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -318,10 +317,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Excluding( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.IsTypeOf<String>();
-                              } );
+            {
+                functionCalled = true;
+                return x.IsTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -341,10 +340,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Excluding( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.ByPath( y => y.Length );
-                              } );
+            {
+                functionCalled = true;
+                return x.ByPath( y => y.Length );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -364,10 +363,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Excluding( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.ByPath( "Test" );
-                              } );
+            {
+                functionCalled = true;
+                return x.ByPath( "Test" );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -418,10 +417,10 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             target.WithFactory( x => "test" );
             var actual = target.For( x =>
-                                     {
-                                         funcCalled = true;
-                                         return x.AllMembers();
-                                     } );
+            {
+                funcCalled = true;
+                return x.AllMembers();
+            } );
 
             funcCalled.Should()
                       .BeTrue();
@@ -481,10 +480,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Including( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.AllMembers();
-                              } );
+            {
+                functionCalled = true;
+                return x.AllMembers();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -504,10 +503,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.IncludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.AllMembers();
-                                        } );
+            {
+                functionCalled = true;
+                return x.AllMembers();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -552,10 +551,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.IncludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.IsNotTypeOf<String>();
-                                        } );
+            {
+                functionCalled = true;
+                return x.IsNotTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -575,10 +574,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.IncludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.IsTypeOf<String>();
-                                        } );
+            {
+                functionCalled = true;
+                return x.IsTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -598,10 +597,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.IncludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.ByPath( y => y.Length );
-                                        } );
+            {
+                functionCalled = true;
+                return x.ByPath( y => y.Length );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -621,10 +620,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.IncludingChildrenOf( x =>
-                                        {
-                                            functionCalled = true;
-                                            return x.ByPath( "Test" );
-                                        } );
+            {
+                functionCalled = true;
+                return x.ByPath( "Test" );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -679,10 +678,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Including( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.IsNotTypeOf<String>();
-                              } );
+            {
+                functionCalled = true;
+                return x.IsNotTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -702,10 +701,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Including( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.IsTypeOf<String>();
-                              } );
+            {
+                functionCalled = true;
+                return x.IsTypeOf<String>();
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -725,10 +724,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Including( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.ByPath( y => y.Length );
-                              } );
+            {
+                functionCalled = true;
+                return x.ByPath( y => y.Length );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -748,10 +747,10 @@ namespace Extend.Testing
             var functionCalled = false;
             var target = new CreateInstanceOptions<String>();
             target.Including( x =>
-                              {
-                                  functionCalled = true;
-                                  return x.ByPath( "Test" );
-                              } );
+            {
+                functionCalled = true;
+                return x.ByPath( "Test" );
+            } );
 
             functionCalled.Should()
                           .BeTrue();
@@ -834,10 +833,10 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             target.WithFactory( x => "test" );
             var actual = target.NotFor( x =>
-                                        {
-                                            funcCalled = true;
-                                            return x.AllMembers();
-                                        } );
+            {
+                funcCalled = true;
+                return x.AllMembers();
+            } );
 
             funcCalled.Should()
                       .BeTrue();

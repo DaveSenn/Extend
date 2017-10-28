@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class ExpressionExTest
     {
         [Fact]
@@ -20,7 +19,7 @@ namespace Extend.Testing
             Expression<Func<String>> func1 = () => "test";
             Expression<Func<String, BinaryExpression>> expression = x => Expression.Coalesce( func, func1 );
 
-            var actual = expression.TryGetMemberExpression(out var outResult);
+            var actual = expression.TryGetMemberExpression( out var outResult );
             actual.Should()
                   .BeFalse();
             outResult.Should()
@@ -35,7 +34,7 @@ namespace Extend.Testing
             var actual = expression.TryGetMemberExpression( out var outResult );
 
             Assert.True( actual );
-            Assert.Equal("myInt", outResult.Member.Name);
+            Assert.Equal( "myInt", outResult.Member.Name );
         }
 
         [Fact]
@@ -86,10 +85,10 @@ namespace Extend.Testing
         {
             var myInt = RandomValueEx.GetRandomInt32();
             Expression<Func<Int32>> expression = () => myInt;
-            var actual = expression.TryGetMemberExpression(out var outResult);
+            var actual = expression.TryGetMemberExpression( out var outResult );
 
             Assert.True( actual );
-            Assert.Equal("myInt", outResult.Member.Name);
+            Assert.Equal( "myInt", outResult.Member.Name );
         }
 
         [Fact]
@@ -99,7 +98,7 @@ namespace Extend.Testing
             var actual = expression.TryGetMemberExpression( out var outResult );
 
             Assert.True( actual );
-            Assert.Equal("Age", outResult.Member.Name);
+            Assert.Equal( "Age", outResult.Member.Name );
         }
 
         [Fact]
@@ -170,6 +169,17 @@ namespace Extend.Testing
 
         private event PropertyChangedEventHandler PropertyChanged;
 
+        #region Nested Types
+
+        private class SubModel
+        {
+            #region Properties
+
+            public String Foo { get; } = String.Empty;
+
+            #endregion
+        }
+
         private class TestModel
         {
             #region Properties
@@ -180,13 +190,6 @@ namespace Extend.Testing
             #endregion
         }
 
-        private class SubModel
-        {
-            #region Properties
-
-            public String Foo { get; } = String.Empty;
-
-            #endregion
-        }
+        #endregion
     }
 }

@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class TypeExTest
     {
         [Fact]
@@ -27,8 +26,8 @@ namespace Extend.Testing
         {
             var actual = typeof(ActionEx).GetDeclaringAssembly();
             var expectedVersion = typeof(ActionEx).GetDeclaringAssembly()
-                                          .GetName()
-                                          .Version.ToString();
+                                                  .GetName()
+                                                  .Version.ToString();
             actual.FullName.Should()
                   .Be( $"Extend, Version={expectedVersion}, Culture=neutral, PublicKeyToken=869d4c589c0473ac" );
         }

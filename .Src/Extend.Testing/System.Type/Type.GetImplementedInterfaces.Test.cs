@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class TypeExTest
     {
         [Fact]
@@ -28,8 +27,9 @@ namespace Extend.Testing
                                          .ToList();
             actual.Should()
                   .HaveCount( 1 );
-            actual[0].Should()
-                     .Be( typeof(ITest) );
+            actual[0]
+                .Should()
+                .Be( typeof(ITest) );
         }
 
         [Fact]
@@ -39,10 +39,12 @@ namespace Extend.Testing
                                            .ToList();
             actual.Should()
                   .HaveCount( 2 );
-            actual[0].Should()
-                     .Be( typeof(ISecondTest) );
-            actual[1].Should()
-                     .Be( typeof(ITest) );
+            actual[0]
+                .Should()
+                .Be( typeof(ISecondTest) );
+            actual[1]
+                .Should()
+                .Be( typeof(ITest) );
         }
 
         [Fact]
@@ -74,11 +76,13 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentNullException>();
         }
 
-        private interface ITest
+        #region Nested Types
+
+        private interface ISecondTest : ITest
         {
         }
 
-        private interface ISecondTest : ITest
+        private interface ITest
         {
         }
 
@@ -89,16 +93,18 @@ namespace Extend.Testing
         {
         }
 
-        public class TestType : ITest
+        public class SecondTest : ISecondTest
         {
         }
 
-        public class SecondTest : ISecondTest
+        public class TestType : ITest
         {
         }
 
         public class ThirdTest : IThirdTest, ISecondTest
         {
         }
+
+        #endregion
     }
 }

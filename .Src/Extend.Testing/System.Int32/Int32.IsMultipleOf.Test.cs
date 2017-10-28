@@ -6,7 +6,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class Int32ExTest
     {
         [Fact]

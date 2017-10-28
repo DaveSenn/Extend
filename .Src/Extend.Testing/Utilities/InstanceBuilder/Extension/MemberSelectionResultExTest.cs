@@ -7,7 +7,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class MemberSelectionResultExTest
     {
         [Fact]

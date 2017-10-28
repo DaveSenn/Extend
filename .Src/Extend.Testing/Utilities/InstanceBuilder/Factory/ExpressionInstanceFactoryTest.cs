@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class ExpressionInstanceFactoryTest
     {
         [Fact]
@@ -36,10 +35,10 @@ namespace Extend.Testing
             var expectedMemberInformation = new MemberInformation();
             IMemberInformation actualParameter = null;
             var target = new ExpressionInstanceFactory( x =>
-                                                        {
-                                                            actualParameter = x;
-                                                            return expectedValue;
-                                                        } );
+            {
+                actualParameter = x;
+                return expectedValue;
+            } );
 
             var actual = target.CreateValue( expectedMemberInformation );
             actual.Should()

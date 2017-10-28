@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -34,14 +33,18 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 4 );
-            actual[0].Should()
-                     .Be( "Line1" );
-            actual[1].Should()
-                     .Be( "Line2" );
-            actual[2].Should()
-                     .Be( "Line3" );
-            actual[3].Should()
-                     .Be( "Line4" );
+            actual[0]
+                .Should()
+                .Be( "Line1" );
+            actual[1]
+                .Should()
+                .Be( "Line2" );
+            actual[2]
+                .Should()
+                .Be( "Line3" );
+            actual[3]
+                .Should()
+                .Be( "Line4" );
         }
 
         [Fact]
@@ -54,16 +57,21 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 5 );
-            actual[0].Should()
-                     .Be( "Line1" );
-            actual[1].Should()
-                     .Be( "" );
-            actual[2].Should()
-                     .Be( "Line2" );
-            actual[3].Should()
-                     .Be( "Line3" );
-            actual[4].Should()
-                     .Be( "Line4" );
+            actual[0]
+                .Should()
+                .Be( "Line1" );
+            actual[1]
+                .Should()
+                .Be( "" );
+            actual[2]
+                .Should()
+                .Be( "Line2" );
+            actual[3]
+                .Should()
+                .Be( "Line3" );
+            actual[4]
+                .Should()
+                .Be( "Line4" );
         }
 
         [Fact]

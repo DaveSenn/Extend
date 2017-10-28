@@ -8,14 +8,13 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryToEnumTest()
         {
             const DayOfWeek expected = DayOfWeek.Monday;
-            var result = StringEx.TryToEnum(expected.ToString(), out DayOfWeek actual);
+            var result = StringEx.TryToEnum( expected.ToString(), out DayOfWeek actual );
 
             actual
                 .Should()
@@ -28,7 +27,7 @@ namespace Extend.Testing
         [Fact]
         public void TryToEnumTestNullCheck()
         {
-            var actual = StringEx.TryToEnum(null, out DayOfWeek day);
+            var actual = StringEx.TryToEnum( null, out DayOfWeek day );
 
             actual
                 .Should()

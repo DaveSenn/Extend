@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -57,25 +56,32 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 2 );
-            actual[0].Should()
-                     .HaveCount( 3 );
-            actual[0].ElementAt( 0 )
-                     .Should()
-                     .Be( "a" );
-            actual[0].ElementAt( 1 )
-                     .Should()
-                     .Be( "b" );
-            actual[0].ElementAt( 2 )
-                     .Should()
-                     .Be( "c" );
-            actual[1].Should()
-                     .HaveCount( 2 );
-            actual[1].ElementAt( 0 )
-                     .Should()
-                     .Be( "d" );
-            actual[1].ElementAt( 1 )
-                     .Should()
-                     .Be( "e" );
+            actual[0]
+                .Should()
+                .HaveCount( 3 );
+            actual[0]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "a" );
+            actual[0]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "b" );
+            actual[0]
+                .ElementAt( 2 )
+                .Should()
+                .Be( "c" );
+            actual[1]
+                .Should()
+                .HaveCount( 2 );
+            actual[1]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "d" );
+            actual[1]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "e" );
         }
 
         [Fact]
@@ -87,17 +93,21 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 1 );
-            actual[0].Should()
-                     .HaveCount( 3 );
-            actual[0].ElementAt( 0 )
-                     .Should()
-                     .Be( "a" );
-            actual[0].ElementAt( 1 )
-                     .Should()
-                     .Be( "b" );
-            actual[0].ElementAt( 2 )
-                     .Should()
-                     .Be( "c" );
+            actual[0]
+                .Should()
+                .HaveCount( 3 );
+            actual[0]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "a" );
+            actual[0]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "b" );
+            actual[0]
+                .ElementAt( 2 )
+                .Should()
+                .Be( "c" );
         }
 
         [Fact]
@@ -109,28 +119,36 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 2 );
-            actual[0].Should()
-                     .HaveCount( 3 );
-            actual[0].ElementAt( 0 )
-                     .Should()
-                     .Be( "a" );
-            actual[0].ElementAt( 1 )
-                     .Should()
-                     .Be( "b" );
-            actual[0].ElementAt( 2 )
-                     .Should()
-                     .Be( "c" );
-            actual[1].Should()
-                     .HaveCount( 3 );
-            actual[1].ElementAt( 0 )
-                     .Should()
-                     .Be( "d" );
-            actual[1].ElementAt( 1 )
-                     .Should()
-                     .Be( "e" );
-            actual[1].ElementAt( 2 )
-                     .Should()
-                     .Be( "f" );
+            actual[0]
+                .Should()
+                .HaveCount( 3 );
+            actual[0]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "a" );
+            actual[0]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "b" );
+            actual[0]
+                .ElementAt( 2 )
+                .Should()
+                .Be( "c" );
+            actual[1]
+                .Should()
+                .HaveCount( 3 );
+            actual[1]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "d" );
+            actual[1]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "e" );
+            actual[1]
+                .ElementAt( 2 )
+                .Should()
+                .Be( "f" );
         }
 
         [Fact]
@@ -142,26 +160,33 @@ namespace Extend.Testing
 
             actual.Should()
                   .HaveCount( 1 );
-            actual[0].Should()
-                     .HaveCount( 6 );
-            actual[0].ElementAt( 0 )
-                     .Should()
-                     .Be( "a" );
-            actual[0].ElementAt( 1 )
-                     .Should()
-                     .Be( "b" );
-            actual[0].ElementAt( 2 )
-                     .Should()
-                     .Be( "c" );
-            actual[0].ElementAt( 3 )
-                     .Should()
-                     .Be( "d" );
-            actual[0].ElementAt( 4 )
-                     .Should()
-                     .Be( "e" );
-            actual[0].ElementAt( 5 )
-                     .Should()
-                     .Be( "f" );
+            actual[0]
+                .Should()
+                .HaveCount( 6 );
+            actual[0]
+                .ElementAt( 0 )
+                .Should()
+                .Be( "a" );
+            actual[0]
+                .ElementAt( 1 )
+                .Should()
+                .Be( "b" );
+            actual[0]
+                .ElementAt( 2 )
+                .Should()
+                .Be( "c" );
+            actual[0]
+                .ElementAt( 3 )
+                .Should()
+                .Be( "d" );
+            actual[0]
+                .ElementAt( 4 )
+                .Should()
+                .Be( "e" );
+            actual[0]
+                .ElementAt( 5 )
+                .Should()
+                .Be( "f" );
         }
     }
 }

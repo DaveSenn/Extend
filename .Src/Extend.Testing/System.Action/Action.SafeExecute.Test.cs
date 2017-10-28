@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ActionExTest
     {
         [Fact]
@@ -244,7 +243,7 @@ namespace Extend.Testing
                                            typeof(ArgumentOutOfRangeException),
                                            typeof(InvalidCastException),
                                            typeof(InvalidOperationException),
-                                           typeof(ArithmeticException));
+                                           typeof(ArithmeticException) );
             Assert.False( actual );
         }
 

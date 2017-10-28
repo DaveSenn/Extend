@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class CollectionTExTest
     {
         [Fact]
@@ -19,14 +18,14 @@ namespace Extend.Testing
             var valueToRemove = RandomValueEx.GetRandomString();
             list.Add( valueToRemove );
 
-            Assert.Single( list);
+            Assert.Single( list );
 
             var result = list.RemoveIf( valueToRemove, x => false );
-            Assert.Single( list);
+            Assert.Single( list );
             Assert.Same( list, result );
 
             list.RemoveIf( valueToRemove, x => true );
-            Assert.Empty( list);
+            Assert.Empty( list );
         }
 
         [Fact]

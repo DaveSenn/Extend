@@ -9,13 +9,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsInt64InvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsInt64(out var result);
+            var actual = "InvalidValue".TryParsInt64( out var result );
 
             result
                 .Should()
@@ -48,9 +47,9 @@ namespace Extend.Testing
             var expected = RandomValueEx.GetRandomInt64();
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsInt64(NumberStyles.Any, culture, out var result);
+                                        .TryParsInt64( NumberStyles.Any, culture, out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -60,7 +59,7 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomInt64();
 
-            Action test = () => expected.ToString( CultureInfo.InvariantCulture)
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once UnusedVariable
                                         .TryParsInt64( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var result );
 
@@ -70,7 +69,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsInt64OverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsInt64(NumberStyles.Any, new CultureInfo("de-CH"), out var result);
+            var actual = "InvalidValue".TryParsInt64( NumberStyles.Any, new CultureInfo( "de-CH" ), out var result );
 
             result
                 .Should()
@@ -102,8 +101,8 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             var expected = RandomValueEx.GetRandomInt64();
-            var actual = expected.ToString(culture)
-                     .TryParsInt64(NumberStyles.Any, culture, out var result);
+            var actual = expected.ToString( culture )
+                                 .TryParsInt64( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -118,8 +117,8 @@ namespace Extend.Testing
         public void TryParsInt64Test()
         {
             var expected = RandomValueEx.GetRandomInt64();
-            var actual = expected.ToString(CultureInfo.CurrentCulture)
-                     .TryParsInt64(out var result);
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .TryParsInt64( out var result );
 
             result
                 .Should()

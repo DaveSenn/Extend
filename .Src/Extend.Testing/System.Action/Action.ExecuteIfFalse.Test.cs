@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ActionExTest
     {
         [Fact]
@@ -330,7 +329,7 @@ namespace Extend.Testing
             var trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -347,13 +346,13 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 false,
                 false );
 
@@ -365,13 +364,13 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
                 false );
 
@@ -692,7 +691,7 @@ namespace Extend.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -706,7 +705,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -720,7 +719,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -734,7 +733,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -747,7 +746,7 @@ namespace Extend.Testing
             // Case 5
             falseActionExecuted = false;
             Action<String, String, String, String> action = ( p1, p2, p3, p4 ) =>
-                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4;
+                falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4;
             action.ExecuteIfFalse( parameter1, parameter2, parameter3, parameter4, true, false );
 
             Assert.False( falseActionExecuted );

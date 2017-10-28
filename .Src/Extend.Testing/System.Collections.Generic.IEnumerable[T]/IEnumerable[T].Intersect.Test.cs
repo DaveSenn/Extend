@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -136,14 +135,7 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
-        private class TestModel
-        {
-            #region Properties
-
-            public String Name { get; set; }
-
-            #endregion
-        }
+        #region Nested Types
 
         private class StringLengthComparer : IEqualityComparer<String>
         {
@@ -172,5 +164,16 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        private class TestModel
+        {
+            #region Properties
+
+            public String Name { get; set; }
+
+            #endregion
+        }
+
+        #endregion
     }
 }

@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class CollectionTExTest
     {
         [Fact]
@@ -25,7 +24,7 @@ namespace Extend.Testing
             Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values.ToArray() );
-            Assert.Empty( list);
+            Assert.Empty( list );
         }
 
         [Fact]
@@ -41,7 +40,7 @@ namespace Extend.Testing
             Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values );
-            Assert.Empty( list);
+            Assert.Empty( list );
         }
 
         [Fact]

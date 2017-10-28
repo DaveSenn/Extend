@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class ISpecificationExTest
     {
@@ -41,7 +40,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -85,7 +84,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Equal( "The given object matches both specifications.", actual[0] );
         }
 
@@ -97,7 +96,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -108,7 +107,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -132,7 +131,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Equal( "The given object matches both specifications.", actual[0] );
         }
 
@@ -144,7 +143,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]

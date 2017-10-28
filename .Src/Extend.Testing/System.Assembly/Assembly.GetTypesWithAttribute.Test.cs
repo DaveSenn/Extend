@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class AssemblyExTest
     {
         [Fact]
@@ -26,10 +25,10 @@ namespace Extend.Testing
         public void GetTypesWithAttributeBaseTypeTest()
         {
             var actual = AssemblyEx.GetTypesWithAttribute<FooAttribute>( true,
-                                                            typeof(BaseTestClass),
-                                                            GetType()
-                                                                .GetDeclaringAssembly() )
-                      .ToList();
+                                                                         typeof(BaseTestClass),
+                                                                         GetType()
+                                                                             .GetDeclaringAssembly() )
+                                   .ToList();
 
             actual.Should()
                   .HaveCount( 3 );
@@ -174,6 +173,13 @@ namespace Extend.Testing
                       .Contain( x => x.Value == "D2" );
         }
 
+        #region Nested Types
+
+        [Foo( Value = "base" )]
+        private class BaseTestClass
+        {
+        }
+
         [AttributeUsage( AttributeTargets.Class, AllowMultiple = true )]
         private class FooAttribute : Attribute
         {
@@ -182,11 +188,6 @@ namespace Extend.Testing
             public String Value { get; set; }
 
             #endregion
-        }
-
-        [Foo( Value = "base" )]
-        private class BaseTestClass
-        {
         }
 
         [Foo( Value = "A" )]
@@ -208,5 +209,7 @@ namespace Extend.Testing
         private class TestClassD : BaseTestClass
         {
         }
+
+        #endregion
     }
 }

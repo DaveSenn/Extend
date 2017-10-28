@@ -10,14 +10,17 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class StringTemplate
     {
+        #region Ctor
+
         public StringTemplate()
         {
-            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("de-CH");
-            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo("de-CH");
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo( "de-CH" );
+            CultureInfo.DefaultThreadCurrentUICulture = new CultureInfo( "de-CH" );
         }
+
+        #endregion
 
         [Fact]
         public void FormatWithObject_ComplexTemplate()
@@ -312,14 +315,14 @@ namespace Extend.Testing
         {
             var actual = "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} | MyNull: {MyNull}"
                 .FormatWithValues( new Dictionary<String, Object>
-                                   {
-                                       { "MyInt", 1234 },
-                                       { "MyString", "asdf" },
-                                       { "MyDouble", 12345.987654 },
-                                       { "Ignore", "asd" },
-                                       // ReSharper disable once RedundantCast
-                                       { "MyNull", (String) null }
-                                   } );
+                {
+                    { "MyInt", 1234 },
+                    { "MyString", "asdf" },
+                    { "MyDouble", 12345.987654 },
+                    { "Ignore", "asd" },
+                    // ReSharper disable once RedundantCast
+                    { "MyNull", (String) null }
+                } );
             actual.Should()
                   .Be( "{{123} bla} | Ignore: {Ignore} | MyInt: 1234 001234 1-23-4 | MyString: asdf | MyDouble: 12345.987654 | MyNull: " );
         }
@@ -349,14 +352,14 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithValues( new Dictionary<String, Object>
-                                           {
-                                               { "MyInt", 1234 },
-                                               { "MyString", "asdf" },
-                                               { "MyDouble", 12345.987654 },
-                                               { "Ignore", "asd" },
-                                               // ReSharper disable once RedundantCast
-                                               { "MyNull", (String) null }
-                                           } );
+                        {
+                            { "MyInt", 1234 },
+                            { "MyString", "asdf" },
+                            { "MyDouble", 12345.987654 },
+                            { "Ignore", "asd" },
+                            // ReSharper disable once RedundantCast
+                            { "MyNull", (String) null }
+                        } );
             test.ShouldThrow<FormatException>();
         }
 
@@ -367,14 +370,14 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithValues( new Dictionary<String, Object>
-                                           {
-                                               { "MyInt", 1234 },
-                                               { "MyString", "asdf" },
-                                               { "MyDouble", 12345.987654 },
-                                               { "Ignore", "asd" },
-                                               // ReSharper disable once RedundantCast
-                                               { "MyNull", (String) null }
-                                           } );
+                        {
+                            { "MyInt", 1234 },
+                            { "MyString", "asdf" },
+                            { "MyDouble", 12345.987654 },
+                            { "Ignore", "asd" },
+                            // ReSharper disable once RedundantCast
+                            { "MyNull", (String) null }
+                        } );
             test.ShouldThrow<FormatException>();
         }
 
@@ -385,14 +388,14 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithValues( new Dictionary<String, Object>
-                                           {
-                                               { "MyInt", 1234 },
-                                               { "MyString", "asdf" },
-                                               { "MyDouble", 12345.987654 },
-                                               { "Ignore", "asd" },
-                                               // ReSharper disable once RedundantCast
-                                               { "MyNull", (String) null }
-                                           } );
+                        {
+                            { "MyInt", 1234 },
+                            { "MyString", "asdf" },
+                            { "MyDouble", 12345.987654 },
+                            { "Ignore", "asd" },
+                            // ReSharper disable once RedundantCast
+                            { "MyNull", (String) null }
+                        } );
             test.ShouldThrow<FormatException>();
         }
 

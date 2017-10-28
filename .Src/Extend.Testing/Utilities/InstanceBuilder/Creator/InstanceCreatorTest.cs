@@ -10,8 +10,7 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    [Collection("InstanceCreator")]
-
+    [Collection( "InstanceCreator" )]
     public class InstanceCreatorTest
     {
         [Fact]
@@ -147,9 +146,11 @@ namespace Extend.Testing
         public void DefaultMemberSelectionRulesDefaultTest()
         {
             var actual = InstanceCreator.DefaultMemberSelectionRules;
-            
+
             actual.Count.Should()
-                  .Be( 1, actual.Select( x => x.RuleName ).StringJoin( ", " ) );
+                  .Be( 1,
+                       actual.Select( x => x.RuleName )
+                             .StringJoin( ", " ) );
             actual.Count( x => x.RuleName == "Include all members" )
                   .Should()
                   .Be( 1 );
@@ -434,6 +435,27 @@ namespace Extend.Testing
         }
 
         [Fact]
+        public void PopulateDitionaryTest()
+        {
+            var actual = InstanceCreator.CreateInstance<ModelWithDitionary>();
+            actual.MyStringDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32Ditionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyStringKeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.MyInt32KeyDitionary.Any()
+                  .Should()
+                  .BeTrue();
+            actual.ComplexDictionary.Any( x => x.Value.MyInt32Enumerable.Any() )
+                  .Should()
+                  .BeTrue();
+        }
+
+        [Fact]
         public void RootFactoryThrowExceptionTest()
         {
             var options = InstanceCreator.CreateInstanceOptions<TestModel>()
@@ -490,40 +512,16 @@ namespace Extend.Testing
                   .NotBeEmpty();
         }
 
-        [Fact]
-        public void PopulateDitionaryTest()
-        {
-            var actual = InstanceCreator.CreateInstance<ModelWithDitionary>();
-            actual.MyStringDitionary.Any()
-                  .Should()
-                  .BeTrue();
-            actual.MyInt32Ditionary.Any()
-                  .Should()
-                  .BeTrue();
-            actual.MyStringKeyDitionary.Any()
-                  .Should()
-                  .BeTrue();
-            actual.MyInt32KeyDitionary.Any()
-                  .Should()
-                  .BeTrue();
-            actual.ComplexDictionary.Any( x => x.Value.MyInt32Enumerable.Any() )
-                  .Should()
-                  .BeTrue();
-        }
+        #region Nested Types
 
-        private class ModelWithDitionary : ModelWithCollection
+        private class ModelNeedingFactory
         {
-            // ReSharper disable UnusedAutoPropertyAccessor.Local
-            // ReSharper disable CollectionNeverUpdated.Local
-            // ReSharper disable UnusedMember.Local
-            public Dictionary<String, String> MyStringDitionary { get; set; }
-            public Dictionary<Int32, Int32> MyInt32Ditionary { get; set; }
-            public Dictionary<String, Int32> MyStringKeyDitionary { get; set; }
-            public Dictionary<Int32, String> MyInt32KeyDitionary { get; set; }
-            public Dictionary<Int32, TestModel> ComplexDictionary { get; set; }
-            // ReSharper restore UnusedMember.Local
-            // ReSharper restore CollectionNeverUpdated.Local
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
+            #region Properties
+
+            // ReSharper disable once UnusedMember.Local
+            public ModelWithCtor MyProperty { get; set; }
+
+            #endregion
         }
 
         private class ModelWithCollection
@@ -532,37 +530,53 @@ namespace Extend.Testing
             // ReSharper disable UnusedAutoPropertyAccessor.Local
             // ReSharper disable CollectionNeverUpdated.Local
             public String[] MyArray { get; set; }
+
             public List<String> MyList { get; set; }
             public IEnumerable<String> MyEnumerable { get; set; }
             public IList<String> MyListInterface { get; set; }
+
             public ICollection<String> MyCollection { get; set; }
             // ReSharper restore CollectionNeverUpdated.Local
             // ReSharper restore UnusedAutoPropertyAccessor.Local
             // ReSharper restore UnusedMember.Local
         }
 
-        private class TestModel
+        private class ModelWithCtor
         {
-            // ReSharper disable UnusedMember.Local
+            #region Ctor
+
+            // ReSharper disable once UnusedParameter.Local
+            public ModelWithCtor( String arg )
+            {
+            }
+
+            #endregion
+        }
+
+        private class ModelWithDitionary : ModelWithCollection
+        {
             // ReSharper disable UnusedAutoPropertyAccessor.Local
-            public Int16 MyInt16 { get; set; }
-            public Int32 MyInt32 { get; set; }
-            public Int64 MyInt64 { get; set; }
-            public Double MyDouble { get; set; }
-            public Char MyChar { get; set; }
-            public String MyString { get; set; }
-            public Boolean MyBoolean { get; set; }
-            public DateTime MyDateTime { get; set; }
-            // ReSharper disable once CollectionNeverUpdated.Local
-            public List<String> MyStringList { get; set; }
-            public List<Int32> MyIntList { get; set; }
-            public IEnumerable<String> MyStringEnumerable { get; set; }
-            public IEnumerable<Int32> MyInt32Enumerable { get; set; }
-            public String[] MyStringArray { get; set; }
-            public Int32[] MyIntArray { get; set; }
-            public SubModel MySubModel { get; set; }
-            // ReSharper restore UnusedAutoPropertyAccessor.Local
+            // ReSharper disable CollectionNeverUpdated.Local
+            // ReSharper disable UnusedMember.Local
+            public Dictionary<String, String> MyStringDitionary { get; set; }
+
+            public Dictionary<Int32, Int32> MyInt32Ditionary { get; set; }
+            public Dictionary<String, Int32> MyStringKeyDitionary { get; set; }
+            public Dictionary<Int32, String> MyInt32KeyDitionary { get; set; }
+
+            public Dictionary<Int32, TestModel> ComplexDictionary { get; set; }
             // ReSharper restore UnusedMember.Local
+            // ReSharper restore CollectionNeverUpdated.Local
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
+        }
+
+        private class SimpleTestModel
+        {
+            // ReSharper disable UnusedAutoPropertyAccessor.Local
+            public String MyString { get; set; }
+
+            public Int32 MyInt32 { get; set; }
+            // ReSharper restore UnusedAutoPropertyAccessor.Local
         }
 
         public class SubModel
@@ -578,34 +592,34 @@ namespace Extend.Testing
             #endregion
         }
 
-        private class ModelNeedingFactory
+        private class TestModel
         {
-            #region Properties
-
-            // ReSharper disable once UnusedMember.Local
-            public ModelWithCtor MyProperty { get; set; }
-
-            #endregion
-        }
-
-        private class ModelWithCtor
-        {
-            #region Ctor
-
-            // ReSharper disable once UnusedParameter.Local
-            public ModelWithCtor( String arg )
-            {
-            }
-
-            #endregion
-        }
-
-        private class SimpleTestModel
-        {
+            // ReSharper disable UnusedMember.Local
             // ReSharper disable UnusedAutoPropertyAccessor.Local
-            public String MyString { get; set; }
+            public Int16 MyInt16 { get; set; }
+
             public Int32 MyInt32 { get; set; }
+            public Int64 MyInt64 { get; set; }
+            public Double MyDouble { get; set; }
+            public Char MyChar { get; set; }
+            public String MyString { get; set; }
+            public Boolean MyBoolean { get; set; }
+            public DateTime MyDateTime { get; set; }
+
+            // ReSharper disable once CollectionNeverUpdated.Local
+            public List<String> MyStringList { get; set; }
+
+            public List<Int32> MyIntList { get; set; }
+            public IEnumerable<String> MyStringEnumerable { get; set; }
+            public IEnumerable<Int32> MyInt32Enumerable { get; set; }
+            public String[] MyStringArray { get; set; }
+            public Int32[] MyIntArray { get; set; }
+
+            public SubModel MySubModel { get; set; }
             // ReSharper restore UnusedAutoPropertyAccessor.Local
+            // ReSharper restore UnusedMember.Local
         }
+
+        #endregion
     }
 }

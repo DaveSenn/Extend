@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class OrSpecificationTest
     {
         [Fact]
@@ -159,7 +158,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -171,7 +170,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -183,7 +182,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -209,7 +208,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -221,7 +220,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -247,7 +246,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]

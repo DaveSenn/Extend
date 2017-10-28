@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
@@ -123,13 +122,13 @@ namespace Extend.Testing
 
             var actual = dictionary.GetOrAdd( key, value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
 
             actual = dictionary.GetOrAdd( key, value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
         }
 
         [Fact]
@@ -141,13 +140,13 @@ namespace Extend.Testing
 
             var actual = dictionary.GetOrAdd( keyValuePair );
             Assert.Equal( keyValuePair.Value, actual );
-            Assert.Contains(keyValuePair, dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( keyValuePair, dictionary );
+            Assert.Single( dictionary );
 
             actual = dictionary.GetOrAdd( keyValuePair );
             Assert.Equal( keyValuePair.Value, actual );
-            Assert.Contains(keyValuePair, dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( keyValuePair, dictionary );
+            Assert.Single( dictionary );
         }
 
         [Fact]
@@ -159,13 +158,13 @@ namespace Extend.Testing
 
             var actual = dictionary.GetOrAdd( key, () => value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
 
             actual = dictionary.GetOrAdd( key, () => value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
         }
 
         [Fact]
@@ -177,13 +176,13 @@ namespace Extend.Testing
 
             var actual = dictionary.GetOrAdd( key, x => value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
 
             actual = dictionary.GetOrAdd( key, x => value );
             Assert.Equal( value, actual );
-            Assert.Contains(new KeyValuePair<String, String>( key, value ), dictionary);
-            Assert.Single( dictionary);
+            Assert.Contains( new KeyValuePair<String, String>( key, value ), dictionary );
+            Assert.Single( dictionary );
         }
     }
 }

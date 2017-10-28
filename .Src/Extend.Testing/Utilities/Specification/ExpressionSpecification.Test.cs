@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class ExpressionSpecificationTest
     {
         [Fact]
@@ -100,7 +99,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123" )
                                .ToList();
-            Assert.Single( actual);
+            Assert.Single( actual );
             Assert.Null( actual[0] );
         }
 
@@ -110,7 +109,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123456" )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]

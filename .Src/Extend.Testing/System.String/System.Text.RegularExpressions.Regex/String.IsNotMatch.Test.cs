@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -61,26 +60,6 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void IsNotMatchTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.IsNotMatch( null, "" );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Fact]
-        public void IsNotMatchTestNullCheck1()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".IsNotMatch( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
         public void IsNotMatchTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -125,6 +104,26 @@ namespace Extend.Testing
             Action test = () => validEmail.IsNotMatch( emaiLpattern, RegexOptions.Multiline, 3.ToMilliseconds() );
 
             test.ShouldThrow<RegexMatchTimeoutException>();
+        }
+
+        [Fact]
+        public void IsNotMatchTestNullCheck()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.IsNotMatch( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void IsNotMatchTestNullCheck1()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "".IsNotMatch( null );
+
+            test.ShouldThrow<ArgumentNullException>();
         }
     }
 }

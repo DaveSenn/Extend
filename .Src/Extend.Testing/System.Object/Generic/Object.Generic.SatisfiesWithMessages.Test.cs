@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ObjectExTest
     {
         [Fact]
@@ -20,7 +19,7 @@ namespace Extend.Testing
 
             var actual = "1234".SatisfiesWithMessages( specification )
                                .ToList();
-            Assert.Empty( actual);
+            Assert.Empty( actual );
         }
 
         [Fact]

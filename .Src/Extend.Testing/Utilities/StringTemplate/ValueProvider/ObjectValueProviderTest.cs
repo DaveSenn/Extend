@@ -12,8 +12,7 @@ using Xunit;
 
 namespace Extend.Testing.Internal
 {
-    [Collection("InstanceCreator")]
-
+    [Collection( "InstanceCreator" )]
     public class ObjectValueProviderTest
     {
         [Fact]

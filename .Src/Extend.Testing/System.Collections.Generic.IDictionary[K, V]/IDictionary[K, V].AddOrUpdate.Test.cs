@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
@@ -21,12 +20,12 @@ namespace Extend.Testing
 
             var valueToAdd = RandomValueEx.GetRandomString();
             var result = dic.AddOrUpdate( key, valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
         }
 
@@ -38,12 +37,12 @@ namespace Extend.Testing
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddOrUpdate( pair );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( pair.Value, result );
 
             pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
             result = dic.AddOrUpdate( pair );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( pair.Value, result );
         }
 
@@ -73,12 +72,12 @@ namespace Extend.Testing
             var valueToAdd = RandomValueEx.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, () => valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, () => valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
         }
 
@@ -119,12 +118,12 @@ namespace Extend.Testing
             var valueToAdd = RandomValueEx.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, x => valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, x => valueToAdd );
-            Assert.Single( dic);
+            Assert.Single( dic );
             Assert.Equal( valueToAdd, result );
         }
 

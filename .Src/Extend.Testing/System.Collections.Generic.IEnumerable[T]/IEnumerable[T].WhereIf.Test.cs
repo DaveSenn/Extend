@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -20,13 +19,13 @@ namespace Extend.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, x => true );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( true, x => false );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( false, x => true );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             list = RandomValueEx.GetRandomStrings();
 
@@ -34,7 +33,7 @@ namespace Extend.Testing
             Assert.Equal( list.Count, actual.Count() );
 
             actual = list.WhereIf( true, x => false );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( false, x => true );
             Assert.Same( list, actual );
@@ -46,13 +45,13 @@ namespace Extend.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( false, ( x, i ) => true );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             list = RandomValueEx.GetRandomStrings();
 
@@ -60,7 +59,7 @@ namespace Extend.Testing
             Assert.Equal( list.Count, actual.Count() );
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Empty( actual);
+            Assert.Empty( actual );
 
             actual = list.WhereIf( false, ( x, i ) => true );
             Assert.Same( list, actual );

@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class CollectionTExTest
     {
         [Fact]
@@ -18,7 +17,7 @@ namespace Extend.Testing
             var c = new List<String>();
 
             var result = c.AddIfNotContains( RandomValueEx.GetRandomString() );
-            Assert.Single( c);
+            Assert.Single( c );
             Assert.True( result );
 
             var valueToAdd = RandomValueEx.GetRandomString();
