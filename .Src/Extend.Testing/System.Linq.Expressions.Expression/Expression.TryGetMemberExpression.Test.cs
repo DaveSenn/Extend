@@ -35,7 +35,7 @@ namespace Extend.Testing
             var actual = expression.TryGetMemberExpression( out var outResult );
 
             Assert.True( actual );
-            Assert.Equal( outResult.Member.Name, "myInt" );
+            Assert.Equal("myInt", outResult.Member.Name);
         }
 
         [Fact]
@@ -89,7 +89,7 @@ namespace Extend.Testing
             var actual = expression.TryGetMemberExpression(out var outResult);
 
             Assert.True( actual );
-            Assert.Equal( outResult.Member.Name, "myInt" );
+            Assert.Equal("myInt", outResult.Member.Name);
         }
 
         [Fact]
@@ -99,7 +99,7 @@ namespace Extend.Testing
             var actual = expression.TryGetMemberExpression( out var outResult );
 
             Assert.True( actual );
-            Assert.Equal( outResult.Member.Name, "Age" );
+            Assert.Equal("Age", outResult.Member.Name);
         }
 
         [Fact]

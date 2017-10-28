@@ -36,13 +36,13 @@ namespace Extend.Testing
             factor = 2;
 
             actual = value.IsMultipleOf( factor );
-            Assert.Equal( true, actual );
+            Assert.True( actual );
 
             value = 10;
             factor = 3;
 
             actual = value.IsMultipleOf( factor );
-            Assert.Equal( false, actual );
+            Assert.False( actual );
         }
 
         [Fact]

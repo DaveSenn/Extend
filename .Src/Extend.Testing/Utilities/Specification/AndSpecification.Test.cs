@@ -145,7 +145,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -157,7 +157,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -169,7 +169,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Null( actual[0] );
         }
 
@@ -182,7 +182,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Null( actual[0] );
         }
 
@@ -209,7 +209,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Equal( "msgLeft", actual[0] );
         }
 
@@ -222,7 +222,7 @@ namespace Extend.Testing
             var target = new AndSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Equal( "msgRight", actual[0] );
         }
 

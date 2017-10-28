@@ -53,11 +53,11 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Ancestors.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             var node1 = new TreeNode<String>( "1", target );
             actual = node1.Ancestors.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Same( target, actual[0] );
 
             var node2 = new TreeNode<String>( "1", node1 );
@@ -441,16 +441,16 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             var node1 = new TreeNode<String>( "1", target );
             //Descendants of root
             actual = target.Descendants.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Same( actual[0], node1 );
             //Descendants of node1
             actual = node1.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             var nodeA = new TreeNode<String>( "A", node1 );
             //Descendants of root
@@ -460,11 +460,11 @@ namespace Extend.Testing
             Assert.Same( actual[1], nodeA );
             //Descendants of node1
             actual = node1.Descendants.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Same( actual[0], nodeA );
             //Descendants of nodeA
             actual = nodeA.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             var nodeB = new TreeNode<String>( "B", node1 );
             //Descendants of root
@@ -480,7 +480,7 @@ namespace Extend.Testing
             Assert.Same( actual[1], nodeB );
             //Descendants of nodeB
             actual = nodeB.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             var node2 = new TreeNode<String>( "2", target );
             //Descendants of root
@@ -492,7 +492,7 @@ namespace Extend.Testing
             Assert.Same( actual[3], node2 );
             //Descendants of node2
             actual = node2.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -500,11 +500,11 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
 
             target.Children = null;
             actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]

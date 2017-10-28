@@ -33,7 +33,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             list.ForEachReverse( x => list.Remove( x ) );
-            Assert.Equal( 0, list.Count );
+            Assert.Empty( list);
         }
 
         [Fact]

@@ -92,7 +92,7 @@ namespace Extend.Testing
             var target = left.And( x => true );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -103,7 +103,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Null( actual[0] );
         }
 
@@ -115,7 +115,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Null( actual[0] );
         }
 
@@ -139,7 +139,7 @@ namespace Extend.Testing
             var target = left.And( x => true, "msgRight" );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -150,7 +150,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Equal( "msgRight", actual[0] );
         }
 

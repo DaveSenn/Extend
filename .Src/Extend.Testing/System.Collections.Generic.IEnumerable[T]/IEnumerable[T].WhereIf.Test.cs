@@ -20,13 +20,13 @@ namespace Extend.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, x => true );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( true, x => false );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( false, x => true );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             list = RandomValueEx.GetRandomStrings();
 
@@ -34,7 +34,7 @@ namespace Extend.Testing
             Assert.Equal( list.Count, actual.Count() );
 
             actual = list.WhereIf( true, x => false );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( false, x => true );
             Assert.Same( list, actual );
@@ -46,13 +46,13 @@ namespace Extend.Testing
             var list = new List<String>();
 
             var actual = list.WhereIf( true, ( x, i ) => true );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( false, ( x, i ) => true );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             list = RandomValueEx.GetRandomStrings();
 
@@ -60,7 +60,7 @@ namespace Extend.Testing
             Assert.Equal( list.Count, actual.Count() );
 
             actual = list.WhereIf( true, ( x, i ) => false );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
 
             actual = list.WhereIf( false, ( x, i ) => true );
             Assert.Same( list, actual );

@@ -21,7 +21,7 @@ namespace Extend.Testing
             var actual = list.EnsureNotNull();
 
             Assert.NotNull( actual );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual);
             Assert.Null( list );
         }
 

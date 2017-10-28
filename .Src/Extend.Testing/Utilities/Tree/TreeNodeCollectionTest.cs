@@ -1,6 +1,7 @@
 ﻿#region Usings
 
 using System;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -23,8 +24,8 @@ namespace Extend.Testing
             var item = new TreeNode<String>();
             target.Add( item );
 
-            Assert.True( target.Contains( item ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(item, target);
+            Assert.Single( target);
 
             Assert.Same( parent, item.Parent );
             Assert.Equal( 1, item.Depth );
@@ -42,8 +43,8 @@ namespace Extend.Testing
             var item = new TreeNode<String>();
             target.Add( item, false );
 
-            Assert.True( target.Contains( item ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(item, target);
+            Assert.Single( target);
 
             Assert.Null( item.Parent );
             Assert.Equal( 0, item.Depth );
@@ -62,8 +63,8 @@ namespace Extend.Testing
             var item = new TreeNode<String>( itemParent );
             target.Add( item, false );
 
-            Assert.True( target.Contains( item ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(item, target);
+            Assert.Single( target);
 
             Assert.Same( itemParent, item.Parent );
             Assert.Equal( 1, item.Depth );
@@ -82,8 +83,8 @@ namespace Extend.Testing
             target.Add( item );
             target.Add( item );
 
-            Assert.True( target.Contains( item ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(item, target);
+            Assert.Single( target);
 
             Assert.Same( parent, item.Parent );
             Assert.Equal( 1, item.Depth );
@@ -112,8 +113,8 @@ namespace Extend.Testing
             var expected = RandomValueEx.GetRandomString();
             var actual = target.Add( expected );
 
-            Assert.True( target.Contains( actual ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(actual, target);
+            Assert.Single( target);
 
             Assert.Same( parent, actual.Parent );
             Assert.Equal( actual.Value, expected );
@@ -130,8 +131,8 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = target.Add( expected );
 
-            Assert.True( target.Contains( actual ) );
-            Assert.Equal( 1, target.Count );
+            Assert.Contains(actual, target);
+            Assert.Single( target);
 
             // ReSharper disable once ExpressionIsAlwaysNull
             Assert.Equal( actual.Value, expected );
@@ -153,8 +154,8 @@ namespace Extend.Testing
             var actual1 = target.Add( expected );
 
             Assert.Equal( 2, target.Count );
-            Assert.True( target.Contains( actual ) );
-            Assert.True( target.Contains( actual1 ) );
+            Assert.Contains(actual, target);
+            Assert.Contains(actual1, target);
 
             Assert.Same( parent, actual.Parent );
             Assert.Equal( actual.Value, expected );
@@ -333,7 +334,7 @@ namespace Extend.Testing
             var parent = new TreeNode<String>();
             var target = new TreeNodeCollection<String>( parent ) { Parent = null };
 
-            Assert.Equal( null, target.Parent );
+            Assert.Null( target.Parent );
         }
 
         [Fact]
@@ -366,14 +367,17 @@ namespace Extend.Testing
             var result = target.Remove( item );
             Assert.True( result );
             Assert.Null( item.Parent );
-            Assert.False( target.Contains( item ) );
+
+#pragma warning disable xUnit2017
+            Assert.False(target.Contains(item));
+#pragma warning restore xUnit2017
 
             result = target.Remove( item1 );
             Assert.True( result );
             Assert.Null( item1.Parent );
-            Assert.False( target.Contains( item1 ) );
+            Assert.DoesNotContain(item1, target);
 
-            Assert.Equal( 0, target.Count );
+            Assert.Empty( target);
         }
 
         /// <summary>
@@ -390,7 +394,7 @@ namespace Extend.Testing
             var result = target.Remove( item );
             Assert.False( result );
             Assert.Same( parent, item.Parent );
-            Assert.False( target.Contains( item ) );
+            Assert.DoesNotContain(item, target);
         }
 
         /// <summary>
@@ -411,14 +415,17 @@ namespace Extend.Testing
             var result = target.Remove( item, false );
             Assert.True( result );
             Assert.Same( parent, item.Parent );
-            Assert.False( target.Contains( item ) );
+
+#pragma warning disable xUnit2017
+            Assert.False(target.Contains(item));
+#pragma warning restore xUnit2017
 
             result = target.Remove( item1, false );
             Assert.True( result );
             Assert.Same( parent, item1.Parent );
-            Assert.False( target.Contains( item1 ) );
+            Assert.DoesNotContain(item1, target);
 
-            Assert.Equal( 0, target.Count );
+            Assert.Empty( target);
         }
 
         [Fact]

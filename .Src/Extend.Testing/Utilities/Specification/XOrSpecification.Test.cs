@@ -159,8 +159,8 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actaul.Count );
-            Assert.Equal( actaul[0], "The given object matches both specifications." );
+            Assert.Single( actaul);
+            Assert.Equal("The given object matches both specifications.", actaul[0]);
         }
 
         [Fact]
@@ -172,7 +172,7 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actaul.Count );
+            Assert.Empty( actaul);
         }
 
         [Fact]
@@ -184,7 +184,7 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actaul.Count );
+            Assert.Empty( actaul);
         }
 
         [Fact]
@@ -210,8 +210,8 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 1, actaul.Count );
-            Assert.Equal( actaul[0], "The given object matches both specifications." );
+            Assert.Single( actaul);
+            Assert.Equal("The given object matches both specifications.", actaul[0]);
         }
 
         [Fact]
@@ -223,7 +223,7 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actaul.Count );
+            Assert.Empty( actaul);
         }
 
         [Fact]
@@ -235,7 +235,7 @@ namespace Extend.Testing
             var target = new XOrSpecification<String>( left, right );
             var actaul = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actaul.Count );
+            Assert.Empty( actaul);
         }
 
         [Fact]

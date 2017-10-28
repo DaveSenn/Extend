@@ -18,11 +18,11 @@ namespace Extend.Testing
             var c = new List<String>();
 
             var result = c.AddIf( x => true, RandomValueEx.GetRandomString() );
-            Assert.Equal( 1, c.Count );
+            Assert.Single( c);
             Assert.True( result );
 
             result = c.AddIf( x => false, RandomValueEx.GetRandomString() );
-            Assert.Equal( 1, c.Count );
+            Assert.Single( c);
             Assert.False( result );
         }
 

@@ -100,7 +100,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123" )
                                .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
             Assert.Null( actual[0] );
         }
 
@@ -110,7 +110,7 @@ namespace Extend.Testing
             var target = new ExpressionSpecification<String>( x => x.Length > 5 );
             var actual = target.IsSatisfiedByWithMessages( "123456" )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]

@@ -20,7 +20,7 @@ namespace Extend.Testing
 
             var actual = "1234".SatisfiesWithMessages( specification )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]

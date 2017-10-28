@@ -22,12 +22,12 @@ namespace Extend.Testing
             value = 10;
             factorNumer = 100;
             actual = value.FactorOf( factorNumer );
-            Assert.Equal( true, actual );
+            Assert.True( actual );
 
             value = 11;
             factorNumer = 100;
             actual = value.FactorOf( factorNumer );
-            Assert.Equal( false, actual );
+            Assert.False( actual );
         }
     }
 }

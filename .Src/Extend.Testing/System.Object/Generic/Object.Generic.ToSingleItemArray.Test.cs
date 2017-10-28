@@ -16,7 +16,7 @@ namespace Extend.Testing
 
             var actual = item.ToSingleItemArray();
 
-            Assert.Equal( 1, actual.Length );
+            Assert.Single( actual);
             Assert.Equal( item, actual[0] );
         }
     }

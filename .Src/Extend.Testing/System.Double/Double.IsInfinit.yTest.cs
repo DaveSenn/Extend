@@ -16,17 +16,17 @@ namespace Extend.Testing
             var number = 10.5;
             var actual = number.IsInfinity();
 
-            Assert.Equal( false, actual );
+            Assert.False( actual );
 
             number = Double.NegativeInfinity;
             actual = number.IsInfinity();
 
-            Assert.Equal( true, actual );
+            Assert.True( actual );
 
             number = Double.PositiveInfinity;
             actual = number.IsInfinity();
 
-            Assert.Equal( true, actual );
+            Assert.True( actual );
         }
     }
 }

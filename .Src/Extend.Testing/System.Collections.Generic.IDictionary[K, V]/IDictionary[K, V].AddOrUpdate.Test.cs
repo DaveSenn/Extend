@@ -21,12 +21,12 @@ namespace Extend.Testing
 
             var valueToAdd = RandomValueEx.GetRandomString();
             var result = dic.AddOrUpdate( key, valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
         }
 
@@ -38,12 +38,12 @@ namespace Extend.Testing
             var dic = new Dictionary<String, String>();
 
             var result = dic.AddOrUpdate( pair );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( pair.Value, result );
 
             pair = new KeyValuePair<String, String>( key, RandomValueEx.GetRandomString() );
             result = dic.AddOrUpdate( pair );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( pair.Value, result );
         }
 
@@ -73,12 +73,12 @@ namespace Extend.Testing
             var valueToAdd = RandomValueEx.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, () => valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, () => valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
         }
 
@@ -119,12 +119,12 @@ namespace Extend.Testing
             var valueToAdd = RandomValueEx.GetRandomString();
             // ReSharper disable once AccessToModifiedClosure
             var result = dic.AddOrUpdate( key, x => valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
 
             valueToAdd = RandomValueEx.GetRandomString();
             result = dic.AddOrUpdate( key, x => valueToAdd );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic);
             Assert.Equal( valueToAdd, result );
         }
 

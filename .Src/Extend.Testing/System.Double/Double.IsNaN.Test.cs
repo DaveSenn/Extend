@@ -16,12 +16,12 @@ namespace Extend.Testing
             var number = 10.5;
             var actual = number.IsNaN();
 
-            Assert.Equal( false, actual );
+            Assert.False( actual );
 
             number = Double.NaN;
             actual = number.IsNaN();
 
-            Assert.Equal( true, actual );
+            Assert.True( actual );
         }
     }
 }

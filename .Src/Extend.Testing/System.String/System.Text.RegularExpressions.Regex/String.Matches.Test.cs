@@ -20,10 +20,10 @@ namespace Extend.Testing
             const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Matches( emaiLpattern );
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
 
             actual = invalidEmail.Matches( emaiLpattern );
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -34,10 +34,10 @@ namespace Extend.Testing
             const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Matches( emaiLpattern, RegexOptions.Compiled );
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
 
             actual = invalidEmail.Matches( emaiLpattern, RegexOptions.Compiled );
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -88,10 +88,10 @@ namespace Extend.Testing
             const String invalidEmail = "dave.senn-myDomain.com";
 
             var actual = validEmail.Matches( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
 
             actual = invalidEmail.Matches( emaiLpattern, RegexOptions.Compiled, 100.ToSeconds() );
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]

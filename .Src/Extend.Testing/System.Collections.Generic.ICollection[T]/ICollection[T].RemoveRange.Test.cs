@@ -21,7 +21,7 @@ namespace Extend.Testing
             Assert.Equal( values.Count, list.Count );
 
             var result = list.RemoveRange( values.ToArray() );
-            Assert.Equal( 0, list.Count );
+            Assert.Empty( list);
             Assert.Same( list, result );
         }
 
@@ -34,7 +34,7 @@ namespace Extend.Testing
             Assert.Equal( values.Count, list.Count );
 
             var result = list.RemoveRange( values );
-            Assert.Equal( 0, list.Count );
+            Assert.Empty( list);
             Assert.Same( list, result );
         }
 

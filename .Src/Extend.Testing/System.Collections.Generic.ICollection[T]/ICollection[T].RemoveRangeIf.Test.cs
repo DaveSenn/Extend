@@ -25,7 +25,7 @@ namespace Extend.Testing
             Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values.ToArray() );
-            Assert.Equal( 0, list.Count );
+            Assert.Empty( list);
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
             Assert.Same( list, result );
 
             list.RemoveRangeIf( x => true, values );
-            Assert.Equal( 0, list.Count );
+            Assert.Empty( list);
         }
 
         [Fact]

@@ -30,13 +30,13 @@ namespace Extend.Testing
             Assert.Equal( 2, actual.Count );
 
             var actualItem = actual.Single( x => x.Property.Name == "FirstName" );
-            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Single( actualItem.Attributes);
             Assert.Equal( "FirstName-DisplayName",
                           actualItem.Attributes.Single()
                                     .Name );
 
             actualItem = actual.Single( x => x.Property.Name == "LastName" );
-            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Single( actualItem.Attributes);
             Assert.Equal( "LastName-DisplayName",
                           actualItem.Attributes.Single()
                                     .Name );
@@ -47,7 +47,7 @@ namespace Extend.Testing
         {
             var actual = typeof(TestPerson).GetAttributeDefinitions<MyTestAttribute>()
                                            .ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual);
 
             var actualItem = actual.Single( x => x.Property.Name == "DateOfBirth" );
             Assert.Equal( 2, actualItem.Attributes.Count() );
@@ -68,7 +68,7 @@ namespace Extend.Testing
             Assert.Equal( 1, actualItem.Attributes.Count( x => x.Value == "2" ) );
 
             actualItem = actual.Single( x => x.Property.Name == "Weight" );
-            Assert.Equal( 1, actualItem.Attributes.Count() );
+            Assert.Single( actualItem.Attributes);
             Assert.Equal( "10000",
                           actualItem.Attributes.Single()
                                     .Value );

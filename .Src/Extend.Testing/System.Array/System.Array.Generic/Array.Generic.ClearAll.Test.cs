@@ -21,8 +21,8 @@ namespace Extend.Testing
             };
             array.ClearAll();
 
-            Assert.Equal( null, array[0] );
-            Assert.Equal( null, array[1] );
+            Assert.Null( array[0] );
+            Assert.Null( array[1] );
         }
 
         [Fact]

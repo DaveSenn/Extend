@@ -159,7 +159,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -171,7 +171,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -183,7 +183,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -209,7 +209,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -221,7 +221,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]
@@ -247,7 +247,7 @@ namespace Extend.Testing
             var target = new OrSpecification<String>( left, right );
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual);
         }
 
         [Fact]

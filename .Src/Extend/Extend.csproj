@@ -30,7 +30,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <NoWarn></NoWarn>
+    <NoWarn>
+    </NoWarn>
     <DocumentationFile>bin\Debug\netstandard1.3\Extend.xml</DocumentationFile>
   </PropertyGroup>
 </Project>

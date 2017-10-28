@@ -18,7 +18,7 @@ namespace Extend.Testing
             var c = new List<String>();
 
             var result = c.AddIfNotContains( RandomValueEx.GetRandomString() );
-            Assert.Equal( 1, c.Count );
+            Assert.Single( c);
             Assert.True( result );
 
             var valueToAdd = RandomValueEx.GetRandomString();
