@@ -181,8 +181,7 @@ namespace Extend
                 _value = value;
 
                 // Notify the value about it's node, if the value implements ITreeNodeAware
-                var treeNodeAware = _value as ITreeNodeAware<T>;
-                if ( treeNodeAware != null )
+                if ( _value is ITreeNodeAware<T> treeNodeAware )
                     treeNodeAware.Node = this;
 
                 // Notify the old value about the change of it's node (new node is null)
@@ -645,21 +644,20 @@ namespace Extend
             if ( !disposing )
                 return;
 
-            //Release from bottom up (start with children).
+            // Release from bottom up (start with children).
             if ( DisposeTraversalDirection == TreeTraversalDirection.BottomUp )
                 foreach ( var node in Children.Reverse() )
                     node.Dispose();
 
-            //Release the current node.
-            var dispose = Value as IDisposable;
-            if ( dispose != null )
-                ( Value as IDisposable ).Dispose();
+            // Release the current node.
+            if ( Value is IDisposable dispose )
+                dispose.Dispose();
 
-            //Check if children are released or not.
+            // Check if children are released or not.
             if ( DisposeTraversalDirection != TreeTraversalDirection.TopDown )
                 return;
 
-            //Release from top down (start with current node).
+            // Release from top down (start with current node).
             foreach ( var node in Children )
                 node.Dispose();
         }

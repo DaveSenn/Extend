@@ -38,9 +38,8 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomBoolean();
             // ReSharper disable once RedundantAssignment
-            var outValue = !expected;
             var actual = expected.ToString(  )
-                                 .TryParsBoolean( out outValue );
+                                 .TryParsBoolean( out var outValue );
 
             actual
                 .Should()

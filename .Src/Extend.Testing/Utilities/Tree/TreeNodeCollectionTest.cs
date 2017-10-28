@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Linq;
 using FluentAssertions;
 using Xunit;
 
