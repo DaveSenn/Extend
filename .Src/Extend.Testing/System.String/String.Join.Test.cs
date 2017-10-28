@@ -9,17 +9,16 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void JoinTest()
         {
             var actual = ",".Join( new[]
-                                   {
-                                       "1",
-                                       "2"
-                                   } );
+            {
+                "1",
+                "2"
+            } );
             Assert.Equal( "1,2", actual );
         }
 
@@ -27,10 +26,10 @@ namespace Extend.Testing
         public void JoinTest1()
         {
             var actual = ",".Join( new Object[]
-                                   {
-                                       "1",
-                                       "2"
-                                   } );
+            {
+                "1",
+                "2"
+            } );
             Assert.Equal( "1,2", actual );
         }
 

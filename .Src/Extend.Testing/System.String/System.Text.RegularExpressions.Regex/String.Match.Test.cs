@@ -60,26 +60,6 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void MatchTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Match( null, "" );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Fact]
-        public void MatchTestNullCheck1()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Match( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-        
-        [Fact]
         public void MatchTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -109,6 +89,26 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".Match( null, RegexOptions.Compiled, 100.ToSeconds() );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void MatchTestNullCheck()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.Match( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void MatchTestNullCheck1()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "".Match( null );
 
             test.ShouldThrow<ArgumentNullException>();
         }

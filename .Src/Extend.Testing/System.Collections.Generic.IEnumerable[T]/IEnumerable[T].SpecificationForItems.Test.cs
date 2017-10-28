@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -45,7 +44,7 @@ namespace Extend.Testing
 
             var result = actual.IsSatisfiedByWithMessages( "1234" )
                                .ToList();
-            Assert.Equal( 0, result.Count );
+            Assert.Empty( result );
         }
 
         [Fact]
@@ -57,7 +56,7 @@ namespace Extend.Testing
 
             var result = actual.IsSatisfiedByWithMessages( "123" )
                                .ToList();
-            Assert.Equal( 1, result.Count );
+            Assert.Single( result );
             Assert.Equal( 1, result.Count( x => x == "msg" ) );
         }
 

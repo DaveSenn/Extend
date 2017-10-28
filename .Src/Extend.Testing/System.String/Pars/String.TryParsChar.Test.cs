@@ -8,13 +8,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsCharInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsChar(out Char result);
+            var actual = "InvalidValue".TryParsChar( out var result );
 
             result
                 .Should()
@@ -30,7 +29,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsChar(out Char result);
+            var actual = value.TryParsChar( out var result );
 
             result
                 .Should()
@@ -46,7 +45,7 @@ namespace Extend.Testing
         {
             const Char expected = 'b';
             var actual = expected.ToString()
-                     .TryParsChar(out Char result);
+                                 .TryParsChar( out var result );
 
             result
                 .Should()

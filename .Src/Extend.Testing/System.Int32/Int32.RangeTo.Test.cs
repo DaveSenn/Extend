@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class Int32ExTest
     {
         [Fact]
@@ -24,8 +23,8 @@ namespace Extend.Testing
                 expected.Add( i );
 
             var actual = start.RangeTo( end );
-            Assert.Equal( actual.First(), 0 );
-            Assert.Equal( actual.Last(), 200 );
+            Assert.Equal( 0, actual.First() );
+            Assert.Equal( 200, actual.Last() );
             Assert.Equal( expected.Count, actual.Count );
 
             for ( var i = 0; i < expected.Count; i++ )

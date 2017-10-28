@@ -20,7 +20,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Int32 SaveToInt32( [CanBeNull] this String value, Int32 defaultValue = default(Int32) )
-            => value.TryParsInt32( out Int32 outValue ) ? outValue : defaultValue;
+            => value.TryParsInt32( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -49,7 +49,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsInt32( numberStyle, formatProvider, out Int32 outValue ) ? outValue : defaultValue;
+            return value.TryParsInt32( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

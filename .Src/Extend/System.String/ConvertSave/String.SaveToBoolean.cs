@@ -19,6 +19,6 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Boolean SaveToBoolean( [CanBeNull] this String value, Boolean defaultValue = default(Boolean) )
-            => value.TryParsBoolean( out Boolean outValue ) ? outValue : defaultValue;
+            => value.TryParsBoolean( out var outValue ) ? outValue : defaultValue;
     }
 }

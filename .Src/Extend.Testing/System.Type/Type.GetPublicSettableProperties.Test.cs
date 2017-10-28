@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class TypeExTest
     {
         [Fact]
@@ -42,17 +41,24 @@ namespace Extend.Testing
                   .Be( 0 );
         }
 
+        #region Nested Types
+
         private class TestModel
         {
             // ReSharper disable UnusedMember.Local
             public String MyString { get; set; }
+
             public Int32 MyInt32 { get; set; }
+
             // ReSharper disable once UnusedMember.Local
             // ReSharper disable once UnassignedGetOnlyAutoProperty
             public String ReadonlyString { get; }
+
             private String PrivateString { get; set; }
+
             // ReSharper disable once UnassignedGetOnlyAutoProperty
             public Int32 MyReadonlyInt32 { get; }
+
             // ReSharper disable once UnassignedGetOnlyAutoProperty
             public String MyReadonlyString { get; }
             // ReSharper restore UnusedMember.Local
@@ -61,5 +67,7 @@ namespace Extend.Testing
         private class TestModelNoProperties
         {
         }
+
+        #endregion
     }
 }

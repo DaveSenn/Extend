@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -10,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class RandomExTest
     {
         [Fact]
@@ -21,7 +19,7 @@ namespace Extend.Testing
                                     .ToArray();
 
             var actual = random.RandomOne( list );
-            Assert.True( list.Contains( actual ) );
+            Assert.Contains( actual, list );
         }
 
         [Fact]
@@ -31,7 +29,7 @@ namespace Extend.Testing
             var list = RandomValueEx.GetRandomStrings();
 
             var actual = random.RandomOne<String>( list );
-            Assert.True( list.Contains( actual ) );
+            Assert.Contains( actual, list );
         }
 
         [Fact]

@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class CollectionTExTest
     {
         [Fact]

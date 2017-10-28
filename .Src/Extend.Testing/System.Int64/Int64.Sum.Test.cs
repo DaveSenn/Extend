@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class Int64ExTest
     {
         [Fact]
@@ -25,10 +24,10 @@ namespace Extend.Testing
             Assert.Equal( 70, actual );
 
             actual = ( null as Int64? ).Sum( new Int64?[]
-                                             {
-                                                 null,
-                                                 null
-                                             } );
+            {
+                null,
+                null
+            } );
             Assert.Equal( 0, actual );
         }
 

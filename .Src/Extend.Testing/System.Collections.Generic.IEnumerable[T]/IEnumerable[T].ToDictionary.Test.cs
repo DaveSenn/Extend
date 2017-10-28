@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -35,9 +34,15 @@ namespace Extend.Testing
 
             Assert.Equal( 3, actual.Count );
 
-            Assert.Equal( 3, actual[1].Count );
-            Assert.Equal( 3, actual[2].Count );
-            Assert.Equal( 3, actual[3].Count );
+            Assert.Equal( 3,
+                          actual[1]
+                              .Count );
+            Assert.Equal( 3,
+                          actual[2]
+                              .Count );
+            Assert.Equal( 3,
+                          actual[3]
+                              .Count );
         }
 
         [Fact]

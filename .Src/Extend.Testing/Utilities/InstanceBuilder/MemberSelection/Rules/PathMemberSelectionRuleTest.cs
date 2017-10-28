@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class PathMemberSelectionRuleTest
     {
         [Fact]
@@ -39,9 +38,9 @@ namespace Extend.Testing
             var target = new PathMemberSelectionRule( "A.B.C.MyString", MemberSelectionMode.Include );
             const MemberSelectionResult expected = MemberSelectionResult.IncludeMember;
             var actual = target.GetSelectionResult( new MemberInformation
-                                                    {
-                                                        MemberPath = "A.B.C.MyString"
-                                                    } );
+            {
+                MemberPath = "A.B.C.MyString"
+            } );
 
             actual.Should()
                   .Be( expected );
@@ -53,9 +52,9 @@ namespace Extend.Testing
             var target = new PathMemberSelectionRule( "A.B.C.MyString", MemberSelectionMode.Exclude );
             const MemberSelectionResult expected = MemberSelectionResult.ExcludeMember;
             var actual = target.GetSelectionResult( new MemberInformation
-                                                    {
-                                                        MemberPath = "A.B.C.MyString"
-                                                    } );
+            {
+                MemberPath = "A.B.C.MyString"
+            } );
 
             actual.Should()
                   .Be( expected );
@@ -67,9 +66,9 @@ namespace Extend.Testing
             var target = new PathMemberSelectionRule( "A.B.C", MemberSelectionMode.Include );
             const MemberSelectionResult expected = MemberSelectionResult.Neutral;
             var actual = target.GetSelectionResult( new MemberInformation
-                                                    {
-                                                        MemberPath = "A.B.C.MyString"
-                                                    } );
+            {
+                MemberPath = "A.B.C.MyString"
+            } );
 
             actual.Should()
                   .Be( expected );
@@ -81,9 +80,9 @@ namespace Extend.Testing
             var target = new PathMemberSelectionRule( "A.B.C", MemberSelectionMode.Exclude );
             const MemberSelectionResult expected = MemberSelectionResult.Neutral;
             var actual = target.GetSelectionResult( new MemberInformation
-                                                    {
-                                                        MemberPath = "A.B.C.MyString"
-                                                    } );
+            {
+                MemberPath = "A.B.C.MyString"
+            } );
 
             actual.Should()
                   .Be( expected );

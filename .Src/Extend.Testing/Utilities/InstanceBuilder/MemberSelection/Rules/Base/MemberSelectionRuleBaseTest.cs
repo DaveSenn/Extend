@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class MemberSelectionRuleBaseTest
     {
         [Fact]
@@ -35,6 +34,8 @@ namespace Extend.Testing
                   .Be( "Name" );
         }
 
+        #region Nested Types
+
         private class MemberSelectionRuleBaseAccessor : MemberSelectionRuleBase
         {
             #region Ctor
@@ -58,10 +59,12 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="member">The member to get the selection result for.</param>
             /// <returns>Returns the selection result for the given member.</returns>
-            public override MemberSelectionResult GetSelectionResult( IMemberInformation member ) 
+            public override MemberSelectionResult GetSelectionResult( IMemberInformation member )
                 => throw new NotImplementedException();
 
             #endregion
         }
+
+        #endregion
     }
 }

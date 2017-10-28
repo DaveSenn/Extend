@@ -9,13 +9,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsDoubleInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsDouble( out Double result );
+            var actual = "InvalidValue".TryParsDouble( out var result );
 
             result
                 .Should()
@@ -31,7 +30,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDouble(out Double result);
+            var actual = value.TryParsDouble( out var result );
 
             result
                 .Should()
@@ -49,9 +48,9 @@ namespace Extend.Testing
             const Double expected = 100.123d;
 
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsDouble(NumberStyles.Any, culture, out Double result);
+                                        .TryParsDouble( NumberStyles.Any, culture, out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -63,9 +62,9 @@ namespace Extend.Testing
             const Double expected = 100.123d;
 
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => expected.ToString(CultureInfo.InvariantCulture)
+            Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsDouble(NumberStyles.AllowHexSpecifier, culture, out Double result);
+                                        .TryParsDouble( NumberStyles.AllowHexSpecifier, culture, out var result );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -73,7 +72,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsDoubleOverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsDouble(NumberStyles.Any, CultureInfo.InvariantCulture, out Double result);
+            var actual = "InvalidValue".TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out var result );
 
             result
                 .Should()
@@ -89,7 +88,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDouble(NumberStyles.Any, CultureInfo.InvariantCulture, out Double result);
+            var actual = value.TryParsDouble( NumberStyles.Any, CultureInfo.InvariantCulture, out var result );
 
             result
                 .Should()
@@ -105,8 +104,8 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             const Double expected = 100.123d;
-            var actual = expected.ToString(culture)
-                     .TryParsDouble(NumberStyles.Any, culture, out Double result);
+            var actual = expected.ToString( culture )
+                                 .TryParsDouble( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -121,8 +120,8 @@ namespace Extend.Testing
         public void TryParsDoubleTest()
         {
             const Double expected = 100.123d;
-            var actual = expected.ToString(CultureInfo.CurrentCulture)
-                     .TryParsDouble(out Double result);
+            var actual = expected.ToString( CultureInfo.CurrentCulture )
+                                 .TryParsDouble( out var result );
 
             result
                 .Should()

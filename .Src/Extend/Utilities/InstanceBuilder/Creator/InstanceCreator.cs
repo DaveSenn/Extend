@@ -338,8 +338,7 @@ namespace Extend
             var instnace = Activator.CreateInstance( concreteType );
 
             // Update the type of the member in the member information
-            var currentMember = memberInformation as MemberInformation;
-            if ( currentMember != null )
+            if ( memberInformation is MemberInformation currentMember )
                 currentMember.MemberType = concreteType;
 
             return instnace;
@@ -427,9 +426,8 @@ namespace Extend
             if ( nullableType == null )
                 return null;
 
-            //Update type
-            var info = memberInformation as MemberInformation;
-            if ( info != null )
+            // Update type
+            if ( memberInformation is MemberInformation info )
                 info.MemberType = nullableType;
 
             return GetExactlymatchingFactory( options, memberInformation );

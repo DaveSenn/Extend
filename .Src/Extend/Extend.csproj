@@ -1,12 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp1.1;net452;net461;netstandard1.3</TargetFrameworks>
+    <TargetFramework>netstandard1.3</TargetFramework>
     <AssemblyName>Extend</AssemblyName>
     <RootNamespace>Extend</RootNamespace>
     <PackageId>Extend</PackageId>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
-    <DelaySign>False</DelaySign>
+    <DelaySign>false</DelaySign>
     <Version>1.2.0.0</Version>
     <Authors>Dave Senn</Authors>
     <Company>Dave Senn</Company>
@@ -28,5 +28,10 @@
     <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
     <TreatSpecificWarningsAsErrors>1591 1570 1571 1572 1573 1574</TreatSpecificWarningsAsErrors>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>
+    </NoWarn>
+    <DocumentationFile>bin\Debug\netstandard1.3\Extend.xml</DocumentationFile>
   </PropertyGroup>
 </Project>

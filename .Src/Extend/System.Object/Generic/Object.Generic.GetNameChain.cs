@@ -77,7 +77,7 @@ namespace Extend
         {
             expression.ThrowIfNull( nameof(expression) );
 
-            if ( !expression.TryGetMemberExpression( out MemberExpression memberExpression ) )
+            if ( !expression.TryGetMemberExpression( out var memberExpression ) )
                 throw new ArgumentException( "The given expression is not valid." );
 
             var memberNames = new Stack<String>();

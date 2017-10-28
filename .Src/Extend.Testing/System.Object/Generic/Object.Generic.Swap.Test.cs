@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ObjectExTest
     {
         [Fact]
@@ -18,8 +17,8 @@ namespace Extend.Testing
             var value1 = new List<String> { RandomValueEx.GetRandomString() };
 
             this.Swap( ref value0, ref value1 );
-            Assert.Equal( 1, value0.Count );
-            Assert.Equal( 0, value1.Count );
+            Assert.Single( value0 );
+            Assert.Empty( value1 );
         }
 
         [Fact]

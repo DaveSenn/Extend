@@ -202,15 +202,12 @@ namespace Extend
 
             // Check if we are working with an array or a list
             IList listProperty;
-            var arrayProperty = collectionProperty as Array;
-            if ( arrayProperty != null && intIndex )
+            if ( collectionProperty is Array arrayProperty && intIndex )
                 propertyValue = arrayProperty.GetValue( parsedIndex );
             else if ( ( listProperty = collectionProperty as IList ) != null && intIndex )
                 propertyValue = listProperty[(Int32) indexValue];
             else
             {
-                // TODO: In which case do we enter this block?
-
                 // Get the Item property
                 var propertyInfo = collectionProperty.GetType()
                                                      .GetRuntimeProperty( "Item" );
@@ -243,7 +240,7 @@ namespace Extend
                     .GetPublicProperties()
                     .ToList();
 
-            if ( PropertyCache.TryGetValue( containerType, out List<PropertyInfo> properties ) )
+            if ( PropertyCache.TryGetValue( containerType, out var properties ) )
                 return properties;
 
             properties = containerType.GetPublicProperties()

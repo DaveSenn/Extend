@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -86,6 +85,8 @@ namespace Extend.Testing
                   .Equal( 4, 8, 15 );
         }
 
+        #region Nested Types
+
         private class TestComparer : IEqualityComparer<Int32>
         {
             #region Implementation of IEqualityComparer<in int>
@@ -113,5 +114,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

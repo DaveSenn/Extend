@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class ExecutionResultTest
     {
         [Fact]

@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class KeyEqualityComparerTest
     {
         [Fact]
@@ -40,6 +39,8 @@ namespace Extend.Testing
             equals.Should()
                   .BeTrue();
         }
+
+        #region Nested Types
 
         private class StringLengthComparer : IEqualityComparer<String>
         {
@@ -72,5 +73,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

@@ -8,13 +8,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsBooleanInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsBoolean(out Boolean _);
+            var actual = "InvalidValue".TryParsBoolean( out Boolean _ );
 
             actual
                 .Should()
@@ -38,9 +37,8 @@ namespace Extend.Testing
         {
             var expected = RandomValueEx.GetRandomBoolean();
             // ReSharper disable once RedundantAssignment
-            var outValue = !expected;
-            var actual = expected.ToString(  )
-                                 .TryParsBoolean( out outValue );
+            var actual = expected.ToString()
+                                 .TryParsBoolean( out var outValue );
 
             actual
                 .Should()

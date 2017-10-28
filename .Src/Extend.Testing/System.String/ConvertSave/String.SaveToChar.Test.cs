@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -49,7 +48,7 @@ namespace Extend.Testing
         public void SaveToCharTest()
         {
             const Char expected = 'c';
-            var actual = expected.ToString(  )
+            var actual = expected.ToString()
                                  .SaveToChar();
 
             actual
@@ -61,7 +60,7 @@ namespace Extend.Testing
         public void SaveToCharTest1()
         {
             const Char expected = 'c';
-            var actual = expected.ToString(  )
+            var actual = expected.ToString()
                                  .SaveToChar( 'e' );
 
             actual

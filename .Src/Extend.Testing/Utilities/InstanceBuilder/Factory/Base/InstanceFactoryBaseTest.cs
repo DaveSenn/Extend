@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class InstanceFactoryBaseTest
     {
         [Fact]
@@ -78,6 +77,8 @@ namespace Extend.Testing
                   .Be( expected );
         }
 
+        #region Nested Types
+
         private class InstanceFactoryBaseAccessor : InstanceFactoryBase
         {
             #region Ctor
@@ -101,10 +102,12 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="memberInformation">Information about the member to create a value for.</param>
             /// <returns>Returns the created value.</returns>
-            public override Object CreateValue( IMemberInformation memberInformation ) 
+            public override Object CreateValue( IMemberInformation memberInformation )
                 => throw new NotImplementedException();
 
             #endregion
         }
+
+        #endregion
     }
 }

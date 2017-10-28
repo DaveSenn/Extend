@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ActionExTest
     {
         [Fact]
@@ -372,13 +371,13 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 false,
                 true );
 
@@ -390,13 +389,13 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
                 parameter4,
                 ( p1, p2, p3, p4 ) =>
-                        trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    trueActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 true,
                 true );
 
@@ -408,7 +407,7 @@ namespace Extend.Testing
             trueActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -730,7 +729,7 @@ namespace Extend.Testing
             var falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -744,7 +743,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -758,7 +757,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,
@@ -772,7 +771,7 @@ namespace Extend.Testing
             falseActionExecuted = false;
             ActionEx.ExecuteIfAnyFalse(
                 ( p1, p2, p3, p4 ) =>
-                        falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
+                    falseActionExecuted = p1 == parameter1 && p2 == parameter2 && p3 == parameter3 && p4 == parameter4,
                 parameter1,
                 parameter2,
                 parameter3,

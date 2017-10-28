@@ -34,7 +34,7 @@ namespace Extend
         {
             expression.ThrowIfNull( nameof(expression) );
 
-            expression.TryGetMemberExpression( out MemberExpression memberExpression );
+            expression.TryGetMemberExpression( out var memberExpression );
             return memberExpression.Member;
         }
     }

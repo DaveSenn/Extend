@@ -9,13 +9,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsByteInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsByte(out Byte result);
+            var actual = "InvalidValue".TryParsByte( out var result );
 
             result
                 .Should()
@@ -31,7 +30,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsByte( out Byte result );
+            var actual = value.TryParsByte( out var result );
 
             result
                 .Should()
@@ -60,7 +59,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString()
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsByte(NumberStyles.AllowLeadingWhite, null, out Byte outValue);
+                                        .TryParsByte( NumberStyles.AllowLeadingWhite, null, out var outValue );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -69,7 +68,7 @@ namespace Extend.Testing
         public void TryParsByteOverloadInvalidValueTest()
         {
             var culture = new CultureInfo( "de-CH" );
-            var actual = "InvalidValue".TryParsByte(NumberStyles.Any, culture, out Byte result);
+            var actual = "InvalidValue".TryParsByte( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -86,7 +85,7 @@ namespace Extend.Testing
             var culture = new CultureInfo( "de-CH" );
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsByte( NumberStyles.Any, culture, out Byte result );
+            var actual = value.TryParsByte( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -102,8 +101,8 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             const Byte expected = (Byte) 1;
-            var actual = expected.ToString(culture)
-                     .TryParsByte(NumberStyles.Any, culture, out Byte result);
+            var actual = expected.ToString( culture )
+                                 .TryParsByte( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -118,8 +117,8 @@ namespace Extend.Testing
         public void TryParsByteTest()
         {
             const Byte expected = (Byte) 1;
-            var actual = expected.ToString(CultureInfo.InvariantCulture)
-                     .TryParsByte(out Byte result);
+            var actual = expected.ToString( CultureInfo.InvariantCulture )
+                                 .TryParsByte( out var result );
 
             result
                 .Should()

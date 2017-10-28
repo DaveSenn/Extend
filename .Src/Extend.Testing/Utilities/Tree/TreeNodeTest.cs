@@ -11,7 +11,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class TreeNodeTest
     {
         [Fact]
@@ -24,11 +23,11 @@ namespace Extend.Testing
 
             Assert.Equal( 2, target.Children.Count );
             Assert.Equal( "1",
-                             target.Children.ElementAt( 0 )
-                                   .Value );
+                          target.Children.ElementAt( 0 )
+                                .Value );
             Assert.Equal( "2",
-                             target.Children.ElementAt( 1 )
-                                   .Value );
+                          target.Children.ElementAt( 1 )
+                                .Value );
         }
 
         [Fact]
@@ -41,11 +40,11 @@ namespace Extend.Testing
 
             Assert.Equal( 2, target.Children.Count );
             Assert.Equal( "1",
-                             target.Children.ElementAt( 0 )
-                                   .Value );
+                          target.Children.ElementAt( 0 )
+                                .Value );
             Assert.Equal( "2",
-                             target.Children.ElementAt( 1 )
-                                   .Value );
+                          target.Children.ElementAt( 1 )
+                                .Value );
         }
 
         [Fact]
@@ -53,11 +52,11 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Ancestors.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             var node1 = new TreeNode<String>( "1", target );
             actual = node1.Ancestors.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual );
             Assert.Same( target, actual[0] );
 
             var node2 = new TreeNode<String>( "1", node1 );
@@ -255,12 +254,12 @@ namespace Extend.Testing
             Assert.Equal( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.Same( target, x.Parent ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.Equal( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.Equal( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.Equal( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -291,12 +290,12 @@ namespace Extend.Testing
             Assert.Equal( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.Same( target, x.Parent ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.Equal( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection ) );
 
             Assert.Equal( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.Equal( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -359,12 +358,12 @@ namespace Extend.Testing
             Assert.Equal( 3, target.Children.Count );
             target.Children.ForEach( x => Assert.Same( target, x.Parent ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection ) );
             target.Children.ForEach( x => Assert.Equal( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection ) );
             target.Children.ForEach(
-                      x => Assert.Equal( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
+                x => Assert.Equal( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection ) );
 
             Assert.Equal( TreeTraversalDirection.BottomUp, target.DisposeTraversalDirection );
             Assert.Equal( TreeTraversalDirection.BottomUp, target.SearchTraversalDirection );
@@ -387,8 +386,8 @@ namespace Extend.Testing
             var target = new TreeNode<String>( "Target", children );
             Assert.Equal( 1, target.Children.Count );
             Assert.Same( target,
-                            target.Children.First()
-                                  .Parent);
+                         target.Children.First()
+                               .Parent );
             Assert.Equal( 0, exParent.Children.Count );
         }
 
@@ -441,16 +440,16 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             var node1 = new TreeNode<String>( "1", target );
             //Descendants of root
             actual = target.Descendants.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual );
             Assert.Same( actual[0], node1 );
             //Descendants of node1
             actual = node1.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             var nodeA = new TreeNode<String>( "A", node1 );
             //Descendants of root
@@ -460,11 +459,11 @@ namespace Extend.Testing
             Assert.Same( actual[1], nodeA );
             //Descendants of node1
             actual = node1.Descendants.ToList();
-            Assert.Equal( 1, actual.Count );
+            Assert.Single( actual );
             Assert.Same( actual[0], nodeA );
             //Descendants of nodeA
             actual = nodeA.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             var nodeB = new TreeNode<String>( "B", node1 );
             //Descendants of root
@@ -480,7 +479,7 @@ namespace Extend.Testing
             Assert.Same( actual[1], nodeB );
             //Descendants of nodeB
             actual = nodeB.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             var node2 = new TreeNode<String>( "2", target );
             //Descendants of root
@@ -492,7 +491,7 @@ namespace Extend.Testing
             Assert.Same( actual[3], node2 );
             //Descendants of node2
             actual = node2.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -500,11 +499,11 @@ namespace Extend.Testing
         {
             var target = new TreeNode<String>( "root" );
             var actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
 
             target.Children = null;
             actual = target.Descendants.ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -631,8 +630,12 @@ namespace Extend.Testing
             var actual = target.FindNode( "1" )
                                .ToList();
             Assert.Equal( 2, actual.Count );
-            Assert.Equal( "root", actual[0].Parent.Value );
-            Assert.Equal( "2", actual[1].Parent.Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Parent.Value );
+            Assert.Equal( "2",
+                          actual[1]
+                              .Parent.Value );
         }
 
         /// <summary>
@@ -654,8 +657,12 @@ namespace Extend.Testing
             var actual = target.FindNode( "1" )
                                .ToList();
             Assert.Equal( 2, actual.Count );
-            Assert.Equal( "2", actual[0].Parent.Value );
-            Assert.Equal( "root", actual[1].Parent.Value );
+            Assert.Equal( "2",
+                          actual[0]
+                              .Parent.Value );
+            Assert.Equal( "root",
+                          actual[1]
+                              .Parent.Value );
         }
 
         /// <summary>
@@ -690,10 +697,18 @@ namespace Extend.Testing
             var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.Equal( 4, actual.Count );
-            Assert.Equal( "1", actual[0].Value );
-            Assert.Equal( "111", actual[1].Value );
-            Assert.Equal( "11", actual[2].Value );
-            Assert.Equal( "1111", actual[3].Value );
+            Assert.Equal( "1",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "111",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "11",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "1111",
+                          actual[3]
+                              .Value );
         }
 
         /// <summary>
@@ -728,13 +743,27 @@ namespace Extend.Testing
             var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.Equal( 7, actual.Count );
-            Assert.Equal( "root", actual[0].Value );
-            Assert.Equal( "1", actual[1].Value );
-            Assert.Equal( "b", actual[2].Value );
-            Assert.Equal( "111", actual[3].Value );
-            Assert.Equal( "11", actual[4].Value );
-            Assert.Equal( "b1", actual[5].Value );
-            Assert.Equal( "1111", actual[6].Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "b",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "111",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "11",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "b1",
+                          actual[5]
+                              .Value );
+            Assert.Equal( "1111",
+                          actual[6]
+                              .Value );
         }
 
         /// <summary>
@@ -769,10 +798,18 @@ namespace Extend.Testing
             var actual = target.FindNode( x => x.Value.StartsWith( "1", StringComparison.Ordinal ) )
                                .ToList();
             Assert.Equal( 4, actual.Count );
-            Assert.Equal( "1111", actual[0].Value );
-            Assert.Equal( "11", actual[1].Value );
-            Assert.Equal( "111", actual[2].Value );
-            Assert.Equal( "1", actual[3].Value );
+            Assert.Equal( "1111",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "11",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "111",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[3]
+                              .Value );
         }
 
         /// <summary>
@@ -807,13 +844,27 @@ namespace Extend.Testing
             var actual = target.FindNode( x => x.Value == "root" || x.Value.StartsWith( "1", StringComparison.Ordinal ) || x.Value.StartsWith( "b", StringComparison.Ordinal ) )
                                .ToList();
             Assert.Equal( 7, actual.Count );
-            Assert.Equal( "1111", actual[0].Value );
-            Assert.Equal( "b1", actual[1].Value );
-            Assert.Equal( "11", actual[2].Value );
-            Assert.Equal( "111", actual[3].Value );
-            Assert.Equal( "b", actual[4].Value );
-            Assert.Equal( "1", actual[5].Value );
-            Assert.Equal( "root", actual[6].Value );
+            Assert.Equal( "1111",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "b1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "11",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "111",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "b",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[5]
+                              .Value );
+            Assert.Equal( "root",
+                          actual[6]
+                              .Value );
         }
 
         /// <summary>
@@ -985,10 +1036,18 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 4, actual.Count );
-            Assert.Equal( "root", actual[0].Value );
-            Assert.Equal( "1", actual[1].Value );
-            Assert.Equal( "2", actual[2].Value );
-            Assert.Equal( "3", actual[3].Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[3]
+                              .Value );
         }
 
         [Fact]
@@ -1003,10 +1062,18 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 4, actual.Count );
-            Assert.Equal( "3", actual[0].Value );
-            Assert.Equal( "2", actual[1].Value );
-            Assert.Equal( "1", actual[2].Value );
-            Assert.Equal( "root", actual[3].Value );
+            Assert.Equal( "3",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "root",
+                          actual[3]
+                              .Value );
         }
 
         [Fact]
@@ -1029,12 +1096,24 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 6, actual.Count );
-            Assert.Equal( "root", actual[0].Value );
-            Assert.Equal( "1", actual[1].Value );
-            Assert.Equal( "2", actual[2].Value );
-            Assert.Equal( "3", actual[3].Value );
-            Assert.Equal( "4", actual[4].Value );
-            Assert.Equal( "5", actual[5].Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "4",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "5",
+                          actual[5]
+                              .Value );
         }
 
         [Fact]
@@ -1058,12 +1137,24 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 6, actual.Count );
-            Assert.Equal( "5", actual[0].Value );
-            Assert.Equal( "4", actual[1].Value );
-            Assert.Equal( "3", actual[2].Value );
-            Assert.Equal( "2", actual[3].Value );
-            Assert.Equal( "1", actual[4].Value );
-            Assert.Equal( "root", actual[5].Value );
+            Assert.Equal( "5",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "4",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "root",
+                          actual[5]
+                              .Value );
         }
 
         [Fact]
@@ -1089,13 +1180,27 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 7, actual.Count );
-            Assert.Equal( "root", actual[0].Value );
-            Assert.Equal( "1", actual[1].Value );
-            Assert.Equal( "2", actual[2].Value );
-            Assert.Equal( "3", actual[3].Value );
-            Assert.Equal( "4", actual[4].Value );
-            Assert.Equal( "5", actual[5].Value );
-            Assert.Equal( "6", actual[6].Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "4",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "5",
+                          actual[5]
+                              .Value );
+            Assert.Equal( "6",
+                          actual[6]
+                              .Value );
         }
 
         [Fact]
@@ -1122,13 +1227,27 @@ namespace Extend.Testing
                 actual.Add( node );
 
             Assert.Equal( 7, actual.Count );
-            Assert.Equal( "6", actual[0].Value );
-            Assert.Equal( "5", actual[1].Value );
-            Assert.Equal( "4", actual[2].Value );
-            Assert.Equal( "3", actual[3].Value );
-            Assert.Equal( "2", actual[4].Value );
-            Assert.Equal( "1", actual[5].Value );
-            Assert.Equal( "root", actual[6].Value );
+            Assert.Equal( "6",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "5",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "4",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[3]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[4]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[5]
+                              .Value );
+            Assert.Equal( "root",
+                          actual[6]
+                              .Value );
         }
 
         [Fact]
@@ -1164,10 +1283,18 @@ namespace Extend.Testing
                 actual.Add( enumerator.Current as ITreeNode<String> );
 
             Assert.Equal( 4, actual.Count );
-            Assert.Equal( "root", actual[0].Value );
-            Assert.Equal( "1", actual[1].Value );
-            Assert.Equal( "2", actual[2].Value );
-            Assert.Equal( "3", actual[3].Value );
+            Assert.Equal( "root",
+                          actual[0]
+                              .Value );
+            Assert.Equal( "1",
+                          actual[1]
+                              .Value );
+            Assert.Equal( "2",
+                          actual[2]
+                              .Value );
+            Assert.Equal( "3",
+                          actual[3]
+                              .Value );
         }
 
         [Fact]
@@ -1293,21 +1420,21 @@ namespace Extend.Testing
 
             var target = new TreeNode<String> { "Item1" };
             Assert.Same( target,
-                            target.Children.First()
-                                  .Parent );
+                         target.Children.First()
+                               .Parent );
             Assert.Equal( 1,
-                             target.Children.First()
-                                   .Depth );
+                          target.Children.First()
+                                .Depth );
 
             target.Parent = parent;
             Assert.Same( parent, target.Parent );
             Assert.True( parent.Children.Contains( target ) );
             Assert.Same( target,
-                            target.Children.First()
-                                  .Parent );
+                         target.Children.First()
+                               .Parent );
             Assert.Equal( 2,
-                             target.Children.First()
-                                   .Depth );
+                          target.Children.First()
+                                .Depth );
         }
 
         /// <summary>
@@ -1399,13 +1526,13 @@ namespace Extend.Testing
             Assert.Equal( TreeTraversalDirection.BottomUp, target.TraversalDirection );
 
             target.Children.ForEach( x =>
-                                     {
-                                         Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.BottomUp, x.TraversalDirection );
-                                     } );
+            {
+                Assert.Equal( TreeTraversalDirection.BottomUp, x.AncestorsTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.BottomUp, x.DescendantsTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.BottomUp, x.DisposeTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.BottomUp, x.SearchTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.BottomUp, x.TraversalDirection );
+            } );
 
             target.SetAllDirections( TreeTraversalDirection.TopDown );
             Assert.Equal( TreeTraversalDirection.TopDown, target.AncestorsTraversalDirection );
@@ -1415,13 +1542,13 @@ namespace Extend.Testing
             Assert.Equal( TreeTraversalDirection.TopDown, target.TraversalDirection );
 
             target.Children.ForEach( x =>
-                                     {
-                                         Assert.Equal( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
-                                         Assert.Equal( TreeTraversalDirection.TopDown, x.TraversalDirection );
-                                     } );
+            {
+                Assert.Equal( TreeTraversalDirection.TopDown, x.AncestorsTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.TopDown, x.DescendantsTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.TopDown, x.DisposeTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.TopDown, x.SearchTraversalDirection );
+                Assert.Equal( TreeTraversalDirection.TopDown, x.TraversalDirection );
+            } );
         }
 
         [Fact]
@@ -1555,21 +1682,47 @@ namespace Extend.Testing
             Assert.Null( expected.Node );
         }
 
-        /// <summary>
-        ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
-        /// </summary>
-        private class TestTreeNodeItem : ITreeNodeAware<TestTreeNodeItem>
+        // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+        private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
-            #region Implementation of ITreeNodeAware<TestTreeNodeItem>
-
-            /// <summary>
-            ///     Gets or sets the node of the object.
-            /// </summary>
-            /// <value>The node of the object.</value>
-            public ITreeNode<TestTreeNodeItem> Node { get; set; }
-
-            #endregion
+            Assert.Equal( expected, node.AncestorsTraversalDirection );
+            node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
         }
+
+        // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+        private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.Equal( expected, node.DescendantsTraversalDirection );
+            node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
+        }
+
+        // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+        private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.Equal( expected, node.DisposeTraversalDirection );
+            node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
+        }
+
+        // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+        private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.Equal( expected, node.SearchTraversalDirection );
+            node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
+        }
+
+        // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
+        private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
+        {
+            Assert.Equal( expected, node.TraversalDirection );
+            node.Children.ForEach( x => AssertTraversalDirection( expected, x ) );
+        }
+
+        #region Nested Types
 
         private class AlternativeTreeNode<T> : ITreeNode<T>
         {
@@ -1710,7 +1863,7 @@ namespace Extend.Testing
             /// </remarks>
             /// <param name="predicate">The predicate.</param>
             /// <returns>Returns the nodes which matches the given predicate.</returns>
-            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate ) 
+            public IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
                 => throw new NotImplementedException();
 
             /// <summary>
@@ -1726,7 +1879,7 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="value">The value to add.</param>
             /// <returns>Returns the added node.</returns>
-            public ITreeNode<T> Add( T value ) 
+            public ITreeNode<T> Add( T value )
                 => throw new NotImplementedException();
 
             /// <summary>
@@ -1734,7 +1887,7 @@ namespace Extend.Testing
             /// </summary>
             /// <param name="node">The node to add.</param>
             /// <returns>Returns the added node.</returns>
-            public ITreeNode<T> Add( ITreeNode<T> node ) 
+            public ITreeNode<T> Add( ITreeNode<T> node )
                 => throw new NotImplementedException();
 
             /// <summary>
@@ -1767,41 +1920,6 @@ namespace Extend.Testing
             #endregion
         }
 
-        // ReSharper disable once UnusedParameter.Local
-        private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.Equal( expected, node.AncestorsTraversalDirection );
-            node.Children.ForEach( x => AssertAncestorsTraversalDirection( expected, x ) );
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.Equal( expected, node.SearchTraversalDirection );
-            node.Children.ForEach( x => AssertSearchTraversalDirection( expected, x ) );
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.Equal( expected, node.DisposeTraversalDirection );
-            node.Children.ForEach( x => AssertDisposeTraversalDirection( expected, x ) );
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.Equal( expected, node.DescendantsTraversalDirection );
-            node.Children.ForEach( x => AssertDescendantsTraversalDirection( expected, x ) );
-        }
-
-        // ReSharper disable once UnusedParameter.Local
-        private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
-        {
-            Assert.Equal( expected, node.TraversalDirection );
-            node.Children.ForEach( x => AssertTraversalDirection( expected, x ) );
-        }
-
         private class DisposeTestHelper : IDisposable
 
         {
@@ -1821,5 +1939,23 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        /// <summary>
+        ///     Class used to test <see cref="ITreeNodeAware{T}" /> handling of <see cref="TreeNode{T}" />.
+        /// </summary>
+        private class TestTreeNodeItem : ITreeNodeAware<TestTreeNodeItem>
+        {
+            #region Implementation of ITreeNodeAware<TestTreeNodeItem>
+
+            /// <summary>
+            ///     Gets or sets the node of the object.
+            /// </summary>
+            /// <value>The node of the object.</value>
+            public ITreeNode<TestTreeNodeItem> Node { get; set; }
+
+            #endregion
+        }
+
+        #endregion
     }
 }
