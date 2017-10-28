@@ -20,7 +20,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Int64 SaveToInt64( [CanBeNull] this String value, Int64 defaultValue = default(Int64) )
-            => value.TryParsInt64( out Int64 outValue ) ? outValue : defaultValue;
+            => value.TryParsInt64( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -49,7 +49,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsInt64( numberStyle, formatProvider, out Int64 outValue ) ? outValue : defaultValue;
+            return value.TryParsInt64( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static DateTime SaveToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) )
-            => value.TryParsDateTime( out DateTime outValue ) ? outValue : defaultValue;
+            => value.TryParsDateTime( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the specified string representation of a date and time to its <see cref="DateTime" /> equivalent using the
@@ -52,7 +52,7 @@ namespace Extend
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsDateTime( formatProvider, dateTimeStyle, out DateTime outValue ) ? outValue : defaultValue;
+            return value.TryParsDateTime( formatProvider, dateTimeStyle, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

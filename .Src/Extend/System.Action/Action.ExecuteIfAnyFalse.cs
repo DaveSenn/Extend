@@ -169,7 +169,7 @@ namespace Extend
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
 
-            if ( !values.Any( x => !x ) )
+            if ( values.All( x => x ) )
                 return;
 
             falseAction();
@@ -192,7 +192,7 @@ namespace Extend
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
 
-            if ( !values.Any( x => !x ) )
+            if ( values.All( x => x ) )
                 return;
 
             falseAction( parameter );
@@ -218,7 +218,7 @@ namespace Extend
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
 
-            if ( !values.Any( x => !x ) )
+            if ( values.All( x => x ) )
                 return;
 
             falseAction( parameter1, parameter2 );
@@ -247,7 +247,7 @@ namespace Extend
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
 
-            if ( !values.Any( x => !x ) )
+            if ( values.All( x => x ) )
                 return;
 
             falseAction( parameter1, parameter2, parameter3 );
@@ -279,7 +279,7 @@ namespace Extend
             falseAction.ThrowIfNull( nameof(falseAction) );
             values.ThrowIfNull( nameof(values) );
 
-            if ( !values.Any( x => !x ) )
+            if ( values.All( x => x ) )
                 return;
 
             falseAction( parameter1, parameter2, parameter3, parameter4 );

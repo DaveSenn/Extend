@@ -16,7 +16,7 @@ namespace Extend.Testing
         public void TryParsDecimalInvalidValueTest()
         {
 
-            var actual = "InvalidValue".TryParsDecimal(out Decimal result);
+            var actual = "InvalidValue".TryParsDecimal(out var result);
 
             result
                 .Should()
@@ -33,7 +33,7 @@ namespace Extend.Testing
             String value = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDecimal(out Decimal result);
+            var actual = value.TryParsDecimal(out var result);
 
             result
                 .Should()
@@ -53,7 +53,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString(CultureInfo.InvariantCulture)
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsDecimal(NumberStyles.Any, culture, out Decimal result);
+                                        .TryParsDecimal(NumberStyles.Any, culture, out var result);
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -66,7 +66,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString(CultureInfo.InvariantCulture)
                                         // ReSharper disable once UnusedVariable
-                                        .TryParsDecimal(NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out Decimal result);
+                                        .TryParsDecimal(NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var result);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -75,7 +75,7 @@ namespace Extend.Testing
         public void TryParsDecimalOverloadInvalidValueTest()
         {
 
-            var actual = "InvalidValue".TryParsDecimal(NumberStyles.Any, new CultureInfo("de-CH"), out Decimal result);
+            var actual = "InvalidValue".TryParsDecimal(NumberStyles.Any, new CultureInfo("de-CH"), out var result);
 
             result
                 .Should()
@@ -92,7 +92,7 @@ namespace Extend.Testing
             String value = null;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDecimal(NumberStyles.Any, new CultureInfo("de-CH"), out Decimal result);
+            var actual = value.TryParsDecimal(NumberStyles.Any, new CultureInfo("de-CH"), out var result);
 
             result
                 .Should()
@@ -110,7 +110,7 @@ namespace Extend.Testing
             var expected = new Decimal( 100.123123 );
 
             var actual = expected.ToString(culture)
-                                 .TryParsDecimal(NumberStyles.Any, culture, out Decimal result);
+                                 .TryParsDecimal(NumberStyles.Any, culture, out var result);
 
             result
                 .Should()
@@ -127,7 +127,7 @@ namespace Extend.Testing
             var expected = new Decimal( 100.123123 );
 
             var actual = expected.ToString(CultureInfo.InvariantCulture)
-                                 .TryParsDecimal(out Decimal result);
+                                 .TryParsDecimal(out var result);
 
             result
                 .Should()

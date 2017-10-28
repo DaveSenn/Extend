@@ -204,3 +204,4 @@ FakesAssemblies/
 Output
 /.Doc/docfx_project/_exported_templates
 .Output
+.vs

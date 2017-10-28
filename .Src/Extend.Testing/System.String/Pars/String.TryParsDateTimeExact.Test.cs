@@ -23,7 +23,7 @@ namespace Extend.Testing
                                                                  new CultureInfo( "en-US" ),
                                                                  DateTimeStyles.None,
                                                                  // ReSharper disable once UnusedVariable
-                                                                 out DateTime result );
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -39,7 +39,7 @@ namespace Extend.Testing
                                                                  culture,
                                                                  DateTimeStyles.None,
                                                                  // ReSharper disable once UnusedVariable
-                                                                 out DateTime result );
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -54,7 +54,7 @@ namespace Extend.Testing
                                                                  new CultureInfo("den-US"),
                                                                  DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal,
                                                                 // ReSharper disable once UnusedVariable
-                                                                 out DateTime result);
+                                                                 out var result);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -67,7 +67,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact("asdasd",
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -86,7 +86,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact("M/dd/yyyy hh:mm",
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -105,7 +105,7 @@ namespace Extend.Testing
             var actual = value.TryParsDateTimeExact("M/dd/yyyy hh:mm",
                                                      new CultureInfo("en-US"),
                                                      DateTimeStyles.None,
-                                                     out DateTime result);
+                                                     out var result);
 
             result
                 .Should()
@@ -127,7 +127,7 @@ namespace Extend.Testing
                                                                  new CultureInfo( "en-US" ),
                                                                  DateTimeStyles.None,
                                                                  // ReSharper disable once UnusedVariable
-                                                                 out DateTime result );
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -143,7 +143,7 @@ namespace Extend.Testing
                                                                  culture,
                                                                  DateTimeStyles.None,
                                                                  // ReSharper disable once UnusedVariable
-                                                                 out DateTime result );
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -158,7 +158,7 @@ namespace Extend.Testing
                                                                  new CultureInfo("den-US"),
                                                                  DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal,
                                                                 // ReSharper disable once UnusedVariable
-                                                                 out DateTime result);
+                                                                 out var result);
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -171,7 +171,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact(new[] { "asdasd", "123" },
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -190,7 +190,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact(new[] { "asdasd", "123" },
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -209,7 +209,7 @@ namespace Extend.Testing
             var actual = value.TryParsDateTimeExact(new[] { "asdasd", "123" },
                                                      new CultureInfo("en-US"),
                                                      DateTimeStyles.None,
-                                                     out DateTime result);
+                                                     out var result);
 
             result
                 .Should()
@@ -229,7 +229,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact(new[] { "asd", "M/dd/yyyy hh:mm" },
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -249,7 +249,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact(new[] { "hh aa", "M/dd/ hh:mm yyyy" },
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -269,7 +269,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact("M/dd/yyyy hh:mm",
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()
@@ -289,7 +289,7 @@ namespace Extend.Testing
             var actual = dateString.TryParsDateTimeExact("M/dd/ hh:mm yyyy",
                                               new CultureInfo("en-US"),
                                               DateTimeStyles.None,
-                                              out DateTime result);
+                                              out var result);
 
             result
                 .Should()

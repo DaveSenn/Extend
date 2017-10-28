@@ -243,7 +243,7 @@ namespace Extend
                     .GetPublicProperties()
                     .ToList();
 
-            if ( PropertyCache.TryGetValue( containerType, out List<PropertyInfo> properties ) )
+            if ( PropertyCache.TryGetValue( containerType, out var properties ) )
                 return properties;
 
             properties = containerType.GetPublicProperties()

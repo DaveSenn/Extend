@@ -14,7 +14,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsGuidInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsGuid(out Guid result);
+            var actual = "InvalidValue".TryParsGuid(out var result);
 
             result
                 .Should()
@@ -30,7 +30,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsGuid( out Guid result );
+            var actual = value.TryParsGuid( out var result );
 
             result
                 .Should()
@@ -46,7 +46,7 @@ namespace Extend.Testing
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                     .TryParsGuid(out Guid result);
+                     .TryParsGuid(out var result);
 
             result
                 .Should()

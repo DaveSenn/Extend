@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Extend.Internal;
 using FluentAssertions;
 using Xunit;
 
 #endregion
 
-namespace Extend.Internal.Testing
+namespace Extend.Testing.Internal
 {
     [Collection("InstanceCreator")]
 

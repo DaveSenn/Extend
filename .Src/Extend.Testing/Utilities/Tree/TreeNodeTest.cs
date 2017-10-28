@@ -1768,6 +1768,7 @@ namespace Extend.Testing
         }
 
         // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertAncestorsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.AncestorsTraversalDirection );
@@ -1775,6 +1776,7 @@ namespace Extend.Testing
         }
 
         // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertSearchTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.SearchTraversalDirection );
@@ -1782,6 +1784,7 @@ namespace Extend.Testing
         }
 
         // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertDisposeTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.DisposeTraversalDirection );
@@ -1789,6 +1792,7 @@ namespace Extend.Testing
         }
 
         // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertDescendantsTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.DescendantsTraversalDirection );
@@ -1796,6 +1800,7 @@ namespace Extend.Testing
         }
 
         // ReSharper disable once UnusedParameter.Local
+        // ReSharper disable once ParameterOnlyUsedForPreconditionCheck.Local
         private void AssertTraversalDirection<T>( TreeTraversalDirection expected, ITreeNode<T> node )
         {
             Assert.Equal( expected, node.TraversalDirection );

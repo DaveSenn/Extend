@@ -2,12 +2,13 @@
 
 using System;
 using System.Collections.Generic;
+using Extend.Internal;
 using FluentAssertions;
 using Xunit;
 
 #endregion
 
-namespace Extend.Internal.Testing
+namespace Extend.Testing.Internal
 {
     
     public class LookuptValueProviderTest
