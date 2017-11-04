@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -12,10 +12,10 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToDateTimeInvalidValueTest()
+        public void SafeToDateTimeInvalidValueTest()
         {
             var expected = DateTime.Now;
-            var actual = "InvalidValue".SaveToDateTime( expected );
+            var actual = "InvalidValue".SafeToDateTime( expected );
 
             actual
                 .Should()
@@ -23,10 +23,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeInvalidValueTest1()
+        public void SafeToDateTimeInvalidValueTest1()
         {
             var expected = default(DateTime);
-            var actual = "InvalidValue".SaveToDateTime();
+            var actual = "InvalidValue".SafeToDateTime();
 
             actual
                 .Should()
@@ -34,11 +34,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeNullTest()
+        public void SafeToDateTimeNullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToDateTime();
+            var actual = value.SafeToDateTime();
 
             actual
                 .Should()
@@ -46,32 +46,32 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadFormatProviderNullTest()
+        public void SafeToDateTimeOverloadFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                                        .SaveToDateTime( null, DateTimeStyles.AdjustToUniversal );
+                                        .SafeToDateTime( null, DateTimeStyles.AdjustToUniversal );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadInvalidDateTimeStyleTest()
+        public void SafeToDateTimeOverloadInvalidDateTimeStyleTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
                                         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-                                        .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
+                                        .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
 
             test.ShouldThrow<ArgumentException>();
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadInvalidValueTest()
+        public void SafeToDateTimeOverloadInvalidValueTest()
         {
             var expected = DateTime.Now;
-            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+            var actual = "InvalidValue".SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
 
             actual
                 .Should()
@@ -79,10 +79,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadInvalidValueTest1()
+        public void SafeToDateTimeOverloadInvalidValueTest1()
         {
             var expected = default(DateTime);
-            var actual = "InvalidValue".SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+            var actual = "InvalidValue".SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
             actual
                 .Should()
@@ -90,12 +90,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadNullTest()
+        public void SafeToDateTimeOverloadNullTest()
         {
             String value = null;
             var expected = DateTime.Now;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
+            var actual = value.SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, expected );
 
             actual
                 .Should()
@@ -103,11 +103,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadTest()
+        public void SafeToDateTimeOverloadTest()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
+                                 .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None );
 
             actual
                 .Should()
@@ -115,11 +115,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeOverloadTest1()
+        public void SafeToDateTimeOverloadTest1()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, DateTime.MinValue );
+                                 .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.None, DateTime.MinValue );
 
             actual
                 .Should()
@@ -127,12 +127,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeTest()
+        public void SafeToDateTimeTest()
         {
             var expected = DateTime.Now;
             expected = new DateTime( expected.Year, expected.Month, expected.Day, expected.Hour, expected.Second, 10 );
             var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .SaveToDateTime();
+                                 .SafeToDateTime();
 
             actual
                 .Should()
@@ -140,11 +140,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDateTimeWithDefaultTest()
+        public void SafeToDateTimeWithDefaultTest()
         {
             var expected = DateTime.Now;
             var actual = expected.ToString( CultureInfo.CurrentCulture )
-                                 .SaveToDateTime( RandomValueEx.GetRandomDateTime() );
+                                 .SafeToDateTime( RandomValueEx.GetRandomDateTime() );
 
             actual
                 .Should()

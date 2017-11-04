@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime SaveToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) )
+        public static DateTime SafeToDateTime( [CanBeNull] this String value, DateTime defaultValue = default(DateTime) )
             => value.TryParsDateTime( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static DateTime SaveToDateTime( [CanBeNull] this String value,
+        public static DateTime SafeToDateTime( [CanBeNull] this String value,
                                                [NotNull] IFormatProvider formatProvider,
                                                DateTimeStyles dateTimeStyle,
                                                DateTime defaultValue = default(DateTime) )

@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -12,10 +12,10 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToInt32InvalidValueDefaultTest()
+        public void SafeToInt32InvalidValueDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt32( expected );
+            var actual = "InvalidValue".SafeToInt32( expected );
 
             actual
                 .Should()
@@ -23,9 +23,9 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32InvalidValueTest()
+        public void SafeToInt32InvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToInt32();
+            var actual = "InvalidValue".SafeToInt32();
 
             actual
                 .Should()
@@ -33,12 +33,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32NullDefaultTest()
+        public void SafeToInt32NullDefaultTest()
         {
             String value = null;
             var expected = RandomValueEx.GetRandomInt32();
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToInt32( expected );
+            var actual = value.SafeToInt32( expected );
 
             actual
                 .Should()
@@ -46,11 +46,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32NullTest()
+        public void SafeToInt32NullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToInt32();
+            var actual = value.SafeToInt32();
 
             actual
                 .Should()
@@ -58,28 +58,28 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadFormatProviderNullTest()
+        public void SafeToInt32OverloadFormatProviderNullTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action test = () => "12".SaveToInt32( NumberStyles.AllowExponent, null );
+            Action test = () => "12".SafeToInt32( NumberStyles.AllowExponent, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]
-        public void SaveToInt32OverloadInvalidNumberStyleTest()
+        public void SafeToInt32OverloadInvalidNumberStyleTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "12".SaveToInt32( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.CurrentCulture );
+            Action test = () => "12".SafeToInt32( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.CurrentCulture );
 
             test.ShouldThrow<ArgumentException>();
         }
 
         [Fact]
-        public void SaveToInt32OverloadInvalidValueTest()
+        public void SafeToInt32OverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = "InvalidValue".SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -87,10 +87,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadInvalidValueWithDefaultTest()
+        public void SafeToInt32OverloadInvalidValueWithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt32();
-            var actual = "InvalidValue".SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+            var actual = "InvalidValue".SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
                 .Should()
@@ -98,11 +98,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadNullTest()
+        public void SafeToInt32OverloadNullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = value.SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -110,12 +110,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadNullWithDefaultTest()
+        public void SafeToInt32OverloadNullWithDefaultTest()
         {
             String value = null;
             var expected = RandomValueEx.GetRandomInt32();
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+            var actual = value.SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
                 .Should()
@@ -123,11 +123,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadTest()
+        public void SafeToInt32OverloadTest()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
+                                 .SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -135,11 +135,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32OverloadWitDefaultTest()
+        public void SafeToInt32OverloadWitDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt32() );
+                                 .SafeToInt32( NumberStyles.Any, CultureInfo.InvariantCulture, RandomValueEx.GetRandomInt32() );
 
             actual
                 .Should()
@@ -147,11 +147,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32Test()
+        public void SafeToInt32Test()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt32();
+                                 .SafeToInt32();
 
             actual
                 .Should()
@@ -159,11 +159,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToInt32WithDefaultTest()
+        public void SafeToInt32WithDefaultTest()
         {
             var expected = RandomValueEx.GetRandomInt32();
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToInt32( RandomValueEx.GetRandomInt32() );
+                                 .SafeToInt32( RandomValueEx.GetRandomInt32() );
 
             actual
                 .Should()

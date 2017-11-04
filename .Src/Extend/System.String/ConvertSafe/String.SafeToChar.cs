@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using JetBrains.Annotations;
@@ -17,7 +17,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Char SaveToChar( [CanBeNull] this String value, Char defaultValue = default(Char) )
+        public static Char SafeToChar( [CanBeNull] this String value, Char defaultValue = default(Char) )
             => value.TryParsChar( out var outValue ) ? outValue : defaultValue;
     }
 }

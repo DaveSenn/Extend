@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -11,7 +11,7 @@ namespace Extend
     public static partial class StringEx
     {
         /// <summary>
-        ///     Converts the string representation of a number to its 64-bit signed integer
+        ///     Converts the string representation of a number to its 32-bit signed integer
         ///     equivalent.
         /// </summary>
         /// <param name="value">A string containing a number to convert.</param>
@@ -19,12 +19,12 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int64 SaveToInt64( [CanBeNull] this String value, Int64 defaultValue = default(Int64) )
-            => value.TryParsInt64( out var outValue ) ? outValue : defaultValue;
+        public static Int32 SafeToInt32( [CanBeNull] this String value, Int32 defaultValue = default(Int32) )
+            => value.TryParsInt32( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
-        ///     format to its 64-bit signed integer equivalent.
+        ///     format to its 32-bit signed integer equivalent.
         /// </summary>
         /// <exception cref="ArgumentNullException">formatProvider can not be null.</exception>
         /// <exception cref="ArgumentException">
@@ -42,14 +42,14 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int64 SaveToInt64( [CanBeNull] this String value,
+        public static Int32 SafeToInt32( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
                                          [NotNull] IFormatProvider formatProvider,
-                                         Int64 defaultValue = default(Int64) )
+                                         Int32 defaultValue = default(Int32) )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            return value.TryParsInt64( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
+            return value.TryParsInt32( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

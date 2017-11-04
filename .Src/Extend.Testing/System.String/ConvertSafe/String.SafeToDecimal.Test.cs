@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -12,31 +12,31 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToDecimalFormatProviderNullTest()
+        public void SafeToDecimalFormatProviderNullTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
-                                                .SaveToDouble( NumberStyles.AllowExponent, null );
+                                                .SafeToDouble( NumberStyles.AllowExponent, null );
 
             test.ShouldThrow<ArgumentNullException>();
         }
 
         [Fact]
-        public void SaveToDecimalInvalidNumberStyleTest()
+        public void SafeToDecimalInvalidNumberStyleTest()
         {
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
-                                                .SaveToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture );
+                                                .SafeToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture );
 
             test.ShouldThrow<ArgumentException>();
         }
 
         [Fact]
-        public void SaveToDecimalInvalidValueTest()
+        public void SafeToDecimalInvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToDecimal();
+            var actual = "InvalidValue".SafeToDecimal();
 
             actual
                 .Should()
@@ -44,10 +44,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalInvalidValueWithDefaultTest()
+        public void SafeToDecimalInvalidValueWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
-            var actual = "InvalidValue".SaveToDecimal( expected );
+            var actual = "InvalidValue".SafeToDecimal( expected );
 
             actual
                 .Should()
@@ -55,12 +55,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalNullTest()
+        public void SafeToDecimalNullTest()
         {
             String value = null;
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToDecimal( expected );
+            var actual = value.SafeToDecimal( expected );
 
             actual
                 .Should()
@@ -68,9 +68,9 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalOverloadInvalidValueTest()
+        public void SafeToDecimalOverloadInvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = "InvalidValue".SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -78,10 +78,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalOverloadInvalidValueWithDefaultTest()
+        public void SafeToDecimalOverloadInvalidValueWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
-            var actual = "InvalidValue".SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
+            var actual = "InvalidValue".SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, expected );
 
             actual
                 .Should()
@@ -89,11 +89,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalOverloadNullTest()
+        public void SafeToDecimalOverloadNullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+            var actual = value.SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -101,11 +101,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalOverloadTest()
+        public void SafeToDecimalOverloadTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
+                                 .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture );
 
             actual
                 .Should()
@@ -113,11 +113,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalOverloadWithDefaultTest()
+        public void SafeToDecimalOverloadWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.1523 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue );
+                                 .SafeToDecimal( NumberStyles.Any, CultureInfo.InvariantCulture, Decimal.MinValue );
 
             actual
                 .Should()
@@ -125,11 +125,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalTest()
+        public void SafeToDecimalTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal();
+                                 .SafeToDecimal();
 
             actual
                 .Should()
@@ -137,11 +137,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToDecimalWithDefaultTest()
+        public void SafeToDecimalWithDefaultTest()
         {
             var expected = new Decimal( RandomValueEx.GetRandomInt32() + 0.123 );
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .SaveToDecimal( Decimal.MaxValue );
+                                 .SafeToDecimal( Decimal.MaxValue );
 
             actual
                 .Should()

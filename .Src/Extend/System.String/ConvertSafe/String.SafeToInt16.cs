@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int16 SaveToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) )
+        public static Int16 SafeToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) )
             => value.TryParsInt16( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int16 SaveToInt16( [CanBeNull] this String value,
+        public static Int16 SafeToInt16( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
                                          [NotNull] IFormatProvider formatProvider,
                                          Int16 defaultValue = default(Int16) )
