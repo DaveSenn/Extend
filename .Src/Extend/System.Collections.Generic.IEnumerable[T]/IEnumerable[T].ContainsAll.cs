@@ -29,8 +29,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] params T[] values )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            values.ThrowIfNull( nameof( values ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            values.ThrowIfNull( nameof(values) );
 
             return values.All( enumerable.Contains );
         }
@@ -49,8 +49,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean ContainsAll<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] [ItemCanBeNull] IEnumerable<T> values )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            values.ThrowIfNull( nameof( values ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            values.ThrowIfNull( nameof(values) );
 
             return values.All( enumerable.Contains );
         }

@@ -26,8 +26,7 @@ namespace Extend
         [PublicAPI]
         public static IEnumerable<PropertyInfo> GetPublicProperties( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
-
+            type.ThrowIfNull( nameof(type) );
 
             return type.GetRuntimeProperties()
                        .Where( x => x.GetMethod.IsPublic );

@@ -20,10 +20,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Double SaveToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
-        {
-            Double outValue;
-            return value.TryParsDouble( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsDouble( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -52,10 +49,9 @@ namespace Extend
                                            [NotNull] IFormatProvider formatProvider,
                                            Double defaultValue = default(Double) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            Double outValue;
-            return value.TryParsDouble( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsDouble( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

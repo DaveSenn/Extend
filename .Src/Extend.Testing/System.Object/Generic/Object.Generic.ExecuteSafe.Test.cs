@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ObjectExTest
     {
         [Fact]
@@ -36,11 +35,11 @@ namespace Extend.Testing
         {
             var expectedValue = RandomValueEx.GetRandomString();
             var actual = expectedValue.ExecuteSafe( x =>
-                                                    {
-                                                        if ( expectedValue.Length > 0 )
-                                                            throw new InvalidOperationException( expectedValue );
-                                                        return expectedValue;
-                                                    } );
+            {
+                if ( expectedValue.Length > 0 )
+                    throw new InvalidOperationException( expectedValue );
+                return expectedValue;
+            } );
 
             Assert.Null( actual.Result );
             Assert.NotNull( actual.Exception );

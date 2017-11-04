@@ -20,7 +20,7 @@ namespace Extend
         [PublicAPI]
         public static void ClearAll( [NotNull] this Array array )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, 0, array.Length );
         }

@@ -28,7 +28,7 @@ namespace Extend
         [NotNull]
         public static List<TKey> GetAllKeysAsList<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary )
         {
-            dictionary.ThrowIfNull( nameof( dictionary ) );
+            dictionary.ThrowIfNull( nameof(dictionary) );
 
             return dictionary.Select( x => x.Key )
                              .ToList();

@@ -33,8 +33,8 @@ namespace Extend
                                                  Boolean condition,
                                                  [NotNull] Func<T, Boolean> predicate )
         {
-            source.ThrowIfNull( nameof( source ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            source.ThrowIfNull( nameof(source) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return condition ? source.Where( predicate ) : source;
         }
@@ -57,8 +57,8 @@ namespace Extend
                                                  Boolean condition,
                                                  [NotNull] Func<T, Int32, Boolean> predicate )
         {
-            source.ThrowIfNull( nameof( source ) );
-            predicate.ThrowIfNull( nameof( predicate ) );
+            source.ThrowIfNull( nameof(source) );
+            predicate.ThrowIfNull( nameof(predicate) );
 
             return condition ? source.Where( predicate ) : source;
         }

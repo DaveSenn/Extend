@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static String SubstringLeftSafe( [NotNull] this String s, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.Substring( 0, Math.Min( length, s.Length ) );
         }
@@ -41,7 +41,7 @@ namespace Extend
         [PublicAPI]
         public static String SubstringLeftSafe( [NotNull] this String s, Int32 startIndex, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.Substring( Math.Min( startIndex, s.Length ),
                                 Math.Min( length, Math.Max( s.Length - startIndex, 0 ) ) );

@@ -9,15 +9,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsDecimalInvalidValueTest()
         {
-            Decimal result;
-
-            var actual = "InvalidValue".TryParsDecimal( out result );
+            var actual = "InvalidValue".TryParsDecimal( out var result );
 
             result
                 .Should()
@@ -32,10 +29,9 @@ namespace Extend.Testing
         public void TryParsDecimalNullTest()
         {
             String value = null;
-            Decimal result;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDecimal( out result );
+            var actual = value.TryParsDecimal( out var result );
 
             result
                 .Should()
@@ -51,11 +47,11 @@ namespace Extend.Testing
         {
             CultureInfo culture = null;
             var expected = new Decimal( 100.123123 );
-            Decimal result;
 
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        .TryParsDecimal( NumberStyles.Any, culture, out result );
+                                        // ReSharper disable once UnusedVariable
+                                        .TryParsDecimal( NumberStyles.Any, culture, out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -64,11 +60,11 @@ namespace Extend.Testing
         public void TryParsDecimalOverloadInvalidNumberStyleTest()
         {
             var expected = new Decimal( 123.123 );
-            Decimal result;
 
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
-                                        .TryParsDecimal( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out result );
+                                        // ReSharper disable once UnusedVariable
+                                        .TryParsDecimal( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var result );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -76,9 +72,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsDecimalOverloadInvalidValueTest()
         {
-            Decimal result;
-
-            var actual = "InvalidValue".TryParsDecimal( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+            var actual = "InvalidValue".TryParsDecimal( NumberStyles.Any, new CultureInfo( "de-CH" ), out var result );
 
             result
                 .Should()
@@ -93,10 +87,9 @@ namespace Extend.Testing
         public void TryParsDecimalOverloadNullTest()
         {
             String value = null;
-            Decimal result;
 
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsDecimal( NumberStyles.Any, new CultureInfo( "de-CH" ), out result );
+            var actual = value.TryParsDecimal( NumberStyles.Any, new CultureInfo( "de-CH" ), out var result );
 
             result
                 .Should()
@@ -112,10 +105,9 @@ namespace Extend.Testing
         {
             var culture = new CultureInfo( "de-CH" );
             var expected = new Decimal( 100.123123 );
-            Decimal result;
 
             var actual = expected.ToString( culture )
-                                 .TryParsDecimal( NumberStyles.Any, culture, out result );
+                                 .TryParsDecimal( NumberStyles.Any, culture, out var result );
 
             result
                 .Should()
@@ -130,10 +122,9 @@ namespace Extend.Testing
         public void TryParsDecimalTest()
         {
             var expected = new Decimal( 100.123123 );
-            Decimal result;
 
             var actual = expected.ToString( CultureInfo.InvariantCulture )
-                                 .TryParsDecimal( out result );
+                                 .TryParsDecimal( out var result );
 
             result
                 .Should()

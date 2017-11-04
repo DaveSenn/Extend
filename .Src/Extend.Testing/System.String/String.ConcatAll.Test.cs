@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -99,11 +98,11 @@ namespace Extend.Testing
         public void ConcatAllTest2()
         {
             var actual = "test".ConcatAll( new Object[]
-                                           {
-                                               "0",
-                                               "1",
-                                               "2"
-                                           } );
+            {
+                "0",
+                "1",
+                "2"
+            } );
             Assert.Equal( "test012", actual );
         }
 

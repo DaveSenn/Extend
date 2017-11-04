@@ -38,7 +38,7 @@ namespace Extend
                                                        [CanBeNull] String keyValueSeparator = "=",
                                                        [CanBeNull] String separator = "" )
         {
-            dictionary.ThrowIfNull( nameof( dictionary ) );
+            dictionary.ThrowIfNull( nameof(dictionary) );
 
             return dictionary.Select( x => x.Key + keyValueSeparator + x.Value )
                              .StringJoin( separator );

@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -17,11 +16,11 @@ namespace Extend.Testing
             const String value = "test";
 
             var actual = value.SplitLines( StringSplitOptions.RemoveEmptyEntries );
-            Assert.Equal( 1, actual.Length );
+            Assert.Single( actual );
             Assert.Equal( value, actual[0] );
 
             actual = value.SplitLines( StringSplitOptions.None );
-            Assert.Equal( 1, actual.Length );
+            Assert.Single( actual );
             Assert.Equal( value, actual[0] );
         }
 
@@ -49,7 +48,7 @@ namespace Extend.Testing
             const String value = "test";
 
             var actual = value.SplitLines();
-            Assert.Equal( 1, actual.Length );
+            Assert.Single( actual );
             Assert.Equal( value, actual[0] );
         }
 

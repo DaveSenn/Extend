@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ObjectExTest
     {
         [Fact]
@@ -140,18 +139,7 @@ namespace Extend.Testing
 
         private event PropertyChangedEventHandler PropertyChanged;
 
-        private class TestModel
-        {
-            #region Properties
-
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public Int32 Age { get; set; }
-            // ReSharper disable once UnusedAutoPropertyAccessor.Local
-            public String Name { get; set; }
-            public SubModel SubModel { get; set; }
-
-            #endregion
-        }
+        #region Nested Types
 
         private class SubModel
         {
@@ -162,5 +150,22 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        private class TestModel
+        {
+            #region Properties
+
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public Int32 Age { get; set; }
+
+            // ReSharper disable once UnusedAutoPropertyAccessor.Local
+            public String Name { get; set; }
+
+            public SubModel SubModel { get; set; }
+
+            #endregion
+        }
+
+        #endregion
     }
 }

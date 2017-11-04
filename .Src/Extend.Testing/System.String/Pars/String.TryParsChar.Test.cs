@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Globalization;
 using FluentAssertions;
 using Xunit;
 
@@ -9,14 +8,12 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
         public void TryParsCharInvalidValueTest()
         {
-            Char result;
-            var actual = "InvalidValue".TryParsChar( out result );
+            var actual = "InvalidValue".TryParsChar( out var result );
 
             result
                 .Should()
@@ -31,9 +28,8 @@ namespace Extend.Testing
         public void TryParsCharNullTest()
         {
             String value = null;
-            Char result;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsChar( out result );
+            var actual = value.TryParsChar( out var result );
 
             result
                 .Should()
@@ -48,9 +44,8 @@ namespace Extend.Testing
         public void TryParsCharTest()
         {
             const Char expected = 'b';
-            Char result;
-            var actual = expected.ToString( )
-                                 .TryParsChar( out result );
+            var actual = expected.ToString()
+                                 .TryParsChar( out var result );
 
             result
                 .Should()

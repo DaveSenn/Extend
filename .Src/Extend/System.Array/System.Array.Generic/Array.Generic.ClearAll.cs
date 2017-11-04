@@ -23,7 +23,7 @@ namespace Extend
         [PublicAPI]
         public static T[] ClearAll<T>( [NotNull] this T[] array )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Clear( array, 0, array.Length );
             return array;

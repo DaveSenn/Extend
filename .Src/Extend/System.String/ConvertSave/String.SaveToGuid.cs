@@ -21,9 +21,6 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Guid SaveToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
-        {
-            Guid outValue;
-            return value.TryParsGuid( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsGuid( out var outValue ) ? outValue : defaultValue;
     }
 }

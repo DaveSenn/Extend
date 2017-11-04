@@ -7,7 +7,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class DoubleExTest
     {
         [Fact]
@@ -16,17 +15,17 @@ namespace Extend.Testing
             var number = 10.5;
             var actual = number.IsPositiveInfinity();
 
-            Assert.Equal( false, actual );
+            Assert.False( actual );
 
             number = Double.NegativeInfinity;
             actual = number.IsPositiveInfinity();
 
-            Assert.Equal( false, actual );
+            Assert.False( actual );
 
             number = Double.PositiveInfinity;
             actual = number.IsPositiveInfinity();
 
-            Assert.Equal( true, actual );
+            Assert.True( actual );
         }
     }
 }

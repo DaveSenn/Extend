@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class DecimalExTest
     {
         [Fact]
@@ -28,10 +27,10 @@ namespace Extend.Testing
             Assert.Equal( 70, actual );
 
             actual = ( null as Decimal? ).Sum( new Decimal?[]
-                                               {
-                                                   null,
-                                                   null
-                                               } );
+            {
+                null,
+                null
+            } );
             Assert.Equal( new Decimal( 0 ), actual );
         }
 

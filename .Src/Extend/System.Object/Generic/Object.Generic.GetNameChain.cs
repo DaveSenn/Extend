@@ -32,7 +32,7 @@ namespace Extend
         [PublicAPI]
         public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return GetNameChain( expression.Body );
         }
@@ -55,7 +55,7 @@ namespace Extend
         [PublicAPI]
         public static String GetNameChain<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return GetNameChain( expression.Body );
         }
@@ -75,10 +75,9 @@ namespace Extend
         [PublicAPI]
         private static String GetNameChain( [NotNull] this Expression expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
-            MemberExpression memberExpression;
-            if ( !expression.TryGetMemberExpression( out memberExpression ) )
+            if ( !expression.TryGetMemberExpression( out var memberExpression ) )
                 throw new ArgumentException( "The given expression is not valid." );
 
             var memberNames = new Stack<String>();

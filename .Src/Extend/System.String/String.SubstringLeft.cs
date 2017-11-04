@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static String SubstringLeft( [NotNull] this String s, Int32 length )
         {
-            s.ThrowIfNull( nameof( s ) );
+            s.ThrowIfNull( nameof(s) );
 
             return s.Substring( 0, length );
         }

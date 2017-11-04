@@ -23,7 +23,7 @@ namespace Extend
         [PublicAPI]
         public static T[] Populate<T>( [NotNull] this T[] array, [CanBeNull] T value )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             for ( var i = 0; i < array.Length; i++ )
                 array[i] = value;

@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean SafeExecute( [NotNull] this Action action )
         {
-            action.ThrowIfNull( nameof( action ) );
+            action.ThrowIfNull( nameof(action) );
 
             try
             {
@@ -44,7 +44,7 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         [PublicAPI]
         public static Boolean SafeExecute<TException>( [NotNull] this Action action ) where TException : Exception
-        => action.SafeExecute( typeof(TException) );
+            => action.SafeExecute( typeof(TException) );
 
         /// <summary>
         ///     Executes the given action inside of a try catch block. Catches exceptions of the given types.
@@ -58,7 +58,7 @@ namespace Extend
         public static Boolean SafeExecute<TException1, TException2>( [NotNull] this Action action )
             where TException1 : Exception
             where TException2 : Exception
-        => action.SafeExecute( typeof(TException1), typeof(TException2) );
+            => action.SafeExecute( typeof(TException1), typeof(TException2) );
 
         /// <summary>
         ///     Executes the given action inside of a try catch block. Catches exceptions of the given types.
@@ -74,7 +74,7 @@ namespace Extend
             where TException1 : Exception
             where TException2 : Exception
             where TException3 : Exception
-        => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3) );
+            => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3) );
 
         /// <summary>
         ///     Executes the given action inside of a try catch block. Catches exceptions of the given types.
@@ -92,7 +92,7 @@ namespace Extend
             where TException2 : Exception
             where TException3 : Exception
             where TException4 : Exception
-        => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4) );
+            => action.SafeExecute( typeof(TException1), typeof(TException2), typeof(TException3), typeof(TException4) );
 
         /// <summary>
         ///     Executes the given action inside of a try catch block. Catches all exception types contained in the given list of
@@ -106,8 +106,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean SafeExecute( [NotNull] this Action action, [NotNull] params Type[] exceptionsToCatch )
         {
-            action.ThrowIfNull( nameof( action ) );
-            exceptionsToCatch.ThrowIfNull( nameof( exceptionsToCatch ) );
+            action.ThrowIfNull( nameof(action) );
+            exceptionsToCatch.ThrowIfNull( nameof(exceptionsToCatch) );
 
             try
             {

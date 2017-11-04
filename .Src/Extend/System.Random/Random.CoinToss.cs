@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean CoinToss( [NotNull] this Random random )
         {
-            random.ThrowIfNull( nameof( random ) );
+            random.ThrowIfNull( nameof(random) );
 
             return random.Next( 2 ) == 0;
         }

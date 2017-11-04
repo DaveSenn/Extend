@@ -23,8 +23,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean Contains( [NotNull] this String s, [NotNull] String value, StringComparison stringComparison )
         {
-            s.ThrowIfNull( nameof( s ) );
-            value.ThrowIfNull( nameof( value ) );
+            s.ThrowIfNull( nameof(s) );
+            value.ThrowIfNull( nameof(value) );
 
             return s.IndexOf( value, stringComparison ) >= 0;
         }

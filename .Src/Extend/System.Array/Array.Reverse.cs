@@ -20,7 +20,7 @@ namespace Extend
         [PublicAPI]
         public static void Reverse( [NotNull] this Array array )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Reverse( array );
         }
@@ -35,7 +35,7 @@ namespace Extend
         [PublicAPI]
         public static void Reverse( [NotNull] this Array array, Int32 index, Int32 length )
         {
-            array.ThrowIfNull( nameof( array ) );
+            array.ThrowIfNull( nameof(array) );
 
             Array.Reverse( array, index, length );
         }

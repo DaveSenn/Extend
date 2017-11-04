@@ -38,7 +38,7 @@ namespace Extend
         public PathMemberSelectionRule( [NotNull] String memberPath, MemberSelectionMode selectionMode, String name = null, String description = null )
             : base( name, description )
         {
-            memberPath.ThrowIfNull( nameof( memberPath ) );
+            memberPath.ThrowIfNull( nameof(memberPath) );
 
             _memberPath = memberPath;
             _selectionMode = selectionMode;

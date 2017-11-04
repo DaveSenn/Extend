@@ -22,8 +22,8 @@ namespace Extend
         [PublicAPI]
         public static String ReplaceByEmpty( [NotNull] this String s, [NotNull] params String[] values )
         {
-            s.ThrowIfNull( nameof( s ) );
-            values.ThrowIfNull( nameof( values ) );
+            s.ThrowIfNull( nameof(s) );
+            values.ThrowIfNull( nameof(values) );
 
             values.ForEach( x => s = s.Replace( x, String.Empty ) );
             return s;

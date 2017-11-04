@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -61,27 +60,6 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void MatchTestNullCheck()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => StringEx.Match( null, "" );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-        [Fact]
-        public void MatchTestNullCheck1()
-        {
-            // ReSharper disable once AssignNullToNotNullAttribute
-            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action test = () => "".Match( null );
-
-            test.ShouldThrow<ArgumentNullException>();
-        }
-
-#if PORTABLE45
-        [Fact]
         public void MatchTest2()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -116,6 +94,26 @@ namespace Extend.Testing
         }
 
         [Fact]
+        public void MatchTestNullCheck()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => StringEx.Match( null, "" );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
+        public void MatchTestNullCheck1()
+        {
+            // ReSharper disable once AssignNullToNotNullAttribute
+            // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
+            Action test = () => "".Match( null );
+
+            test.ShouldThrow<ArgumentNullException>();
+        }
+
+        [Fact]
         public void MatchTimeoutTest()
         {
             const String emaiLpattern = @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$";
@@ -127,6 +125,5 @@ namespace Extend.Testing
 
             test.ShouldThrow<RegexMatchTimeoutException>();
         }
-#endif
     }
 }

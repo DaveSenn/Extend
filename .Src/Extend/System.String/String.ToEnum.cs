@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static T ToEnum<T>( [NotNull] this String value, Boolean ignoreCase = true ) where T : struct
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return (T) Enum.Parse( typeof(T), value, ignoreCase );
         }

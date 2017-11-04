@@ -26,8 +26,8 @@ namespace Extend
         [NotNull]
         public static ICollection<T> RemoveRange<T>( [NotNull] this ICollection<T> collection, [NotNull] params T[] values )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            values.ThrowIfNull( nameof( values ) );
+            collection.ThrowIfNull( nameof(collection) );
+            values.ThrowIfNull( nameof(values) );
 
             values.ForEach( x => collection.Remove( x ) );
             return collection;
@@ -46,8 +46,8 @@ namespace Extend
         [NotNull]
         public static ICollection<T> RemoveRange<T>( [NotNull] this ICollection<T> collection, [NotNull] IEnumerable<T> enumerable )
         {
-            collection.ThrowIfNull( nameof( collection ) );
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            collection.ThrowIfNull( nameof(collection) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             enumerable.ForEach( x => collection.Remove( x ) );
             return collection;

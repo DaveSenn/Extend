@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using System.Security;
 using FluentAssertions;
 using Xunit;
 
@@ -9,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class ExceptionExTest
     {
         [Fact]

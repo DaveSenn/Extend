@@ -31,7 +31,7 @@ namespace Extend
         [PublicAPI]
         public static String GetName<TObject, TMember>( [CanBeNull] this TObject obj, [NotNull] Expression<Func<TObject, TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return GetName( expression.Body );
         }
@@ -54,7 +54,7 @@ namespace Extend
         [PublicAPI]
         public static String GetName<TObject, TMember>( [CanBeNull] [NoEnumeration] this TObject obj, [NotNull] Expression<Func<TMember>> expression )
         {
-            expression.ThrowIfNull( nameof( expression ) );
+            expression.ThrowIfNull( nameof(expression) );
 
             return GetName( expression.Body );
         }
@@ -73,8 +73,7 @@ namespace Extend
         [PublicAPI]
         private static String GetName( [NotNull] Expression expression )
         {
-            MemberExpression memberExpression;
-            if ( !expression.TryGetMemberExpression( out memberExpression ) )
+            if ( !expression.TryGetMemberExpression( out var memberExpression ) )
                 throw new ArgumentException( "The given expression was not valid." );
 
             return memberExpression.Member.Name;

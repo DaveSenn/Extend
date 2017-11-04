@@ -1,17 +1,17 @@
 ﻿#region Usings
 
+// ReSharper disable once RedundantUsingDirective
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using FluentAssertions;
+using System.Reflection;
 using Xunit;
 
 #endregion
 
 namespace Extend.Testing
 {
-    
     public class AttributeDefinitionPropertyTest
     {
         [Fact]
@@ -39,21 +39,26 @@ namespace Extend.Testing
         {
             var target = new AttributeDefinitionProperty<MyDisplayAttribute>();
             var expected = typeof(MyDisplayAttribute).GetProperties()
-                                                   .First();
+                                                     .First();
             target.Property = expected;
 
             target.Property.Should()
                   .BeSameAs( expected );
         }
 
-        [AttributeUsage(AttributeTargets.Property, AllowMultiple = true)]
+        #region Nested Types
+
+        [AttributeUsage( AttributeTargets.Property, AllowMultiple = true )]
         private class MyDisplayAttribute : Attribute
         {
             #region Properties
 
+            // ReSharper disable once UnusedMember.Local
             public String Name { get; set; }
 
             #endregion
         }
+
+        #endregion
     }
 }

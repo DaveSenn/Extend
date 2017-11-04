@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class AttributeDefinitionTypeTest
     {
         [Fact]
@@ -31,7 +30,7 @@ namespace Extend.Testing
         public void TypeTest()
         {
             var target = new AttributeDefinitionType<ObsoleteAttribute>();
-            
+
             target.Type.Should()
                   .BeNull();
 

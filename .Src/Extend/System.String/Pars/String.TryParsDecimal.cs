@@ -62,7 +62,7 @@ namespace Extend
                                               [NotNull] IFormatProvider formatProvider,
                                               out Decimal outValue )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Decimal.TryParse( value, numberStyle, CultureInfo.InvariantCulture, out outValue );
         }

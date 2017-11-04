@@ -69,7 +69,7 @@ namespace Extend
                                            [NotNull] IFormatProvider formatProvider,
                                            out Byte outValue )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return Byte.TryParse( value, numberStyle, formatProvider, out outValue );
         }

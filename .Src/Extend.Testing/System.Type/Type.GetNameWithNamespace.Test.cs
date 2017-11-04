@@ -229,8 +229,9 @@ namespace Extend.Testing
         {
         }
 
-        // ReSharper disable once UnusedTypeParameter
+        // ReSharper disable UnusedTypeParameter
         private class TestClassGeneric2<T, T1>
+            // ReSharper restore UnusedTypeParameter
         {
         }
 

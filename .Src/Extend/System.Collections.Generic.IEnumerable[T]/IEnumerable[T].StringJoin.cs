@@ -34,7 +34,7 @@ namespace Extend
         [NotNull]
         public static String StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, String separator = "" )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             return String.Join( separator, enumerable );
         }
@@ -59,8 +59,8 @@ namespace Extend
         [NotNull]
         public static String StringJoin<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Func<T, String> selector, String separator = "" )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            selector.ThrowIfNull( nameof( selector ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            selector.ThrowIfNull( nameof(selector) );
 
             return String.Join( separator, enumerable.Select( selector ) );
         }

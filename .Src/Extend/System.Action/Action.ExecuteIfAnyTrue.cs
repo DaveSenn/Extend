@@ -27,8 +27,8 @@ namespace Extend
                                              [CanBeNull] Action falseAction = null,
                                              [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( values.Any( x => x ) )
                 trueAction();
@@ -52,8 +52,8 @@ namespace Extend
                                                 [CanBeNull] Action<T> falseAction = null,
                                                 [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( values.Any( x => x ) )
                 trueAction( parameter );
@@ -80,8 +80,8 @@ namespace Extend
                                                      [CanBeNull] Action<T1, T2> falseAction = null,
                                                      [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( values.Any( x => x ) )
                 trueAction( parameter1, parameter2 );
@@ -111,8 +111,8 @@ namespace Extend
                                                          [CanBeNull] Action<T1, T2, T3> falseAction = null,
                                                          [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( values.Any( x => x ) )
                 trueAction( parameter1, parameter2, parameter3 );
@@ -145,8 +145,8 @@ namespace Extend
                                                              [CanBeNull] Action<T1, T2, T3, T4> falseAction = null,
                                                              [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( values.Any( x => x ) )
                 trueAction( parameter1, parameter2, parameter3, parameter4 );
@@ -163,8 +163,8 @@ namespace Extend
         [PublicAPI]
         public static void ExecuteIfAnyTrue( [NotNull] this Action trueAction, [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( !values.Any( x => x ) )
                 return;
@@ -185,8 +185,8 @@ namespace Extend
                                                 [CanBeNull] T parameter,
                                                 [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( !values.Any( x => x ) )
                 return;
@@ -210,8 +210,8 @@ namespace Extend
                                                      [CanBeNull] T2 parameter2,
                                                      [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( !values.Any( x => x ) )
                 return;
@@ -238,8 +238,8 @@ namespace Extend
                                                          [CanBeNull] T3 parameter3,
                                                          [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( !values.Any( x => x ) )
                 return;
@@ -269,8 +269,8 @@ namespace Extend
                                                              [CanBeNull] T4 parameter4,
                                                              [NotNull] params Boolean[] values )
         {
-            trueAction.ThrowIfNull( nameof( trueAction ) );
-            values.ThrowIfNull( nameof( values ) );
+            trueAction.ThrowIfNull( nameof(trueAction) );
+            values.ThrowIfNull( nameof(values) );
 
             if ( !values.Any( x => x ) )
                 return;

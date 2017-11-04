@@ -27,8 +27,8 @@ namespace Extend
         [NotNull]
         public static IEnumerable<T> ForEachReverse<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable, [NotNull] Action<T> action )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
-            action.ThrowIfNull( nameof( action ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
+            action.ThrowIfNull( nameof(action) );
 
             var list = enumerable.ToList();
             for ( var i = list.Count - 1; i >= 0; i-- )

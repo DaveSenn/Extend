@@ -23,7 +23,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean IsIListT( [NotNull] this Type type )
         {
-            type.ThrowIfNull( nameof( type ) );
+            type.ThrowIfNull( nameof(type) );
 
             return type.IsGenericType() && type.GetGenericTypeDefinition() == typeof(IList<>);
         }

@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class AssemblyExTest
     {
         [Fact]
@@ -35,9 +34,9 @@ namespace Extend.Testing
                 .GetDeclaringAssembly()
                 .GetDefinedTypes();
 
-            actual.Count()
+            actual.Any( x => x.Name == typeof(ActionEx).Name )
                   .Should()
-                  .Be(265);
+                  .BeTrue();
         }
     }
 }

@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class DateTimeExTest
     {
         [Fact]
@@ -16,7 +15,7 @@ namespace Extend.Testing
         {
             var dateTime = DateTime.Now;
             var expected = dateTime.ToString( "T" );
-            var actual = DateTimeEx.ToLongTimeString( dateTime );
+            var actual = dateTime.ToLongTimeString();
             Assert.Equal( expected, actual );
         }
 

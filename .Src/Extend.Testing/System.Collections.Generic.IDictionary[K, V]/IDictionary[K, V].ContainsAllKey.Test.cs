@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
@@ -24,14 +23,14 @@ namespace Extend.Testing
             };
 
             Assert.True( dictionary.ContainsAllKey( dictionary.First()
-                                                                .Key,
-                                                      dictionary.Last()
-                                                                .Key ) );
+                                                              .Key,
+                                                    dictionary.Last()
+                                                              .Key ) );
             Assert.False( dictionary.ContainsAllKey( dictionary.First()
-                                                                 .Key,
-                                                       dictionary.Last()
-                                                                 .Key,
-                                                       "test" ) );
+                                                               .Key,
+                                                     dictionary.Last()
+                                                               .Key,
+                                                     "test" ) );
         }
 
         [Fact]

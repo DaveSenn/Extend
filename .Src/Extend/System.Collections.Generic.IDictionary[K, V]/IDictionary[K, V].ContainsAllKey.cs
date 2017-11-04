@@ -30,8 +30,8 @@ namespace Extend
         public static Boolean ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                             [NotNull] [ItemNotNull] params TKey[] keys )
         {
-            dictionary.ThrowIfNull( nameof( dictionary ) );
-            keys.ThrowIfNull( nameof( keys ) );
+            dictionary.ThrowIfNull( nameof(dictionary) );
+            keys.ThrowIfNull( nameof(keys) );
 
             return keys.All( dictionary.ContainsKey );
         }
@@ -51,8 +51,8 @@ namespace Extend
         public static Boolean ContainsAllKey<TKey, TValue>( [NotNull] this IDictionary<TKey, TValue> dictionary,
                                                             [NotNull] [ItemNotNull] IEnumerable<TKey> keys )
         {
-            dictionary.ThrowIfNull( nameof( dictionary ) );
-            keys.ThrowIfNull( nameof( keys ) );
+            dictionary.ThrowIfNull( nameof(dictionary) );
+            keys.ThrowIfNull( nameof(keys) );
 
             return keys.All( dictionary.ContainsKey );
         }

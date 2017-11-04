@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ActionExTest
     {
         [Fact]
@@ -17,7 +16,7 @@ namespace Extend.Testing
             var actual = ActionEx.SafeExecute( () => { } );
             Assert.True( actual );
 
-            actual = ActionEx.SafeExecute( () => { throw new Exception(); } );
+            actual = ActionEx.SafeExecute( () => throw new Exception() );
             Assert.False( actual );
         }
 
@@ -27,14 +26,14 @@ namespace Extend.Testing
             var actual = ActionEx.SafeExecute<ArgumentNullException>( () => { } );
             Assert.True( actual );
 
-            actual = ActionEx.SafeExecute<ArgumentNullException>( () => { throw new ArgumentNullException(); } );
+            actual = ActionEx.SafeExecute<ArgumentNullException>( () => throw new ArgumentNullException() );
             Assert.False( actual );
         }
 
         [Fact]
         public void SafeExecuteTest1_2()
         {
-            Action test = () => ActionEx.SafeExecute<ArgumentNullException>( () => { throw new OutOfMemoryException(); } );
+            Action test = () => ActionEx.SafeExecute<ArgumentNullException>( () => throw new OutOfMemoryException() );
 
             test.ShouldThrow<OutOfMemoryException>();
         }
@@ -57,12 +56,12 @@ namespace Extend.Testing
 
             actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
-                    () => { throw new ArgumentNullException(); } );
+                    () => throw new ArgumentNullException() );
             Assert.False( actual );
 
             actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
-                    () => { throw new ArgumentOutOfRangeException(); } );
+                    () => throw new ArgumentOutOfRangeException() );
             Assert.False( actual );
         }
 
@@ -70,7 +69,7 @@ namespace Extend.Testing
         public void SafeExecuteTest2_2()
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
-                () => { throw new OutOfMemoryException(); } );
+                () => throw new OutOfMemoryException() );
 
             test.ShouldThrow<OutOfMemoryException>();
         }
@@ -95,17 +94,17 @@ namespace Extend.Testing
 
             actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
-                    () => { throw new ArgumentNullException(); } );
+                    () => throw new ArgumentNullException() );
             Assert.False( actual );
 
             actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
-                    () => { throw new ArgumentOutOfRangeException(); } );
+                    () => throw new ArgumentOutOfRangeException() );
             Assert.False( actual );
 
             actual =
                 ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
-                    () => { throw new InvalidCastException(); } );
+                    () => throw new InvalidCastException() );
             Assert.False( actual );
         }
 
@@ -113,7 +112,7 @@ namespace Extend.Testing
         public void SafeExecuteTest3_2()
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
-                () => { throw new OutOfMemoryException(); } );
+                () => throw new OutOfMemoryException() );
 
             test.ShouldThrow<OutOfMemoryException>();
         }
@@ -142,28 +141,28 @@ namespace Extend.Testing
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                    >( () => { throw new ArgumentNullException(); } );
+                    >( () => throw new ArgumentNullException() );
             Assert.False( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                    >( () => { throw new ArgumentOutOfRangeException(); } );
+                    >( () => throw new ArgumentOutOfRangeException() );
             Assert.False( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                    >( () => { throw new InvalidCastException(); } );
+                    >( () => throw new InvalidCastException() );
             Assert.False( actual );
 
             actual =
                 ActionEx
                     .SafeExecute
                     <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException
-                    >( () => { throw new InvalidOperationException(); } );
+                    >( () => throw new InvalidOperationException() );
             Assert.False( actual );
         }
 
@@ -173,7 +172,7 @@ namespace Extend.Testing
             Action test = () => ActionEx
                 .SafeExecute
                 <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException>(
-                    () => { throw new OutOfMemoryException(); } );
+                    () => throw new OutOfMemoryException() );
 
             test.ShouldThrow<OutOfMemoryException>();
         }
@@ -203,7 +202,7 @@ namespace Extend.Testing
 
             actual =
                 ActionEx
-                    .SafeExecute( () => { throw new ArgumentNullException(); },
+                    .SafeExecute( () => throw new ArgumentNullException(),
                                   typeof(ArgumentNullException),
                                   typeof(ArgumentOutOfRangeException),
                                   typeof(InvalidCastException),
@@ -213,7 +212,7 @@ namespace Extend.Testing
 
             actual =
                 ActionEx
-                    .SafeExecute( () => { throw new ArgumentOutOfRangeException(); },
+                    .SafeExecute( () => throw new ArgumentOutOfRangeException(),
                                   typeof(ArgumentNullException),
                                   typeof(ArgumentOutOfRangeException),
                                   typeof(InvalidCastException),
@@ -223,7 +222,7 @@ namespace Extend.Testing
 
             actual =
                 ActionEx
-                    .SafeExecute( () => { throw new InvalidCastException(); },
+                    .SafeExecute( () => throw new InvalidCastException(),
                                   typeof(ArgumentNullException),
                                   typeof(ArgumentOutOfRangeException),
                                   typeof(InvalidCastException),
@@ -231,7 +230,7 @@ namespace Extend.Testing
                                   typeof(ArithmeticException) );
             Assert.False( actual );
 
-            actual = ActionEx.SafeExecute( () => { throw new InvalidOperationException(); },
+            actual = ActionEx.SafeExecute( () => throw new InvalidOperationException(),
                                            typeof(ArgumentNullException),
                                            typeof(ArgumentOutOfRangeException),
                                            typeof(InvalidCastException),
@@ -239,19 +238,19 @@ namespace Extend.Testing
                                            typeof(ArithmeticException) );
             Assert.False( actual );
 
-            actual = ActionEx.SafeExecute( () => { throw new ArithmeticException(); },
+            actual = ActionEx.SafeExecute( () => throw new ArithmeticException(),
                                            typeof(ArgumentNullException),
                                            typeof(ArgumentOutOfRangeException),
                                            typeof(InvalidCastException),
                                            typeof(InvalidOperationException),
-                                           typeof(ArithmeticException));
+                                           typeof(ArithmeticException) );
             Assert.False( actual );
         }
 
         [Fact]
         public void SafeExecuteTest5_2()
         {
-            Action test = () => ActionEx.SafeExecute( () => { throw new OutOfMemoryException(); },
+            Action test = () => ActionEx.SafeExecute( () => throw new OutOfMemoryException(),
                                                       typeof(ArgumentNullException),
                                                       typeof(ArgumentOutOfRangeException),
                                                       typeof(InvalidCastException),

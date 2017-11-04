@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ArrayExTest
     {
         [Fact]
@@ -22,8 +21,8 @@ namespace Extend.Testing
             };
             array.Clear( 0, 2 );
 
-            Assert.Equal( null, array.GetValue( 0 ) );
-            Assert.Equal( null, array.GetValue( 1 ) );
+            Assert.Null( array.GetValue( 0 ) );
+            Assert.Null( array.GetValue( 1 ) );
             Assert.Equal( "2", array.GetValue( 2 ) );
         }
 

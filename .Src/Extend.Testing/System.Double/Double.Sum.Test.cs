@@ -8,7 +8,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class DoubleExTest
     {
         [Fact]
@@ -25,10 +24,10 @@ namespace Extend.Testing
             Assert.Equal( 71.5, actual );
 
             actual = ( null as Double? ).Sum( new Double?[]
-                                              {
-                                                  null,
-                                                  null
-                                              } );
+            {
+                null,
+                null
+            } );
             Assert.Equal( 0d, actual );
         }
 

@@ -22,6 +22,6 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static T IfNull<T>( [CanBeNull] this T value, [CanBeNull] T alternativeValue ) where T : class
-        => value ?? alternativeValue;
+            => value ?? alternativeValue;
     }
 }

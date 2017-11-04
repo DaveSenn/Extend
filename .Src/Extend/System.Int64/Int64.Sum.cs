@@ -25,7 +25,7 @@ namespace Extend
         [PublicAPI]
         public static Int64 Sum( this Int64 value, [NotNull] params Int64[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -44,7 +44,7 @@ namespace Extend
         [PublicAPI]
         public static Int64? Sum( this Int64? value, [NotNull] params Int64?[] values )
         {
-            values.ThrowIfNull( nameof( values ) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -66,8 +66,8 @@ namespace Extend
         [PublicAPI]
         public static Int64 Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int64> selector, [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );
@@ -89,8 +89,8 @@ namespace Extend
         [PublicAPI]
         public static Int64? Sum<TSource>( this TSource value, [NotNull] Func<TSource, Int64?> selector, [NotNull] params TSource[] values )
         {
-            selector.ThrowIfNull( nameof( selector ) );
-            values.ThrowIfNull( nameof( values ) );
+            selector.ThrowIfNull( nameof(selector) );
+            values.ThrowIfNull( nameof(values) );
 
             var list = values.ToList();
             list.Add( value );

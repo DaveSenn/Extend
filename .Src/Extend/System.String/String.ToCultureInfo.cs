@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static CultureInfo ToCultureInfo( [NotNull] this String name )
         {
-            name.ThrowIfNull( nameof( name ) );
+            name.ThrowIfNull( nameof(name) );
 
             return new CultureInfo( name );
         }

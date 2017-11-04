@@ -31,8 +31,8 @@ namespace Extend
         [PublicAPI]
         public static String F( [NotNull] this String format, [NotNull] params Object[] args )
         {
-            format.ThrowIfNull( nameof( format ) );
-            args.ThrowIfNull( nameof( args ) );
+            format.ThrowIfNull( nameof(format) );
+            args.ThrowIfNull( nameof(args) );
 
             return String.Format( format, args );
         }
@@ -60,9 +60,9 @@ namespace Extend
         [PublicAPI]
         public static String F( [NotNull] this String format, [NotNull] IFormatProvider formatProvider, [NotNull] params Object[] args )
         {
-            format.ThrowIfNull( nameof( format ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
-            args.ThrowIfNull( nameof( args ) );
+            format.ThrowIfNull( nameof(format) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
+            args.ThrowIfNull( nameof(args) );
 
             return String.Format( formatProvider, format, args );
         }

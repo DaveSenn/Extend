@@ -36,8 +36,8 @@ namespace Extend
             [NotNull] this IEnumerable<KeyValuePair<TValue, TKey>> first,
             [NotNull] IEnumerable<KeyValuePair<TValue, TKey>> second )
         {
-            first.ThrowIfNull( nameof( first ) );
-            second.ThrowIfNull( nameof( second ) );
+            first.ThrowIfNull( nameof(first) );
+            second.ThrowIfNull( nameof(second) );
 
             return first
                 .Concat( second )

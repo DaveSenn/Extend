@@ -27,7 +27,7 @@ namespace Extend
         [NotNull]
         public static String PathCombine( [NotNull] [ItemCanBeNull] this IEnumerable<String> enumerable )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             return Path.Combine( enumerable.ToArray() );
         }

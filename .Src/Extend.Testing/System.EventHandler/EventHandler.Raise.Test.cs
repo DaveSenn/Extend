@@ -7,7 +7,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public class EventHandlerExTest
     {
         [Fact]
@@ -36,6 +35,8 @@ namespace Extend.Testing
             Assert.Same( eventArgs, actual );
         }
 
+        #region Nested Types
+
         private class HelperClass
         {
             public event EventHandler MyEvent;
@@ -51,5 +52,7 @@ namespace Extend.Testing
         private class SampleEventArgs : EventArgs
         {
         }
+
+        #endregion
     }
 }

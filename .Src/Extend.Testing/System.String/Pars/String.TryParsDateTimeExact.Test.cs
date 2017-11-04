@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class StringExTest
     {
         [Fact]
@@ -17,13 +16,13 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             String format = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( format,
                                                                  new CultureInfo( "en-US" ),
                                                                  DateTimeStyles.None,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -33,13 +32,13 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( "M/dd/ hh:mm yyyy",
                                                                  culture,
                                                                  DateTimeStyles.None,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -49,12 +48,12 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( "M/dd/ hh:mm yyyy",
                                                                  new CultureInfo( "den-US" ),
                                                                  DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -64,11 +63,10 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/ 09:00 2009";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( "asdasd",
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -84,11 +82,10 @@ namespace Extend.Testing
         {
             const String dateString = "asdasd";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( "M/dd/yyyy hh:mm",
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -103,12 +100,11 @@ namespace Extend.Testing
         public void TryParsDateTimeExactNullValueTest()
         {
             String value = null;
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.TryParsDateTimeExact( "M/dd/yyyy hh:mm",
                                                      new CultureInfo( "en-US" ),
                                                      DateTimeStyles.None,
-                                                     out result );
+                                                     out var result );
 
             result
                 .Should()
@@ -124,13 +120,13 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             String[] formats = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( formats,
                                                                  new CultureInfo( "en-US" ),
                                                                  DateTimeStyles.None,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -140,13 +136,13 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             CultureInfo culture = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( new[] { "asd", "M/dd/ hh:mm yyyy" },
                                                                  culture,
                                                                  DateTimeStyles.None,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentNullException>();
         }
@@ -156,12 +152,12 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => dateString.TryParsDateTimeExact( new[] { "asd", "M/dd/ hh:mm yyyy" },
                                                                  new CultureInfo( "den-US" ),
                                                                  DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal,
-                                                                 out result );
+                                                                 // ReSharper disable once UnusedVariable
+                                                                 out var result );
 
             test.ShouldThrow<ArgumentException>();
         }
@@ -171,11 +167,10 @@ namespace Extend.Testing
         {
             const String dateString = "5/01/ 09:00 2009";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( new[] { "asdasd", "123" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -191,11 +186,10 @@ namespace Extend.Testing
         {
             const String dateString = "asdasd";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( new[] { "asdasd", "123" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -210,12 +204,11 @@ namespace Extend.Testing
         public void TryParsDateTimeExactOverloadNullValueTest()
         {
             String value = null;
-            DateTime result;
             // ReSharper disable once ExpressionIsAlwaysNull
             var actual = value.TryParsDateTimeExact( new[] { "asdasd", "123" },
                                                      new CultureInfo( "en-US" ),
                                                      DateTimeStyles.None,
-                                                     out result );
+                                                     out var result );
 
             result
                 .Should()
@@ -232,11 +225,10 @@ namespace Extend.Testing
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( new[] { "asd", "M/dd/yyyy hh:mm" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -253,11 +245,10 @@ namespace Extend.Testing
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
             const String dateString = "5/01/ 09:00 2009";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( new[] { "hh aa", "M/dd/ hh:mm yyyy" },
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -274,11 +265,10 @@ namespace Extend.Testing
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
             const String dateString = "5/01/2009 09:00";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( "M/dd/yyyy hh:mm",
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()
@@ -295,11 +285,10 @@ namespace Extend.Testing
             var expected = new DateTime( 2009, 5, 1, 9, 0, 0 );
             const String dateString = "5/01/ 09:00 2009";
 
-            DateTime result;
             var actual = dateString.TryParsDateTimeExact( "M/dd/ hh:mm yyyy",
                                                           new CultureInfo( "en-US" ),
                                                           DateTimeStyles.None,
-                                                          out result );
+                                                          out var result );
 
             result
                 .Should()

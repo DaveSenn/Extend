@@ -24,8 +24,8 @@ namespace Extend
         [PublicAPI]
         public static void Copy( [NotNull] this Array sourceArray, [NotNull] Array destinationArray, Int32 length )
         {
-            sourceArray.ThrowIfNull( nameof( sourceArray ) );
-            destinationArray.ThrowIfNull( nameof( destinationArray ) );
+            sourceArray.ThrowIfNull( nameof(sourceArray) );
+            destinationArray.ThrowIfNull( nameof(destinationArray) );
 
             Array.Copy( sourceArray, destinationArray, length );
         }
@@ -48,8 +48,8 @@ namespace Extend
                                  Int32 destinationIndex,
                                  Int32 length )
         {
-            sourceArray.ThrowIfNull( nameof( sourceArray ) );
-            destinationArray.ThrowIfNull( nameof( destinationArray ) );
+            sourceArray.ThrowIfNull( nameof(sourceArray) );
+            destinationArray.ThrowIfNull( nameof(destinationArray) );
 
             Array.Copy( sourceArray, sourceIndex, destinationArray, destinationIndex, length );
         }

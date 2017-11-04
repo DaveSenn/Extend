@@ -26,10 +26,10 @@ namespace Extend
         [PublicAPI]
         public static String TakeAndRemove( this Int32 count, [NotNull] ref String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             if ( count > value.Length )
-                throw new ArgumentOutOfRangeException( nameof( count ),
+                throw new ArgumentOutOfRangeException( nameof(count),
                                                        "Count must be smaller than the length of the given value." );
 
             var returnValue = new String( value.ToCharArray()

@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IEnumerableTExTest
     {
@@ -27,10 +26,10 @@ namespace Extend.Testing
 
             var counter = 0;
             var resultList = list.TakeUntil( x =>
-                                             {
-                                                 counter++;
-                                                 return counter > 5;
-                                             } )
+                                 {
+                                     counter++;
+                                     return counter > 5;
+                                 } )
                                  .ToList();
             Assert.Equal( 5, resultList.Count );
 

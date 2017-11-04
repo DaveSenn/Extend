@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class ISpecificationExTest
     {
@@ -41,7 +40,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -84,7 +83,7 @@ namespace Extend.Testing
             var target = left.Or( x => true );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -95,7 +94,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -106,7 +105,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -129,7 +128,7 @@ namespace Extend.Testing
             var target = left.Or( x => true, "msgRight" );
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty );
-            Assert.Equal( 0, actual.Count() );
+            Assert.Empty( actual );
         }
 
         [Fact]
@@ -140,7 +139,7 @@ namespace Extend.Testing
 
             var actual = target.IsSatisfiedByWithMessages( String.Empty )
                                .ToList();
-            Assert.Equal( 0, actual.Count );
+            Assert.Empty( actual );
         }
 
         [Fact]

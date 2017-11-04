@@ -22,8 +22,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean ContainsAny( [NotNull] this String str, [NotNull] params String[] values )
         {
-            str.ThrowIfNull( nameof( str ) );
-            values.ThrowIfNull( nameof( values ) );
+            str.ThrowIfNull( nameof(str) );
+            values.ThrowIfNull( nameof(values) );
 
             return values.Any( str.Contains );
         }
@@ -41,8 +41,8 @@ namespace Extend
         [PublicAPI]
         public static Boolean ContainsAny( [NotNull] this String str, StringComparison comparisonType, [NotNull] params String[] values )
         {
-            str.ThrowIfNull( nameof( str ) );
-            values.ThrowIfNull( nameof( values ) );
+            str.ThrowIfNull( nameof(str) );
+            values.ThrowIfNull( nameof(values) );
 
             return values.Any( x => str.IndexOf( x, comparisonType ) != -1 );
         }

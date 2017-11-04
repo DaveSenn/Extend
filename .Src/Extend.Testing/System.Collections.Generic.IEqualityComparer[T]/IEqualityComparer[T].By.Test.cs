@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public class IEqualityComparerExTest
     {
@@ -42,6 +41,8 @@ namespace Extend.Testing
                   .BeTrue();
         }
 
+        #region Nested Types
+
         private class StringLengthComparer : IEqualityComparer<String>
         {
             #region Implementation of IEqualityComparer<in string>
@@ -69,5 +70,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

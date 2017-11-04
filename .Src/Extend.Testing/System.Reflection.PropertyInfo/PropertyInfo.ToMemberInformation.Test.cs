@@ -10,7 +10,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class PropertyInfoExTest
     {
         [Fact]
@@ -48,9 +47,9 @@ namespace Extend.Testing
             var property = typeof(TestModel).GetPublicSettableProperties()
                                             .First();
             var actual = property.ToMemberInformation( new MemberInformation
-                                                       {
-                                                           MemberName = "Parent"
-                                                       } );
+            {
+                MemberName = "Parent"
+            } );
             actual.MemberName.Should()
                   .Be( "MyString" );
             actual.MemberObject.Should()
@@ -63,6 +62,8 @@ namespace Extend.Testing
                   .BeSameAs( property );
         }
 
+        #region Nested Types
+
         private class TestModel
         {
             #region Properties
@@ -72,5 +73,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

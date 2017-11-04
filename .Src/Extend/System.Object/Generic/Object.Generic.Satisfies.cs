@@ -24,7 +24,7 @@ namespace Extend
         [PublicAPI]
         public static Boolean Satisfies<T>( [CanBeNull] this T obj, [NotNull] ISpecification<T> specification )
         {
-            specification.ThrowIfNull( nameof( specification ) );
+            specification.ThrowIfNull( nameof(specification) );
 
             return specification.IsSatisfiedBy( obj );
         }

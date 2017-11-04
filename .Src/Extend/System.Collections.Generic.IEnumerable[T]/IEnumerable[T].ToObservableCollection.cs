@@ -27,7 +27,7 @@ namespace Extend
         [NotNull]
         public static ObservableCollection<T> ToObservableCollection<T>( [NotNull] [ItemCanBeNull] this IEnumerable<T> enumerable )
         {
-            enumerable.ThrowIfNull( nameof( enumerable ) );
+            enumerable.ThrowIfNull( nameof(enumerable) );
 
             return new ObservableCollection<T>( enumerable );
         }

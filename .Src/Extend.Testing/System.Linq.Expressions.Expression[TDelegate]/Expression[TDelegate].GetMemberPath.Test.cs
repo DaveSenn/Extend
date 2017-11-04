@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     public partial class ExpressionTDelegateExTest
     {
         [Fact]
@@ -164,6 +163,8 @@ namespace Extend.Testing
             test.ShouldThrow<ArgumentOutOfRangeException>();
         }
 
+        #region Nested Types
+
         private class A
         {
             #region Properties
@@ -198,5 +199,7 @@ namespace Extend.Testing
 
             #endregion
         }
+
+        #endregion
     }
 }

@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static DateTime ToDateTime( [NotNull] this String value )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return DateTime.Parse( value, CultureInfo.InvariantCulture );
         }
@@ -39,8 +39,8 @@ namespace Extend
         [PublicAPI]
         public static DateTime ToDateTime( [NotNull] this String value, [NotNull] IFormatProvider formatProvider )
         {
-            value.ThrowIfNull( nameof( value ) );
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            value.ThrowIfNull( nameof(value) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
             return DateTime.Parse( value, formatProvider );
         }

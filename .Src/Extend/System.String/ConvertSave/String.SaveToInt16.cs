@@ -20,10 +20,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Int16 SaveToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) )
-        {
-            Int16 outValue;
-            return value.TryParsInt16( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsInt16( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number in a specified numberStyle and culture-specific
@@ -50,10 +47,9 @@ namespace Extend
                                          [NotNull] IFormatProvider formatProvider,
                                          Int16 defaultValue = default(Int16) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            Int16 outValue;
-            return value.TryParsInt16( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsInt16( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

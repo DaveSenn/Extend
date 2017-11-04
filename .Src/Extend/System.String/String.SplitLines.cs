@@ -28,7 +28,7 @@ namespace Extend
         [PublicAPI]
         public static String[] SplitLines( [NotNull] this String value, StringSplitOptions stringSplitOptions )
         {
-            value.ThrowIfNull( nameof( value ) );
+            value.ThrowIfNull( nameof(value) );
 
             return value.Split( new[]
                                 {

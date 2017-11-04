@@ -22,7 +22,7 @@ namespace Extend
         [PublicAPI]
         public static Type GetTypeFromNullable( [NotNull] this Type possibleNullableType )
         {
-            possibleNullableType.ThrowIfNull( nameof( possibleNullableType ) );
+            possibleNullableType.ThrowIfNull( nameof(possibleNullableType) );
 
             if ( !possibleNullableType.IsGenericType() || possibleNullableType.GetGenericTypeDefinition() != typeof(Nullable<>) )
                 return null;

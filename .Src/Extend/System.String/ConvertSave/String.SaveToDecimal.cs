@@ -19,10 +19,7 @@ namespace Extend
         [Pure]
         [PublicAPI]
         public static Decimal SaveToDecimal( [CanBeNull] this String value, Decimal defaultValue = default(Decimal) )
-        {
-            Decimal outValue;
-            return value.TryParsDecimal( out outValue ) ? outValue : defaultValue;
-        }
+            => value.TryParsDecimal( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
         ///     Converts the string representation of a number to its System.Decimal equivalent
@@ -48,10 +45,9 @@ namespace Extend
                                              [NotNull] IFormatProvider formatProvider,
                                              Decimal defaultValue = default(Decimal) )
         {
-            formatProvider.ThrowIfNull( nameof( formatProvider ) );
+            formatProvider.ThrowIfNull( nameof(formatProvider) );
 
-            Decimal outValue;
-            return value.TryParsDecimal( numberStyle, formatProvider, out outValue ) ? outValue : defaultValue;
+            return value.TryParsDecimal( numberStyle, formatProvider, out var outValue ) ? outValue : defaultValue;
         }
     }
 }

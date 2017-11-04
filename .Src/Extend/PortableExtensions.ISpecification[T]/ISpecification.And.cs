@@ -28,8 +28,8 @@ namespace Extend
                                                 [NotNull] Func<T, Boolean> expression,
                                                 [CanBeNull] String message = null )
         {
-            specification.ThrowIfNull( nameof( specification ) );
-            expression.ThrowIfNull( nameof( expression ) );
+            specification.ThrowIfNull( nameof(specification) );
+            expression.ThrowIfNull( nameof(expression) );
 
             var newSpecification = new ExpressionSpecification<T>( expression, message );
             return specification.And( newSpecification );

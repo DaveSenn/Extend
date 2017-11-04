@@ -29,10 +29,10 @@ namespace Extend
         [PublicAPI]
         public static Object GetValueWithoutIndex( [NotNull] this PropertyInfo propertyInfo, [NotNull] Object source )
         {
-            propertyInfo.ThrowIfNull( nameof( propertyInfo ) );
-            source.ThrowIfNull( nameof( source ) );
+            propertyInfo.ThrowIfNull( nameof(propertyInfo) );
+            source.ThrowIfNull( nameof(source) );
 
-            return propertyInfo.GetValue(source);
+            return propertyInfo.GetValue( source );
         }
     }
 }

@@ -9,7 +9,6 @@ using Xunit;
 
 namespace Extend.Testing
 {
-    
     // ReSharper disable once InconsistentNaming
     public partial class IDictionaryExTest
     {
@@ -39,11 +38,11 @@ namespace Extend.Testing
 
             var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
             Assert.True( result );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic );
 
-            dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
-            Assert.False( false );
-            Assert.Equal( 1, dic.Count );
+            result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString() );
+            Assert.False( result );
+            Assert.Single( dic );
         }
 
         [Fact]
@@ -55,11 +54,11 @@ namespace Extend.Testing
 
             var result = dic.AddIfNotContainsKey( keyValuePair );
             Assert.True( result );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic );
 
             result = dic.AddIfNotContainsKey( keyValuePair );
             Assert.False( result );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic );
         }
 
         [Fact]
@@ -70,11 +69,11 @@ namespace Extend.Testing
 
             var result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
             Assert.True( result );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic );
 
-            dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
-            Assert.False( false );
-            Assert.Equal( 1, dic.Count );
+            result = dic.AddIfNotContainsKey( key, RandomValueEx.GetRandomString );
+            Assert.False( result );
+            Assert.Single( dic );
         }
 
         [Fact]
@@ -113,11 +112,11 @@ namespace Extend.Testing
 
             var result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
             Assert.True( result );
-            Assert.Equal( 1, dic.Count );
+            Assert.Single( dic );
 
-            dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
-            Assert.False( false );
-            Assert.Equal( 1, dic.Count );
+            result = dic.AddIfNotContainsKey( key, x => RandomValueEx.GetRandomString() );
+            Assert.False( result );
+            Assert.Single( dic );
         }
 
         [Fact]

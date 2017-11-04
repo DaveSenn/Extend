@@ -76,8 +76,8 @@ namespace Extend
         /// <returns>Returns true if the action was executed without an exception, otherwise false.</returns>
         public static Boolean SafeExecuteExcept( this Action action, params Type[] exceptionsToThrow )
         {
-            action.ThrowIfNull( nameof( action ) );
-            exceptionsToThrow.ThrowIfNull( nameof( exceptionsToThrow ) );
+            action.ThrowIfNull( nameof(action) );
+            exceptionsToThrow.ThrowIfNull( nameof(exceptionsToThrow) );
 
             try
             {

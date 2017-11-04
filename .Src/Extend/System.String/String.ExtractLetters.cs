@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static String ExtractLetters( [NotNull] this String str )
         {
-            str.ThrowIfNull( nameof( str ) );
+            str.ThrowIfNull( nameof(str) );
 
             return new String( str.ToCharArray()
                                   .Where( x => x.IsLetter() )

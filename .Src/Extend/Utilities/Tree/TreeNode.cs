@@ -65,7 +65,7 @@ namespace Extend
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         public TreeNode()
-            : this(default(T))
+            : this( default(T) )
         {
         }
 
@@ -73,8 +73,8 @@ namespace Extend
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNode(ITreeNode<T> parent)
-            : this(default(T), parent, null)
+        public TreeNode( ITreeNode<T> parent )
+            : this( default(T), parent, null )
         {
         }
 
@@ -82,8 +82,8 @@ namespace Extend
         ///     Creates a new instance of the <see cref="TreeNode{T}" /> class.
         /// </summary>
         /// <param name="children">The children of the node.</param>
-        public TreeNode(ITreeNodeCollection<T> children)
-            : this(default(T), null, children)
+        public TreeNode( ITreeNodeCollection<T> children )
+            : this( default(T), null, children )
         {
         }
 
@@ -92,8 +92,8 @@ namespace Extend
         /// </summary>
         /// <param name="value">The value of the node.</param>
         /// <param name="children">The children of the node.</param>
-        public TreeNode(T value, ITreeNodeCollection<T> children)
-            : this(value, null, children)
+        public TreeNode( T value, ITreeNodeCollection<T> children )
+            : this( value, null, children )
         {
         }
 
@@ -102,8 +102,8 @@ namespace Extend
         /// </summary>
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
-        public TreeNode(T value, ITreeNode<T> parent)
-            : this(value, parent, null)
+        public TreeNode( T value, ITreeNode<T> parent )
+            : this( value, parent, null )
         {
         }
 
@@ -113,12 +113,12 @@ namespace Extend
         /// <param name="value">The value of the node.</param>
         /// <param name="parent">The parent of the node.</param>
         /// <param name="children">The children of the node.</param>
-        public TreeNode(T value, ITreeNode<T> parent = null, ITreeNodeCollection<T> children = null)
+        public TreeNode( T value, ITreeNode<T> parent = null, ITreeNodeCollection<T> children = null )
         {
             Value = value;
             Parent = parent;
-            Children = children ?? new TreeNodeCollection<T>(this);
-            if (Parent != null)
+            Children = children ?? new TreeNodeCollection<T>( this );
+            if ( Parent != null )
             {
                 DisposeTraversalDirection = Parent.DisposeTraversalDirection;
                 SearchTraversalDirection = Parent.SearchTraversalDirection;
@@ -146,13 +146,13 @@ namespace Extend
         /// </returns>
         public override String ToString()
         {
-            var stringValue = $"{' '.Repeat(Depth * 4)}[Depth: {Depth} - Value: '{Value?.ToString() ?? "[NULL]"}', Children: {Children.Count}]";
-            if (!HasChildren)
+            var stringValue = $"{' '.Repeat( Depth * 4 )}[Depth: {Depth} - Value: '{Value?.ToString() ?? "[NULL]"}', Children: {Children.Count}]";
+            if ( !HasChildren )
                 return stringValue;
 
             var childStrings = Children
-                .Select(x => x.ToString())
-                .StringJoin(Environment.NewLine);
+                .Select( x => x.ToString() )
+                .StringJoin( Environment.NewLine );
             return $"{stringValue}{Environment.NewLine}{childStrings}";
         }
 
@@ -174,20 +174,19 @@ namespace Extend
         /// <value>The value of the node.</value>
         public T Value
         {
-            get { return _value; }
+            get => _value;
             set
             {
                 var oldValue = _value;
                 _value = value;
 
-                //Notify the value about it's node, if the value implements ITreeNodeAware
-                var treeNodeAware = _value as ITreeNodeAware<T>;
-                if (treeNodeAware != null)
+                // Notify the value about it's node, if the value implements ITreeNodeAware
+                if ( _value is ITreeNodeAware<T> treeNodeAware )
                     treeNodeAware.Node = this;
 
-                //Notify the old value about the change of it's node (new node is null)
+                // Notify the old value about the change of it's node (new node is null)
                 treeNodeAware = oldValue as ITreeNodeAware<T>;
-                if (treeNodeAware != null)
+                if ( treeNodeAware != null )
                     treeNodeAware.Node = null;
             }
         }
@@ -201,8 +200,8 @@ namespace Extend
         /// <value>The parent of the node.</value>
         public ITreeNode<T> Parent
         {
-            get { return _parent; }
-            set { SetParent(value); }
+            get => _parent;
+            set => SetParent( value );
         }
 
         /// <summary>
@@ -217,14 +216,14 @@ namespace Extend
         /// <value>The children of the node.</value>
         public ITreeNodeCollection<T> Children
         {
-            get { return _children; }
+            get => _children;
             set
             {
-                if (value == _children)
+                if ( value == _children )
                     return;
 
                 _children = value;
-                _children?.ForEach(x => x.SetParent(this, false));
+                _children?.ForEach( x => x.SetParent( this, false ) );
             }
         }
 
@@ -234,11 +233,11 @@ namespace Extend
         /// <value>The search traversal direction.</value>
         public TreeTraversalDirection SearchTraversalDirection
         {
-            get { return _searchTraversalDirection; }
+            get => _searchTraversalDirection;
             set
             {
                 _searchTraversalDirection = value;
-                Children.ForEach(x => x.SearchTraversalDirection = value);
+                Children.ForEach( x => x.SearchTraversalDirection = value );
             }
         }
 
@@ -248,11 +247,11 @@ namespace Extend
         /// <value>The dispose traversal direction.</value>
         public TreeTraversalDirection DisposeTraversalDirection
         {
-            get { return _disposeTraversalDirection; }
+            get => _disposeTraversalDirection;
             set
             {
                 _disposeTraversalDirection = value;
-                Children.ForEach(x => x.DisposeTraversalDirection = value);
+                Children.ForEach( x => x.DisposeTraversalDirection = value );
             }
         }
 
@@ -262,11 +261,11 @@ namespace Extend
         /// <value>The ancestors traversal direction.</value>
         public TreeTraversalDirection AncestorsTraversalDirection
         {
-            get { return _ancestorsTraversalDirection; }
+            get => _ancestorsTraversalDirection;
             set
             {
                 _ancestorsTraversalDirection = value;
-                Children.ForEach(x => x.AncestorsTraversalDirection = value);
+                Children.ForEach( x => x.AncestorsTraversalDirection = value );
             }
         }
 
@@ -276,11 +275,11 @@ namespace Extend
         /// <value>The descendants traversal direction.</value>
         public TreeTraversalDirection DescendantsTraversalDirection
         {
-            get { return _descendantsTraversalDirection; }
+            get => _descendantsTraversalDirection;
             set
             {
                 _descendantsTraversalDirection = value;
-                Children.ForEach(x => x.DescendantsTraversalDirection = value);
+                Children.ForEach( x => x.DescendantsTraversalDirection = value );
             }
         }
 
@@ -290,11 +289,11 @@ namespace Extend
         /// <value>The traversal direction used to enumerate the nodes.</value>
         public TreeTraversalDirection TraversalDirection
         {
-            get { return _traversalDirection; }
+            get => _traversalDirection;
             set
             {
                 _traversalDirection = value;
-                Children.ForEach(x => x.TraversalDirection = value);
+                Children.ForEach( x => x.TraversalDirection = value );
             }
         }
 
@@ -302,7 +301,7 @@ namespace Extend
         ///     Gets the depth of the node.
         /// </summary>
         /// <value>The depth of the node.</value>
-        public Int32 Depth => (Parent?.Depth ?? -1) + 1;
+        public Int32 Depth => ( Parent?.Depth ?? -1 ) + 1;
 
         /// <summary>
         ///     Gets a value indicating whether the node has any children or not.
@@ -336,31 +335,31 @@ namespace Extend
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the values which matches the given predicate.</returns>
-        public virtual IEnumerable<T> FindValue(Func<ITreeNode<T>, Boolean> predicate)
+        public virtual IEnumerable<T> FindValue( Func<ITreeNode<T>, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof(predicate) );
 
             var result = new List<T>();
 
             // Search from top to bottom
-            switch (SearchTraversalDirection)
+            switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
                     // From top to bottom
-                    if (predicate(this))
-                        result.Add(Value);
-                    Children.ForEach(x => result.AddRange(x.FindValue(predicate)));
+                    if ( predicate( this ) )
+                        result.Add( Value );
+                    Children.ForEach( x => result.AddRange( x.FindValue( predicate ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
                     // From bottom to top
-                    Children.ForEachReverse(x => result.AddRange(x.FindValue(predicate)));
-                    if (predicate(this))
-                        result.Add(Value);
+                    Children.ForEachReverse( x => result.AddRange( x.FindValue( predicate ) ) );
+                    if ( predicate( this ) )
+                        result.Add( Value );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection),
-                                                          SearchTraversalDirection,
-                                                          $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof(SearchTraversalDirection),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -376,31 +375,31 @@ namespace Extend
         /// </remarks>
         /// <param name="predicate">The predicate.</param>
         /// <returns>Returns the nodes which matches the given predicate.</returns>
-        public virtual IEnumerable<ITreeNode<T>> FindNode(Func<ITreeNode<T>, Boolean> predicate)
+        public virtual IEnumerable<ITreeNode<T>> FindNode( Func<ITreeNode<T>, Boolean> predicate )
         {
-            predicate.ThrowIfNull(nameof(predicate));
+            predicate.ThrowIfNull( nameof(predicate) );
 
             var result = new List<ITreeNode<T>>();
 
             // Search from top to bottom
-            switch (SearchTraversalDirection)
+            switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
                     // From top to bottom
-                    if (predicate(this))
-                        result.Add(this);
-                    Children.ForEach(x => result.AddRange(x.FindNode(predicate)));
+                    if ( predicate( this ) )
+                        result.Add( this );
+                    Children.ForEach( x => result.AddRange( x.FindNode( predicate ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
                     // From bottom to top
-                    Children.ForEachReverse(x => result.AddRange(x.FindNode(predicate)));
-                    if (predicate(this))
-                        result.Add(this);
+                    Children.ForEachReverse( x => result.AddRange( x.FindNode( predicate ) ) );
+                    if ( predicate( this ) )
+                        result.Add( this );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection),
-                                                          SearchTraversalDirection,
-                                                          $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof(SearchTraversalDirection),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -411,29 +410,29 @@ namespace Extend
         /// </summary>
         /// <param name="value">The value to search.</param>
         /// <returns>Returns the nodes with the given value.</returns>
-        public IEnumerable<ITreeNode<T>> FindNode(T value)
+        public IEnumerable<ITreeNode<T>> FindNode( T value )
         {
             var result = new List<ITreeNode<T>>();
 
             // Search from top to bottom
-            switch (SearchTraversalDirection)
+            switch ( SearchTraversalDirection )
             {
                 case TreeTraversalDirection.TopDown:
                     // From top to bottom
-                    if (Value.Equals(value))
-                        result.Add(this);
-                    Children.ForEach(x => result.AddRange(x.FindNode(value)));
+                    if ( Value.Equals( value ) )
+                        result.Add( this );
+                    Children.ForEach( x => result.AddRange( x.FindNode( value ) ) );
                     break;
                 case TreeTraversalDirection.BottomUp:
                     // From bottom to top
-                    Children.ForEachReverse(x => result.AddRange(x.FindNode(value)));
-                    if (Value.Equals(value))
-                        result.Add(this);
+                    Children.ForEachReverse( x => result.AddRange( x.FindNode( value ) ) );
+                    if ( Value.Equals( value ) )
+                        result.Add( this );
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(SearchTraversalDirection),
-                                                          SearchTraversalDirection,
-                                                          $"The traversal direction '{SearchTraversalDirection}' is not supported.");
+                    throw new ArgumentOutOfRangeException( nameof(SearchTraversalDirection),
+                                                           SearchTraversalDirection,
+                                                           $"The traversal direction '{SearchTraversalDirection}' is not supported." );
             }
 
             return result;
@@ -444,14 +443,14 @@ namespace Extend
         /// </summary>
         /// <param name="value">The value to add.</param>
         /// <returns>Returns the added node.</returns>
-        public ITreeNode<T> Add(T value)
+        public ITreeNode<T> Add( T value )
         {
-            var node = new TreeNode<T>(value, this)
+            var node = new TreeNode<T>( value, this )
             {
                 DisposeTraversalDirection = DisposeTraversalDirection,
                 SearchTraversalDirection = SearchTraversalDirection
             };
-            Children.Add(node);
+            Children.Add( node );
             return node;
         }
 
@@ -460,12 +459,12 @@ namespace Extend
         /// </summary>
         /// <param name="node">The node to add.</param>
         /// <returns>Returns the added node.</returns>
-        public ITreeNode<T> Add(ITreeNode<T> node)
+        public ITreeNode<T> Add( ITreeNode<T> node )
         {
-            node.ThrowIfNull(nameof(node));
+            node.ThrowIfNull( nameof(node) );
 
-            if (!Children.Contains(node))
-                Children.Add(node);
+            if ( !Children.Contains( node ) )
+                Children.Add( node );
 
             return node;
         }
@@ -479,11 +478,11 @@ namespace Extend
         ///     or not.
         /// </param>
         /// <param name="detachFromOldParent">A value indicating whether the node should detach itself from it's old parent or not.</param>
-        public void SetParent(ITreeNode<T> parent,
-                              Boolean attacheToNewParent = true,
-                              Boolean detachFromOldParent = true)
+        public void SetParent( ITreeNode<T> parent,
+                               Boolean attacheToNewParent = true,
+                               Boolean detachFromOldParent = true )
         {
-            if (_parent == parent)
+            if ( _parent == parent )
                 return;
 
             // Switch parent
@@ -491,17 +490,17 @@ namespace Extend
             _parent = parent;
 
             // Remove node from old parent
-            if (oldParent != null && detachFromOldParent)
-                oldParent.Children.Remove(this, false);
+            if ( oldParent != null && detachFromOldParent )
+                oldParent.Children.Remove( this, false );
 
-            if (parent == null)
+            if ( parent == null )
                 return;
 
-            if (parent.Children == null)
-                parent.Children = new TreeNodeCollection<T>(Parent);
+            if ( parent.Children == null )
+                parent.Children = new TreeNodeCollection<T>( Parent );
 
-            if (attacheToNewParent && !parent.Children.Contains(this))
-                Parent.Children.Add(this, false);
+            if ( attacheToNewParent && !parent.Children.Contains( this ) )
+                Parent.Children.Add( this, false );
         }
 
         /// <summary>
@@ -509,7 +508,7 @@ namespace Extend
         ///     <see cref="AncestorsTraversalDirection" />, <see cref="DescendantsTraversalDirection" />).
         /// </summary>
         /// <param name="direction">The new direction.</param>
-        public void SetAllDirections(TreeTraversalDirection direction)
+        public void SetAllDirections( TreeTraversalDirection direction )
         {
             SearchTraversalDirection = direction;
             DisposeTraversalDirection = direction;
@@ -553,15 +552,15 @@ namespace Extend
         /// <returns>Returns a  enumeration of all nodes.</returns>
         private IEnumerable<ITreeNode<T>> GetEnumeratorInternal()
         {
-            if (TraversalDirection == TreeTraversalDirection.BottomUp)
+            if ( TraversalDirection == TreeTraversalDirection.BottomUp )
             {
-                foreach (var child in Children.Reverse())
+                foreach ( var child in Children.Reverse() )
                 {
-                    if (child is TreeNode<T> == false)
-                        throw new NotSupportedException($"Child '{child}' is not of type TreeNode{{T}}.");
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( $"Child '{child}' is not of type TreeNode{{T}}." );
 
-                    var enumeration = (child as TreeNode<T>).GetEnumeratorInternal();
-                    foreach (var e in enumeration)
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
                         yield return e;
                 }
                 yield return this;
@@ -569,13 +568,13 @@ namespace Extend
             else
             {
                 yield return this;
-                foreach (var child in Children)
+                foreach ( var child in Children )
                 {
-                    if (child is TreeNode<T> == false)
-                        throw new NotSupportedException($"Child '{child}' is not of type TreeNode{{T}}.");
+                    if ( child is TreeNode<T> == false )
+                        throw new NotSupportedException( $"Child '{child}' is not of type TreeNode{{T}}." );
 
-                    var enumeration = (child as TreeNode<T>).GetEnumeratorInternal();
-                    foreach (var e in enumeration)
+                    var enumeration = ( child as TreeNode<T> ).GetEnumeratorInternal();
+                    foreach ( var e in enumeration )
                         yield return e;
                 }
             }
@@ -586,20 +585,20 @@ namespace Extend
         /// </summary>
         /// <param name="descendants">A collection of descendants of the parent(s) of the current node.</param>
         /// <returns>Returns the given descendants, including the children of the current node if it has any.</returns>
-        private IEnumerable<ITreeNode<T>> GetDescendants(List<ITreeNode<T>> descendants = null)
+        private IEnumerable<ITreeNode<T>> GetDescendants( List<ITreeNode<T>> descendants = null )
         {
             descendants = descendants ?? new List<ITreeNode<T>>();
-            if (Children == null || Children.NotAny())
+            if ( Children == null || Children.NotAny() )
                 return descendants;
 
-            Children.ForEach(x =>
+            Children.ForEach( x =>
             {
-                if (x is TreeNode<T> == false)
-                    throw new NotSupportedException($"Child '{x}' is not of type TreeNode{{T}}.");
+                if ( x is TreeNode<T> == false )
+                    throw new NotSupportedException( $"Child '{x}' is not of type TreeNode{{T}}." );
 
-                descendants.Add(x);
-                ((TreeNode<T>)x).GetDescendants(descendants);
-            });
+                descendants.Add( x );
+                ( (TreeNode<T>) x ).GetDescendants( descendants );
+            } );
 
             return descendants;
         }
@@ -611,7 +610,7 @@ namespace Extend
         /// <returns>Returns the given ancestors, including the parent of the current node if it has one.</returns>
         private IEnumerable<ITreeNode<T>> GetAncestors()
         {
-            for (var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent)
+            for ( var ancestor = Parent; ancestor != null; ancestor = ancestor.Parent )
                 yield return ancestor;
         }
 
@@ -624,8 +623,8 @@ namespace Extend
         /// </summary>
         public void Dispose()
         {
-            Dispose(true);
-            GC.SuppressFinalize(this);
+            Dispose( true );
+            GC.SuppressFinalize( this );
         }
 
         /// <summary>
@@ -633,34 +632,33 @@ namespace Extend
         /// </summary>
         ~TreeNode()
         {
-            Dispose(false);
+            Dispose( false );
         }
 
         /// <summary>
         ///     Releases the managed and unmanaged resource hold by the node.
         /// </summary>
         /// <param name="disposing">A value of true to release managed resources, false to release unmanaged resources.</param>
-        protected virtual void Dispose(Boolean disposing)
+        protected virtual void Dispose( Boolean disposing )
         {
-            if (!disposing)
+            if ( !disposing )
                 return;
 
-            //Release from bottom up (start with children).
-            if (DisposeTraversalDirection == TreeTraversalDirection.BottomUp)
-                foreach (var node in Children.Reverse())
+            // Release from bottom up (start with children).
+            if ( DisposeTraversalDirection == TreeTraversalDirection.BottomUp )
+                foreach ( var node in Children.Reverse() )
                     node.Dispose();
 
-            //Release the current node.
-            var dispose = Value as IDisposable;
-            if (dispose != null)
-                (Value as IDisposable).Dispose();
+            // Release the current node.
+            if ( Value is IDisposable dispose )
+                dispose.Dispose();
 
-            //Check if children are released or not.
-            if (DisposeTraversalDirection != TreeTraversalDirection.TopDown)
+            // Check if children are released or not.
+            if ( DisposeTraversalDirection != TreeTraversalDirection.TopDown )
                 return;
 
-            //Release from top down (start with current node).
-            foreach (var node in Children)
+            // Release from top down (start with current node).
+            foreach ( var node in Children )
                 node.Dispose();
         }
 
