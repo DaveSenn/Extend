@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Double SaveToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
+        public static Double SafeToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
             => value.TryParsDouble( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Double SaveToDouble( [CanBeNull] this String value,
+        public static Double SafeToDouble( [CanBeNull] this String value,
                                            NumberStyles numberStyle,
                                            [NotNull] IFormatProvider formatProvider,
                                            Double defaultValue = default(Double) )

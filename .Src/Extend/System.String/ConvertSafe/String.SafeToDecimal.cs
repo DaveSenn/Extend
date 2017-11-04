@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using System.Globalization;
@@ -18,7 +18,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Decimal SaveToDecimal( [CanBeNull] this String value, Decimal defaultValue = default(Decimal) )
+        public static Decimal SafeToDecimal( [CanBeNull] this String value, Decimal defaultValue = default(Decimal) )
             => value.TryParsDecimal( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Decimal SaveToDecimal( [CanBeNull] this String value,
+        public static Decimal SafeToDecimal( [CanBeNull] this String value,
                                              NumberStyles numberStyle,
                                              [NotNull] IFormatProvider formatProvider,
                                              Decimal defaultValue = default(Decimal) )

@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using FluentAssertions;
@@ -11,9 +11,9 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToGuidInvalidValueTest()
+        public void SafeToGuidInvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToGuid();
+            var actual = "InvalidValue".SafeToGuid();
 
             actual
                 .Should()
@@ -21,10 +21,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToGuidInvalidValueWithDefaultTest()
+        public void SafeToGuidInvalidValueWithDefaultTest()
         {
             var expected = Guid.NewGuid();
-            var actual = "InvalidValue".SaveToGuid( expected );
+            var actual = "InvalidValue".SafeToGuid( expected );
 
             actual
                 .Should()
@@ -32,11 +32,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToGuidNullTest()
+        public void SafeToGuidNullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToGuid();
+            var actual = value.SafeToGuid();
 
             actual
                 .Should()
@@ -44,12 +44,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToGuidNullWitDefaultTest()
+        public void SafeToGuidNullWitDefaultTest()
         {
             var expected = Guid.NewGuid();
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToGuid( expected );
+            var actual = value.SafeToGuid( expected );
 
             actual
                 .Should()
@@ -57,11 +57,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToGuidTest()
+        public void SafeToGuidTest()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                                 .SaveToGuid();
+                                 .SafeToGuid();
 
             actual
                 .Should()
@@ -69,11 +69,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToGuidWithDefaultTest()
+        public void SafeToGuidWithDefaultTest()
         {
             var expected = Guid.NewGuid();
             var actual = expected.ToString()
-                                 .SaveToGuid( Guid.NewGuid() );
+                                 .SafeToGuid( Guid.NewGuid() );
 
             actual
                 .Should()

@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using FluentAssertions;
@@ -11,9 +11,9 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToCharInvalidValueTest()
+        public void SafeToCharInvalidValueTest()
         {
-            var actual = "InvalidValue".SaveToChar();
+            var actual = "InvalidValue".SafeToChar();
 
             actual
                 .Should()
@@ -21,10 +21,10 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToCharInvalidValueWithDefaultTest()
+        public void SafeToCharInvalidValueWithDefaultTest()
         {
             const Char expected = 'a';
-            var actual = "InvalidValue".SaveToChar( expected );
+            var actual = "InvalidValue".SafeToChar( expected );
 
             actual
                 .Should()
@@ -32,12 +32,12 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToCharNullTest()
+        public void SafeToCharNullTest()
         {
             String value = null;
             const Char expected = 'y';
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToChar( expected );
+            var actual = value.SafeToChar( expected );
 
             actual
                 .Should()
@@ -45,11 +45,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToCharTest()
+        public void SafeToCharTest()
         {
             const Char expected = 'c';
             var actual = expected.ToString()
-                                 .SaveToChar();
+                                 .SafeToChar();
 
             actual
                 .Should()
@@ -57,11 +57,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToCharTest1()
+        public void SafeToCharTest1()
         {
             const Char expected = 'c';
             var actual = expected.ToString()
-                                 .SaveToChar( 'e' );
+                                 .SafeToChar( 'e' );
 
             actual
                 .Should()

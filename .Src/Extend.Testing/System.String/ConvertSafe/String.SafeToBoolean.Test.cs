@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using FluentAssertions;
@@ -11,20 +11,20 @@ namespace Extend.Testing
     public partial class StringExTest
     {
         [Fact]
-        public void SaveToBooleanInvalidValueTest()
+        public void SafeToBooleanInvalidValueTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
-            var actual = "InvalidValue".SaveToBoolean( expected );
+            var actual = "InvalidValue".SafeToBoolean( expected );
 
             Assert.Equal( expected, actual );
         }
 
         [Fact]
-        public void SaveToBooleanNullTest()
+        public void SafeToBooleanNullTest()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToBoolean();
+            var actual = value.SafeToBoolean();
 
             actual
                 .Should()
@@ -32,11 +32,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToBooleanNullTest1()
+        public void SafeToBooleanNullTest1()
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.SaveToBoolean( !default(Boolean) );
+            var actual = value.SafeToBoolean( !default(Boolean) );
 
             actual
                 .Should()
@@ -44,11 +44,11 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void SaveToBooleanTest()
+        public void SafeToBooleanTest()
         {
             var expected = RandomValueEx.GetRandomBoolean();
             var actual = expected.ToString()
-                                 .SaveToBoolean();
+                                 .SafeToBoolean();
 
             actual
                 .Should()

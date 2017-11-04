@@ -1,4 +1,4 @@
-﻿#region Usings
+#region Usings
 
 using System;
 using JetBrains.Annotations;
@@ -20,7 +20,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Guid SaveToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
+        public static Guid SafeToGuid( [CanBeNull] this String value, Guid defaultValue = default(Guid) )
             => value.TryParsGuid( out var outValue ) ? outValue : defaultValue;
     }
 }
