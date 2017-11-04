@@ -5,6 +5,7 @@
 *.suo
 *.user
 *.sln.docstates
+.vs
 
 # Build results
 [Dd]ebug/
@@ -204,4 +205,3 @@ FakesAssemblies/
 Output
 /.Doc/docfx_project/_exported_templates
 .Output
-.vs
