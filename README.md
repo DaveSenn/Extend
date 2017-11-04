@@ -1,7 +1,6 @@
 # Welcome to Extend
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/github/DaveSenn/Extend?svg=true)](https://ci.appveyor.com/project/DaveSenn/Extend/branch/dev)
-[![Coverity Scan Build Status](https://scan.coverity.com/projects/5272/badge.svg)](https://scan.coverity.com/projects/5272)
 
 [![NuGet](https://img.shields.io/nuget/v/Extend.svg)](https://www.nuget.org/packages/Extend)
 [![NuGet](https://img.shields.io/nuget/dt/Extend.svg)](https://www.nuget.org/packages/Extend)
