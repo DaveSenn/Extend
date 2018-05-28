@@ -2,7 +2,6 @@
 
 using System;
 using System.Globalization;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -47,7 +46,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractFirstInt16( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -57,7 +56,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ExtractFirstInt16( null, 1 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

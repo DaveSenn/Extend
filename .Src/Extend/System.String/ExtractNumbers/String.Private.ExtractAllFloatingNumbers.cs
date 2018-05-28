@@ -51,6 +51,7 @@ namespace Extend
                     decimals.Add( sb.ToString() );
                     sb.Clear();
                 }
+
             if ( sb.Length > 0 )
                 decimals.Add( sb.ToString() );
 

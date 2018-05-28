@@ -17,7 +17,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Char) );
+                .Be( default );
 
             actual
                 .Should()
@@ -33,7 +33,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Char) );
+                .Be( default );
 
             actual
                 .Should()

@@ -42,7 +42,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToDecimal( value, CultureInfo.InvariantCulture );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToDecimal( value );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -119,7 +119,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -130,7 +130,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -141,7 +141,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal( CultureInfo.InvariantCulture );
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -152,7 +152,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDecimal();
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
     }
 }

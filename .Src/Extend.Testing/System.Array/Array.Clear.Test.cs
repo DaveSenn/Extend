@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -33,7 +32,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Clear( 0, 0 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

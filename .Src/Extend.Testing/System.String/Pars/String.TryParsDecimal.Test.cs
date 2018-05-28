@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
 
             actual
                 .Should()
@@ -35,7 +35,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
 
             actual
                 .Should()
@@ -53,7 +53,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDecimal( NumberStyles.Any, culture, out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDecimal( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture, out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
 
             actual
                 .Should()
@@ -93,7 +93,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
 
             actual
                 .Should()

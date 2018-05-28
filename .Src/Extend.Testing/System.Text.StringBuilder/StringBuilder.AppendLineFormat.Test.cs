@@ -2,7 +2,6 @@
 
 using System;
 using System.Text;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -48,7 +47,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -57,7 +56,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -82,7 +81,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -91,7 +90,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( null, "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -117,7 +116,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => StringBuilderEx.AppendLineFormat( null, "", "", "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -126,7 +125,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( null, "", "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -137,7 +136,7 @@ namespace Extend.Testing
                                                                   "",
                                                                   "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -146,7 +145,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -155,7 +154,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new StringBuilder().AppendLineFormat( "", null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

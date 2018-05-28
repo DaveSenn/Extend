@@ -32,8 +32,8 @@ namespace Extend
             return exceptions == null
                 ? values
                 : values
-                    .ToList()
-                    .RemoveRange( exceptions );
+                  .ToList()
+                  .RemoveRange( exceptions );
         }
 
         /// <summary>
@@ -54,8 +54,8 @@ namespace Extend
         public static IEnumerable GetValuesExpect( [NotNull] Type type, [CanBeNull] params Object[] exceptions )
         {
             var values = GetValues( type )
-                .OfType<Object>()
-                .ToList();
+                         .OfType<Object>()
+                         .ToList();
 
             return exceptions == null ? values : values.RemoveRange( exceptions );
         }

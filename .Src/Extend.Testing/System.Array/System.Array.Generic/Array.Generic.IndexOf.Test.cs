@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -42,7 +41,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test2", 1 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -67,7 +66,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test3", 1, 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -78,7 +77,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => array.IndexOf( "test2" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

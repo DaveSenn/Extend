@@ -15,7 +15,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.FactorOf( 0, 100 );
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
 
         [Fact]

@@ -168,8 +168,8 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => collection.ToTreeNodeCollection( x => x.Id, x => x.Parent?.Id, null );
-            test.ShouldThrow<InvalidOperationException>()
-                .WithMessage( "The following items do not have a unique id:\r\n	 1\r\n	 2\r\n" );
+            var expection = Assert.Throws<InvalidOperationException>( test );
+            Assert.Equal( "The following items do not have a unique id:\r\n	 1\r\n	 2\r\n", expection.Message );
         }
 
         [Fact]
@@ -214,8 +214,9 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => collection.ToTreeNodeCollection( x => x.Id, x => x.Parent?.Id, null );
-            test.ShouldThrow<InvalidOperationException>()
-                .WithMessage( "Could not find a matching parent for the following items:\r\n\t 4\r\n" );
+
+            var expection = Assert.Throws<InvalidOperationException>( test );
+            Assert.Equal( "Could not find a matching parent for the following items:\r\n\t 4\r\n", expection.Message );
         }
 
         [Fact]
@@ -270,8 +271,8 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => collection.ToTreeNodeCollection( x => x.Id, x => x.Parent?.Id, null );
-            test.ShouldThrow<InvalidOperationException>()
-                .WithMessage( "Could not find a matching parent for the following items:\r\n\t 4\r\n\t 5\r\n" );
+            var expection = Assert.Throws<InvalidOperationException>( test );
+            Assert.Equal( "Could not find a matching parent for the following items:\r\n\t 4\r\n\t 5\r\n", expection.Message );
         }
 
         [Fact]

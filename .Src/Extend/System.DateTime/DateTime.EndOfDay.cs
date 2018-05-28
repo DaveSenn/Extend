@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static DateTime EndOfDay( this DateTime day )
             => day
-                .Date.AddDays( 1 )
-                .Subtract( 1.ToMilliseconds() );
+               .Date.AddDays( 1 )
+               .Subtract( 1.ToMilliseconds() );
     }
 }

@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -25,7 +24,7 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException>( () => throw new ArgumentException() );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -46,7 +45,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
                 () => throw new ArgumentException() );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -55,7 +54,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException>(
                 () => throw new NullReferenceException() );
 
-            test.ShouldThrow<NullReferenceException>();
+            Assert.Throws<NullReferenceException>( test );
         }
 
         [Fact]
@@ -65,7 +64,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -88,7 +87,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => throw new ArgumentException() );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -97,7 +96,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => throw new NullReferenceException() );
 
-            test.ShouldThrow<NullReferenceException>();
+            Assert.Throws<NullReferenceException>( test );
         }
 
         [Fact]
@@ -106,7 +105,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>(
                 () => throw new InvalidOperationException() );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -116,7 +115,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException, NullReferenceException, InvalidOperationException>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -125,15 +124,15 @@ namespace Extend.Testing
             var actual =
                 ActionEx
                     .SafeExecuteExcept
-                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                        () => { } );
+                        <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                            () => { } );
             Assert.True( actual );
 
             actual =
                 ActionEx
                     .SafeExecuteExcept
-                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                        () => throw new InvalidCastException() );
+                        <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                            () => throw new InvalidCastException() );
             Assert.False( actual );
         }
 
@@ -142,10 +141,10 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new ArgumentException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new ArgumentException() );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -153,10 +152,10 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new NullReferenceException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new NullReferenceException() );
 
-            test.ShouldThrow<NullReferenceException>();
+            Assert.Throws<NullReferenceException>( test );
         }
 
         [Fact]
@@ -164,10 +163,10 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new InvalidOperationException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new InvalidOperationException() );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -175,10 +174,10 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
-                    () => throw new ArithmeticException() );
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>(
+                        () => throw new ArithmeticException() );
 
-            test.ShouldThrow<ArithmeticException>();
+            Assert.Throws<ArithmeticException>( test );
         }
 
         [Fact]
@@ -188,9 +187,9 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action
                 .SafeExecuteExcept
-                <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>();
+                    <ArgumentException, NullReferenceException, InvalidOperationException, ArithmeticException>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -220,7 +219,7 @@ namespace Extend.Testing
                                                             typeof(InvalidOperationException),
                                                             typeof(ArithmeticException) );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -232,7 +231,7 @@ namespace Extend.Testing
                                                             typeof(InvalidOperationException),
                                                             typeof(ArithmeticException) );
 
-            test.ShouldThrow<NullReferenceException>();
+            Assert.Throws<NullReferenceException>( test );
         }
 
         [Fact]
@@ -244,7 +243,7 @@ namespace Extend.Testing
                                                             typeof(InvalidOperationException),
                                                             typeof(ArithmeticException) );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -256,7 +255,7 @@ namespace Extend.Testing
                                                             typeof(InvalidOperationException),
                                                             typeof(ArithmeticException) );
 
-            test.ShouldThrow<ArithmeticException>();
+            Assert.Throws<ArithmeticException>( test );
         }
 
         [Fact]
@@ -269,7 +268,7 @@ namespace Extend.Testing
                                                           typeof(InvalidOperationException),
                                                           typeof(ArithmeticException) );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -279,7 +278,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => action.SafeExecuteExcept<ArgumentException>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -18,7 +17,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Copy( destinationArray, 1 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -29,7 +28,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Copy( destinationArray, 1 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -79,7 +78,7 @@ namespace Extend.Testing
             var destinationArray = new String[2];
             Action test = () => array.Copy( 0, destinationArray, 1, 20 );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -95,7 +94,7 @@ namespace Extend.Testing
             var destinationArray = new String[2];
             Action test = () => array.Copy( -1, destinationArray, 0, 2 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -111,7 +110,7 @@ namespace Extend.Testing
             var destinationArray = new String[2];
             Action test = () => array.Copy( 0, destinationArray, -1, 2 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -127,7 +126,7 @@ namespace Extend.Testing
             var destinationArray = new String[2];
             Action test = () => array.Copy( 0, destinationArray, 1, -1 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -138,7 +137,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Copy( 1, destinationArray, 0, 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -155,7 +154,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => array.Copy( 1, destinationArray, 0, 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -170,7 +169,7 @@ namespace Extend.Testing
             var destinationArray = new String[3];
             Action test = () => array.Copy( destinationArray, 30 );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
     }
 }

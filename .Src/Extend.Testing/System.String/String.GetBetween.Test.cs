@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -16,7 +15,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 20 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -25,7 +24,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1test2".GetBetween( "1", "2", 20, 2 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -34,7 +33,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 2, 60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -43,7 +42,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", -2, 60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -52,7 +51,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( "1", "2", 2, -60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -61,7 +60,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 20 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -70,7 +69,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1test2".GetBetween( '1', '2', 20, 2 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -79,7 +78,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 2, 60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -88,7 +87,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', -2, 60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -97,7 +96,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "121test2".GetBetween( '1', '2', 2, -60 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -127,7 +126,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, 't', 't' );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -151,7 +150,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, 't', 't' );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -181,7 +180,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -191,7 +190,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -201,7 +200,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( "", null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -225,7 +224,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetBetween( null, "", "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -235,7 +234,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( null, "" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -245,7 +244,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetBetween( "", null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

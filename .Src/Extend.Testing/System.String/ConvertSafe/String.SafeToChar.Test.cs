@@ -17,7 +17,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Char) );
+                .Be( default );
         }
 
         [Fact]

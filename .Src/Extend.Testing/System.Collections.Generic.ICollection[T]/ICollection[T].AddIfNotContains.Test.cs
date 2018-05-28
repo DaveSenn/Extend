@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -33,7 +32,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => CollectionTEx.AddIfNotContains( null, RandomValueEx.GetRandomString() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

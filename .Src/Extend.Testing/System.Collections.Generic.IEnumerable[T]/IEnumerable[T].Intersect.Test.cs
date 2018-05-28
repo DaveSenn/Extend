@@ -23,7 +23,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => first.Intersect( second, x => x );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -36,7 +36,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Intersect( second, x => x );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -50,7 +50,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.Intersect( second, keySelector );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

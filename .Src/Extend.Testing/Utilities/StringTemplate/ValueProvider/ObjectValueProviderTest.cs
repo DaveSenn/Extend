@@ -22,7 +22,7 @@ namespace Extend.Testing.Internal
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new ObjectValueProvider( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing.Internal
             var target = new ObjectValueProvider( model );
 
             Action test = () => target.GetValue( "DOESNotExist" );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]

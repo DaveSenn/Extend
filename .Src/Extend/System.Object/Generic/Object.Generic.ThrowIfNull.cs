@@ -16,6 +16,22 @@ namespace Extend
         /// <summary>
         ///     Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj" /> is null.
         /// </summary>
+        /// <typeparam name="TObject">The type <paramref name="obj" />.</typeparam>
+        /// <param name="obj">The object to check.</param>
+        /// <param name="parameterName">The name of <paramref name="obj" />.</param>
+        [PublicAPI]
+        [DebuggerStepThrough]
+        public static void ThrowIfNull<TObject>( [NoEnumeration] [CanBeNull] this TObject obj, [NotNull] String parameterName)
+        {
+            if ( obj != null )
+                return;
+
+            throw new ArgumentNullException( parameterName, parameterName + " can not be null." );
+        }
+
+        /// <summary>
+        ///     Throws a <see cref="ArgumentNullException" /> exception if <paramref name="obj" /> is null.
+        /// </summary>
         /// <remarks>
         ///     If <paramref name="errorMessage" /> is null, this method will use the following default message:
         ///     "{object name} can not be null."
@@ -30,13 +46,12 @@ namespace Extend
         [DebuggerStepThrough]
         public static void ThrowIfNull<TObject>( [NoEnumeration] [CanBeNull] this TObject obj,
                                                  [NotNull] String parameterName,
-                                                 [CanBeNull] String errorMessage = null )
+                                                 [CanBeNull] String errorMessage )
         {
             if ( obj != null )
                 return;
 
-            throw new ArgumentNullException( parameterName,
-                                             errorMessage ?? $"{parameterName} can not be null." );
+            throw new ArgumentNullException( parameterName, errorMessage );
         }
     }
 }

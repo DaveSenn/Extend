@@ -3,7 +3,6 @@
 #region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -66,7 +65,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => value.ThrowIfNull( "varName" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -33,7 +32,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => IEnumerableTEx.ForEach( list, x => list.Remove( x ) );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -44,7 +43,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => { } );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -55,7 +54,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new List<Object>().ForEach( action );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -78,7 +77,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => list.ForEach( ( x, i ) => list.Remove( x ) );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -100,7 +99,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( list, Console.WriteLine );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -111,7 +110,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => IEnumerableTEx.ForEach( new List<Object>(), action );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

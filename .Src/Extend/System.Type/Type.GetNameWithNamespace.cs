@@ -54,8 +54,8 @@ namespace Extend
             type.ThrowIfNull( nameof(type) );
 
             return type
-                .GetDeclaringAssembly()
-                .FullName.Split( ',' )[0];
+                   .GetDeclaringAssembly()
+                   .FullName.Split( ',' )[0];
         }
 
         /// <summary>

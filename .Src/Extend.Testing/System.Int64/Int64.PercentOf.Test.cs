@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -36,7 +35,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.PercentOf( 0, (Double) 100 );
 
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
 
         [Fact]
@@ -55,7 +54,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.PercentOf( 0, (Int64) 100 );
 
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
 
         [Fact]
@@ -74,7 +73,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.PercentOf( 0, 100 );
 
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
 
         [Fact]
@@ -83,7 +82,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => Int64Ex.PercentOf( 0, (Int64) 100 );
 
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
     }
 }

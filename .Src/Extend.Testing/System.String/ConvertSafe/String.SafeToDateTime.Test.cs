@@ -42,7 +42,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace Extend.Testing
                                         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                         .SafeToDateTime( null, DateTimeStyles.AdjustToUniversal );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Extend.Testing
                                         // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                         .SafeToDateTime( CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]

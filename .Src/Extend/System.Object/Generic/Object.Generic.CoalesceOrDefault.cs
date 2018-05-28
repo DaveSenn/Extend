@@ -36,8 +36,8 @@ namespace Extend
                 return value;
 
             var notNullValues = values
-                .Where( x => x != null )
-                .ToList();
+                                .Where( x => x != null )
+                                .ToList();
 
             return notNullValues.Any() ? notNullValues.First() : defaultValue;
         }
@@ -66,8 +66,8 @@ namespace Extend
                 return value;
 
             var notNullValues = values
-                .Where( x => x != null )
-                .ToList();
+                                .Where( x => x != null )
+                                .ToList();
             return notNullValues.Any() ? notNullValues.First() : defaultValueFactory();
         }
     }

@@ -16,7 +16,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new PathMemberSelectionRule( null, MemberSelectionMode.Include );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

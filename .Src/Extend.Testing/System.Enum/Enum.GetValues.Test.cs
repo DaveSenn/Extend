@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -52,7 +51,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => EnumEx.GetValues<Int32>();
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -61,7 +60,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => EnumEx.GetValues( typeof(Int32) );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -72,7 +71,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => EnumEx.GetValues( t );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -3,7 +3,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -115,7 +114,7 @@ namespace Extend.Testing
 
             Action test = () => first.ConcatAllToDictionary( other1, other2 );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -132,7 +131,7 @@ namespace Extend.Testing
             // ReSharper disable once CoVariantArrayConversion
             Action test = () => first.ConcatAllToDictionary( others );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -153,7 +152,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => first.ConcatAllToDictionary( other1, other2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

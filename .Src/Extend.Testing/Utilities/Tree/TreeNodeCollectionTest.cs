@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -99,7 +98,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => target.Add( item );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -453,7 +452,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => target.Remove( item );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

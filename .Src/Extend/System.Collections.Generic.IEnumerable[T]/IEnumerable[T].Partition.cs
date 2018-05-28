@@ -34,9 +34,9 @@ namespace Extend
                 throw new ArgumentOutOfRangeException( nameof(size), size, $"{nameof(size)} is out of range. Size must be > 1." );
 
             return source
-                .WithIndex()
-                .GroupBy( x => x.Index / size )
-                .Select( x => x.WithoutIndex() );
+                   .WithIndex()
+                   .GroupBy( x => x.Index / size )
+                   .Select( x => x.WithoutIndex() );
         }
     }
 }

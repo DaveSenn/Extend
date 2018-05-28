@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
 
             actual
                 .Should()
@@ -34,7 +34,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
 
             actual
                 .Should()
@@ -51,7 +51,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsInt32( NumberStyles.Any, culture, out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsInt32( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.InvariantCulture, out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
 
             actual
                 .Should()
@@ -89,7 +89,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
 
             actual
                 .Should()

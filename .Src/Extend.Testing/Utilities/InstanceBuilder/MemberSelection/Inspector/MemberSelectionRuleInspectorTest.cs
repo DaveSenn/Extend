@@ -80,7 +80,7 @@ namespace Extend.Testing
         {
             var target = new MemberSelectionRuleInspector();
             Action test = () => target.Inspect( new List<IMemberSelectionRule>(), null );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -115,7 +115,7 @@ namespace Extend.Testing
         {
             var target = new MemberSelectionRuleInspector();
             Action test = () => target.Inspect( null, new MemberInformation() );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

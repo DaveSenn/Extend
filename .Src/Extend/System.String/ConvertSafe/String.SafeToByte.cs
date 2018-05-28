@@ -23,7 +23,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Byte SafeToByte( [CanBeNull] this String value, Byte defaultValue = default(Byte) )
+        public static Byte SafeToByte( [CanBeNull] this String value, Byte defaultValue = default )
             => value.TryParsByte( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Extend
         public static Byte SafeToByte( [CanBeNull] this String value,
                                        NumberStyles numberStyle,
                                        [NotNull] IFormatProvider formatProvider,
-                                       Byte defaultValue = default(Byte) )
+                                       Byte defaultValue = default )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 

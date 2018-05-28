@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -19,7 +18,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => t.GetAttributeDefinitions<MyDisplayAttribute>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

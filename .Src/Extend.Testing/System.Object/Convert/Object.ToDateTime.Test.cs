@@ -42,7 +42,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDateTime( CultureInfo.CurrentCulture );
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToDateTime();
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToDateTime( value, CultureInfo.CurrentCulture );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToDateTime( value );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]

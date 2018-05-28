@@ -19,7 +19,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new KeyEqualityComparer<String, String>( keySelector, new StringLengthComparer() );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

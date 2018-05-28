@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
 
             actual
                 .Should()
@@ -34,7 +34,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
 
             actual
                 .Should()
@@ -52,7 +52,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDouble( NumberStyles.Any, culture, out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDouble( NumberStyles.AllowHexSpecifier, culture, out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -76,7 +76,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
 
             actual
                 .Should()
@@ -92,7 +92,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
 
             actual
                 .Should()

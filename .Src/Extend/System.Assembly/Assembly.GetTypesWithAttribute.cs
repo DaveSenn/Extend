@@ -83,8 +83,8 @@ namespace Extend
                                     {
                                         Type = y.AsType(),
                                         Attributes = attributes
-                                            .Cast<T>()
-                                            .ToList()
+                                                     .Cast<T>()
+                                                     .ToList()
                                     } );
                                 } ) );
 

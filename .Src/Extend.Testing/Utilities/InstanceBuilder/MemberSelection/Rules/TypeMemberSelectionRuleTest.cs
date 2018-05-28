@@ -29,7 +29,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new TypeMemberSelectionRule( null, MemberSelectionMode.Include, CompareMode.Is );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

@@ -21,7 +21,7 @@ namespace Extend
         [PublicAPI]
         public static DateTime EndOfMonth( this DateTime month )
             => new DateTime( month.Year, month.Month, 1 )
-                .AddMonths( 1 )
-                .Subtract( 1.ToMilliseconds() );
+               .AddMonths( 1 )
+               .Subtract( 1.ToMilliseconds() );
     }
 }

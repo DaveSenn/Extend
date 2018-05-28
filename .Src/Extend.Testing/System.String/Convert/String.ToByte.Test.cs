@@ -17,7 +17,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".ToByte();
 
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -29,7 +29,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -38,7 +38,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "300".ToByte();
 
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "1".ToByte( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".ToByte( CultureInfo.InvariantCulture );
 
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -78,7 +78,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "300".ToByte( CultureInfo.InvariantCulture );
 
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -102,7 +102,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte( CultureInfo.InvariantCulture );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

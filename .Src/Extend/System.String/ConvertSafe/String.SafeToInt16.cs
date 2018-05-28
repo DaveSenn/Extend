@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int16 SafeToInt16( [CanBeNull] this String value, Int16 defaultValue = default(Int16) )
+        public static Int16 SafeToInt16( [CanBeNull] this String value, Int16 defaultValue = default )
             => value.TryParsInt16( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Extend
         public static Int16 SafeToInt16( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
                                          [NotNull] IFormatProvider formatProvider,
-                                         Int16 defaultValue = default(Int16) )
+                                         Int16 defaultValue = default )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 

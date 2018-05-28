@@ -23,7 +23,7 @@ namespace Extend.Testing
                 result.Should()
                       .BeNull( "Should have thrown exception" );
             };
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace Extend.Testing
                 result.Should()
                       .BeNull( "Should have thrown exception" );
             };
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

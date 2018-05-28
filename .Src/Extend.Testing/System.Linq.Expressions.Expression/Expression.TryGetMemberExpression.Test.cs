@@ -164,7 +164,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once UnusedVariable
             Action test = () => expression.TryGetMemberExpression( out var outResult );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         private event PropertyChangedEventHandler PropertyChanged;

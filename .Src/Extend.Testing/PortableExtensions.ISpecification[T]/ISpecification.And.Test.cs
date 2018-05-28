@@ -159,7 +159,7 @@ namespace Extend.Testing
             ISpecification<String> left = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( x => true );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -169,7 +169,7 @@ namespace Extend.Testing
             Func<String, Boolean> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.And( expression );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -126,7 +126,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => expression.GetMemberPath();
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -160,7 +160,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => expression.GetMemberPath();
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         #region Nested Types

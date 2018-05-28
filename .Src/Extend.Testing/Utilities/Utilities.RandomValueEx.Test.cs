@@ -91,7 +91,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomDouble( 30, 20 );
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -100,7 +100,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomEnum<Int32>();
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -121,7 +121,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomInt16( 30, 20 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -138,7 +138,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => RandomValueEx.GetRandomInt32( 30, 20 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -154,7 +154,7 @@ namespace Extend.Testing
         {
             Action test = () => RandomValueEx.GetRandomInt64( 20, 10 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]

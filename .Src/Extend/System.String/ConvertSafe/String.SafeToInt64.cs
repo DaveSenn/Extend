@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int64 SafeToInt64( [CanBeNull] this String value, Int64 defaultValue = default(Int64) )
+        public static Int64 SafeToInt64( [CanBeNull] this String value, Int64 defaultValue = default )
             => value.TryParsInt64( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Extend
         public static Int64 SafeToInt64( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
                                          [NotNull] IFormatProvider formatProvider,
-                                         Int64 defaultValue = default(Int64) )
+                                         Int64 defaultValue = default )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 

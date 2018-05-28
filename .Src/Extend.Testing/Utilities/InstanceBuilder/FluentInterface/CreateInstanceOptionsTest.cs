@@ -35,7 +35,7 @@ namespace Extend.Testing
             Expression<Func<String, Object>> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.ByPath( expression );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Extend.Testing
             String expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.ByPath( expression );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -158,7 +158,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.ExcludingChildrenOf( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -260,7 +260,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.ExcludingChildrenOf( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -285,7 +285,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Excluding( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -387,7 +387,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Excluding( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -398,7 +398,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.For( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -407,7 +407,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Action test = () => target.For( x => x.AllMembers() );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -444,7 +444,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.For( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -453,7 +453,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Action test = () => target.For( x => true );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -542,7 +542,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.IncludingChildrenOf( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -644,7 +644,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.IncludingChildrenOf( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -669,7 +669,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Including( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -771,7 +771,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.Including( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -814,7 +814,7 @@ namespace Extend.Testing
             Func<IIncludeExcludeOptions<String>, IIncludeExcludeOptions<String>> configurationFunc = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.NotFor( configurationFunc );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -823,7 +823,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Action test = () => target.NotFor( x => x.AllMembers() );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -860,7 +860,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Boolean> predicate = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.NotFor( predicate );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -869,7 +869,7 @@ namespace Extend.Testing
             var target = new CreateInstanceOptions<String>();
             Action test = () => target.NotFor( x => true );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -895,7 +895,7 @@ namespace Extend.Testing
         {
             var target = new CreateInstanceOptions<String>();
             Action test = () => target.PopulateCollectionItemCount( 400, 300 );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -988,7 +988,7 @@ namespace Extend.Testing
             Func<IMemberInformation, Object> factory = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.WithFactory( factory );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

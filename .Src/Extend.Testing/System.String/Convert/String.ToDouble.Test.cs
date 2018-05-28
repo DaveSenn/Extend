@@ -15,9 +15,9 @@ namespace Extend.Testing
         public void ToDoubleInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "invalidFormat".ToDouble();
+            Action test = () => "invalidFormat".ToDouble();
 
-            text.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -26,9 +26,9 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action text = () => value.ToDouble();
+            Action test = () => value.ToDouble();
 
-            text.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -37,18 +37,18 @@ namespace Extend.Testing
             CultureInfo formatProvider = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action text = () => "1".ToDouble( formatProvider );
+            Action test = () => "1".ToDouble( formatProvider );
 
-            text.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
         public void ToDoubleOverloadInvalidFormatTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "invalidFormat".ToDouble( new CultureInfo( "de-CH" ) );
+            Action test = () => "invalidFormat".ToDouble( new CultureInfo( "de-CH" ) );
 
-            text.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -57,9 +57,9 @@ namespace Extend.Testing
             String value = null;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             // ReSharper disable once AssignNullToNotNullAttribute
-            Action text = () => value.ToDouble( new CultureInfo( "de-CH" ) );
+            Action test = () => value.ToDouble( new CultureInfo( "de-CH" ) );
 
-            text.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -79,18 +79,18 @@ namespace Extend.Testing
         public void ToDoubleOverloadValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
+            Action test = () => "2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
 
-            text.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
         public void ToDoubleOverloadValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "-2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
+            Action test = () => "-2.7976931348623157E+308".ToDouble( new CultureInfo( "de-CH" ) );
 
-            text.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -109,18 +109,18 @@ namespace Extend.Testing
         public void ToDoubleValueToBigTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "2.7976931348623157E+308".ToDouble();
+            Action test = () => "2.7976931348623157E+308".ToDouble();
 
-            text.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
         public void ToDoubleValueToSmallTest()
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-            Action text = () => "-2.7976931348623157E+308".ToDouble();
+            Action test = () => "-2.7976931348623157E+308".ToDouble();
 
-            text.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
     }
 }

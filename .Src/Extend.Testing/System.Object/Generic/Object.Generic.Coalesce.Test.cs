@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -76,7 +75,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => ObjectEx.Coalesce( null, array, null );
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -89,7 +88,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.Coalesce( array );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

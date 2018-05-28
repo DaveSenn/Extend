@@ -38,7 +38,7 @@ namespace Extend.Testing
                            {
                                bar = new[] { 123, 312 }
                            } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -225,14 +225,14 @@ namespace Extend.Testing
         public void GetValueTest_ExpressionEmpty()
         {
             Action test = () => ExpressionEvaluator.GetValue( String.Empty, new Object() );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
         public void GetValueTest_ExpressionNull()
         {
             Action test = () => ExpressionEvaluator.GetValue( null, new Object() );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -317,7 +317,7 @@ namespace Extend.Testing
                                foo = 123
                            } );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -329,42 +329,42 @@ namespace Extend.Testing
                            {
                                foo = new List<Int32> { 123, 312 }
                            } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
         public void GetValueTest_InvalidIndexExpression()
         {
             Action test = () => ExpressionEvaluator.GetValue( "foo[0", new { foo = 123 } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
         public void GetValueTest_InvalidIndexExpression1()
         {
             Action test = () => ExpressionEvaluator.GetValue( "foo[0", new { foo = 123 } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
         public void GetValueTest_InvalidIndexExpression2()
         {
             Action test = () => ExpressionEvaluator.GetValue( "foo[", new { foo = 123 } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
         public void GetValueTest_InvalidIndexExpression3()
         {
             Action test = () => ExpressionEvaluator.GetValue( "foo[", new { foo = 123 } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
         public void GetValueTest_PropertyDoesNotExist()
         {
             Action test = () => ExpressionEvaluator.GetValue( "foo", new { bar = 123 } );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]

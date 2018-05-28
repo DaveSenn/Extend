@@ -42,7 +42,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte( CultureInfo.CurrentCulture );
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte();
-            test.ShouldThrow<InvalidCastException>();
+            Assert.Throws<InvalidCastException>( test );
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToByte( value, CultureInfo.CurrentCulture );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => ObjectEx.ToByte( value );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -118,7 +118,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte( CultureInfo.CurrentCulture );
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -128,7 +128,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte();
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -138,7 +138,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte( CultureInfo.CurrentCulture );
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
 
         [Fact]
@@ -148,7 +148,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.ToByte();
-            test.ShouldThrow<OverflowException>();
+            Assert.Throws<OverflowException>( test );
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -59,7 +58,7 @@ namespace Extend.Testing
 
             Action test = () => sourceArray.Slice( 2, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -76,7 +75,7 @@ namespace Extend.Testing
 
             Action test = () => sourceArray.Slice( 2, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -86,7 +85,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, new Int32[2] );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -100,7 +99,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -133,7 +132,7 @@ namespace Extend.Testing
             };
             Action test = () => sourceArray.Slice( 10, 2 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -148,7 +147,7 @@ namespace Extend.Testing
             };
             Action test = () => sourceArray.Slice( 0, 10 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -163,7 +162,7 @@ namespace Extend.Testing
             };
             Action test = () => sourceArray.Slice( 2, 3 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -174,7 +173,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -210,7 +209,7 @@ namespace Extend.Testing
             var targetArray = new Int32[4];
             Action test = () => sourceArray.Slice( 10, 2, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -226,7 +225,7 @@ namespace Extend.Testing
             var targetArray = new Int32[4];
             Action test = () => sourceArray.Slice( 0, 10, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -242,7 +241,7 @@ namespace Extend.Testing
             var targetArray = new Int32[4];
             Action test = () => sourceArray.Slice( 2, 3, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -258,7 +257,7 @@ namespace Extend.Testing
             var targetArray = new Int32[4];
             Action test = () => sourceArray.Slice( -1, 3, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -274,7 +273,7 @@ namespace Extend.Testing
             var targetArray = new Int32[4];
             Action test = () => sourceArray.Slice( 1, -1, targetArray );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -284,7 +283,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, new Int32[2] );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -300,7 +299,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2, 2, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -316,7 +315,7 @@ namespace Extend.Testing
 
             Action test = () => sourceArray.Slice( 10 );
 
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -327,7 +326,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => sourceArray.Slice( 2 );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

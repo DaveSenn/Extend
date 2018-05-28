@@ -17,8 +17,8 @@ namespace Extend.Testing
         {
             const RegexOptions enumValue = RegexOptions.Compiled | RegexOptions.CultureInvariant | RegexOptions.Multiline | RegexOptions.None;
             var actual = enumValue
-                .GetFlags<RegexOptions>()
-                .ToList();
+                         .GetFlags<RegexOptions>()
+                         .ToList();
 
             actual.Should()
                   .HaveCount( 4 );

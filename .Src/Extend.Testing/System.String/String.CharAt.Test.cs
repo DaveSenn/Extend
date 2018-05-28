@@ -18,7 +18,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.CharAt( 1 );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".CharAt( 0 );
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -34,7 +34,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".CharAt( -1 );
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]
@@ -42,7 +42,7 @@ namespace Extend.Testing
         {
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "test".CharAt( 4 );
-            test.ShouldThrow<ArgumentOutOfRangeException>();
+            Assert.Throws<ArgumentOutOfRangeException>( test );
         }
 
         [Fact]

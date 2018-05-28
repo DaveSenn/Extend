@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
 
             actual
                 .Should()
@@ -34,7 +34,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
 
             actual
                 .Should()
@@ -49,7 +49,7 @@ namespace Extend.Testing
             Action test = () => outValue.ToString()
                                         .TryParsByte( NumberStyles.Any, null, out outValue );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsByte( NumberStyles.AllowLeadingWhite, null, out var outValue );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -72,7 +72,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
 
             actual
                 .Should()
@@ -89,7 +89,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
 
             actual
                 .Should()

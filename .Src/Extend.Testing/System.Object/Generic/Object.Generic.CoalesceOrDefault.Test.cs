@@ -19,7 +19,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => expected.CoalesceOrDefault( s, null, null, "expected", "Test2" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -65,7 +65,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ObjectEx.CoalesceOrDefault( null, s, null, null, expected, "Test2" );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -92,7 +92,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.CoalesceOrDefault( func, null, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -116,7 +116,7 @@ namespace Extend.Testing
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => s.CoalesceOrDefault( s1, null, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -25,8 +25,8 @@ namespace Extend
             type.ThrowIfNull( nameof(type) );
 
             return type
-                .GetTypeInfo()
-                .IsGenericType;
+                   .GetTypeInfo()
+                   .IsGenericType;
         }
     }
 }

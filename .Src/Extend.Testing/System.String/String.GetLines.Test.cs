@@ -20,7 +20,7 @@ namespace Extend.Testing
             Action test = () => value.GetLines()
                                      .ToList();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

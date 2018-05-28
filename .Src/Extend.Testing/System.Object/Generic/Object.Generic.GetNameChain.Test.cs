@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq.Expressions;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -64,7 +63,7 @@ namespace Extend.Testing
             const Int32 myInt = 100;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( x => myInt );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -75,7 +74,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -140,7 +139,7 @@ namespace Extend.Testing
             const Int32 myInt = 100;
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => this.GetNameChain( () => myInt );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -151,7 +150,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetNameChain( expression );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

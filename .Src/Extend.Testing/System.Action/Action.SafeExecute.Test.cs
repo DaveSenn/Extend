@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -35,7 +34,7 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx.SafeExecute<ArgumentNullException>( () => throw new OutOfMemoryException() );
 
-            test.ShouldThrow<OutOfMemoryException>();
+            Assert.Throws<OutOfMemoryException>( test );
         }
 
         [Fact]
@@ -45,7 +44,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -71,7 +70,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException>(
                 () => throw new OutOfMemoryException() );
 
-            test.ShouldThrow<OutOfMemoryException>();
+            Assert.Throws<OutOfMemoryException>( test );
         }
 
         [Fact]
@@ -81,7 +80,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -114,7 +113,7 @@ namespace Extend.Testing
             Action test = () => ActionEx.SafeExecute<ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException>(
                 () => throw new OutOfMemoryException() );
 
-            test.ShouldThrow<OutOfMemoryException>();
+            Assert.Throws<OutOfMemoryException>( test );
         }
 
         [Fact]
@@ -124,7 +123,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -171,10 +170,10 @@ namespace Extend.Testing
         {
             Action test = () => ActionEx
                 .SafeExecute
-                <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException>(
-                    () => throw new OutOfMemoryException() );
+                    <ArgumentNullException, ArgumentOutOfRangeException, InvalidCastException, InvalidOperationException>(
+                        () => throw new OutOfMemoryException() );
 
-            test.ShouldThrow<OutOfMemoryException>();
+            Assert.Throws<OutOfMemoryException>( test );
         }
 
         [Fact]
@@ -184,7 +183,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -256,7 +255,7 @@ namespace Extend.Testing
                                                       typeof(InvalidCastException),
                                                       typeof(InvalidOperationException) );
 
-            test.ShouldThrow<OutOfMemoryException>();
+            Assert.Throws<OutOfMemoryException>( test );
         }
 
         [Fact]
@@ -266,7 +265,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute( typeof(Exception), typeof(ArgumentException) );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -277,7 +276,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute( types );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -287,7 +286,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => action.SafeExecute();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

@@ -38,9 +38,9 @@ namespace Extend
                         // ReSharper disable once PossibleNullReferenceException
                         var operand = ( expression as UnaryExpression ).Operand;
                         // Check if operand is member expression
-                        if ( operand is MemberExpression )
+                        if ( operand is MemberExpression expression1 )
                         {
-                            memberExpression = operand as MemberExpression;
+                            memberExpression = expression1;
                             return true;
                         }
 

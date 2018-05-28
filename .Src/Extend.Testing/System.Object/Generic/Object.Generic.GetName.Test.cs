@@ -45,7 +45,7 @@ namespace Extend.Testing
             const String myString = "";
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => myString.GetName( () => myString );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "".GetName( fieldName );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace Extend.Testing
             const String myString = "";
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => myString.GetName( x => myString );
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -134,7 +134,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "".GetName( fieldName );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         private event PropertyChangedEventHandler PropertyChanged;

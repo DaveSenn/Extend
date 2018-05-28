@@ -15,7 +15,7 @@ namespace Extend.Testing
         {
             var target = new MemberSelectionRuleBaseAccessor( "Name", "Description" );
             Action test = () => target.GetSelectionResult( new MemberInformation() );
-            test.ShouldThrow<NotImplementedException>();
+            Assert.Throws<NotImplementedException>( test );
         }
 
         [Fact]

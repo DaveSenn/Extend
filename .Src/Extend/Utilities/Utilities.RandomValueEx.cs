@@ -183,7 +183,7 @@ namespace Extend
                              .Cast<T>();
 
             var enumerable = values as T[];
-            return enumerable?.ElementAt( Rnd.Next( 0, enumerable.Length ) ) ?? default(T);
+            return enumerable?.ElementAt( Rnd.Next( 0, enumerable.Length ) ) ?? default;
         }
 
         /// <summary>

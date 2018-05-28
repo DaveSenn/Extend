@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Int32 SafeToInt32( [CanBeNull] this String value, Int32 defaultValue = default(Int32) )
+        public static Int32 SafeToInt32( [CanBeNull] this String value, Int32 defaultValue = default )
             => value.TryParsInt32( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Extend
         public static Int32 SafeToInt32( [CanBeNull] this String value,
                                          NumberStyles numberStyle,
                                          [NotNull] IFormatProvider formatProvider,
-                                         Int32 defaultValue = default(Int32) )
+                                         Int32 defaultValue = default )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 

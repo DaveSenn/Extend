@@ -33,8 +33,8 @@ namespace Extend
             selector.ThrowIfNull( nameof(selector) );
 
             return items
-                .Select( selector )
-                .ToList();
+                   .Select( selector )
+                   .ToList();
         }
     }
 }

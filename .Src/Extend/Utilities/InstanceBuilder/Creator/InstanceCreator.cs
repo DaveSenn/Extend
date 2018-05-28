@@ -104,8 +104,8 @@ namespace Extend
         [Pure]
         public static T CreateInstance<T>() where T : class, new()
             => CreateInstanceOptions<T>()
-                .Complete()
-                .CreateInstance();
+               .Complete()
+               .CreateInstance();
 
         /// <summary>
         ///     Creates an instance of the specified type based on the given options.
@@ -192,9 +192,9 @@ namespace Extend
         {
             // Try to find selection result (starting at the first item in selectionRuleSets)
             foreach ( var inspectionResult in selectionRuleSets
-                .Select( ruleSet => RuleInspector.Inspect( ruleSet, memberInformation )
-                                                 .AsBoolean() )
-                .Where( inspectionResult => inspectionResult.HasValue ) )
+                                              .Select( ruleSet => RuleInspector.Inspect( ruleSet, memberInformation )
+                                                                               .AsBoolean() )
+                                              .Where( inspectionResult => inspectionResult.HasValue ) )
                 return inspectionResult.Value;
 
             //No matching rule found
@@ -497,9 +497,9 @@ namespace Extend
 
             // Get generic parameter type
             var genericArgumentTypes = memberInformation
-                .MemberType
-                .GetGenericTypeArguments()
-                .ToArray();
+                                       .MemberType
+                                       .GetGenericTypeArguments()
+                                       .ToArray();
 
             // Get the add method
 
@@ -532,6 +532,7 @@ namespace Extend
 
                 addMethod.Invoke( collectionInstance, addParameters.ToArray() );
             }
+
             return collectionInstance;
         }
 

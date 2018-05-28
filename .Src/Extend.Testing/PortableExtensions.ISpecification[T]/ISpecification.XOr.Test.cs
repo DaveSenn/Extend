@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -152,7 +151,7 @@ namespace Extend.Testing
             ISpecification<String> left = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.XOr( x => true );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -162,7 +161,7 @@ namespace Extend.Testing
             Func<String, Boolean> expression = null;
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => left.XOr( expression );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

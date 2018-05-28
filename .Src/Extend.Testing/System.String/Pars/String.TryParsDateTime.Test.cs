@@ -23,7 +23,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
         }
 
         [Fact]
@@ -39,7 +39,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDateTime( culture, DateTimeStyles.None, out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
         }
 
         [Fact]
@@ -81,7 +81,7 @@ namespace Extend.Testing
                                         // ReSharper disable once UnusedVariable
                                         .TryParsDateTime( culture, DateTimeStyles.AssumeLocal | DateTimeStyles.AssumeUniversal, out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
         }
 
         [Fact]

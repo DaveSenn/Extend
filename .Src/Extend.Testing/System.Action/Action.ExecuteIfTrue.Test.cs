@@ -1,7 +1,6 @@
 ﻿#region Usings
 
 using System;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -114,7 +113,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, RandomValueEx.GetRandomString(), null, true, true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -199,7 +198,7 @@ namespace Extend.Testing
                                                         true,
                                                         true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -296,7 +295,7 @@ namespace Extend.Testing
                                                         true,
                                                         true );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -407,7 +406,7 @@ namespace Extend.Testing
                                                         true,
                                                         true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -452,7 +451,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( true, true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -499,7 +498,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), true, true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -567,7 +566,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => trueAction.ExecuteIfTrue( RandomValueEx.GetRandomString(), RandomValueEx.GetRandomString(), true, true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -644,7 +643,7 @@ namespace Extend.Testing
                                                           true,
                                                           true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -732,7 +731,7 @@ namespace Extend.Testing
                                                           true,
                                                           true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -741,7 +740,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => ActionEx.ExecuteIfTrue( null, null, true, true );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

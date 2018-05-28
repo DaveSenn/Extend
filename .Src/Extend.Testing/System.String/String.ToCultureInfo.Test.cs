@@ -2,7 +2,6 @@
 
 using System;
 using System.Globalization;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -37,7 +36,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => culture.ToCultureInfo();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -56,7 +55,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => culture.ToCultureInfo();
 
-            test.ShouldThrow<CultureNotFoundException>();
+            Assert.Throws<CultureNotFoundException>( test );
         }
     }
 }

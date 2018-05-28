@@ -71,6 +71,7 @@ namespace Extend
                     _parent.Children.DetachFromParent();
                     _parent.Children = this;
                 }
+
                 this.ForEach( x => x.SetParent( _parent, false ) );
             }
         }

@@ -51,11 +51,11 @@ namespace Extend
         public override IEnumerable<String> IsSatisfiedByWithMessages( T obj )
         {
             var leftResult = Left
-                .IsSatisfiedByWithMessages( obj )
-                .ToList();
+                             .IsSatisfiedByWithMessages( obj )
+                             .ToList();
             var rightResult = Right
-                .IsSatisfiedByWithMessages( obj )
-                .ToList();
+                              .IsSatisfiedByWithMessages( obj )
+                              .ToList();
 
             if ( leftResult.NotAny() && rightResult.NotAny() )
                 return new String[0];

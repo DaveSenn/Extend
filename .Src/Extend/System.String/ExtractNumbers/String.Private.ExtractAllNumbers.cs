@@ -47,6 +47,7 @@ namespace Extend
                     numbers.Add( sb.ToString() );
                     sb.Clear();
                 }
+
             if ( sb.Length > 0 )
                 numbers.Add( sb.ToString() );
 

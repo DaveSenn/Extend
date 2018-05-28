@@ -40,8 +40,8 @@ namespace Extend
             second.ThrowIfNull( nameof(second) );
 
             return first
-                .Concat( second )
-                .ToDictionary( x => x.Key, x => x.Value );
+                   .Concat( second )
+                   .ToDictionary( x => x.Key, x => x.Value );
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Extend.Testing
             var target = new ExpressionInstanceFactory( x => String.Empty );
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -66,7 +66,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             // ReSharper disable once ObjectCreationAsStatement
             Action test = () => new ExpressionInstanceFactory( null );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

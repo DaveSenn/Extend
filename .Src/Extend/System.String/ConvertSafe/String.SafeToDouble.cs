@@ -19,7 +19,7 @@ namespace Extend
         /// <returns>Returns the converted value, or the given default value if the conversion failed.</returns>
         [Pure]
         [PublicAPI]
-        public static Double SafeToDouble( [CanBeNull] this String value, Double defaultValue = default(Double) )
+        public static Double SafeToDouble( [CanBeNull] this String value, Double defaultValue = default )
             => value.TryParsDouble( out var outValue ) ? outValue : defaultValue;
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Extend
         public static Double SafeToDouble( [CanBeNull] this String value,
                                            NumberStyles numberStyle,
                                            [NotNull] IFormatProvider formatProvider,
-                                           Double defaultValue = default(Double) )
+                                           Double defaultValue = default )
         {
             formatProvider.ThrowIfNull( nameof(formatProvider) );
 

@@ -16,9 +16,9 @@ namespace Extend.Testing
         public void GetAttributes()
         {
             var actual = typeof(String)
-                .GetDeclaringAssembly()
-                .GetAttributes<AssemblyCompanyAttribute>()
-                .ToList();
+                         .GetDeclaringAssembly()
+                         .GetAttributes<AssemblyCompanyAttribute>()
+                         .ToList();
 
             actual.Count
                   .Should()
@@ -37,7 +37,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => assembly.GetAttributes<AssemblyCompanyAttribute>();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

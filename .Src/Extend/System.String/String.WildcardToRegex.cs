@@ -24,7 +24,7 @@ namespace Extend
             return "^" + Regex.Escape( pattern )
                               .Replace( @"\*", ".*" )
                               .Replace( @"\?", "." )
-                   + "$";
+                       + "$";
         }
     }
 }

@@ -32,14 +32,14 @@ namespace Extend
             type.ThrowIfNull( nameof(type) );
 
             return type
-                .GetPublicProperties()
-                .Select( x => new AttributeDefinitionProperty<TAttribute>
-                {
-                    Property = x,
-                    Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
-                                  .Cast<TAttribute>()
-                } )
-                .Where( x => x.Attributes.Any() );
+                   .GetPublicProperties()
+                   .Select( x => new AttributeDefinitionProperty<TAttribute>
+                   {
+                       Property = x,
+                       Attributes = x.GetCustomAttributes( typeof(TAttribute), true )
+                                     .Cast<TAttribute>()
+                   } )
+                   .Where( x => x.Attributes.Any() );
         }
     }
 }

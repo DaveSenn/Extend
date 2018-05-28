@@ -154,7 +154,7 @@ namespace Extend.Testing
             //Add children from 2 to 1
             Action test = () => node1.Children = node2Children;
 
-            test.ShouldThrow<InvalidOperationException>();
+            Assert.Throws<InvalidOperationException>( test );
         }
 
         [Fact]
@@ -521,7 +521,7 @@ namespace Extend.Testing
                 // ReSharper disable once UnusedVariable
                 var actual = target.Descendants;
             };
-            test.ShouldThrow<NotSupportedException>();
+            Assert.Throws<NotSupportedException>( test );
         }
 
         [Fact]
@@ -1312,7 +1312,7 @@ namespace Extend.Testing
                     actual.Add( node );
             };
 
-            test.ShouldThrow<NotSupportedException>();
+            Assert.Throws<NotSupportedException>( test );
         }
 
         [Fact]
@@ -1330,7 +1330,7 @@ namespace Extend.Testing
                     actual.Add( node );
             };
 
-            test.ShouldThrow<NotSupportedException>();
+            Assert.Throws<NotSupportedException>( test );
         }
 
         [Fact]

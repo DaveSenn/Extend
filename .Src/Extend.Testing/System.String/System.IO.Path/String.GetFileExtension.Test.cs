@@ -2,7 +2,6 @@
 
 using System;
 using System.IO;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -28,7 +27,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.GetFileExtension( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

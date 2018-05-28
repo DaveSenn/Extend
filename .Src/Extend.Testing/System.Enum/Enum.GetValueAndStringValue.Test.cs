@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -75,7 +74,7 @@ namespace Extend.Testing
                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
     }
 }

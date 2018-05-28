@@ -19,7 +19,7 @@ namespace Extend.Testing.Internal
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => new LookuptValueProvider( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -46,8 +46,8 @@ namespace Extend.Testing.Internal
             var target = new LookuptValueProvider( values );
 
             Action test = () => target.GetValue( "MyInt" );
-            test.ShouldThrow<FormatException>()
-                .WithInnerException<KeyNotFoundException>();
+            var exception = Assert.Throws<FormatException>( test );
+            Assert.IsType<KeyNotFoundException>( exception.InnerException );
         }
 
         [Fact]
@@ -60,8 +60,8 @@ namespace Extend.Testing.Internal
             var target = new LookuptValueProvider( values );
 
             Action test = () => target.GetValue( "MyInt:000" );
-            test.ShouldThrow<FormatException>()
-                .WithInnerException<KeyNotFoundException>();
+            var exception = Assert.Throws<FormatException>( test );
+            Assert.IsType<KeyNotFoundException>( exception.InnerException );
         }
 
         [Fact]

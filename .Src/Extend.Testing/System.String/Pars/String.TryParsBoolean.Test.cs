@@ -13,7 +13,7 @@ namespace Extend.Testing
         [Fact]
         public void TryParsBooleanInvalidValueTest()
         {
-            var actual = "InvalidValue".TryParsBoolean( out Boolean _ );
+            var actual = "InvalidValue".TryParsBoolean( out var _ );
 
             actual
                 .Should()
@@ -25,7 +25,7 @@ namespace Extend.Testing
         {
             String value = null;
             // ReSharper disable once ExpressionIsAlwaysNull
-            var actual = value.TryParsBoolean( out Boolean _ );
+            var actual = value.TryParsBoolean( out var _ );
 
             actual
                 .Should()

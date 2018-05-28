@@ -2,7 +2,6 @@
 
 using System;
 using System.Linq;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -87,7 +86,7 @@ namespace Extend.Testing
                                       // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                       .ToList();
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -96,7 +95,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => EnumEx.GetValuesExpect( typeof(Int32), 2, 3, 4, 5 );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
     }
 }

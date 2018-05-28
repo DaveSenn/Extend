@@ -17,7 +17,7 @@ namespace Extend.Testing
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => target.AddSelectionRule( null );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
         {
             var target = new InstanceFactoryBaseAccessor( "1", "2" );
             Action test = () => target.CreateValue( new MemberInformation() );
-            test.ShouldThrow<NotImplementedException>();
+            Assert.Throws<NotImplementedException>( test );
         }
 
         [Fact]

@@ -28,8 +28,8 @@ namespace Extend
             type.ThrowIfNull( nameof(type) );
 
             return type
-                .GetTypeInfo()
-                .ImplementedInterfaces;
+                   .GetTypeInfo()
+                   .ImplementedInterfaces;
         }
     }
 }

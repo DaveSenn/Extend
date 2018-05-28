@@ -21,7 +21,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => assembly.GetDefinedTypes();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         /// <summary>
@@ -31,8 +31,8 @@ namespace Extend.Testing
         public void GetDefinedTypesTest()
         {
             var actual = typeof(ActionEx)
-                .GetDeclaringAssembly()
-                .GetDefinedTypes();
+                         .GetDeclaringAssembly()
+                         .GetDefinedTypes();
 
             actual.Any( x => x.Name == typeof(ActionEx).Name )
                   .Should()

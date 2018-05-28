@@ -42,11 +42,11 @@ namespace Extend
             second.ThrowIfNull( nameof(second) );
 
             return first
-                .Concat( second )
-                .GroupBy( x => x.Key )
-                .ToDictionary( x => x.Key,
-                               x => x.First()
-                                     .Value );
+                   .Concat( second )
+                   .GroupBy( x => x.Key )
+                   .ToDictionary( x => x.Key,
+                                  x => x.First()
+                                        .Value );
         }
     }
 }

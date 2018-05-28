@@ -28,7 +28,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Boolean) );
+                .Be( default );
         }
 
         [Fact]

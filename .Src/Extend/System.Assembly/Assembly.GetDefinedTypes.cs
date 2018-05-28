@@ -28,9 +28,9 @@ namespace Extend
             assembly.ThrowIfNull( nameof(assembly) );
 
             return assembly
-                .DefinedTypes
-                .Select( x => x.AsType() )
-                .ToArray();
+                   .DefinedTypes
+                   .Select( x => x.AsType() )
+                   .ToArray();
         }
     }
 }

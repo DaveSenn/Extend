@@ -33,5 +33,9 @@
     <NoWarn>
     </NoWarn>
     <DocumentationFile>bin\Debug\netstandard1.3\Extend.xml</DocumentationFile>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 </Project>

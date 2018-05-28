@@ -54,8 +54,8 @@ namespace Extend
 
             // Get all items without a unique id
             var itemsWithSameKey = enumerable
-                .Where( x => enumerable.Count( y => equalityComparer.Equals( idSelector( x ), idSelector( y ) ) ) > 1 )
-                .ToList();
+                                   .Where( x => enumerable.Count( y => equalityComparer.Equals( idSelector( x ), idSelector( y ) ) ) > 1 )
+                                   .ToList();
             if ( itemsWithSameKey.Any() )
             {
                 // Found items without a unique id => throw exception
@@ -68,8 +68,8 @@ namespace Extend
 
             // Get all items without a matching parent
             var itemsWithNoParent = enumerable.Where( x => enumerable
-                                                               .Where( y => !y.RefEquals( x ) )
-                                                               .All( y => !equalityComparer.Equals( idSelector( y ), parentIdSelector( x ) ) )
+                                                           .Where( y => !y.RefEquals( x ) )
+                                                           .All( y => !equalityComparer.Equals( idSelector( y ), parentIdSelector( x ) ) )
                                                            && !equalityComparer.Equals( parentIdSelector( x ), rootId ) )
                                               .ToList();
 

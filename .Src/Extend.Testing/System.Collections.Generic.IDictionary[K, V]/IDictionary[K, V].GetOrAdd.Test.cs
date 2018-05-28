@@ -2,7 +2,6 @@
 
 using System;
 using System.Collections.Generic;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -19,7 +18,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => IDictionaryEx.GetOrAdd( null, new KeyValuePair<Object, Object>( new Object(), new Object() ) );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -28,7 +27,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( new KeyValuePair<Object, Object>( null, new Object() ) );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -38,7 +37,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), () => new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -48,7 +47,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( null, () => new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -59,7 +58,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -69,7 +68,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), x => new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -79,7 +78,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( null, x => new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -90,7 +89,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( new Object(), func );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -100,7 +99,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => IDictionaryEx.GetOrAdd( null, new Object(), new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -110,7 +109,7 @@ namespace Extend.Testing
             // ReSharper disable once MustUseReturnValue
             Action test = () => new Dictionary<Object, Object>().GetOrAdd( null, new Object() );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

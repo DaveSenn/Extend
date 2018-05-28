@@ -39,7 +39,7 @@ namespace Extend.Testing
                 () =>
                     "{{{{123} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -49,7 +49,7 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -59,7 +59,7 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00000}0} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -69,7 +69,7 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:00{0}000} {MyInt:#-##-#} | MyString: {MyString} | MyDouble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -79,35 +79,35 @@ namespace Extend.Testing
                 () =>
                     "{{{{123}} bla}} | Ignore: {{Ignore}} | MyInt: {MyInt} {MyInt:000000} {MyInt:#-##-#} | MyString: {MyString} | {MyDo}uble: {MyDouble} {MyDouble:C} | MyNull: {MyNull}"
                         .FormatWithObject( new { MyInt = 1234, MyString = "asdf", MyDouble = 12345.987654, Ignore = "asd", MyNull = (String) null } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_FormatInvalid()
         {
             Action test = () => "{{[]}}{{bar}{foo}}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_FormatInvalid1()
         {
             Action test = () => "{{[]}}{bar}{foo}}{MyInt:0000}{".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_FormatInvalid2()
         {
             Action test = () => "}{{[]}}{bar}{foo}}{MyInt:0000}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_FormatInvalid3()
         {
             Action test = () => "{{[]}}{bar}{foo}{MyInt:0000}{{}{bar}".FormatWithObject( new { foo = 123.45, bar = "asd", MyInt = 123434 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -122,14 +122,14 @@ namespace Extend.Testing
         public void FormatWithObject_WithDoubleEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}}}bar".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_WithDoubleEscapedEndFormatBraceWhichTerminatesString()
         {
             Action test = () => "{foo}}}}".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -176,7 +176,7 @@ namespace Extend.Testing
         public void FormatWithObject_WithEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -207,35 +207,35 @@ namespace Extend.Testing
         public void FormatWithObject_WithFormatExpressionNotComplete()
         {
             Action test = () => "{bar".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_WithFormatExpressionNotComplete1()
         {
             Action test = () => "{".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_WithFormatExpressionNotStarted()
         {
             Action test = () => "foo}".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_WithFormatExpressionNotStarted1()
         {
             Action test = () => "}".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithObject_WithFormatNameNotInObject()
         {
             Action test = () => "{bar}".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -282,7 +282,7 @@ namespace Extend.Testing
         public void FormatWithObject_WithNoEndFormatBrace()
         {
             Action test = () => "{bar".FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -299,7 +299,7 @@ namespace Extend.Testing
             String format = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => format.FormatWithObject( new { foo = 123.45 } );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -342,7 +342,7 @@ namespace Extend.Testing
                             // ReSharper disable once RedundantCast
                             { "MyNull", (String) null }
                         } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -360,7 +360,7 @@ namespace Extend.Testing
                             // ReSharper disable once RedundantCast
                             { "MyNull", (String) null }
                         } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -378,7 +378,7 @@ namespace Extend.Testing
                             // ReSharper disable once RedundantCast
                             { "MyNull", (String) null }
                         } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -396,28 +396,28 @@ namespace Extend.Testing
                             // ReSharper disable once RedundantCast
                             { "MyNull", (String) null }
                         } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_FormatInvalid()
         {
             Action test = () => "{{[]}}{{bar}{foo}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_FormatInvalid1()
         {
             Action test = () => "{{[]}}{bar}{foo}}{MyInt:0000}{".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_FormatInvalid2()
         {
             Action test = () => "}{{[]}}{bar}{foo}}{MyInt:0000}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -425,7 +425,16 @@ namespace Extend.Testing
         {
             Action test =
                 () => "{{[]}}{bar}{foo}{MyInt:0000}{{}{bar}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 }, { "bar", "asd" }, { "MyInt", 123434 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
+        }
+
+        [Fact]
+        public void FormatWithValues_FormatWithColon()
+        {
+            var actual = "DateTime: {DateTime:dd.MM.yyyy HH:mm:ss}".FormatWithValues( new Dictionary<String, Object> { { "DateTime", new DateTimeOffset( new DateTime( 2018, 05, 28, 12, 35, 23 ) ) } } );
+
+            actual.Should()
+                  .Be( "DateTime: 28.05.2018 12:35:23" );
         }
 
         [Fact]
@@ -440,14 +449,14 @@ namespace Extend.Testing
         public void FormatWithValues_WithDoubleEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}}}bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_WithDoubleEscapedEndFormatBraceWhichTerminatesString()
         {
             Action test = () => "{foo}}}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -494,7 +503,7 @@ namespace Extend.Testing
         public void FormatWithValues_WithEscapedEndFormatBrace()
         {
             Action test = () => "{foo}}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -525,35 +534,35 @@ namespace Extend.Testing
         public void FormatWithValues_WithFormatExpressionNotComplete()
         {
             Action test = () => "{bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_WithFormatExpressionNotComplete1()
         {
             Action test = () => "{".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_WithFormatExpressionNotStarted()
         {
             Action test = () => "foo}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_WithFormatExpressionNotStarted1()
         {
             Action test = () => "}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
         public void FormatWithValues_WithFormatNameNotInObject()
         {
             Action test = () => "{bar}".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -600,7 +609,7 @@ namespace Extend.Testing
         public void FormatWithValues_WithNoEndFormatBrace()
         {
             Action test = () => "{bar".FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -617,7 +626,7 @@ namespace Extend.Testing
             String format = null;
             // ReSharper disable once ExpressionIsAlwaysNull
             Action test = () => format.FormatWithValues( new Dictionary<String, Object> { { "foo", 123.45 } } );
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
     }
 }

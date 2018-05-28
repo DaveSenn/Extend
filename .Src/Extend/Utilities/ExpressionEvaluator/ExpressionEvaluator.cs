@@ -237,8 +237,8 @@ namespace Extend
             // Check if we should cache the properties or not
             if ( !EnableCaching )
                 return containerType
-                    .GetPublicProperties()
-                    .ToList();
+                       .GetPublicProperties()
+                       .ToList();
 
             if ( PropertyCache.TryGetValue( containerType, out var properties ) )
                 return properties;

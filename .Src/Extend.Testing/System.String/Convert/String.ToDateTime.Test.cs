@@ -17,7 +17,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "invalidFormat".ToDateTime();
 
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -27,19 +27,17 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ToDateTime( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
         public void ToDateTimeOtherCultureTest()
         {
-            var value = DateTime.Now;
+            var value = new DateTime( 2018, 05, 28, 12, 33, 11 );
             var actual = value.ToString( CultureInfo.InvariantCulture )
                               .ToDateTime();
 
-            actual
-                .Should()
-                .BeCloseTo( value, 999 );
+            Assert.Equal( value, actual );
         }
 
         [Fact]
@@ -50,7 +48,7 @@ namespace Extend.Testing
             Action test = () => DateTime.Now.ToString( CultureInfo.InvariantCulture )
                                         .ToDateTime( null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -59,7 +57,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "invalidFormat".ToDateTime( CultureInfo.CurrentCulture );
 
-            test.ShouldThrow<FormatException>();
+            Assert.Throws<FormatException>( test );
         }
 
         [Fact]
@@ -69,7 +67,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => StringEx.ToDateTime( null, CultureInfo.CurrentCulture );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

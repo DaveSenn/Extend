@@ -29,7 +29,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
         }
 
         [Fact]
@@ -64,7 +64,7 @@ namespace Extend.Testing
             // ReSharper disable once AssignNullToNotNullAttribute
             Action test = () => "12".SafeToInt32( NumberStyles.AllowExponent, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -73,7 +73,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "12".SafeToInt32( NumberStyles.AllowDecimalPoint | NumberStyles.HexNumber, CultureInfo.CurrentCulture );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -83,7 +83,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
         }
 
         [Fact]
@@ -106,7 +106,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Int32) );
+                .Be( default );
         }
 
         [Fact]

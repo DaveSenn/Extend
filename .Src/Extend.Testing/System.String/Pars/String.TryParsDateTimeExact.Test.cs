@@ -24,7 +24,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -70,7 +70,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()
@@ -89,7 +89,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()
@@ -108,7 +108,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()
@@ -128,7 +128,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -144,7 +144,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -159,7 +159,7 @@ namespace Extend.Testing
                                                                  // ReSharper disable once UnusedVariable
                                                                  out var result );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -174,7 +174,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()
@@ -193,7 +193,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()
@@ -212,7 +212,7 @@ namespace Extend.Testing
 
             result
                 .Should()
-                .Be( default(DateTime) );
+                .Be( default );
 
             actual
                 .Should()

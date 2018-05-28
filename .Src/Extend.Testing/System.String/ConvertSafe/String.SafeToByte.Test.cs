@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
         }
 
         [Fact]
@@ -41,7 +41,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
             Action test = () => expected.ToString( CultureInfo.InvariantCulture )
                                         .SafeToByte( (NumberStyles) 1024, CultureInfo.InvariantCulture );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -63,7 +63,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Byte) );
+                .Be( default );
         }
 
         [Fact]
@@ -123,7 +123,7 @@ namespace Extend.Testing
             Action test = () => value.ToString()
                                      .SafeToByte( NumberStyles.AllowDecimalPoint, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]

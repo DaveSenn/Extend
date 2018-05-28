@@ -19,7 +19,7 @@ namespace Extend.Testing
             Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
                                                 .SafeToDouble( NumberStyles.AllowExponent, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -30,7 +30,7 @@ namespace Extend.Testing
             Action test = () => new Decimal( 1 ).ToString( CultureInfo.InvariantCulture )
                                                 .SafeToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.InvariantCulture );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
         }
 
         [Fact]
@@ -97,7 +97,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Decimal) );
+                .Be( default );
         }
 
         [Fact]

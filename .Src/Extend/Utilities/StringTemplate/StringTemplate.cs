@@ -155,6 +155,7 @@ namespace Extend
                                     result.Append( (Char) currentChar );
                                     break;
                             }
+
                             break;
                         case StringFormatState.OnOpenBracket:
                             // Last character was an open bracket (only one bracket; yet)
@@ -175,6 +176,7 @@ namespace Extend
                                     currentState = StringFormatState.InsideExpression;
                                     break;
                             }
+
                             break;
                         case StringFormatState.InsideExpression:
                             // We are inside of an expression
@@ -195,6 +197,7 @@ namespace Extend
                                     expression.Append( (Char) currentChar );
                                     break;
                             }
+
                             break;
                         case StringFormatState.OnCloseBracket:
                             // Last character was a close bracket
@@ -209,10 +212,12 @@ namespace Extend
                                 default:
                                     throw new FormatException( BuildErrorMessageCloseNotEscaped( format, reader ) );
                             }
+
                             break;
                         default:
                             throw new ArgumentOutOfRangeException( nameof(currentState), currentState, $"Invalid state: '{format}'." );
-                    } while ( currentState != StringFormatState.End );
+                    }
+                while ( currentState != StringFormatState.End );
             }
 
             return result.ToString();

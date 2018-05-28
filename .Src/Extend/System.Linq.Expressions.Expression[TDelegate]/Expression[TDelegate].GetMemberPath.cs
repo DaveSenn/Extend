@@ -67,10 +67,10 @@ namespace Extend
                 }
 
             return result
-                .AsEnumerable()
-                .Reverse()
-                .StringJoin( "." )
-                .Replace( ".[", "[" );
+                   .AsEnumerable()
+                   .Reverse()
+                   .StringJoin( "." )
+                   .Replace( ".[", "[" );
         }
     }
 }

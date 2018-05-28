@@ -38,14 +38,15 @@ namespace Extend.Testing
         }
 
         [Fact]
-        public void ForEachReverseAsyncCollectionNullTest()
+        public async Task ForEachReverseAsyncCollectionNullTest()
         {
             // ReSharper disable once CollectionNeverUpdated.Local
             List<Int32> enumerable = null;
 
             // ReSharper disable once AssignNullToNotNullAttribute
             Func<Task> test = async () => await enumerable.ForEachReverseAsync( async x => await Task.FromResult( x ) );
-            test.ShouldThrow<ArgumentNullException>();
+
+            await Assert.ThrowsAsync<ArgumentNullException>( test );
         }
 
         [Fact]

@@ -21,8 +21,8 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Failed to create instance due to missing or invalid factory for type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor'." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Failed to create instance due to missing or invalid factory for type 'Extend.Testing.InstanceCreatorTest+ModelWithCtor'.", exception.Message );
         }
 
         [Fact]
@@ -209,11 +209,11 @@ namespace Extend.Testing
         public void FactoryTest1()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<TestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.IsTypeOf<Int32>() )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<TestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.IsTypeOf<Int32>() )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -229,11 +229,11 @@ namespace Extend.Testing
         public void FactoryTest2()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<TestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.ByPath( y => y.MyInt32 ) )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<TestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.ByPath( y => y.MyInt32 ) )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -249,11 +249,11 @@ namespace Extend.Testing
         public void FactoryTest3()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<TestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.ByPath( "MyInt32" ) )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<TestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.ByPath( "MyInt32" ) )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -269,11 +269,11 @@ namespace Extend.Testing
         public void FactoryTest4()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<TestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.ByPath( "MyInt32" ) )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<TestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.ByPath( "MyInt32" ) )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -289,12 +289,12 @@ namespace Extend.Testing
         public void FactoryTest5()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<TestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.ByPath( "MyInt32" ) )
-                .For( x => x.ByPath( $"MyIntList.{InstanceCreator.AnonymousItemName}" ) )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<TestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.ByPath( "MyInt32" ) )
+                         .For( x => x.ByPath( $"MyIntList.{InstanceCreator.AnonymousItemName}" ) )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -310,15 +310,15 @@ namespace Extend.Testing
         public void FactoryTest6()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<SimpleTestModel>()
-                .WithFactory( x => 666 )
-                .For( x => x.AllMembers() )
-                .NotFor( x => x.ByPath( y => y.MyString ) )
-                .NotFor( x => x.IsTypeOf<SimpleTestModel>() )
-                .WithFactory( x => "test" )
-                .For( x => x.IsTypeOf<String>() )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<SimpleTestModel>()
+                         .WithFactory( x => 666 )
+                         .For( x => x.AllMembers() )
+                         .NotFor( x => x.ByPath( y => y.MyString ) )
+                         .NotFor( x => x.IsTypeOf<SimpleTestModel>() )
+                         .WithFactory( x => "test" )
+                         .For( x => x.IsTypeOf<String>() )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );
@@ -336,8 +336,8 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Factory has thrown exception." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Factory has thrown exception.", exception.Message );
         }
 
         [Fact]
@@ -352,9 +352,8 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage(
-                    "Found multiple matching factories for member (in global configuration). Type is 'System.Double'.  Please make sure only one factory matches the member." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Found multiple matching factories for member (in global configuration). Type is 'System.Double'.  Please make sure only one factory matches the member.", exception.Message );
 
             InstanceCreator.DefaultFactories.Remove( factory );
             InstanceCreator.DefaultFactories.Contains( factory )
@@ -374,8 +373,8 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Found multiple matching factories for member (in options). Type is 'System.Double'. Please make sure only one factory matches the member." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Found multiple matching factories for member (in options). Type is 'System.Double'. Please make sure only one factory matches the member.", exception.Message );
         }
 
         [Fact]
@@ -386,8 +385,8 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => InstanceCreator.CreateInstance<TestModel>();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Found no selection rule targeting member." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Found no selection rule targeting member.", exception.Message );
 
             rules.ForEach( x => InstanceCreator.DefaultMemberSelectionRules.Add( x ) );
         }
@@ -465,8 +464,8 @@ namespace Extend.Testing
             Action test = () => options.Complete()
                                        // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
                                        .CreateInstance();
-            test.ShouldThrow<CreateInstanceException>()
-                .WithMessage( "Failed to create root object of type: TestModel." );
+            var exception = Assert.Throws<CreateInstanceException>( test );
+            Assert.Equal( "Failed to create root object of type: TestModel.", exception.Message );
         }
 
         [Fact]
@@ -486,12 +485,12 @@ namespace Extend.Testing
         public void SelectionRuleTest()
         {
             var actual = InstanceCreator
-                .CreateInstanceOptions<SimpleTestModel>()
-                .Excluding( x => x.ByPath( y => y.MyString ) )
-                .WithFactory( x => 666 )
-                .For( x => x.IsTypeOf<Int32>() )
-                .Complete()
-                .CreateInstance();
+                         .CreateInstanceOptions<SimpleTestModel>()
+                         .Excluding( x => x.ByPath( y => y.MyString ) )
+                         .WithFactory( x => 666 )
+                         .For( x => x.IsTypeOf<Int32>() )
+                         .Complete()
+                         .CreateInstance();
 
             actual.MyInt32.Should()
                   .Be( 666 );

@@ -37,6 +37,7 @@ namespace Extend
             {
                 result.Exception = ex;
             }
+
             return result;
         }
 
@@ -65,6 +66,7 @@ namespace Extend
             {
                 result.Exception = ex;
             }
+
             return result;
         }
     }

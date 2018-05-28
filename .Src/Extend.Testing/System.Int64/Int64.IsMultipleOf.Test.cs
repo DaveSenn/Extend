@@ -18,7 +18,7 @@ namespace Extend.Testing
 
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => value.IsMultipleOf( factor );
-            test.ShouldThrow<DivideByZeroException>();
+            Assert.Throws<DivideByZeroException>( test );
         }
 
         [Fact]

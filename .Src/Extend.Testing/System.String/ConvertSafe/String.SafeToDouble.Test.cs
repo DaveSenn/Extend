@@ -31,7 +31,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "123.2".SafeToDouble( NumberStyles.AllowExponent, null );
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         [Fact]
@@ -61,7 +61,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => "123.2".SafeToDouble( NumberStyles.AllowHexSpecifier, CultureInfo.CurrentCulture );
 
-            test.ShouldThrow<ArgumentException>();
+            Assert.Throws<ArgumentException>( test );
         }
 
         [Fact]
@@ -71,7 +71,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
         }
 
         [Fact]
@@ -94,7 +94,7 @@ namespace Extend.Testing
 
             actual
                 .Should()
-                .Be( default(Double) );
+                .Be( default );
         }
 
         [Fact]

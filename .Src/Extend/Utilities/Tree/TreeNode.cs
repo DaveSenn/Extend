@@ -74,7 +74,7 @@ namespace Extend
         /// </summary>
         /// <param name="parent">The parent of the node.</param>
         public TreeNode( ITreeNode<T> parent )
-            : this( default(T), parent, null )
+            : this( default, parent, null )
         {
         }
 
@@ -83,7 +83,7 @@ namespace Extend
         /// </summary>
         /// <param name="children">The children of the node.</param>
         public TreeNode( ITreeNodeCollection<T> children )
-            : this( default(T), null, children )
+            : this( default, null, children )
         {
         }
 
@@ -151,8 +151,8 @@ namespace Extend
                 return stringValue;
 
             var childStrings = Children
-                .Select( x => x.ToString() )
-                .StringJoin( Environment.NewLine );
+                               .Select( x => x.ToString() )
+                               .StringJoin( Environment.NewLine );
             return $"{stringValue}{Environment.NewLine}{childStrings}";
         }
 
@@ -563,6 +563,7 @@ namespace Extend
                     foreach ( var e in enumeration )
                         yield return e;
                 }
+
                 yield return this;
             }
             else

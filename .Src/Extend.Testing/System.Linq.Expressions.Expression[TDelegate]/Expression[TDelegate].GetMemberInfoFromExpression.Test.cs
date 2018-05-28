@@ -3,7 +3,6 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
-using FluentAssertions;
 using Xunit;
 
 #endregion
@@ -38,7 +37,7 @@ namespace Extend.Testing
             // ReSharper disable once ReturnValueOfPureMethodIsNotUsed
             Action test = () => memberExpression.GetMemberInfoFromExpression();
 
-            test.ShouldThrow<ArgumentNullException>();
+            Assert.Throws<ArgumentNullException>( test );
         }
 
         #region Nested Types
