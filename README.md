@@ -10,25 +10,25 @@
 
 ### What is this?
 
-Extend is a set of .Net extension methods build as portable class library. 
+Extend is a set of .Net extension methods build as .NET Standard 1.1 library. 
 Extend enhance the .Net framework by adding a bunch of methods to increase developer’s productivity.
-Currently it contains 377 unique extension methods (623 overloads included).
+Currently it contains 417 unique extension methods (657 overloads included).
 ### Where can I use it?
 You can use it in every .Net application or library targeting one of the following profiles:
-* .Net 4.5
-* Windows 8
-* Windows Phone 8
-* Windows Phone 8.1
-* .NET Core
+* .NET Standard 1.1
+* .NET Core 1.1
+* .NET 4.5
+
+See ["Microsoft documentation"](https://docs.microsoft.com/en-us/dotnet/standard/net-standard) for a full list of all compatible frameworks.
 
 ### How do I use it?
 1. Install ["Extend"](http://www.nuget.org/packages/Extend/) via [NuGet](http://nuget.org)
 __Install-Package PortableExtensions__
-2. Add using for Extend ```using Extend; ```
+2. Add using ```using Extend; ```
 3. Done!
 
 ### Testing
-To guarantee its stability Extend contains over 1900 unit tests.
+To guarantee its stability Extend contains over 2400 unit tests.
 Each method has test with different input parameters, including invalid values to test the exception handling.
 
 ### Example
@@ -83,6 +83,13 @@ var stringValue = dateTime.ToLongDateShortTimeString();
 var elapsed = dateTime.Elapsed();
 var isFuture = dateTime.IsFuture();
 var weekend = dateTime.IsWeekendDay();
+```
+
+String templates:
+```csharp
+"Today is the: {Today}".FormatWithObject( new { Today = DateTime.Now } );
+
+"Today is the: {Today}".FormatWithObject( new Dictionary<String, Object> { { "Today", DateTime.Now } } );
 ```
 
 ### License
