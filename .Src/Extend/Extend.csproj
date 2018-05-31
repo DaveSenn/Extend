@@ -1,13 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>netstandard1.3</TargetFramework>
+    <TargetFramework>netstandard1.1</TargetFramework>
     <AssemblyName>Extend</AssemblyName>
     <RootNamespace>Extend</RootNamespace>
     <PackageId>Extend</PackageId>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>Extend.snk</AssemblyOriginatorKeyFile>
     <DelaySign>false</DelaySign>
-    <Version>1.2.0.0</Version>
+    <Version>1.2.1.0</Version>
     <Authors>Dave Senn</Authors>
     <Company>Dave Senn</Company>
     <Product>Extend</Product>
@@ -20,8 +20,8 @@
     <RepositoryUrl>https://github.com/DaveSenn/Extend</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>C# Extensions Extend Portable Extension Methods .Net Library PCL Standard Core</PackageTags>
-    <AssemblyVersion>1.2.0.0</AssemblyVersion>
-    <FileVersion>1.2.0.0</FileVersion>
+    <AssemblyVersion>1.2.1.0</AssemblyVersion>
+    <FileVersion>1.2.1.0</FileVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netcoreapp1.1|AnyCPU'">
     <DocumentationFile>bin\Debug\netcoreapp1.1\Extend.xml</DocumentationFile>

@@ -23,7 +23,7 @@ namespace Extend
         [PublicAPI]
         [NotNull]
         [Pure]
-        public static IEnumerable<T> GetFlags<T>( this Enum enumValue ) where T : struct, IConvertible
+        public static IEnumerable<T> GetFlags<T>( this Enum enumValue ) where T : struct//, IConvertible Only available on .NET Standard 1.3+
             => Enum.GetValues( enumValue.GetType() )
                    .Cast<Enum>()
                    .Where( enumValue.HasFlag )
